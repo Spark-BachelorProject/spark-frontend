@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { theme } from './assets/styles/theme'
-import { GlobalStyle } from './assets/styles/GlobalStyle'
 import styled from 'styled-components'
+import { GlobalStyle } from '@/assets/styles/GlobalStyle'
+import { theme } from '@/assets/styles/theme'
 
 const MainDiv = styled.div`
   // its only example of component

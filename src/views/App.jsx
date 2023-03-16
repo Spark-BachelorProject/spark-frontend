@@ -8,7 +8,7 @@ const MainDiv = styled.div`
   // its only example of component
   background-color: blue;
   width: 100vw;
-  height: 300px;
+  height: 300vh;
 `
 
 function App() {

@@ -1,11 +1,10 @@
 export const theme = {
   colors: {
-    white: '#FFFFFF',
-    lightGrey: '#DEE1E3',
-    grey: '#C0C7D6',
-    darkGrey: '#737C8E',
-    black: '#110B11',
-    success: '#8FCB81',
+    primaryBg: '#f8fafc',
+    white: '#fff',
+    iconPrimary: '#94a3b8',
+    iconPrimaryActive: '#0f172a',
+    iconPlusBg: '#3b82f6',
   },
   fontSize: {
     xxl: '34px',

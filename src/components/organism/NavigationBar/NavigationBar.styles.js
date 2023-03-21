@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { ReactComponent as PlusSquareIcon } from '@/assets/icons/plus-square.svg'
+import styled from "styled-components";
+import { ReactComponent as PlusSquareIcon } from "@/assets/icons/plus-square.svg";
 
 export const Wrapper = styled.nav`
   width: 100vw;
@@ -8,7 +8,7 @@ export const Wrapper = styled.nav`
   bottom: 0;
   background-color: ${({ theme }) => theme.colors.white};
   padding: 0 20px;
-`
+`;
 
 export const IconsWrapper = styled.div`
   max-width: 476px;
@@ -22,15 +22,15 @@ export const IconsWrapper = styled.div`
     stroke: ${({ theme }) => theme.colors.iconPrimary};
   }
 
-  & > a.${'active'} > svg > path {
+  & > a.${"active"} > svg > path {
     stroke: ${({ theme }) => theme.colors.iconPrimaryActive};
   }
 
-  & > a.${'active'} > svg {
+  & > a.${"active"} > svg {
     transition: scale 0.1s ease-in-out;
     scale: 1.2;
   }
-`
+`;
 
 export const StyledPlusSquareIcon = styled(PlusSquareIcon)`
   background-color: ${({ theme }) => theme.colors.iconPlusBg};
@@ -42,4 +42,4 @@ export const StyledPlusSquareIcon = styled(PlusSquareIcon)`
   & > path {
     stroke: ${({ theme }) => theme.colors.white} !important;
   }
-`
+`;

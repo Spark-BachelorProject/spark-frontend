@@ -5,6 +5,7 @@ export const theme = {
     iconPrimary: '#94a3b8',
     iconPrimaryActive: '#0f172a',
     iconPlusBg: '#3b82f6',
+    buttonBorder: '#f1f5f9',
   },
   fontSize: {
     xxl: '34px',
@@ -16,5 +17,6 @@ export const theme = {
   breakPoints: {
     l: '1200px',
     m: '768px',
+    mobile: '476px',
   },
-}
+};

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   *, *::after, *::before {
@@ -13,10 +13,11 @@ export const GlobalStyle = createGlobalStyle`
   
   body {
     background-color: ${({ theme }) => theme.colors.primaryBg};
+    margin-top: 70px;
   }
 
   a, button {
   }
 
 
-`;
+`

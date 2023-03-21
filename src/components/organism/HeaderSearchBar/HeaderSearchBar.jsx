@@ -1,28 +1,32 @@
-import React from 'react';
-import { ReactComponent as BellIcon } from '@/assets/icons/bell.svg';
-import { ReactComponent as BookmarkIcon } from '@/assets/icons/bookmark.svg';
-import { ReactComponent as MoonIcon } from '@/assets/icons/moon.svg';
-
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { ReactComponent as BellIcon } from '@/assets/icons/bell.svg'
+import { ReactComponent as BookmarkIcon } from '@/assets/icons/bookmark.svg'
+import { ReactComponent as MoonIcon } from '@/assets/icons/moon.svg'
 import {
   Wrapper,
-  IconsWrapper,
-  InnerIconsWrapperLeft,
+  InnerWrapper,
+  LogoAndInputWrapper,
   InnerIconsWrapperRight,
   IconBorder,
   Divider,
-  SearchBar,
-  StyledLogoIcon,
-} from './HeaderSearchBar.styles';
+} from './HeaderSearchBar.styles'
+import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
+import SearchInput from '@/components/molecules/SearchInput/SearchInput'
 
-//TODO ADD SEARCH ICON TO SEARCH BAR
+// TODO:
+// Add to BellIcon circle counter in the corner
+
 export const HeaderSearchBar = () => {
   return (
     <Wrapper>
-      <IconsWrapper>
-        <InnerIconsWrapperLeft>
-          <StyledLogoIcon />
-          <SearchBar />
-        </InnerIconsWrapperLeft>
+      <InnerWrapper>
+        <LogoAndInputWrapper>
+          <Link to="/">
+            <StyledLogoIcon />
+          </Link>
+          <SearchInput />
+        </LogoAndInputWrapper>
         <InnerIconsWrapperRight>
           <IconBorder>
             <BookmarkIcon />
@@ -33,7 +37,7 @@ export const HeaderSearchBar = () => {
             <MoonIcon />
           </IconBorder>
         </InnerIconsWrapperRight>
-      </IconsWrapper>
+      </InnerWrapper>
     </Wrapper>
-  );
-};
+  )
+}

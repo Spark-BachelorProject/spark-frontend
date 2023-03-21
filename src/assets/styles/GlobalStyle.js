@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
   
   body {
     background-color: ${({ theme }) => theme.colors.primaryBg};
+    margin-top: 70px;
   }
 
   a, button {

@@ -9,7 +9,7 @@ export const lightTheme = {
   iconBg: '#fff',
   buttonBorder: '#f1f5f9',
   divider: '#f1f5f9',
-  searchFont: '#475569',
+  inputFont: '#475569',
 }
 
 export const darkTheme = {
@@ -23,7 +23,7 @@ export const darkTheme = {
   iconBg: '#233045',
   buttonBorder: '#233045',
   divider: '#64748B',
-  searchFont: '#E2E8F0',
+  inputFont: '#E2E8F0',
 }
 
 export const theme = {

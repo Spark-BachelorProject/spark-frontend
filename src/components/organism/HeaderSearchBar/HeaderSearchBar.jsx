@@ -19,11 +19,6 @@ import SearchInput from '@/components/molecules/SearchInput/SearchInput'
 // Add to BellIcon circle counter in the corner
 
 export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
-  // const handleToggleTheme = () => {
-  //   console.log('klikniete', colorsTheme)
-  //   toggleColorsTheme()
-  // }
-
   return (
     <Wrapper>
       <InnerWrapper>

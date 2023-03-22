@@ -55,7 +55,7 @@ export const IconBorder = styled.div`
 `
 
 export const Divider = styled.div`
-  border-left: solid 1px ${({ theme }) => theme.colors.buttonBorder};
+  border-left: solid 1px ${({ theme }) => theme.colors.divider};
   height: 22px;
   margin: 0 15px;
 `

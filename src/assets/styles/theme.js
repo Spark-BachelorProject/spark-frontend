@@ -8,18 +8,20 @@ export const lightTheme = {
   iconPlusBg: '#3b82f6',
   iconBg: '#fff',
   buttonBorder: '#f1f5f9',
+  divider: '#f1f5f9',
 }
 
 export const darkTheme = {
-  primaryBg: '#f87',
+  primaryBg: '#0F172A',
   white: '#fff',
   secondaryBg: '#1E293B',
-  iconPrimary: '#acd',
+  iconPrimary: '#64748B',
   iconSecondary: '#E2E8F0',
-  iconPrimaryActive: '#123',
-  iconPlusBg: '#984',
+  iconPrimaryActive: '#F8FAFC',
+  iconPlusBg: '#3b82f6',
   iconBg: '#233045',
-  buttonBorder: '#723',
+  buttonBorder: '#233045',
+  divider: '#334155',
 }
 
 export const theme = {

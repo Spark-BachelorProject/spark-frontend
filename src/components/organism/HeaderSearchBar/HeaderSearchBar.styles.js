@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   height: 70px;
   position: fixed;
   top: 0;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.secondaryBg};
   padding: 0 10px;
   display: flex;
 `
@@ -35,6 +35,7 @@ export const InnerIconsWrapperRight = styled.div`
 
 export const IconBorder = styled.div`
   border: solid 1px ${({ theme }) => theme.colors.buttonBorder};
+  background-color: ${({ theme }) => theme.colors.iconBg};
   height: 39px;
   width: auto;
   display: flex;
@@ -46,6 +47,10 @@ export const IconBorder = styled.div`
 
   & > svg {
     cursor: pointer;
+  }
+
+  & > svg > path {
+    stroke: ${({ theme }) => theme.colors.iconSecondary};
   }
 `
 

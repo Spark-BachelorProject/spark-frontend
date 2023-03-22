@@ -19,4 +19,4 @@ export const theme = {
     m: '768px',
     mobile: '476px',
   },
-};
+}

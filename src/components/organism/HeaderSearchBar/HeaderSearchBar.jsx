@@ -29,12 +29,12 @@ export const HeaderSearchBar = () => {
         </LogoAndInputWrapper>
         <InnerIconsWrapperRight>
           <IconBorder>
-            <BookmarkIcon />
+            <BookmarkIcon tabIndex={1} />
             <Divider />
-            <BellIcon />
+            <BellIcon tabIndex={1} />
           </IconBorder>
           <IconBorder>
-            <MoonIcon />
+            <MoonIcon tabIndex={1} />
           </IconBorder>
         </InnerIconsWrapperRight>
       </InnerWrapper>

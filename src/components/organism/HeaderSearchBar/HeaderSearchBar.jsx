@@ -19,6 +19,12 @@ import SearchInput from '@/components/molecules/SearchInput/SearchInput'
 // Add to BellIcon circle counter in the corner
 
 export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
+  const handleKeyDownOnChangeTheme = (e) => {
+    if (e.key === 'Enter') {
+      toggleColorsTheme()
+    }
+  }
+
   return (
     <Wrapper>
       <InnerWrapper>
@@ -30,16 +36,16 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
         </LogoAndInputWrapper>
         <InnerIconsWrapperRight>
           <IconBorder>
-            <BookmarkIcon tabIndex={1} />
+            <BookmarkIcon tabIndex="0" />
             <Divider />
-            <BellIcon tabIndex={1} />
+            <BellIcon tabIndex="0" />
           </IconBorder>
-          <IconBorder>
-            {colorsTheme === 'light' ? (
-              <MoonIcon tabIndex={1} onClick={toggleColorsTheme} />
-            ) : (
-              <SunIcon tabIndex={1} onClick={toggleColorsTheme} />
-            )}
+          <IconBorder
+            tabIndex="0"
+            onClick={toggleColorsTheme}
+            onKeyDown={handleKeyDownOnChangeTheme}
+          >
+            {colorsTheme === 'light' ? <MoonIcon /> : <SunIcon />}
           </IconBorder>
         </InnerIconsWrapperRight>
       </InnerWrapper>

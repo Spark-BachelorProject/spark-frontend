@@ -10,7 +10,6 @@ import { useToggleColorsTheme } from '@/hooks/useToggleColorsTheme'
 
 function App() {
   const [colorsTheme, toggleColorsTheme] = useToggleColorsTheme()
-  console.log(theme)
   const colorsThemeMode = colorsTheme === 'light' ? lightTheme : darkTheme
 
   return (

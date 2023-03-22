@@ -1,8 +1,6 @@
 import { Input } from '@/components/atoms/Input/Input.styles'
 import styled from 'styled-components'
 
-//TODO: Change active border color in dark themme
-
 export const InputWrapper = styled.div`
   position: relative;
 

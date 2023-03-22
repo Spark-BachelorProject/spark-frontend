@@ -7,4 +7,7 @@ export const Input = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
   width: clamp(40px, 100%, 400px);
   font-size: ${({ theme }) => theme.fontSize.m};
+  &:focus {
+    outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};
+  }
 `

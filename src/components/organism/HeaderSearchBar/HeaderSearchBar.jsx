@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ReactComponent as BellIcon } from '@/assets/icons/bell.svg'
 import { ReactComponent as BookmarkIcon } from '@/assets/icons/bookmark.svg'
 import { ReactComponent as MoonIcon } from '@/assets/icons/moon.svg'
+import { ReactComponent as SunIcon } from '@/assets/icons/sun.svg'
 import {
   Wrapper,
   InnerWrapper,
@@ -17,7 +18,13 @@ import SearchInput from '@/components/molecules/SearchInput/SearchInput'
 // TODO:
 // Add to BellIcon circle counter in the corner
 
-export const HeaderSearchBar = () => {
+export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
+  const handleKeyDownOnChangeTheme = (e) => {
+    if (e.key === 'Enter') {
+      toggleColorsTheme()
+    }
+  }
+
   return (
     <Wrapper>
       <InnerWrapper>
@@ -29,12 +36,16 @@ export const HeaderSearchBar = () => {
         </LogoAndInputWrapper>
         <InnerIconsWrapperRight>
           <IconBorder>
-            <BookmarkIcon tabIndex={1} />
+            <BookmarkIcon tabIndex="0" />
             <Divider />
-            <BellIcon tabIndex={1} />
+            <BellIcon tabIndex="0" />
           </IconBorder>
-          <IconBorder>
-            <MoonIcon tabIndex={1} />
+          <IconBorder
+            tabIndex="0"
+            onClick={toggleColorsTheme}
+            onKeyDown={handleKeyDownOnChangeTheme}
+          >
+            {colorsTheme === 'light' ? <MoonIcon /> : <SunIcon />}
           </IconBorder>
         </InnerIconsWrapperRight>
       </InnerWrapper>

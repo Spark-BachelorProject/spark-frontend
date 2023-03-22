@@ -6,7 +6,7 @@ export const Wrapper = styled.nav`
   height: 70px;
   position: fixed;
   bottom: 0;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.secondaryBg};
   padding: 0 20px;
 `
 

@@ -1,12 +1,33 @@
+export const lightTheme = {
+  primaryBg: '#f8fafc',
+  white: '#fff',
+  secondaryBg: '#fff',
+  iconPrimary: '#94a3b8',
+  iconSecondary: '#475569',
+  iconPrimaryActive: '#0f172a',
+  iconPlusBg: '#3b82f6',
+  iconBg: '#fff',
+  buttonBorder: '#f1f5f9',
+  divider: '#f1f5f9',
+  inputFont: '#475569',
+}
+
+export const darkTheme = {
+  primaryBg: '#0F172A',
+  white: '#fff',
+  secondaryBg: '#1E293B',
+  iconPrimary: '#64748B',
+  iconSecondary: '#E2E8F0',
+  iconPrimaryActive: '#F8FAFC',
+  iconPlusBg: '#3b82f6',
+  iconBg: '#233045',
+  buttonBorder: '#233045',
+  divider: '#64748B',
+  inputFont: '#E2E8F0',
+}
+
 export const theme = {
-  colors: {
-    primaryBg: '#f8fafc',
-    white: '#fff',
-    iconPrimary: '#94a3b8',
-    iconPrimaryActive: '#0f172a',
-    iconPlusBg: '#3b82f6',
-    buttonBorder: '#f1f5f9',
-  },
+  colors: lightTheme,
   fontSize: {
     xxl: '34px',
     xl: '24px',

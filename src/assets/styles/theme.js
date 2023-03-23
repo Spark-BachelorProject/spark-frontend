@@ -38,6 +38,6 @@ export const theme = {
   breakPoints: {
     l: '1200px',
     m: '768px',
-    mobile: '476px',
+    mobile: '475px',
   },
 }

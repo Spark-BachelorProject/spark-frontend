@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   position: fixed;
   top: 0;
   background-color: ${({ theme }) => theme.colors.secondaryBg};
-  padding: 0 10px;
+  padding: 0 20px;
   display: flex;
 `
 

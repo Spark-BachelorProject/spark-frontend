@@ -16,7 +16,7 @@ export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.textHeader};
   font-size: ${({ theme }) => theme.fontSize.l};
   font-weight: 500;
-  padding: 20px 0;
+  padding: 20px 0 25px 0;
 
   span {
     font-weight: 600;

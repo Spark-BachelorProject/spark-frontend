@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { PageWrapper, TitleBarWrapper, Title } from './TitleBar.styles'
 
 export const TitleBar = ({ city }) => {

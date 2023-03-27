@@ -8,6 +8,7 @@ export const lightTheme = {
   inputFont: '#475569', //slate600
   textHeader: '#475569', //slate600
   white: '#fff', //white
+  black: '#000', //black
   secondaryBg: '#fff', //white
   iconBg: '#fff', //white
   iconPlusBg: '#3b82f6', //blue500
@@ -27,6 +28,7 @@ export const darkTheme = {
   primaryBg: '#0f172a', //slate900
   iconPlusBg: '#3b82f6', //blue500
   white: '#fff', //white
+  black: '#000', //black
   iconSecondary: '#e2e8f0',
 }
 

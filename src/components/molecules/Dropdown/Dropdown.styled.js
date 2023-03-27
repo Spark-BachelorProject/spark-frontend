@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { IconBorder } from '@/components/organism/HeaderSearchBar/HeaderSearchBar.styles'
+import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
 
 export const Wrapper = styled.div`
   height: auto;
@@ -16,31 +16,6 @@ export const ButtonsWrapper = styled.div`
 
 export const SelectButtonsWrapper = styled.div`
   display: flex;
-`
-
-export const Select = styled.select`
-  height: 35px;
-  width: auto;
-  cursor: pointer;
-  background: ${({ theme }) => theme.colors.secondaryBg};
-  border-radius: 4px;
-  color: ${({ theme }) => theme.colors.selectFont};
-  padding: 5px 15px;
-  margin-right: 5px;
-  font-size: 13px;
-  border: 2px solid ${({ theme }) => theme.colors.buttonBorder};
-  &:focus {
-    outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};
-  }
-
-  option {
-    color: black;
-    background: white;
-    display: flex;
-    white-space: pre;
-    min-height: 20px;
-    padding: 0px 2px 1px 0px;
-  }
 `
 
 export const StyledIconBorder = styled(IconBorder)`

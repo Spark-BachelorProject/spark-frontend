@@ -48,7 +48,7 @@ export const StyledIconBorder = styled(IconBorder)`
   height: 35px;
   background: ${({ theme }) => theme.colors.secondaryBg};
   border: 2px solid ${({ theme }) => theme.colors.buttonBorder};
-  &:focus {
+  &:focus-visible {
     outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};
   }
 

@@ -44,7 +44,7 @@ export const IconBorder = styled.div`
   padding: 20px 13px;
   border-radius: 7px;
   margin-left: 10px;
-  &:focus {
+  &:focus-visible {
     outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};
   }
 

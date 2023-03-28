@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledSelect = styled.select`
+  -webkit-appearance: none;
   height: 35px;
   width: auto;
   cursor: pointer;

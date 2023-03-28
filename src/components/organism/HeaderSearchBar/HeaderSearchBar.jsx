@@ -9,11 +9,11 @@ import {
   InnerWrapper,
   LogoAndInputWrapper,
   InnerIconsWrapperRight,
-  IconBorder,
   Divider,
 } from './HeaderSearchBar.styles'
 import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
+import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
 
 // TODO:
 // Add to BellIcon circle counter in the corner

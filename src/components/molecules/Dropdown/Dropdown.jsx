@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { ReactComponent as FilterIcon } from '@/assets/icons/filter.svg'
 import { Wrapper, ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder } from './Dropdown.styled'
 import Select from '@/components/atoms/Select/Select'
+import useModal from '@/hooks/useModal'
+import FormField from '../FormField/FormField'
 
 // TODO: Seperate to redux
 // TODO: After adding filter seperate this to molecule
@@ -35,6 +37,7 @@ const sort = [
 ]
 
 export const Dropdown = () => {
+  const { Modal, isOpen, handleCloseModal, handleOpenModal } = useModal()
   const [activitySelect, setActivitySelect] = useState(activity[0].value)
   const [sortSelect, setSortSelect] = useState(sort[0].value)
 
@@ -44,6 +47,11 @@ export const Dropdown = () => {
 
   const sortHandle = (e) => {
     setSortSelect(e.target.value)
+  }
+
+  const handleOpenFilterPopup = () => {
+    console.log('piwo')
+    handleOpenModal()
   }
 
   return (
@@ -62,10 +70,26 @@ export const Dropdown = () => {
             {sort}
           </Select>
         </SelectButtonsWrapper>
-        <StyledIconBorder tabIndex="0">
+        <StyledIconBorder tabIndex="0" onClick={handleOpenFilterPopup}>
           <FilterIcon />
         </StyledIconBorder>
       </ButtonsWrapper>
+      {isOpen ? (
+        <Modal handleClose={handleCloseModal} textOnClose="Zapisz">
+          {/* <label htmlFor="hours">Godziny</label>
+          <div>
+            <Input type="time" id="hours" />
+            <Input type="time" id="hours" />
+          </div> */}
+          {/* <FormField id={'hours'} type={'time'}>
+            Godziny
+          </FormField> */}
+          <FormField id={'date'} type={'date'} labelText={'Data'} />
+          <FormField id={'distance'} type={'number'} labelText={'Odległość'} />
+          <FormField id={'friendsOnly'} type={'checkbox'} labelText={'Tylko posty znajomych'} />
+          <FormField id={'freeOnly'} type={'checkbox'} labelText={'Tylko darmowe'} />
+        </Modal>
+      ) : null}
     </Wrapper>
   )
 }

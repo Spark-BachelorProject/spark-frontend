@@ -12,7 +12,10 @@ export const lightTheme = {
   secondaryBg: '#fff', //white
   iconBg: '#fff', //white
   iconPlusBg: '#3b82f6', //blue500
+  buttonBg: '#3b82f6', //blue500
+  labelFont: '#1e293b', // slate800
   iconPrimaryActive: '#0f172a',
+  modalBorder: '#f1f5f9', //slate100
 }
 
 export const darkTheme = {
@@ -27,9 +30,12 @@ export const darkTheme = {
   secondaryBg: '#1e293b', //slate800
   primaryBg: '#0f172a', //slate900
   iconPlusBg: '#3b82f6', //blue500
+  buttonBg: '#3b82f6', //blue500
   white: '#fff', //white
   black: '#000', //black
+  labelFont: '#CBD5E1', // slate300
   iconSecondary: '#e2e8f0',
+  modalBorder: '#233045', //slate100
 }
 
 export const theme = {

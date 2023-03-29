@@ -6,11 +6,8 @@ export const Input = styled.input`
   border-radius: 7px;
   color: ${({ theme }) => theme.colors.inputFont};
   border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
-  /* border: ${({ hasBorder }) =>
-    hasBorder ? `1px solid ${({ theme }) => theme.colors.buttonBorder}` : 'none'}; */
   width: 100%;
   font-size: ${({ theme }) => theme.fontSize.m};
-  position: relative;
 
   &:focus {
     outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};

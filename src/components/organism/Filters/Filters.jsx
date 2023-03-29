@@ -2,7 +2,7 @@ import { Input } from '@/components/atoms/Input/Input.styles'
 import { Label } from '@/components/atoms/Label/Label.styles'
 import FormField from '@/components/molecules/FormField/FormField'
 import React from 'react'
-import { InputWrapper, TimeFromToWrapper, Wrapper } from './Filter.styles'
+import { InputWrapper, TimeFromToWrapper, Wrapper } from './Filters.styles'
 
 const Filters = () => {
   const today = new Date().toISOString().split('T')[0]

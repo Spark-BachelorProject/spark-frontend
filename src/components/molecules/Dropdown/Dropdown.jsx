@@ -3,7 +3,6 @@ import { ReactComponent as FilterIcon } from '@/assets/icons/filter.svg'
 import { Wrapper, ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder } from './Dropdown.styled'
 import Select from '@/components/atoms/Select/Select'
 import useModal from '@/hooks/useModal'
-import FormField from '../FormField/FormField'
 import Filters from '@/components/organism/Filters/Filters'
 
 // TODO: Seperate to redux
@@ -54,6 +53,12 @@ export const Dropdown = () => {
     handleOpenModal()
   }
 
+  const handleCloseFilterPopup = (e) => {
+    if (e.key === 'Enter') {
+      handleCloseModal()
+    }
+  }
+
   return (
     <Wrapper>
       <ButtonsWrapper>
@@ -70,7 +75,11 @@ export const Dropdown = () => {
             {sort}
           </Select>
         </SelectButtonsWrapper>
-        <StyledIconBorder tabIndex="0" onClick={handleOpenFilterPopup}>
+        <StyledIconBorder
+          tabIndex="0"
+          onClick={handleOpenFilterPopup}
+          onKeyDown={handleOpenFilterPopup}
+        >
           <FilterIcon />
         </StyledIconBorder>
       </ButtonsWrapper>

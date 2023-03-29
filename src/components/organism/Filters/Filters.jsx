@@ -2,39 +2,7 @@ import { Input } from '@/components/atoms/Input/Input.styles'
 import { Label } from '@/components/atoms/Label/Label.styles'
 import FormField from '@/components/molecules/FormField/FormField'
 import React from 'react'
-import styled from 'styled-components'
-
-export const Wrapper = styled.div`
-  padding: 0 20px 10px 20px;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-`
-
-export const InputWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  ${Input} {
-    max-width: 45%;
-  }
-`
-
-export const TimeFromToWrapper = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  width: 90%;
-
-  ${Label} {
-    margin: 5px 0;
-    display: flex;
-    justify-content: flex-start !important;
-  }
-`
+import { InputWrapper, TimeFromToWrapper, Wrapper } from './Filter.styles'
 
 const Filters = () => {
   const today = new Date().toISOString().split('T')[0]

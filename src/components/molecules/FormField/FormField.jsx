@@ -15,6 +15,10 @@ export const Wrapper = styled.div`
     margin: 5px 0;
   }
   ${Input} {
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.inputFont};
+    font-weight: 430;
+    background-color: ${({ theme }) => theme.colors.inputBg};
     max-width: ${({ isCheckbox }) => (isCheckbox ? '20px' : 'auto')};
     padding: ${({ isCheckbox }) => (isCheckbox ? '10px' : 'auto')};
   }

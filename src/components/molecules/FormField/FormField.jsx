@@ -6,7 +6,6 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
   position: relative;
   width: 90%;
-  padding: 0 20px;
   display: flex;
   align-items: ${({ isCheckbox }) => (isCheckbox ? 'center' : 'flex-start')};
   justify-content: space-between;
@@ -21,11 +20,17 @@ export const Wrapper = styled.div`
   }
 `
 
-const FormField = ({ id, type, labelText }) => {
+const FormField = ({ id, type, labelText, isBiggerThanZero, placeholder }) => {
   return (
     <Wrapper isCheckbox={type === 'checkbox'}>
       <Label htmlFor={id}>{labelText}</Label>
-      <Input type={type} id={id} isCheckbox={type === 'checkbox'} />
+      <Input
+        type={type}
+        id={id}
+        isCheckbox={type === 'checkbox'}
+        min={isBiggerThanZero && 0}
+        placeholder={placeholder}
+      />
     </Wrapper>
   )
 }

@@ -4,6 +4,7 @@ import { Wrapper, ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder } from 
 import Select from '@/components/atoms/Select/Select'
 import useModal from '@/hooks/useModal'
 import FormField from '../FormField/FormField'
+import Filters from '@/components/organism/Filters/Filters'
 
 // TODO: Seperate to redux
 // TODO: After adding filter seperate this to molecule
@@ -50,7 +51,6 @@ export const Dropdown = () => {
   }
 
   const handleOpenFilterPopup = () => {
-    console.log('piwo')
     handleOpenModal()
   }
 
@@ -76,18 +76,7 @@ export const Dropdown = () => {
       </ButtonsWrapper>
       {isOpen ? (
         <Modal handleClose={handleCloseModal} textOnClose="Zapisz">
-          {/* <label htmlFor="hours">Godziny</label>
-          <div>
-            <Input type="time" id="hours" />
-            <Input type="time" id="hours" />
-          </div> */}
-          {/* <FormField id={'hours'} type={'time'}>
-            Godziny
-          </FormField> */}
-          <FormField id={'date'} type={'date'} labelText={'Data'} />
-          <FormField id={'distance'} type={'number'} labelText={'Odległość'} />
-          <FormField id={'friendsOnly'} type={'checkbox'} labelText={'Tylko posty znajomych'} />
-          <FormField id={'freeOnly'} type={'checkbox'} labelText={'Tylko darmowe'} />
+          <Filters />
         </Modal>
       ) : null}
     </Wrapper>

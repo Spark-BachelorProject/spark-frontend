@@ -6,7 +6,7 @@ export const ModalWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 244px;
-  height: 380px;
+  /* height: 380px; */
   background-color: ${({ theme }) => theme.colors.white};
   /* border: 1px solid ${({ theme }) => theme.colors.modalBorder}; */
   border: 1px solid black;

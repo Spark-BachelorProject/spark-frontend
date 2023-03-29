@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Input = styled.input`
-  background-color: solid 1px ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.inputBg};
   padding: 11px 13px;
   border-radius: 7px;
   color: ${({ theme }) => theme.colors.inputFont};

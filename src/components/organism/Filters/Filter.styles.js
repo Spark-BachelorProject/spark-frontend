@@ -16,6 +16,10 @@ export const InputWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  & span {
+    color: ${({ theme }) => theme.colors.labelFont};
+  }
+
   ${Input} {
     max-width: 45%;
   }

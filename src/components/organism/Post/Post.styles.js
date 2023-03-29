@@ -6,6 +6,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
 
 export const Wrapper = styled.article`
+  background-color: ${({ theme }) => theme.colors.iconBg};
   margin: 10px auto;
   padding: 20px;
   width: 100%;
@@ -22,7 +23,7 @@ export const Wrapper = styled.article`
 `
 export const Header = styled.div`
   display: grid;
-  grid-template-columns: 1fr 65% 1fr;
+  grid-template-columns: 1fr 70% 1.7fr;
   align-items: center;
 `
 export const ThumbnailImage = styled.img`
@@ -39,6 +40,7 @@ export const Details = styled.div`
     gap: 5px;
 
     & > b {
+      font-weight: 600;
       font-size: ${({ theme }) => theme.fontSize.sPlus};
       color: ${({ theme }) => theme.colors.boldText};
     }
@@ -51,7 +53,7 @@ export const Details = styled.div`
     align-items: center;
   }
   .dot {
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.buttonBorder};
   }
 `
 

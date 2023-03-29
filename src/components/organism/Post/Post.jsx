@@ -36,7 +36,7 @@ const Post = () => {
             <span className="dot">•</span>
             <Text>Kraśnicka 12</Text>
             <span className="dot">•</span>
-            <Text>Dzisiaj 18:30</Text>
+            <Text>Dzisiaj o 18:30</Text>
           </div>
         </Details>
         <StyledMoreInfoIcon />

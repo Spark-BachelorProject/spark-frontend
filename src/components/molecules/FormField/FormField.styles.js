@@ -9,12 +9,16 @@ export const Wrapper = styled.div`
   align-items: ${({ isCheckbox }) => (isCheckbox ? 'center' : 'flex-start')};
   justify-content: space-between;
   flex-direction: ${({ isCheckbox }) => (isCheckbox ? 'row' : 'column')};
-  margin: 0 0 10px 0;
+  margin: 20px 0 0px 0;
 
   ${Label} {
     margin: 5px 0;
   }
   ${Input} {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield;
+    text-align: center;
     cursor: pointer;
     color: ${({ theme }) => theme.colors.inputFont};
     font-weight: 430;

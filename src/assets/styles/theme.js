@@ -18,6 +18,8 @@ export const lightTheme = {
   modalBorder: '#f1f5f9', //slate100
   modalBg: '#fff', //white
   inputBg: '#fff', //white
+  checkboxBg: '#233045', //slate750
+  checkboxBorder: '#f1f5f9',
 }
 
 export const darkTheme = {
@@ -40,6 +42,8 @@ export const darkTheme = {
   iconSecondary: '#e2e8f0',
   modalBorder: '#233045', //slate100
   inputBg: '#233045', //slate750
+  checkboxBg: '#475569', //slate750
+  checkboxBorder: '#233045',
 }
 
 export const theme = {

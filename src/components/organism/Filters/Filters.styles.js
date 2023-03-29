@@ -34,6 +34,5 @@ export const TimeFromToWrapper = styled.div`
   ${Label} {
     margin: 5px 0;
     display: flex;
-    justify-content: flex-start !important;
   }
 `

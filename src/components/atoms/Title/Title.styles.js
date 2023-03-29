@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-export const StyledTitle = styled.h1`
+export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.textHeader};
   font-size: ${({ theme }) => theme.fontSize.l};
-  font-weight: 500;
+  font-weight: ${({ isBold }) => (isBold ? 700 : 500)};
 
   span {
     font-weight: 600;

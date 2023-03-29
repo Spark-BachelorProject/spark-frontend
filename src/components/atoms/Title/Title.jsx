@@ -1,8 +1,8 @@
-import React from 'react'
-import { StyledTitle } from './Title.styles'
+// import React from 'react'
+// import { StyledTitle } from './Title.styles'
 
-const Title = ({ children }) => {
-  return <StyledTitle>{children}</StyledTitle>
-}
+// const Title = ({ children }) => {
+//   return <StyledTitle>{children}</StyledTitle>
+// }
 
-export default Title
+// export default Title

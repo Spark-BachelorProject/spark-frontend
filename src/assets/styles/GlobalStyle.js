@@ -22,6 +22,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   a, button {
+    font-family: inherit;
   }
 
 

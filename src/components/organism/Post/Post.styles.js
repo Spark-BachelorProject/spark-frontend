@@ -6,7 +6,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
 
 export const Wrapper = styled.article`
-  background-color: ${({ theme }) => theme.colors.iconBg};
+  background-color: ${({ theme }) => theme.colors.secondaryBg};
   margin: 10px auto;
   padding: 20px;
   width: 100%;
@@ -37,10 +37,10 @@ export const Details = styled.div`
   & > div:first-child {
     display: flex;
     align-items: flex-end;
-    gap: 5px;
+    gap: 8px;
 
     & > b {
-      font-weight: 600;
+      font-weight: 500;
       font-size: ${({ theme }) => theme.fontSize.sPlus};
       color: ${({ theme }) => theme.colors.boldText};
     }
@@ -53,7 +53,7 @@ export const Details = styled.div`
     align-items: center;
   }
   .dot {
-    color: ${({ theme }) => theme.colors.buttonBorder};
+    color: ${({ theme }) => theme.colors.iconPrimary};
   }
 `
 
@@ -66,8 +66,8 @@ export const StyledMoreInfoIcon = styled(MoreInfoIcon)`
 
 export const Tags = styled.section`
   ${Button} {
-    background-color: transparent;
-    border: 2px solid ${({ theme }) => theme.colors.buttonBorder};
+    background-color: ${({ theme }) => theme.colors.iconBg};
+    border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
     color: ${({ theme }) => theme.colors.text};
     margin: 5px 5px 5px 0;
   }
@@ -75,6 +75,7 @@ export const Tags = styled.section`
 
 export const InteractionsSection = styled.section`
   display: flex;
+  margin: 25px 0 10px 0;
   justify-content: space-between;
 
   ${Button} {
@@ -105,7 +106,7 @@ export const StyledSearchInput = styled(SearchInput)`
     width: 100%;
     height: 3px;
     transform: translateX(-50%);
-    background-color: ${({ theme }) => theme.colors.divider};
+    background-color: ${({ theme }) => theme.colors.mainDivider};
   }
 `
 export const CommentSection = styled.section``

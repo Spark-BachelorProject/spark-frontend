@@ -18,6 +18,7 @@ export const lightTheme = {
   text: '#475569', //slate600
   boldText: '#1e293b', //slate800
   postBorder: '#f1f5f9', //slate100
+  mainDivider: '#f8fafc', //slate50
 }
 
 export const darkTheme = {
@@ -37,9 +38,10 @@ export const darkTheme = {
   white: '#fff', //white
   black: '#000', //black
   iconSecondary: '#e2e8f0',
-  text: '#e2e8f0', //slate200
+  text: '#CBD5E1', //slate300
   boldText: '#CBD5E1', //slate300
   postBorder: '#233045', //slate750
+  mainDivider: '#233045', //slate750
 }
 
 export const theme = {
@@ -47,7 +49,7 @@ export const theme = {
   fontSize: {
     xxl: '34px',
     xl: '24px',
-    l: '17px',
+    l: '18px',
     m: '15px',
     sPlus: '14px',
     s: '13px',

@@ -15,11 +15,11 @@ export const lightTheme = {
   buttonBg: '#3b82f6', //blue500
   labelFont: '#1e293b', // slate800
   iconPrimaryActive: '#0f172a',
-  modalBorder: '#f1f5f9', //slate100
+  modalBorder: '#fff', //slate100
   modalBg: '#fff', //white
   inputBg: '#fff', //white
   checkboxBg: '#233045', //slate750
-  checkboxBorder: '#f1f5f9',
+  checkboxBorder: '#e2e8f0', //slate200
 }
 
 export const darkTheme = {
@@ -42,8 +42,8 @@ export const darkTheme = {
   iconSecondary: '#e2e8f0',
   modalBorder: '#233045', //slate100
   inputBg: '#233045', //slate750
-  checkboxBg: '#475569', //slate750
-  checkboxBorder: '#233045',
+  checkboxBg: '#475569', //slate600
+  checkboxBorder: '#334155', //slate700
 }
 
 export const theme = {

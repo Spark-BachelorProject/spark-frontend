@@ -22,6 +22,7 @@ const CheckboxBackground = styled.div`
   cursor: pointer;
   background-color: ${(props) =>
     props.checked ? '#2196f3' : `${({ theme }) => theme.colors.checkboxBg}`};
+  ${(props) => console.log(props.theme)}
 
   border: 1.5px solid ${({ theme }) => theme.colors.checkboxBorder};
   border-radius: 4px;
@@ -49,7 +50,7 @@ const CheckboxLabel = styled.span`
   font-weight: 500;
 `
 
-const Checkbox = ({ label, checked, onChange, id }) => {
+const Checkbox = ({ label, checked = false, onChange, id }) => {
   const [isChecked, setIsChecked] = useState(checked)
 
   const handleCheckboxChange = (event) => {

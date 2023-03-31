@@ -1,7 +1,6 @@
 export const lightTheme = {
   navbarBg: '#fff', //white
   navbarBorder: '#f1f5f9', //slate100
-
   primaryBg: '#f8fafc', //slate50
   selectBorder: '#f1f5f9', //slate100
   buttonBorder: '#E2E8F0', //slate200
@@ -18,7 +17,7 @@ export const lightTheme = {
   iconPlusBg: '#3b82f6', //blue500
   buttonBg: '#3B82F6', //blue500
   iconPrimaryActive: '#0f172a',
-  text: '#475569', //slate600
+  text: '#64748B', //slate500
   boldText: '#1e293b', //slate800
   postBorder: '#f1f5f9', //slate100
   mainDivider: '#f8fafc', //slate50
@@ -26,7 +25,7 @@ export const lightTheme = {
   attendingCounterBg: '#f8fafc', //slate50
   buttonFont: '#EFF6FF', //blue50
   titleFont: '#0F172A', //slate900
-  tagFont: '#64748B', //slate500
+  tagFont: '#475569', //slate600
   detailsFont: '#233045', //slate750
 }
 

@@ -4,6 +4,7 @@ import { ReactComponent as SendVectorIcon } from '@/assets/icons/send-vector.svg
 import { ReactComponent as ExpandVectorIcon } from '@/assets/icons/expand-vector.svg'
 import { ReactComponent as PinIcon } from '@/assets/icons/map-pin.svg'
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
+import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
 
 import { Title } from '@/components/atoms/Title/Title.styles'
 import { Button } from '@/components/atoms/Button/Button.styles'
@@ -35,11 +36,12 @@ const Post = () => {
         <Details>
           <div>
             <b>Kasia Baran</b>
-            <Text>napisała 18 minut temu</Text>
+            <Text>napisała 18 min temu</Text>
           </div>
           <div>
             <Text>Siatkówka</Text>
-            {/* <span className="dot">•</span> */}
+            <span className="dot">•</span>
+            <GlobeIcon />
           </div>
         </Details>
         <StyledMoreInfoIcon />
@@ -52,7 +54,7 @@ const Post = () => {
         <ClockIcon />
         <Text>Dzisiaj o 18:30</Text>
       </DetailsWrapper>
-      <Title>Ktoś chętny na półtorej godziny grania na KULu? Mamy już przeciwnika</Title>
+      <Title isBold>Ktoś chętny na półtorej godziny grania na KULu? Mamy już przeciwnika</Title>
       <Tags>
         <Button>Gramy na luzie</Button>
         <Button>Jeszcze 2 miejsca</Button>
@@ -66,6 +68,7 @@ const Post = () => {
           <ThumbnailImage />
           <ThumbnailImage />
           <ThumbnailImage />
+
           <AttendingCounter>
             <span>+</span>3
           </AttendingCounter>

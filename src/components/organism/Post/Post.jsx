@@ -9,12 +9,12 @@ import {
   AttendingCounter,
   CommentSection,
   Details,
-  Friends,
+  AttendingList,
   Header,
   InteractionsSection,
   StyledMoreInfoIcon,
   StyledSearchInput,
-  StyledThumbnailImage,
+  StyledText,
   Tags,
   ThumbnailImage,
   Wrapper,
@@ -50,7 +50,7 @@ const Post = () => {
         <Button>Potem na harnasia</Button>
       </Tags>
       <InteractionsSection>
-        <Friends>
+        <AttendingList>
           <ThumbnailImage />
           <ThumbnailImage />
           <ThumbnailImage />
@@ -58,7 +58,7 @@ const Post = () => {
           <ThumbnailImage />
           <ThumbnailImage />
           <AttendingCounter>+3</AttendingCounter>
-        </Friends>
+        </AttendingList>
         <Button>
           <UserCheckIcon />
           Będę
@@ -77,9 +77,9 @@ const Post = () => {
           <Text>Comment3</Text>
         </CommentSection>
       ) : (
-        <Text>
+        <StyledText>
           Pokaż komentarze (3) <ExpandVectorIcon />
-        </Text>
+        </StyledText>
       )}
     </Wrapper>
   )

@@ -4,6 +4,7 @@ import { ReactComponent as MoreInfoIcon } from '@/assets/icons/three-dots.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
+import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.article`
   background-color: ${({ theme }) => theme.colors.secondaryBg};
@@ -76,7 +77,7 @@ export const Tags = styled.section`
   ${Button} {
     background-color: ${({ theme }) => theme.colors.iconBg};
     border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.tagFont};
     margin: 11px 11px 0px 0;
   }
 `
@@ -94,7 +95,7 @@ export const InteractionsSection = styled.section`
   }
 `
 
-export const Friends = styled.div`
+export const AttendingList = styled.div`
   display: flex;
   align-items: center;
   position: relative;
@@ -177,6 +178,7 @@ export const StyledSearchInput = styled(SearchInput)`
 `
 
 export const AttendingCounter = styled.div`
+  cursor: pointer;
   background-color: ${({ theme }) => theme.colors.attendingCounterBg};
   display: flex;
   align-items: center;
@@ -188,6 +190,12 @@ export const AttendingCounter = styled.div`
   font-size: 11px;
   font-weight: 400;
   color: ${({ theme }) => theme.colors.boldText};
+`
+
+export const StyledText = styled(Text)`
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.placeholder};
+  font-size: ${({ theme }) => theme.fontSize.s};
 `
 
 export const CommentSection = styled.section``

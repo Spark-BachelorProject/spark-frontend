@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { ReactComponent as UserCheckIcon } from '@/assets/icons/user-check.svg'
 import { ReactComponent as SendVectorIcon } from '@/assets/icons/send-vector.svg'
 import { ReactComponent as ExpandVectorIcon } from '@/assets/icons/expand-vector.svg'
+import { ReactComponent as PinIcon } from '@/assets/icons/map-pin.svg'
+import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
+
 import { Title } from '@/components/atoms/Title/Title.styles'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
@@ -18,6 +21,7 @@ import {
   Tags,
   ThumbnailImage,
   Wrapper,
+  DetailsWrapper,
 } from './Post.styles'
 
 // TODO: expand comments, friend thumb nail
@@ -40,6 +44,14 @@ const Post = () => {
         </Details>
         <StyledMoreInfoIcon />
       </Header>
+      <DetailsWrapper>
+        <PinIcon />
+        <Text>Hala Politechniki Lubelskiej, Kraśnicka 12</Text>
+      </DetailsWrapper>
+      <DetailsWrapper>
+        <ClockIcon />
+        <Text>Dzisiaj o 18:30</Text>
+      </DetailsWrapper>
       <Title>Ktoś chętny na półtorej godziny grania na KULu? Mamy już przeciwnika</Title>
       <Tags>
         <Button>Gramy na luzie</Button>
@@ -54,7 +66,9 @@ const Post = () => {
           <ThumbnailImage />
           <ThumbnailImage />
           <ThumbnailImage />
-          <AttendingCounter>+3</AttendingCounter>
+          <AttendingCounter>
+            <span>+</span>3
+          </AttendingCounter>
         </AttendingList>
         <Button>
           <UserCheckIcon />

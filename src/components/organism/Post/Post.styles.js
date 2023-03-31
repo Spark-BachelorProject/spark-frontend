@@ -8,7 +8,7 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.article`
   background-color: ${({ theme }) => theme.colors.secondaryBg};
-  margin: 10px auto;
+  margin: 15px auto;
   padding: 20px;
   width: 100%;
   display: flex;
@@ -18,7 +18,7 @@ export const Wrapper = styled.article`
   border-radius: 6px;
 
   ${Title} {
-    line-height: 1.3;
+    line-height: 1.4;
     margin-top: 20px;
   }
 `
@@ -26,6 +26,7 @@ export const Header = styled.div`
   display: grid;
   grid-template-columns: 1fr 70% 1.7fr;
   align-items: center;
+  margin: 0 0 10px 0;
 `
 export const ThumbnailImage = styled.img`
   width: ${({ isBig }) => (isBig ? '34px' : '27px')};
@@ -76,6 +77,8 @@ export const StyledMoreInfoIcon = styled(MoreInfoIcon)`
 `
 
 export const Tags = styled.section`
+  margin: 15px 0 0 0;
+
   ${Button} {
     padding: 6px 18px;
     background-color: ${({ theme }) => theme.colors.iconBg};
@@ -191,7 +194,7 @@ export const AttendingCounter = styled.div`
   width: 23px;
   height: 23px;
   font-size: 11px;
-  font-weight: 400;
+  font-weight: 600;
   color: ${({ theme }) => theme.colors.boldText};
 `
 
@@ -199,6 +202,28 @@ export const StyledText = styled(Text)`
   cursor: pointer;
   color: ${({ theme }) => theme.colors.placeholder};
   font-size: ${({ theme }) => theme.fontSize.s};
+`
+
+export const DetailsWrapper = styled.div`
+  margin: 5px 0 0px 0;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  ${Text} {
+    font-weight: 500;
+    color: ${({ theme }) => theme.colors.detailsFont};
+  }
+
+  svg {
+    height: 14px;
+    width: 14px;
+    margin-right: 6px;
+  }
+
+  svg > path {
+    stroke: ${({ theme }) => theme.colors.tagFont};
+  }
 `
 
 export const CommentSection = styled.section``

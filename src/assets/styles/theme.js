@@ -25,8 +25,9 @@ export const lightTheme = {
   placeholder: '#94a3b8', //slate400
   attendingCounterBg: '#f8fafc', //slate50
   buttonFont: '#EFF6FF', //blue50
-  titleFont: '#0f172a', //slate900
+  titleFont: '#0F172A', //slate900
   tagFont: '#64748B', //slate500
+  detailsFont: '#233045', //slate750
 }
 
 export const darkTheme = {
@@ -55,8 +56,9 @@ export const darkTheme = {
   placeholder: '#94a3b8', //slate400
   attendingCounterBg: '#233045', //slate750
   buttonFont: '#EFF6FF', //blue50
-  titleFont: '#E2E8F0', //slate200
+  titleFont: '#F1F5F9', //slate100
   tagFont: '#CBD5E1', //slate300
+  detailsFont: '#E2E8F0', //slate200
 }
 
 export const theme = {

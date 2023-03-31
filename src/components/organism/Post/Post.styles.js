@@ -33,7 +33,7 @@ export const ThumbnailImage = styled.img`
   border-radius: 60%;
   margin-right: auto;
   background-color: ${({ theme }) => theme.colors.buttonBorder};
-  box-shadow: inset 0px 0px 3px #d2e2fd;
+  box-shadow: inset 0px 0px 1px #d2e2fd;
 `
 
 export const StyledThumbnailImage = styled(ThumbnailImage)`
@@ -69,12 +69,15 @@ export const Details = styled.div`
 export const StyledMoreInfoIcon = styled(MoreInfoIcon)`
   margin-left: auto;
   cursor: pointer;
-  scale: 1.8;
-  padding: 3px;
+  scale: 1.1;
+  & path {
+    stroke: ${({ theme }) => theme.colors.textHeader};
+  }
 `
 
 export const Tags = styled.section`
   ${Button} {
+    padding: 6px 18px;
     background-color: ${({ theme }) => theme.colors.iconBg};
     border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
     color: ${({ theme }) => theme.colors.tagFont};
@@ -144,7 +147,7 @@ export const AttendingList = styled.div`
 
 export const StyledSearchInput = styled(SearchInput)`
   margin: 30px 0 15px 0;
-  width: clamp(40px, 100%, 650px);
+  width: auto !important;
   position: relative;
 
   & > svg {

@@ -35,10 +35,7 @@ const Post = () => {
           </div>
           <div>
             <Text>Siatkówka</Text>
-            <span className="dot">•</span>
-            <Text>Kraśnicka 12</Text>
-            <span className="dot">•</span>
-            <Text>Dzisiaj o 18:30</Text>
+            {/* <span className="dot">•</span> */}
           </div>
         </Details>
         <StyledMoreInfoIcon />
@@ -64,12 +61,7 @@ const Post = () => {
           Będę
         </Button>
       </InteractionsSection>
-      <StyledSearchInput
-        styles={{ marginTop: '50px' }}
-        placeholder="Napisz komentarz..."
-        isEmptyIcon
-        Icon={<SendVectorIcon />}
-      />
+      <StyledSearchInput placeholder="Napisz komentarz..." isEmptyIcon Icon={<SendVectorIcon />} />
       {commentSectionIsOpen ? (
         <CommentSection>
           <Text>Comment1</Text>

@@ -6,7 +6,7 @@ const CheckboxWrapper = styled.label`
   align-items: center;
   justify-content: space-between;
   width: 90%;
-  margin: 25px 0 0 0;
+  margin: 30px 0 0 0;
 `
 
 const CheckboxInput = styled.input`
@@ -22,7 +22,6 @@ const CheckboxBackground = styled.div`
   cursor: pointer;
   background-color: ${(props) =>
     props.checked ? '#2196f3' : `${({ theme }) => theme.colors.checkboxBg}`};
-  ${(props) => console.log(props.theme)}
 
   border: 1.5px solid ${({ theme }) => theme.colors.checkboxBorder};
   border-radius: 4px;

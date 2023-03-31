@@ -19,6 +19,9 @@ export const lightTheme = {
   boldText: '#1e293b', //slate800
   postBorder: '#f1f5f9', //slate100
   mainDivider: '#f8fafc', //slate50
+  placeholder: '#94a3b8', //slate400
+  attendingCounterBg: '#f8fafc', //slate50
+  buttonFont: '#EFF6FF', //blue50
 }
 
 export const darkTheme = {
@@ -42,6 +45,9 @@ export const darkTheme = {
   boldText: '#CBD5E1', //slate300
   postBorder: '#233045', //slate750
   mainDivider: '#233045', //slate750
+  placeholder: '#94a3b8', //slate400
+  attendingCounterBg: '#233045', //slate750
+  buttonFont: '#EFF6FF', //blue50
 }
 
 export const theme = {

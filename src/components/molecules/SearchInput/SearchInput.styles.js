@@ -6,7 +6,7 @@ export const InputWrapper = styled.div`
 
   & > svg {
     position: absolute;
-    right: 8px;
+    right: 13px;
     pointer-events: none;
     top: 50%;
     transform: translateY(-50%);

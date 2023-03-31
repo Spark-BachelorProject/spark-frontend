@@ -6,6 +6,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import {
+  AttendingCounter,
   CommentSection,
   Details,
   Friends,
@@ -13,6 +14,7 @@ import {
   InteractionsSection,
   StyledMoreInfoIcon,
   StyledSearchInput,
+  StyledThumbnailImage,
   Tags,
   ThumbnailImage,
   Wrapper,
@@ -52,6 +54,10 @@ const Post = () => {
           <ThumbnailImage />
           <ThumbnailImage />
           <ThumbnailImage />
+          <ThumbnailImage />
+          <ThumbnailImage />
+          <ThumbnailImage />
+          <AttendingCounter>+3</AttendingCounter>
         </Friends>
         <Button>
           <UserCheckIcon />

@@ -1,4 +1,7 @@
 export const lightTheme = {
+  navbarBg: '#fff', //white
+  navbarBorder: '#f1f5f9', //slate100
+
   primaryBg: '#f8fafc', //slate50
   selectBorder: '#f1f5f9', //slate100
   buttonBorder: '#E2E8F0', //slate200
@@ -27,6 +30,8 @@ export const lightTheme = {
 }
 
 export const darkTheme = {
+  navbarBg: '#233045', //slate750
+  navbarBorder: '#334155', //slate700
   iconPrimaryActive: '#f8fafc', //slate50
   inputFont: '#e2e8f0', //slate200
   textHeader: '#E2E8F0', //slate200

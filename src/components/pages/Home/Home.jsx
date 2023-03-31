@@ -9,6 +9,10 @@ const Home = () => {
       <TitleBar city="Lublinie" />
       <Dropdown />
       <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
     </>
   )
 }

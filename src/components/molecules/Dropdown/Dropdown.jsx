@@ -36,6 +36,8 @@ const sort = [
   },
 ]
 
+// TODO: On Esc close modal
+
 export const Dropdown = () => {
   const { Modal, isOpen, handleCloseModal, handleOpenModal } = useModal()
   const [activitySelect, setActivitySelect] = useState(activity[0].value)
@@ -54,8 +56,8 @@ export const Dropdown = () => {
   }
 
   const handleCloseFilterPopup = (e) => {
-    if (e.key === 'Enter') {
-      handleCloseModal()
+    if (e.key !== 'Tab') {
+      handleOpenModal()
     }
   }
 
@@ -78,7 +80,7 @@ export const Dropdown = () => {
         <StyledIconBorder
           tabIndex="0"
           onClick={handleOpenFilterPopup}
-          onKeyDown={handleOpenFilterPopup}
+          onKeyDown={handleCloseFilterPopup}
         >
           <FilterIcon />
         </StyledIconBorder>

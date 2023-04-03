@@ -28,15 +28,6 @@ export const Header = styled.div`
   align-items: center;
   margin: 0 0 10px 0;
 `
-export const ThumbnailImage = styled.img`
-  cursor: pointer;
-  width: ${({ isBig }) => (isBig ? '32px' : '30px')};
-  height: ${({ isBig }) => (isBig ? '32px' : '30px')};
-  border-radius: 60%;
-  margin-right: 10px;
-  background-color: ${({ theme }) => theme.colors.buttonBorder};
-  box-shadow: inset 0px 0px 1px #d2e2fd;
-`
 
 export const Details = styled.div`
   & > div:first-child {
@@ -46,7 +37,7 @@ export const Details = styled.div`
     gap: 8px;
 
     ${Text} {
-      margin: 0 0 0.5px 0; //działa, nie chce wiedzieć dlaczego
+      margin-bottom: 0.5px;
       font-size: ${({ theme }) => theme.fontSize.s};
     }
 
@@ -73,12 +64,6 @@ export const Details = styled.div`
     & > svg > path {
       stroke: ${({ theme }) => theme.colors.text};
     }
-  }
-
-  .dot {
-    color: ${({ theme }) => theme.colors.detailsFont};
-    opacity: 0.6;
-    scale: 0.7;
   }
 `
 
@@ -117,54 +102,6 @@ export const InteractionsSection = styled.section`
   }
 `
 
-export const AttendingList = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  position: relative;
-
-  ${ThumbnailImage}:first-child {
-    border: 3px solid ${({ theme }) => theme.colors.secondaryBg};
-    z-index: 6;
-    position: relative;
-  }
-
-  ${ThumbnailImage}:nth-child(2) {
-    border: 3px solid ${({ theme }) => theme.colors.secondaryBg};
-    position: relative;
-    z-index: 5;
-    transform: translateX(-20px);
-  }
-
-  ${ThumbnailImage}:nth-child(3) {
-    border: 3px solid ${({ theme }) => theme.colors.secondaryBg};
-    position: relative;
-    z-index: 4;
-    transform: translateX(-40px);
-  }
-
-  ${ThumbnailImage}:nth-child(4) {
-    border: 3px solid ${({ theme }) => theme.colors.secondaryBg};
-    position: relative;
-    z-index: 3;
-    transform: translateX(-60px);
-  }
-
-  ${ThumbnailImage}:nth-child(5) {
-    border: 3px solid ${({ theme }) => theme.colors.secondaryBg};
-    position: relative;
-    z-index: 2;
-    transform: translateX(-80px);
-  }
-
-  ${ThumbnailImage}:nth-child(6) {
-    border: 3px solid ${({ theme }) => theme.colors.secondaryBg};
-    position: relative;
-    z-index: 1;
-    transform: translateX(-100px);
-  }
-`
-
 export const StyledSearchInput = styled(SearchInput)`
   margin: 30px 0 15px 0;
   width: auto !important;
@@ -198,21 +135,6 @@ export const StyledSearchInput = styled(SearchInput)`
     color: ${({ theme }) => theme.colors.placeholder};
     font-weight: 300;
   }
-`
-
-export const AttendingCounter = styled.div`
-  cursor: pointer;
-  background-color: ${({ theme }) => theme.colors.attendingCounterBg};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: -110px;
-  border-radius: 50%;
-  width: 23px;
-  height: 23px;
-  font-size: 11px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.colors.boldText};
 `
 
 export const StyledText = styled(Text)`

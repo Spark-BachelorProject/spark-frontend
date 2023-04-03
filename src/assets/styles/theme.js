@@ -69,6 +69,7 @@ export const theme = {
     m: '15px',
     sPlus: '14px',
     s: '13px',
+    xs: '11px',
   },
   breakPoints: {
     l: '1200px',

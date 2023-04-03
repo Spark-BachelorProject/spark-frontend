@@ -10,29 +10,29 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import {
-  AttendingCounter,
   CommentSection,
   Details,
-  AttendingList,
   Header,
   InteractionsSection,
   StyledMoreInfoIcon,
   StyledSearchInput,
   StyledText,
   Tags,
-  ThumbnailImage,
   Wrapper,
   DetailsWrapper,
 } from './Post.styles'
+import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.style'
+import Dot from '@/components/atoms/Dot/Dot'
+import AttendingList from '@/components/molecules/AttendingList/AttendingList'
 
-// TODO: expand comments, friend thumb nail
+// TODO: expand comments
 
 const Post = () => {
   const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(false)
   return (
     <Wrapper>
       <Header>
-        <ThumbnailImage isBig />
+        <Thumbnail isBig />
         <Details>
           <div>
             <b>Kasia Baran</b>
@@ -40,7 +40,7 @@ const Post = () => {
           </div>
           <div>
             <Text>Siatkówka</Text>
-            <span className="dot">•</span>
+            <Dot />
             <GlobeIcon />
           </div>
         </Details>
@@ -61,18 +61,7 @@ const Post = () => {
         <Button>Potem na harnasia</Button>
       </Tags>
       <InteractionsSection>
-        <AttendingList>
-          <ThumbnailImage />
-          <ThumbnailImage />
-          <ThumbnailImage />
-          <ThumbnailImage />
-          <ThumbnailImage />
-          <ThumbnailImage />
-
-          <AttendingCounter>
-            <span>+</span>3
-          </AttendingCounter>
-        </AttendingList>
+        <AttendingList numOfAttender={6} />
         <Button>
           <UserCheckIcon />
           Będę

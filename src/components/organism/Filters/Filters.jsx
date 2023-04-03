@@ -22,7 +22,7 @@ const Filters = () => {
       <FormField
         id={'distance'}
         type={'number'}
-        labelText={'Odległość'}
+        labelText={'W odległości'}
         placeholder="3"
         isBiggerThanZero
       />

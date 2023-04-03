@@ -23,7 +23,7 @@ const Filters = () => {
         id={'distance'}
         type={'number'}
         labelText={'Odległość'}
-        placeholder="3 km"
+        placeholder="3"
         isBiggerThanZero
       />
       <Checkbox label="Tylko posty znajomych" checked="" z-index="1" />

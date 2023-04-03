@@ -18,8 +18,9 @@ export const lightTheme = {
   modalBorder: '#fff', //slate100
   modalBg: '#fff', //white
   inputBg: '#fff', //white
-  checkboxBg: '#233045', //slate750
+  checkboxBg: '#fff', //white
   checkboxBorder: '#e2e8f0', //slate200
+  checkboxTick: '#64748B', //slate500
 }
 
 export const darkTheme = {
@@ -42,8 +43,9 @@ export const darkTheme = {
   iconSecondary: '#e2e8f0',
   modalBorder: '#233045', //slate100
   inputBg: '#233045', //slate750
-  checkboxBg: '#475569', //slate600
+  checkboxBg: '#233045', //slate750
   checkboxBorder: '#334155', //slate700
+  checkboxTick: '#fff', //white
 }
 
 export const theme = {

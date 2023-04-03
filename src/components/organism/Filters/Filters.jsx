@@ -1,6 +1,7 @@
 import Checkbox from '@/components/molecules/Checkbox/Checkbox'
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { Label } from '@/components/atoms/Label/Label.styles'
+import { Checkbox } from '@/components/atoms/Checkbox/Checkbox'
 import FormField from '@/components/molecules/FormField/FormField'
 import React from 'react'
 import { InputWrapper, TimeFromToWrapper, Wrapper } from './Filters.styles'
@@ -26,8 +27,8 @@ const Filters = () => {
         placeholder="3 km"
         isBiggerThanZero
       />
-      <Checkbox id={'friendsOnly'} label={'Tylko posty znajomych'} />
-      <Checkbox id={'freeOnly'} label={'Tylko darmowe'} />
+      <Checkbox label="Tylko posty znajomych" checked="" z-index="1" />
+      <Checkbox label="Tylko darmowe" checked="" z-index="1" />
     </Wrapper>
   )
 }

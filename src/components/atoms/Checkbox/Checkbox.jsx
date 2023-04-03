@@ -29,6 +29,10 @@ export const CustomCheckbox = styled.label`
     position: relative;
   }
 
+  input:focus {
+    border: 2px solid ${({ theme }) => theme.colors.accent};
+  }
+
   input.checked {
     background-color: ${({ theme }) => theme.colors.checkboxBg};
     position: relative;
@@ -36,7 +40,7 @@ export const CustomCheckbox = styled.label`
   }
 
   input.checked::before {
-    content: '\\2713';
+    content: '\\2713'; //unicode for checkmark
     font-size: 10px;
     width: 17px;
     height: 17px;
@@ -51,6 +55,14 @@ export const CustomCheckbox = styled.label`
 
 export const Checkbox = ({ label, checked, ...props }) => {
   const [isChecked, setIsChecked] = useState(checked)
+
+  const handleKeyDown = (event) => {
+    //ascii for enter
+    if (event.keyCode === 13) {
+      setIsChecked((prev) => !prev)
+    }
+  }
+
   return (
     <Wrapper>
       <Label>{label}</Label>
@@ -60,6 +72,7 @@ export const Checkbox = ({ label, checked, ...props }) => {
           type="checkbox"
           checked={isChecked}
           onChange={() => setIsChecked((prev) => !prev)}
+          onKeyDown={handleKeyDown}
           {...props}
         />
       </CustomCheckbox>

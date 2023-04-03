@@ -21,6 +21,7 @@ export const lightTheme = {
   checkboxBg: '#fff', //white
   checkboxBorder: '#e2e8f0', //slate200
   checkboxTick: '#64748B', //slate500
+  accent: '#3b82f6', //blue500
 }
 
 export const darkTheme = {
@@ -46,6 +47,7 @@ export const darkTheme = {
   checkboxBg: '#233045', //slate750
   checkboxBorder: '#334155', //slate700
   checkboxTick: '#fff', //white
+  accent: '#3b82f6', //blue500
 }
 
 export const theme = {

@@ -1,4 +1,3 @@
-import Checkbox from '@/components/molecules/Checkbox/Checkbox'
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { Label } from '@/components/atoms/Label/Label.styles'
 import { Checkbox } from '@/components/atoms/Checkbox/Checkbox'

@@ -3,15 +3,21 @@ import Modal from '@/components/organism/Modal/Modal'
 
 const useModal = (initialValue = false) => {
   const [isOpen, setIsOpen] = useState(initialValue)
+  const [position, setPosition] = useState({ x: 0, y: 0, positioning: 'center' })
 
-  const handleOpenModal = () => setIsOpen(true)
+  const handleOpenAndPositionModal = ({ x, y, height }, positioning) => {
+    setPosition({ x, y: y + height + 10, positioning })
+    setIsOpen(true)
+  }
+
   const handleCloseModal = () => setIsOpen(false)
 
   return {
     Modal,
+    position,
     isOpen,
     handleCloseModal,
-    handleOpenModal,
+    handleOpenAndPositionModal,
   }
 }
 

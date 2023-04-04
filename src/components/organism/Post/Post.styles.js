@@ -110,9 +110,10 @@ export const StyledSearchInput = styled(SearchInput)`
   & > svg {
     position: absolute;
     right: 20px;
-    pointer-events: none;
+    /* pointer-events: none; */
     top: 50%;
     transform: translateY(-50%);
+    cursor: pointer;
   }
 
   & > svg > path {

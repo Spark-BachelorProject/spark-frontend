@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { InputWrapper } from './SearchInput.styles'
 
-const SearchInput = ({ placeholder, Icon, ...props }) => {
+const SearchInput = ({ placeholder, Icon, isAlwaysVisibleIcon, ...props }) => {
   const [iconIsVisible, setIconIsVisible] = useState(true)
   const [inputValue, setInputValue] = useState('')
 
@@ -12,7 +12,8 @@ const SearchInput = ({ placeholder, Icon, ...props }) => {
 
   return (
     <InputWrapper {...props}>
-      {iconIsVisible && !inputValue && Icon}
+      {!isAlwaysVisibleIcon && iconIsVisible && !inputValue && Icon}
+      {isAlwaysVisibleIcon && Icon}
       <Input
         type="text"
         onChange={inputHandle}

@@ -10,6 +10,8 @@ export const InputWrapper = styled.div`
     pointer-events: none;
     top: 50%;
     transform: translateY(-50%);
+    scale: 1.1;
+    z-index: 2;
   }
 
   & > svg > path {

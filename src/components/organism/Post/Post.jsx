@@ -67,18 +67,22 @@ const Post = () => {
           Będę
         </Button>
       </InteractionsSection>
-      <StyledSearchInput placeholder="Napisz komentarz..." isEmptyIcon Icon={<SendVectorIcon />} />
+      <StyledSearchInput
+        placeholder="Napisz komentarz..."
+        isEmptyIcon
+        Icon={<SendVectorIcon />}
+        isAlwaysVisibleIcon
+      />
+      <StyledText onClick={() => setCommentSectionIsOpen((prev) => !prev)}>
+        Pokaż komentarze (3) <ExpandVectorIcon />
+      </StyledText>
       {commentSectionIsOpen ? (
         <CommentSection>
           <Text>Comment1</Text>
           <Text>Comment2</Text>
           <Text>Comment3</Text>
         </CommentSection>
-      ) : (
-        <StyledText>
-          Pokaż komentarze (3) <ExpandVectorIcon />
-        </StyledText>
-      )}
+      ) : null}
     </Wrapper>
   )
 }

@@ -7,34 +7,22 @@ import { useState } from 'react'
 const FormField = ({ id, type, labelText, isBiggerThanZero, placeholder }) => {
   const [value, setValue] = useState('')
 
-  const handleKeyPress = (event) => {
-    const keyCode = event.keyCode || event.which
-    const keyValue = String.fromCharCode(keyCode)
-    const regex = /^[0-9\b]+$/ // allow only numbers and backspace
-
-    if (!regex.test(keyValue)) {
-      event.preventDefault()
-    }
-  }
-
-  const handleChange = (event) => {
-    setValue(event.target.value)
+  const handleChange = (e) => {
+    setValue(e.target.value)
   }
 
   return (
-    <Wrapper isCheckbox={type === 'checkbox'}>
+    <Wrapper>
       <Label htmlFor={id}>{labelText}</Label>
       <Input
         type={type}
         id={id}
-        isCheckbox={type === 'checkbox'}
         min={isBiggerThanZero && 0}
         placeholder={placeholder}
         value={value}
-        onKeyPress={handleKeyPress}
         onChange={handleChange}
       />
-      {id === 'distance' ? <input type="text" id="kmLabel" value="km" disabled /> : ''}
+      {id === 'distance' ? <span>km</span> : null}
     </Wrapper>
   )
 }

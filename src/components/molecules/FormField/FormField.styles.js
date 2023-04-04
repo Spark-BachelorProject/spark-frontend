@@ -6,34 +6,32 @@ export const Wrapper = styled.div`
   position: relative;
   width: 90%;
   display: flex;
-  align-items: ${({ isCheckbox }) => (isCheckbox ? 'center' : 'flex-start')};
+  align-items: flex-start;
   justify-content: space-between;
-  flex-direction: ${({ isCheckbox }) => (isCheckbox ? 'row' : 'column')};
+  flex-direction: column;
   margin: 20px 0 0px 0;
 
   ${Label} {
     margin: 5px 0;
   }
+
   ${Input} {
     -webkit-appearance: none;
-    margin: 0;
     -moz-appearance: textfield;
+    margin: 0;
     text-align: center;
     cursor: pointer;
     color: ${({ theme }) => theme.colors.inputFont};
     font-weight: 430;
     background-color: ${({ theme }) => theme.colors.inputBg};
-    max-width: ${({ isCheckbox }) => (isCheckbox ? '20px' : 'auto')};
-    padding: ${({ isCheckbox }) => (isCheckbox ? '10px' : 'auto')};
   }
 
-  input[type='text']#kmLabel {
+  & > span {
     border: none;
     padding: 0 2px;
-    -webkit-appearance: none !important;
     font-weight: 300;
     position: absolute;
-    top: 59%;
+    top: 54%;
     right: 30%;
     color: ${({ theme }) => theme.colors.iconPrimary};
     width: 25px;

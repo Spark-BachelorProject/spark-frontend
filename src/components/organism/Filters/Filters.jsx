@@ -1,24 +1,27 @@
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { Label } from '@/components/atoms/Label/Label.styles'
-import { Checkbox } from '@/components/atoms/Checkbox/Checkbox'
+import CheckboxField from '@/components/molecules/CheckboxField/CheckboxField'
 import FormField from '@/components/molecules/FormField/FormField'
-import React from 'react'
+import React, { useState } from 'react'
 import { InputWrapper, TimeFromToWrapper, Wrapper } from './Filters.styles'
+import { timeNow } from '@/helpers/dateAndTime'
 
 const Filters = () => {
-  const today = new Date().toISOString().split('T')[0]
+  const [time1, setTime1] = useState(timeNow)
+  const [time2, setTime2] = useState(timeNow)
+
   return (
     <Wrapper>
       <TimeFromToWrapper>
         <Label htmlFor="hours1">Godziny</Label>
         <InputWrapper>
-          <Input type="time" id="hours1" />
+          <Input type="time" id="hours1" value={time1} onChange={(e) => setTime1(e.target.value)} />
           <span> - </span>
-          <Input type="time" id="hours2" />
+          <Input type="time" id="hours2" value={time2} onChange={(e) => setTime2(e.target.value)} />
         </InputWrapper>
       </TimeFromToWrapper>
 
-      <FormField id={'date'} type={'date'} min={today} labelText={'Data'} />
+      <FormField id={'date'} type={'date'} labelText={'Data'} />
       <FormField
         id={'distance'}
         type={'number'}
@@ -26,8 +29,8 @@ const Filters = () => {
         placeholder="3"
         isBiggerThanZero
       />
-      <Checkbox label="Tylko posty znajomych" checked="" z-index="1" />
-      <Checkbox label="Tylko darmowe" checked="" z-index="1" />
+      <CheckboxField labelText={'Tylko posty znajomych'} id={'onlyFriends'} />
+      <CheckboxField labelText={'Tylko darmowe'} id={'onlyFree'} />
     </Wrapper>
   )
 }

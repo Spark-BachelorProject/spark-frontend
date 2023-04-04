@@ -21,6 +21,7 @@ const activity = [
     text: 'Squash',
   },
 ]
+
 const sort = [
   {
     value: 'new',
@@ -39,9 +40,17 @@ const sort = [
 // TODO: On Esc close modal
 
 export const Dropdown = () => {
-  const { Modal, isOpen, position, handleCloseModal, handleOpenAndPositionModal } = useModal()
+  const {
+    Modal,
+    isOpen,
+    position,
+    handleCloseModal,
+    handleOpenAndPositionModal,
+    modalOpenElementRef,
+  } = useModal()
   const [activitySelect, setActivitySelect] = useState(activity[0].value)
   const [sortSelect, setSortSelect] = useState(sort[0].value)
+  const positioning = 'right'
 
   const activityHandle = (e) => {
     setActivitySelect(e.target.value)
@@ -51,13 +60,15 @@ export const Dropdown = () => {
     setSortSelect(e.target.value)
   }
 
-  const handleOpenFilterPopup = (e) => {
-    handleOpenAndPositionModal(e.target.getBoundingClientRect(), 'right')
+  const handleOpenFilterPopup = () => {
+    const { x, y, height } = modalOpenElementRef.current.getBoundingClientRect()
+    handleOpenAndPositionModal({ x, y, height }, positioning)
   }
 
   const handleCloseFilterPopup = (e) => {
     if (e.key !== 'Tab') {
-      handleOpenAndPositionModal(e.target.getBoundingClientRect(), 'right')
+      const { x, y, height } = modalOpenElementRef.current.getBoundingClientRect()
+      handleOpenAndPositionModal({ x, y, height }, positioning)
     }
   }
 
@@ -79,8 +90,9 @@ export const Dropdown = () => {
         </SelectButtonsWrapper>
         <StyledIconBorder
           tabIndex="0"
-          onClick={(e) => handleOpenFilterPopup(e)}
+          onClick={handleOpenFilterPopup}
           onKeyDown={handleCloseFilterPopup}
+          ref={modalOpenElementRef}
         >
           <FilterIcon />
         </StyledIconBorder>

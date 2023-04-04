@@ -61,7 +61,7 @@ const Post = () => {
         <Button>Potem na harnasia</Button>
       </Tags>
       <InteractionsSection>
-        <AttendingList numOfAttender={6} />
+        <AttendingList numOfAttender={4} />
         <Button>
           <UserCheckIcon />
           Będę

@@ -14,9 +14,9 @@ export const Wrapper = styled.div`
 
   ${consecutiveNumbers(6).map(
     (num, i) => `${Thumbnail}:nth-child(${num}){
-    z-index: ${6 - i};
-    transform:translateX(${i * -20}px)
-  }`
+      z-index: ${6 - i};
+      transform: translateX(${i * -20}px)
+    }`
   )}
 `
 

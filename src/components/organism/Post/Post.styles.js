@@ -22,6 +22,7 @@ export const Wrapper = styled.article`
     margin-top: 20px;
   }
 `
+
 export const Header = styled.div`
   display: grid;
   grid-template-columns: 1fr 70% 1.7fr;
@@ -50,7 +51,6 @@ export const Details = styled.div`
   }
 
   & > div:nth-child(2) {
-    /* margin-top: 1px; */
     width: 95px;
     display: flex;
     justify-content: space-between;

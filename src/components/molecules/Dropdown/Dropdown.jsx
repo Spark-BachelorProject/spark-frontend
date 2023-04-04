@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { ReactComponent as FilterIcon } from '@/assets/icons/filter.svg'
 import { Wrapper, ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder } from './Dropdown.styled'
 import Select from '@/components/atoms/Select/Select'
+import useModal from '@/hooks/useModal'
+import Filters from '@/components/organism/Filters/Filters'
 
 // TODO: Seperate to redux
 // TODO: After adding filter seperate this to molecule
@@ -34,7 +36,10 @@ const sort = [
   },
 ]
 
+// TODO: On Esc close modal
+
 export const Dropdown = () => {
+  const { Modal, isOpen, handleCloseModal, handleOpenModal } = useModal()
   const [activitySelect, setActivitySelect] = useState(activity[0].value)
   const [sortSelect, setSortSelect] = useState(sort[0].value)
 
@@ -44,6 +49,16 @@ export const Dropdown = () => {
 
   const sortHandle = (e) => {
     setSortSelect(e.target.value)
+  }
+
+  const handleOpenFilterPopup = () => {
+    handleOpenModal()
+  }
+
+  const handleCloseFilterPopup = (e) => {
+    if (e.key !== 'Tab') {
+      handleOpenModal()
+    }
   }
 
   return (
@@ -62,10 +77,19 @@ export const Dropdown = () => {
             {sort}
           </Select>
         </SelectButtonsWrapper>
-        <StyledIconBorder tabIndex="0">
+        <StyledIconBorder
+          tabIndex="0"
+          onClick={handleOpenFilterPopup}
+          onKeyDown={handleCloseFilterPopup}
+        >
           <FilterIcon />
         </StyledIconBorder>
       </ButtonsWrapper>
+      {isOpen ? (
+        <Modal handleClose={handleCloseModal} textOnClose="Zapisz">
+          <Filters />
+        </Modal>
+      ) : null}
     </Wrapper>
   )
 }

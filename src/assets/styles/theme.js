@@ -27,6 +27,16 @@ export const lightTheme = {
   titleFont: '#0F172A', //slate900
   tagFont: '#475569', //slate600
   detailsFont: '#233045', //slate750
+  buttonBg: '#3b82f6', //blue500
+  labelFont: '#1e293b', // slate800
+  iconPrimaryActive: '#0f172a',
+  modalBorder: '#fff', //slate100
+  modalBg: '#fff', //white
+  inputBg: '#fff', //white
+  checkboxBg: '#fff', //white
+  checkboxBorder: '#e2e8f0', //slate200
+  checkboxTick: '#64748B', //slate500
+  accent: '#3b82f6', //blue500
 }
 
 export const darkTheme = {
@@ -42,11 +52,13 @@ export const darkTheme = {
   selectBorder: '#233045', //slate750
   buttonBorder: '#233045', //slate750
   secondaryBg: '#1e293b', //slate800
+  modalBg: '#1e293b', //slate800
   primaryBg: '#0f172a', //slate900
   iconPlusBg: '#3b82f6', //blue500
-  buttonBg: '#3B82F6', //blue500
+  buttonBg: '#3b82f6', //blue500
   white: '#fff', //white
   black: '#000', //black
+  labelFont: '#CBD5E1', // slate300
   iconSecondary: '#e2e8f0',
   text: '#CBD5E1', //slate300
   boldText: '#CBD5E1', //slate300
@@ -58,6 +70,12 @@ export const darkTheme = {
   titleFont: '#F1F5F9', //slate100
   tagFont: '#CBD5E1', //slate300
   detailsFont: '#E2E8F0', //slate200
+  modalBorder: '#233045', //slate100
+  inputBg: '#233045', //slate750
+  checkboxBg: '#233045', //slate750
+  checkboxBorder: '#334155', //slate700
+  checkboxTick: '#fff', //white
+  accent: '#3b82f6', //blue500
 }
 
 export const theme = {

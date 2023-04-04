@@ -1,14 +1,18 @@
 import styled from 'styled-components'
 
 export const Input = styled.input`
-  background-color: solid 1px ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.inputBg};
   padding: 11px 13px;
   border-radius: 7px;
   color: ${({ theme }) => theme.colors.inputFont};
   border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
-  width: clamp(40px, 100%, 400px);
+  width: 100%;
   font-size: ${({ theme }) => theme.fontSize.m};
+
   &:focus {
     outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};
+  }
+  &[type='time']::-webkit-calendar-picker-indicator {
+    display: none;
   }
 `

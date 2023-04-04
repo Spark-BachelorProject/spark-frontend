@@ -11,13 +11,10 @@ export const IconBorder = styled.div`
   padding: 20px 13px;
   border-radius: 7px;
   margin-left: 10px;
+  cursor: pointer;
 
   &:focus-visible {
     outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};
-  }
-
-  & > svg {
-    cursor: pointer;
   }
 
   & > svg > path {

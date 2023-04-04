@@ -18,10 +18,10 @@ export const GlobalStyle = createGlobalStyle`
     margin-top: 70px;
     font-family: 'Open Sans', sans-serif;
     transition: background-color 0.2s linear;
-
   }
 
   a, button {
+    font-family: inherit;
   }
 
 

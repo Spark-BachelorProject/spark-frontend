@@ -98,7 +98,12 @@ export const Dropdown = () => {
         </StyledIconBorder>
       </ButtonsWrapper>
       {isOpen ? (
-        <Modal handleClose={handleCloseModal} position={position} textOnClose="Zapisz">
+        <Modal
+          handleClose={handleCloseModal}
+          position={position}
+          textOnClose="Zapisz"
+          hasSaveButton
+        >
           <Filters />
         </Modal>
       ) : null}

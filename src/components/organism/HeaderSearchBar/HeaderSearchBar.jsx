@@ -71,7 +71,7 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
             <BellIcon tabIndex="0" />
           </IconBorder>
           {isOpen ? (
-            <Modal handleClose={handleCloseModal} position={position} isWide>
+            <Modal handleClose={handleCloseModal} position={position} width="big">
               <BookmarkedContent />
             </Modal>
           ) : null}

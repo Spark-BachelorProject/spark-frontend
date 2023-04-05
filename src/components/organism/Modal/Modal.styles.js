@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const ModalWrapper = styled.div`
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   position: fixed;
   z-index: 999;
   top: ${({ position: { y } }) => `${y + 10}px`};
@@ -8,12 +9,13 @@ export const ModalWrapper = styled.div`
 
   transform: ${({ position: { positioning } }) =>
     positioning === 'right'
-      ? 'translateX(-80%)'
+      ? 'translateX(-85%)'
       : positioning === 'left'
-      ? 'translateX(-10%)'
+      ? 'translateX(-15%)'
       : 'translateX(-50%)'};
 
-  width: ${(props) => (props.isWide ? '320px' : '280px')};
+  width: ${(props) =>
+    props.width === 'big' ? '330px' : props.width === 'medium' ? '280px' : '260px'};
   height: auto;
   overflow: auto:
   max-height: 500px;
@@ -31,13 +33,14 @@ export const ModalWrapper = styled.div`
   position: absolute;
   top: -10px;
 
-  /* left: ${({ position: { positioning } }) =>
-    positioning === 'right' ? 'left: 88%' : positioning === 'left' ? 'left: 12%' : 'left: 58%'}; */
+  //TODO: Think this through as this is not working XD
+   left: ${({ position: { positioning } }) =>
+     positioning === 'right' ? 'left: 88%' : positioning === 'left' ? 'left: 12%' : 'left: 58%'}; 
 
 
-  left: 58%; //center
-  /* left: 88%; */ //right
-  /* left: 12%; //left */
+  left: 58%;  //     center
+  // left: 90%;      right
+  // left: 10%;     left 
   transform: translateX(-50%);
   border-left: 17px solid transparent;
   border-right: 17px solid transparent;

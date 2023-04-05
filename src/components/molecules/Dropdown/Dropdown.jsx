@@ -105,6 +105,7 @@ export const Dropdown = () => {
           position={position}
           textOnClose="Zapisz"
           hasSaveButton
+          width="medium"
         >
           <Filters />
         </Modal>

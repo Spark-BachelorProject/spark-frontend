@@ -15,7 +15,7 @@ export const lightTheme = {
   buttonBg: '#3b82f6', //blue500
   labelFont: '#1e293b', // slate800
   iconPrimaryActive: '#0f172a',
-  modalBorder: '#fff', //slate100
+  modalBorder: '#f8fafc', //slate50
   modalBg: '#fff', //white
   inputBg: '#fff', //white
   checkboxBg: '#fff', //white
@@ -24,7 +24,7 @@ export const lightTheme = {
   accent: '#3b82f6', //blue500
   detailsFont: '#E2E8F0', //slate200
   redFont: '#F87171', //red500
-  bookmarkBg: '#F8FAFF', //custom
+  bookmarkBg: '#FAFBFF', //custom
 }
 
 export const darkTheme = {

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+//TODO: Make double Modals escapable (as for now you have to click outside the outer one)
+
 export const ModalWrapper = styled.div`
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   position: fixed;
@@ -41,10 +43,13 @@ export const ModalWrapper = styled.div`
   left: 58%;  //     center
   // left: 90%;      right
   // left: 10%;     left 
+
+
+  //top triangle
   transform: translateX(-50%);
   border-left: 17px solid transparent;
   border-right: 17px solid transparent;
-  border-bottom: 13px solid ${({ theme }) => theme.colors.modalBg};
+  border-bottom: 10px solid ${({ theme }) => theme.colors.popupTriangle};
   }
 `
 

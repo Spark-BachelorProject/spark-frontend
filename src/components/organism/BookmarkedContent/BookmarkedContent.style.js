@@ -15,8 +15,15 @@ export const HeadingWrapper = styled.div`
 export const StyledMoreInfoIcon = styled(MoreInfoIcon)`
   margin-left: auto;
   cursor: pointer;
-  scale: 0.8;
+  scale: 1;
   & path {
-    stroke: ${({ theme }) => theme.colors.textHeader};
+    stroke: ${({ theme }) => theme.colors.checkboxTick};
+  }
+
+  &:hover {
+    & > path {
+      stroke: ${({ theme }) => theme.colors.textHeader};
+      transition: 100ms linear;
+    }
   }
 `

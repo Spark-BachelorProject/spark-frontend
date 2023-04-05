@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
 `
 
 export const NameActivityWrapper = styled.div`
-  margin: ${(isCancelled) => (isCancelled ? `-3px 0 0 0` : '0')};
+  margin: ${(isCancelled) => (isCancelled ? `-7px 0 0 0` : '0')};
   display: flex;
   justify-content: start;
   align-content: center;

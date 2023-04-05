@@ -35,7 +35,7 @@ export const BookmarkedContent = () => {
   return (
     <Wrapper>
       <HeadingWrapper>
-        <Title isBig>Zapisane posty</Title>
+        <Title>Zapisane posty</Title>
         <FunctionWrapper
           onClick={(e) => handleOpenBookmarksPopup(e)}
           onKeyDown={handleCloseBookmarksPopup}

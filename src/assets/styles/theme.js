@@ -49,7 +49,7 @@ export const darkTheme = {
   inputBg: '#233045', //slate750
   checkboxBg: '#233045', //slate750
   checkboxBorder: '#334155', //slate700
-  checkboxTick: '#fff', //white
+  checkboxTick: '#CBD5E1', //slate300
   accent: '#3b82f6', //blue500
   detailsFont: '#233045', //slate750
   redFont: '#F87171', //custom red

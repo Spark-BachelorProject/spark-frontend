@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const ModalWrapper = styled.div`
   position: fixed;
   z-index: 999;
-  top: ${({ position: { y } }) => `${y + 15}px`};
+  top: ${({ position: { y } }) => `${y + 10}px`};
   left: ${({ position: { x } }) => `${x}px`};
 
   transform: ${({ position: { positioning } }) =>
@@ -25,6 +25,24 @@ export const ModalWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 20px 0px;
+
+  &::before {
+    content: '';
+  position: absolute;
+  top: -10px;
+
+  /* left: ${({ position: { positioning } }) =>
+    positioning === 'right' ? 'left: 88%' : positioning === 'left' ? 'left: 12%' : 'left: 58%'}; */
+
+
+  left: 58%; //center
+  /* left: 88%; */ //right
+  /* left: 12%; //left */
+  transform: translateX(-50%);
+  border-left: 17px solid transparent;
+  border-right: 17px solid transparent;
+  border-bottom: 13px solid ${({ theme }) => theme.colors.modalBg};
+  }
 `
 
 export const ModalBackground = styled.div`

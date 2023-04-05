@@ -19,8 +19,7 @@ export const Wrapper = styled.div`
 `
 
 export const NameActivityWrapper = styled.div`
-  margin: ${(props) => (props.isCancelled ? '-4px 0 0 0' : '0')};
-
+  margin: ${(isCancelled) => (isCancelled ? `-3px 0 0 0` : '0')};
   display: flex;
   justify-content: start;
   align-content: center;
@@ -35,7 +34,7 @@ export const StyledThumbnail = styled(Thumbnail)`
 
 export const FirstRowText = styled(Text)`
   font-size: ${({ theme }) => theme.fontSize.m};
-  color: ${({ theme }) => theme.colors.labelFont};
+  color: ${({ theme }) => theme.colors.textHeader};
   font-weight: 500;
 `
 

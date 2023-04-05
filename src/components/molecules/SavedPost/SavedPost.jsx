@@ -1,6 +1,5 @@
 import Dot from '@/components/atoms/Dot/Dot'
 import React from 'react'
-
 import {
   Wrapper,
   TextWrapper,
@@ -16,7 +15,7 @@ export const SavedPost = ({ isCancelled, name, activity, place, adress }) => {
     <Wrapper>
       <StyledThumbnail />
       <TextWrapper>
-        {isCancelled ? <CancelledText> Odwołane</CancelledText> : null}
+        {isCancelled ? <CancelledText>Odwołane</CancelledText> : null}
         <NameActivityWrapper isCancelled={isCancelled}>
           <FirstRowText>{name}</FirstRowText>
           <Dot />

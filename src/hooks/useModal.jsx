@@ -6,7 +6,8 @@ const useModal = (initialValue = false) => {
   const [position, setPosition] = useState({ x: 0, y: 0, positioning: 'center' })
   const modalOpenElementRef = useRef(null)
 
-  const handleOpenAndPositionModal = ({ x, y, height }, positioning) => {
+  const handleOpenAndPositionModal = (ref, positioning) => {
+    const { x, y, height } = ref.current.getBoundingClientRect()
     setPosition({ x, y: y + height + 10, positioning })
     setIsOpen(true)
   }

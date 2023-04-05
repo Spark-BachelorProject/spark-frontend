@@ -36,17 +36,15 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
     modalOpenElementRef,
   } = useModal()
 
-  const positioning = 'middle'
+  const positioning = 'center'
 
   const handleOpenBookmarksPopup = () => {
-    const { x, y, height } = modalOpenElementRef.current.getBoundingClientRect()
-    handleOpenAndPositionModal({ x, y, height }, positioning)
+    handleOpenAndPositionModal(modalOpenElementRef, positioning)
   }
 
   const handleCloseBookmarksPopup = (e) => {
     if (e.key !== 'Tab') {
-      const { x, y, height } = modalOpenElementRef.current.getBoundingClientRect()
-      handleOpenAndPositionModal({ x, y, height }, positioning)
+      handleOpenAndPositionModal(modalOpenElementRef, positioning)
     }
   }
 

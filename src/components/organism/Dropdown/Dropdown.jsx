@@ -63,14 +63,12 @@ export const Dropdown = () => {
   const positioning = 'right'
 
   const handleOpenFilterPopup = () => {
-    const { x, y, height } = modalOpenElementRef.current.getBoundingClientRect()
-    handleOpenAndPositionModal({ x, y, height }, positioning)
+    handleOpenAndPositionModal(modalOpenElementRef, positioning)
   }
 
   const handleCloseFilterPopup = (e) => {
     if (e.key !== 'Tab') {
-      const { x, y, height } = modalOpenElementRef.current.getBoundingClientRect()
-      handleOpenAndPositionModal({ x, y, height }, positioning)
+      handleOpenAndPositionModal(modalOpenElementRef, positioning)
     }
   }
 
@@ -104,7 +102,7 @@ export const Dropdown = () => {
           handleClose={handleCloseModal}
           position={position}
           textOnClose="Zapisz"
-          hasSaveButton
+          hasCloseButton
           width="medium"
         >
           <Filters />

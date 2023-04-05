@@ -12,14 +12,15 @@ export const Wrapper = styled.div`
   border-radius: 7px;
   gap: 2px;
   cursor: pointer;
+
   &:hover {
     background-color: ${({ theme }) => theme.colors.bookmarkBg};
-    transition: 200ms ease-in;
+    transition: background-color 200ms ease-in;
   }
 `
 
 export const NameActivityWrapper = styled.div`
-  margin: ${(isCancelled) => (isCancelled ? `-7px 0 0 0` : '0')};
+  margin: ${({ isCancelled }) => (isCancelled ? `-7px 0 0 0` : '0')};
   display: flex;
   justify-content: start;
   align-content: center;
@@ -39,7 +40,7 @@ export const FirstRowText = styled(Text)`
 `
 
 export const SecondRowText = styled(Text)`
-  margin: ${(props) => (props.isCancelled ? '-4px 0 0 0' : '0')};
+  margin: ${({ isCancelled }) => (isCancelled ? '-4px 0 0 0' : '0')};
   font-size: ${({ theme }) => theme.fontSize.s};
   color: ${({ theme }) => theme.colors.checkboxTick};
 `

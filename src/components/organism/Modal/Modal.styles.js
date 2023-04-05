@@ -16,8 +16,7 @@ export const ModalWrapper = styled.div`
       ? 'translateX(-15%)'
       : 'translateX(-50%)'};
 
-  width: ${(props) =>
-    props.width === 'big' ? '330px' : props.width === 'medium' ? '280px' : '260px'};
+  width: ${({ width }) => (width === 'big' ? '330px' : width === 'medium' ? '280px' : '260px')};
   height: auto;
   overflow: auto:
   max-height: 500px;
@@ -32,24 +31,24 @@ export const ModalWrapper = styled.div`
 
   &::before {
     content: '';
-  position: absolute;
-  top: -10px;
+    position: absolute;
+    top: -10px;
 
-  //TODO: Think this through as this is not working XD
-   left: ${({ position: { positioning } }) =>
-     positioning === 'right' ? 'left: 88%' : positioning === 'left' ? 'left: 12%' : 'left: 58%'}; 
-
-
-  left: 58%;  //     center
-  // left: 90%;      right
-  // left: 10%;     left 
+    //TODO: Think this through as this is not working XD
+    left: ${({ position: { positioning } }) =>
+      positioning === 'right' ? 'left: 88%' : positioning === 'left' ? 'left: 12%' : 'left: 58%'}; 
 
 
-  //top triangle
-  transform: translateX(-50%);
-  border-left: 17px solid transparent;
-  border-right: 17px solid transparent;
-  border-bottom: 10px solid ${({ theme }) => theme.colors.popupTriangle};
+    left: 58%;  //     center
+    // left: 90%;      right
+    // left: 10%;     left 
+
+
+    //top triangle
+    transform: translateX(-50%);
+    border-left: 17px solid transparent;
+    border-right: 17px solid transparent;
+    border-bottom: 10px solid ${({ theme }) => theme.colors.popupTriangle};
   }
 `
 
@@ -60,5 +59,6 @@ export const ModalBackground = styled.div`
   left: 0;
   height: 100vh;
   width: 100vw;
+  // FIXME: background-color is necessary?
   background-color: rgba(0, 0, 0, 0);
 `

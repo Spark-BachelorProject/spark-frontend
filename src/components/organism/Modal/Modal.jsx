@@ -5,7 +5,7 @@ import { ModalBackground, ModalWrapper } from './Modal.styles'
 
 const modalContainer = document.getElementById('modal-container')
 
-const Modal = ({ textOnClose, handleClose, children, position, hasSaveButton, width }) => {
+const Modal = ({ textOnClose, handleClose, children, position, hasCloseButton, width }) => {
   const modalNode = document.createElement('div')
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Modal = ({ textOnClose, handleClose, children, position, hasSaveButton, wi
       <ModalBackground onClick={handleClose} />
       <ModalWrapper position={position} width={width}>
         {children}
-        {hasSaveButton ? <Button onClick={handleClose}>{textOnClose}</Button> : null}
+        {hasCloseButton ? <Button onClick={handleClose}>{textOnClose}</Button> : null}
       </ModalWrapper>
     </>,
     modalNode

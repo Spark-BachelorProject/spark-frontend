@@ -1,14 +1,12 @@
-import Title from '@/components/atoms/Title/Title'
-import React from 'react'
 import styled from 'styled-components'
-import { SavedPost } from '@/components/molecules/SavedPost/SavedPost'
 import { ReactComponent as MoreInfoIcon } from '@/assets/icons/three-dots.svg'
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 0 14px;
+  padding: 0 10px;
 `
 export const HeadingWrapper = styled.div`
+  padding: 0 5px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -22,15 +20,3 @@ export const StyledMoreInfoIcon = styled(MoreInfoIcon)`
     stroke: ${({ theme }) => theme.colors.textHeader};
   }
 `
-
-export const SavedPosts = () => {
-  return (
-    <Wrapper>
-      <HeadingWrapper>
-        <Title>Zapisane posty</Title>
-        <StyledMoreInfoIcon />
-      </HeadingWrapper>
-      <SavedPost />
-    </Wrapper>
-  )
-}

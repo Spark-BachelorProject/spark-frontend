@@ -22,6 +22,9 @@ export const lightTheme = {
   checkboxBorder: '#e2e8f0', //slate200
   checkboxTick: '#64748B', //slate500
   accent: '#3b82f6', //blue500
+  detailsFont: '#E2E8F0', //slate200
+  redFont: '#F87171', //red500
+  bookmarkBg: '#F8FAFF', //custom
 }
 
 export const darkTheme = {
@@ -48,6 +51,9 @@ export const darkTheme = {
   checkboxBorder: '#334155', //slate700
   checkboxTick: '#fff', //white
   accent: '#3b82f6', //blue500
+  detailsFont: '#233045', //slate750
+  redFont: '#F87171', //custom red
+  bookmarkBg: '#233045', //slate750
 }
 
 export const theme = {
@@ -55,9 +61,11 @@ export const theme = {
   fontSize: {
     xxl: '34px',
     xl: '24px',
-    l: '17px',
+    l: '18px',
     m: '15px',
+    sPlus: '14px',
     s: '13px',
+    xs: '11px',
   },
   breakPoints: {
     l: '1200px',

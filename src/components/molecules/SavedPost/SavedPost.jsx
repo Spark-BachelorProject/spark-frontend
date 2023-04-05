@@ -1,45 +1,30 @@
-import { Text } from '@/components/atoms/Text/Text.style'
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.style'
-import Title from '@/components/atoms/Title/Title'
+import Dot from '@/components/atoms/Dot/Dot'
 import React from 'react'
-import styled from 'styled-components'
 
-export const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: auto;
-  margin: 20px 0 0 0;
-`
+import {
+  Wrapper,
+  TextWrapper,
+  CancelledText,
+  NameActivityWrapper,
+  FirstRowText,
+  SecondRowText,
+  StyledThumbnail,
+} from './SavedPost.style'
 
-export const StyledThumbnail = styled(Thumbnail)`
-  height: 44px;
-  width: 44px;
-`
-
-export const StyledText = styled(Text)`
-  margin: -2px 0 0 0;
-  font-size: 14px;
-`
-
-export const StyledSmallText = styled(Text)`
-  margin: -2px 0 0 0;
-  font-size: 12px;
-`
-
-export const TextWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-export const SavedPost = () => {
+export const SavedPost = ({ isCancelled, name, activity, place, adress }) => {
   return (
     <Wrapper>
       <StyledThumbnail />
       <TextWrapper>
-        <Title>Andrzej Kowal</Title>
-        <StyledText>Siatkówka - Politechnika Lubelska</StyledText>
-        <StyledText>Kraśnicka 12</StyledText>
+        {isCancelled ? <CancelledText> Odwołane</CancelledText> : null}
+        <NameActivityWrapper isCancelled={isCancelled}>
+          <FirstRowText>{name}</FirstRowText>
+          <Dot />
+          <FirstRowText>{activity}</FirstRowText>
+        </NameActivityWrapper>
+        <SecondRowText isCancelled={isCancelled}>
+          {place} - {adress}
+        </SecondRowText>
       </TextWrapper>
     </Wrapper>
   )

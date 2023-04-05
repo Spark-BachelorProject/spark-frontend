@@ -9,14 +9,13 @@ import {
   InnerWrapper,
   LogoAndInputWrapper,
   InnerIconsWrapperRight,
-  Divider,
 } from './HeaderSearchBar.styles'
 import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
 import { ReactComponent as SearchIcon } from '@/assets/icons/search.svg'
 import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
 import useModal from '@/hooks/useModal'
-import { SavedPosts } from '../SavedPosts/SavedPosts'
+import { BookmarkedContent } from '../BookmarkedContent/BookmarkedContent'
 
 // TODO:
 // Add to BellIcon circle counter in the corner
@@ -28,15 +27,26 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
     }
   }
 
-  const handleOpenFilterPopup = (e) => {
-    handleOpenAndPositionModal(e.target.getBoundingClientRect(), 'right')
+  const {
+    Modal,
+    isOpen,
+    position,
+    handleCloseModal,
+    handleOpenAndPositionModal,
+    modalOpenElementRef,
+  } = useModal()
+
+  const positioning = 'middle'
+
+  const handleOpenBookmarksPopup = () => {
+    const { x, y, height } = modalOpenElementRef.current.getBoundingClientRect()
+    handleOpenAndPositionModal({ x, y, height }, positioning)
   }
 
-  const { Modal, isOpen, position, handleCloseModal, handleOpenAndPositionModal } = useModal()
-
-  const handleCloseFilterPopup = (e) => {
+  const handleCloseBookmarksPopup = (e) => {
     if (e.key !== 'Tab') {
-      handleOpenAndPositionModal(e.target.getBoundingClientRect(), 'right')
+      const { x, y, height } = modalOpenElementRef.current.getBoundingClientRect()
+      handleOpenAndPositionModal({ x, y, height }, positioning)
     }
   }
 
@@ -50,18 +60,19 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
           <SearchInput Icon={<SearchIcon />} />
         </LogoAndInputWrapper>
         <InnerIconsWrapperRight>
+          <IconBorder
+            onClick={(e) => handleOpenBookmarksPopup(e)}
+            onKeyDown={handleCloseBookmarksPopup}
+            ref={modalOpenElementRef}
+          >
+            <BookmarkIcon tabIndex="0" />
+          </IconBorder>
           <IconBorder>
-            <BookmarkIcon
-              tabIndex="0"
-              onClick={(e) => handleOpenFilterPopup(e)}
-              onKeyDown={handleCloseFilterPopup}
-            />
-            <Divider />
             <BellIcon tabIndex="0" />
           </IconBorder>
           {isOpen ? (
-            <Modal handleClose={handleCloseModal} position={position}>
-              <SavedPosts />
+            <Modal handleClose={handleCloseModal} position={position} isWide>
+              <BookmarkedContent />
             </Modal>
           ) : null}
           <IconBorder

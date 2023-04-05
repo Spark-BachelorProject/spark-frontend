@@ -40,17 +40,8 @@ const sort = [
 // TODO: On Esc close modal
 
 export const Dropdown = () => {
-  const {
-    Modal,
-    isOpen,
-    position,
-    handleCloseModal,
-    handleOpenAndPositionModal,
-    modalOpenElementRef,
-  } = useModal()
   const [activitySelect, setActivitySelect] = useState(activity[0].value)
   const [sortSelect, setSortSelect] = useState(sort[0].value)
-  const positioning = 'right'
 
   const activityHandle = (e) => {
     setActivitySelect(e.target.value)
@@ -59,6 +50,17 @@ export const Dropdown = () => {
   const sortHandle = (e) => {
     setSortSelect(e.target.value)
   }
+
+  const {
+    Modal,
+    isOpen,
+    position,
+    handleCloseModal,
+    handleOpenAndPositionModal,
+    modalOpenElementRef,
+  } = useModal()
+
+  const positioning = 'right'
 
   const handleOpenFilterPopup = () => {
     const { x, y, height } = modalOpenElementRef.current.getBoundingClientRect()

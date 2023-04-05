@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const ModalWrapper = styled.div`
   position: fixed;
   z-index: 999;
-  top: ${({ position: { y } }) => `${y + 25}px`};
+  top: ${({ position: { y } }) => `${y + 15}px`};
   left: ${({ position: { x } }) => `${x}px`};
 
   transform: ${({ position: { positioning } }) =>
@@ -13,8 +13,10 @@ export const ModalWrapper = styled.div`
       ? 'translateX(-10%)'
       : 'translateX(-50%)'};
 
-  width: ${(props) => (props.isWide ? '320px' : '320px')};
+  width: ${(props) => (props.isWide ? '320px' : '280px')};
   height: auto;
+  overflow: auto:
+  max-height: 500px;
   background-color: ${({ theme }) => theme.colors.modalBg};
   border: 2px solid ${({ theme }) => theme.colors.modalBorder};
   border-radius: 7px;

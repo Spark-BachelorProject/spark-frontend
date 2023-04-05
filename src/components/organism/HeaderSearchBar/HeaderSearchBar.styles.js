@@ -32,9 +32,3 @@ export const InnerIconsWrapperRight = styled.div`
   margin: 16px 0;
   height: 38px;
 `
-
-export const Divider = styled.div`
-  border-left: solid 1px ${({ theme }) => theme.colors.divider};
-  height: 22px;
-  margin: 0 15px;
-`

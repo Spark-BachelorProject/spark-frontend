@@ -27,6 +27,8 @@ export const lightTheme = {
   bookmarkBg: '#FAFBFF', //custom
   popupTriangle: '#fff', //white
   counterBorder: '#fff', //white
+  buttonOffColor: '#60a5fa', //blue400
+  buttonOffFont: '#f1f5f9', //slate100
 }
 
 export const darkTheme = {
@@ -58,6 +60,8 @@ export const darkTheme = {
   bookmarkBg: '#233045', //slate750
   popupTriangle: '#233045', //slate100
   counterBorder: '#233045', //slate750
+  buttonOffColor: '#60a5fa', //blue400
+  buttonOffFont: '#f1f5f9', //slate100
 }
 
 export const theme = {

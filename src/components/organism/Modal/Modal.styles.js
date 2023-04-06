@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Button } from '@/components/atoms/Button/Button.styles'
 
 //TODO: Make double Modals escapable (as for now you have to click outside the outer one)
 
@@ -6,7 +7,7 @@ export const ModalWrapper = styled.div`
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   position: fixed;
   z-index: 999;
-  top: ${({ position: { y } }) => `${y + 10}px`};
+  top: ${({ position: { y } }) => `${y + 9}px`};
   left: ${({ position: { x } }) => `${x}px`};
 
   transform: ${({ position: { positioning } }) =>
@@ -18,7 +19,6 @@ export const ModalWrapper = styled.div`
 
   width: ${({ width }) => (width === 'big' ? '330px' : width === 'medium' ? '280px' : '260px')};
   height: auto;
-  overflow: auto:
   max-height: 500px;
   background-color: ${({ theme }) => theme.colors.modalBg};
   border: 2px solid ${({ theme }) => theme.colors.modalBorder};
@@ -29,6 +29,10 @@ export const ModalWrapper = styled.div`
   align-items: center;
   padding: 20px 0px;
 
+  ${Button} {
+    margin-top: 20px;
+  }
+
   //top triangle
   &::before {
     content: '';
@@ -37,12 +41,7 @@ export const ModalWrapper = styled.div`
 
     //TODO: Think this through as this is not working XD
     left: ${({ position: { positioning } }) =>
-      positioning === 'right' ? 'left: 88%' : positioning === 'left' ? 'left: 12%' : 'left: 58%'}; 
-
-
-    left: 58%;  //     center
-    // left: 90%;      right
-    // left: 10%;     left 
+      positioning === 'right' ? '92.5%' : positioning === 'left' ? '7.5%' : '57%'};
 
     transform: translateX(-50%);
     border-left: 17px solid transparent;

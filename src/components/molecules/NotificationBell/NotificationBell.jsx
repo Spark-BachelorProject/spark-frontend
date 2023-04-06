@@ -1,14 +1,15 @@
 import React from 'react'
 import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
-import { Wrapper, CounterWrapper, CounterNumber } from './NotificationBell.style'
+import { Wrapper } from './NotificationBell.style'
 import { ReactComponent as BellIcon } from '@/assets/icons/bell.svg'
+import { Counter } from '@/components/atoms/Counter/Counter'
 
-export const NotificationBell = ({ count }) => {
+export const NotificationBell = ({ count, isRed, hasCounter }) => {
   return (
     <Wrapper>
       <IconBorder tabIndex="0">
         <BellIcon />
-        <CounterWrapper>{count > 0 && <CounterNumber>{count}</CounterNumber>}</CounterWrapper>
+        <Counter count={count} isRed={isRed} hasCounter={hasCounter} />
       </IconBorder>
     </Wrapper>
   )

@@ -16,6 +16,7 @@ import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
 import { BookmarkedContent } from '../BookmarkedContent/BookmarkedContent'
 import { NotificationBell } from '@/components/molecules/NotificationBell/NotificationBell'
 import useModal from '@/hooks/useModal'
+import { Counter } from '@/components/atoms/Counter/Counter'
 
 // TODO:
 // Add to BellIcon circle counter in the corner
@@ -65,8 +66,9 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
             ref={modalOpenElementRef}
           >
             <BookmarkIcon />
+            <Counter count="7" />
           </IconBorder>
-          <NotificationBell count="3" />
+          <NotificationBell count="3" isRed hasCounter />
           {isOpen ? (
             <Modal handleClose={handleCloseModal} position={position} width="big">
               <BookmarkedContent />

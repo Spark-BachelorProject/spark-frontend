@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ReactComponent as BellIcon } from '@/assets/icons/bell.svg'
 import { ReactComponent as BookmarkIcon } from '@/assets/icons/bookmark.svg'
 import { ReactComponent as MoonIcon } from '@/assets/icons/moon.svg'
 import { ReactComponent as SunIcon } from '@/assets/icons/sun.svg'
@@ -14,8 +13,9 @@ import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
 import { ReactComponent as SearchIcon } from '@/assets/icons/search.svg'
 import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
-import useModal from '@/hooks/useModal'
 import { BookmarkedContent } from '../BookmarkedContent/BookmarkedContent'
+import { NotificationBell } from '@/components/molecules/NotificationBell/NotificationBell'
+import useModal from '@/hooks/useModal'
 
 // TODO:
 // Add to BellIcon circle counter in the corner
@@ -48,16 +48,6 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
     }
   }
 
-  const handleOpenNotificationsPopup = () => {
-    handleOpenAndPositionModal(modalOpenElementRef, positioning)
-  }
-
-  const handleCloseNotificationPopup = (e) => {
-    if (e.key !== 'Tab') {
-      handleOpenAndPositionModal(modalOpenElementRef, positioning)
-    }
-  }
-
   return (
     <Wrapper>
       <InnerWrapper>
@@ -76,9 +66,7 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
           >
             <BookmarkIcon />
           </IconBorder>
-          <IconBorder tabIndex="0">
-            <BellIcon />
-          </IconBorder>
+          <NotificationBell count="3" />
           {isOpen ? (
             <Modal handleClose={handleCloseModal} position={position} width="big">
               <BookmarkedContent />

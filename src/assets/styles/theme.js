@@ -26,6 +26,7 @@ export const lightTheme = {
   redFont: '#F87171', //red500
   bookmarkBg: '#FAFBFF', //custom
   popupTriangle: '#fff', //white
+  counterBorder: '#fff', //white
 }
 
 export const darkTheme = {
@@ -56,6 +57,7 @@ export const darkTheme = {
   redFont: '#F87171', //custom red
   bookmarkBg: '#233045', //slate750
   popupTriangle: '#233045', //slate100
+  counterBorder: '#233045', //slate750
 }
 
 export const theme = {

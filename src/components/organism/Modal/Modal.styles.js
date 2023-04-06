@@ -29,6 +29,7 @@ export const ModalWrapper = styled.div`
   align-items: center;
   padding: 20px 0px;
 
+  //top triangle
   &::before {
     content: '';
     position: absolute;
@@ -43,8 +44,6 @@ export const ModalWrapper = styled.div`
     // left: 90%;      right
     // left: 10%;     left 
 
-
-    //top triangle
     transform: translateX(-50%);
     border-left: 17px solid transparent;
     border-right: 17px solid transparent;

@@ -48,6 +48,16 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
     }
   }
 
+  const handleOpenNotificationsPopup = () => {
+    handleOpenAndPositionModal(modalOpenElementRef, positioning)
+  }
+
+  const handleCloseNotificationPopup = (e) => {
+    if (e.key !== 'Tab') {
+      handleOpenAndPositionModal(modalOpenElementRef, positioning)
+    }
+  }
+
   return (
     <Wrapper>
       <InnerWrapper>
@@ -59,14 +69,15 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
         </LogoAndInputWrapper>
         <InnerIconsWrapperRight>
           <IconBorder
+            tabIndex="0"
             onClick={(e) => handleOpenBookmarksPopup(e)}
             onKeyDown={handleCloseBookmarksPopup}
             ref={modalOpenElementRef}
           >
-            <BookmarkIcon tabIndex="0" />
+            <BookmarkIcon />
           </IconBorder>
-          <IconBorder>
-            <BellIcon tabIndex="0" />
+          <IconBorder tabIndex="0">
+            <BellIcon />
           </IconBorder>
           {isOpen ? (
             <Modal handleClose={handleCloseModal} position={position} width="big">

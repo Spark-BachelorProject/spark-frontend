@@ -8,10 +8,14 @@ export const Wrapper = styled.nav`
   bottom: 0;
   background-color: ${({ theme }) => theme.colors.secondaryBg};
   padding: 0 20px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakPoints.m}) {
+    display: none;
+  }
 `
 
 export const IconsWrapper = styled.div`
-  max-width: 476px;
+  max-width: 650px;
   display: flex;
   margin: 16px auto;
   height: 38px;

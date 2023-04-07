@@ -21,7 +21,7 @@ import {
   Wrapper,
   DetailsWrapper,
 } from './Post.styles'
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.style'
+import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import Dot from '@/components/atoms/Dot/Dot'
 import AttendingList from '@/components/molecules/AttendingList/AttendingList'
 

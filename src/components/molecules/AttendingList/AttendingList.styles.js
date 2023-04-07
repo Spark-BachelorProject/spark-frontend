@@ -1,4 +1,4 @@
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.style'
+import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { consecutiveNumbers } from '@/helpers/consecutiveNumbers'
 import styled from 'styled-components'
 

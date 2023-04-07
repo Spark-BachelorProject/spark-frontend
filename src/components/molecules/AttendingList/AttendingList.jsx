@@ -1,4 +1,4 @@
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.style'
+import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import React from 'react'
 import { AttendingCounter, Wrapper } from './AttendingList.styles'
 import { consecutiveNumbers } from '@/helpers/consecutiveNumbers'

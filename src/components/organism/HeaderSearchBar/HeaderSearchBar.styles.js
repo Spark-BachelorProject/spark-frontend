@@ -23,7 +23,7 @@ export const InnerWrapper = styled.div`
   }
 
   @media (min-width: ${({ theme }) => theme.breakPoints.m}) {
-    width: 2000px;
+    width: 3000px;
   }
 `
 

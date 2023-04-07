@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const IconBorder = styled.div`
-  border: solid 1px ${({ theme }) => theme.colors.buttonBorder};
+  border: solid 1px ${({ theme }) => theme.colors.selectBorder};
   background-color: ${({ theme }) => theme.colors.iconBg};
   height: 39px;
   width: auto;

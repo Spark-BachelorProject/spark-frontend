@@ -13,6 +13,7 @@ import {
 } from './HeaderSearchBar.styles'
 import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
+import { ReactComponent as SearchIcon } from '@/assets/icons/search.svg'
 import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
 
 // TODO:
@@ -32,7 +33,7 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
           <Link to="/">
             <StyledLogoIcon />
           </Link>
-          <SearchInput />
+          <SearchInput Icon={<SearchIcon />} />
         </LogoAndInputWrapper>
         <InnerIconsWrapperRight>
           <IconBorder>

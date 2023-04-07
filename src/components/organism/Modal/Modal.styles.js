@@ -3,9 +3,16 @@ import styled from 'styled-components'
 export const ModalWrapper = styled.div`
   position: fixed;
   z-index: 999;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: ${({ position: { y } }) => `${y}px`};
+  left: ${({ position: { x } }) => `${x}px`};
+
+  transform: ${({ position: { positioning } }) =>
+    positioning === 'right'
+      ? 'translateX(-80%)'
+      : positioning === 'left'
+      ? 'translateX(-10%)'
+      : 'translateX(-50%)'};
+
   width: 280px;
   height: 475px;
   background-color: ${({ theme }) => theme.colors.modalBg};

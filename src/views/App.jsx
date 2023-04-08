@@ -8,7 +8,6 @@ import Users from '@/components/pages/Users/Users'
 import { HeaderSearchBar } from '@/components/organism/HeaderSearchBar/HeaderSearchBar'
 import { useToggleColorsTheme } from '@/hooks/useToggleColorsTheme'
 import { DekstopNavigationBar } from '@/components/organism/DekstopNavigationBar/DekstopNavigationBar'
-import { DesktopRightBar } from '@/components/organism/DesktopRightBar/DesktopRightBar'
 
 function App() {
   const [colorsTheme, toggleColorsTheme] = useToggleColorsTheme()
@@ -24,7 +23,6 @@ function App() {
           <Route path="/" element={<Home />} exact />
         </Routes>
         <DekstopNavigationBar />
-        <DesktopRightBar />
         <NavigationBar />
       </ThemeProvider>
     </Router>

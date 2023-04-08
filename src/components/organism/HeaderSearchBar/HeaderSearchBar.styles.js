@@ -24,6 +24,7 @@ export const InnerWrapper = styled.div`
 
   @media (min-width: ${({ theme }) => theme.breakPoints.m}) {
     width: 3000px;
+    padding: 0 20px;
   }
 `
 

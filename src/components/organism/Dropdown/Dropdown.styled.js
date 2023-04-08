@@ -12,10 +12,6 @@ export const ButtonsWrapper = styled.div`
   width: 800px;
   display: flex;
   justify-content: space-between;
-
-  @media (min-width: ${({ theme }) => theme.breakPoints.m}) {
-    width: 500px;
-  }
 `
 
 export const SelectButtonsWrapper = styled.div`

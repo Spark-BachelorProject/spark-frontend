@@ -23,5 +23,5 @@ export const Wrapper = styled.div`
 `
 
 export const InnerWrapper = styled.div`
-  min-width: 684px;
+  max-width: 684px;
 `

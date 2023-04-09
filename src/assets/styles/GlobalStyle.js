@@ -15,7 +15,6 @@ export const GlobalStyle = createGlobalStyle`
   
   body {
     background-color: ${({ theme }) => theme.colors.primaryBg};
-    margin-top: 70px;
     font-family: 'Open Sans', sans-serif;
     transition: background-color 0.2s linear;
   }

@@ -3,8 +3,10 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
   width: 100vw;
   height: 70px;
-  position: fixed;
+  position: sticky;
   top: 0;
+  z-index: 1;
+
   background-color: ${({ theme }) => theme.colors.secondaryBg};
   padding: 0 20px;
   display: flex;

@@ -7,7 +7,6 @@ import Home from '@/components/pages/Home/Home'
 import Users from '@/components/pages/Users/Users'
 import { HeaderSearchBar } from '@/components/organism/HeaderSearchBar/HeaderSearchBar'
 import { useToggleColorsTheme } from '@/hooks/useToggleColorsTheme'
-import { DekstopNavigationBar } from '@/components/organism/DekstopNavigationBar/DekstopNavigationBar'
 
 function App() {
   const [colorsTheme, toggleColorsTheme] = useToggleColorsTheme()

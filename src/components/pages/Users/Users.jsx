@@ -5,7 +5,7 @@ import React from 'react'
 const Users = () => {
   return (
     <PageContent>
-      <Title>Users</Title>
+      <Title>USERS</Title>
     </PageContent>
   )
 }

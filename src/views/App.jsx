@@ -22,7 +22,6 @@ function App() {
           <Route path="/users" element={<Users />} />
           <Route path="/" element={<Home />} exact />
         </Routes>
-        <DekstopNavigationBar />
         <NavigationBar />
       </ThemeProvider>
     </Router>

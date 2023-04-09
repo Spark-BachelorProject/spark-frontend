@@ -9,7 +9,7 @@ export const Wrapper = styled.nav`
   background-color: ${({ theme }) => theme.colors.secondaryBg};
   padding: 0 20px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakPoints.m}) {
+  @media screen and (min-width: 978px) {
     display: none;
   }
 `

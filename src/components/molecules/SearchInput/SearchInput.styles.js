@@ -10,11 +10,13 @@ export const InputWrapper = styled.div`
     pointer-events: none;
     top: 50%;
     transform: translateY(-50%);
+    scale: 1.1;
+    z-index: 2;
   }
 
   & > svg > path {
     stroke: ${({ theme }) => theme.colors.iconSecondary};
-    fill: ${({ theme }) => theme.colors.iconSecondary};
+    fill: ${({ theme, isEmptyIcon }) => (isEmptyIcon ? 'default' : theme.colors.iconSecondary)};
   }
 
   & > ${Input} {

@@ -8,7 +8,7 @@ import {
   FirstRowText,
   SecondRowText,
   StyledThumbnail,
-} from './SavedPost.style'
+} from './SavedPost.styles'
 
 export const SavedPost = ({ isCancelled, name, activity, place, adress }) => {
   return (

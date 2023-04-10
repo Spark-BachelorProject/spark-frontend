@@ -2,11 +2,12 @@ import styled from 'styled-components'
 import { ReactComponent as PlusSquareIcon } from '@/assets/icons/plus-square.svg'
 
 export const Wrapper = styled.nav`
+  z-index: 999;
   width: 100vw;
   height: 70px;
   position: fixed;
   bottom: 0;
-  background-color: ${({ theme }) => theme.colors.secondaryBg};
+  background-color: ${({ theme }) => theme.colors.navbarBg};
   padding: 0 20px;
 
   //hide when desktop navbar is able to show

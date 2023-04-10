@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Text } from '@/components/atoms/Text/Text.style'
+import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.div`
   width: 100%;

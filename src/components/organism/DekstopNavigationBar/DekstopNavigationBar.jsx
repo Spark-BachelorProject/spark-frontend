@@ -1,5 +1,5 @@
 import React from 'react'
-import { Wrapper } from './DesktopNavigationBar.style'
+import { Wrapper } from './DesktopNavigationBar.styles'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { ReactComponent as HomeIcon } from '@/assets/icons/home.svg'

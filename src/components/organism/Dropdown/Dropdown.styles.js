@@ -22,7 +22,7 @@ export const StyledIconBorder = styled(IconBorder)`
   padding: 9px 10px;
   height: 35px;
   background: ${({ theme }) => theme.colors.secondaryBg};
-  border: 2px solid ${({ theme }) => theme.colors.buttonBorder};
+  border: 2px solid ${({ theme }) => theme.colors.selectBorder};
 
   &:focus-visible {
     outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};

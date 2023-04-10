@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Text } from '@/components/atoms/Text/Text.style'
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.style'
+import { Text } from '@/components/atoms/Text/Text.styles'
+import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 
 export const Wrapper = styled.div`
   padding: 15px 5px;

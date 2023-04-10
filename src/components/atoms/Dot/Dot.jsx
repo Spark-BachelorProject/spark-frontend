@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledDot } from './Dot.style'
+import { StyledDot } from './Dot.styles'
 
 const Dot = () => {
   return <StyledDot>•</StyledDot>

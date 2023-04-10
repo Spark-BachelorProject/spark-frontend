@@ -1,4 +1,4 @@
-import Title from '@/components/atoms/Title/Title'
+import { Title } from '@/components/atoms/Title/Title.styles'
 import React from 'react'
 import { Wrapper } from './TitleBar.styles'
 

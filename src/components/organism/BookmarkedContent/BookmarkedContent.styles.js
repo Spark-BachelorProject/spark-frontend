@@ -16,7 +16,7 @@ export const StyledMoreInfoIcon = styled(MoreInfoIcon)`
   margin-left: auto;
   cursor: pointer;
   scale: 1;
-  & path {
+  & > path {
     stroke: ${({ theme }) => theme.colors.checkboxTick};
   }
 

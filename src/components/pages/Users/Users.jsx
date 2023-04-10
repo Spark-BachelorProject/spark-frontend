@@ -1,12 +1,7 @@
-import { PageContent } from '@/components/atoms/PageContent/PageContent'
-import Title from '@/components/atoms/Title/Title'
+import { PageContent } from '@/components/templates/PageContent/PageContent'
+import { Title } from '@/components/atoms/Title/Title.styles'
 import React from 'react'
-import styled from 'styled-components'
-
-export const ContentDummy = styled.div`
-  width: 684px;
-  padding: 10px 0;
-`
+import { ContentDummy } from './Users.styles'
 
 const Users = () => {
   return (

@@ -12,13 +12,13 @@ export const Wrapper = styled.div`
   @media (min-width: 684px) and (max-width: ${({ theme }) => theme.breakPoints.l}) {
     display: flex;
     justify-content: center;
-    gap: 44px;
+    gap: 20px;
   }
 
   @media (min-width: ${({ theme }) => theme.breakPoints.l}) {
     display: flex;
     justify-content: center;
-    gap: 44px;
+    gap: 10px;
   }
 `
 

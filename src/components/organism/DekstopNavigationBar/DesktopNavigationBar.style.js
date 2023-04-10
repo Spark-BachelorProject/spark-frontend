@@ -1,15 +1,16 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.nav`
-  flex: 1 0 250px; //inital width
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 1 0 270px; //inital width
   max-width: 330px;
   height: calc(100vh - 70px);
-  background-color: ${({ theme }) => theme.colors.secondaryBg};
-  padding: 0 20px;
-  opacity: 0.4;
+  padding: 20px;
 
-  //this is done so its able to be displayed with 230px width ->  width of the post (684px) + gap (44px) + min navbar width (250px)
-  @media screen and (max-width: 978px) {
+  //this is done so its able to be displayed with 270px width ->  width of the post (684px) + gap (44px) + min navbar width (270px)
+  @media screen and (max-width: 998px) {
     display: none;
   }
 `

@@ -9,7 +9,8 @@ export const Wrapper = styled.nav`
   background-color: ${({ theme }) => theme.colors.secondaryBg};
   padding: 0 20px;
 
-  @media screen and (min-width: 978px) {
+  //hide when desktop navbar is able to show
+  @media screen and (min-width: 998px) {
     display: none;
   }
 `

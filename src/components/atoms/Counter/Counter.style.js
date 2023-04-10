@@ -8,16 +8,16 @@ export const CounterWrapper = styled.div`
 
 export const CounterNumber = styled.span`
   position: absolute;
-  top: ${({ hasCounter }) => (hasCounter ? '-14px' : '-11px')};
-  right: ${({ hasCounter }) => (hasCounter ? '-5px' : '-1px')};
+  top: ${({ hasCounter }) => (hasCounter ? '-14px' : '-13px')};
+  right: ${({ hasCounter }) => (hasCounter ? '-5px' : '-4px')};
 
   /* top: -14px; */
   /* right: -5px; */
   display: flex;
   align-items: center;
   justify-content: center;
-  width: ${({ hasCounter }) => (hasCounter ? '15px' : '10px')};
-  height: ${({ hasCounter }) => (hasCounter ? '15px' : '10px')};
+  width: ${({ hasCounter }) => (hasCounter ? '15px' : '13px')};
+  height: ${({ hasCounter }) => (hasCounter ? '15px' : '13px')};
 
   font-size: 7px;
   font-weight: 600;

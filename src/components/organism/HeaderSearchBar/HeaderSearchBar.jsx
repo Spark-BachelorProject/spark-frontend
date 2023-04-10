@@ -59,6 +59,12 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
           <SearchInput Icon={<SearchIcon />} />
         </LogoAndInputWrapper>
         <InnerIconsWrapperRight>
+          <NotificationBell count="3" isRed hasCounter />
+          {isOpen ? (
+            <Modal handleClose={handleCloseModal} position={position} width="big">
+              <BookmarkedContent />
+            </Modal>
+          ) : null}
           <IconBorder
             tabIndex="0"
             onClick={(e) => handleOpenBookmarksPopup(e)}
@@ -68,12 +74,6 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
             <BookmarkIcon />
             <Counter count="7" />
           </IconBorder>
-          <NotificationBell count="3" isRed hasCounter />
-          {isOpen ? (
-            <Modal handleClose={handleCloseModal} position={position} width="big">
-              <BookmarkedContent />
-            </Modal>
-          ) : null}
           <IconBorder
             tabIndex="0"
             onClick={toggleColorsTheme}

@@ -27,15 +27,32 @@ export const InnerWrapper = styled.div`
   }
 
   @media (min-width: ${({ theme }) => theme.breakPoints.m}) {
-    width: 3000px;
+    width: 100%;
     padding: 0 20px;
   }
 `
 
 export const LogoAndInputWrapper = styled.div`
   display: flex;
+  flex-basis: 80%;
   align-items: center;
   justify-content: flex-start;
+
+  @media (min-width: ${({ theme }) => theme.breakPoints.m}) {
+    & > div {
+      position: absolute;
+      left: 50vw;
+      width: 45%;
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakPoints.l}) {
+    & > div {
+      width: 55%;
+      max-width: 684px;
+    }
+  }
 `
 
 export const InnerIconsWrapperRight = styled.div`

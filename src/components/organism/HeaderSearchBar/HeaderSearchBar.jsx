@@ -22,12 +22,6 @@ import { Counter } from '@/components/atoms/Counter/Counter'
 // Add to BellIcon circle counter in the corner
 
 export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
-  const handleKeyDownOnChangeTheme = (e) => {
-    if (e.key === 'Enter') {
-      toggleColorsTheme()
-    }
-  }
-
   const {
     Modal,
     isOpen,
@@ -36,8 +30,13 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
     handleOpenAndPositionModal,
     modalOpenElementRef,
   } = useModal()
-
   const positioning = 'right'
+
+  const handleKeyDownOnChangeTheme = (e) => {
+    if (e.key === 'Enter') {
+      toggleColorsTheme()
+    }
+  }
 
   const handleOpenBookmarksPopup = () => {
     handleOpenAndPositionModal(modalOpenElementRef, positioning)

@@ -37,7 +37,7 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
     modalOpenElementRef,
   } = useModal()
 
-  const positioning = 'center'
+  const positioning = 'right'
 
   const handleOpenBookmarksPopup = () => {
     handleOpenAndPositionModal(modalOpenElementRef, positioning)

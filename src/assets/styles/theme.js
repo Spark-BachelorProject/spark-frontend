@@ -4,7 +4,7 @@ export const lightTheme = {
   primaryBg: '#f8fafc', //slate50
   selectBorder: '#f1f5f9', //slate100
   buttonBorder: '#E2E8F0', //slate200
-  divider: '#f1f5f9', //slate100
+  divider: '#E2E8F0', //slate200
   iconPrimary: '#94a3b8', //slate400
   iconSecondary: '#475569', //slate600
   selectFont: '#475569', //slate600
@@ -27,9 +27,7 @@ export const lightTheme = {
   titleFont: '#0F172A', //slate900
   tagFont: '#475569', //slate600
   detailsFont: '#233045', //slate750
-  buttonBg: '#3b82f6', //blue500
   labelFont: '#1e293b', // slate800
-  iconPrimaryActive: '#0f172a',
   modalBorder: '#f8fafc', //slate50
   modalBg: '#fff', //white
   inputBg: '#fff', //white
@@ -53,7 +51,7 @@ export const darkTheme = {
   textHeader: '#E2E8F0', //slate200
   selectFont: '#CBD5E1', //slate300
   iconPrimary: '#64748B', //slate500
-  divider: '#64748B', //slate500
+  divider: '#233045', //slate750
   iconBg: '#233045', //slate750
   selectBorder: '#233045', //slate750
   buttonBorder: '#233045', //slate750
@@ -96,6 +94,7 @@ export const theme = {
     xxl: '34px',
     xl: '24px',
     l: '18px',
+    mPlus: '16px',
     m: '15px',
     sPlus: '14px',
     s: '13px',

@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   height: 70px;
   position: sticky;
   top: 0;
-  z-index: 1;
 
   background-color: ${({ theme }) => theme.colors.secondaryBg};
   padding: 0 20px;

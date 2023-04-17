@@ -41,6 +41,7 @@ export const lightTheme = {
   counterBorder: '#fff', //white
   buttonOffColor: '#60a5fa', //blue400
   buttonOffFont: '#f1f5f9', //slate100
+  navigationInactive: '#64748B', //slate500
 }
 
 export const darkTheme = {
@@ -59,7 +60,7 @@ export const darkTheme = {
   modalBg: '#1e293b', //slate800
   primaryBg: '#0f172a', //slate900
   iconPlusBg: '#3b82f6', //blue500
-  buttonBg: '#3b82f6', //blue500
+  buttonBg: '#3B76F5', //blue550
   white: '#fff', //white
   black: '#000', //black
   labelFont: '#CBD5E1', // slate300
@@ -84,8 +85,9 @@ export const darkTheme = {
   bookmarkBg: '#233045', //slate750
   popupTriangle: '#233045', //slate100
   counterBorder: '#233045', //slate750
-  buttonOffColor: '#60a5fa', //blue400
+  buttonOffColor: '#3b82f6', //blue500
   buttonOffFont: '#f1f5f9', //slate100
+  navigationInactive: '#CBD5E1', //slate300
 }
 
 export const theme = {

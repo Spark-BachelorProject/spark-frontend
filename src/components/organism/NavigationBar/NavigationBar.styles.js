@@ -28,6 +28,10 @@ export const IconsWrapper = styled.div`
     stroke: ${({ theme }) => theme.colors.iconPrimary};
   }
 
+  & > a.${'active'} {
+    font-weight: 700;
+  }
+
   & > a.${'active'} > svg > path {
     stroke: ${({ theme }) => theme.colors.iconPrimaryActive};
   }

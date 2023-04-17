@@ -3,7 +3,6 @@ import { NavigationSection, Socials, Wrapper, SocialItem } from './DesktopNaviga
 import { NavLink } from 'react-router-dom'
 import { ReactComponent as HomeIcon } from '@/assets/icons/home.svg'
 import { ReactComponent as UsersIcon } from '@/assets/icons/users.svg'
-import { ReactComponent as TeamsIcon } from '@/assets/icons/teams.svg'
 import { ReactComponent as MapIcon } from '@/assets/icons/map.svg'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
@@ -21,10 +20,7 @@ export const DekstopNavigationBar = () => {
           <UsersIcon />
           Społeczności
         </NavLink>
-        <NavLink to="/teams">
-          <TeamsIcon />
-          Drużyny
-        </NavLink>
+
         <NavLink to="/map">
           <MapIcon />
           Mapa Aktywności

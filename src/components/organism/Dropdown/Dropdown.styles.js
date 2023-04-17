@@ -4,7 +4,6 @@ import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
 export const Wrapper = styled.div`
   height: auto;
   display: flex;
-  padding: 0 20px;
   justify-content: space-between;
 `
 

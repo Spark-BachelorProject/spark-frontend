@@ -20,25 +20,35 @@ export const NavigationSection = styled.nav`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 5px;
   position: relative;
   margin-bottom: 60px;
 
   & > a {
+    font-size: ${({ theme }) => theme.fontSize.l};
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 15px;
-    color: ${({ theme }) => theme.colors.iconPrimary};
+    color: ${({ theme }) => theme.colors.navigationInactive};
     text-decoration: none;
+    font-weight: 400;
+    padding: 10px 15px;
+    border-radius: 7px;
   }
   // TODO: check colors
   & > a.${'active'} {
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.colors.textHeader};
+    font-weight: 600;
+  }
+
+  & > a:hover {
+    background-color: ${({ theme }) => theme.colors.modalBg};
+    transition: 200ms ease-in-out;
   }
 
   & > a > svg > path {
-    stroke: ${({ theme }) => theme.colors.iconPrimary};
+    stroke: ${({ theme }) => theme.colors.navigationInactive};
   }
 
   & > a.${'active'} > svg > path {
@@ -61,6 +71,7 @@ export const Socials = styled.section`
   display: flex;
   flex-direction: column;
   position: relative;
+  padding: 10px 15px;
 
   & > ${Title} {
     margin-bottom: 25px;

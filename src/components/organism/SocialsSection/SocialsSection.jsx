@@ -34,7 +34,7 @@ const SocialsSection = () => {
           <Text>13 członków</Text>
         </div>
       </SocialItem>
-      <span isBold>Wszystkie</span>
+      <span>Wszystkie</span>
     </Wrapper>
   )
 }

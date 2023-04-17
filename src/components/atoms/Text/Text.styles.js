@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Text = styled.span`
-  font-weight: 400;
+  font-weight: ${({ isBold }) => (isBold ? 600 : 400)};
   display: flex;
   align-items: center;
   width: 100%;

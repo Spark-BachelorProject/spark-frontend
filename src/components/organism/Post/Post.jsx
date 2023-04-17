@@ -5,7 +5,6 @@ import { ReactComponent as ExpandVectorIcon } from '@/assets/icons/expand-vector
 import { ReactComponent as PinIcon } from '@/assets/icons/map-pin.svg'
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
-
 import { Title } from '@/components/atoms/Title/Title.styles'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
@@ -24,11 +23,12 @@ import {
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import Dot from '@/components/atoms/Dot/Dot'
 import AttendingList from '@/components/molecules/AttendingList/AttendingList'
-
-// TODO: expand comments
+import Comment from '@/components/molecules/Comment/Comment'
 
 const Post = () => {
-  const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(false)
+  const numberOfComments = 2 // its taken from api
+  const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(!(numberOfComments > 2))
+
   return (
     <Wrapper>
       <Header>
@@ -73,14 +73,21 @@ const Post = () => {
         Icon={<SendVectorIcon />}
         isAlwaysVisibleIcon
       />
-      <StyledText onClick={() => setCommentSectionIsOpen((prev) => !prev)}>
-        Pokaż komentarze (3) <ExpandVectorIcon />
+      <StyledText
+        onClick={() => setCommentSectionIsOpen((prev) => !prev)}
+        commentSectionIsOpen={commentSectionIsOpen}
+      >
+        {commentSectionIsOpen ? 'Schowaj' : 'Pokaż'} komentarze ({numberOfComments})
+        <ExpandVectorIcon />
       </StyledText>
       {commentSectionIsOpen ? (
         <CommentSection>
-          <Text>Comment1</Text>
-          <Text>Comment2</Text>
-          <Text>Comment3</Text>
+          <Comment userName={'Kasia Baran'} howLongAgo={18}>
+            Będę, postaram się nie spóżnić
+          </Comment>
+          <Comment userName={'Mariusz Siembida'} howLongAgo={13}>
+            Dzisiaj odpadam, ale następnym razem będę ;)
+          </Comment>
         </CommentSection>
       ) : null}
     </Wrapper>

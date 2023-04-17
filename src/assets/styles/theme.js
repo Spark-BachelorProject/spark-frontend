@@ -9,6 +9,7 @@ export const lightTheme = {
   iconSecondary: '#475569', //slate600
   selectFont: '#475569', //slate600
   inputFont: '#475569', //slate600
+  commentDetails: '#475569', //slate600
   textHeader: '#334155', //slate700
   white: '#fff', //white
   black: '#000', //black
@@ -49,6 +50,7 @@ export const darkTheme = {
   navbarBorder: '#334155', //slate700
   iconPrimaryActive: '#f8fafc', //slate50
   inputFont: '#e2e8f0', //slate200
+  commentDetails: '#e2e8f0', //slate200
   textHeader: '#E2E8F0', //slate200
   selectFont: '#CBD5E1', //slate300
   iconPrimary: '#64748B', //slate500

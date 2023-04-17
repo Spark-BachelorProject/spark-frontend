@@ -141,6 +141,12 @@ export const StyledText = styled(Text)`
   cursor: pointer;
   color: ${({ theme }) => theme.colors.placeholder};
   font-size: ${({ theme }) => theme.fontSize.s};
+
+  & > svg {
+    transition: transform 0.2s ease-in-out;
+    transform: translate(2px, 1px)
+      ${({ commentSectionIsOpen }) => (commentSectionIsOpen ? 'rotate(180deg)' : '')};
+  }
 `
 
 export const DetailsWrapper = styled.div`
@@ -166,4 +172,6 @@ export const DetailsWrapper = styled.div`
   }
 `
 
-export const CommentSection = styled.section``
+export const CommentSection = styled.section`
+  margin-top: 15px;
+`

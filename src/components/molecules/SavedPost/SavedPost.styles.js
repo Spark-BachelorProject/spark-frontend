@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
+import { ReactComponent as CanceledIcon } from '@/assets/icons/canceled.svg'
 
 export const Wrapper = styled.div`
+  position: relative;
   padding: 15px 5px;
   display: flex;
   align-items: center;
@@ -17,6 +19,13 @@ export const Wrapper = styled.div`
     background-color: ${({ theme }) => theme.colors.bookmarkBg};
     transition: background-color 200ms ease-in;
   }
+`
+
+export const StyledCanceledIcon = styled(CanceledIcon)`
+  position: absolute;
+  top: 60%;
+  left: 10%;
+  z-index: 100;
 `
 
 export const NameActivityWrapper = styled.div`
@@ -35,17 +44,14 @@ export const StyledThumbnail = styled(Thumbnail)`
 
 export const FirstRowText = styled(Text)`
   font-size: ${({ theme, isCancelled }) => (isCancelled ? theme.fontSize.s : theme.fontSize.m)};
-  color: ${({ theme, isCancelled }) =>
-    isCancelled ? theme.colors.checkboxTick : theme.colors.textHeader};
-  /* color: ${({ theme }) => theme.colors.textHeader}; */
+  color: ${({ theme }) => theme.colors.textHeader};
   font-weight: 500;
 `
 
 export const SecondRowText = styled(Text)`
   margin: ${({ isCancelled }) => (isCancelled ? '-3px 0 0 0' : '0')};
   font-size: ${({ theme }) => theme.fontSize.s};
-  color: ${({ theme, isCancelled }) =>
-    isCancelled ? theme.colors.checkboxTick : theme.colors.textHeader};
+  color: ${({ theme }) => theme.colors.textHeader};
 `
 
 export const TextWrapper = styled.div`

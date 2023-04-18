@@ -8,6 +8,7 @@ import {
   FirstRowText,
   SecondRowText,
   StyledThumbnail,
+  StyledCanceledIcon,
 } from './SavedPost.styles'
 
 export const SavedPost = ({ isCancelled, name, activity, place, adress }) => {
@@ -15,7 +16,9 @@ export const SavedPost = ({ isCancelled, name, activity, place, adress }) => {
     <Wrapper>
       <StyledThumbnail />
       <TextWrapper>
-        {isCancelled ? <CancelledText>Odwołane</CancelledText> : null}
+        {isCancelled ? <StyledCanceledIcon /> : null}
+        {isCancelled ? <CancelledText>Spotkanie odwołane</CancelledText> : null}
+
         <NameActivityWrapper isCancelled={isCancelled}>
           <FirstRowText isCancelled={isCancelled}>{name}</FirstRowText>
           <Dot />

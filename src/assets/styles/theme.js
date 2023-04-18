@@ -36,7 +36,7 @@ export const lightTheme = {
   checkboxBorder: '#e2e8f0', //slate200
   checkboxTick: '#64748B', //slate500
   accent: '#3b82f6', //blue500
-  redFont: '#FA3E2E', //red500
+  redFont: '#D71E3B', //red500
   bookmarkBg: '#FAFBFF', //custom
   popupTriangle: '#fff', //white
   counterBorder: '#fff', //white

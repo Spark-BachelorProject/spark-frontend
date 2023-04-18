@@ -17,9 +17,9 @@ export const SavedPost = ({ isCancelled, name, activity, place, adress }) => {
       <TextWrapper>
         {isCancelled ? <CancelledText>Odwołane</CancelledText> : null}
         <NameActivityWrapper isCancelled={isCancelled}>
-          <FirstRowText>{name}</FirstRowText>
+          <FirstRowText isCancelled={isCancelled}>{name}</FirstRowText>
           <Dot />
-          <FirstRowText>{activity}</FirstRowText>
+          <FirstRowText isCancelled={isCancelled}>{activity}</FirstRowText>
         </NameActivityWrapper>
         <SecondRowText isCancelled={isCancelled}>
           {place} - {adress}

@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
 `
 
 export const NameActivityWrapper = styled.div`
-  margin: ${({ isCancelled }) => (isCancelled ? `-7px 0 0 0` : '0')};
+  margin: ${({ isCancelled }) => (isCancelled ? `-4px 0 0 0` : '0')};
   display: flex;
   justify-content: start;
   align-content: center;
@@ -34,15 +34,18 @@ export const StyledThumbnail = styled(Thumbnail)`
 `
 
 export const FirstRowText = styled(Text)`
-  font-size: ${({ theme }) => theme.fontSize.m};
-  color: ${({ theme }) => theme.colors.textHeader};
+  font-size: ${({ theme, isCancelled }) => (isCancelled ? theme.fontSize.s : theme.fontSize.m)};
+  color: ${({ theme, isCancelled }) =>
+    isCancelled ? theme.colors.checkboxTick : theme.colors.textHeader};
+  /* color: ${({ theme }) => theme.colors.textHeader}; */
   font-weight: 500;
 `
 
 export const SecondRowText = styled(Text)`
-  margin: ${({ isCancelled }) => (isCancelled ? '-4px 0 0 0' : '0')};
+  margin: ${({ isCancelled }) => (isCancelled ? '-3px 0 0 0' : '0')};
   font-size: ${({ theme }) => theme.fontSize.s};
-  color: ${({ theme }) => theme.colors.checkboxTick};
+  color: ${({ theme, isCancelled }) =>
+    isCancelled ? theme.colors.checkboxTick : theme.colors.textHeader};
 `
 
 export const TextWrapper = styled.div`
@@ -51,7 +54,7 @@ export const TextWrapper = styled.div`
 `
 
 export const CancelledText = styled(Text)`
-  font-size: ${({ theme }) => theme.fontSize.s};
+  font-size: ${({ theme }) => theme.fontSize.xs};
   color: ${({ theme }) => theme.colors.redFont};
   font-weight: 500;
   opacity: 0.9;

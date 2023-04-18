@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   ${Text} {
     width: auto;
     color: ${({ theme }) => theme.colors.titleFont};
+    font-size: ${({ theme }) => theme.fontSize.m};
   }
 `
 
@@ -32,5 +33,6 @@ export const Details = styled.div`
 
   ${Text} {
     color: ${({ theme }) => theme.colors.commentDetails};
+    font-size: ${({ theme }) => theme.fontSize.m};
   }
 `

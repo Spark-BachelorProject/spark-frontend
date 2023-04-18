@@ -45,7 +45,7 @@ export const Wrapper = styled.nav`
     bottom: -30px;
     left: 0;
     width: 100%;
-    height: 1px;
+    height: 3px;
     background-color: ${({ theme }) => theme.colors.divider};
   }
 `

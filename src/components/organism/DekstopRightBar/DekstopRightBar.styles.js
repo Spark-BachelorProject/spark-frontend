@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
   max-width: 330px;
   height: calc(100vh - 70px);
   padding: 20px 20px;
+  position: sticky;
+  top: 70px;
 
   @media screen and (max-width: ${({ theme }) => theme.breakPoints.l}) {
     display: none;

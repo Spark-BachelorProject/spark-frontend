@@ -19,6 +19,7 @@ export const InnerWrapper = styled.div`
   height: 38px;
   align-items: center;
   justify-content: space-between;
+  max-width: 1314px; //1354px - 40px of padding
 
   @media (max-width: ${({ theme }) => theme.breakPoints.m}) {
     width: 650px;
@@ -26,7 +27,7 @@ export const InnerWrapper = styled.div`
 
   @media (min-width: ${({ theme }) => theme.breakPoints.m}) {
     width: 100%;
-    padding: 0 20px;
+    /* padding: 0 20px; */
   }
 `
 

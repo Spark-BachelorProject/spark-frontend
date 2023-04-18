@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.secondaryBg};
   padding: 0 20px;
   display: flex;
-  border-bottom: 3px solid ${({ theme }) => theme.colors.modalBorder};
 `
 
 export const InnerWrapper = styled.div`

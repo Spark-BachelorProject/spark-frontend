@@ -11,6 +11,7 @@ export const Wrapper = styled.section`
   & > ${Title} {
     margin-bottom: 25px;
     font-size: ${({ theme }) => theme.fontSize.mPlus};
+    font-weight: 600;
   }
 
   &::before {
@@ -19,19 +20,14 @@ export const Wrapper = styled.section`
     bottom: -30px;
     left: 0;
     width: 100%;
-    height: 1px;
+    height: 3px;
     background-color: ${({ theme }) => theme.colors.divider};
   }
-`
 
-export const SocialItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-
-  & > div {
-    display: flex;
-    gap: 10px;
-    flex-direction: row;
+  & > span {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: ${({ theme }) => theme.fontSize.sPlus};
+    color: ${({ theme }) => theme.colors.textHeader};
   }
 `

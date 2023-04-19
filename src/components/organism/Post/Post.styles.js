@@ -25,9 +25,14 @@ export const Wrapper = styled.article`
 
 export const Header = styled.div`
   display: grid;
-  grid-template-columns: 1fr 70% 1.7fr;
+  grid-template-columns: 0.5fr 85% 0.1fr;
+
   align-items: center;
   margin: 0 0 10px 0;
+
+  @media (min-width: ${({ theme }) => theme.breakPoints.mobile}) {
+    grid-template-columns: 0.5fr 90% 0.1fr;
+  }
 `
 
 export const Details = styled.div`

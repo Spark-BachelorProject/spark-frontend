@@ -9,13 +9,14 @@ export const Wrapper = styled.div`
   ${Text} {
     width: auto;
     color: ${({ theme }) => theme.colors.titleFont};
-    font-size: ${({ theme }) => theme.fontSize.m};
+    font-size: ${({ theme }) => theme.fontSize.sPlus};
   }
 `
 
 export const Details = styled.div`
   width: 100%;
   display: flex;
+  justify-content: start;
   flex-direction: row;
 
   & > div {
@@ -33,6 +34,6 @@ export const Details = styled.div`
 
   ${Text} {
     color: ${({ theme }) => theme.colors.commentDetails};
-    font-size: ${({ theme }) => theme.fontSize.m};
+    font-size: ${({ theme }) => theme.fontSize.sPlus};
   }
 `

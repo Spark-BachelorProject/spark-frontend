@@ -9,7 +9,7 @@ export const Wrapper = styled.nav`
   margin-bottom: 60px;
 
   & > a {
-    font-size: ${({ theme }) => theme.fontSize.l};
+    font-size: ${({ theme }) => theme.fontSize.m};
     display: flex;
     flex-direction: row;
     align-items: center;

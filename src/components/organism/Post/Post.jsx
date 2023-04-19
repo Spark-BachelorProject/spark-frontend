@@ -24,10 +24,32 @@ import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import Dot from '@/components/atoms/Dot/Dot'
 import AttendingList from '@/components/molecules/AttendingList/AttendingList'
 import Comment from '@/components/molecules/Comment/Comment'
+import useModal from '@/hooks/useModal'
+import { MoreInfoPost } from '../MoreInfoPost/MoreInfoPost'
 
 const Post = () => {
   const numberOfComments = 2 // its taken from api
   const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(!(numberOfComments > 2))
+
+  const {
+    Modal,
+    isOpen,
+    position,
+    handleCloseModal,
+    handleOpenAndPositionModal,
+    modalOpenElementRef,
+  } = useModal()
+  const positioning = 'right'
+
+  const handleOpenMoreInfoPopup = () => {
+    handleOpenAndPositionModal(modalOpenElementRef, positioning)
+  }
+
+  const handleCloseMoreInfoPopup = (e) => {
+    if (e.key !== 'Tab') {
+      handleOpenAndPositionModal(modalOpenElementRef, positioning)
+    }
+  }
 
   return (
     <Wrapper>
@@ -44,7 +66,19 @@ const Post = () => {
             <GlobeIcon />
           </div>
         </Details>
-        <StyledMoreInfoIcon />
+        <div
+          onClick={(e) => handleOpenMoreInfoPopup(e)}
+          onKeyDown={handleCloseMoreInfoPopup}
+          ref={modalOpenElementRef}
+        >
+          <StyledMoreInfoIcon />
+        </div>
+
+        {isOpen ? (
+          <Modal handleClose={handleCloseModal} position={position} width="small">
+            <MoreInfoPost />
+          </Modal>
+        ) : null}
       </Header>
       <DetailsWrapper>
         <PinIcon />
@@ -54,7 +88,9 @@ const Post = () => {
         <ClockIcon />
         <Text>Dzisiaj o 18:30</Text>
       </DetailsWrapper>
-      <Title isBold>Ktoś chętny na półtorej godziny grania na KULu? Mamy już przeciwnika</Title>
+      <Title isBold isBig>
+        Ktoś chętny na półtorej godziny grania na KULu? Mamy już przeciwnika
+      </Title>
       <Tags>
         <Button>Gramy na luzie</Button>
         <Button>Jeszcze 2 miejsca</Button>

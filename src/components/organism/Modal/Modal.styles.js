@@ -5,7 +5,7 @@ import { Button } from '@/components/atoms/Button/Button.styles'
 
 export const ModalWrapper = styled.div`
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.07);
-  position: fixed;
+  position: ${({ isFixed }) => (isFixed ? 'fixed' : 'absolute')};
   z-index: ${({ modalNum }) => 1000 + modalNum * 1 + 1};
   top: ${({ position: { y } }) => `${y}px`};
   left: ${({ position: { x } }) => `${x}px`};

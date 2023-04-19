@@ -70,6 +70,7 @@ const Post = () => {
           onClick={(e) => handleOpenMoreInfoPopup(e)}
           onKeyDown={handleCloseMoreInfoPopup}
           ref={modalOpenElementRef}
+          tabIndex={0}
         >
           <StyledMoreInfoIcon />
         </div>

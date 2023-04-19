@@ -2,18 +2,22 @@ import styled from 'styled-components'
 import { ReactComponent as PlusSquareIcon } from '@/assets/icons/plus-square.svg'
 
 export const Wrapper = styled.nav`
-  z-index: 999;
+  z-index: 99;
   width: 100vw;
   height: 70px;
   position: fixed;
   bottom: 0;
   background-color: ${({ theme }) => theme.colors.navbarBg};
   padding: 0 20px;
-  border-top: 2px solid ${({ theme }) => theme.colors.navbarBorder};
+
+  //hide when desktop navbar is able to show
+  @media screen and (min-width: 998px) {
+    display: none;
+  }
 `
 
 export const IconsWrapper = styled.div`
-  max-width: 476px;
+  max-width: 650px;
   display: flex;
   margin: 16px auto;
   height: 38px;
@@ -22,6 +26,10 @@ export const IconsWrapper = styled.div`
 
   & > a > svg > path {
     stroke: ${({ theme }) => theme.colors.iconPrimary};
+  }
+
+  & > a.${'active'} {
+    font-weight: 700;
   }
 
   & > a.${'active'} > svg > path {

@@ -4,12 +4,11 @@ import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
 export const Wrapper = styled.div`
   height: auto;
   display: flex;
-  padding: 0 20px;
-  justify-content: center;
+  justify-content: space-between;
 `
 
 export const ButtonsWrapper = styled.div`
-  width: ${({ theme }) => theme.breakPoints.mobile};
+  width: 800px;
   display: flex;
   justify-content: space-between;
 `

@@ -40,17 +40,8 @@ const sort = [
 // TODO: On Esc close modal
 
 export const Dropdown = () => {
-  const {
-    Modal,
-    isOpen,
-    position,
-    handleCloseModal,
-    handleOpenAndPositionModal,
-    modalOpenElementRef,
-  } = useModal()
   const [activitySelect, setActivitySelect] = useState(activity[0].value)
   const [sortSelect, setSortSelect] = useState(sort[0].value)
-  const positioning = 'right'
 
   const activityHandle = (e) => {
     setActivitySelect(e.target.value)
@@ -60,15 +51,24 @@ export const Dropdown = () => {
     setSortSelect(e.target.value)
   }
 
+  const {
+    Modal,
+    isOpen,
+    position,
+    handleCloseModal,
+    handleOpenAndPositionModal,
+    modalOpenElementRef,
+  } = useModal()
+
+  const positioning = 'right'
+
   const handleOpenFilterPopup = () => {
-    const { x, y, height } = modalOpenElementRef.current.getBoundingClientRect()
-    handleOpenAndPositionModal({ x, y, height }, positioning)
+    handleOpenAndPositionModal(modalOpenElementRef, positioning)
   }
 
   const handleCloseFilterPopup = (e) => {
     if (e.key !== 'Tab') {
-      const { x, y, height } = modalOpenElementRef.current.getBoundingClientRect()
-      handleOpenAndPositionModal({ x, y, height }, positioning)
+      handleOpenAndPositionModal(modalOpenElementRef, positioning)
     }
   }
 
@@ -98,7 +98,13 @@ export const Dropdown = () => {
         </StyledIconBorder>
       </ButtonsWrapper>
       {isOpen ? (
-        <Modal handleClose={handleCloseModal} position={position} textOnClose="Zapisz">
+        <Modal
+          handleClose={handleCloseModal}
+          position={position}
+          textOnClose="Zapisz"
+          hasCloseButton
+          width="medium"
+        >
           <Filters />
         </Modal>
       ) : null}

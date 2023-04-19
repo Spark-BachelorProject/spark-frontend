@@ -4,11 +4,12 @@ export const lightTheme = {
   primaryBg: '#f8fafc', //slate50
   selectBorder: '#f1f5f9', //slate100
   buttonBorder: '#E2E8F0', //slate200
-  divider: '#f1f5f9', //slate100
+  divider: '#E2E8F0', //slate200
   iconPrimary: '#94a3b8', //slate400
   iconSecondary: '#475569', //slate600
   selectFont: '#475569', //slate600
   inputFont: '#475569', //slate600
+  commentDetails: '#475569', //slate600
   textHeader: '#334155', //slate700
   white: '#fff', //white
   black: '#000', //black
@@ -27,16 +28,21 @@ export const lightTheme = {
   titleFont: '#0F172A', //slate900
   tagFont: '#475569', //slate600
   detailsFont: '#233045', //slate750
-  buttonBg: '#3b82f6', //blue500
   labelFont: '#1e293b', // slate800
-  iconPrimaryActive: '#0f172a',
-  modalBorder: '#fff', //slate100
+  modalBorder: '#f8fafc', //slate50
   modalBg: '#fff', //white
   inputBg: '#fff', //white
   checkboxBg: '#fff', //white
   checkboxBorder: '#e2e8f0', //slate200
   checkboxTick: '#64748B', //slate500
   accent: '#3b82f6', //blue500
+  redFont: '#D71E3B', //red500
+  bookmarkBg: '#FAFBFF', //custom
+  popupTriangle: '#fff', //white
+  counterBorder: '#fff', //white
+  buttonOffColor: '#60a5fa', //blue400
+  buttonOffFont: '#f1f5f9', //slate100
+  navigationInactive: '#64748B', //slate500
 }
 
 export const darkTheme = {
@@ -44,10 +50,11 @@ export const darkTheme = {
   navbarBorder: '#334155', //slate700
   iconPrimaryActive: '#f8fafc', //slate50
   inputFont: '#e2e8f0', //slate200
+  commentDetails: '#e2e8f0', //slate200
   textHeader: '#E2E8F0', //slate200
   selectFont: '#CBD5E1', //slate300
   iconPrimary: '#64748B', //slate500
-  divider: '#64748B', //slate500
+  divider: '#233045', //slate750
   iconBg: '#233045', //slate750
   selectBorder: '#233045', //slate750
   buttonBorder: '#233045', //slate750
@@ -55,7 +62,7 @@ export const darkTheme = {
   modalBg: '#1e293b', //slate800
   primaryBg: '#0f172a', //slate900
   iconPlusBg: '#3b82f6', //blue500
-  buttonBg: '#3b82f6', //blue500
+  buttonBg: '#3B76F5', //blue550
   white: '#fff', //white
   black: '#000', //black
   labelFont: '#CBD5E1', // slate300
@@ -74,8 +81,15 @@ export const darkTheme = {
   inputBg: '#233045', //slate750
   checkboxBg: '#233045', //slate750
   checkboxBorder: '#334155', //slate700
-  checkboxTick: '#fff', //white
+  checkboxTick: '#CBD5E1', //slate300
   accent: '#3b82f6', //blue500
+  redFont: '#D71E3B', //custom red
+  bookmarkBg: '#233045', //slate750
+  popupTriangle: '#233045', //slate100
+  counterBorder: '#233045', //slate750
+  buttonOffColor: '#3b82f6', //blue500
+  buttonOffFont: '#f1f5f9', //slate100
+  navigationInactive: '#CBD5E1', //slate300
 }
 
 export const theme = {
@@ -84,6 +98,7 @@ export const theme = {
     xxl: '34px',
     xl: '24px',
     l: '18px',
+    mPlus: '16px',
     m: '15px',
     sPlus: '14px',
     s: '13px',

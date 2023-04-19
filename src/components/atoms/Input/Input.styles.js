@@ -20,4 +20,7 @@ export const Input = styled.input`
   &[type='time']::-webkit-calendar-picker-indicator {
     display: none;
   }
+  &[type='time'] {
+    padding: 11px 19px;
+  }
 `

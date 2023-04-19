@@ -131,7 +131,7 @@ export const StyledSearchInput = styled(SearchInput)`
     background-color: ${({ theme }) => theme.colors.mainDivider};
   }
 
-  input::placeholder {
+  & > input::placeholder {
     color: ${({ theme }) => theme.colors.placeholder};
     font-weight: 300;
   }
@@ -141,6 +141,17 @@ export const StyledText = styled(Text)`
   cursor: pointer;
   color: ${({ theme }) => theme.colors.placeholder};
   font-size: ${({ theme }) => theme.fontSize.s};
+  font-weight: 500;
+
+  & > svg {
+    transition: transform 0.2s ease-in-out;
+    transform: translate(2px, 1px)
+      ${({ commentSectionIsOpen }) => (commentSectionIsOpen ? 'rotate(180deg)' : '')};
+  }
+
+  & > svg > path {
+    color: ${({ theme }) => theme.colors.white};
+  }
 `
 
 export const DetailsWrapper = styled.div`
@@ -155,15 +166,17 @@ export const DetailsWrapper = styled.div`
     color: ${({ theme }) => theme.colors.detailsFont};
   }
 
-  svg {
+  & > svg {
     height: 14px;
     width: 14px;
     margin-right: 6px;
   }
 
-  svg > path {
+  & > svg > path {
     stroke: ${({ theme }) => theme.colors.detailsFont};
   }
 `
 
-export const CommentSection = styled.section``
+export const CommentSection = styled.section`
+  margin-top: 15px;
+`

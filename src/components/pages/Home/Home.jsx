@@ -6,7 +6,7 @@ import { PageContent } from '@/components/templates/PageContent/PageContent'
 
 const Home = () => {
   return (
-    <PageContent>
+    <PageContent hasNavigation hasRightBar>
       <TitleBar city="Lublinie" />
       <Dropdown />
       <Post />

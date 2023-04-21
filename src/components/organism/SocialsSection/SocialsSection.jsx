@@ -10,7 +10,7 @@ const SocialsSection = () => {
   return (
     <Wrapper>
       <Title isBig isBold>
-        Twoje Społeczności
+        Twoje Grupy
       </Title>
       <SocialItem TitleText="Pollub Hala" ActivityName="Futsal" Members={32} />
       <SocialItem TitleText="Węglin Nordic Walking" ActivityName="Nordic Walking" Members={8} />

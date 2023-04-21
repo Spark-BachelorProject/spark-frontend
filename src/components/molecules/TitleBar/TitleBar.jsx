@@ -5,8 +5,8 @@ import { Wrapper } from './TitleBar.styles'
 export const TitleBar = ({ city }) => {
   return (
     <Wrapper>
-      <Title>
-        Aktualne aktywności w <span>{city}</span>
+      <Title isBold isBig>
+        To dzieje się w <span>{city}</span>!
       </Title>
     </Wrapper>
   )

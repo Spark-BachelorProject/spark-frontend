@@ -12,13 +12,13 @@ const NavigationSection = () => {
         <HomeIcon />
         Wszystkie
       </NavLink>
-      <NavLink to="/users">
-        <UsersIcon />
-        Społeczności
-      </NavLink>
       <NavLink to="/map">
         <MapIcon />
-        Mapa Aktywności
+        Mapa
+      </NavLink>
+      <NavLink to="/users">
+        <UsersIcon />
+        Grupy
       </NavLink>
     </Wrapper>
   )

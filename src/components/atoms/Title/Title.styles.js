@@ -6,6 +6,8 @@ export const Title = styled.h1`
   font-weight: ${({ isBold }) => (isBold ? 500 : 400)};
 
   span {
-    font-weight: 700;
+    font-size: ${({ theme }) => theme.fontSize.l};
+
+    font-weight: 500;
   }
 `

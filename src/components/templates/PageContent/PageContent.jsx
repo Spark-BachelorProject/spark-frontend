@@ -4,12 +4,12 @@ import { DekstopNavigationBar } from '@/components/organism/DekstopNavigationBar
 
 import { DekstopRightBar } from '@/components/organism/DekstopRightBar/DekstopRightBar'
 
-export const PageContent = ({ children }) => {
+export const PageContent = ({ children, hasNavigation, hasRightBar }) => {
   return (
     <Wrapper>
-      <DekstopNavigationBar />
+      {hasNavigation ? <DekstopNavigationBar /> : null}
       <InnerWrapper>{children}</InnerWrapper>
-      <DekstopRightBar />
+      {hasRightBar ? <DekstopRightBar /> : null}
     </Wrapper>
   )
 }

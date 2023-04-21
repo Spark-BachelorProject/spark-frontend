@@ -10,7 +10,7 @@ const NavigationSection = () => {
     <Wrapper>
       <NavLink to="/">
         <HomeIcon />
-        Wszystkie
+        Tablica
       </NavLink>
       <NavLink to="/map">
         <MapIcon />

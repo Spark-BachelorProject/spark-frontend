@@ -14,7 +14,7 @@ export const Wrapper = styled.article`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border: 2px solid ${({ theme }) => theme.colors.postBorder};
+  border: 1px solid ${({ theme }) => theme.colors.postBorder};
   border-radius: 6px;
 
   ${Title} {

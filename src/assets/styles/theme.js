@@ -5,6 +5,7 @@ export const lightTheme = {
   selectBorder: '#f1f5f9', //slate100
   buttonBorder: '#E2E8F0', //slate200
   divider: '#E2E8F0', //slate200
+  darkDivider: '#E2E8F0', //slate200
   iconPrimary: '#94a3b8', //slate400
   iconSecondary: '#475569', //slate600
   selectFont: '#475569', //slate600
@@ -18,7 +19,7 @@ export const lightTheme = {
   iconPlusBg: '#3b82f6', //blue500
   buttonBg: '#3B82F6', //blue500
   iconPrimaryActive: '#0f172a',
-  text: '#64748B', //slate500
+  text: '#475569', //slate600
   boldText: '#1e293b', //slate800
   postBorder: '#f1f5f9', //slate100
   mainDivider: '#f8fafc', //slate50
@@ -55,6 +56,7 @@ export const darkTheme = {
   selectFont: '#CBD5E1', //slate300
   iconPrimary: '#64748B', //slate500
   divider: '#233045', //slate750
+  darkDivider: '#172233',
   iconBg: '#233045', //slate750
   selectBorder: '#233045', //slate750
   buttonBorder: '#233045', //slate750

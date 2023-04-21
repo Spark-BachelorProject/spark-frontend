@@ -1,16 +1,18 @@
 import styled from 'styled-components'
+import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: -10px;
   border-radius: 5px;
-  padding: 10px;
+  padding: 8px 0;
+  margin-left: -20px;
+  padding: 8px 20px;
   cursor: pointer;
 
   & > div {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     flex-direction: row;
   }
 
@@ -19,3 +21,5 @@ export const Wrapper = styled.div`
     transition: 200ms ease-in-out;
   }
 `
+
+export const StyledText = styled(Text)``

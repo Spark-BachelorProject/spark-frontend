@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { ReactComponent as PlusSquareIcon } from '@/assets/icons/plus-square.svg'
 
 export const Wrapper = styled.nav`
-  z-index: 99;
+  z-index: 9999;
   width: 100vw;
   height: 70px;
   position: fixed;

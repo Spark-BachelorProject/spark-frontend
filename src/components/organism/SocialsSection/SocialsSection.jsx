@@ -1,8 +1,5 @@
 import React from 'react'
 import { Title } from '@/components/atoms/Title/Title.styles'
-// import { Text } from '@/components/atoms/Text/Text.styles'
-// import Dot from '@/components/atoms/Dot/Dot'
-// import { SocialItem, Wrapper } from './SocialSection.styles'
 import { Wrapper } from './SocialSection.styles'
 import { SocialItem } from '@/components/molecules/SocialItem/SocialItem'
 

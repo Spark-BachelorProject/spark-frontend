@@ -3,10 +3,7 @@ import React from 'react'
 import { SavedPost } from '@/components/molecules/SavedPost/SavedPost'
 import { Wrapper, HeadingWrapper, StyledMoreInfoIcon } from './BookmarkedContent.styles'
 import useModal from '@/hooks/useModal'
-import styled from 'styled-components'
 import { MoreInfoBookmark } from '../MoreInfoBookmark/MoreInfoBookmark'
-
-const FunctionWrapper = styled.div``
 
 export const BookmarkedContent = () => {
   const {
@@ -17,7 +14,6 @@ export const BookmarkedContent = () => {
     handleOpenAndPositionModal,
     modalOpenElementRef,
   } = useModal()
-
   const positioning = 'right'
 
   const handleOpenBookmarksPopup = () => {
@@ -34,15 +30,15 @@ export const BookmarkedContent = () => {
     <Wrapper>
       <HeadingWrapper>
         <Title>Zapisane aktywności</Title>
-        <FunctionWrapper
+        <div
           onClick={(e) => handleOpenBookmarksPopup(e)}
           onKeyDown={handleCloseBookmarksPopup}
           ref={modalOpenElementRef}
         >
           <StyledMoreInfoIcon />
-        </FunctionWrapper>
+        </div>
         {isOpen ? (
-          <Modal handleClose={handleCloseModal} position={position} width="small">
+          <Modal handleClose={handleCloseModal} position={position} width="small" isFixed>
             <MoreInfoBookmark />
           </Modal>
         ) : null}

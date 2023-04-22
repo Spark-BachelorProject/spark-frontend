@@ -22,7 +22,7 @@ import {
 } from './Post.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import Dot from '@/components/atoms/Dot/Dot'
-import AttendingList from '@/components/molecules/AttendingList/AttendingList'
+import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
 import Comment from '@/components/molecules/Comment/Comment'
 import useModal from '@/hooks/useModal'
 import { MoreInfoPost } from '../MoreInfoPost/MoreInfoPost'
@@ -40,6 +40,25 @@ const Post = () => {
     modalOpenElementRef,
   } = useModal()
   const positioning = 'right'
+
+  const {
+    Modal: Modal2,
+    isOpen: isOpen2,
+    position: position2,
+    handleCloseModal: handleCloseModal2,
+    handleOpenAndPositionModal: handleOpenAndPositionModal2,
+    modalOpenElementRef: modalOpenElementRef2,
+  } = useModal()
+
+  const handleOpenAttendanceList = () => {
+    handleOpenAndPositionModal2(modalOpenElementRef2, positioning)
+  }
+
+  const handleCloseAttendanceList = (e) => {
+    if (e.key !== 'Tab') {
+      handleOpenAndPositionModal2(modalOpenElementRef2, positioning)
+    }
+  }
 
   const handleOpenMoreInfoPopup = () => {
     handleOpenAndPositionModal(modalOpenElementRef, positioning)
@@ -98,7 +117,19 @@ const Post = () => {
         <Button>Potem na harnasia</Button>
       </Tags>
       <InteractionsSection>
-        <AttendingList numOfAttender={4} />
+        <div
+          onClick={(e) => handleOpenAttendanceList(e)}
+          onKeyDown={handleCloseAttendanceList}
+          ref={modalOpenElementRef2}
+          tabIndex={0}
+        >
+          <AttendanceList numOfAttender={4} />
+        </div>
+        {isOpen2 ? (
+          <Modal2 handleClose={handleCloseModal2} position={position2} width="small">
+            <div>hello that</div>
+          </Modal2>
+        ) : null}
         <Button isBig>
           <UserCheckIcon />
           Będę

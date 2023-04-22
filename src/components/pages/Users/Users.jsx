@@ -1,13 +1,15 @@
 import { PageContent } from '@/components/templates/PageContent/PageContent'
-import { Title } from '@/components/atoms/Title/Title.styles'
 import React from 'react'
-import { ContentDummy } from './Users.styles'
+import styled from 'styled-components'
+
+export const ContentDummy = styled.div`
+  width: 684px;
+`
 
 const Users = () => {
   return (
-    <PageContent>
-      <ContentDummy></ContentDummy>
-      <Title isBig>Users</Title>
+    <PageContent hasNavigation hasRightBar>
+      <ContentDummy>Grupy</ContentDummy>
     </PageContent>
   )
 }

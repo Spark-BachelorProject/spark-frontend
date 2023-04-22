@@ -13,7 +13,7 @@ import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
 import { ReactComponent as SearchIcon } from '@/assets/icons/search.svg'
 import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
-import { BookmarkedContent } from '../BookmarkedContent/BookmarkedContent'
+import { BookmarkedContent } from '@/components/organism/BookmarkedContent/BookmarkedContent'
 import { NotificationBell } from '@/components/molecules/NotificationBell/NotificationBell'
 import useModal from '@/hooks/useModal'
 import { Counter } from '@/components/atoms/Counter/Counter'
@@ -60,7 +60,7 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
         <InnerIconsWrapperRight>
           <NotificationBell count="3" isRed hasCounter />
           {isOpen ? (
-            <Modal handleClose={handleCloseModal} position={position} width="big">
+            <Modal handleClose={handleCloseModal} position={position} width="big" isFixed>
               <BookmarkedContent />
             </Modal>
           ) : null}

@@ -9,21 +9,21 @@ export const Wrapper = styled.nav`
   margin-bottom: 60px;
 
   & > a {
-    font-size: ${({ theme }) => theme.fontSize.l};
+    font-size: ${({ theme }) => theme.fontSize.mPlus};
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 15px;
     color: ${({ theme }) => theme.colors.navigationInactive};
     text-decoration: none;
-    font-weight: 400;
-    padding: 10px 15px;
+    font-weight: 600;
+    padding: 14px 15px;
     border-radius: 7px;
   }
   // TODO: check colors
   & > a.${'active'} {
     color: ${({ theme }) => theme.colors.textHeader};
-    font-weight: 600;
+    font-weight: 700;
   }
 
   & > a:hover {
@@ -46,6 +46,6 @@ export const Wrapper = styled.nav`
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: ${({ theme }) => theme.colors.divider};
+    background-color: ${({ theme }) => theme.colors.darkDivider};
   }
 `

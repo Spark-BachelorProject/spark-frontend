@@ -2,11 +2,15 @@ import styled from 'styled-components'
 
 export const Text = styled.span`
   font-weight: ${({ isBold }) => (isBold ? 600 : 400)};
+  font-size: ${({ isBig, theme }) => (isBig ? theme.fontSize.sPlus : theme.fontSize.s)};
+
+  /* background-color: ${({ isRed, theme }) =>
+    isRed ? theme.colors.redFont : theme.colors.accent}; */
+
   display: flex;
   align-items: center;
   width: 100%;
   color: ${({ theme }) => theme.colors.text};
-  font-size: ${({ theme }) => theme.fontSize.s};
   width: max-content;
 
   & > svg {

@@ -9,7 +9,7 @@ export const Wrapper = styled.section`
   padding: 10px 15px;
 
   & > ${Title} {
-    margin-bottom: 25px;
+    margin-bottom: 13px;
     font-size: ${({ theme }) => theme.fontSize.mPlus};
     font-weight: 600;
   }
@@ -21,13 +21,19 @@ export const Wrapper = styled.section`
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: ${({ theme }) => theme.colors.divider};
+    background-color: ${({ theme }) => theme.colors.darkDivider};
   }
 
   & > span {
+    cursor: pointer;
     margin-top: 15px;
     font-weight: 600;
-    font-size: ${({ theme }) => theme.fontSize.sPlus};
+    font-size: ${({ theme }) => theme.fontSize.s};
+    color: ${({ theme }) => theme.colors.text};
+  }
+
+  & > span:hover {
     color: ${({ theme }) => theme.colors.textHeader};
+    transition: 100ms ease-in-out;
   }
 `

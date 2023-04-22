@@ -10,15 +10,15 @@ const NavigationSection = () => {
     <Wrapper>
       <NavLink to="/">
         <HomeIcon />
-        Wszystkie
-      </NavLink>
-      <NavLink to="/users">
-        <UsersIcon />
-        Społeczności
+        Tablica
       </NavLink>
       <NavLink to="/map">
         <MapIcon />
-        Mapa Aktywności
+        Mapa
+      </NavLink>
+      <NavLink to="/users">
+        <UsersIcon />
+        Grupy
       </NavLink>
     </Wrapper>
   )

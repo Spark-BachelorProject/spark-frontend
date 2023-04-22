@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledSelect = styled.select`
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
   height: 35px;
   width: auto;
   cursor: pointer;
@@ -9,9 +9,10 @@ export const StyledSelect = styled.select`
   border-radius: 4px;
   color: ${({ theme }) => theme.colors.selectFont};
   padding: 5px 15px;
-  margin-right: 5px;
-  font-size: 13px;
-  border: 2px solid ${({ theme }) => theme.colors.selectBorder};
+  margin-right: 10px;
+  font-size: ${({ theme }) => theme.fontSize.sPlus};
+  font-weight: 500;
+  border: 1px solid ${({ theme }) => theme.colors.selectBorder};
 
   &:focus {
     outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};

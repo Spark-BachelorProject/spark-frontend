@@ -26,9 +26,10 @@ import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList
 import Comment from '@/components/molecules/Comment/Comment'
 import useModal from '@/hooks/useModal'
 import { MoreInfoPost } from '../MoreInfoPost/MoreInfoPost'
+import { AttendingContent } from '../AttendingContent/AttendingContent'
 
 const Post = () => {
-  const numberOfComments = 2 // its taken from api
+  const numberOfComments = 3 // its taken from api
   const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(!(numberOfComments > 2))
 
   const {
@@ -108,9 +109,7 @@ const Post = () => {
         <ClockIcon />
         <Text>Dzisiaj o 18:30</Text>
       </DetailsWrapper>
-      <Title isBold isBig>
-        Ktoś chętny na półtorej godziny grania na KULu? Mamy już przeciwnika
-      </Title>
+      <Title isBig>Ktoś chętny na półtorej godziny grania na KULu? Mamy już przeciwnika</Title>
       <Tags>
         <Button>Gramy na luzie</Button>
         <Button>Jeszcze 2 miejsca</Button>
@@ -127,7 +126,7 @@ const Post = () => {
         </div>
         {isOpen2 ? (
           <Modal2 handleClose={handleCloseModal2} position={position2} width="small">
-            <div>hello that</div>
+            <AttendingContent />
           </Modal2>
         ) : null}
         <Button isBig>

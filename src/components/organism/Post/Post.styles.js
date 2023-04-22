@@ -154,7 +154,7 @@ export const StyledSearchInput = styled(SearchInput)`
 
 export const StyledText = styled(Text)`
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.placeholder};
+  color: ${({ theme }) => theme.colors.text};
   font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: 500;
 

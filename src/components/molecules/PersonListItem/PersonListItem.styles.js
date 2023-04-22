@@ -9,10 +9,10 @@ export const Wrapper = styled.div`
   align-items: center;
 
   ${Title} {
-    color: ${({ theme }) => theme.colors.textHeader};
+    color: ${({ theme }) => theme.colors.text};
   }
 
   ${Title}:hover {
-    font-weight: 500;
+    color: ${({ theme }) => theme.colors.textHeader};
   }
 `

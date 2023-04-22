@@ -13,6 +13,7 @@ const Modal = ({
   hasCloseButton,
   width,
   isFixed,
+  isSecondModal,
 }) => {
   const modalNode = document.createElement('div')
   const [modalNum, setModalNum] = useState(
@@ -32,7 +33,13 @@ const Modal = ({
   return ReactDOM.createPortal(
     <>
       <ModalBackground onClick={handleClose} modalNum={modalNum} isFixed={isFixed} />
-      <ModalWrapper position={position} width={width} modalNum={modalNum} isFixed={isFixed}>
+      <ModalWrapper
+        position={position}
+        width={width}
+        modalNum={modalNum}
+        isFixed={isFixed}
+        isSecondModal={isSecondModal}
+      >
         {children}
         {hasCloseButton ? <Button onClick={handleClose}>{textOnClose}</Button> : null}
       </ModalWrapper>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Wrapper } from './DekstopRightBar.styles'
 import { SocialItem } from '@/components/molecules/SocialItem/SocialItem'
-import { Container, StyledContainer, StyledTitle } from './DekstopRightBar.styles'
+import { Container, StyledContainer, StyledTitle, StyledSocialItem } from './DekstopRightBar.styles'
 import { PersonListItem } from '@/components/molecules/PersonListItem/PersonListItem'
 
 export const DekstopRightBar = () => {
@@ -23,7 +23,7 @@ export const DekstopRightBar = () => {
         <StyledTitle isBig isBold>
           Sporty dla Ciebie
         </StyledTitle>
-        <SocialItem ActivityName="Tenis" WeeklyPostCount={7} />
+        <StyledSocialItem ActivityName="Tenis" WeeklyPostCount={7} />
         <SocialItem ActivityName="Squash" WeeklyPostCount={6} />
       </Container>
       <StyledContainer>

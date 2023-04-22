@@ -44,12 +44,12 @@ export const Details = styled.div`
 
     ${Text} {
       margin-bottom: 0.5px;
-      font-size: ${({ theme }) => theme.fontSize.s};
+      font-size: ${({ theme }) => theme.fontSize.sPlus};
     }
 
     & > b {
       cursor: pointer;
-      font-weight: 500;
+      font-weight: 600;
       font-size: ${({ theme }) => theme.fontSize.m};
       color: ${({ theme }) => theme.colors.boldText};
     }
@@ -63,7 +63,8 @@ export const Details = styled.div`
 
     ${Text} {
       color: ${({ theme }) => theme.colors.boldText};
-      font-size: ${({ theme }) => theme.fontSize.s};
+      font-size: ${({ theme }) => theme.fontSize.sPlus};
+      font-weight: 500;
     }
 
     & > svg > path {
@@ -75,7 +76,7 @@ export const Details = styled.div`
 export const StyledMoreInfoIcon = styled(MoreInfoIcon)`
   margin-left: auto;
   cursor: pointer;
-  scale: 1.1;
+  scale: 1.2;
   & path {
     stroke: ${({ theme }) => theme.colors.textHeader};
   }
@@ -85,12 +86,20 @@ export const Tags = styled.section`
   margin: 15px 0 0 0;
 
   ${Button} {
-    padding: 6px 14px;
+    padding: 7px 14px;
     background-color: ${({ theme }) => theme.colors.iconBg};
     border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
+    font-size: ${({ theme }) => theme.fontSize.m};
+
     color: ${({ theme }) => theme.colors.tagFont};
     margin: 12px 12px 0px 0;
-    font-weight: 400;
+    font-weight: 500;
+  }
+
+  ${Button}:hover {
+    color: ${({ theme }) => theme.colors.white};
+
+    background-color: ${({ theme }) => theme.colors.accent};
   }
 `
 
@@ -103,7 +112,8 @@ export const InteractionsSection = styled.section`
     display: flex;
     gap: 10px;
     align-items: center;
-    color: ${({ theme }) => theme.colors.buttonFont};
+    color: ${({ theme }) => theme.colors.buttonText};
+    font-weight: 500;
   }
 `
 
@@ -162,23 +172,22 @@ export const StyledText = styled(Text)`
 export const DetailsWrapper = styled.div`
   margin: 10px 0 0px 0;
   display: flex;
-  justify-content: start;
   align-items: center;
 
   ${Text} {
     font-weight: 500;
-    font-size: 14px;
+    font-size: ${({ theme }) => theme.fontSize.m};
     color: ${({ theme }) => theme.colors.detailsFont};
   }
 
   & > svg {
-    height: 14px;
-    width: 14px;
-    margin-right: 6px;
+    height: 18px;
+    width: 18px;
+    margin-right: 10px;
   }
 
   & > svg > path {
-    stroke: ${({ theme }) => theme.colors.detailsFont};
+    stroke: ${({ theme }) => theme.colors.text};
   }
 `
 

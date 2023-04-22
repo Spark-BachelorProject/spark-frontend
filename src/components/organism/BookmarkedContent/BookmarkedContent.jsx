@@ -38,7 +38,7 @@ export const BookmarkedContent = () => {
           <StyledMoreInfoIcon />
         </div>
         {isOpen ? (
-          <Modal handleClose={handleCloseModal} position={position} width="small" isFixed>
+          <Modal handleClose={handleCloseModal} position={position} width="big" isFixed>
             <MoreInfoBookmark />
           </Modal>
         ) : null}

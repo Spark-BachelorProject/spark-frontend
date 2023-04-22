@@ -99,7 +99,7 @@ const Post = () => {
       </Tags>
       <InteractionsSection>
         <AttendingList numOfAttender={4} />
-        <Button>
+        <Button isBig>
           <UserCheckIcon />
           Będę
         </Button>

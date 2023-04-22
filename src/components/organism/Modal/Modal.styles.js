@@ -4,7 +4,7 @@ import { Button } from '@/components/atoms/Button/Button.styles'
 //TODO: Make double Modals escapable (as for now you have to click outside the outer one)
 
 export const ModalWrapper = styled.div`
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.07);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.07);
   position: ${({ isFixed }) => (isFixed ? 'fixed' : 'absolute')};
   z-index: ${({ modalNum }) => 1000 + modalNum * 1 + 1};
   top: ${({ position: { y } }) => `${y}px`};
@@ -17,7 +17,8 @@ export const ModalWrapper = styled.div`
       ? 'translateX(-15%)'
       : 'translateX(-50%)'};
 
-  width: ${({ width }) => (width === 'big' ? '330px' : width === 'medium' ? '280px' : '260px')};
+  /* width: ${({ width }) =>
+    width === 'big' ? '330px' : width === 'medium' ? '280px' : '260px'}; */
   height: auto;
   max-height: 500px;
   background-color: ${({ theme }) => theme.colors.modalBg};

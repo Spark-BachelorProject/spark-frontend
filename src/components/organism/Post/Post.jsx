@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ReactComponent as UserCheckIcon } from '@/assets/icons/user-check.svg'
+// import { ReactComponent as UserCheckIcon } from '@/assets/icons/user-check.svg'
 import { ReactComponent as SendVectorIcon } from '@/assets/icons/send-vector.svg'
 import { ReactComponent as ExpandVectorIcon } from '@/assets/icons/expand-vector.svg'
 import { ReactComponent as PinIcon } from '@/assets/icons/map-pin.svg'
@@ -101,15 +101,17 @@ const Post = () => {
           </Modal>
         ) : null}
       </Header>
+      <Title isBig isBold>
+        Ktoś chętny na półtorej godziny grania na KULu? Mamy już przeciwnika
+      </Title>
       <DetailsWrapper>
         <PinIcon />
-        <Text>Hala Politechniki Lubelskiej, Kraśnicka 12</Text>
+        <Text>Hala Politechniki Lubelskiej - Kraśnicka 12</Text>
       </DetailsWrapper>
       <DetailsWrapper>
         <ClockIcon />
         <Text>Dzisiaj o 18:30</Text>
       </DetailsWrapper>
-      <Title isBig>Ktoś chętny na półtorej godziny grania na KULu? Mamy już przeciwnika</Title>
       <Tags>
         <Button>Gramy na luzie</Button>
         <Button>Jeszcze 2 miejsca</Button>
@@ -129,9 +131,9 @@ const Post = () => {
             <AttendingContent />
           </Modal2>
         ) : null}
-        <Button isBig>
-          <UserCheckIcon />
-          Będę
+        <Button borderOnly>
+          {/* <UserCheckIcon /> */}
+          Zgłoś obecność
         </Button>
       </InteractionsSection>
       <StyledSearchInput

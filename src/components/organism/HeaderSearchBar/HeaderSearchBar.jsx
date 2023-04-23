@@ -8,6 +8,8 @@ import {
   InnerWrapper,
   LogoAndInputWrapper,
   InnerIconsWrapperRight,
+  StyledThumbnail,
+  StyledIconBorder,
 } from './HeaderSearchBar.styles'
 import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
@@ -17,6 +19,7 @@ import { BookmarkedContent } from '@/components/organism/BookmarkedContent/Bookm
 import { NotificationBell } from '@/components/molecules/NotificationBell/NotificationBell'
 import useModal from '@/hooks/useModal'
 import { Counter } from '@/components/atoms/Counter/Counter'
+import { ProfileContent } from '../ProfileContent/ProfileContent'
 
 // TODO:
 // Add to BellIcon circle counter in the corner
@@ -31,6 +34,16 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
     handleOpenAndPositionModal,
     modalOpenElementRef,
   } = useModal(null, isHeaderSearchBar)
+
+  const {
+    Modal: Modal2,
+    isOpen: isOpen2,
+    position: position2,
+    handleCloseModal: handleCloseModal2,
+    handleOpenAndPositionModal: handleOpenAndPositionModal2,
+    modalOpenElementRef: modalOpenElementRef2,
+  } = useModal()
+
   const positioning = 'right'
 
   const handleKeyDownOnChangeTheme = (e) => {
@@ -49,6 +62,16 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
     }
   }
 
+  const handleOpenProfilePopup = () => {
+    handleOpenAndPositionModal2(modalOpenElementRef2, positioning)
+  }
+
+  const handleCloseProfilePopup = (e) => {
+    if (e.key !== 'Tab') {
+      handleOpenAndPositionModal2(modalOpenElementRef2, positioning)
+    }
+  }
+
   return (
     <Wrapper modalIsOpen={isOpen}>
       <InnerWrapper>
@@ -61,7 +84,7 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
         <InnerIconsWrapperRight>
           <NotificationBell count="3" isRed hasCounter />
           {isOpen ? (
-            <Modal handleClose={handleCloseModal} position={position} width="big" isFixed>
+            <Modal handleClose={handleCloseModal} position={position} isFixed>
               <BookmarkedContent />
             </Modal>
           ) : null}
@@ -81,6 +104,19 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
           >
             {colorsTheme === 'light' ? <MoonIcon /> : <SunIcon />}
           </IconBorder>
+          <StyledIconBorder
+            onClick={(e) => handleOpenProfilePopup(e)}
+            onKeyDown={handleCloseProfilePopup}
+            ref={modalOpenElementRef2}
+            tabIndex={0}
+          >
+            <StyledThumbnail />
+          </StyledIconBorder>
+          {isOpen2 ? (
+            <Modal2 handleClose={handleCloseModal2} position={position2}>
+              <ProfileContent />
+            </Modal2>
+          ) : null}
         </InnerIconsWrapperRight>
       </InnerWrapper>
     </Wrapper>

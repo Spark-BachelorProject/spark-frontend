@@ -12,4 +12,11 @@ export const Wrapper = styled.div`
 export const StyledButton = styled(Button)`
   margin-top: 20px;
   font-size: ${({ theme }) => theme.fontSize.sPlus};
+  opacity: 0.8;
+  border: 2px solid ${({ theme }) => theme.colors.divider};
+  color: ${({ theme }) => theme.colors.text};
+
+  :hover {
+    border: 2px solid ${({ theme }) => theme.colors.buttonBg};
+  }
 `

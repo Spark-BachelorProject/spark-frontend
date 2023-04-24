@@ -20,6 +20,7 @@ import { NotificationBell } from '@/components/molecules/NotificationBell/Notifi
 import useModal from '@/hooks/useModal'
 import { Counter } from '@/components/atoms/Counter/Counter'
 import { ProfileContent } from '../ProfileContent/ProfileContent'
+import { NotificationsContent } from '../NotificationsContent/NotificationsContent'
 
 // TODO:
 // Add to BellIcon circle counter in the corner
@@ -42,6 +43,15 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
     handleCloseModal: handleCloseModal2,
     handleOpenAndPositionModal: handleOpenAndPositionModal2,
     modalOpenElementRef: modalOpenElementRef2,
+  } = useModal()
+
+  const {
+    Modal: Modal3,
+    isOpen: isOpen3,
+    position: position3,
+    handleCloseModal: handleCloseModal3,
+    handleOpenAndPositionModal: handleOpenAndPositionModal3,
+    modalOpenElementRef: modalOpenElementRef3,
   } = useModal()
 
   const positioning = 'right'
@@ -72,6 +82,16 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
     }
   }
 
+  const handleOpenNotificationsPopup = () => {
+    handleOpenAndPositionModal3(modalOpenElementRef3, positioning)
+  }
+
+  const handleCloseNotificationsPopup = (e) => {
+    if (e.key !== 'Tab') {
+      handleOpenAndPositionModal3(modalOpenElementRef3, positioning)
+    }
+  }
+
   return (
     <Wrapper modalIsOpen={isOpen}>
       <InnerWrapper>
@@ -82,12 +102,15 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
           <SearchInput Icon={<SearchIcon />} />
         </LogoAndInputWrapper>
         <InnerIconsWrapperRight>
-          <NotificationBell count="3" isRed hasCounter />
-          {isOpen ? (
-            <Modal handleClose={handleCloseModal} position={position} isFixed>
-              <BookmarkedContent />
-            </Modal>
-          ) : null}
+          <div
+            tabIndex="0"
+            onClick={(e) => handleOpenNotificationsPopup(e)}
+            onKeyDown={handleCloseNotificationsPopup}
+            ref={modalOpenElementRef3}
+          >
+            <NotificationBell count="3" isRed hasCounter />
+          </div>
+
           <IconBorder
             tabIndex="0"
             onClick={(e) => handleOpenBookmarksPopup(e)}
@@ -112,10 +135,23 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
           >
             <StyledThumbnail />
           </StyledIconBorder>
+
+          {isOpen ? (
+            <Modal handleClose={handleCloseModal} position={position} isFixed>
+              <BookmarkedContent />
+            </Modal>
+          ) : null}
+
           {isOpen2 ? (
             <Modal2 handleClose={handleCloseModal2} position={position2}>
               <ProfileContent />
             </Modal2>
+          ) : null}
+
+          {isOpen3 ? (
+            <Modal3 handleClose={handleCloseModal3} position={position3} isFixed>
+              <NotificationsContent />
+            </Modal3>
           ) : null}
         </InnerIconsWrapperRight>
       </InnerWrapper>

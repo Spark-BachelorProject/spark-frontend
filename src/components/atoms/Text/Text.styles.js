@@ -9,7 +9,6 @@ export const Text = styled.span`
 
   display: flex;
   align-items: center;
-  width: 100%;
   color: ${({ theme }) => theme.colors.text};
   width: max-content;
 

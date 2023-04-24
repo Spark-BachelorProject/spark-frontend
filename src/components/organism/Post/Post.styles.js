@@ -127,7 +127,6 @@ export const InteractionsSection = styled.section`
     :hover {
       & > svg > path {
         transition: 200ms ease-in-out;
-
         stroke: ${({ theme }) => theme.colors.white};
       }
     }

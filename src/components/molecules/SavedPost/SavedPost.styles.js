@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
-import { ReactComponent as CanceledIcon } from '@/assets/icons/canceled.svg'
+import { ReactComponent as CanceledIcon } from '@/assets/icons/cancel-circle.svg'
 
 export const Wrapper = styled.div`
   position: relative;
@@ -43,16 +43,15 @@ export const StyledThumbnail = styled(Thumbnail)`
 `
 
 export const FirstRowText = styled(Text)`
-  font-size: ${({ theme, isCancelled }) =>
-    isCancelled ? theme.fontSize.mPlus : theme.fontSize.mPlus};
+  font-size: ${({ theme, isCancelled }) => (isCancelled ? theme.fontSize.m : theme.fontSize.m)};
   color: ${({ theme }) => theme.colors.textHeader};
-  font-weight: 600;
+  font-weight: 400;
 `
 
 export const SecondRowText = styled(Text)`
   /* margin: ${({ isCancelled }) => (isCancelled ? '-3px 0 0 0' : '5px 0')}; */
   margin-top: 3px;
-  font-size: ${({ theme }) => theme.fontSize.sPlus};
+  font-size: ${({ theme }) => theme.fontSize.s};
   color: ${({ theme }) => theme.colors.textHeader};
 `
 

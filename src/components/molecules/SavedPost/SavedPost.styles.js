@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   height: auto;
   margin: 5px 0 0 0;
   border-radius: 7px;
-  gap: 2px;
+  gap: 5px;
   cursor: pointer;
 
   &:hover {
@@ -33,7 +33,7 @@ export const NameActivityWrapper = styled.div`
   display: flex;
   justify-content: start;
   align-content: center;
-  gap: 8px;
+  gap: 5px;
   width: 100%;
 `
 
@@ -43,14 +43,16 @@ export const StyledThumbnail = styled(Thumbnail)`
 `
 
 export const FirstRowText = styled(Text)`
-  font-size: ${({ theme, isCancelled }) => (isCancelled ? theme.fontSize.s : theme.fontSize.m)};
+  font-size: ${({ theme, isCancelled }) =>
+    isCancelled ? theme.fontSize.mPlus : theme.fontSize.mPlus};
   color: ${({ theme }) => theme.colors.textHeader};
-  font-weight: 500;
+  font-weight: 600;
 `
 
 export const SecondRowText = styled(Text)`
-  margin: ${({ isCancelled }) => (isCancelled ? '-3px 0 0 0' : '0')};
-  font-size: ${({ theme }) => theme.fontSize.s};
+  /* margin: ${({ isCancelled }) => (isCancelled ? '-3px 0 0 0' : '5px 0')}; */
+  margin-top: 3px;
+  font-size: ${({ theme }) => theme.fontSize.sPlus};
   color: ${({ theme }) => theme.colors.textHeader};
 `
 

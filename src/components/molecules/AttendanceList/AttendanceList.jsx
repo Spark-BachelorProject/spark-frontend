@@ -1,9 +1,10 @@
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import React from 'react'
-import { AttendingCounter, Wrapper } from './AttendingList.styles'
+import { AttendingCounter, Wrapper } from './AttendanceList.styles'
 import { consecutiveNumbers } from '@/helpers/consecutiveNumbers'
 
-const AttendingList = ({ numOfAttender }) => {
+// in the future we will pass array people
+const AttendanceList = ({ numOfAttender }) => {
   return (
     <Wrapper numOfAttender={numOfAttender}>
       {consecutiveNumbers(numOfAttender).map((num, idx) => (
@@ -14,4 +15,4 @@ const AttendingList = ({ numOfAttender }) => {
   )
 }
 
-export default AttendingList
+export default AttendanceList

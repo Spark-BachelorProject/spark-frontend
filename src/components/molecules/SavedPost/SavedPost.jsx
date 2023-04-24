@@ -17,7 +17,7 @@ export const SavedPost = ({ isCancelled, name, activity, place, adress }) => {
       <StyledThumbnail />
       <TextWrapper>
         {isCancelled ? <StyledCanceledIcon /> : null}
-        {isCancelled ? <CancelledText>Spotkanie odwołane</CancelledText> : null}
+        {/* {isCancelled ? <CancelledText>Spotkanie odwołane</CancelledText> : null} */}
 
         <NameActivityWrapper isCancelled={isCancelled}>
           <FirstRowText isCancelled={isCancelled}>{name}</FirstRowText>

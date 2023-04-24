@@ -107,7 +107,7 @@ export const theme = {
     xs: '11px',
   },
   breakPoints: {
-    l: '1200px',
+    l: '1300px',
     m: '768px',
     mobile: '476px',
   },

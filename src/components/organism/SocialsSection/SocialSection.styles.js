@@ -6,7 +6,7 @@ export const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 10px 15px;
+  padding: 0px 15px;
 
   & > ${Title} {
     margin-bottom: 13px;

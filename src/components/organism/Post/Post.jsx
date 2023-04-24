@@ -94,12 +94,6 @@ const Post = () => {
         >
           <StyledMoreInfoIcon />
         </div>
-
-        {isOpen ? (
-          <Modal handleClose={handleCloseModal} position={position} width="small">
-            <MoreInfoPost />
-          </Modal>
-        ) : null}
       </Header>
       <Title isBig isBold>
         Ktoś chętny na półtorej godziny grania na KULu? Mamy już przeciwnika
@@ -126,11 +120,7 @@ const Post = () => {
         >
           <AttendanceList numOfAttender={4} />
         </div>
-        {isOpen2 ? (
-          <Modal2 handleClose={handleCloseModal2} position={position2} width="small">
-            <AttendingContent />
-          </Modal2>
-        ) : null}
+
         <Button borderOnly>
           {/* <UserCheckIcon /> */}
           Zgłoś obecność
@@ -158,6 +148,18 @@ const Post = () => {
             Dzisiaj odpadam, ale następnym razem będę ;)
           </Comment>
         </CommentSection>
+      ) : null}
+
+      {isOpen ? (
+        <Modal handleClose={handleCloseModal} position={position} width="small">
+          <MoreInfoPost />
+        </Modal>
+      ) : null}
+
+      {isOpen2 ? (
+        <Modal2 handleClose={handleCloseModal2} position={position2} width="small">
+          <AttendingContent />
+        </Modal2>
       ) : null}
     </Wrapper>
   )

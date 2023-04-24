@@ -5,5 +5,5 @@ export const Wrapper = styled.div`
 `
 
 export const NotificationsWrapper = styled.div`
-  margin-top: 20px;
+  margin-top: 10px;
 `

@@ -14,7 +14,7 @@ export const StyledText = styled(Text)`
   padding: 0 5px;
   margin: 20px 0 15px 0;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.checkboxTick};
+  color: ${({ theme }) => theme.colors.text};
 
   &:hover {
     color: ${({ theme }) => theme.colors.textHeader};

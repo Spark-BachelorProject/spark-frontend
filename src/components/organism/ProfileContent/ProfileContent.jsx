@@ -7,12 +7,12 @@ import { Wrapper, StyledText } from './ProfileContent.styles'
 export const ProfileContent = () => {
   return (
     <Wrapper>
-      <PersonListItem name="Kasia Baran" isBold />
-      <StyledText isBig isBold>
+      <PersonListItem name="Twój Profil" />
+      <StyledText>
         <SettingsIcon />
         Ustawienia
       </StyledText>
-      <StyledText isBig isBold>
+      <StyledText>
         <LogOutIcon />
         Wyloguj się
       </StyledText>

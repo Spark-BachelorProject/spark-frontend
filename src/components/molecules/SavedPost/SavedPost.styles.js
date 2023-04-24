@@ -52,7 +52,7 @@ export const SecondRowText = styled(Text)`
   /* margin: ${({ isCancelled }) => (isCancelled ? '-3px 0 0 0' : '5px 0')}; */
   margin-top: 3px;
   font-size: ${({ theme }) => theme.fontSize.s};
-  color: ${({ theme }) => theme.colors.textHeader};
+  color: ${({ theme }) => theme.colors.placeholder};
 `
 
 export const TextWrapper = styled.div`

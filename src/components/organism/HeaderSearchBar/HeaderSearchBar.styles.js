@@ -65,7 +65,7 @@ export const InnerIconsWrapperRight = styled.div`
 `
 
 export const StyledIconBorder = styled(IconBorder)`
-  @media (max-width: 997px) {
+  @media (max-width: 998px) {
     display: none;
   }
 `
@@ -73,7 +73,7 @@ export const StyledIconBorder = styled(IconBorder)`
 export const StyledThumbnail = styled(Thumbnail)`
   margin: 0;
 
-  @media (max-width: 997px) {
+  @media (max-width: 998px) {
     display: none;
   }
 `

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// import { ReactComponent as UserCheckIcon } from '@/assets/icons/user-check.svg'
 import { ReactComponent as SendVectorIcon } from '@/assets/icons/send-vector.svg'
 import { ReactComponent as ExpandVectorIcon } from '@/assets/icons/expand-vector.svg'
 import { ReactComponent as PinIcon } from '@/assets/icons/map-pin.svg'

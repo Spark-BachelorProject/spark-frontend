@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Wrapper,
   StyledSmallText,
   StyledText,
   ThumbnailIconWrapper,
   StyledThumbnail,
+  TextWrapper,
 } from './Notification.styles'
 import { ReactComponent as CanceledIcon } from '@/assets/icons/cancel-circle.svg'
 import { ReactComponent as CommentIcon } from '@/assets/icons/comment-circle.svg'
@@ -25,24 +26,25 @@ const determineTypeOfNotification = (type) => {
   }
 }
 
-export const Notification = ({ name, type = 'comment', time }) => {
+export const Notification = ({ name, type = 'comment', time, isRead = false }) => {
+  const [isReaded, setIsReaded] = useState(isRead)
   const [Icon, text] = determineTypeOfNotification(type)
 
   return (
-    <Wrapper>
+    <Wrapper isRead={isReaded} onClick={() => setIsReaded(true)}>
       <ThumbnailIconWrapper>
         <StyledThumbnail />
         <Icon />
       </ThumbnailIconWrapper>
 
-      <div>
+      <TextWrapper>
         <StyledText>
           {name} {text}
         </StyledText>
         <StyledSmallText>
           {time < 60 ? `${time} min temu` : `${Math.floor(time / 60)}h temu`}{' '}
         </StyledSmallText>
-      </div>
+      </TextWrapper>
     </Wrapper>
   )
 }

@@ -1,12 +1,17 @@
 import React from 'react'
 import useModal from '@/hooks/useModal'
+import {
+  Wrapper,
+  NotificationsWrapper,
+  HeadingWrapper,
+  StyledTitle,
+  StyledMoreInfoIcon,
+} from './NotificationsContent.styles'
+import { MoreInfoNotifications } from '@/components/organism/MoreInfoNotifications/MoreInfoNotifications'
+import { Counter } from '@/components/atoms/Counter/Counter'
+import { Notification } from '@/components/organism/Notification/Notification'
 
-import { Title } from '@/components/atoms/Title/Title.styles'
-import { StyledMoreInfoIcon } from '../BookmarkedContent/BookmarkedContent.styles'
-import { HeadingWrapper } from '../BookmarkedContent/BookmarkedContent.styles'
-import { Notification } from '../Notification/Notification'
-import { Wrapper, NotificationsWrapper } from './NotificationsContent.styles'
-import { MoreInfoNotifications } from '../MoreInfoNotifications/MoreInfoNotifications'
+//TODO: count unread notification and save in localstorage
 
 export const NotificationsContent = () => {
   const {
@@ -29,10 +34,15 @@ export const NotificationsContent = () => {
     }
   }
 
+  const howManyUnread = 2
+
   return (
     <Wrapper>
       <HeadingWrapper>
-        <Title isBold>Powiadomienia</Title>
+        <StyledTitle isBold>
+          Powiadomienia <Counter hasCounter count={howManyUnread} />
+        </StyledTitle>
+
         <div
           onClick={(e) => handleOpenBookmarksPopup(e)}
           onKeyDown={handleCloseBookmarksPopup}
@@ -42,10 +52,10 @@ export const NotificationsContent = () => {
         </div>
       </HeadingWrapper>
       <NotificationsWrapper>
-        <Notification name="Andrzej Kowal" type="comment" time={3} />
+        <Notification name="Andrzej Kowal" type="comment" time={3} isRead />
         <Notification name="Justyna Szewc" type="attend" time={13} />
         <Notification name="Kasia Baran" type="comment" time={180} />
-        <Notification name="Andrzej Kowal" type="cancel" time={12} />
+        <Notification name="Andrzej Kowal" type="cancel" time={12} isRead />
       </NotificationsWrapper>
       {isOpen ? (
         <Modal handleClose={handleCloseModal} position={position} width="big" isFixed>

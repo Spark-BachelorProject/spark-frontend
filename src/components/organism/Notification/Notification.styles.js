@@ -3,8 +3,10 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
+  flex-direction: row;
   width: 100%;
   padding: 15px 20px 15px 5px;
   border-radius: 7px;
@@ -14,6 +16,23 @@ export const Wrapper = styled.div`
     background-color: ${({ theme }) => theme.colors.bookmarkBg};
     transition: background-color 200ms ease-in;
   }
+
+  &::before {
+    display: ${({ isRead }) => (isRead ? 'none' : 'inline')};
+    position: absolute;
+    content: '';
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 9px;
+    height: 9px;
+    background-color: ${({ theme }) => theme.colors.accent};
+    border-radius: 50%;
+  }
+`
+
+export const TextWrapper = styled.div`
+  max-width: 70%;
 `
 
 export const StyledThumbnail = styled(Thumbnail)`

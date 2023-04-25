@@ -3,7 +3,6 @@ import React from 'react'
 import {
   Wrapper,
   TextWrapper,
-  CancelledText,
   NameActivityWrapper,
   FirstRowText,
   SecondRowText,

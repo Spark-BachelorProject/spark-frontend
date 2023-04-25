@@ -1,9 +1,6 @@
 import styled from 'styled-components'
-
-import { ReactComponent as CanceledIcon } from '@/assets/icons/cancel-circle.svg'
-import { ReactComponent as CommentIcon } from '@/assets/icons/comment-circle.svg'
-import { ReactComponent as AttendIcon } from '@/assets/icons/check-circle.svg'
 import { Text } from '@/components/atoms/Text/Text.styles'
+import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -19,26 +16,19 @@ export const Wrapper = styled.div`
   }
 `
 
-export const StyledCanceledIcon = styled(CanceledIcon)`
-  position: absolute;
-  top: 60%;
-  left: 45%;
-`
-
-export const StyledCommentIcon = styled(CommentIcon)`
-  position: absolute;
-  top: 60%;
-  left: 45%;
-`
-
-export const StyledAttendingIcon = styled(AttendIcon)`
-  position: absolute;
-  top: 60%;
-  left: 45%;
+export const StyledThumbnail = styled(Thumbnail)`
+  height: 44px;
+  width: 44px;
 `
 
 export const ThumbnailIconWrapper = styled.div`
   position: relative;
+
+  & > svg {
+    position: absolute;
+    bottom: 0;
+    right: 15%;
+  }
 `
 
 export const StyledText = styled(Text)`

@@ -22,8 +22,7 @@ import { Counter } from '@/components/atoms/Counter/Counter'
 import { ProfileContent } from '../ProfileContent/ProfileContent'
 import { NotificationsContent } from '../NotificationsContent/NotificationsContent'
 
-// TODO:
-// Add to BellIcon circle counter in the corner
+const everyIsTrue = (...args) => args.every((arg) => arg)
 
 export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
   const isHeaderSearchBar = true
@@ -43,7 +42,7 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
     handleCloseModal: handleCloseModal2,
     handleOpenAndPositionModal: handleOpenAndPositionModal2,
     modalOpenElementRef: modalOpenElementRef2,
-  } = useModal()
+  } = useModal(null, isHeaderSearchBar)
 
   const {
     Modal: Modal3,
@@ -52,7 +51,7 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
     handleCloseModal: handleCloseModal3,
     handleOpenAndPositionModal: handleOpenAndPositionModal3,
     modalOpenElementRef: modalOpenElementRef3,
-  } = useModal()
+  } = useModal(null, isHeaderSearchBar)
 
   const positioning = 'right'
 
@@ -93,7 +92,7 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
   }
 
   return (
-    <Wrapper modalIsOpen={isOpen}>
+    <Wrapper modalIsOpen={!everyIsTrue(isOpen, isOpen2, isOpen3)}>
       <InnerWrapper>
         <LogoAndInputWrapper>
           <Link to="/">
@@ -143,7 +142,7 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
           ) : null}
 
           {isOpen2 ? (
-            <Modal2 handleClose={handleCloseModal2} position={position2}>
+            <Modal2 handleClose={handleCloseModal2} position={position2} isFixed>
               <ProfileContent />
             </Modal2>
           ) : null}

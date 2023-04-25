@@ -5,7 +5,6 @@ import { Button } from '@/components/atoms/Button/Button.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
 import { Text } from '@/components/atoms/Text/Text.styles'
-import { ReactComponent as UserCheckIcon } from '@/assets/icons/user-check.svg'
 
 export const Wrapper = styled.article`
   background-color: ${({ theme }) => theme.colors.secondaryBg};

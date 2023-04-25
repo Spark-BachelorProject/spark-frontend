@@ -19,7 +19,7 @@ export const Wrapper = styled.article`
 
   ${Title} {
     line-height: 1.4;
-    margin-top: 20px;
+    margin: 10px 0 15px 0;
   }
 `
 
@@ -40,10 +40,10 @@ export const Details = styled.div`
     display: flex;
     align-items: flex-end;
     width: 350px;
-    gap: 8px;
+    gap: 5px;
 
     ${Text} {
-      margin-bottom: 0.5px;
+      font-weight: 500;
       font-size: ${({ theme }) => theme.fontSize.sPlus};
     }
 
@@ -56,15 +56,20 @@ export const Details = styled.div`
   }
 
   & > div:nth-child(2) {
-    width: 95px;
+    width: 105px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     ${Text} {
-      color: ${({ theme }) => theme.colors.boldText};
+      color: ${({ theme }) => theme.colors.text};
       font-size: ${({ theme }) => theme.fontSize.sPlus};
       font-weight: 500;
+    }
+
+    & > svg {
+      height: 13px;
+      width: 13px;
     }
 
     & > svg > path {
@@ -89,17 +94,16 @@ export const Tags = styled.section`
     padding: 7px 14px;
     background-color: ${({ theme }) => theme.colors.iconBg};
     border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
-    font-size: ${({ theme }) => theme.fontSize.m};
+    font-size: ${({ theme }) => theme.fontSize.sPlus};
 
-    color: ${({ theme }) => theme.colors.tagFont};
+    color: ${({ theme }) => theme.colors.accent};
     margin: 12px 12px 0px 0;
     font-weight: 500;
   }
 
   ${Button}:hover {
-    color: ${({ theme }) => theme.colors.white};
-
-    background-color: ${({ theme }) => theme.colors.accent};
+    color: ${({ theme }) => theme.colors.accent};
+    background-color: ${({ theme }) => theme.colors.navbarBorder};
   }
 `
 
@@ -114,6 +118,17 @@ export const InteractionsSection = styled.section`
     align-items: center;
     color: ${({ theme }) => theme.colors.buttonText};
     font-weight: 500;
+
+    & > svg > path {
+      stroke: ${({ theme }) => theme.colors.accent};
+    }
+
+    :hover {
+      & > svg > path {
+        transition: 200ms ease-in-out;
+        stroke: ${({ theme }) => theme.colors.white};
+      }
+    }
   }
 `
 
@@ -154,7 +169,7 @@ export const StyledSearchInput = styled(SearchInput)`
 
 export const StyledText = styled(Text)`
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.placeholder};
+  color: ${({ theme }) => theme.colors.text};
   font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: 500;
 
@@ -177,7 +192,7 @@ export const DetailsWrapper = styled.div`
   ${Text} {
     font-weight: 500;
     font-size: ${({ theme }) => theme.fontSize.m};
-    color: ${({ theme }) => theme.colors.detailsFont};
+    color: ${({ theme }) => theme.colors.text};
   }
 
   & > svg {

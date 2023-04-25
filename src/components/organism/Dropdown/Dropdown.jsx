@@ -9,6 +9,10 @@ import Filters from '@/components/organism/Filters/Filters'
 // TODO: After adding filter seperate this to molecule
 const activity = [
   {
+    value: 'favourite',
+    text: 'Ulubione',
+  },
+  {
     value: 'football',
     text: 'Piłka Nożna',
   },

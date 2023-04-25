@@ -15,7 +15,7 @@ export const HeadingWrapper = styled.div`
 export const StyledMoreInfoIcon = styled(MoreInfoIcon)`
   margin-left: auto;
   cursor: pointer;
-  scale: 1;
+  scale: 1.1;
   & > path {
     stroke: ${({ theme }) => theme.colors.checkboxTick};
   }

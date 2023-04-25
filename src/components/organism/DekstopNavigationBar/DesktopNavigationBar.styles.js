@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   top: 70px;
 
   //this is done so its able to be displayed with 270px width ->  width of the post (684px) + gap (44px) + min navbar width (270px)
-  @media screen and (max-width: 998px) {
+  @media screen and (max-width: 997px) {
     display: none;
   }
 `

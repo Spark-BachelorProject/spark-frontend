@@ -12,7 +12,7 @@ export const StyledText = styled(Text)`
   font-size: ${({ theme }) => theme.fontSize.m};
   margin: 15px 0;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.checkboxTick};
+  color: ${({ theme }) => theme.colors.text};
 
   &:hover {
     color: ${({ theme }) => theme.colors.textHeader};

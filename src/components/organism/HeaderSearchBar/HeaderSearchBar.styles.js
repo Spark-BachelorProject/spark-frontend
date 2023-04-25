@@ -1,3 +1,5 @@
+import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
+import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
@@ -60,4 +62,18 @@ export const InnerIconsWrapperRight = styled.div`
   justify-content: flex-end;
   margin: 16px 0;
   height: 38px;
+`
+
+export const StyledIconBorder = styled(IconBorder)`
+  @media (max-width: 998px) {
+    display: none;
+  }
+`
+
+export const StyledThumbnail = styled(Thumbnail)`
+  margin: 0;
+
+  @media (max-width: 998px) {
+    display: none;
+  }
 `

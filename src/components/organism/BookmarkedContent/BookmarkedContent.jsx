@@ -29,7 +29,7 @@ export const BookmarkedContent = () => {
   return (
     <Wrapper>
       <HeadingWrapper>
-        <Title>Zapisane aktywności</Title>
+        <Title isBold>Zapisane aktywności</Title>
         <div
           onClick={(e) => handleOpenBookmarksPopup(e)}
           onKeyDown={handleCloseBookmarksPopup}
@@ -37,11 +37,6 @@ export const BookmarkedContent = () => {
         >
           <StyledMoreInfoIcon />
         </div>
-        {isOpen ? (
-          <Modal handleClose={handleCloseModal} position={position} width="big" isFixed>
-            <MoreInfoBookmark />
-          </Modal>
-        ) : null}
       </HeadingWrapper>
       <SavedPost
         name="Andrzej Kowal"
@@ -65,6 +60,12 @@ export const BookmarkedContent = () => {
         isCancelled
       />
       <SavedPost name="Krzysztof Raban" activity="Futsal" place="Hala UMCS" adress="Stepowa 12" />
+
+      {isOpen ? (
+        <Modal handleClose={handleCloseModal} position={position} width="big" isFixed>
+          <MoreInfoBookmark />
+        </Modal>
+      ) : null}
     </Wrapper>
   )
 }

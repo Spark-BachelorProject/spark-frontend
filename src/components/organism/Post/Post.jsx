@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ReactComponent as UserCheckIcon } from '@/assets/icons/user-check.svg'
+// import { ReactComponent as UserCheckIcon } from '@/assets/icons/user-check.svg'
 import { ReactComponent as SendVectorIcon } from '@/assets/icons/send-vector.svg'
 import { ReactComponent as ExpandVectorIcon } from '@/assets/icons/expand-vector.svg'
 import { ReactComponent as PinIcon } from '@/assets/icons/map-pin.svg'
@@ -26,9 +26,10 @@ import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList
 import Comment from '@/components/molecules/Comment/Comment'
 import useModal from '@/hooks/useModal'
 import { MoreInfoPost } from '../MoreInfoPost/MoreInfoPost'
+import { AttendingContent } from '../AttendingContent/AttendingContent'
 
 const Post = () => {
-  const numberOfComments = 2 // its taken from api
+  const numberOfComments = 3 // its taken from api
   const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(!(numberOfComments > 2))
 
   const {
@@ -93,24 +94,18 @@ const Post = () => {
         >
           <StyledMoreInfoIcon />
         </div>
-
-        {isOpen ? (
-          <Modal handleClose={handleCloseModal} position={position} width="small">
-            <MoreInfoPost />
-          </Modal>
-        ) : null}
       </Header>
+      <Title isBig isBold>
+        Ktoś chętny na półtorej godziny grania na KULu? Mamy już przeciwnika
+      </Title>
       <DetailsWrapper>
         <PinIcon />
-        <Text>Hala Politechniki Lubelskiej, Kraśnicka 12</Text>
+        <Text>Hala Politechniki Lubelskiej - Kraśnicka 12</Text>
       </DetailsWrapper>
       <DetailsWrapper>
         <ClockIcon />
         <Text>Dzisiaj o 18:30</Text>
       </DetailsWrapper>
-      <Title isBold isBig>
-        Ktoś chętny na półtorej godziny grania na KULu? Mamy już przeciwnika
-      </Title>
       <Tags>
         <Button>Gramy na luzie</Button>
         <Button>Jeszcze 2 miejsca</Button>
@@ -125,14 +120,10 @@ const Post = () => {
         >
           <AttendanceList numOfAttender={4} />
         </div>
-        {isOpen2 ? (
-          <Modal2 handleClose={handleCloseModal2} position={position2} width="small">
-            <div>hello that</div>
-          </Modal2>
-        ) : null}
-        <Button isBig>
-          <UserCheckIcon />
-          Będę
+
+        <Button borderOnly>
+          {/* <UserCheckIcon /> */}
+          Zgłoś obecność
         </Button>
       </InteractionsSection>
       <StyledSearchInput
@@ -157,6 +148,18 @@ const Post = () => {
             Dzisiaj odpadam, ale następnym razem będę ;)
           </Comment>
         </CommentSection>
+      ) : null}
+
+      {isOpen ? (
+        <Modal handleClose={handleCloseModal} position={position} width="small">
+          <MoreInfoPost />
+        </Modal>
+      ) : null}
+
+      {isOpen2 ? (
+        <Modal2 handleClose={handleCloseModal2} position={position2} width="small">
+          <AttendingContent />
+        </Modal2>
       ) : null}
     </Wrapper>
   )

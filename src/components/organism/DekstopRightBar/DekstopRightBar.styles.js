@@ -38,7 +38,6 @@ export const Container = styled.div`
   }
 
   & > span:hover {
-    font-weight: 700;
     color: ${({ theme }) => theme.colors.textHeader};
     transition: 100ms ease-in-out;
   }

@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
 
   ${Label} {
     margin: 5px 0;
+    font-size: ${({ theme }) => theme.fontSize.m};
   }
 
   ${Input} {
@@ -22,14 +23,12 @@ export const Wrapper = styled.div`
     text-align: center;
     cursor: pointer;
     color: ${({ theme }) => theme.colors.inputFont};
-    font-weight: 430;
     background-color: ${({ theme }) => theme.colors.inputBg};
   }
 
   & > span {
     border: none;
     padding: 0 2px;
-    font-weight: 300;
     position: absolute;
     top: 54%;
     right: 30%;

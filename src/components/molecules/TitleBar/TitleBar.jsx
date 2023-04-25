@@ -5,7 +5,7 @@ import { Wrapper } from './TitleBar.styles'
 export const TitleBar = ({ city }) => {
   return (
     <Wrapper>
-      <Title isBold isBig>
+      <Title isBig>
         To dzieje się w <span>{city}</span>!
       </Title>
     </Wrapper>

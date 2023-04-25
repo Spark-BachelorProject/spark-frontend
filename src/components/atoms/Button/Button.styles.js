@@ -1,15 +1,15 @@
 import styled from 'styled-components'
 
 export const Button = styled.button`
-  font-size: ${({ theme }) => theme.fontSize.m};
+  font-size: ${({ theme }) => theme.fontSize.sPlus};
 
   text-align: center;
   background-color: ${({ theme, borderOnly }) =>
     borderOnly ? 'transparent' : theme.colors.buttonOffColor};
   color: ${({ theme, borderOnly }) =>
-    borderOnly ? `${theme.colors.text}` : `${theme.colors.white}`};
+    borderOnly ? `${theme.colors.accent}` : `${theme.colors.white}`};
   padding: ${({ isBig }) => (isBig ? '11px 22px' : '8px 18px')};
-  border: ${({ theme, borderOnly }) => (borderOnly ? `2px solid ${theme.colors.divider}` : 'none')};
+  border: ${({ theme, borderOnly }) => (borderOnly ? `2px solid ${theme.colors.accent}` : 'none')};
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;

@@ -35,4 +35,8 @@ export const AttendingCounter = styled.span`
   font-size: ${({ theme }) => theme.fontSize.sPlus};
   font-weight: 600;
   color: ${({ theme }) => theme.colors.boldText};
+
+  :hover {
+    background-color: ${({ theme }) => theme.colors.navbarBorder};
+  }
 `

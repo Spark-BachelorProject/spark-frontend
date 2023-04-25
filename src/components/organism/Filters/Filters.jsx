@@ -13,7 +13,7 @@ const Filters = () => {
   return (
     <Wrapper>
       <TimeFromToWrapper>
-        <Label htmlFor="hours1">Godziny</Label>
+        <Label htmlFor="hours1">W godzinach</Label>
         <InputWrapper>
           <Input type="time" id="hours1" value={time1} onChange={(e) => setTime1(e.target.value)} />
           <span> - </span>

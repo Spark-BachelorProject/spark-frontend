@@ -7,9 +7,9 @@ export const Wrapper = styled.div`
   flex: 1 0 270px; //inital width
   max-width: 330px;
   height: calc(100vh - 70px);
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   position: sticky;
-  top: 70px;
+  top: 35px;
 
   //this is done so its able to be displayed with 270px width ->  width of the post (684px) + gap (44px) + min navbar width (270px)
   @media screen and (max-width: 997px) {

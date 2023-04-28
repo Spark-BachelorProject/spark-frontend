@@ -20,4 +20,8 @@ export const GlobalStyle = createGlobalStyle`
   a, button {
     font-family: inherit;
   }
+
+  a {
+    text-decoration: none;
+  }
 `

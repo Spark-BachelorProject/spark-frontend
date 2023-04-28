@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   position: relative;
+  margin-top: 35px;
 
   //684px so the pageContent doesnt move to the left when the width exceedes the width of the post
   @media screen and (min-width: 684px) {

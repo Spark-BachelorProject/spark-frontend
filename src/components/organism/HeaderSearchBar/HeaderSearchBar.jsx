@@ -143,7 +143,7 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
 
           {isOpen2 ? (
             <Modal2 handleClose={handleCloseModal2} position={position2} isFixed>
-              <ProfileContent />
+              <ProfileContent handleClose={handleCloseModal2} />
             </Modal2>
           ) : null}
 

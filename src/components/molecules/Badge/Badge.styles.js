@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { Button } from '@/components/atoms/Button/Button.styles'
 
@@ -24,14 +23,3 @@ export const StyledButton = styled(Button)`
     stroke: ${({ theme }) => theme.colors.accent};
   }
 `
-
-const Badge = ({ children, Icon }) => {
-  return (
-    <StyledButton>
-      <Icon />
-      {children}
-    </StyledButton>
-  )
-}
-
-export default Badge

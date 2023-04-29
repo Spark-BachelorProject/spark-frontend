@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Button } from '../Button/Button.styles'
 
-export const StyledTags = styled.section`
+export const StyledTags = styled.div`
   margin: 15px 0 0 0;
 
   ${Button} {

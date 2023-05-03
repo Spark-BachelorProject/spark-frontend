@@ -44,6 +44,8 @@ export const lightTheme = {
   buttonOffColor: '#60a5fa', //blue400
   buttonOffFont: '#f1f5f9', //slate100
   navigationInactive: '#64748B', //slate500
+  badgeHeader: '#2563EB', //blue600
+  textSecondary: '#CBD5E1', //slate300
 }
 
 export const darkTheme = {
@@ -92,6 +94,8 @@ export const darkTheme = {
   buttonOffColor: '#3b82f6', //blue500
   buttonOffFont: '#f1f5f9', //slate100
   navigationInactive: '#CBD5E1', //slate300
+  badgeHeader: '#2563EB', //blue600
+  textSecondary: '#64748B', //slate500
 }
 
 export const theme = {

@@ -146,13 +146,13 @@ const Post = () => {
       ) : null}
 
       {isOpen ? (
-        <Modal handleClose={handleCloseModal} position={position} width="small">
+        <Modal handleClose={handleCloseModal} position={position}>
           <MoreInfoPost />
         </Modal>
       ) : null}
 
       {isOpen2 ? (
-        <Modal2 handleClose={handleCloseModal2} position={position2} width="small">
+        <Modal2 handleClose={handleCloseModal2} position={position2}>
           <AttendingContent />
         </Modal2>
       ) : null}

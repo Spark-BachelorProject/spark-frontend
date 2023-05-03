@@ -2,14 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { StyledButton } from './Badge.styles'
 
-const Badge = ({ children, Icon }) => {
+const Badge = React.forwardRef((props, ref) => {
+  const { Icon, children } = props
   return (
-    <StyledButton>
+    <StyledButton ref={ref} {...props}>
       <Icon />
       {children}
     </StyledButton>
   )
-}
+})
 
 Badge.propTypes = {
   children: PropTypes.string.isRequired,

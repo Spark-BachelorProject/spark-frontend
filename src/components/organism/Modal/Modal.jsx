@@ -14,6 +14,7 @@ const Modal = ({
   width,
   isFixed,
   isSecondModal,
+  hasNoPadding,
 }) => {
   const modalNode = document.createElement('div')
   const [modalNum, setModalNum] = useState(
@@ -39,6 +40,7 @@ const Modal = ({
         modalNum={modalNum}
         isFixed={isFixed}
         isSecondModal={isSecondModal}
+        hasNoPadding={hasNoPadding}
       >
         {children}
         {hasCloseButton ? <Button onClick={handleClose}>{textOnClose}</Button> : null}

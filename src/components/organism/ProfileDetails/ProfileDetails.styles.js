@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   text-align: center;
 
   @media screen and (min-width: 997px) {
-    max-width: 300px;
+    max-width: 310px;
   }
 `
 
@@ -47,6 +47,10 @@ export const ImgAndNameSection = styled.section`
     height: 2px;
     transform: translateX(-50%);
     background-color: ${({ theme }) => theme.colors.mainDivider};
+  }
+
+  @media screen and (max-width: 997px) {
+    flex-direction: column;
   }
 `
 

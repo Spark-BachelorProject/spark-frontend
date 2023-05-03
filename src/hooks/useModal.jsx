@@ -4,15 +4,17 @@ import Modal from '@/components/organism/Modal/Modal'
 const useModal = (initialValue = false, isHeaderSearchBar = false) => {
   const [isOpen, setIsOpen] = useState(initialValue)
   const [position, setPosition] = useState({ x: 0, y: 0, positioning: 'center' })
+  const [marginTop, setMarginTop] = useState(0)
   const modalOpenElementRef = useRef(null)
 
-  const handleOpenAndPositionModal = (ref, positioning) => {
+  const handleOpenAndPositionModal = (ref, positioning, margin = 70) => {
     // 10 because its space between element and modal, 70 because its height of HeaderSearchBar
     const { x, height } = ref.current.getBoundingClientRect()
     const { offsetTop } = ref.current
+    setMarginTop(margin)
     isHeaderSearchBar
       ? setPosition({ x, y: offsetTop + height + 10, positioning })
-      : setPosition({ x, y: offsetTop + height + 10 + 70, positioning })
+      : setPosition({ x, y: offsetTop + height + 10 + marginTop, positioning })
 
     setIsOpen(true)
   }
@@ -35,7 +37,7 @@ const useModal = (initialValue = false, isHeaderSearchBar = false) => {
         : setPosition((prev) => ({
             ...prev,
             x,
-            y: offsetTop + height + 10 + 70,
+            y: offsetTop + height + 10 + marginTop,
           }))
     }
 

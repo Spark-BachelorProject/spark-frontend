@@ -28,7 +28,7 @@ export const ModalWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0px;
+  padding: ${({ hasNoPadding }) => (hasNoPadding ? '' : '20px 0px')};
 
   ${Button} {
     margin-top: 20px;

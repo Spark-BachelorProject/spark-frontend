@@ -27,7 +27,8 @@ const badges = [
   { Icon: BellIcon, text: 'Weteran' },
 ]
 
-//TODO: Show on hover info about badges
+//FIXME: Fix space between modal and element
+//FIXME: z-index in search header wrapper
 
 const ProfileDetails = () => {
   const [currentBadge, setCurrentBadge] = useState(null)
@@ -41,16 +42,19 @@ const ProfileDetails = () => {
   } = useModal()
   const positioning = 'left'
 
-  const handleOpenBadgeInfo = ({ Icon, text }) => {
+  const handleOpenBadgeInfo = (e, { Icon, text }) => {
     setCurrentBadge({ Icon, text })
-    handleOpenAndPositionModal(modalOpenElementRef, positioning, 120)
+    // handleOpenAndPositionModal(modalOpenElementRef, positioning)
+    handleOpenAndPositionModal(e.target, positioning)
   }
 
   const handleCloseBadgeInfo = (e) => {
     if (e.key !== 'Tab') {
+      // handleCloseModal()
       // setCurrentBadge({ Icon, text })
       // setCurrentBadge(null)
-      handleOpenAndPositionModal(modalOpenElementRef, positioning, 120)
+      // handleOpenAndPositionModal(e.target, positioning)
+      // handleOpenAndPositionModal(modalOpenElementRef, positioning)
     }
   }
 
@@ -70,9 +74,10 @@ const ProfileDetails = () => {
           {badges.map(({ Icon, text }, i) => (
             <Badge
               // onClick={() => handleOpenBadgeInfo({ Icon, text })}
-              onMouseOver={() => handleOpenBadgeInfo({ Icon, text })}
-              // onMouseLeave={handleCloseBadgeInfo}
-              ref={modalOpenElementRef}
+              // onMouseEnter={(e) => handlePosition(e)}
+              // onMouseLeave={(e) => console.log('off')}
+              onMouseEnter={(e) => handleOpenBadgeInfo(e, { Icon, text })}
+              onMouseLeave={handleCloseModal}
               tabIndex={0}
               key={i}
               Icon={Icon}
@@ -80,9 +85,8 @@ const ProfileDetails = () => {
               {text}
             </Badge>
           ))}
-
           {isOpen ? (
-            <Modal handleClose={handleCloseModal} position={position} hasNoPadding>
+            <Modal position={position} hasNoPadding hasNoBackground>
               <BadgeInfo badge={currentBadge} />
             </Modal>
           ) : null}

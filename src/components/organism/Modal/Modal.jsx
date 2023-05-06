@@ -13,7 +13,6 @@ const Modal = ({
   hasCloseButton,
   width,
   isFixed,
-  isSecondModal,
   hasNoPadding,
   hasNoBackground,
 }) => {
@@ -42,7 +41,6 @@ const Modal = ({
         width={width}
         modalNum={modalNum}
         isFixed={isFixed}
-        isSecondModal={isSecondModal}
         hasNoPadding={hasNoPadding}
       >
         {children}

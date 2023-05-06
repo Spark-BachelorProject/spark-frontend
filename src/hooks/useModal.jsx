@@ -30,6 +30,7 @@ const useModal = (initialValue = false, isHeaderSearchBar = false) => {
   }
 
   useEffect(() => {
+    if (!modalOpenElementRef.current) return
     const handleResize = () => {
       const { x, height } = modalOpenElementRef.current.getBoundingClientRect()
       const { offsetTop } = modalOpenElementRef.current

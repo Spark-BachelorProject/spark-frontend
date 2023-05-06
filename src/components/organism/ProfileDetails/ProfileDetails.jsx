@@ -27,35 +27,14 @@ const badges = [
   { Icon: BellIcon, text: 'Weteran' },
 ]
 
-//FIXME: Fix space between modal and element
-//FIXME: z-index in search header wrapper
-
 const ProfileDetails = () => {
   const [currentBadge, setCurrentBadge] = useState(null)
-  const {
-    Modal,
-    isOpen,
-    position,
-    handleCloseModal,
-    handleOpenAndPositionModal,
-    modalOpenElementRef,
-  } = useModal()
+  const { Modal, isOpen, position, handleCloseModal, handleOpenAndPositionModal } = useModal()
   const positioning = 'left'
 
   const handleOpenBadgeInfo = (e, { Icon, text }) => {
     setCurrentBadge({ Icon, text })
-    // handleOpenAndPositionModal(modalOpenElementRef, positioning)
     handleOpenAndPositionModal(e.target, positioning)
-  }
-
-  const handleCloseBadgeInfo = (e) => {
-    if (e.key !== 'Tab') {
-      // handleCloseModal()
-      // setCurrentBadge({ Icon, text })
-      // setCurrentBadge(null)
-      // handleOpenAndPositionModal(e.target, positioning)
-      // handleOpenAndPositionModal(modalOpenElementRef, positioning)
-    }
   }
 
   return (
@@ -73,9 +52,6 @@ const ProfileDetails = () => {
         <BadgesWrapper>
           {badges.map(({ Icon, text }, i) => (
             <Badge
-              // onClick={() => handleOpenBadgeInfo({ Icon, text })}
-              // onMouseEnter={(e) => handlePosition(e)}
-              // onMouseLeave={(e) => console.log('off')}
               onMouseEnter={(e) => handleOpenBadgeInfo(e, { Icon, text })}
               onMouseLeave={handleCloseModal}
               tabIndex={0}

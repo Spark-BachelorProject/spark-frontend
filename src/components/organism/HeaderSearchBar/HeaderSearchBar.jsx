@@ -22,7 +22,7 @@ import { Counter } from '@/components/atoms/Counter/Counter'
 import { ProfileContent } from '../ProfileContent/ProfileContent'
 import { NotificationsContent } from '../NotificationsContent/NotificationsContent'
 
-const everyIsTrue = (...args) => args.every((arg) => arg)
+const everyIsFalse = (...args) => args.every((arg) => !arg)
 
 export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
   const isHeaderSearchBar = true
@@ -92,7 +92,7 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
   }
 
   return (
-    <Wrapper modalIsOpen={!everyIsTrue(isOpen, isOpen2, isOpen3)}>
+    <Wrapper modalIsOpen={!everyIsFalse(isOpen, isOpen2, isOpen3)}>
       <InnerWrapper>
         <LogoAndInputWrapper>
           <Link to="/">

@@ -4,8 +4,6 @@ import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { Wrapper, InputDummy } from './AddPostDummy.styles'
 import useModal from '@/hooks/useModal'
 
-//FIXME: Closing popup on clicking outside isnt working
-
 export const AddPostDummy = () => {
   const {
     Modal,

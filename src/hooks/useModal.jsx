@@ -8,8 +8,16 @@ const useModal = (initialValue = false, isHeaderSearchBar = false) => {
 
   const handleOpenAndPositionModal = (ref, positioning) => {
     // 10 because its space between element and modal, 70 because its height of HeaderSearchBar
-    const { x, height } = ref.current.getBoundingClientRect()
-    const { offsetTop } = ref.current
+    // to element which show and disappear on hover, pass as ref e.target!!!
+    let x, height, offsetTop
+    if (ref.current) {
+      ;({ x, height } = ref.current.getBoundingClientRect())
+      offsetTop = ref.current.offsetTop
+    } else {
+      ;({ x, height } = ref.getBoundingClientRect())
+      offsetTop = ref.offsetTop
+    }
+
     isHeaderSearchBar
       ? setPosition({ x, y: offsetTop + height + 10, positioning })
       : setPosition({ x, y: offsetTop + height + 10 + 70, positioning })
@@ -17,11 +25,12 @@ const useModal = (initialValue = false, isHeaderSearchBar = false) => {
     setIsOpen(true)
   }
 
-  const handleCloseModal = (e) => {
+  const handleCloseModal = () => {
     setIsOpen(false)
   }
 
   useEffect(() => {
+    if (!modalOpenElementRef.current) return
     const handleResize = () => {
       const { x, height } = modalOpenElementRef.current.getBoundingClientRect()
       const { offsetTop } = modalOpenElementRef.current

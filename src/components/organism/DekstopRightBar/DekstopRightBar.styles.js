@@ -6,10 +6,10 @@ export const Wrapper = styled.div`
   flex: 1 0 250px; //inital width
   max-width: 330px;
   height: calc(100vh - 70px);
-  padding: 20px 20px;
+  padding: 0 20px;
 
   /* position: sticky; */
-  top: 70px;
+  top: 35px;
 
   @media screen and (max-width: ${({ theme }) => theme.breakPoints.l}) {
     display: none;
@@ -22,6 +22,10 @@ export const Container = styled.div`
   width: 100%;
   height: auto;
   margin-bottom: 20px;
+
+  &:first-child {
+    padding-top: 0;
+  }
 
   //TODO: Decide what styling are we going here with
 

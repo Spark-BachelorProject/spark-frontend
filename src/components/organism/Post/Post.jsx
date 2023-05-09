@@ -15,7 +15,6 @@ import {
   StyledMoreInfoIcon,
   StyledSearchInput,
   StyledText,
-  Tags,
   Wrapper,
   DetailsWrapper,
 } from './Post.styles'
@@ -26,6 +25,7 @@ import Comment from '@/components/molecules/Comment/Comment'
 import useModal from '@/hooks/useModal'
 import { MoreInfoPost } from '../MoreInfoPost/MoreInfoPost'
 import { AttendingContent } from '../AttendingContent/AttendingContent'
+import Tags from '@/components/atoms/Tags/Tags'
 
 const Post = () => {
   const numberOfComments = 3 // its taken from api
@@ -105,11 +105,7 @@ const Post = () => {
         <ClockIcon />
         <Text>Dzisiaj o 18:30</Text>
       </DetailsWrapper>
-      <Tags>
-        <Button>Gramy na luzie</Button>
-        <Button>Jeszcze 2 miejsca</Button>
-        <Button>Potem na harnasia</Button>
-      </Tags>
+      <Tags>{['Gramy na luzie', 'Jeszcze 2 miejsca', 'Potem na harnasia']}</Tags>
       <InteractionsSection>
         <div
           onClick={(e) => handleOpenAttendanceList(e)}
@@ -150,13 +146,13 @@ const Post = () => {
       ) : null}
 
       {isOpen ? (
-        <Modal handleClose={handleCloseModal} position={position} width="small">
+        <Modal handleClose={handleCloseModal} position={position}>
           <MoreInfoPost />
         </Modal>
       ) : null}
 
       {isOpen2 ? (
-        <Modal2 handleClose={handleCloseModal2} position={position2} width="small">
+        <Modal2 handleClose={handleCloseModal2} position={position2}>
           <AttendingContent />
         </Modal2>
       ) : null}

@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import { Button } from '@/components/atoms/Button/Button.styles'
 
-//TODO: Make double Modals escapable (as for now you have to click outside the outer one)
-
 export const ModalWrapper = styled.div`
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.07);
   position: ${({ isFixed }) => (isFixed ? 'fixed' : 'absolute')};
@@ -28,7 +26,7 @@ export const ModalWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0px;
+  padding: ${({ hasNoPadding }) => (hasNoPadding ? '' : '20px 0px')};
 
   ${Button} {
     margin-top: 20px;
@@ -56,6 +54,5 @@ export const ModalBackground = styled.div`
   left: 0;
   height: 100vh;
   width: 100vw;
-  // FIXME: background-color is necessary?
   background-color: rgba(0, 0, 0, 0);
 `

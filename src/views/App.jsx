@@ -7,6 +7,7 @@ import Home from '@/components/pages/Home/Home'
 import Users from '@/components/pages/Users/Users'
 import { HeaderSearchBar } from '@/components/organism/HeaderSearchBar/HeaderSearchBar'
 import { useToggleColorsTheme } from '@/hooks/useToggleColorsTheme'
+import Profile from '@/components/pages/Profile/Profile'
 
 function App() {
   const [colorsTheme, toggleColorsTheme] = useToggleColorsTheme()
@@ -19,6 +20,7 @@ function App() {
         <HeaderSearchBar toggleColorsTheme={toggleColorsTheme} colorsTheme={colorsTheme} />
         <Routes>
           <Route path="/users" element={<Users />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/" element={<Home />} exact />
         </Routes>
         <NavigationBar />

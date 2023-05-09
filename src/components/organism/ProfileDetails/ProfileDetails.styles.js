@@ -24,18 +24,18 @@ export const ImgAndNameSection = styled.section`
   position: relative;
   width: 100%;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
 
   ${Thumbnail} {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
     margin: 10px;
   }
 
   ${Title} {
-    flex: 1;
-    font-size: 24px;
-    font-weight: 700;
+    margin: 15px 0;
+    font-size: 20px;
+    font-weight: 600;
   }
 
   &::before {
@@ -55,7 +55,7 @@ export const ImgAndNameSection = styled.section`
 `
 
 export const StyledTitle = styled(Title)`
-  font-weight: 600;
+  font-weight: 500;
   font-size: ${({ theme }) => theme.fontSize.m};
 `
 

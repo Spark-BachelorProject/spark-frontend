@@ -4,7 +4,8 @@ import { Button } from '@/components/atoms/Button/Button.styles'
 export const StyledButton = styled(Button)`
   padding: 10px 20px;
   background-color: ${({ theme }) => theme.colors.iconBg};
-  border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
+  border: 1px solid #3b82f640;
+
   font-size: ${({ theme }) => theme.fontSize.sPlus};
   display: flex;
   flex-direction: column;

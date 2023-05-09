@@ -17,14 +17,14 @@ import useModal from '@/hooks/useModal'
 import BadgeInfo from '@/components/molecules/BadgeInfo/BadgeInfo'
 
 const badges = [
-  { Icon: BellIcon, text: 'Najlepszy team' },
-  { Icon: UsersIcon, text: 'Ulubieniec1' },
-  { Icon: UsersIcon, text: 'Ulubieniec2' },
-  { Icon: UsersIcon, text: 'Ulubieniec3' },
-  { Icon: UsersIcon, text: 'Ulubieniec4' },
-  { Icon: UsersIcon, text: 'Ulubieniec5' },
-  { Icon: UsersIcon, text: 'Ulubieniec6' },
-  { Icon: BellIcon, text: 'Weteran' },
+  { Icon: BellIcon, text: 'Sportowa dusza' },
+  { Icon: UsersIcon, text: 'Mistrz konsystencji' },
+  { Icon: UsersIcon, text: 'Eksplorator' },
+  { Icon: UsersIcon, text: 'Weteran' },
+  { Icon: UsersIcon, text: 'Sowa' },
+  { Icon: UsersIcon, text: 'Skowronek' },
+  { Icon: UsersIcon, text: 'Mistrz jednej dziedziny ' },
+  { Icon: BellIcon, text: 'Ironman' },
 ]
 
 const ProfileDetails = () => {
@@ -45,7 +45,7 @@ const ProfileDetails = () => {
       </ImgAndNameSection>
       <ActivitySection>
         <StyledTitle>Ulubione aktywności</StyledTitle>
-        <Tags>{['Gramy na luzie', 'Jeszcze 2 miejsca', 'Potem na harnasia']}</Tags>
+        <Tags>{['Siatkówka', 'Squash']}</Tags>
       </ActivitySection>
       <BadgesSection>
         <StyledTitle>Odznaki</StyledTitle>

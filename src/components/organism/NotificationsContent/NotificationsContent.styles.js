@@ -1,6 +1,7 @@
-import { Title } from '@/components/atoms/Title/Title.styles'
-import { ReactComponent as MoreInfoIcon } from '@/assets/icons/three-dots.svg'
 import styled from 'styled-components'
+
+import { ReactComponent as MoreInfoIcon } from '@/assets/icons/three-dots.svg'
+import { Title } from '@/components/atoms/Title/Title.styles'
 
 export const Wrapper = styled.div`
   padding: 0 10px;

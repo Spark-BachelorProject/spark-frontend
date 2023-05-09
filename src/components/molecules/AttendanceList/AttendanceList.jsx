@@ -1,7 +1,9 @@
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import React from 'react'
-import { AttendingCounter, Wrapper } from './AttendanceList.styles'
+
+import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { consecutiveNumbers } from '@/helpers/consecutiveNumbers'
+
+import { AttendingCounter, Wrapper } from './AttendanceList.styles'
 
 // in the future we will pass array people
 const AttendanceList = ({ numOfAttender }) => {

@@ -1,6 +1,7 @@
+import styled from 'styled-components'
+
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
-import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   width: 100%;

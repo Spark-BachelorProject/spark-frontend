@@ -1,7 +1,9 @@
+import React from 'react'
+
 import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
-import React from 'react'
+
 import { Details, Wrapper } from './Comment.styles'
 
 const Comment = ({ children, userName, howLongAgo }) => {

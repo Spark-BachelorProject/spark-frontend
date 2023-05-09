@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+
+import { ReactComponent as CanceledIcon } from '@/assets/icons/cancel-circle.svg'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
-import { ReactComponent as CanceledIcon } from '@/assets/icons/cancel-circle.svg'
 
 export const Wrapper = styled.div`
   position: relative;

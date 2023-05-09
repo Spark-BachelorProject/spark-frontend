@@ -1,5 +1,6 @@
-import { PageContent } from '@/components/templates/PageContent/PageContent'
 import styled from 'styled-components'
+
+import { PageContent } from '@/components/templates/PageContent/PageContent'
 
 export const StyledPageContent = styled(PageContent)`
   @media screen and (min-width: ${({ theme }) => theme.breakPoints.m}) {

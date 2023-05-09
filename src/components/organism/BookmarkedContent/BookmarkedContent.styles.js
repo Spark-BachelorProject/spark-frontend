@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { ReactComponent as MoreInfoIcon } from '@/assets/icons/three-dots.svg'
 
 export const Wrapper = styled.div`

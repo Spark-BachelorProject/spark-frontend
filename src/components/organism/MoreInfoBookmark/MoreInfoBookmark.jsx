@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { ReactComponent as CheckmarkIcon } from '@/assets/icons/check.svg'
 import { ReactComponent as ScissorsIcon } from '@/assets/icons/scissors.svg'
 

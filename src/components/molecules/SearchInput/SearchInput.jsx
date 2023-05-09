@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+
 import { Input } from '@/components/atoms/Input/Input.styles'
+
 import { InputWrapper } from './SearchInput.styles'
 
 const SearchInput = ({ placeholder, Icon, isAlwaysVisibleIcon, ...props }) => {

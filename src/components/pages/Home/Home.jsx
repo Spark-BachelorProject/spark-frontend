@@ -1,9 +1,10 @@
 import React from 'react'
+
+import { AddPostDummy } from '@/components/molecules/AddPostDummy/AddPostDummy'
 import { TitleBar } from '@/components/molecules/TitleBar/TitleBar'
 import { Dropdown } from '@/components/organism/Dropdown/Dropdown'
 import Post from '@/components/organism/Post/Post'
 import { PageContent } from '@/components/templates/PageContent/PageContent'
-import { AddPostDummy } from '@/components/molecules/AddPostDummy/AddPostDummy'
 
 const Home = () => {
   return (

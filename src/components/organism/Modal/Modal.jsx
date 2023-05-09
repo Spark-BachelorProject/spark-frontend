@@ -1,6 +1,8 @@
-import { Button } from '@/components/atoms/Button/Button.styles'
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
+
+import { Button } from '@/components/atoms/Button/Button.styles'
+
 import { ModalBackground, ModalWrapper } from './Modal.styles'
 
 const modalContainer = document.getElementById('modal-container')

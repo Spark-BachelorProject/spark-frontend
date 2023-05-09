@@ -1,6 +1,7 @@
+import styled from 'styled-components'
+
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { Label } from '@/components/atoms/Label/Label.styles'
-import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   position: relative;
@@ -17,8 +18,8 @@ export const Wrapper = styled.div`
   }
 
   ${Input} {
-    -webkit-appearance: none;
-    -moz-appearance: textfield;
+    /* -webkit-appearance: none;
+    -moz-appearance: textfield; */
     margin: 0;
     text-align: center;
     cursor: pointer;

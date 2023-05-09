@@ -1,10 +1,12 @@
+import React, { useState } from 'react'
+
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { Label } from '@/components/atoms/Label/Label.styles'
 import CheckboxField from '@/components/molecules/CheckboxField/CheckboxField'
 import FormField from '@/components/molecules/FormField/FormField'
-import React, { useState } from 'react'
-import { InputWrapper, TimeFromToWrapper, Wrapper } from './Filters.styles'
 import { timeNow } from '@/helpers/dateAndTime'
+
+import { InputWrapper, TimeFromToWrapper, Wrapper } from './Filters.styles'
 
 const Filters = () => {
   const [time1, setTime1] = useState(timeNow)

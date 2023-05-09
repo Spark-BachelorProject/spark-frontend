@@ -1,8 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 import { ReactComponent as BookmarkIcon } from '@/assets/icons/bookmark.svg'
 import { ReactComponent as MoonIcon } from '@/assets/icons/moon.svg'
+import { ReactComponent as SearchIcon } from '@/assets/icons/search.svg'
 import { ReactComponent as SunIcon } from '@/assets/icons/sun.svg'
+import { Counter } from '@/components/atoms/Counter/Counter'
+import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
+import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
+import { NotificationBell } from '@/components/molecules/NotificationBell/NotificationBell'
+import SearchInput from '@/components/molecules/SearchInput/SearchInput'
+import { BookmarkedContent } from '@/components/organism/BookmarkedContent/BookmarkedContent'
+import useModal from '@/hooks/useModal'
+
+import { NotificationsContent } from '../NotificationsContent/NotificationsContent'
+import { ProfileContent } from '../ProfileContent/ProfileContent'
 import {
   Wrapper,
   InnerWrapper,
@@ -11,16 +23,6 @@ import {
   StyledThumbnail,
   StyledIconBorder,
 } from './HeaderSearchBar.styles'
-import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
-import SearchInput from '@/components/molecules/SearchInput/SearchInput'
-import { ReactComponent as SearchIcon } from '@/assets/icons/search.svg'
-import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
-import { BookmarkedContent } from '@/components/organism/BookmarkedContent/BookmarkedContent'
-import { NotificationBell } from '@/components/molecules/NotificationBell/NotificationBell'
-import useModal from '@/hooks/useModal'
-import { Counter } from '@/components/atoms/Counter/Counter'
-import { ProfileContent } from '../ProfileContent/ProfileContent'
-import { NotificationsContent } from '../NotificationsContent/NotificationsContent'
 
 const everyIsFalse = (...args) => args.every((arg) => !arg)
 

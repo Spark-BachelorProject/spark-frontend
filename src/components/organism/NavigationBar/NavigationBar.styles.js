@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { ReactComponent as PlusSquareIcon } from '@/assets/icons/plus-square.svg'
 
 export const Wrapper = styled.nav`

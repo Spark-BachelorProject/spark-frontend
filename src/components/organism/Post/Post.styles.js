@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 import { ReactComponent as MoreInfoIcon } from '@/assets/icons/three-dots.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
+import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
-import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.article`
   background-color: ${({ theme }) => theme.colors.secondaryBg};

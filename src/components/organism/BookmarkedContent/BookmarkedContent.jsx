@@ -1,9 +1,11 @@
-import { Title } from '@/components/atoms/Title/Title.styles'
 import React from 'react'
+
+import { Title } from '@/components/atoms/Title/Title.styles'
 import { SavedPost } from '@/components/molecules/SavedPost/SavedPost'
-import { Wrapper, HeadingWrapper, StyledMoreInfoIcon } from './BookmarkedContent.styles'
 import useModal from '@/hooks/useModal'
+
 import { MoreInfoBookmark } from '../MoreInfoBookmark/MoreInfoBookmark'
+import { Wrapper, HeadingWrapper, StyledMoreInfoIcon } from './BookmarkedContent.styles'
 
 export const BookmarkedContent = () => {
   const {

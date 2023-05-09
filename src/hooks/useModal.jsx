@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+
 import Modal from '@/components/organism/Modal/Modal'
 
 const useModal = (initialValue = false, isHeaderSearchBar = false) => {

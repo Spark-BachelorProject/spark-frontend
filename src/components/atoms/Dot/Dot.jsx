@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { StyledDot } from './Dot.styles'
 
 const Dot = ({ className }) => {

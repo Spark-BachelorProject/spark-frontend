@@ -7,6 +7,7 @@ import { ModalBackground, ModalWrapper } from './Modal.styles'
 
 const modalContainer = document.getElementById('modal-container')
 
+// TODO: consider replacing isModal to isCenter, and refactor code to popUp instead of Modal
 const Modal = ({
   textOnClose,
   handleClose,
@@ -17,6 +18,8 @@ const Modal = ({
   isFixed,
   hasNoPadding,
   hasNoBackground,
+  isModal,
+  hasBackgroundColor,
 }) => {
   const modalNode = document.createElement('div')
   const [modalNum, setModalNum] = useState(
@@ -33,10 +36,16 @@ const Modal = ({
     }
   }, [modalNode])
 
+  // hasNoBackground prevents rendering element, hasBackgroundColor refers to color
   return ReactDOM.createPortal(
     <>
       {hasNoBackground ? null : (
-        <ModalBackground onClick={handleClose} modalNum={modalNum} isFixed={isFixed} />
+        <ModalBackground
+          hasBackgroundColor={hasBackgroundColor}
+          onClick={handleClose}
+          modalNum={modalNum}
+          isFixed={isFixed}
+        />
       )}
       <ModalWrapper
         position={position}
@@ -44,6 +53,7 @@ const Modal = ({
         modalNum={modalNum}
         isFixed={isFixed}
         hasNoPadding={hasNoPadding}
+        isModal={isModal}
       >
         {children}
         {hasCloseButton ? <Button onClick={handleClose}>{textOnClose}</Button> : null}

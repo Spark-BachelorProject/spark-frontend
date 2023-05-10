@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { ReactComponent as BookmarkIcon } from '@/assets/icons/bookmark.svg'
@@ -11,6 +12,7 @@ import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
 import { NotificationBell } from '@/components/molecules/NotificationBell/NotificationBell'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
 import { BookmarkedContent } from '@/components/organism/BookmarkedContent/BookmarkedContent'
+import { toggle } from '@/features/themeSlice'
 import useModal from '@/hooks/useModal'
 
 import { NotificationsContent } from '../NotificationsContent/NotificationsContent'
@@ -26,7 +28,10 @@ import {
 
 const everyIsFalse = (...args) => args.every((arg) => !arg)
 
-export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
+const HeaderSearchBar = () => {
+  const dispatch = useDispatch()
+  const colorsTheme = useSelector((state) => state.theme.theme)
+
   const isHeaderSearchBar = true
   const {
     Modal,
@@ -59,7 +64,7 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
 
   const handleKeyDownOnChangeTheme = (e) => {
     if (e.key === 'Enter') {
-      toggleColorsTheme()
+      dispatch(toggle())
     }
   }
 
@@ -123,7 +128,7 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
           </IconBorder>
           <IconBorder
             tabIndex="0"
-            onClick={toggleColorsTheme}
+            onClick={() => dispatch(toggle())}
             onKeyDown={handleKeyDownOnChangeTheme}
           >
             {colorsTheme === 'light' ? <MoonIcon /> : <SunIcon />}
@@ -159,3 +164,5 @@ export const HeaderSearchBar = ({ toggleColorsTheme, colorsTheme }) => {
     </Wrapper>
   )
 }
+
+export default HeaderSearchBar

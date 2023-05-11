@@ -6,7 +6,7 @@ import { Label } from '@/components/atoms/Label/Label.styles'
 
 import { Wrapper } from './FormField.styles'
 
-const FormField = ({ id, type, labelText, isBiggerThanZero, placeholder }) => {
+const FormField = ({ id, type, labelText, isBiggerThanZero, placeholder, hasLabel = true }) => {
   const [value, setValue] = useState('')
 
   const handleChange = (e) => {
@@ -15,7 +15,7 @@ const FormField = ({ id, type, labelText, isBiggerThanZero, placeholder }) => {
 
   return (
     <Wrapper>
-      <Label htmlFor={id}>{labelText}</Label>
+      {hasLabel ? <Label htmlFor={id}>{labelText}</Label> : null}
       <Input
         type={type}
         id={id}

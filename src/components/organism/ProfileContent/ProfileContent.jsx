@@ -17,7 +17,7 @@ export const ProfileContent = ({ handleClose }) => {
         <SettingsIcon />
         Ustawienia
       </StyledText>
-      <StyledText>
+      <StyledText as={NavLink} to="/login" onClick={handleClose}>
         <LogOutIcon />
         Wyloguj się
       </StyledText>

@@ -5,10 +5,13 @@ import { Button } from '@/components/atoms/Button/Button.styles'
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
+import useGoogleLogin from '@/hooks/useGoogleLogin'
 
 import { Form } from './Login.styles'
 
 const Login = () => {
+  const { GoogleLogin } = useGoogleLogin()
+
   return (
     <Form action="post">
       <Input placeholder="Email" type="text" />
@@ -19,7 +22,7 @@ const Login = () => {
       </Text>
       <Button isBig>Zaloguj się</Button>
       <DividerLabel>Zaloguj się przy użyciu</DividerLabel>
-      {/* Place for google button */}
+      <GoogleLogin />
       <Text as={Link} to={'/register'} className="registertext">
         Nie masz konta? <b>Zarejestruj się</b>
       </Text>

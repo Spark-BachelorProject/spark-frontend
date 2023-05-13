@@ -41,6 +41,7 @@ export const Form = styled.form`
   }
 
   ${Text}.registertext {
+    margin-top: 15px;
     & > b {
       margin-left: 3px;
     }

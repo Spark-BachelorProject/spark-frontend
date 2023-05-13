@@ -1,8 +1,9 @@
 import React from 'react'
-import { Wrapper, InnerWrapper } from './PageContent.styles'
-import { DekstopNavigationBar } from '@/components/organism/DekstopNavigationBar/DekstopNavigationBar'
 
+import { DekstopNavigationBar } from '@/components/organism/DekstopNavigationBar/DekstopNavigationBar'
 import { DekstopRightBar } from '@/components/organism/DekstopRightBar/DekstopRightBar'
+
+import { Wrapper, InnerWrapper } from './PageContent.styles'
 
 export const PageContent = ({ children, hasNavigation, hasRightBar, className }) => {
   return (

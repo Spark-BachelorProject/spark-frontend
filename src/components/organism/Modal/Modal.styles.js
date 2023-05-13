@@ -1,10 +1,18 @@
 import styled from 'styled-components'
+
 import { Button } from '@/components/atoms/Button/Button.styles'
 
 export const ModalWrapper = styled.div`
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.07);
   position: ${({ isFixed }) => (isFixed ? 'fixed' : 'absolute')};
   z-index: ${({ modalNum }) => 1000 + modalNum * 1 + 1};
+  ${({ isModal }) =>
+    isModal &&
+    `
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important; 
+  `}
   top: ${({ position: { y } }) => `${y}px`};
   left: ${({ position: { x } }) => `${x}px`};
 
@@ -15,8 +23,6 @@ export const ModalWrapper = styled.div`
       ? 'translateX(-15%)'
       : 'translateX(-50%)'};
 
-  /* width: ${({ width }) =>
-    width === 'big' ? '330px' : width === 'medium' ? '280px' : '260px'}; */
   height: auto;
   max-height: 500px;
   background-color: ${({ theme }) => theme.colors.modalBg};
@@ -54,5 +60,6 @@ export const ModalBackground = styled.div`
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: ${({ hasBackgroundColor }) =>
+    hasBackgroundColor ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0)'};
 `

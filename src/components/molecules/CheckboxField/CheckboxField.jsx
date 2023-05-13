@@ -1,7 +1,9 @@
-import { Checkbox } from '@/components/atoms/Checkbox/Checkbox.styles'
-import { Label } from '@/components/atoms/Label/Label.styles'
 import React from 'react'
 import { useState } from 'react'
+
+import { Checkbox } from '@/components/atoms/Checkbox/Checkbox.styles'
+import { Label } from '@/components/atoms/Label/Label.styles'
+
 import { Wrapper } from './CheckboxField.styles'
 
 const CheckboxField = ({ labelText, checked = false, id, ...props }) => {

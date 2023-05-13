@@ -1,5 +1,6 @@
-import { Input } from '@/components/atoms/Input/Input.styles'
 import styled from 'styled-components'
+
+import { Input } from '@/components/atoms/Input/Input.styles'
 
 export const InputWrapper = styled.div`
   position: relative;

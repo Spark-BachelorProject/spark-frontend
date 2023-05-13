@@ -1,7 +1,9 @@
 import React from 'react'
+
 import { Title } from '@/components/atoms/Title/Title.styles'
-import { Wrapper } from './SocialSection.styles'
 import { SocialItem } from '@/components/molecules/SocialItem/SocialItem'
+
+import { Wrapper } from './SocialsSection.styles'
 
 const SocialsSection = () => {
   return (

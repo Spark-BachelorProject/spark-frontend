@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 

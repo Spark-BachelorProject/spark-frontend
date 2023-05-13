@@ -1,6 +1,7 @@
+import styled from 'styled-components'
+
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
-import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.secondaryBg};

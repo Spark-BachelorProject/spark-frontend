@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+
 import { ReactComponent as FilterIcon } from '@/assets/icons/filter.svg'
-import { Wrapper, ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder } from './Dropdown.styles'
 import Select from '@/components/atoms/Select/Select'
-import useModal from '@/hooks/useModal'
 import Filters from '@/components/organism/Filters/Filters'
+import useModal from '@/hooks/useModal'
+
+import { Wrapper, ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder } from './Dropdown.styles'
 
 // TODO: Seperate to redux
 // TODO: After adding filter seperate this to molecule

@@ -1,8 +1,10 @@
+import React from 'react'
+import { useState } from 'react'
+
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { Label } from '@/components/atoms/Label/Label.styles'
-import React from 'react'
+
 import { Wrapper } from './FormField.styles'
-import { useState } from 'react'
 
 const FormField = ({ id, type, labelText, isBiggerThanZero, placeholder }) => {
   const [value, setValue] = useState('')

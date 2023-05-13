@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
 
 export const Wrapper = styled.div`

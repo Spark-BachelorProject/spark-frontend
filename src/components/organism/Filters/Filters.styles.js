@@ -1,6 +1,7 @@
+import styled from 'styled-components'
+
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { Label } from '@/components/atoms/Label/Label.styles'
-import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   padding: 0 20px 10px 20px;

@@ -1,9 +1,11 @@
 import React from 'react'
-import { PersonListItem } from '@/components/molecules/PersonListItem/PersonListItem'
-import { ReactComponent as SettingsIcon } from '@/assets/icons/settings.svg'
-import { ReactComponent as LogOutIcon } from '@/assets/icons/log-out.svg'
-import { Wrapper, StyledText } from './ProfileContent.styles'
 import { NavLink } from 'react-router-dom'
+
+import { ReactComponent as LogOutIcon } from '@/assets/icons/log-out.svg'
+import { ReactComponent as SettingsIcon } from '@/assets/icons/settings.svg'
+import { PersonListItem } from '@/components/molecules/PersonListItem/PersonListItem'
+
+import { Wrapper, StyledText } from './ProfileContent.styles'
 
 export const ProfileContent = ({ handleClose }) => {
   return (

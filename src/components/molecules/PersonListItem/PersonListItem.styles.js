@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { Title } from '@/components/atoms/Title/Title.styles'
 
 export const Wrapper = styled.div`

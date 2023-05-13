@@ -1,8 +1,10 @@
 import React from 'react'
-import { Wrapper } from './DekstopRightBar.styles'
-import { SocialItem } from '@/components/molecules/SocialItem/SocialItem'
-import { Container, StyledContainer, StyledTitle, StyledSocialItem } from './DekstopRightBar.styles'
+
 import { PersonListItem } from '@/components/molecules/PersonListItem/PersonListItem'
+import { SocialItem } from '@/components/molecules/SocialItem/SocialItem'
+
+import { Wrapper } from './DekstopRightBar.styles'
+import { Container, StyledContainer, StyledTitle, StyledSocialItem } from './DekstopRightBar.styles'
 
 export const DekstopRightBar = () => {
   return (

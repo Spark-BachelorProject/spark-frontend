@@ -1,6 +1,7 @@
+import styled from 'styled-components'
+
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { consecutiveNumbers } from '@/helpers/consecutiveNumbers'
-import styled from 'styled-components'
 
 // TODO: let Thumbnail be more elastic
 export const Wrapper = styled.div`

@@ -1,5 +1,7 @@
-import Dot from '@/components/atoms/Dot/Dot'
 import React from 'react'
+
+import Dot from '@/components/atoms/Dot/Dot'
+
 import {
   Wrapper,
   TextWrapper,

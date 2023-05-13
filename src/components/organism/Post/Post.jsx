@@ -1,12 +1,22 @@
 import React, { useState } from 'react'
-import { ReactComponent as SendVectorIcon } from '@/assets/icons/send-vector.svg'
-import { ReactComponent as ExpandVectorIcon } from '@/assets/icons/expand-vector.svg'
-import { ReactComponent as PinIcon } from '@/assets/icons/map-pin.svg'
+
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
+import { ReactComponent as ExpandVectorIcon } from '@/assets/icons/expand-vector.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
-import { Title } from '@/components/atoms/Title/Title.styles'
+import { ReactComponent as PinIcon } from '@/assets/icons/map-pin.svg'
+import { ReactComponent as SendVectorIcon } from '@/assets/icons/send-vector.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
+import Dot from '@/components/atoms/Dot/Dot'
+import Tags from '@/components/atoms/Tags/Tags'
 import { Text } from '@/components/atoms/Text/Text.styles'
+import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
+import { Title } from '@/components/atoms/Title/Title.styles'
+import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
+import Comment from '@/components/molecules/Comment/Comment'
+import useModal from '@/hooks/useModal'
+
+import { AttendingContent } from '../AttendingContent/AttendingContent'
+import { MoreInfoPost } from '../MoreInfoPost/MoreInfoPost'
 import {
   CommentSection,
   Details,
@@ -18,14 +28,6 @@ import {
   Wrapper,
   DetailsWrapper,
 } from './Post.styles'
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
-import Dot from '@/components/atoms/Dot/Dot'
-import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
-import Comment from '@/components/molecules/Comment/Comment'
-import useModal from '@/hooks/useModal'
-import { MoreInfoPost } from '../MoreInfoPost/MoreInfoPost'
-import { AttendingContent } from '../AttendingContent/AttendingContent'
-import Tags from '@/components/atoms/Tags/Tags'
 
 const Post = () => {
   const numberOfComments = 3 // its taken from api
@@ -152,7 +154,7 @@ const Post = () => {
       ) : null}
 
       {isOpen2 ? (
-        <Modal2 handleClose={handleCloseModal2} position={position2}>
+        <Modal2 handleClose={handleCloseModal2} position={position2} isModal hasBackgroundColor>
           <AttendingContent />
         </Modal2>
       ) : null}

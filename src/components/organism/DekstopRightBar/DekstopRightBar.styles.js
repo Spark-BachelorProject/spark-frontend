@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { Title } from '@/components/atoms/Title/Title.styles'
 import { SocialItem } from '@/components/molecules/SocialItem/SocialItem'
 

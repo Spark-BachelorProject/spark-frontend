@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { Label } from '@/components/atoms/Label/Label.styles'
 
 export const Wrapper = styled.div`

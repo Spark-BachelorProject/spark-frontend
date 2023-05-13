@@ -1,8 +1,10 @@
 import React from 'react'
+
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
-import { Wrapper, InputDummy } from './AddPostDummy.styles'
 import useModal from '@/hooks/useModal'
+
+import { Wrapper, InputDummy } from './AddPostDummy.styles'
 
 export const AddPostDummy = () => {
   const {

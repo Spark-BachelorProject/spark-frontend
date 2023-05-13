@@ -1,8 +1,10 @@
 import React from 'react'
-import { Wrapper } from './SocialItem.styles'
+
+import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
-import Dot from '@/components/atoms/Dot/Dot'
+
+import { Wrapper } from './SocialItem.styles'
 
 export const SocialItem = ({ TitleText, ActivityName, Members, Comment, WeeklyPostCount }) => {
   return (

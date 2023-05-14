@@ -14,7 +14,7 @@ const Login = () => {
 
   return (
     <Form action="post">
-      <Input placeholder="Email" type="text" />
+      <Input placeholder="Email" type="email" />
       <Input placeholder="Hasło" type="password" />
 
       <Text as={Link} className="problems">

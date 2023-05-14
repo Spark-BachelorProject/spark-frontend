@@ -37,6 +37,7 @@ export const Form = styled.form`
   }
 
   ${Text}.logintext {
+    margin-top: 15px;
     & > b {
       margin-left: 3px;
     }

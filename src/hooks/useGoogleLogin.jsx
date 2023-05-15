@@ -10,7 +10,7 @@ const useGoogleLogin = () => {
   useEffect(() => {
     /* global google */
     google.accounts.id.initialize({
-      client_id: '1018465811730-prs9cp8c8ob35hrcagvqt6qs8bg44g1p.apps.googleusercontent.com',
+      client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
       callback: handleCallbackResponse,
     })
 

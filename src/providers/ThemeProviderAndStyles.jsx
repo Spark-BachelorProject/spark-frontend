@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
+import PropTypes from 'prop-types'
 import { ThemeProvider } from 'styled-components'
 
 import { GlobalStyle } from '@/assets/styles/GlobalStyle'
@@ -16,6 +17,10 @@ const ThemeProviderAndStyles = ({ children }) => {
       {children}
     </ThemeProvider>
   )
+}
+
+ThemeProviderAndStyles.propTypes = {
+  children: PropTypes.node,
 }
 
 export default ThemeProviderAndStyles

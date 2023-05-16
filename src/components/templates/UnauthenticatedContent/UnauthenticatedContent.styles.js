@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Title } from '@/components/atoms/Title/Title.styles'
 
 export const Wrapper = styled.div`
-  height: calc(100vh - 70px);
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -7,6 +7,6 @@ export const registerSchema = yup.object().shape({
   password: yup.string().required('Pole hasło jest wymagane'),
   repeatedPassword: yup
     .string()
-    .oneOf([yup.ref('password'), null], 'Hasła muszą się zgadzać')
+    .oneOf([yup.ref('password'), null], 'Hasła się różnią')
     .required('Pole powtórz hasło jest wymagane'),
 })

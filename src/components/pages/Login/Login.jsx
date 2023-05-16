@@ -3,13 +3,12 @@ import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
 
 import { loginSchema } from '@/assets/schemas/loginSchema'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
-import { Input } from '@/components/atoms/Input/Input.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
+import LoginInput from '@/components/molecules/LoginInput/LoginInput'
 import useGoogleLogin from '@/hooks/useGoogleLogin'
 
 import { Form } from './Login.styles'
@@ -22,14 +21,24 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(loginSchema) })
 
-  const onSubmit = (data) => console.log(data, errors)
+  const onSubmit = (data) => {
+    console.log(data, errors)
+  }
 
   return (
     <Form action="post" onSubmit={handleSubmit(onSubmit)}>
-      <Input placeholder="Email" type="email" {...register('email')} />
-      <p>{errors.email?.message}</p>
-      <Input placeholder="Hasło" type="password" {...register('password')} />
-      <p>{errors.password?.message}</p>
+      <LoginInput
+        placeholder="Email"
+        type="email"
+        {...register('email')}
+        error={errors?.email?.message}
+      />
+      <LoginInput
+        placeholder="Hasło"
+        type="password"
+        {...register('password')}
+        error={errors?.password?.message}
+      />
 
       <Text as={Link} className="problems">
         Problemy z logowaniem?

@@ -26,7 +26,7 @@ const Login = () => {
   }
 
   return (
-    <Form action="post" onSubmit={handleSubmit(onSubmit)}>
+    <Form action="post" onSubmit={handleSubmit(onSubmit)} data-testid="form">
       <LoginInput
         placeholder="Email"
         type="email"

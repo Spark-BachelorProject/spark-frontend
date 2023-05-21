@@ -10,7 +10,9 @@ const Home = () => {
   return (
     <PageContent hasNavigation hasRightBar>
       <AddPostDummy />
-      <TitleBar city="Lublinie" />
+      <TitleBar>
+        To się dzieje w <strong>Lublinie</strong>!
+      </TitleBar>
       <Dropdown />
       <Post />
       <Post />

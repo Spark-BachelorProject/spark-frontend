@@ -20,11 +20,17 @@ export const Wrapper = styled.div`
   @media (min-width: ${({ theme }) => theme.breakPoints.l}) {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 30px;
   }
 `
 
-export const InnerWrapper = styled.div`
+export const GroupWrapper = styled.div`
   margin: 0 10px;
   max-width: 684px;
+`
+
+export const RightSection = styled.div`
+  @media screen and (max-width: ${({ theme }) => theme.breakPoints.l}) {
+    display: none;
+  }
 `

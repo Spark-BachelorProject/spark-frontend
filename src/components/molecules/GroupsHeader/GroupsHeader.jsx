@@ -1,7 +1,9 @@
 import React from 'react'
-import { Wrapper } from './GroupsHeader.styles'
-import { Title } from '@/components/atoms/Title/Title.styles'
+
 import { Text } from '@/components/atoms/Text/Text.styles'
+import { Title } from '@/components/atoms/Title/Title.styles'
+
+import { Wrapper } from './GroupsHeader.styles'
 
 const GroupsHeader = () => {
   return (

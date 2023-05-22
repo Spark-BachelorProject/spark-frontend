@@ -1,7 +1,5 @@
 import React from 'react'
 
-import styled from 'styled-components'
-
 import { ReactComponent as FilterIcon } from '@/assets/icons/filter.svg'
 import { ReactComponent as UsersIcon } from '@/assets/icons/users.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
@@ -17,7 +15,12 @@ import {
   Wrapper,
 } from './GroupsActionBar.styles'
 
-const GroupsActionBar = () => {
+const GroupsActionBar = ({
+  hasFilters = true,
+  groupName = 'Grupy',
+  numOfPosts = 0,
+  buttonText = 'Stwórz grupę',
+}) => {
   return (
     <Wrapper>
       <IconAndLabel>
@@ -25,18 +28,21 @@ const GroupsActionBar = () => {
           <UsersIcon />
         </IconBackground>
         <div>
-          <Title isBig>Grupy</Title>
-          <Text>124 grupy</Text>
+          <Title isBig>{groupName}</Title>
+          <Text>{numOfPosts ? `${numOfPosts} aktualnych postów` : `124 grupy`}</Text>
         </div>
       </IconAndLabel>
       <GroupsActionSection>
+        {hasFilters ? (
+          <StyledIconBorder tabIndex="0">
+            <FilterIcon />
+          </StyledIconBorder>
+        ) : null}
         <StyledIconBorder tabIndex="0">
           <StyledSearchIcon />
         </StyledIconBorder>
-        <StyledIconBorder tabIndex="0">
-          <FilterIcon />
-        </StyledIconBorder>
-        <Button>Stwórz grupę</Button>
+
+        <Button>{buttonText}</Button>
       </GroupsActionSection>
     </Wrapper>
   )

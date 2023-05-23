@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import InformationSection from '@/components/molecules/InformationSection/InformationSection'
 import SimilarGroups from '@/components/molecules/SimilarGroups/SimilarGroups'
+import MembersSection from '@/components/organism/MembersSection/MembersSection'
 
 import { GroupWrapper, RightSection, Wrapper } from './GroupTemplate.styles'
 
@@ -14,6 +15,7 @@ const GroupTemplate = ({ children }) => {
       <GroupWrapper>{children}</GroupWrapper>
       <RightSection>
         <InformationSection />
+        <MembersSection />
       </RightSection>
     </Wrapper>
   )

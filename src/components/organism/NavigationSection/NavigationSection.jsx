@@ -18,7 +18,7 @@ const NavigationSection = () => {
         <MapIcon />
         Mapa
       </NavLink>
-      <NavLink to="/users">
+      <NavLink to="/groups">
         <UsersIcon />
         Grupy
       </NavLink>

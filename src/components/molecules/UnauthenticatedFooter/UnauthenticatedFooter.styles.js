@@ -5,6 +5,7 @@ export const Wrapper = styled.footer`
   display: flex;
   justify-content: center;
   height: 50px;
+
   background-color: ${({ theme }) => theme.colors.secondaryBg};
 
   @media (min-width: 998px) {

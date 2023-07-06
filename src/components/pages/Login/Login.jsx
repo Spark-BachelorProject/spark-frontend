@@ -42,7 +42,8 @@ const Login = () => {
         console.log(response)
         setValidData(true)
       } catch (error) {
-        console.log(error)
+        // #TODO: add alert when user is not found
+        console.log('Loginfailed', error)
       }
     }
 
@@ -54,7 +55,7 @@ const Login = () => {
   return (
     <>
       {validData && <Alert message="Użytkownik zalogowany!" />}
-      <Form action="post" onSubmit={handleSubmit(onSubmit)}>
+      <Form action="post" onSubmit={handleSubmit(onSubmit)} data-testid="form">
         <LoginInput
           placeholder="Email"
           type="email"

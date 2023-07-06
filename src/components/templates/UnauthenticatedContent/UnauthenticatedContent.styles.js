@@ -12,8 +12,10 @@ export const Wrapper = styled.div`
 
 export const ContentWrapper = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
+  gap: 20px;
   justify-content: center;
   flex-direction: column;
 
@@ -24,10 +26,10 @@ export const ContentWrapper = styled.div`
 
 export const LogoTitlesWrapper = styled.div`
   max-width: 440px;
-  margin: 0 0 70px 0;
+  margin: 50px 0 70px 0;
 
   @media (min-width: 998px) {
-    margin: 0 150px 0 0;
+    margin: 30px 150px 0 0;
   }
 `
 export const LogoTitle = styled(Title)`
@@ -40,6 +42,6 @@ export const LogoSubtitle = styled(Title)`
   font-size: 30px;
   font-weight: 400;
   max-width: 550px;
-  margin-top: 10px;
+  margin-top: 20px;
   color: ${({ theme }) => theme.colors.text};
 `

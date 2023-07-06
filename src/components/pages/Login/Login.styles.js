@@ -8,7 +8,8 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 export const Form = styled.form`
   background-color: ${({ theme }) => theme.colors.secondaryBg};
   padding: 25px 20px;
-  margin-bottom: 50px;
+  margin-top: 15px;
+  margin-bottom: 60px;
   max-width: 440px;
   border-radius: 7px;
   width: 100%;
@@ -46,5 +47,9 @@ export const Form = styled.form`
     & > b {
       margin-left: 3px;
     }
+  }
+
+  @media (max-width: 998px) {
+    flex-direction: column;
   }
 `

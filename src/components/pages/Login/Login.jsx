@@ -12,13 +12,13 @@ import { Button } from '@/components/atoms/Button/Button.styles'
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import LoginInput from '@/components/molecules/LoginInput/LoginInput'
-import useGoogleLogin from '@/hooks/useGoogleLogin'
 
+// import useGoogleLogin from '@/hooks/useGoogleLogin'
 import { Form } from './Login.styles'
 
 const Login = () => {
   const [validData, setValidData] = useState(false)
-  const { GoogleLogin } = useGoogleLogin()
+  // const { GoogleLogin } = useGoogleLogin()
   const {
     register,
     handleSubmit,
@@ -76,7 +76,7 @@ const Login = () => {
           Zaloguj się
         </Button>
         <DividerLabel>Zaloguj się przy użyciu</DividerLabel>
-        <GoogleLogin />
+        {/* <GoogleLogin /> */}
         <Text as={Link} to={'/register'} className="registertext">
           Nie masz konta? <b>Zarejestruj się</b>
         </Text>

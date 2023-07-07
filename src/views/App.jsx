@@ -1,26 +1,60 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router'
 
-import HeaderSearchBar from '@/components/organism/HeaderSearchBar/HeaderSearchBar'
-import NavigationBar from '@/components/organism/NavigationBar/NavigationBar'
-import Group from '@/components/pages/Group/Group'
-import Groups from '@/components/pages/Groups/Groups'
 import Home from '@/components/pages/Home/Home'
 import Login from '@/components/pages/Login/Login'
 import Profile from '@/components/pages/Profile/Profile'
+import Register from '@/components/pages/Register/Register'
+import Users from '@/components/pages/Users/Users'
 
+import AuthenticatedApp from './AuthenticatedApp'
+import UnauthenticatedApp from './UnauthenticatedApp'
+
+//FIXME: On logout display login in proper way
 function App() {
   return (
-    <>
-      <HeaderSearchBar />
-      <Routes>
-        <Route path="/groups" element={<Groups />} />
-        <Route path="/groups/:id?" element={<Group />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/login" element={<Login />} exact />
-        <Route path="/" element={<Home />} exact />
-      </Routes>
-      <NavigationBar />
-    </>
+    <Routes>
+      <Route
+        path="/users"
+        element={
+          <AuthenticatedApp>
+            <Users />
+          </AuthenticatedApp>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <AuthenticatedApp>
+            <Profile />
+          </AuthenticatedApp>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <UnauthenticatedApp>
+            <Login />
+          </UnauthenticatedApp>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <UnauthenticatedApp>
+            <Register />
+          </UnauthenticatedApp>
+        }
+      />
+      <Route
+        path="/"
+        element={
+          <AuthenticatedApp>
+            <Home />
+          </AuthenticatedApp>
+        }
+        exact
+      />
+    </Routes>
   )
 }
 

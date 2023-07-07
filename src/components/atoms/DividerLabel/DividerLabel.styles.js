@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const PostDividerLabel = styled.span`
+export const DividerLabel = styled.span`
   position: relative;
   color: ${({ theme }) => theme.colors.divider};
   font-size: ${({ theme }) => theme.fontSize.sPlus};

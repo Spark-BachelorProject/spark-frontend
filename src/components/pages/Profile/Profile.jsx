@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PostDividerLabel } from '@/components/atoms/PostDividerLabel/PostDividerLabel.styles'
+import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
 import Post from '@/components/organism/Post/Post'
 import ProfileDetails from '@/components/organism/ProfileDetails/ProfileDetails'
 
@@ -11,9 +11,9 @@ const Profile = () => {
     <StyledPageContent>
       <ProfileDetails />
       <div>
-        <PostDividerLabel>Aktualne posty</PostDividerLabel>
+        <DividerLabel>Aktualne posty</DividerLabel>
         <Post />
-        <PostDividerLabel>Archiwalne posty</PostDividerLabel>
+        <DividerLabel>Archiwalne posty</DividerLabel>
         <Post />
         <Post />
       </div>

@@ -15,7 +15,7 @@ const NavigationBar = () => {
         <NavLink to="/">
           <HomeIcon />
         </NavLink>
-        <NavLink to="/users">
+        <NavLink to="/groups">
           <UsersIcon />
         </NavLink>
         <StyledPlusSquareIcon />

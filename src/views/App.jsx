@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router'
 
+import Groups from '@/components/pages/Groups/Groups'
 import Home from '@/components/pages/Home/Home'
 import Login from '@/components/pages/Login/Login'
 import Profile from '@/components/pages/Profile/Profile'
@@ -26,6 +27,14 @@ function App() {
         element={
           <AuthenticatedApp>
             <Profile />
+          </AuthenticatedApp>
+        }
+      />
+      <Route
+        path="/groups"
+        element={
+          <AuthenticatedApp>
+            <Groups />
           </AuthenticatedApp>
         }
       />

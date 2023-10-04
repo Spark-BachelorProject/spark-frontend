@@ -11,12 +11,12 @@ import { Button } from '@/components/atoms/Button/Button.styles'
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import LoginInput from '@/components/molecules/LoginInput/LoginInput'
+import useGoogleLogin from '@/hooks/useGoogleLogin'
 
-// import useGoogleLogin from '@/hooks/useGoogleLogin'
 import { Form } from './Register.styles'
 
 const Register = () => {
-  // const { GoogleLogin } = useGoogleLogin()
+  const { GoogleLogin } = useGoogleLogin()
   const [validData, setValidData] = React.useState(false)
 
   const {
@@ -90,7 +90,7 @@ const Register = () => {
           Zarejestruj się
         </Button>
         <DividerLabel>Zaloguj się przy użyciu</DividerLabel>
-        {/* <GoogleLogin /> */}
+        <GoogleLogin />
         <Text as={Link} to={'/login'} className="logintext">
           Masz już konto? <b>Zaloguj się</b>
         </Text>

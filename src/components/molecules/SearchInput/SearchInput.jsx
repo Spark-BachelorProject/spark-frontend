@@ -13,7 +13,7 @@ const SearchInput = ({ placeholder, Icon, isAlwaysVisibleIcon, ...props }) => {
   }
 
   return (
-    <InputWrapper {...props}>
+    <InputWrapper>
       {!isAlwaysVisibleIcon && iconIsVisible && !inputValue && Icon}
       {isAlwaysVisibleIcon && Icon}
       <Input
@@ -23,6 +23,7 @@ const SearchInput = ({ placeholder, Icon, isAlwaysVisibleIcon, ...props }) => {
         placeholder={placeholder}
         onFocus={() => setIconIsVisible(false)}
         onBlur={() => setIconIsVisible(true)}
+        {...props}
       />
     </InputWrapper>
   )

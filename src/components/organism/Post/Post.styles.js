@@ -4,7 +4,6 @@ import { ReactComponent as MoreInfoIcon } from '@/assets/icons/three-dots.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
-import SearchInput from '@/components/molecules/SearchInput/SearchInput'
 
 export const Wrapper = styled.article`
   background-color: ${({ theme }) => theme.colors.secondaryBg};
@@ -112,58 +111,6 @@ export const InteractionsSection = styled.section`
   }
 `
 
-export const StyledSearchInput = styled(SearchInput)`
-  margin: 30px 0 15px 0;
-  width: auto !important;
-  position: relative;
-
-  & > svg {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-  }
-
-  & > svg > path {
-    stroke: ${({ theme }) => theme.colors.placeholder};
-    fill: ${({ theme, isEmptyIcon }) => (isEmptyIcon ? 'default' : theme.colors.placeholder)};
-  }
-
-  &::before {
-    position: absolute;
-    content: '';
-    top: -17px;
-    left: 50%;
-    width: 100%;
-    height: 3px;
-    transform: translateX(-50%);
-    background-color: ${({ theme }) => theme.colors.mainDivider};
-  }
-
-  & > input::placeholder {
-    color: ${({ theme }) => theme.colors.placeholder};
-    font-weight: 300;
-  }
-`
-
-export const StyledText = styled(Text)`
-  cursor: pointer;
-  color: ${({ theme }) => theme.colors.text};
-  font-size: ${({ theme }) => theme.fontSize.s};
-  font-weight: 500;
-
-  & > svg {
-    transition: transform 0.2s ease-in-out;
-    transform: translate(2px, 1px)
-      ${({ commentSectionIsOpen }) => (commentSectionIsOpen ? 'rotate(180deg)' : '')};
-  }
-
-  & > svg > path {
-    color: ${({ theme }) => theme.colors.white};
-  }
-`
-
 export const DetailsWrapper = styled.div`
   margin: 10px 0 0px 0;
   display: flex;
@@ -184,8 +131,4 @@ export const DetailsWrapper = styled.div`
   & > svg > path {
     stroke: ${({ theme }) => theme.colors.text};
   }
-`
-
-export const CommentSection = styled.section`
-  margin-top: 15px;
 `

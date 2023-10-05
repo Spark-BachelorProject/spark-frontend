@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
-import { ReactComponent as ExpandVectorIcon } from '@/assets/icons/expand-vector.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
 import { ReactComponent as PinIcon } from '@/assets/icons/map-pin.svg'
-import { ReactComponent as SendVectorIcon } from '@/assets/icons/send-vector.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import Dot from '@/components/atoms/Dot/Dot'
 import Tags from '@/components/atoms/Tags/Tags'
@@ -12,26 +10,58 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
-import Comment from '@/components/molecules/Comment/Comment'
 import useModal from '@/hooks/useModal'
 
 import { AttendingContent } from '../AttendingContent/AttendingContent'
+import CommentSection from '../CommentSection/CommentSection'
 import { MoreInfoPost } from '../MoreInfoPost/MoreInfoPost'
 import {
-  CommentSection,
   Details,
   Header,
   InteractionsSection,
   StyledMoreInfoIcon,
-  StyledSearchInput,
-  StyledText,
   Wrapper,
   DetailsWrapper,
 } from './Post.styles'
 
+// its taken from api
+const defaultComments = [
+  {
+    id: 1,
+    userName: 'Kasia Baran',
+    howLongAgo: 18,
+    comment: 'Będę, postaram się nie spóżnić',
+  },
+  {
+    id: 2,
+    userName: 'Mariusz Siembida',
+    howLongAgo: 13,
+    comment: 'Dzisiaj odpadam, ale następnym razem będę ;)',
+  },
+]
+let numberOfComments = 2 // its taken from api
+
 const Post = () => {
-  const numberOfComments = 3 // its taken from api
   const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(!(numberOfComments > 2))
+  const [comments, setComments] = useState(defaultComments)
+  const [inputValue, setInputValue] = useState('')
+
+  const handleAddComment = (e) => {
+    e.preventDefault()
+    if (inputValue === '') return
+    //FIXME: fix howLongAgo
+    setComments((prev) => [
+      ...prev,
+      {
+        id: numberOfComments,
+        userName: 'Kamil Żyła',
+        howLongAgo: 0,
+        comment: inputValue,
+      },
+    ])
+    numberOfComments += 1
+    setInputValue('')
+  }
 
   const {
     Modal,
@@ -118,34 +148,17 @@ const Post = () => {
           <AttendanceList numOfAttender={4} />
         </div>
 
-        <Button borderOnly>
-          {/* <UserCheckIcon /> */}
-          Zgłoś obecność
-        </Button>
+        <Button borderOnly>Zgłoś obecność</Button>
       </InteractionsSection>
-      <StyledSearchInput
-        placeholder="Napisz komentarz..."
-        isEmptyIcon
-        Icon={<SendVectorIcon />}
-        isAlwaysVisibleIcon
-      />
-      <StyledText
-        onClick={() => setCommentSectionIsOpen((prev) => !prev)}
+
+      <CommentSection
+        handleAddComment={handleAddComment}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        comments={comments}
         commentSectionIsOpen={commentSectionIsOpen}
-      >
-        {commentSectionIsOpen ? 'Schowaj' : 'Pokaż'} komentarze ({numberOfComments})
-        <ExpandVectorIcon />
-      </StyledText>
-      {commentSectionIsOpen ? (
-        <CommentSection>
-          <Comment userName={'Kasia Baran'} howLongAgo={18}>
-            Będę, postaram się nie spóżnić
-          </Comment>
-          <Comment userName={'Mariusz Siembida'} howLongAgo={13}>
-            Dzisiaj odpadam, ale następnym razem będę ;)
-          </Comment>
-        </CommentSection>
-      ) : null}
+        setCommentSectionIsOpen={setCommentSectionIsOpen}
+      />
 
       {isOpen ? (
         <Modal handleClose={handleCloseModal} position={position}>

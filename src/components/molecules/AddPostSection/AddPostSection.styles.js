@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   }
 `
 
-export const InputDummy = styled.div`
+export const StyledInput = styled.div`
   background-color: ${({ theme }) => theme.colors.iconBg};
   padding: 7px 15px;
   width: 80%;

@@ -24,7 +24,7 @@ export const ModalWrapper = styled.div`
       : 'translateX(-50%)'};
 
   height: auto;
-  max-height: 500px;
+  /* max-height: 500px; */
   background-color: ${({ theme }) => theme.colors.modalBg};
   border: 1px solid ${({ theme }) => theme.colors.modalBorder};
   border-radius: 7px;

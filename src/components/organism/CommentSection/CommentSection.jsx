@@ -24,7 +24,6 @@ const CommentSection = ({
         <Input
           placeholder="Napisz komentarz..."
           isEmptyIcon
-          Icon={<SendVectorIcon />}
           isAlwaysVisibleIcon
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}

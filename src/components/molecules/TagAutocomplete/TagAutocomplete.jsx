@@ -11,9 +11,9 @@ export const Wrapper = styled.div`
   display: flex;
 `
 
-const countries = ['Afghanistan', 'Angola', 'Poland', 'England']
+const tags = ['Darmowe', 'Luźne granie', 'Tylko dorośli']
 
-const suggestions = countries.map((name, index) => ({ value: index, label: name }))
+const suggestions = tags.map((name, index) => ({ value: index, label: name }))
 
 const TagAutocomplete = () => {
   const [selected, setSelected] = useState([])

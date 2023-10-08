@@ -128,7 +128,7 @@ const CreatePost = ({ handleClose }) => {
         </Select>
         <Input style={{ gridArea: 'input2' }} type="date" />
         <Input style={{ gridArea: 'input3' }} type="time" />
-        <div style={{ gridArea: 'map', backgroundColor: 'grey' }}></div>
+        <div style={{ gridArea: 'map', backgroundColor: '#233045', borderRadius: '7px' }}></div>
       </InputsWrapper>
       <TagAutocomplete />
       <FooterWrapper>

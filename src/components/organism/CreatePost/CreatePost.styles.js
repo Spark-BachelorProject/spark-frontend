@@ -60,18 +60,17 @@ export const ProgressSpan = styled.span`
 
 export const InputsWrapper = styled.div`
   display: grid;
-  margin-top: 16px;
+  margin: 16px 0;
 
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   gap: 16px;
   grid-template-areas:
-    'input1 input1'
-    'select1 map'
-    'select2 map'
-    'select3 map'
-    'input5 map'
-    'input6 input6';
+    'input1 input1 input1 input1'
+    'select1 select1 map map'
+    'select2 select2 map map'
+    'select3 select3 map map'
+    'input2 input3 map map';
 
   & > select {
     background-color: ${({ theme }) => theme.colors.inputBg};

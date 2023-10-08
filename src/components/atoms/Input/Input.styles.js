@@ -15,9 +15,9 @@ export const Input = styled.input`
     outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};
   }
 
-  &[type='time']::-webkit-calendar-picker-indicator {
+  /* &[type='time']::-webkit-calendar-picker-indicator {
     display: none;
-  }
+  } */
 
   &[type='time'] {
     padding: 11px 19px;

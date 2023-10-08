@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { ReactTags } from 'react-tag-autocomplete'
 
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import Input from '@/components/atoms/Input/Input'
 import Select from '@/components/atoms/Select/Select'
 import { Title } from '@/components/atoms/Title/Title.styles'
+import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
 
 import {
   Wrapper,
@@ -124,11 +126,11 @@ const CreatePost = ({ handleClose }) => {
         >
           {places}
         </Select>
-        <div>
-          <Input style={{ gridArea: 'input5' }} placeholder="Data" type="date" />
-        </div>
+        <Input style={{ gridArea: 'input2' }} type="date" />
+        <Input style={{ gridArea: 'input3' }} type="time" />
         <div style={{ gridArea: 'map', backgroundColor: 'grey' }}></div>
       </InputsWrapper>
+      <TagAutocomplete />
       <FooterWrapper>
         <StyledText as={'a'}>Wiecej szczegółów</StyledText>
         <Button>

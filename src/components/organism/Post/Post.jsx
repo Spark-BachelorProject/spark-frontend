@@ -41,7 +41,7 @@ const defaultComments = [
 ]
 let numberOfComments = 2 // its taken from api
 
-const Post = () => {
+const Post = ({ content, author, howLongAgo = 0, visibility, place, date, time, tags, activity }) => {
   const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(!(numberOfComments > 2))
   const [comments, setComments] = useState(defaultComments)
   const [inputValue, setInputValue] = useState('')
@@ -108,11 +108,11 @@ const Post = () => {
         <Thumbnail isBig />
         <Details>
           <div>
-            <b>Kasia Baran</b>
+            <b>{author}</b>
             <Text>napisała 18 min temu</Text>
           </div>
           <div>
-            <Text>Siatkówka</Text>
+            <Text>{activity}</Text>
             <Dot />
             <GlobeIcon />
           </div>
@@ -127,11 +127,11 @@ const Post = () => {
         </div>
       </Header>
       <Title isBig isBold>
-        Ktoś chętny na półtorej godziny grania na KULu? Mamy już przeciwnika
+        {content}
       </Title>
       <DetailsWrapper>
         <PinIcon />
-        <Text>Hala Politechniki Lubelskiej - Kraśnicka 12</Text>
+        <Text>{place}</Text>
       </DetailsWrapper>
       <DetailsWrapper>
         <ClockIcon />

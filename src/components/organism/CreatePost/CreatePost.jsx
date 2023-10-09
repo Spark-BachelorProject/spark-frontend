@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
@@ -6,6 +7,7 @@ import Input from '@/components/atoms/Input/Input'
 import Select from '@/components/atoms/Select/Select'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
+import { addPost } from '@/features/postsSlice.js'
 import { dateNowYYYYMMDD, timeNow } from '@/helpers/dateAndTime.js'
 
 import {
@@ -65,13 +67,15 @@ const places = [
   },
 ]
 
+const initialState = {
+  content: '',
+  visibility: visibility[0].value,
+  activity: activity[0].value,
+  place: places[0].value,
+}
+
 const CreatePost = ({ handleClose }) => {
-  const initialState = {
-    title: '',
-    visibilitySelect: visibility[0].value,
-    activitySelect: activity[0].value,
-    placesSelect: places[0].value,
-  }
+  const dispatch = useDispatch()
 
   const [date, setDate] = useState(dateNowYYYYMMDD)
   const [time, setTime] = useState(timeNow)
@@ -96,7 +100,10 @@ const CreatePost = ({ handleClose }) => {
       date,
       time,
     }
-    console.log('submit', finalData)
+
+    dispatch(addPost(finalData))
+
+    handleClose()
   }
 
   return (
@@ -112,8 +119,8 @@ const CreatePost = ({ handleClose }) => {
           style={{ gridArea: 'input1' }}
           placeholder="Tytuł spotkania"
           maxLength="120"
-          name="title"
-          value={state.title}
+          name="content"
+          value={state.content}
           onChange={handleChange}
           required
         />

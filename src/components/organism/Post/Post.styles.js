@@ -6,6 +6,7 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 
 export const Wrapper = styled.article`
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.03);
   background-color: ${({ theme }) => theme.colors.secondaryBg};
   margin: 15px auto;
   padding: 20px;
@@ -97,17 +98,18 @@ export const InteractionsSection = styled.section`
     align-items: center;
     color: ${({ theme }) => theme.colors.buttonText};
     font-weight: 500;
+    padding: 8px 14px;
+    background-color: ${({ theme }) => theme.colors.tagBg};
+    border: 2px solid ${({ theme }) => theme.colors.tagBorder};
 
     & > svg > path {
       stroke: ${({ theme }) => theme.colors.accent};
     }
+  }
 
-    :hover {
-      & > svg > path {
-        transition: 200ms ease-in-out;
-        stroke: ${({ theme }) => theme.colors.white};
-      }
-    }
+  ${Button}:hover {
+    color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.accent};
   }
 `
 

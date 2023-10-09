@@ -46,6 +46,9 @@ export const lightTheme = {
   navigationInactive: '#64748B', //slate500
   badgeHeader: '#2563EB', //blue600
   textSecondary: '#CBD5E1', //slate300
+  tagBg: '#3b82f609', //blue500
+  tagBgActive: '#3b82f615', //blue500
+  tagBorder: '#3b82f650', //blue500
 }
 
 export const darkTheme = {
@@ -96,6 +99,9 @@ export const darkTheme = {
   navigationInactive: '#CBD5E1', //slate300
   badgeHeader: '#2563EB', //blue600
   textSecondary: '#64748B', //slate500
+  tagBg: '#3b82f610',
+  tagBgActive: '#3b82f620',
+  tagBorder: '#3b82f650',
 }
 
 export const theme = {

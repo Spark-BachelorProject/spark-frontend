@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const StyledSelect = styled.select`
   /* -webkit-appearance: none; */
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.02);
   height: 35px;
   width: auto;
   cursor: pointer;

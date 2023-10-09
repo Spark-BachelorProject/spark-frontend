@@ -8,13 +8,12 @@ export const AttendingContent = () => {
   return (
     <Wrapper>
       <StyledTitle isBold>Wezmą udział</StyledTitle>
-      <PersonListItem name="Andrzej Kowal" />
-      <PersonListItem name="Andrzej Kowal" />
-      <PersonListItem name="Andrzej Kowal" />
-      <PersonListItem name="Andrzej Kowal" />
-      <PersonListItem name="Andrzej Kowal" />
-      <PersonListItem name="Andrzej Kowal" />
-      <PersonListItem name="Andrzej Kowal" />
+      <PersonListItem name="Daniel Lawson" />
+      <PersonListItem name="Austin Williams" />
+      <PersonListItem name="Brandon Hughes" />
+      <PersonListItem name="Marvin Newman" />
+      <PersonListItem name="Shawn Ortiz" />
+      <PersonListItem name="Louise Weaver" />
     </Wrapper>
   )
 }

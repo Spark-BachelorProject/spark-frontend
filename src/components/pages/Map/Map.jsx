@@ -59,13 +59,13 @@ export const OverlayLeft = styled.div`
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: 10px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 600;
   color: ${({ theme }) => theme.colors.selectFont};
 `
 
@@ -118,6 +118,10 @@ export const MyComponent = () => {
     setMap(map)
   }, [])
 
+  const icons = Object.values(
+    import.meta.glob('@assets/markers/*.{png,jpg,jpeg,PNG,JPEG}', { eager: true, as: 'url' })
+  )
+
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null)
   }, [])
@@ -143,17 +147,12 @@ export const MyComponent = () => {
 
   React.useEffect(() => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setCenter({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          })
-        },
-        (error) => {
-          console.log(error)
-        }
-      )
+      navigator.geolocation.getCurrentPosition((position) => {
+        setCenter({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        })
+      })
     }
   }, [])
 
@@ -161,7 +160,7 @@ export const MyComponent = () => {
     <Map>
       {selectedMarker && showOverlay && (
         <OverlayLeft>
-          <CloseButton onClick={onCloseClick}>X</CloseButton>
+          <CloseButton onClick={onCloseClick}>×</CloseButton>
           <Text isBold>{selectedMarker.id}</Text>
           <Text>{selectedMarker.activity}</Text>
         </OverlayLeft>
@@ -196,6 +195,10 @@ export const MyComponent = () => {
                   key={index}
                   position={{ lat: marker.cordinates.lat, lng: marker.cordinates.lng }}
                   onClick={() => onMarkerClick(marker)}
+                  icon={{
+                    url: `${icons[marker.activity_id - 1]}`,
+                    scaledSize: new window.google.maps.Size(33, 33),
+                  }}
                 />
               )
             }

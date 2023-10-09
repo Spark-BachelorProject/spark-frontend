@@ -1,8 +1,9 @@
 export const markers = [
   {
-    id: 1,
+    id: 9,
     title: 'Gramy w piłkę!',
     activity: 'football',
+    activity_id: 9,
     cordinates: {
       lat: 51.2442 + Math.random() * 0.01,
       lng: 22.5652 + Math.random() * 0.01,
@@ -12,6 +13,7 @@ export const markers = [
     id: 2,
     title: 'Gramy w piłkę!',
     activity: 'football',
+    activity_id: 9,
     cordinates: {
       lat: 51.2452 + Math.random() * 0.01,
       lng: 22.5672 + Math.random() * 0.01,
@@ -21,6 +23,7 @@ export const markers = [
     id: 3,
     title: 'Gramy w piłkę!',
     activity: 'football',
+    activity_id: 9,
     cordinates: {
       lat: 51.2462 + Math.random() * 0.01,
       lng: 22.5692 + Math.random() * 0.01,
@@ -30,15 +33,17 @@ export const markers = [
     id: 4,
     title: 'Gramy w piłkę!',
     activity: 'football',
+    activity_id: 9,
     cordinates: {
       lat: 51.2472 + Math.random() * 0.01,
       lng: 22.5712 + Math.random() * 0.01,
     },
   },
   {
-    id: 5,
+    id: 9,
     title: 'Gramy w squasha!',
     activity: 'squash',
+    activity_id: 2,
     cordinates: {
       lat: 51.2482 + Math.random() * 0.01,
       lng: 22.5732 + Math.random() * 0.01,
@@ -48,6 +53,7 @@ export const markers = [
     id: 6,
     title: 'Wspinamy się!',
     activity: 'bouldering',
+    activity_id: 3,
     cordinates: {
       lat: 51.2492 + Math.random() * 0.01,
       lng: 22.5752 + Math.random() * 0.01,
@@ -57,6 +63,7 @@ export const markers = [
     id: 7,
     title: 'Gramy w squasha!',
     activity: 'squash',
+    activity_id: 2,
     cordinates: {
       lat: 51.2502 + Math.random() * 0.01,
       lng: 22.5772 + Math.random() * 0.01,
@@ -66,6 +73,7 @@ export const markers = [
     id: 8,
     title: 'Gramy w piłkę!',
     activity: 'football',
+    activity_id: 9,
     cordinates: {
       lat: 51.2512 + Math.random() * 0.01,
       lng: 22.5792 + Math.random() * 0.01,
@@ -74,7 +82,8 @@ export const markers = [
   {
     id: 9,
     title: 'Gramy w squasha!',
-    activity: 'squash',
+    activity: 'football',
+    activity_id: 9,
     cordinates: {
       lat: 51.2522 + Math.random() * 0.01,
       lng: 22.5812 + Math.random() * 0.01,
@@ -84,6 +93,7 @@ export const markers = [
     id: 10,
     title: 'Gramy w piłkę!',
     activity: 'football',
+    activity_id: 9,
     cordinates: {
       lat: 51.2532 + Math.random() / 0.04,
       lng: 22.5832 + Math.random() * 0.01,

@@ -1,45 +1,38 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 import { ReactTags } from 'react-tag-autocomplete'
 
-import styled from 'styled-components'
+import { StyledReactTags } from './TagAutocomplete.styles'
 
-import './TagAutocomplete.styles.css'
+//TODO: THIS WILL BE GET FROM API
+const defaultTags = ['Darmowe', 'Luźne granie', 'Tylko dorośli']
 
-export const Wrapper = styled.div`
-  width: 100%;
-  max-height: 50px;
-  display: flex;
-`
-
-const tags = ['Darmowe', 'Luźne granie', 'Tylko dorośli']
-
-const suggestions = tags.map((name, index) => ({ value: index, label: name }))
-
-const TagAutocomplete = () => {
-  const [selected, setSelected] = useState([])
+const TagAutocomplete = ({ tags, setTags }) => {
+  const suggestions = defaultTags.map((name) => ({ value: name, label: name }))
 
   const onAdd = useCallback(
     (newTag) => {
-      setSelected([...selected, newTag])
+      setTags([...tags, newTag])
     },
-    [selected]
+    [tags, setTags]
   )
 
   const onDelete = useCallback(
     (index) => {
-      setSelected(selected.filter((_, i) => i !== index))
+      setTags(tags.filter((_, i) => i !== index))
     },
-    [selected]
+    [tags, setTags]
   )
 
   return (
-    <ReactTags
-      labelText=""
-      selected={selected}
-      suggestions={suggestions}
-      onAdd={onAdd}
-      onDelete={onDelete}
-    />
+    <StyledReactTags>
+      <ReactTags
+        labelText=""
+        selected={tags}
+        suggestions={suggestions}
+        onAdd={onAdd}
+        onDelete={onDelete}
+      />
+    </StyledReactTags>
   )
 }
 

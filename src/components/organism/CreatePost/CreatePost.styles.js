@@ -14,9 +14,9 @@ export const NextArrowIcon = styled(ExpandVectorIcon)`
   }
 `
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.form`
   width: 100%;
-  min-width: 50vw;
+  min-width: 60vw;
   /* min-height: 40vh; */
   padding: 16px 28px;
 `
@@ -42,20 +42,9 @@ export const HeaderWrapper = styled.div`
 
 export const FooterWrapper = styled.div`
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
-  // the same line
   justify-content: space-between;
   padding-top: 16px;
-`
-
-export const ProgressSpan = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.xs};
-  background-color: ${({ theme }) => theme.colors.buttonBg};
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.white};
-  padding: 0.25rem 0.5rem;
-  border-radius: 1rem;
 `
 
 export const InputsWrapper = styled.div`

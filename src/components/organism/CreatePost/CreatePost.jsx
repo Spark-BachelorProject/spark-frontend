@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { ReactTags } from 'react-tag-autocomplete'
 
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
@@ -7,12 +6,12 @@ import Input from '@/components/atoms/Input/Input'
 import Select from '@/components/atoms/Select/Select'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
+import { dateNowYYYYMMDD, timeNow } from '@/helpers/dateAndTime.js'
 
 import {
   Wrapper,
   HeaderWrapper,
   FooterWrapper,
-  ProgressSpan,
   InputsWrapper,
   StyledInput1,
   StyledText,
@@ -67,28 +66,44 @@ const places = [
 ]
 
 const CreatePost = ({ handleClose }) => {
-  const [visibilitySelect, setVisibilitySelect] = useState(visibility[0].value)
-  const [activitySelect, setActivitySelect] = useState(activity[0].value)
-  const [placesSelect, setPlacesSelect] = useState(places[0].value)
-  const [progress, setProgress] = useState(0)
-
-  const visibilityHandle = (e) => {
-    setVisibilitySelect(e.target.value)
-  }
-  const activityHandle = (e) => {
-    setActivitySelect(e.target.value)
+  const initialState = {
+    title: '',
+    visibilitySelect: visibility[0].value,
+    activitySelect: activity[0].value,
+    placesSelect: places[0].value,
   }
 
-  const placesHandle = (e) => {
-    setPlacesSelect(e.target.value)
+  const [date, setDate] = useState(dateNowYYYYMMDD)
+  const [time, setTime] = useState(timeNow)
+
+  const [state, setState] = useState(initialState)
+  const [tags, setTags] = useState([])
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }))
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const finalData = {
+      ...state,
+      tags,
+      date,
+      time,
+    }
+    console.log('submit', finalData)
   }
 
   return (
-    <Wrapper>
+    <Wrapper onSubmit={handleSubmit}>
       <HeaderWrapper>
         <div>
           <Title isBig>Dodawanie postu</Title>
-          <ProgressSpan>{progress}%</ProgressSpan>
         </div>
         <XIcon onClick={handleClose} />
       </HeaderWrapper>
@@ -97,13 +112,17 @@ const CreatePost = ({ handleClose }) => {
           style={{ gridArea: 'input1' }}
           placeholder="Tytuł spotkania"
           maxLength="120"
+          name="title"
+          value={state.title}
+          onChange={handleChange}
+          required
         />
         <Select
           style={{ gridArea: 'select1' }}
           name="visibilitySelect"
           id="visibilitySelect"
-          value={visibilitySelect}
-          onChange={visibilityHandle}
+          value={state.visibilitySelect}
+          onChange={handleChange}
         >
           {visibility}
         </Select>
@@ -111,8 +130,8 @@ const CreatePost = ({ handleClose }) => {
           style={{ gridArea: 'select2' }}
           name="activitySelect"
           id="activitySelect"
-          value={activitySelect}
-          onChange={activityHandle}
+          value={state.activitySelect}
+          onChange={handleChange}
         >
           {activity}
         </Select>
@@ -121,16 +140,27 @@ const CreatePost = ({ handleClose }) => {
           style={{ gridArea: 'select3' }}
           name="placesSelect"
           id="placesSelect"
-          value={placesSelect}
-          onChange={placesHandle}
+          value={state.placesSelect}
+          onChange={handleChange}
         >
           {places}
         </Select>
-        <Input style={{ gridArea: 'input2' }} type="date" />
-        <Input style={{ gridArea: 'input3' }} type="time" />
+        <Input
+          style={{ gridArea: 'input2' }}
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          min={dateNowYYYYMMDD}
+        />
+        <Input
+          style={{ gridArea: 'input3' }}
+          type="time"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+        />
         <div style={{ gridArea: 'map', backgroundColor: '#233045', borderRadius: '7px' }}></div>
       </InputsWrapper>
-      <TagAutocomplete />
+      <TagAutocomplete tags={tags} setTags={setTags} />
       <FooterWrapper>
         <StyledText as={'a'}>Wiecej szczegółów</StyledText>
         <Button>

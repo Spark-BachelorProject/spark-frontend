@@ -1,7 +1,8 @@
 export const lightTheme = {
   navbarBg: '#fff', //white
-  navbarBorder: '#f1f5f9', //slate100
+  navbarBorder: '#E2E8F0', //slate200
   primaryBg: '#f8fafc', //slate50
+  addPostBg: '#f8fafc', //slate50
   selectBorder: '#f1f5f9', //slate100
   buttonBorder: '#E2E8F0', //slate200
   divider: '#E2E8F0', //slate200
@@ -48,7 +49,7 @@ export const lightTheme = {
   textSecondary: '#CBD5E1', //slate300
   tagBg: '#3b82f609', //blue500
   tagBgActive: '#3b82f615', //blue500
-  tagBorder: '#3b82f650', //blue500
+  tagBorder: '#3b82f6', //blue500
 }
 
 export const darkTheme = {
@@ -102,6 +103,7 @@ export const darkTheme = {
   tagBg: '#3b82f610',
   tagBgActive: '#3b82f620',
   tagBorder: '#3b82f650',
+  addPostBg: '#233045', //slate750
 }
 
 export const theme = {

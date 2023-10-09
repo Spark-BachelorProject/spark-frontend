@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.03);
+
   cursor: pointer;
   width: 100%;
   height: 80px;
@@ -16,12 +18,12 @@ export const Wrapper = styled.div`
 `
 
 export const StyledInput = styled.div`
-  background-color: ${({ theme }) => theme.colors.iconBg};
+  background-color: ${({ theme }) => theme.colors.addPostBg};
   padding: 7px 15px;
   width: 80%;
   margin-right: 10px;
   border-radius: 5px;
-  color: ${({ theme }) => theme.colors.placeholder};
+  color: ${({ theme }) => theme.colors.labelFont};
   font-size: ${({ theme }) => theme.fontSize.m};
-  font-weight: 300;
+  font-weight: 500;
 `

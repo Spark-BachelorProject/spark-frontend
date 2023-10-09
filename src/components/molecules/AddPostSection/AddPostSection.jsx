@@ -36,7 +36,7 @@ export const AddPostSection = () => {
         ref={modalOpenElementRef}
       >
         <Thumbnail />
-        <StyledInput>Zaproś znajomych do gry</StyledInput>
+        <StyledInput>Zaproś znajomych do gry!</StyledInput>
         <Button>Dodaj</Button>
       </Wrapper>
       {isOpen ? (

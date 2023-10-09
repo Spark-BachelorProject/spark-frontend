@@ -96,7 +96,7 @@ export const InteractionsSection = styled.section`
     display: flex;
     gap: 10px;
     align-items: center;
-    color: ${({ theme }) => theme.colors.buttonText};
+    color: ${({ theme }) => theme.colors.accent};
     font-weight: 500;
     padding: 8px 14px;
     background-color: ${({ theme }) => theme.colors.tagBg};

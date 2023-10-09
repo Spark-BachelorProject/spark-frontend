@@ -9,10 +9,10 @@ export const StyledTags = styled.div`
     padding: 7px 14px;
     background-color: rgba(59, 130, 246, 0.21);
 
-    border: 1px solid ${({ theme }) => theme.colors.accent};
+    border: 1px solid ${({ theme }) => theme.colors.tagBorder};
     font-size: ${({ theme }) => theme.fontSize.sPlus};
 
-    color: ${({ theme }) => theme.colors.labelFont};
+    color: ${({ theme }) => theme.colors.accent};
     margin: 12px 12px 0px 0;
     font-weight: 500;
   }

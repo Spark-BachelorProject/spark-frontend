@@ -9,7 +9,7 @@ export const Button = styled.button`
   color: ${({ theme, isGray }) => (isGray ? `${theme.colors.accent}` : `${theme.colors.white}`)};
   padding: ${({ isBig }) => (isBig ? '11px 22px' : '7px 18px')};
   border: ${({ theme, isGray }) =>
-    isGray ? `1px solid ${theme.colors.navbarBg}` : `1px solid ${theme.colors.navbarBorder}`};
+    isGray ? `1px solid ${theme.colors.navbarBorder}` : `1px solid ${theme.colors.navbarBorder}`};
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;

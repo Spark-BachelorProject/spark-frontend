@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router'
 import Groups from '@/components/pages/Groups/Groups'
 import Home from '@/components/pages/Home/Home'
 import Login from '@/components/pages/Login/Login'
+import Map from '@/components/pages/Map/Map'
 import Profile from '@/components/pages/Profile/Profile'
 import Register from '@/components/pages/Register/Register'
 import Users from '@/components/pages/Users/Users'
@@ -52,6 +53,14 @@ function App() {
           <UnauthenticatedApp>
             <Register />
           </UnauthenticatedApp>
+        }
+      />
+      <Route
+        path="/map"
+        element={
+          <AuthenticatedApp>
+            <Map />
+          </AuthenticatedApp>
         }
       />
       <Route

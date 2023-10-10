@@ -8,7 +8,7 @@ import Select from '@/components/atoms/Select/Select'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
 import { addPost } from '@/features/postsSlice.js'
-import { dateNowYYYYMMDD, timeNow } from '@/helpers/dateAndTime.js'
+import { dateNowYYYYMMDD, isToday, timeNow } from '@/helpers/dateAndTime.js'
 
 import {
   FooterWrapper,
@@ -164,6 +164,7 @@ const CreatePost = ({ handleClose }) => {
           style={{ gridArea: 'input3' }}
           type="time"
           value={time}
+          min={isToday(date) ? timeNow : '00:00'}
           onChange={(e) => setTime(e.target.value)}
         />
         <div

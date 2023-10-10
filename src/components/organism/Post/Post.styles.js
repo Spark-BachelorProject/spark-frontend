@@ -56,8 +56,9 @@ export const Details = styled.div`
   }
 
   & > div:nth-child(2) {
-    width: 105px;
+    width: fit-content;
     display: flex;
+    gap: 5px;
     justify-content: space-between;
     align-items: center;
 

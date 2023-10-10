@@ -9,7 +9,6 @@ import { PageContent } from '@/components/templates/PageContent/PageContent'
 
 const Home = () => {
   const posts = useSelector((state) => state.posts)
-  console.log(posts)
   return (
     <PageContent hasNavigation hasRightBar>
       <AddPostSection />
@@ -29,10 +28,24 @@ const Home = () => {
           activity={post.activity}
         />
       ))}
-      {/* <Post />
-      <Post />
-      <Post />
-      <Post /> */}
+      <Post
+        content="Ktoś chętny na grę w piłkę nożną?"
+        author={'Kamil Żyła'}
+        date={'2021-06-22'}
+        tags={['Piłka nożna', 'Lublin', 'Konopnica']}
+        time={'18:00'}
+        place={'Konopnica'}
+        activity={'Piłka nożna'}
+      />
+      <Post
+        content="Piwo i flanki?"
+        author={'Kamil Żyła'}
+        date={'2021-10-9'}
+        tags={['Piwo', 'Lublin', 'Konopnica']}
+        time={'18:00'}
+        place={'Lublin'}
+        activity={'Piwo'}
+      />
     </PageContent>
   )
 }

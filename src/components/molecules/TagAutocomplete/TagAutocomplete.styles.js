@@ -122,6 +122,7 @@ export const StyledReactTags = styled.div`
     left: -2px;
     right: -2px;
     max-height: 12.5rem;
+    width: max-content;
     overflow-y: auto;
     background: ${({ theme }) => theme.colors.inputBg};
     color: ${({ theme }) => theme.colors.inputFont};

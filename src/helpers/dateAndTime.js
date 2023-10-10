@@ -4,7 +4,6 @@ export const timeNow = dayjs().format('HH:mm')
 export const dateNowYYYYMMDD = dayjs().format('YYYY-MM-DD')
 export const dateNowDDMMYYYY = dayjs().format('DD-MM-YYYY')
 
-
 export const formatTimeAgo = (data, time) => {
   // Convert date and time to a single JavaScript Date object
   const dataTime = new Date(`${data}T${time}`)
@@ -28,5 +27,27 @@ export const formatTimeAgo = (data, time) => {
     return `${days} dni${days === 1 ? 'a' : ''} temu`
   } else {
     return `${data} ${time}`
+  }
+}
+
+export const formatDate = (dateString) => {
+  const date = new Date(dateString)
+  const now = new Date()
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+  const tomorrow = new Date(today)
+  tomorrow.setDate(today.getDate() + 1)
+  const dayAfterTomorrow = new Date(today)
+  dayAfterTomorrow.setDate(today.getDate() + 2)
+
+  if (date.toDateString() === today.toDateString()) {
+    return 'Dzisiaj'
+  } else if (date.toDateString() === tomorrow.toDateString()) {
+    return 'Jutro'
+  } else if (date.toDateString() === dayAfterTomorrow.toDateString()) {
+    return 'Pojutrze'
+  } else {
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+    const formattedDate = date.toLocaleDateString('pl-PL', options)
+    return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
   }
 }

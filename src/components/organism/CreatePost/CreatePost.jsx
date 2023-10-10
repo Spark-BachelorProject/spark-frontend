@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
@@ -11,13 +11,13 @@ import { addPost } from '@/features/postsSlice.js'
 import { dateNowYYYYMMDD, timeNow } from '@/helpers/dateAndTime.js'
 
 import {
-  Wrapper,
-  HeaderWrapper,
   FooterWrapper,
+  HeaderWrapper,
   InputsWrapper,
+  NextArrowIcon,
   StyledInput1,
   StyledText,
-  NextArrowIcon,
+  Wrapper,
 } from './CreatePost.styles.js'
 
 //TODO: add map
@@ -165,7 +165,14 @@ const CreatePost = ({ handleClose }) => {
           value={time}
           onChange={(e) => setTime(e.target.value)}
         />
-        <div style={{ gridArea: 'map', backgroundColor: '#233045', borderRadius: '7px' }}></div>
+        <div
+          style={{
+            gridArea: 'map',
+            backgroundColor: 'transparent',
+            borderRadius: '7px',
+            border: '1px solid #E2E8F0',
+          }}
+        ></div>
       </InputsWrapper>
       <TagAutocomplete tags={tags} setTags={setTags} />
       <FooterWrapper>

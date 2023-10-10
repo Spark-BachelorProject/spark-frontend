@@ -30,7 +30,16 @@ export const formatTimeAgo = (data, time) => {
   }
 }
 
+export const isToday = (dateString) => {
+  const today = new Date().toISOString().slice(0, 10) // Get today's date in 'YYYY-MM-DD' format
+  return dateString === today
+}
+
 export const formatDate = (dateString) => {
+  if (isToday(dateString)) {
+    return 'Dzisiaj'
+  }
+
   const date = new Date(dateString)
   const now = new Date()
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
@@ -39,9 +48,7 @@ export const formatDate = (dateString) => {
   const dayAfterTomorrow = new Date(today)
   dayAfterTomorrow.setDate(today.getDate() + 2)
 
-  if (date.toDateString() === today.toDateString()) {
-    return 'Dzisiaj'
-  } else if (date.toDateString() === tomorrow.toDateString()) {
+  if (date.toDateString() === tomorrow.toDateString()) {
     return 'Jutro'
   } else if (date.toDateString() === dayAfterTomorrow.toDateString()) {
     return 'Pojutrze'

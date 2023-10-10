@@ -10,7 +10,6 @@ export const StyledSelect = styled.select`
   border-radius: 4px;
   color: ${({ theme }) => theme.colors.selectFont};
   padding: 5px 15px;
-  margin-right: 10px;
   font-size: ${({ theme }) => theme.fontSize.sPlus};
   font-weight: 500;
   border: 1px solid ${({ theme }) => theme.colors.selectBorder};

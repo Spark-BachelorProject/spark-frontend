@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
@@ -17,11 +17,11 @@ import CommentSection from '../CommentSection/CommentSection'
 import { MoreInfoPost } from '../MoreInfoPost/MoreInfoPost'
 import {
   Details,
+  DetailsWrapper,
   Header,
   InteractionsSection,
   StyledMoreInfoIcon,
   Wrapper,
-  DetailsWrapper,
 } from './Post.styles'
 
 // its taken from api

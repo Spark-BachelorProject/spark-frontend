@@ -115,6 +115,7 @@ const Map = () => {
               />
             )
           }
+          return null
         })}
       </GoogleMap>
     </Wrapper>

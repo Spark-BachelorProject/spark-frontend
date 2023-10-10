@@ -39,15 +39,15 @@ const visibility = [
 
 const activity = [
   {
-    value: 'football',
+    value: 'Piłka Nożna',
     text: 'Piłka Nożna',
   },
   {
-    value: 'volleyball',
+    value: 'Siatkówka',
     text: 'Siatkówka',
   },
   {
-    value: 'squash',
+    value: 'Squash',
     text: 'Squash',
   },
 ]
@@ -93,10 +93,11 @@ const CreatePost = ({ handleClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const tagsOnlyLables = tags.map((tag) => tag.value)
 
     const finalData = {
       ...state,
-      tags,
+      tags: tagsOnlyLables,
       date,
       time,
     }

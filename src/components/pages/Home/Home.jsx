@@ -27,7 +27,6 @@ const Home = () => {
           time={post.time}
           place={post.place}
           activity={post.activity}
-          howLongAgo={0}
         />
       ))}
       {/* <Post />

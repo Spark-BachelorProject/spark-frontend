@@ -10,6 +10,7 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
+import { formatDate, formatTimeAgo } from '@/helpers/dateAndTime'
 import useModal from '@/hooks/useModal'
 
 import { AttendingContent } from '../AttendingContent/AttendingContent'
@@ -41,7 +42,7 @@ const defaultComments = [
 ]
 let numberOfComments = 2 // its taken from api
 
-const Post = ({ content, author, howLongAgo = 0, visibility, place, date, time, tags, activity }) => {
+const Post = ({ content, author, place, date, time, tags, activity }) => {
   const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(!(numberOfComments > 2))
   const [comments, setComments] = useState(defaultComments)
   const [inputValue, setInputValue] = useState('')
@@ -54,7 +55,7 @@ const Post = ({ content, author, howLongAgo = 0, visibility, place, date, time, 
       ...prev,
       {
         id: numberOfComments,
-        userName: 'Kamil Żyła',
+        userName: author,
         howLongAgo: 0,
         comment: inputValue,
       },
@@ -109,7 +110,7 @@ const Post = ({ content, author, howLongAgo = 0, visibility, place, date, time, 
         <Details>
           <div>
             <b>{author}</b>
-            <Text>napisała 18 min temu</Text>
+            <Text>napisał(a) {formatTimeAgo(date, time)}</Text>
           </div>
           <div>
             <Text>{activity}</Text>
@@ -135,9 +136,11 @@ const Post = ({ content, author, howLongAgo = 0, visibility, place, date, time, 
       </DetailsWrapper>
       <DetailsWrapper>
         <ClockIcon />
-        <Text>Dzisiaj o 18:30</Text>
+        <Text>
+          {formatDate(date)} o {time}
+        </Text>
       </DetailsWrapper>
-      <Tags>{['Gramy na luzie', 'Jeszcze 2 miejsca', 'Potem na harnasia']}</Tags>
+      <Tags>{tags}</Tags>
       <InteractionsSection>
         <div
           onClick={(e) => handleOpenAttendanceList(e)}
@@ -167,7 +170,13 @@ const Post = ({ content, author, howLongAgo = 0, visibility, place, date, time, 
       ) : null}
 
       {isOpen2 ? (
-        <Modal2 handleClose={handleCloseModal2} position={position2} isModal hasBackgroundColor>
+        <Modal2
+          handleClose={handleCloseModal2}
+          position={position2}
+          isModal
+          hasBackgroundColor
+          isFixed
+        >
           <AttendingContent />
         </Modal2>
       ) : null}

@@ -6,6 +6,8 @@ import { Button } from '@/components/atoms/Button/Button.styles'
 import Input from '@/components/atoms/Input/Input'
 import Select from '@/components/atoms/Select/Select'
 import { Title } from '@/components/atoms/Title/Title.styles'
+import CreatePostMap from '@/components/molecules/CreatePostMap/CreatePostMap.jsx'
+import PlaceAutocomplete from '@/components/molecules/PlaceAutocomplete/PlaceAutocomplete.jsx'
 import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
 import { addPost } from '@/features/postsSlice.js'
 import { dateNowYYYYMMDD, isToday, timeNow } from '@/helpers/dateAndTime.js'
@@ -83,6 +85,15 @@ const CreatePost = ({ handleClose }) => {
   const [state, setState] = useState(initialState)
   const [tags, setTags] = useState([])
 
+  const [selectedCoordinates, setSelectedCoordinates] = useState({
+    lat: null,
+    lng: null,
+  })
+
+  const handleSelectCoordinates = (coordinates) => {
+    setSelectedCoordinates(coordinates)
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setState((prevState) => ({
@@ -144,15 +155,6 @@ const CreatePost = ({ handleClose }) => {
           {activity}
         </Select>
 
-        <Select
-          style={{ gridArea: 'select3' }}
-          name="placesSelect"
-          id="placesSelect"
-          value={state.placesSelect}
-          onChange={handleChange}
-        >
-          {places}
-        </Select>
         <Input
           style={{ gridArea: 'input2' }}
           type="date"
@@ -177,6 +179,11 @@ const CreatePost = ({ handleClose }) => {
         ></div>
       </InputsWrapper>
       <TagAutocomplete tags={tags} setTags={setTags} />
+      <PlaceAutocomplete onSelectCoordinates={handleSelectCoordinates} />
+      {selectedCoordinates.lat && selectedCoordinates.lng && (
+        <CreatePostMap lat={selectedCoordinates.lat} lng={selectedCoordinates.lng} />
+      )}
+
       <FooterWrapper>
         <StyledText as={'a'}>Wiecej szczegółów</StyledText>
         <Button>

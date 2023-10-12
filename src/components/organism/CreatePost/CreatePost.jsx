@@ -54,26 +54,11 @@ const activity = [
   },
 ]
 
-const places = [
-  {
-    value: 'Lublin',
-    text: 'Lublin',
-  },
-  {
-    value: 'Swidnik',
-    text: 'Świdnik',
-  },
-  {
-    value: 'Konopnica',
-    text: 'Konopnica',
-  },
-]
-
 const initialState = {
   content: '',
   visibility: visibility[0].value,
   activity: activity[0].value,
-  place: places[0].value,
+  // place: places[0].value,
 }
 
 const CreatePost = ({ handleClose }) => {
@@ -90,8 +75,14 @@ const CreatePost = ({ handleClose }) => {
     lng: null,
   })
 
+  const [selectedPlace, setSelectedPlace] = useState(null)
+
   const handleSelectCoordinates = (coordinates) => {
     setSelectedCoordinates(coordinates)
+  }
+
+  const handleSelectPlace = (place) => {
+    setSelectedPlace(place)
   }
 
   const handleChange = (e) => {
@@ -111,6 +102,7 @@ const CreatePost = ({ handleClose }) => {
       tags: tagsOnlyLables,
       date,
       time,
+      place: selectedPlace,
     }
 
     dispatch(addPost(finalData))
@@ -179,7 +171,10 @@ const CreatePost = ({ handleClose }) => {
         ></div>
       </InputsWrapper>
       <TagAutocomplete tags={tags} setTags={setTags} />
-      <PlaceAutocomplete onSelectCoordinates={handleSelectCoordinates} />
+      <PlaceAutocomplete
+        onSelectCoordinates={handleSelectCoordinates}
+        onSelectPlace={handleSelectPlace}
+      />
       {selectedCoordinates.lat && selectedCoordinates.lng && (
         <CreatePostMap lat={selectedCoordinates.lat} lng={selectedCoordinates.lng} />
       )}

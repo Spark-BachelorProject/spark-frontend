@@ -110,7 +110,7 @@ const Map = () => {
                 onClick={() => onMarkerClick(marker)}
                 icon={{
                   url: `${icons[marker.activity_id - 1]}`,
-                  scaledSize: new window.google.maps.Size(31, 31),
+                  scaledSize: new window.google.maps.Size(35, 35),
                 }}
               />
             )

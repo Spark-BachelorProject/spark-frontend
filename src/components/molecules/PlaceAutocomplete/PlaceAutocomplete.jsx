@@ -28,7 +28,7 @@ export const Suggestion = styled.div`
   }
 `
 
-const PlaceAutocomplete = ({ onSelectCoordinates }) => {
+const PlaceAutocomplete = ({ onSelectCoordinates, onSelectPlace }) => {
   const [address, setAddress] = useState('')
   const [coordinates, setCoordinates] = useState({
     lat: null,
@@ -41,6 +41,7 @@ const PlaceAutocomplete = ({ onSelectCoordinates }) => {
     setAddress(value)
     setCoordinates(latLng)
     onSelectCoordinates(latLng)
+    onSelectPlace(value)
   }
 
   const searchOptions = {

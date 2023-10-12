@@ -1,9 +1,8 @@
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { ReactTags } from 'react-tag-autocomplete'
 
 import { StyledReactTags } from './TagAutocomplete.styles'
 
-//TODO: THIS WILL BE GET FROM API
 const defaultTags = ['Darmowe', 'Luźne granie', 'Tylko dorośli']
 
 const TagAutocomplete = ({ tags, setTags }) => {
@@ -31,6 +30,7 @@ const TagAutocomplete = ({ tags, setTags }) => {
         suggestions={suggestions}
         onAdd={onAdd}
         onDelete={onDelete}
+        placeholderText="Dodaj tagi"
       />
     </StyledReactTags>
   )

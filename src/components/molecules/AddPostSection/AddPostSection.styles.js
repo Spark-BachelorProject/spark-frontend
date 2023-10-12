@@ -15,6 +15,11 @@ export const Wrapper = styled.div`
   @media (max-width: 997px) {
     display: none;
   }
+
+  &:hover {
+    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.07);
+    transition: 200ms;
+  }
 `
 
 export const StyledInput = styled.div`

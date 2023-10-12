@@ -147,37 +147,39 @@ const CreatePost = ({ handleClose }) => {
           {activity}
         </Select>
 
+        <div style={{ gridArea: 'input2' }}>
+          <PlaceAutocomplete
+            onSelectCoordinates={handleSelectCoordinates}
+            onSelectPlace={handleSelectPlace}
+          />
+        </div>
+
         <Input
-          style={{ gridArea: 'input2' }}
+          style={{ gridArea: 'input3' }}
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
           min={dateNowYYYYMMDD}
         />
         <Input
-          style={{ gridArea: 'input3' }}
+          style={{ gridArea: 'input4' }}
           type="time"
           value={time}
           min={isToday(date) ? timeNow : '00:00'}
           onChange={(e) => setTime(e.target.value)}
         />
-        <div
-          style={{
-            gridArea: 'map',
-            backgroundColor: 'transparent',
-            borderRadius: '7px',
-            border: '1px solid #E2E8F0',
-          }}
-        ></div>
+
+        {selectedCoordinates.lat && selectedCoordinates.lng && (
+          <div
+            style={{
+              gridArea: 'map',
+            }}
+          >
+            <CreatePostMap lat={selectedCoordinates.lat} lng={selectedCoordinates.lng} />
+          </div>
+        )}
       </InputsWrapper>
       <TagAutocomplete tags={tags} setTags={setTags} />
-      <PlaceAutocomplete
-        onSelectCoordinates={handleSelectCoordinates}
-        onSelectPlace={handleSelectPlace}
-      />
-      {selectedCoordinates.lat && selectedCoordinates.lng && (
-        <CreatePostMap lat={selectedCoordinates.lat} lng={selectedCoordinates.lng} />
-      )}
 
       <FooterWrapper>
         <StyledText as={'a'}>Wiecej szczegółów</StyledText>

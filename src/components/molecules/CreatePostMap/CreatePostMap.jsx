@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-function CreatePostMap({ lat, lng }) {
+const CreatePostMap = ({ lat, lng }) => {
   const mapRef = useRef(null)
 
   useEffect(() => {
@@ -22,12 +22,7 @@ function CreatePostMap({ lat, lng }) {
     })
   }, [lat, lng])
 
-  return (
-    <div
-      ref={mapRef}
-      style={{ borderRadius: '10px', width: '100%', height: '200px', marginTop: '2em' }}
-    />
-  )
+  return <div ref={mapRef} style={{ borderRadius: '10px', width: '100%', height: '100%' }} />
 }
 
 export default CreatePostMap

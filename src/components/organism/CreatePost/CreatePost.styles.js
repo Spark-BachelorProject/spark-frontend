@@ -50,14 +50,14 @@ export const InputsWrapper = styled.div`
   margin: 16px 0;
 
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(5, 1fr);
   gap: 16px;
   grid-template-areas:
     'input1 input1 input1 input1'
     'select1 select1 map map'
     'select2 select2 map map'
-    'select3 select3 map map'
-    'input2 input3 map map';
+    'input2 input2 map map'
+    'input3 input4 map map';
 
   & > select {
     background-color: ${({ theme }) => theme.colors.inputBg};
@@ -73,8 +73,8 @@ export const InputsWrapper = styled.div`
       'input1 input1'
       'select1 select1'
       'select2 select2'
-      'select3 select3'
-      'input2 input3'
+      'input2 input2'
+      'input3 input4'
       'map map'
       'map map'
       'map map';

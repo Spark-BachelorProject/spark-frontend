@@ -57,7 +57,8 @@ export const InputsWrapper = styled.div`
     'select1 select1 map map'
     'select2 select2 map map'
     'input2 input2 map map'
-    'input3 input4 map map';
+    'input3 input4 map map'
+    'tags tags map map';
 
   & > select {
     background-color: ${({ theme }) => theme.colors.inputBg};

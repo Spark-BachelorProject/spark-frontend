@@ -9,6 +9,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import CreatePostMap from '@/components/molecules/CreatePostMap/CreatePostMap.jsx'
 import PlaceAutocomplete from '@/components/molecules/PlaceAutocomplete/PlaceAutocomplete.jsx'
 import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
+import { cities } from '@/components/pages/Map/data.jsx'
 import { addPost } from '@/features/postsSlice.js'
 import { dateNowYYYYMMDD, isToday, timeNow } from '@/helpers/dateAndTime.js'
 
@@ -21,8 +22,6 @@ import {
   StyledText,
   Wrapper,
 } from './CreatePost.styles.js'
-
-//TODO: add map
 
 const visibility = [
   {
@@ -71,8 +70,8 @@ const CreatePost = ({ handleClose }) => {
   const [tags, setTags] = useState([])
 
   const [selectedCoordinates, setSelectedCoordinates] = useState({
-    lat: null,
-    lng: null,
+    lat: cities[0].cordinates.lat,
+    lng: cities[0].cordinates.lng,
   })
 
   const [selectedPlace, setSelectedPlace] = useState(null)
@@ -169,17 +168,21 @@ const CreatePost = ({ handleClose }) => {
           onChange={(e) => setTime(e.target.value)}
         />
 
-        {selectedCoordinates.lat && selectedCoordinates.lng && (
-          <div
-            style={{
-              gridArea: 'map',
-            }}
-          >
-            <CreatePostMap lat={selectedCoordinates.lat} lng={selectedCoordinates.lng} />
-          </div>
-        )}
+        <div
+          style={{
+            gridArea: 'map',
+          }}
+        >
+          <CreatePostMap
+            lat={selectedCoordinates.lat}
+            lng={selectedCoordinates.lng}
+            selectedPlace={selectedPlace}
+          />
+        </div>
+        <div style={{ gridArea: 'tags' }}>
+          <TagAutocomplete tags={tags} setTags={setTags} />
+        </div>
       </InputsWrapper>
-      <TagAutocomplete tags={tags} setTags={setTags} />
 
       <FooterWrapper>
         <StyledText as={'a'}>Wiecej szczegółów</StyledText>

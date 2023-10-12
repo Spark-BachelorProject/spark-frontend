@@ -1,14 +1,25 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-const CreatePostMap = ({ lat, lng }) => {
+import styled from 'styled-components'
+
+export const Wrapper = styled.div`
+  border: 3px solid ${({ theme }) => theme.colors.accent};
+`
+
+const CreatePostMap = ({ lat, lng, selectedPlace }) => {
   const mapRef = useRef(null)
+  const [zoom, setZoom] = useState(11)
 
   useEffect(() => {
+    if (selectedPlace) {
+      setZoom(15)
+    }
+
     const google = window.google
     if (lat === null || lng === null) return
     const map = new google.maps.Map(mapRef.current, {
       center: { lat, lng },
-      zoom: 15,
+      zoom: zoom,
       options: {
         mapId: 'f8fb0c825bce9444',
         mapTypeControl: false,
@@ -16,13 +27,16 @@ const CreatePostMap = ({ lat, lng }) => {
       },
     })
 
-    new google.maps.Marker({
-      position: { lat, lng },
-      map,
-    })
-  }, [lat, lng])
+    if (selectedPlace) {
+      new google.maps.Marker({
+        position: { lat, lng },
+        map,
+      })
+      return
+    }
+  }, [lat, lng, zoom, selectedPlace])
 
-  return <div ref={mapRef} style={{ borderRadius: '10px', width: '100%', height: '100%' }} />
+  return <Wrapper ref={mapRef} style={{ borderRadius: '10px', width: '100%', height: '100%' }} />
 }
 
 export default CreatePostMap

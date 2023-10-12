@@ -4,7 +4,7 @@ export const StyledReactTags = styled.div`
   .react-tags {
     position: relative;
     padding: 0.25rem 0 0 0.25rem;
-    border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
+    border: 2px solid ${({ theme }) => theme.colors.buttonBorder};
     border-radius: 6px;
     background: ${({ theme }) => theme.colors.inputBg};
     font-size: 0.9rem;
@@ -49,7 +49,7 @@ export const StyledReactTags = styled.div`
 
   .react-tags__tag {
     margin: 0 0.5rem 0.3rem 0;
-    padding: 0.375rem 0.5rem;
+    padding: 0.45rem 0.5rem;
     border: 0;
     border-radius: 5px;
     background: ${({ theme }) => theme.colors.buttonBg};
@@ -126,18 +126,19 @@ export const StyledReactTags = styled.div`
     overflow-y: auto;
     background: ${({ theme }) => theme.colors.inputBg};
     color: ${({ theme }) => theme.colors.inputFont};
-    border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
+    border: 2cap solid ${({ theme }) => theme.colors.buttonBorder};
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -4px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
   }
 
   .react-tags__listbox-option {
-    padding: 0.375rem 0.5rem;
+    padding: 1em 0.8em;
   }
 
   .react-tags__listbox-option:hover {
     cursor: pointer;
-    background: ${({ theme }) => theme.colors.addPostBg};
+    background: ${({ theme }) => theme.colors.navbarBorder};
+    transition: 200ms;
   }
 
   .react-tags__listbox-option:not([aria-disabled='true']).is-active {

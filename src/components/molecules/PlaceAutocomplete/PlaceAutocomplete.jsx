@@ -13,12 +13,16 @@ const PlaceAutocomplete = ({ onSelectCoordinates, onSelectPlace }) => {
   })
 
   const handleSelect = async (value) => {
-    const results = await geocodeByAddress(value)
-    const latLng = await getLatLng(results[0])
-    setAddress(value)
-    setCoordinates(latLng)
-    onSelectCoordinates(latLng)
-    onSelectPlace(value)
+    try {
+      const results = await geocodeByAddress(value)
+      const latLng = await getLatLng(results[0])
+      setAddress(value)
+      setCoordinates(latLng)
+      onSelectCoordinates(latLng)
+      onSelectPlace(value)
+    } catch (error) {
+      console.error('Error selecting place:', error)
+    }
   }
 
   const searchOptions = {

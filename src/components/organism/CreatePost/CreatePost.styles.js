@@ -50,7 +50,7 @@ export const InputsWrapper = styled.div`
   margin: 16px 0;
 
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   gap: 16px;
   grid-template-areas:
     'input1 input1 input1 input1'
@@ -69,7 +69,7 @@ export const InputsWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(9, 1fr);
     grid-template-areas:
       'input1 input1'
       'select1 select1'
@@ -78,7 +78,8 @@ export const InputsWrapper = styled.div`
       'input3 input4'
       'map map'
       'map map'
-      'map map';
+      'map map'
+      'tags tags';
   }
 `
 

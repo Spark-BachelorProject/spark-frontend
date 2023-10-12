@@ -9,6 +9,7 @@ export const StyledReactTags = styled.div`
     background: ${({ theme }) => theme.colors.inputBg};
     font-size: 0.9rem;
     line-height: 1.3;
+
     cursor: text;
   }
 

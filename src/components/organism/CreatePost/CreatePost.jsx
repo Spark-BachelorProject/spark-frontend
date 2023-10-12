@@ -6,7 +6,6 @@ import { Button } from '@/components/atoms/Button/Button.styles'
 import Input from '@/components/atoms/Input/Input'
 import Select from '@/components/atoms/Select/Select'
 import { Title } from '@/components/atoms/Title/Title.styles'
-import CreatePostMap from '@/components/molecules/CreatePostMap/CreatePostMap.jsx'
 import PlaceAutocomplete from '@/components/molecules/PlaceAutocomplete/PlaceAutocomplete.jsx'
 import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
 import { cities } from '@/components/pages/Map/data.jsx'
@@ -171,13 +170,14 @@ const CreatePost = ({ handleClose }) => {
         <div
           style={{
             gridArea: 'map',
+            backgroundColor: '#233045',
           }}
         >
-          <CreatePostMap
+          {/* <CreatePostMap
             lat={selectedCoordinates.lat}
             lng={selectedCoordinates.lng}
             selectedPlace={selectedPlace}
-          />
+          /> */}
         </div>
         <div style={{ gridArea: 'tags' }}>
           <TagAutocomplete tags={tags} setTags={setTags} />

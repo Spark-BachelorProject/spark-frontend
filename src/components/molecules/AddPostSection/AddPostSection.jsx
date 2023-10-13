@@ -2,11 +2,12 @@ import React from 'react'
 
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
+import CreatePost from '@/components/organism/CreatePost/CreatePost'
 import useModal from '@/hooks/useModal'
 
-import { Wrapper, InputDummy } from './AddPostDummy.styles'
+import { Wrapper, StyledInput } from './AddPostSection.styles'
 
-export const AddPostDummy = () => {
+export const AddPostSection = () => {
   const {
     Modal,
     isOpen,
@@ -35,12 +36,18 @@ export const AddPostDummy = () => {
         ref={modalOpenElementRef}
       >
         <Thumbnail />
-        <InputDummy>Zaproś znajomych do gry</InputDummy>
+        <StyledInput>Zaproś znajomych do gry!</StyledInput>
         <Button>Dodaj</Button>
       </Wrapper>
       {isOpen ? (
-        <Modal handleClose={handleCloseModal} position={position} isFixed>
-          Dodaj post
+        <Modal
+          handleClose={handleCloseModal}
+          position={position}
+          isFixed
+          isModal
+          hasBackgroundColor
+        >
+          <CreatePost handleClose={handleCloseModal} />
         </Modal>
       ) : null}
     </>

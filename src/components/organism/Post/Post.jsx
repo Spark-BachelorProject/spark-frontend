@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
@@ -10,6 +10,7 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
+import { formatDate, formatTimeAgo } from '@/helpers/dateAndTime'
 import useModal from '@/hooks/useModal'
 
 import { AttendingContent } from '../AttendingContent/AttendingContent'
@@ -17,11 +18,11 @@ import CommentSection from '../CommentSection/CommentSection'
 import { MoreInfoPost } from '../MoreInfoPost/MoreInfoPost'
 import {
   Details,
+  DetailsWrapper,
   Header,
   InteractionsSection,
   StyledMoreInfoIcon,
   Wrapper,
-  DetailsWrapper,
 } from './Post.styles'
 
 // its taken from api
@@ -41,7 +42,7 @@ const defaultComments = [
 ]
 let numberOfComments = 2 // its taken from api
 
-const Post = () => {
+const Post = ({ content, author, place, date, time, tags, activity }) => {
   const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(!(numberOfComments > 2))
   const [comments, setComments] = useState(defaultComments)
   const [inputValue, setInputValue] = useState('')
@@ -54,7 +55,7 @@ const Post = () => {
       ...prev,
       {
         id: numberOfComments,
-        userName: 'Kamil Żyła',
+        userName: author,
         howLongAgo: 0,
         comment: inputValue,
       },
@@ -108,11 +109,11 @@ const Post = () => {
         <Thumbnail isBig />
         <Details>
           <div>
-            <b>Kasia Baran</b>
-            <Text>napisała 18 min temu</Text>
+            <b>{author}</b>
+            <Text>napisał(a) {formatTimeAgo(date, time)}</Text>
           </div>
           <div>
-            <Text>Siatkówka</Text>
+            <Text>{activity}</Text>
             <Dot />
             <GlobeIcon />
           </div>
@@ -127,17 +128,19 @@ const Post = () => {
         </div>
       </Header>
       <Title isBig isBold>
-        Ktoś chętny na półtorej godziny grania na KULu? Mamy już przeciwnika
+        {content}
       </Title>
       <DetailsWrapper>
         <PinIcon />
-        <Text>Hala Politechniki Lubelskiej - Kraśnicka 12</Text>
+        <Text>{place}</Text>
       </DetailsWrapper>
       <DetailsWrapper>
         <ClockIcon />
-        <Text>Dzisiaj o 18:30</Text>
+        <Text>
+          {formatDate(date)} o {time}
+        </Text>
       </DetailsWrapper>
-      <Tags>{['Gramy na luzie', 'Jeszcze 2 miejsca', 'Potem na harnasia']}</Tags>
+      <Tags>{tags}</Tags>
       <InteractionsSection>
         <div
           onClick={(e) => handleOpenAttendanceList(e)}

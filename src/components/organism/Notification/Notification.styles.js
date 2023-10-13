@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   flex-direction: row;
   width: 100%;
   padding: 15px 20px 15px 5px;
+
   border-radius: 7px;
   cursor: pointer;
 

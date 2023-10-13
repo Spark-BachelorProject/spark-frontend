@@ -14,10 +14,6 @@ export const StyledButton = styled(Button)`
   margin-top: 20px;
   font-size: ${({ theme }) => theme.fontSize.sPlus};
   opacity: 0.8;
-  border: 2px solid ${({ theme }) => theme.colors.divider};
-  color: ${({ theme }) => theme.colors.text};
-
-  :hover {
-    border: 2px solid ${({ theme }) => theme.colors.buttonBg};
-  }
+  background-color: ${({ theme }) => theme.fontSize.accent};
+  color: ${({ theme }) => theme.colors.white};
 `

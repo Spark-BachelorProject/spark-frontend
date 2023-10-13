@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   height: 70px;
   position: sticky;
   top: 0;
-
+  box-shadow: 5px -5px 15px rgba(0, 0, 0, 0.03);
   background-color: ${({ theme }) => theme.colors.secondaryBg};
   padding: 0 20px;
   display: flex;

@@ -7,8 +7,9 @@ export const StyledTags = styled.div`
 
   ${Button} {
     padding: 7px 14px;
-    background-color: ${({ theme }) => theme.colors.iconBg};
-    border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
+    background-color: rgba(59, 130, 246, 0.21);
+
+    border: 1px solid ${({ theme }) => theme.colors.tagBorder};
     font-size: ${({ theme }) => theme.fontSize.sPlus};
 
     color: ${({ theme }) => theme.colors.accent};
@@ -16,8 +17,8 @@ export const StyledTags = styled.div`
     font-weight: 500;
   }
 
-  ${Button}:hover {
+  /* ${Button}:hover {
     color: ${({ theme }) => theme.colors.accent};
     background-color: ${({ theme }) => theme.colors.navbarBorder};
-  }
+  } */
 `

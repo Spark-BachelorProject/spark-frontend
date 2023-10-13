@@ -6,7 +6,7 @@ export const CommentForm = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin: 20px 0;
   gap: 10px;
 
   & > button > svg > path {

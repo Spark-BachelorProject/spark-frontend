@@ -32,3 +32,22 @@ export const containerStyle = {
   width: '100%',
   height: 'calc(100vh - 70px)',
 }
+
+export const MapLegend = styled.div`
+  position: absolute;
+  bottom: calc(70px + 20px);
+  right: 60px;
+  z-index: 1;
+  background-color: ${({ theme }) => theme.colors.primaryBg};
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid ${({ theme }) => theme.colors.navbarBorder};
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.02);
+`
+
+export const MapLegendItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0;
+`

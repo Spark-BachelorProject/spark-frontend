@@ -3,12 +3,13 @@ import React, { useState } from 'react'
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api'
 
 import Select from '@/components/atoms/Select/Select'
+import { Text } from '@/components/atoms/Text/Text.styles'
 import { Wrapper } from '@/components/molecules/AttendanceList/AttendanceList.styles'
 import { MapPopup } from '@/components/organism/MapPopup/MapPopup'
 
-import { Filters, OverlayRight, containerStyle } from './Map.styles'
+import { Filters, MapLegend, MapLegendItem, OverlayRight, containerStyle } from './Map.styles'
 import './Map.styles.css'
-import { activity, chosenCity, cities, markers } from './data'
+import { activity, chosenCity, cities, markers, translations } from './data'
 
 const Map = () => {
   const { isLoaded } = useJsApiLoader({
@@ -21,13 +22,14 @@ const Map = () => {
   const [activitySelect, setactivitySelect] = useState(activity[0].value)
   const [selectedMarker, setSelectedMarker] = useState(null)
   const [showOverlay, setShowOverlay] = useState(false)
+  const [markerLegend, setMarkerLegend] = useState([])
 
   const onLoad = React.useCallback(function callback(map) {
     setMap(map)
   }, [])
 
   const icons = Object.values(
-    import.meta.glob('@assets/markers/*.{png,jpg,jpeg,PNG,JPEG}', { eager: true, as: 'url' })
+    import.meta.glob('@assets/markers/*.{svg,jpg,jpeg,SVG,JPEG}', { eager: true, as: 'url' })
   )
 
   const onUnmount = React.useCallback(function callback(map) {
@@ -64,6 +66,16 @@ const Map = () => {
     }
   }, [])
 
+  React.useEffect(() => {
+    const legend = []
+    markers.forEach((marker) => {
+      if (!legend.includes(marker.activity)) {
+        legend.push(marker.activity)
+      }
+    })
+    setMarkerLegend(legend)
+  }, [])
+
   return isLoaded ? (
     <Wrapper>
       {selectedMarker && showOverlay && (
@@ -92,6 +104,30 @@ const Map = () => {
         </Filters>
       </OverlayRight>
 
+      <MapLegend>
+        {markerLegend.map((activity, index) => (
+          <MapLegendItem key={index}>
+            <img
+              src={`${
+                icons[markers.find((marker) => marker.activity === activity).activity_id - 1]
+              }`}
+              alt="marker"
+              style={{ width: '20px', height: '20px' }}
+            />
+            {translations.map((translation) => {
+              if (translation.original === activity) {
+                return (
+                  <Text isBold key={translation.polish}>
+                    {translation.polish}
+                  </Text>
+                )
+              }
+              return null
+            })}
+          </MapLegendItem>
+        ))}
+      </MapLegend>
+
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center || cities.find((city) => city.name === chosenCity).cordinates}
@@ -110,7 +146,7 @@ const Map = () => {
                 onClick={() => onMarkerClick(marker)}
                 icon={{
                   url: `${icons[marker.activity_id - 1]}`,
-                  scaledSize: new window.google.maps.Size(35, 35),
+                  scaledSize: new window.google.maps.Size(45, 45),
                 }}
               />
             )

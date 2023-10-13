@@ -21,6 +21,35 @@ export const activity = [
   },
 ]
 
+export const translations = [
+  { original: 'dart', polish: 'Dart' },
+  { original: 'pingpong', polish: 'Tenis Stołowy' },
+  { original: 'parkour', polish: 'Parkour' },
+  { original: 'bouldering', polish: 'Wspinaczka' },
+  { original: 'paintball', polish: 'Paintball' },
+  { original: 'combat_sports', polish: 'Sprot walki' },
+  { original: 'bowling', polish: 'Kręgle' },
+  { original: 'water_sports', polish: 'Sporty wodne' },
+  { original: 'climbing', polish: 'Wspinaczka' },
+  { original: 'skiing', polish: 'Narciarstwo' },
+  { original: 'sailing', polish: 'Żeglarstwo' },
+  { original: 'snowboarding', polish: 'Snowboarding' },
+  { original: 'fitness', polish: 'Fitness' },
+  { original: 'golf', polish: 'Golf' },
+  { original: 'joga', polish: 'Joga' },
+  { original: 'squash', polish: 'Squash' },
+  { original: 'tennis', polish: 'Tenis' },
+  { original: 'basketball', polish: 'Koszykówka' },
+  { original: 'voleyball', polish: 'Siatkówka' },
+  { original: 'football', polish: 'Piłka nożna' },
+  { original: 'winter_swimming', polish: 'Morsowanie' },
+  { original: 'cycling', polish: 'Kolarstwo' },
+  { original: 'swimming', polish: 'Pływanie' },
+  { original: 'flanki', polish: 'Flanki' },
+  { original: 'running', polish: 'Bieganie' },
+  { original: 'hiking', polish: 'Wędrówki' },
+]
+
 export const markers = [
   {
     id: 9,

@@ -117,7 +117,7 @@ const Map = () => {
             {translations.map((translation) => {
               if (translation.original === activity) {
                 return (
-                  <Text isBold key={translation.polish}>
+                  <Text isBold key={translation.original}>
                     {translation.polish}
                   </Text>
                 )

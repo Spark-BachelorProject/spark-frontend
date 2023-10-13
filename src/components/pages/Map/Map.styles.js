@@ -43,6 +43,12 @@ export const MapLegend = styled.div`
   border-radius: 10px;
   border: 1px solid ${({ theme }) => theme.colors.navbarBorder};
   box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.02);
+  @media (max-width: 768px) {
+    top: calc(70px + 20px);
+    bottom: unset;
+    left: 20px;
+    right: unset;
+  }
 `
 
 export const MapLegendItem = styled.div`

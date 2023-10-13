@@ -68,6 +68,39 @@ export const markers = [
     },
   },
   {
+    id: 9,
+    title: 'Gramy w piłkę!',
+    author: 'Clyde Roy',
+    createdAt: '12',
+    activity: 'dart',
+    activity_id: 17,
+    date: '2022-01-01',
+    time: '14:00',
+    tags: ['Luźne Granie', 'Dorośli'],
+
+    cordinates: {
+      lat: 51.2442 - Math.random() * 0.08,
+      lng: 22.5652 - Math.random() * 0.08,
+    },
+  },
+
+  {
+    id: 9,
+    title: 'Parkour!',
+    author: 'Clyde Roy',
+    createdAt: '12',
+    activity: 'parkour',
+    activity_id: 15,
+    date: '2022-01-01',
+    time: '14:00',
+    tags: ['Luźne Granie', 'Dorośli'],
+
+    cordinates: {
+      lat: 51.2442 - Math.random() * 0.08,
+      lng: 22.5652 - Math.random() * 0.08,
+    },
+  },
+  {
     id: 2,
     title: 'Gramy w piłkę!',
     author: 'Lucas Wilkerson',

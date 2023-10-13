@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import { Alert } from '@/components/atoms/Alert/Alert'
 import { Button } from '@/components/atoms/Button/Button.styles'
 
 export const Wrapper = styled.div`
@@ -9,12 +8,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 5px;
-`
-
-export const StyledAlert = styled(Alert)`
-  position: fixed;
-  bottom: 2em;
-  left: 35%;
 `
 
 export const StyledButton = styled(Button)`

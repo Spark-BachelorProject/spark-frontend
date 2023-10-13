@@ -167,7 +167,13 @@ const Post = () => {
       ) : null}
 
       {isOpen2 ? (
-        <Modal2 handleClose={handleCloseModal2} position={position2} isModal hasBackgroundColor>
+        <Modal2
+          handleClose={handleCloseModal2}
+          position={position2}
+          isModal
+          hasBackgroundColor
+          isFixed
+        >
           <AttendingContent />
         </Modal2>
       ) : null}

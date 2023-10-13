@@ -1,29 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 
-import styled from 'styled-components'
-
 import { Button } from '@/components/atoms/Button/Button.styles'
-import { Input } from '@/components/atoms/Input/Input.styles'
+import { Error } from '@/components/atoms/Error/Error.styles'
 import { TextArea } from '@/components/atoms/TextArea/TextArea.styles'
 
-import { StyledTitle } from '../DekstopRightBar/DekstopRightBar.styles'
+import { StyledTitle, Wrapper } from './FeedbackContent.styles'
 
-export const Wrapper = styled.div`
-  padding: 0 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-`
-export const StyledInput = styled(Input)`
-  padding: 10px 10px;
-  line-height: 28px;
-`
+const errorMessage = 'Ocena i/lub opinia nie została wystawiona'
 
-export const FeedbackContent = ({ handleClose, setFeedbackSubmitted }) => {
+export const FeedbackContent = ({ handleClose, handleFeedbackSubmitted }) => {
   const [rating, setRating] = useState(0)
   const [feedback, setFeedback] = useState('')
+  const [error, setError] = useState('')
 
   const handleFeedback = (e) => {
     setFeedback(e.target.value)
@@ -35,7 +24,11 @@ export const FeedbackContent = ({ handleClose, setFeedbackSubmitted }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setFeedbackSubmitted(true)
+    if (rating < 0.5 || feedback === '') {
+      setError(errorMessage)
+      return
+    }
+    handleFeedbackSubmitted()
     console.log(rating, feedback)
     handleClose()
   }
@@ -44,7 +37,8 @@ export const FeedbackContent = ({ handleClose, setFeedbackSubmitted }) => {
     <Wrapper>
       <StyledTitle>Feedback</StyledTitle>
       <Rating onClick={handleRating} allowFraction={true} />
-      <TextArea placeholder="Napisz opinie" onKeyDown={handleFeedback} />
+      <TextArea placeholder="Napisz opinie" onChange={handleFeedback} />
+      {error && <Error>{error}</Error>}
       <Button onClick={handleSubmit}>Wyślij</Button>
     </Wrapper>
   )

@@ -72,7 +72,7 @@ const Post = ({ content, author, place, date, time, tags, activity }) => {
     handleOpenAndPositionModal,
     modalOpenElementRef,
   } = useModal()
-  const positioning = 'right'
+  const positioning = 'center'
 
   const {
     Modal: Modal2,

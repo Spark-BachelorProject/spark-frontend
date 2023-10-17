@@ -2,86 +2,91 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { useCombobox } from 'downshift'
-import styled from 'styled-components'
 
 import { ReactComponent as SearchIcon } from '@/assets/icons/search.svg'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
+import Post from '@/components/organism/Post/Post'
+import useModal from '@/hooks/useModal'
+
+import { SearchResults, SearchResultsItem, Wrapper } from './SearchBar.styles'
 
 function getPostsFilter(inputValue) {
   const lowerCasedInputValue = inputValue.toLowerCase()
 
   return function postFilter(post) {
-    return (
-      !inputValue || post.content.toLowerCase().includes(lowerCasedInputValue)
-      // ||      book.author.toLowerCase().includes(lowerCasedInputValue)
-    )
+    return !inputValue || post.content.toLowerCase().includes(lowerCasedInputValue)
   }
 }
 
-export const Wrapper = styled.div`
-  position: relative;
-`
-
-export const SearchResult = styled.ul`
-  visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
-  z-index: 1000;
-  max-height: 500px;
-  /* overflow-y: scroll; */
-  padding: 10px;
-  border-radius: 15px;
-  list-style: none;
-  width: 100%;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 45px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  color: ${({ theme }) => theme.colors.text};
-  background-color: ${({ theme }) => theme.colors.inputBg};
-`
-
 const SearchBar = () => {
+  const {
+    Modal,
+    isOpen: modalIsOpen,
+    position,
+    handleCloseModal,
+    handleOpenAndPositionModal,
+    modalOpenElementRef,
+    handleSimpleOpenModal,
+  } = useModal()
   const posts = useSelector((state) => state.posts)
   const [items, setItems] = useState(posts)
+  const [selectedItem, setSelectedItem] = useState(null)
+  const positioning = 'right'
 
   useEffect(() => {
     setItems(posts)
   }, [posts])
 
-  const {
-    isOpen,
-    getToggleButtonProps,
-    getLabelProps,
-    getMenuProps,
-    getInputProps,
-    highlightedIndex,
-    getItemProps,
-    selectedItem,
-  } = useCombobox({
+  const { isOpen, getMenuProps, getInputProps, highlightedIndex, getItemProps } = useCombobox({
     onInputValueChange({ inputValue }) {
       setItems(posts.filter(getPostsFilter(inputValue)))
     },
     items: posts,
     itemToString: (item) => (item ? item.content : ''),
+    initialHighlightedIndex: null,
+    onSelectedItemChange({ selectedItem }) {
+      setSelectedItem(selectedItem)
+      handleOpenModal()
+    },
   })
 
-  console.log('items', items)
-  // console.log('posts', posts)
+  const handleOpenModal = () => {
+    const isSearch = true
+    handleOpenAndPositionModal(modalOpenElementRef, positioning, isSearch)
+  }
 
   return (
     <Wrapper>
       <SearchInput Icon={<SearchIcon />} {...getInputProps()} />
-      <SearchResult isVisible={isOpen} {...getMenuProps()}>
+      <SearchResults isVisible={isOpen} {...getMenuProps()}>
         {isOpen &&
           items.map((item, index) => (
-            <li key={item.id} {...getItemProps({ item, index })}>
-              <span>{item.content}</span>
-              {/* <span>{item.author}</span> */}
-            </li>
+            <SearchResultsItem
+              key={index}
+              isHighlighted={highlightedIndex === index}
+              {...getItemProps({ item, index })}
+              ref={modalOpenElementRef}
+            >
+              {item.content} - {item.author}
+            </SearchResultsItem>
           ))}
-      </SearchResult>
+        {isOpen && !items.length && (
+          <SearchResultsItem hasCursor>There are nothing with this title</SearchResultsItem>
+        )}
+      </SearchResults>
+      {modalIsOpen && selectedItem ? (
+        <Modal handleClose={handleCloseModal} isModal isFixed>
+          <Post
+            content={selectedItem?.content}
+            author={selectedItem?.author}
+            date={selectedItem?.date}
+            tags={selectedItem?.tags}
+            time={selectedItem?.time}
+            place={selectedItem?.place}
+            activity={selectedItem?.activity}
+          />
+        </Modal>
+      ) : null}
     </Wrapper>
   )
 }

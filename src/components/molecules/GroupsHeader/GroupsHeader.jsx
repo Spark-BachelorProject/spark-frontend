@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 

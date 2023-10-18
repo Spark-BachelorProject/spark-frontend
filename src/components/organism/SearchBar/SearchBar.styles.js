@@ -32,10 +32,10 @@ export const SearchResults = styled.ul`
 export const SearchResultsItem = styled.li`
   font-size: ${({ theme }) => theme.fontSize.sPlus};
   font-weight: 600;
-  color: ${({ theme, isHighlighted }) =>
-    isHighlighted ? theme.colors.iconPrimaryActive : theme.colors.text};
-  background-color: ${({ theme, isHighlighted }) =>
-    isHighlighted ? theme.colors.modalBg : theme.colors.inputBg};
+  color: ${({ theme, ishighlighted }) =>
+    ishighlighted ? theme.colors.iconPrimaryActive : theme.colors.text};
+  background-color: ${({ theme, ishighlighted }) =>
+    ishighlighted ? theme.colors.modalBg : theme.colors.inputBg};
   width: 100%;
   padding: 5px;
   cursor: ${({ hasCursor }) => (hasCursor ? 'default' : 'pointer')};

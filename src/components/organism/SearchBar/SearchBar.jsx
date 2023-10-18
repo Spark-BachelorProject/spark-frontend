@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import { useCombobox } from 'downshift'
 
 import { ReactComponent as SearchIcon } from '@/assets/icons/search.svg'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
-import Post from '@/components/organism/Post/Post'
-import useModal from '@/hooks/useModal'
 
 import { SearchResults, SearchResultsItem, Wrapper } from './SearchBar.styles'
 
@@ -19,19 +18,10 @@ function getPostsFilter(inputValue) {
 }
 
 const SearchBar = () => {
-  const {
-    Modal,
-    isOpen: modalIsOpen,
-    position,
-    handleCloseModal,
-    handleOpenAndPositionModal,
-    modalOpenElementRef,
-    handleSimpleOpenModal,
-  } = useModal()
   const posts = useSelector((state) => state.posts)
   const [items, setItems] = useState(posts)
-  const [selectedItem, setSelectedItem] = useState(null)
-  const positioning = 'right'
+  const navigate = useNavigate()
+  // const [selectedItem, setSelectedItem] = useState(null)
 
   useEffect(() => {
     setItems(posts)
@@ -45,15 +35,10 @@ const SearchBar = () => {
     itemToString: (item) => (item ? item.content : ''),
     initialHighlightedIndex: null,
     onSelectedItemChange({ selectedItem }) {
-      setSelectedItem(selectedItem)
-      handleOpenModal()
+      // setSelectedItem(selectedItem)
+      navigate(`/posts/${selectedItem.id}`)
     },
   })
-
-  const handleOpenModal = () => {
-    const isSearch = true
-    handleOpenAndPositionModal(modalOpenElementRef, positioning, isSearch)
-  }
 
   return (
     <Wrapper>
@@ -63,9 +48,8 @@ const SearchBar = () => {
           items.map((item, index) => (
             <SearchResultsItem
               key={index}
-              isHighlighted={highlightedIndex === index}
+              ishighlighted={highlightedIndex === index ? 1 : 0}
               {...getItemProps({ item, index })}
-              ref={modalOpenElementRef}
             >
               {item.content} - {item.author}
             </SearchResultsItem>
@@ -74,19 +58,6 @@ const SearchBar = () => {
           <SearchResultsItem hasCursor>There are nothing with this title</SearchResultsItem>
         )}
       </SearchResults>
-      {modalIsOpen && selectedItem ? (
-        <Modal handleClose={handleCloseModal} isModal isFixed>
-          <Post
-            content={selectedItem?.content}
-            author={selectedItem?.author}
-            date={selectedItem?.date}
-            tags={selectedItem?.tags}
-            time={selectedItem?.time}
-            place={selectedItem?.place}
-            activity={selectedItem?.activity}
-          />
-        </Modal>
-      ) : null}
     </Wrapper>
   )
 }

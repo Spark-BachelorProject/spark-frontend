@@ -15,6 +15,7 @@ import { createSlice } from '@reduxjs/toolkit'
 //generate form me some posts
 const initialState = [
   {
+    id: 1,
     content: 'I am a post',
     visibilitySelect: 'Public',
     activitySelect: 'Activity',
@@ -26,6 +27,7 @@ const initialState = [
     place: 'place1',
   },
   {
+    id: 2,
     content: 'I am another post',
     visibilitySelect: 'Public',
     activitySelect: 'Activity',
@@ -37,6 +39,7 @@ const initialState = [
     place: 'place2',
   },
   {
+    id: 3,
     content: 'I am a third post',
     visibilitySelect: 'Public',
     activitySelect: 'Activity',
@@ -48,6 +51,7 @@ const initialState = [
     place: 'place3',
   },
   {
+    id: 4,
     content: 'I am a fourth post',
     visibilitySelect: 'Public',
     activitySelect: 'Activity',

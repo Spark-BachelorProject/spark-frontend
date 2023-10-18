@@ -14,7 +14,7 @@ export const Wrapper = styled.nav`
     flex-direction: row;
     align-items: center;
     gap: 15px;
-    color: ${({ theme }) => theme.colors.navigationInactive};
+    color: ${({ theme }) => theme.colors.text};
     text-decoration: none;
     font-weight: 600;
     padding: 14px 15px;
@@ -32,7 +32,7 @@ export const Wrapper = styled.nav`
   }
 
   & > a > svg > path {
-    stroke: ${({ theme }) => theme.colors.navigationInactive};
+    stroke: ${({ theme }) => theme.colors.text};
   }
 
   & > a.${'active'} > svg > path {

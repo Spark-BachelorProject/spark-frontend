@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router'
+import { Navigate, Route, Routes } from 'react-router'
 
 import Groups from '@/components/pages/Groups/Groups'
 import Home from '@/components/pages/Home/Home'
@@ -81,6 +81,7 @@ function App() {
         }
         exact
       />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
 }

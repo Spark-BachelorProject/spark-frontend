@@ -48,7 +48,7 @@ const Modal = ({
         />
       )}
       <ModalWrapper
-        position={position}
+        position={position || { x: 0, y: 0, positioning: 'center' }}
         width={width}
         modalNum={modalNum}
         isFixed={isFixed}

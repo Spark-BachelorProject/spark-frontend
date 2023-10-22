@@ -7,7 +7,13 @@ const useModal = (initialValue = false, isHeaderSearchBar = false) => {
   const [position, setPosition] = useState({ x: 0, y: 0, positioning: 'center' })
   const modalOpenElementRef = useRef(null)
 
-  const handleOpenAndPositionModal = (ref, positioning) => {
+  const handleOpenAndPositionModal = (ref, positioning, isSearch = false) => {
+    if (isSearch) {
+      setPosition({ x: 0, y: 0, positioning })
+      console.log(position, '!!!!!!')
+      setIsOpen(true)
+      return
+    }
     // 10 because its space between element and modal, 70 because its height of HeaderSearchBar
     // to element which show and disappear on hover, pass as ref e.target!!!
     let x, height, offsetTop
@@ -54,6 +60,11 @@ const useModal = (initialValue = false, isHeaderSearchBar = false) => {
     return () => window.removeEventListener('resize', handleResize)
   }, [isHeaderSearchBar])
 
+  const handleSimpleOpenModal = () => {
+    console.log('hallo')
+    setIsOpen(true)
+  }
+
   return {
     Modal,
     position,
@@ -61,6 +72,7 @@ const useModal = (initialValue = false, isHeaderSearchBar = false) => {
     handleCloseModal,
     handleOpenAndPositionModal,
     modalOpenElementRef,
+    handleSimpleOpenModal,
   }
 }
 

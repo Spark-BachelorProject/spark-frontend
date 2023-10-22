@@ -4,14 +4,13 @@ import { Link } from 'react-router-dom'
 
 import { ReactComponent as BookmarkIcon } from '@/assets/icons/bookmark.svg'
 import { ReactComponent as MoonIcon } from '@/assets/icons/moon.svg'
-import { ReactComponent as SearchIcon } from '@/assets/icons/search.svg'
 import { ReactComponent as SunIcon } from '@/assets/icons/sun.svg'
 import { Counter } from '@/components/atoms/Counter/Counter'
 import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
 import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
 import { NotificationBell } from '@/components/molecules/NotificationBell/NotificationBell'
-import SearchInput from '@/components/molecules/SearchInput/SearchInput'
 import { BookmarkedContent } from '@/components/organism/BookmarkedContent/BookmarkedContent'
+import SearchBar from '@/components/organism/SearchBar/SearchBar'
 import { toggle } from '@/features/themeSlice'
 import useModal from '@/hooks/useModal'
 
@@ -105,7 +104,7 @@ const HeaderSearchBar = () => {
           <Link to="/">
             <StyledLogoIcon />
           </Link>
-          <SearchInput Icon={<SearchIcon />} />
+          <SearchBar />
         </LogoAndInputWrapper>
         <InnerIconsWrapperRight>
           <div

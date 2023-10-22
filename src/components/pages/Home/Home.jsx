@@ -20,7 +20,7 @@ const Home = () => {
         <Post
           key={i}
           content={post.content}
-          author={'Kamil Żyła'}
+          author={post.author}
           date={post.date}
           tags={post.tags}
           time={post.time}

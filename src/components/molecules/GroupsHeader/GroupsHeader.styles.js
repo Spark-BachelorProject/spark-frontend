@@ -7,8 +7,6 @@ const image = Object.values(
   import.meta.glob('@assets/images/banner.png', { eager: true, as: 'url' })
 )
 
-console.log(image[0])
-
 export const Wrapper = styled.div`
   width: 100%;
   margin-bottom: 20px;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 
 import { Button } from '@/components/atoms/Button/Button.styles'

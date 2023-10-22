@@ -15,12 +15,11 @@ export const Wrapper = styled.nav`
     align-items: center;
     gap: 15px;
     color: ${({ theme }) => theme.colors.text};
-    text-decoration: none;
     font-weight: 600;
     padding: 14px 15px;
     border-radius: 7px;
   }
-  // TODO: check colors
+
   & > a.${'active'} {
     color: ${({ theme }) => theme.colors.textHeader};
     font-weight: 700;

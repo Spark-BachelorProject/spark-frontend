@@ -42,7 +42,7 @@ const SearchBar = () => {
 
   return (
     <Wrapper>
-      <SearchInput Icon={<SearchIcon />} {...getInputProps()} />
+      <SearchInput Icon={<SearchIcon />} {...getInputProps()} placeholder="Szukaj" />
       <SearchResults isVisible={isOpen} {...getMenuProps()}>
         {isOpen &&
           items.map((item, index) => (

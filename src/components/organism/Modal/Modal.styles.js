@@ -5,7 +5,7 @@ import { Button } from '@/components/atoms/Button/Button.styles'
 export const ModalWrapper = styled.div`
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.07);
   position: ${({ isFixed }) => (isFixed ? 'fixed' : 'absolute')};
-  z-index: ${({ modalNum }) => 1000 + modalNum * 1 + 1};
+  z-index: ${({ modalNum }) => 2000 + modalNum * 1 + 1};
   ${({ isModal }) =>
     isModal &&
     `
@@ -55,7 +55,7 @@ export const ModalWrapper = styled.div`
 
 export const ModalBackground = styled.div`
   position: fixed;
-  z-index: ${({ modalNum }) => 1000 + modalNum};
+  z-index: ${({ modalNum }) => 2000 + modalNum};
   top: 0;
   left: 0;
   height: 100vh;

@@ -5,7 +5,7 @@ import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 
 export const Wrapper = styled.div`
   width: 100vw;
-  z-index: ${({ modalIsOpen }) => (modalIsOpen ? 999 : 9999)};
+  z-index: ${({ modalIsOpen }) => (modalIsOpen ? 999 : 1099)};
 
   height: 70px;
   position: sticky;

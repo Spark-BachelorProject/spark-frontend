@@ -7,13 +7,11 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 export const Wrapper = styled.form`
   width: 100%;
   min-width: 60vw;
-  /* min-height: 40vh; */
   padding: 16px 28px;
 
   @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
     width: 100vw;
     height: 80vh;
-    margin: 70px 0;
     z-index: 9999;
     overflow-y: scroll;
   }
@@ -50,15 +48,14 @@ export const InputsWrapper = styled.div`
   margin: 16px 0;
 
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   gap: 16px;
   grid-template-areas:
     'input1 input1 input1 input1'
     'select1 select1 map map'
     'select2 select2 map map'
     'input2 input2 map map'
-    'input3 input4 map map'
-    'tags tags map map';
+    'input3 input4 map map';
 
   & > select {
     background-color: ${({ theme }) => theme.colors.inputBg};
@@ -69,7 +66,7 @@ export const InputsWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(9, 1fr);
+    grid-template-rows: repeat(8, 1fr);
     grid-template-areas:
       'input1 input1'
       'select1 select1'
@@ -78,8 +75,7 @@ export const InputsWrapper = styled.div`
       'input3 input4'
       'map map'
       'map map'
-      'map map'
-      'tags tags';
+      'map map';
   }
 `
 

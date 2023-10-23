@@ -179,10 +179,8 @@ const CreatePost = ({ handleClose }) => {
             selectedPlace={selectedPlace}
           /> */}
         </div>
-        <div style={{ gridArea: 'tags' }}>
-          <TagAutocomplete tags={tags} setTags={setTags} />
-        </div>
       </InputsWrapper>
+      <TagAutocomplete tags={tags} setTags={setTags} />
 
       <FooterWrapper>
         <StyledText as={'a'}>Wiecej szczegółów</StyledText>

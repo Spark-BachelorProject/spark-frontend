@@ -9,8 +9,8 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import PlaceAutocomplete from '@/components/molecules/PlaceAutocomplete/PlaceAutocomplete.jsx'
 import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
 import { cities } from '@/components/pages/Map/data.jsx'
-import { addPost } from '@/features/postsSlice.js'
 import { dateNowYYYYMMDD, isToday, timeNow } from '@/helpers/dateAndTime.js'
+import { addPost } from '@/store/posts/postsSlice.js'
 
 import {
   FooterWrapper,

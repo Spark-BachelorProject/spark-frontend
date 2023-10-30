@@ -23,3 +23,16 @@ export const StyledTitle = styled(Title)`
   font-size: ${({ theme }) => theme.fontSize.mPlus};
   font-weight: 600;
 `
+
+export const HeaderWrapper = styled.div`
+  width: 100%;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & > svg {
+    cursor: pointer;
+    scale: 1.7;
+  }
+`

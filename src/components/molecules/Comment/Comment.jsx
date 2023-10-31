@@ -3,18 +3,21 @@ import React from 'react'
 import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
+import { formatTimeAgo } from '@/helpers/dateAndTime'
 
 import { Details, Wrapper } from './Comment.styles'
 
-const Comment = ({ children, userName, howLongAgo }) => {
+const Comment = ({ children, user: { firstName, lastName, profilePictureUrl }, dateAdded }) => {
   return (
     <Wrapper>
       <Details>
-        <Thumbnail />
+        <Thumbnail alt={`Thumbnail of ${firstName} ${lastName}`} src={profilePictureUrl} />
         <div>
-          <Text isBold>{userName}</Text>
+          <Text isBold>
+            {firstName} {lastName}
+          </Text>
           <Dot />
-          <Text>{howLongAgo} min temu</Text>
+          <Text>{formatTimeAgo(dateAdded)}</Text>
         </div>
       </Details>
       <Text>{children}</Text>

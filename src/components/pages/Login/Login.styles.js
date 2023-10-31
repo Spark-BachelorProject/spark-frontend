@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
+import { Error } from '@/components/atoms/Error/Error.styles'
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
@@ -52,4 +53,10 @@ export const Form = styled.form`
   @media (max-width: 998px) {
     flex-direction: column;
   }
+`
+
+export const StyledError = styled(Error)`
+  margin: 0 auto;
+  font-weight: 700;
+  font-size: ${({ theme }) => theme.fontSize.m};
 `

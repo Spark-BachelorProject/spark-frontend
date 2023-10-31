@@ -45,7 +45,6 @@ export const FeedbackSection = () => {
       <StyledButton
         borderOnly
         onClick={(e) => handleOpenFeedbackPopup(e)}
-        onKeyDown={handleCloseFeedbackPopup}
         ref={modalOpenElementRef}
         tabIndex={0}
       >

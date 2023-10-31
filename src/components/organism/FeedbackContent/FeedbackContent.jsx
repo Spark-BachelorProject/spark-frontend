@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 
+import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { Error } from '@/components/atoms/Error/Error.styles'
 import { TextArea } from '@/components/atoms/TextArea/TextArea.styles'
 
-import { StyledTitle, Wrapper } from './FeedbackContent.styles'
+import { StyledTitle, Wrapper, HeaderWrapper } from './FeedbackContent.styles'
 
 const errorMessage = 'Ocena i/lub opinia nie została wystawiona'
 
@@ -35,7 +36,10 @@ export const FeedbackContent = ({ handleClose, handleFeedbackSubmitted }) => {
 
   return (
     <Wrapper>
-      <StyledTitle>Feedback</StyledTitle>
+      <HeaderWrapper>
+        <StyledTitle>Feedback</StyledTitle>
+        <XIcon onClick={handleClose} />
+      </HeaderWrapper>
       <Rating onClick={handleRating} allowFraction={true} />
       <TextArea placeholder="Napisz opinie" onChange={handleFeedback} />
       {error && <Error>{error}</Error>}

@@ -1,13 +1,10 @@
 import React from 'react'
-import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import axios from 'axios'
 
 import { loginSchema } from '@/assets/schemas/loginSchema'
-import { Alert } from '@/components/atoms/Alert/Alert'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
@@ -18,7 +15,6 @@ import { useLoginMutation } from '@/store/api/auth'
 import { Form, StyledError } from './Login.styles'
 
 const Login = () => {
-  const [validData, setValidData] = useState(false)
   const { GoogleLogin } = useGoogleLogin()
   const {
     register,
@@ -26,8 +22,9 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(loginSchema) })
   const [login, { isSuccess, isError }] = useLoginMutation()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
+  // redirect to home page after successful login
   const onSubmit = async (data) => {
     try {
       const { data: responseData } = await login(data)

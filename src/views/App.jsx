@@ -9,7 +9,6 @@ import Profile from '@/components/pages/Profile/Profile'
 import Register from '@/components/pages/Register/Register'
 import SinglePost from '@/components/pages/SinglePost/SinglePost'
 import Users from '@/components/pages/Users/Users'
-import PrivateRoute from '@/helpers/PrivateRoute'
 
 import AuthenticatedApp from './AuthenticatedApp'
 import UnauthenticatedApp from './UnauthenticatedApp'

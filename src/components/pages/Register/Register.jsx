@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios'
@@ -12,40 +12,32 @@ import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.style
 import { Text } from '@/components/atoms/Text/Text.styles'
 import LoginInput from '@/components/molecules/LoginInput/LoginInput'
 import useGoogleLogin from '@/hooks/useGoogleLogin'
+import { useRegisterMutation } from '@/store/api/auth'
 
-import { Form } from './Register.styles'
+import { Form, StyledError } from './Register.styles'
 
 const Register = () => {
   const { GoogleLogin } = useGoogleLogin()
-  const [validData, setValidData] = React.useState(false)
+  const [validData, setValidData] = useState(false)
+  const navigate = useNavigate()
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(registerSchema) })
+  const [signUp, { isSuccess, isError }] = useRegisterMutation()
 
-  const onSubmit = (data) => {
-    const userData = {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      password: data.password,
+  //TODO: Handle error when you created user with the same email
+  const onSubmit = async (data) => {
+    try {
+      const { data: responseData } = await signUp(data)
+
+      console.log(responseData)
+      localStorage.setItem('token', responseData.token)
+    } catch (error) {
+      console.log('dupa', error)
     }
-
-    console.log(userData)
-
-    const fetchData = async () => {
-      try {
-        const response = await axios.post('http://localhost:8080/api/v1/auth/register', userData)
-        setValidData(true)
-        console.log(response)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-
-    fetchData()
   }
 
   // #TODO: Add alert when user is created with Google
@@ -85,6 +77,7 @@ const Register = () => {
           {...register('repeatedPassword')}
           error={errors?.repeatedPassword?.message}
         />
+        {isError && <StyledError>Coś poszło nie tak</StyledError>}
 
         <Button isBig type="sumbit">
           Zarejestruj się

@@ -48,3 +48,9 @@ export const Form = styled.form`
     flex-direction: column;
   }
 `
+
+export const StyledError = styled(Error)`
+  margin: 0 auto;
+  font-weight: 700;
+  font-size: ${({ theme }) => theme.fontSize.m};
+`

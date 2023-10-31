@@ -5,6 +5,8 @@ import { ReactComponent as UsersIcon } from '@/assets/icons/users.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
+import CreateGroup from '@/components/organism/CreateGroup/CreateGroup'
+import useModal from '@/hooks/useModal'
 
 import {
   GroupsActionSection,
@@ -21,6 +23,27 @@ const GroupsActionBar = ({
   numOfPosts = 0,
   buttonText = 'Stwórz grupę',
 }) => {
+  const {
+    Modal,
+    isOpen,
+    position,
+    handleCloseModal,
+    handleOpenAndPositionModal,
+    modalOpenElementRef,
+  } = useModal()
+
+  const positioning = 'center'
+
+  const handleOpenAddGroup = () => {
+    handleOpenAndPositionModal(modalOpenElementRef, positioning)
+  }
+
+  const handleCloseAddGroup = (e) => {
+    if (e.key !== 'Tab') {
+      handleOpenAndPositionModal(modalOpenElementRef, positioning)
+    }
+  }
+
   return (
     <Wrapper>
       <IconAndLabel>
@@ -42,8 +65,25 @@ const GroupsActionBar = ({
           <StyledSearchIcon />
         </StyledIconBorder>
 
-        <Button>{buttonText}</Button>
+        <Button
+          onClick={(e) => handleOpenAddGroup(e)}
+          onKeyDown={handleCloseAddGroup}
+          ref={modalOpenElementRef}
+        >
+          {buttonText}
+        </Button>
       </GroupsActionSection>
+      {isOpen ? (
+        <Modal
+          handleClose={handleCloseModal}
+          position={position}
+          isFixed
+          isModal
+          hasBackgroundColor
+        >
+          <CreateGroup handleClose={handleCloseModal} />
+        </Modal>
+      ) : null}
     </Wrapper>
   )
 }

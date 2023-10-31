@@ -4,16 +4,16 @@ export const timeNow = dayjs().format('HH:mm')
 export const dateNowYYYYMMDD = dayjs().format('YYYY-MM-DD')
 export const dateNowDDMMYYYY = dayjs().format('DD-MM-YYYY')
 
-export const formatTimeAgo = (data, time) => {
-  // Convert date and time to a single JavaScript Date object
-  const dataTime = new Date(`${data}T${time}`)
+export const formatTimeAgo = (timestamp) => {
+  // Convert timestamp to a JavaScript Date object
+  const dataTime = new Date(timestamp)
   const now = new Date()
 
   // Calculate the difference in milliseconds
-  const timeDifferance = now - dataTime
+  const timeDifference = now - dataTime
 
   // Calculate how many days, hours and minutes ago the event was
-  const minutes = Math.floor(timeDifferance / (1000 * 60))
+  const minutes = Math.floor(timeDifference / (1000 * 60))
   const hours = Math.floor(minutes / 60)
   const days = Math.floor(hours / 24)
 
@@ -26,14 +26,35 @@ export const formatTimeAgo = (data, time) => {
   } else if (days < 7) {
     return `${days} dni${days === 1 ? 'a' : ''} temu`
   } else {
-    return `${data} ${time}`
+    const date = dataTime.toLocaleDateString()
+    const time = dataTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    return `${date}, ${time}`
   }
 }
 
-export const isToday = (dateString) => {
-  const today = new Date().toISOString().slice(0, 10) // Get today's date in 'YYYY-MM-DD' format
-  return dateString === today
+export const isToday = (timestamp) => {
+  const date = new Date(timestamp)
+  const today = new Date()
+
+  // console.log(date.getDate(), today.getDate(), 'ciyucie')
+  return (
+    date.getDate() === today.getDate() &&
+    date.getMonth() === today.getMonth() &&
+    date.getFullYear() === today.getFullYear()
+  )
 }
+
+export const formatTime = (timestamp) => {
+  const date = new Date(timestamp);
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+
+  // Pad the minutes with a 0 if it's less than 10
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+  return `${hours}:${formattedMinutes}`;
+}
+
 
 export const formatDate = (dateString) => {
   if (isToday(dateString)) {

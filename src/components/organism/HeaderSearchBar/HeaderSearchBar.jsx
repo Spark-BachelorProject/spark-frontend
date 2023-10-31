@@ -97,6 +97,11 @@ const HeaderSearchBar = () => {
     }
   }
 
+  const handleSignOut = () => {
+    localStorage.removeItem('token')
+    handleCloseModal2()
+  }
+
   return (
     <Wrapper modalIsOpen={!everyIsFalse(isOpen, isOpen2, isOpen3)}>
       <InnerWrapper>
@@ -149,7 +154,7 @@ const HeaderSearchBar = () => {
 
           {isOpen2 ? (
             <Modal2 handleClose={handleCloseModal2} position={position2} isFixed>
-              <ProfileContent handleClose={handleCloseModal2} />
+              <ProfileContent handleClose={handleSignOut} />
             </Modal2>
           ) : null}
 

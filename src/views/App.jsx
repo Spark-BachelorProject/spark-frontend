@@ -1,4 +1,5 @@
-import { Navigate, Route, Routes } from 'react-router'
+import { useEffect, useState } from 'react'
+import { Navigate, Route, Routes, useNavigate } from 'react-router'
 
 import Groups from '@/components/pages/Groups/Groups'
 import Home from '@/components/pages/Home/Home'
@@ -8,17 +9,13 @@ import Profile from '@/components/pages/Profile/Profile'
 import Register from '@/components/pages/Register/Register'
 import SinglePost from '@/components/pages/SinglePost/SinglePost'
 import Users from '@/components/pages/Users/Users'
-import { useGetPostsQuery } from '@/store/api/posts'
+import PrivateRoute from '@/helpers/PrivateRoute'
 
 import AuthenticatedApp from './AuthenticatedApp'
 import UnauthenticatedApp from './UnauthenticatedApp'
 
 //FIXME: On logout display login in proper way
 function App() {
-  const { data, isLoading } = useGetPostsQuery()
-
-  console.log(data, isLoading)
-
   return (
     <Routes>
       <Route

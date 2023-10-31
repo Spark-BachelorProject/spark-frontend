@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -10,14 +10,9 @@ import Comment from '@/components/molecules/Comment/Comment'
 
 import { CommentForm, Comments, StyledText } from './CommentSection.styles'
 
-const CommentSection = ({
-  handleAddComment,
-  inputValue,
-  setInputValue,
-  comments = [],
-  commentSectionIsOpen,
-  setCommentSectionIsOpen,
-}) => {
+const CommentSection = ({ handleAddComment, inputValue, setInputValue, comments }) => {
+  const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(!(comments.length > 2))
+  console.log('comments', commentSectionIsOpen)
   return (
     <>
       <CommentForm onSubmit={handleAddComment}>
@@ -35,15 +30,18 @@ const CommentSection = ({
       <StyledText
         onClick={() => setCommentSectionIsOpen((prev) => !prev)}
         commentSectionIsOpen={commentSectionIsOpen}
+        isComments={!!comments.length}
       >
-        {commentSectionIsOpen ? 'Schowaj' : 'Pokaż'} komentarze ({comments.length})
-        <ExpandVectorIcon />
+        {!comments.length
+          ? 'Brak komentarzy'
+          : (commentSectionIsOpen ? 'Schowaj' : 'Pokaż') + ` komentarze (${comments.length})`}
+        {comments.length ? <ExpandVectorIcon /> : null}
       </StyledText>
-      {commentSectionIsOpen ? (
+      {commentSectionIsOpen && comments.length ? (
         <Comments>
           {comments.map((comment) => (
-            <Comment key={comment.id} userName={comment.userName} howLongAgo={comment.howLongAgo}>
-              {comment.comment}
+            <Comment key={comment.id} user={comment.user} dateAdded={comment.dateAdded}>
+              {comment.commentText}
             </Comment>
           ))}
         </Comments>
@@ -55,9 +53,9 @@ const CommentSection = ({
 CommentSection.propTypes = {
   comments: PropTypes.arrayOf(
     PropTypes.shape({
-      userName: PropTypes.string.isRequired,
-      howLongAgo: PropTypes.number.isRequired,
-      children: PropTypes.string,
+      commentText: PropTypes.string.isRequired,
+      dateAdded: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired,
     })
   ),
   commentSectionIsOpen: PropTypes.bool.isRequired,

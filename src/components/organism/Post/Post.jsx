@@ -10,7 +10,7 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
-import { formatDate, formatTime, formatTimeAgo } from '@/helpers/dateAndTime'
+import { formatDate, formatTimeHHMM, formatTimeAgo } from '@/helpers/dateAndTime'
 import useModal from '@/hooks/useModal'
 
 import { AttendingContent } from '../AttendingContent/AttendingContent'
@@ -150,7 +150,7 @@ const Post = (props) => {
       <DetailsWrapper>
         <ClockIcon />
         <Text>
-          {formatDate(dateStart)} o {formatTime(dateStart)}
+          {formatDate(dateStart)} o {formatTimeHHMM(dateStart)}
         </Text>
       </DetailsWrapper>
       <Tags>{tags}</Tags>

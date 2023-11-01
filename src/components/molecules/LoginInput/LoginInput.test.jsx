@@ -1,20 +1,16 @@
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, screen } from '@testing-library/react'
-
-import { renderWithProviders } from '@/helpers/renderWithThemeProvider'
+import { render, screen, fireEvent } from 'test-utils'
 
 import LoginInput from './LoginInput'
 
 describe('LoginInput', () => {
   it('Renders without errors', () => {
-    renderWithProviders(
-      <LoginInput name="email" onBlur={() => {}} onChange={() => {}} type="email" />
-    )
+    render(<LoginInput name="email" onBlur={() => {}} onChange={() => {}} type="email" />)
   })
 
   it('Renders with errors', () => {
     const error = 'Invalid email'
-    const element = renderWithProviders(
+    const element = render(
       <LoginInput name="email" error={error} onBlur={() => {}} onChange={() => {}} type="email" />
     )
     screen.getByText(error)
@@ -24,7 +20,7 @@ describe('LoginInput', () => {
   })
 
   it('You can write some text in input', () => {
-    renderWithProviders(
+    render(
       <LoginInput
         name="email"
         onBlur={() => {}}

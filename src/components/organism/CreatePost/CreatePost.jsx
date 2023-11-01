@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
@@ -10,6 +10,8 @@ import PlaceAutocomplete from '@/components/molecules/PlaceAutocomplete/PlaceAut
 import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
 import { cities } from '@/components/pages/Map/data.jsx'
 import { dateNowYYYYMMDD, isToday, timeNow } from '@/helpers/dateAndTime.js'
+import { useGetActivitiesQuery } from '@/store/api/activities.js'
+import { useAddPostMutation } from '@/store/api/posts'
 import { addPost } from '@/store/posts/postsSlice.js'
 
 import {
@@ -52,6 +54,53 @@ const activity = [
   },
 ]
 
+// const defaultActivities = [
+//   {
+//     id: 1,
+//     name: 'Piłka nożna',
+//     description: 'Gra w piłkę nożną',
+//     category: {
+//       id: 1,
+//       name: 'Sport',
+//     },
+//     tags: [],
+//     attributes: [],
+//   },
+//   {
+//     id: 2,
+//     name: 'Siatkówka',
+//     description: 'Gra w siatkówkę',
+//     category: {
+//       id: 1,
+//       name: 'Sport',
+//     },
+//     tags: [],
+//     attributes: [],
+//   },
+//   {
+//     id: 3,
+//     name: 'Koszykówka',
+//     description: 'Gra w koszykówkę',
+//     category: {
+//       id: 1,
+//       name: 'Sport',
+//     },
+//     tags: [],
+//     attributes: [],
+//   },
+//   {
+//     id: 4,
+//     name: 'Kino',
+//     description: 'Wyjście do kina',
+//     category: {
+//       id: 2,
+//       name: 'Rekreacja',
+//     },
+//     tags: [],
+//     attributes: [],
+//   },
+// ]
+
 const initialState = {
   content: '',
   visibility: visibility[0].value,
@@ -60,13 +109,15 @@ const initialState = {
 }
 
 const CreatePost = ({ handleClose }) => {
-  const dispatch = useDispatch()
+  const [addPost] = useAddPostMutation()
+  const { data: activitiesApi } = useGetActivitiesQuery()
+  const [activities, setActivities] = useState([])
+  const [tags, setTags] = useState([])
 
   const [date, setDate] = useState(dateNowYYYYMMDD)
   const [time, setTime] = useState(timeNow)
 
   const [state, setState] = useState(initialState)
-  const [tags, setTags] = useState([])
 
   const [selectedCoordinates, setSelectedCoordinates] = useState({
     lat: cities[0].cordinates.lat,
@@ -93,18 +144,71 @@ const CreatePost = ({ handleClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const tagsOnlyLables = tags.map((tag) => tag.value)
 
-    const finalData = {
-      ...state,
-      tags: tagsOnlyLables,
-      date,
-      time,
-      place: selectedPlace,
+    /*
+{
+    "activityId": 1,
+    "userId": 1,
+    "location": {
+    "googleId": "",
+    "name": "",
+    "city": "Lublin",
+    "lng": 54,
+    "lat": 45,
+    "isPlace": false
+    },
+    "dateCreated": 1682019863000,
+    "dateStart": 1682012863000,
+    "dateEnd": 1692019863000,
+    "description": "blagam",
+    "privacySetting": "PUBLIC",
+    "tags": [2]
+}
+*/
+    const data = {
+      activityId: 1,
+      userId: 1,
+      location: {
+        googleId: '',
+        name: '',
+        city: 'Lublin',
+        lng: 54,
+        lat: 45,
+        isPlace: false,
+      },
+      dateCreated: 1682019863000,
+      dateStart: 1682012863000,
+      dateEnd: 1692019863000,
+      description: 'blagam3',
+      privacySetting: 'PUBLIC',
+      tags: [2],
     }
 
-    dispatch(addPost(finalData))
-
+    const newPost = {
+      activityId: 1,
+      userId: 1,
+      location: {
+        googleId: selectedPlace ? selectedPlace.googleId : '',
+        name: selectedPlace ? selectedPlace.name : '',
+        city: selectedPlace ? selectedPlace.city : 'Lublin',
+        lng: selectedCoordinates.lng,
+        lat: selectedCoordinates.lat,
+        isPlace: false,
+      },
+      dateCreated: Date.now(),
+      dateStart: Date.now() + 80000,
+      dateEnd: Date.now() + 800000,
+      description: state.content,
+      privacySetting: 'PUBLIC',
+      tags: [
+        {
+          id: 1,
+          name: 'Luźna gierka',
+          type: 'Poziom',
+        },
+      ],
+    }
+    addPost(data)
     handleClose()
   }
 
@@ -144,14 +248,12 @@ const CreatePost = ({ handleClose }) => {
         >
           {activity}
         </Select>
-
         <div style={{ gridArea: 'input2' }}>
           <PlaceAutocomplete
             onSelectCoordinates={handleSelectCoordinates}
             onSelectPlace={handleSelectPlace}
           />
         </div>
-
         <Input
           style={{ gridArea: 'input3' }}
           type="date"
@@ -166,7 +268,6 @@ const CreatePost = ({ handleClose }) => {
           min={isToday(date) ? timeNow : '00:00'}
           onChange={(e) => setTime(e.target.value)}
         />
-
         <div
           style={{
             gridArea: 'map',
@@ -180,7 +281,8 @@ const CreatePost = ({ handleClose }) => {
           /> */}
         </div>
       </InputsWrapper>
-      <TagAutocomplete tags={tags} setTags={setTags} />
+
+      <TagAutocomplete tags={tags} setTags={setTags} data={activitiesApi} />
 
       <FooterWrapper>
         <StyledText as={'a'}>Wiecej szczegółów</StyledText>

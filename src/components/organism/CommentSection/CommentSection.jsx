@@ -12,7 +12,6 @@ import { CommentForm, Comments, StyledText } from './CommentSection.styles'
 
 const CommentSection = ({ handleAddComment, inputValue, setInputValue, comments }) => {
   const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(!(comments.length > 2))
-  console.log('comments', commentSectionIsOpen)
   return (
     <>
       <CommentForm onSubmit={handleAddComment}>
@@ -58,8 +57,6 @@ CommentSection.propTypes = {
       id: PropTypes.number.isRequired,
     })
   ),
-  commentSectionIsOpen: PropTypes.bool.isRequired,
-  setCommentSectionIsOpen: PropTypes.func.isRequired,
   handleAddComment: PropTypes.func.isRequired,
   inputValue: PropTypes.string.isRequired,
   setInputValue: PropTypes.func.isRequired,

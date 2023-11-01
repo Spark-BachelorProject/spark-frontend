@@ -54,7 +54,7 @@ const Post = (props) => {
     privacySettings,
     tags,
   } = props
-  console.log(props)
+  // console.log(props)
   const [comments, setComments] = useState(apiComments)
   const [inputValue, setInputValue] = useState('')
 

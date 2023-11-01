@@ -3,10 +3,14 @@ import { ReactTags } from 'react-tag-autocomplete'
 
 import { StyledReactTags } from './TagAutocomplete.styles'
 
-const defaultTags = ['Darmowe', 'Luźne granie', 'Tylko dorośli']
-
-const TagAutocomplete = ({ tags, setTags }) => {
-  const suggestions = defaultTags.map((name) => ({ value: name, label: name }))
+const TagAutocomplete = ({ data, tags, setTags }) => {
+  const suggestions = data
+    ? data.map((activity) => ({
+        id: activity.id,
+        value: activity.name,
+        label: activity.name,
+      }))
+    : []
 
   const onAdd = useCallback(
     (newTag) => {

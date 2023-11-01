@@ -9,14 +9,20 @@ const Tags = ({ children, className }) => {
   return (
     <StyledTags className={className}>
       {children.map((tag, i) => (
-        <Button key={i}>{tag}</Button>
+        <Button key={i}>{tag.name}</Button>
       ))}
     </StyledTags>
   )
 }
 
 Tags.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.string),
+  children: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+    })
+  ).isRequired,
   className: PropTypes.string,
 }
 

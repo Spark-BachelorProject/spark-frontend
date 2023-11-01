@@ -6,7 +6,7 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.form`
   width: 100%;
-  min-width: 60vw;
+  min-width: 65vw;
   padding: 16px 28px;
 
   @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {

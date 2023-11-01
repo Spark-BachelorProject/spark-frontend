@@ -4,9 +4,9 @@ const Select = (props) => {
   const { children } = props
   return (
     <StyledSelect {...props}>
-      {children.map(({ value, text }, i) => (
+      {children.map(({ value, text, name }, i) => (
         <option value={value} key={i}>
-          {text}
+          {text || name}
         </option>
       ))}
     </StyledSelect>

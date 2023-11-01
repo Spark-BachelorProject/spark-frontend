@@ -45,16 +45,15 @@ export const isToday = (timestamp) => {
 }
 
 export const formatTime = (timestamp) => {
-  const date = new Date(timestamp);
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
+  const date = new Date(timestamp)
+  const hours = date.getHours()
+  const minutes = date.getMinutes()
 
   // Pad the minutes with a 0 if it's less than 10
-  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes
 
-  return `${hours}:${formattedMinutes}`;
+  return `${hours}:${formattedMinutes}`
 }
-
 
 export const formatDate = (dateString) => {
   if (isToday(dateString)) {
@@ -78,4 +77,10 @@ export const formatDate = (dateString) => {
     const formattedDate = date.toLocaleDateString('pl-PL', options)
     return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
   }
+}
+
+export const formatTimeAndDateToUnix = (date, time) => {
+  const dateAndTime = `${date} ${time}`
+  const unix = dayjs(dateAndTime).unix()
+  return unix * 1000
 }

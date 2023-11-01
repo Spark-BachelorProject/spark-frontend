@@ -1,22 +1,31 @@
 import React from 'react'
-
-import PropTypes from 'prop-types'
+import { Navigate, Route, Routes } from 'react-router'
 
 import HeaderSearchBar from '@/components/organism/HeaderSearchBar/HeaderSearchBar'
 import NavigationBar from '@/components/organism/NavigationBar/NavigationBar'
+import Groups from '@/components/pages/Groups/Groups'
+import Home from '@/components/pages/Home/Home'
+import Map from '@/components/pages/Map/Map'
+import Profile from '@/components/pages/Profile/Profile'
+import SinglePost from '@/components/pages/SinglePost/SinglePost'
+import Users from '@/components/pages/Users/Users'
 
-const AuthenticatedApp = ({ children }) => {
+const AuthenticatedApp = () => {
   return (
     <>
       <HeaderSearchBar />
-      {children}
+      <Routes>
+        <Route path="/users" element={<Users />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/groups" element={<Groups />} />
+        <Route path="/map" element={<Map />} />
+        <Route path="/posts/:id" element={<SinglePost />} />
+        <Route path="/" element={<Home />} exact />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
       <NavigationBar />
     </>
   )
-}
-
-AuthenticatedApp.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default AuthenticatedApp

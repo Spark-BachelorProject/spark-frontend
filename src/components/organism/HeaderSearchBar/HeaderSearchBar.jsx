@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { ReactComponent as BookmarkIcon } from '@/assets/icons/bookmark.svg'
 import { ReactComponent as MoonIcon } from '@/assets/icons/moon.svg'
@@ -30,6 +30,7 @@ const everyIsFalse = (...args) => args.every((arg) => !arg)
 const HeaderSearchBar = () => {
   const dispatch = useDispatch()
   const colorsTheme = useSelector((state) => state.theme.theme)
+  const navigate = useNavigate()
 
   const isHeaderSearchBar = true
   const {
@@ -99,6 +100,7 @@ const HeaderSearchBar = () => {
 
   const handleSignOut = () => {
     localStorage.removeItem('token')
+    navigate(0)
     handleCloseModal2()
   }
 

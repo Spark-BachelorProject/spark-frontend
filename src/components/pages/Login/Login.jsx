@@ -14,6 +14,7 @@ import { useLoginMutation } from '@/store/api/auth'
 
 import { Form, StyledError } from './Login.styles'
 
+//FIXME: handle in other way if user logged in, than navigate
 const Login = () => {
   const { GoogleLogin } = useGoogleLogin()
   const {
@@ -22,7 +23,7 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(loginSchema) })
   const [login, { isSuccess, isError }] = useLoginMutation()
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   // redirect to home page after successful login
   const onSubmit = async (data) => {
@@ -31,6 +32,7 @@ const Login = () => {
 
       console.log(responseData)
       localStorage.setItem('token', responseData.token)
+      navigate(0)
     } catch (error) {
       console.log(error)
     }

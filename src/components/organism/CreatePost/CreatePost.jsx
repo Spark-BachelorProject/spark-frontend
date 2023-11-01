@@ -9,7 +9,12 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import PlaceAutocomplete from '@/components/molecules/PlaceAutocomplete/PlaceAutocomplete.jsx'
 import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
 import { cities } from '@/components/pages/Map/data.jsx'
-import { dateNowYYYYMMDD, isToday, timeNow } from '@/helpers/dateAndTime.js'
+import {
+  dateNowYYYYMMDD,
+  formatTimeAndDateToUnix,
+  isToday,
+  timeNow,
+} from '@/helpers/dateAndTime.js'
 import { useGetActivitiesQuery } from '@/store/api/activities.js'
 import { useAddPostMutation } from '@/store/api/posts'
 import { addPost } from '@/store/posts/postsSlice.js'
@@ -101,21 +106,45 @@ const activity = [
 //   },
 // ]
 
+const PRIVACYSETTINGS = [
+  {
+    value: 'PUBLIC',
+    text: 'Publiczny',
+  },
+  {
+    value: 'PRIVATE_TEAM',
+    text: 'Drużyna',
+  },
+  {
+    value: 'PRIVATE_GROUP',
+    text: 'Grupa',
+  },
+]
+
 const initialState = {
   content: '',
-  visibility: visibility[0].value,
-  activity: activity[0].value,
-  // place: places[0].value,
+  hourStart: timeNow,
+  dateStart: dateNowYYYYMMDD,
+  privacy: PRIVACYSETTINGS[0].value,
+  // activity: activities[0].value,
 }
 
 const CreatePost = ({ handleClose }) => {
   const [addPost] = useAddPostMutation()
-  const { data: activitiesApi } = useGetActivitiesQuery()
+  const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
   const [activities, setActivities] = useState([])
   const [tags, setTags] = useState([])
 
-  const [date, setDate] = useState(dateNowYYYYMMDD)
-  const [time, setTime] = useState(timeNow)
+  useEffect(() => {
+    if (!isLoading) {
+      const activitiesApiWithValue = activitiesApi.map((activity) => ({
+        ...activity,
+        value: activity.name,
+      }))
+      setActivities(activitiesApiWithValue)
+      initialState.activity = activitiesApiWithValue[0].value
+    }
+  }, [activitiesApi])
 
   const [state, setState] = useState(initialState)
 
@@ -144,6 +173,10 @@ const CreatePost = ({ handleClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    const dateStart = formatTimeAndDateToUnix(state.dateStart, state.hourStart)
+
+    const selectedActivityId = activitiesApi.find((activity) => activity.name === state.activity).id
 
     /*
 {
@@ -185,9 +218,10 @@ const CreatePost = ({ handleClose }) => {
     }
 
     const newPost = {
-      activityId: 1,
-      userId: 1,
+      activityId: selectedActivityId, // git
+      userId: 1, // nie git
       location: {
+        // nie git
         googleId: selectedPlace ? selectedPlace.googleId : '',
         name: selectedPlace ? selectedPlace.name : '',
         city: selectedPlace ? selectedPlace.city : 'Lublin',
@@ -195,11 +229,11 @@ const CreatePost = ({ handleClose }) => {
         lat: selectedCoordinates.lat,
         isPlace: false,
       },
-      dateCreated: Date.now(),
-      dateStart: Date.now() + 80000,
-      dateEnd: Date.now() + 800000,
+      dateCreated: Date.now(), // git
+      dateStart: dateStart, // git
+      dateEnd: Date.now() + 800000, // TODO: ask ??????????
       description: state.content,
-      privacySetting: 'PUBLIC',
+      privacySetting: state.privacy, // git
       tags: [
         {
           id: 1,
@@ -208,8 +242,9 @@ const CreatePost = ({ handleClose }) => {
         },
       ],
     }
-    addPost(data)
-    handleClose()
+    console.log(newPost, 'newPost')
+    // addPost(data)
+    // handleClose()
   }
 
   return (
@@ -232,21 +267,21 @@ const CreatePost = ({ handleClose }) => {
         />
         <Select
           style={{ gridArea: 'select1' }}
-          name="visibilitySelect"
-          id="visibilitySelect"
-          value={state.visibilitySelect}
+          name="privacy"
+          id="privacy"
+          value={state.privacy}
           onChange={handleChange}
         >
-          {visibility}
+          {PRIVACYSETTINGS}
         </Select>
         <Select
           style={{ gridArea: 'select2' }}
-          name="activitySelect"
-          id="activitySelect"
-          value={state.activitySelect}
+          name="activity"
+          id="activity"
+          value={state.activity}
           onChange={handleChange}
         >
-          {activity}
+          {activities}
         </Select>
         <div style={{ gridArea: 'input2' }}>
           <PlaceAutocomplete
@@ -257,16 +292,20 @@ const CreatePost = ({ handleClose }) => {
         <Input
           style={{ gridArea: 'input3' }}
           type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
+          name="dateStart"
+          id="dateStart"
+          value={state.dateStart}
+          onChange={handleChange}
           min={dateNowYYYYMMDD}
         />
         <Input
           style={{ gridArea: 'input4' }}
           type="time"
-          value={time}
-          min={isToday(date) ? timeNow : '00:00'}
-          onChange={(e) => setTime(e.target.value)}
+          name="hourStart"
+          id="hourStart"
+          value={state.hourStart}
+          min={isToday(state.dateStart) ? timeNow : '00:00'}
+          onChange={handleChange}
         />
         <div
           style={{
@@ -282,6 +321,7 @@ const CreatePost = ({ handleClose }) => {
         </div>
       </InputsWrapper>
 
+      {/* FIXME: Tags, i dont know what i should place there */}
       <TagAutocomplete tags={tags} setTags={setTags} data={activitiesApi} />
 
       <FooterWrapper>

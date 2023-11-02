@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState, memo } from 'react'
 
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
@@ -12,6 +12,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
 import { formatDate, formatTimeHHMM, formatTimeAgo } from '@/helpers/dateAndTime'
 import useModal from '@/hooks/useModal'
+import { useAddCommentMutation, useGetCommentsQuery } from '@/store/api/comments'
 
 import { AttendingContent } from '../AttendingContent/AttendingContent'
 import CommentSection from '../CommentSection/CommentSection'
@@ -25,26 +26,10 @@ import {
   Wrapper,
 } from './Post.styles'
 
-// its taken from api
-const defaultComments = [
-  {
-    id: 1,
-    userName: 'Kasia Baran',
-    howLongAgo: 18,
-    comment: 'Będę, postaram się nie spóżnić',
-  },
-  {
-    id: 2,
-    userName: 'Mariusz Siembida',
-    howLongAgo: 13,
-    comment: 'Dzisiaj odpadam, ale następnym razem będę ;)',
-  },
-]
-
 const Post = (props) => {
   const {
+    // comments,
     activity,
-    comments: apiComments,
     creator,
     dateCreated,
     dateEnd,
@@ -53,25 +38,26 @@ const Post = (props) => {
     location,
     privacySettings,
     tags,
+    id: postId,
   } = props
-  // console.log(props)
-  const [comments, setComments] = useState(apiComments)
   const [inputValue, setInputValue] = useState('')
+  const [addComment] = useAddCommentMutation()
+  const { data: comments, isLoading: isLoadingComments } = useGetCommentsQuery(postId)
 
   const handleAddComment = (e) => {
     e.preventDefault()
     if (inputValue === '') return
-    //FIXME: fix howLongAgo
-    //FIXME: fix id
-    setComments((prev) => [
-      ...prev,
-      {
-        id: Math.random() * 1000 + 100,
-        userName: creator.firstName,
-        howLongAgo: 0,
-        comment: inputValue,
-      },
-    ])
+    //TODO: USERID
+    console.log('addCOOMENT', postId)
+
+    const newComment = {
+      postId,
+      userId: 1,
+      comment: inputValue,
+    }
+
+    addComment(newComment)
+
     setInputValue('')
   }
 
@@ -167,12 +153,14 @@ const Post = (props) => {
         <Button borderOnly>Zgłoś obecność</Button>
       </InteractionsSection>
 
-      <CommentSection
-        handleAddComment={handleAddComment}
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-        comments={comments}
-      />
+      {!isLoadingComments && (
+        <CommentSection
+          handleAddComment={handleAddComment}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          comments={comments}
+        />
+      )}
 
       {isOpen ? (
         <Modal handleClose={handleCloseModal} position={position}>

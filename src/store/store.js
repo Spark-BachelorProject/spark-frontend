@@ -6,6 +6,7 @@ import themeReducer from '@/store/theme/themeSlice'
 
 import { activitiesApi } from './api/activities'
 import { authApi } from './api/auth'
+import { commentsApi } from './api/comments'
 
 export const store = configureStore({
   reducer: {
@@ -14,10 +15,13 @@ export const store = configureStore({
     [postsApi.reducerPath]: postsApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
     [activitiesApi.reducerPath]: activitiesApi.reducer,
+    [commentsApi.reducerPath]: commentsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      .concat(postsApi.middleware)
-      .concat(authApi.middleware)
-      .concat(activitiesApi.middleware),
+    getDefaultMiddleware().concat(
+      postsApi.middleware,
+      authApi.middleware,
+      activitiesApi.middleware,
+      commentsApi.middleware
+    ),
 })

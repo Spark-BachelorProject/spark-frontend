@@ -243,7 +243,7 @@ const CreatePost = ({ handleClose }) => {
       ],
     }
     console.log(newPost, 'newPost')
-    // addPost(data)
+    addPost(data)
     // handleClose()
   }
 

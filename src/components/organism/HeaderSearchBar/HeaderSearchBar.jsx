@@ -98,7 +98,7 @@ const HeaderSearchBar = () => {
     }
   }
 
-  const handleSignOut = () => {
+  const handleLogout = () => {
     localStorage.removeItem('token')
     navigate(0)
     handleCloseModal2()
@@ -156,7 +156,7 @@ const HeaderSearchBar = () => {
 
           {isOpen2 ? (
             <Modal2 handleClose={handleCloseModal2} position={position2} isFixed>
-              <ProfileContent handleClose={handleSignOut} />
+              <ProfileContent handleClose={handleCloseModal2} handleLogout={handleLogout} />
             </Modal2>
           ) : null}
 

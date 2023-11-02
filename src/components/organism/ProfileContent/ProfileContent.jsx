@@ -7,7 +7,7 @@ import { PersonListItem } from '@/components/molecules/PersonListItem/PersonList
 
 import { Wrapper, StyledText } from './ProfileContent.styles'
 
-export const ProfileContent = ({ handleClose }) => {
+export const ProfileContent = ({ handleClose, handleLogout }) => {
   return (
     <Wrapper>
       <NavLink to="/profile" onClick={handleClose}>
@@ -17,7 +17,7 @@ export const ProfileContent = ({ handleClose }) => {
         <SettingsIcon />
         Ustawienia
       </StyledText>
-      <StyledText as={NavLink} to="/login" onClick={handleClose}>
+      <StyledText as={NavLink} to="/login" onClick={handleLogout}>
         <LogOutIcon />
         Wyloguj się
       </StyledText>

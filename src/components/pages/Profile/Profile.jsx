@@ -8,6 +8,7 @@ import { useGetPostsQuery } from '@/store/api/posts'
 
 import { StyledPageContent } from './Profile.styles'
 
+//TODO: posts should wider, i guess 684px
 const Profile = () => {
   // const posts = useSelector((state) => state.posts)
   const { data: posts, isLoading } = useGetPostsQuery()

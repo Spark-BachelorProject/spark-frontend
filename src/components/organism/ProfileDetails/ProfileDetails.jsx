@@ -8,6 +8,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import Badge from '@/components/molecules/Badge/Badge'
 import BadgeInfo from '@/components/molecules/BadgeInfo/BadgeInfo'
 import useModal from '@/hooks/useModal'
+import { useGetUserQuery } from '@/store/api/user'
 
 import {
   ActivitySection,
@@ -30,6 +31,8 @@ const badges = [
 ]
 
 const ProfileDetails = () => {
+  const { data: user } = useGetUserQuery()
+
   const [currentBadge, setCurrentBadge] = useState(null)
   const { Modal, isOpen, position, handleCloseModal, handleOpenAndPositionModal } = useModal()
   const positioning = 'left'
@@ -43,10 +46,13 @@ const ProfileDetails = () => {
     <Wrapper>
       <ImgAndNameSection>
         <Thumbnail />
-        <Title>Justyna Szewc</Title>
+        <Title>
+          {user.firstName} {user.lastName}
+        </Title>
       </ImgAndNameSection>
       <ActivitySection>
         <StyledTitle>Ulubione aktywności</StyledTitle>
+        {/* //TODO: Ulubione aktyności */}
         <Tags>{['Siatkówka', 'Squash']}</Tags>
       </ActivitySection>
       <BadgesSection>

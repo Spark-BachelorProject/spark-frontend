@@ -8,9 +8,11 @@ export const postsApi = createApi({
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   }),
+  tagTypes: ['Posts'],
   endpoints: (builder) => ({
     getPosts: builder.query({
       query: () => 'posts',
+      providesTags: ['Posts'],
     }),
     addPost: builder.mutation({
       query: (body) => ({
@@ -18,6 +20,7 @@ export const postsApi = createApi({
         method: 'POST',
         body,
       }),
+      invalidatesTags: ['Posts'],
     }),
   }),
 })

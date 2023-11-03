@@ -17,6 +17,7 @@ import {
 } from '@/helpers/dateAndTime.js'
 import { useGetActivitiesQuery } from '@/store/api/activities.js'
 import { useAddPostMutation } from '@/store/api/posts'
+import { useGetTagsQuery } from '@/store/api/tags.js'
 import { addPost } from '@/store/posts/postsSlice.js'
 
 import {
@@ -28,83 +29,6 @@ import {
   StyledText,
   Wrapper,
 } from './CreatePost.styles.js'
-
-const visibility = [
-  {
-    value: 'public',
-    text: 'Public',
-  },
-  {
-    value: 'onlyFriends',
-    text: 'Tylko znajomi',
-  },
-  {
-    value: 'group',
-    text: 'Grupa',
-  },
-]
-
-const activity = [
-  {
-    value: 'Piłka Nożna',
-    text: 'Piłka Nożna',
-  },
-  {
-    value: 'Siatkówka',
-    text: 'Siatkówka',
-  },
-  {
-    value: 'Squash',
-    text: 'Squash',
-  },
-]
-
-// const defaultActivities = [
-//   {
-//     id: 1,
-//     name: 'Piłka nożna',
-//     description: 'Gra w piłkę nożną',
-//     category: {
-//       id: 1,
-//       name: 'Sport',
-//     },
-//     tags: [],
-//     attributes: [],
-//   },
-//   {
-//     id: 2,
-//     name: 'Siatkówka',
-//     description: 'Gra w siatkówkę',
-//     category: {
-//       id: 1,
-//       name: 'Sport',
-//     },
-//     tags: [],
-//     attributes: [],
-//   },
-//   {
-//     id: 3,
-//     name: 'Koszykówka',
-//     description: 'Gra w koszykówkę',
-//     category: {
-//       id: 1,
-//       name: 'Sport',
-//     },
-//     tags: [],
-//     attributes: [],
-//   },
-//   {
-//     id: 4,
-//     name: 'Kino',
-//     description: 'Wyjście do kina',
-//     category: {
-//       id: 2,
-//       name: 'Rekreacja',
-//     },
-//     tags: [],
-//     attributes: [],
-//   },
-// ]
 
 const PRIVACYSETTINGS = [
   {
@@ -132,7 +56,9 @@ const initialState = {
 const CreatePost = ({ handleClose }) => {
   const [addPost] = useAddPostMutation()
   const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
+  const { data: tagsApi } = useGetTagsQuery()
   const [activities, setActivities] = useState([])
+  console.log(tagsApi)
   const [tags, setTags] = useState([])
 
   useEffect(() => {
@@ -174,9 +100,13 @@ const CreatePost = ({ handleClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    console.log('tags', tags)
+
     const dateStart = formatTimeAndDateToUnix(state.dateStart, state.hourStart)
 
     const selectedActivityId = activitiesApi.find((activity) => activity.name === state.activity).id
+
+    const getTagsIds = () => tags.map((tag) => tag.id)
 
     /*
 {
@@ -220,31 +150,33 @@ const CreatePost = ({ handleClose }) => {
     const newPost = {
       activityId: selectedActivityId, // git
       userId: 1, // nie git
+      // location: {
+      //   // nie git
+      //   googleId: selectedPlace ? selectedPlace.googleId : '',
+      //   name: selectedPlace ? selectedPlace.name : '',
+      //   city: selectedPlace ? selectedPlace.city : 'Lublin',
+      //   lng: selectedCoordinates.lng,
+      //   lat: selectedCoordinates.lat,
+      //   isPlace: false,
+      // },
       location: {
-        // nie git
-        googleId: selectedPlace ? selectedPlace.googleId : '',
-        name: selectedPlace ? selectedPlace.name : '',
-        city: selectedPlace ? selectedPlace.city : 'Lublin',
-        lng: selectedCoordinates.lng,
-        lat: selectedCoordinates.lat,
+        googleId: '',
+        name: '',
+        city: 'Lublin',
+        lng: 54,
+        lat: 45,
         isPlace: false,
       },
       dateCreated: Date.now(), // git
       dateStart: dateStart, // git
       dateEnd: Date.now() + 800000, // TODO: ask ??????????
-      description: state.content,
+      description: state.content, // git
       privacySetting: state.privacy, // git
-      tags: [
-        {
-          id: 1,
-          name: 'Luźna gierka',
-          type: 'Poziom',
-        },
-      ],
+      tags: getTagsIds(), // git
     }
     console.log(newPost, 'newPost')
-    addPost(data)
-    // handleClose()
+    addPost(newPost)
+    handleClose()
   }
 
   return (
@@ -321,8 +253,7 @@ const CreatePost = ({ handleClose }) => {
         </div>
       </InputsWrapper>
 
-      {/* FIXME: Tags, i dont know what i should place there */}
-      <TagAutocomplete tags={tags} setTags={setTags} data={activitiesApi} />
+      <TagAutocomplete tags={tags} setTags={setTags} data={tagsApi} />
 
       <FooterWrapper>
         <StyledText as={'a'}>Wiecej szczegółów</StyledText>

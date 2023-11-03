@@ -4,11 +4,14 @@ import { ReactTags } from 'react-tag-autocomplete'
 import { StyledReactTags } from './TagAutocomplete.styles'
 
 const TagAutocomplete = ({ data, tags, setTags }) => {
+  console.log('innertags', tags)
   const suggestions = data
-    ? data.map((activity) => ({
-        id: activity.id,
-        value: activity.name,
-        label: activity.name,
+    ? data.map((tag) => ({
+        id: tag.id,
+        value: tag.name,
+        label: tag.name,
+        name: tag.name,
+        type: tag.type,
       }))
     : []
 

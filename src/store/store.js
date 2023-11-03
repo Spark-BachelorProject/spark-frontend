@@ -8,6 +8,7 @@ import { activitiesApi } from './api/activities'
 import { authApi } from './api/auth'
 import { commentsApi } from './api/comments'
 import { tagsApi } from './api/tags'
+import { userApi } from './api/user'
 
 export const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ export const store = configureStore({
     [activitiesApi.reducerPath]: activitiesApi.reducer,
     [commentsApi.reducerPath]: commentsApi.reducer,
     [tagsApi.reducerPath]: tagsApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -25,6 +27,7 @@ export const store = configureStore({
       authApi.middleware,
       activitiesApi.middleware,
       commentsApi.middleware,
-      tagsApi.middleware
+      tagsApi.middleware,
+      userApi.middleware
     ),
 })

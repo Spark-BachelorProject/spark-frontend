@@ -18,7 +18,7 @@ import {
 import { useGetActivitiesQuery } from '@/store/api/activities.js'
 import { useAddPostMutation } from '@/store/api/posts'
 import { useGetTagsQuery } from '@/store/api/tags.js'
-import { addPost } from '@/store/posts/postsSlice.js'
+import { useGetUserQuery } from '@/store/api/user.js'
 
 import {
   FooterWrapper,
@@ -58,8 +58,8 @@ const CreatePost = ({ handleClose }) => {
   const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
   const { data: tagsApi } = useGetTagsQuery()
   const [activities, setActivities] = useState([])
-  console.log(tagsApi)
   const [tags, setTags] = useState([])
+  const { data: user, isLoadingUser } = useGetUserQuery()
 
   useEffect(() => {
     if (!isLoading) {
@@ -100,7 +100,7 @@ const CreatePost = ({ handleClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    console.log('tags', tags)
+    // console.log('tags', tags)
 
     const dateStart = formatTimeAndDateToUnix(state.dateStart, state.hourStart)
 
@@ -149,7 +149,7 @@ const CreatePost = ({ handleClose }) => {
 
     const newPost = {
       activityId: selectedActivityId, // git
-      userId: 1, // nie git
+      userId: user.id, // git
       // location: {
       //   // nie git
       //   googleId: selectedPlace ? selectedPlace.googleId : '',

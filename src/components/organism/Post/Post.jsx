@@ -13,6 +13,7 @@ import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList
 import { formatDate, formatTimeHHMM, formatTimeAgo } from '@/helpers/dateAndTime'
 import useModal from '@/hooks/useModal'
 import { useAddCommentMutation, useGetCommentsQuery } from '@/store/api/comments'
+import { useGetUserQuery } from '@/store/api/user'
 
 import { AttendingContent } from '../AttendingContent/AttendingContent'
 import CommentSection from '../CommentSection/CommentSection'
@@ -28,7 +29,6 @@ import {
 
 const Post = (props) => {
   const {
-    // comments,
     activity,
     creator,
     dateCreated,
@@ -43,16 +43,16 @@ const Post = (props) => {
   const [inputValue, setInputValue] = useState('')
   const [addComment] = useAddCommentMutation()
   const { data: comments, isLoading: isLoadingComments } = useGetCommentsQuery(postId)
+  const { data: user } = useGetUserQuery()
 
   const handleAddComment = (e) => {
     e.preventDefault()
     if (inputValue === '') return
-    //TODO: USERID
     console.log('addCOOMENT', postId)
 
     const newComment = {
       postId,
-      userId: 1,
+      userId: user.id,
       comment: inputValue,
     }
 

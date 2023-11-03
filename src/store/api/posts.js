@@ -7,7 +7,6 @@ export const postsApi = createApi({
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
-  }),
   endpoints: (builder) => ({
     getPosts: builder.query({
       query: () => 'posts',

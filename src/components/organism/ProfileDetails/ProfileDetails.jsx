@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import { ReactComponent as BellIcon } from '@/assets/icons/bell.svg'
 import { ReactComponent as UsersIcon } from '@/assets/icons/users.svg'
+import Loader from '@/components/atoms/Loader/Loader'
 import Tags from '@/components/atoms/Tags/Tags'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
@@ -29,9 +30,9 @@ const badges = [
   { Icon: UsersIcon, text: 'Mistrz jednej dziedziny ' },
   { Icon: BellIcon, text: 'Ironman' },
 ]
-
+// TODO: badges from backend should have icon or something like that
 const ProfileDetails = () => {
-  const { data: user } = useGetUserQuery()
+  const { data: user, isLoading } = useGetUserQuery()
 
   const [currentBadge, setCurrentBadge] = useState(null)
   const { Modal, isOpen, position, handleCloseModal, handleOpenAndPositionModal } = useModal()
@@ -46,18 +47,33 @@ const ProfileDetails = () => {
     <Wrapper>
       <ImgAndNameSection>
         <Thumbnail />
-        <Title>
-          {user.firstName} {user.lastName}
-        </Title>
+        <Title>{isLoading ? <Loader isCentered /> : `${user.firstName} ${user.lastName}`}</Title>
       </ImgAndNameSection>
-      <ActivitySection>
-        <StyledTitle>Ulubione aktywności</StyledTitle>
-        {/* //TODO: Ulubione aktyności */}
-        <Tags>{['Siatkówka', 'Squash']}</Tags>
-      </ActivitySection>
+      {/* //TODO: check preffered activity */}
+      {!isLoading && user.preferredActivity ? (
+        <ActivitySection>
+          <StyledTitle>Ulubione aktywności</StyledTitle>
+          <Tags>{['Siatkówka', 'Squash']}</Tags>
+        </ActivitySection>
+      ) : null}
       <BadgesSection>
+        {/* //TODO: check badges */}
         <StyledTitle>Odznaki</StyledTitle>
         <BadgesWrapper>
+          {/* {!isLoading
+            ? user.badges.map(({ Icon, text }, i) => (
+                <Badge
+                  onMouseEnter={(e) => handleOpenBadgeInfo(e, { Icon, text })}
+                  onMouseLeave={handleCloseModal}
+                  tabIndex={0}
+                  key={i}
+                  Icon={Icon}
+                >
+                  {text}
+                </Badge>
+              ))
+            : null} */}
+
           {badges.map(({ Icon, text }, i) => (
             <Badge
               onMouseEnter={(e) => handleOpenBadgeInfo(e, { Icon, text })}

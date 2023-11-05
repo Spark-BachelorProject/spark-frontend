@@ -7,6 +7,7 @@ import themeReducer from '@/store/theme/themeSlice'
 import { activitiesApi } from './api/activities'
 import { authApi } from './api/auth'
 import { commentsApi } from './api/comments'
+import { groupsApi } from './api/groups'
 import { tagsApi } from './api/tags'
 import { userApi } from './api/user'
 
@@ -20,6 +21,7 @@ export const store = configureStore({
     [commentsApi.reducerPath]: commentsApi.reducer,
     [tagsApi.reducerPath]: tagsApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
+    [groupsApi.reducerPath]: groupsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -28,6 +30,7 @@ export const store = configureStore({
       activitiesApi.middleware,
       commentsApi.middleware,
       tagsApi.middleware,
-      userApi.middleware
+      userApi.middleware,
+      groupsApi.middleware
     ),
 })

@@ -8,7 +8,9 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 
 import { Content, Header, IconBackground, StyledTags, Wrapper } from './GroupCard.styles'
 
-const GroupCard = ({ name, numOfPeople = 0, text, tags }) => {
+// TODO: add tags
+const GroupCard = (props) => {
+  const { name, members, description } = props
   return (
     <Wrapper>
       <Header>
@@ -17,12 +19,12 @@ const GroupCard = ({ name, numOfPeople = 0, text, tags }) => {
         </IconBackground>
         <div>
           <Title isBig>{name}</Title>
-          <Text>{numOfPeople} członków</Text>
+          <Text>{members.length} członków</Text>
         </div>
       </Header>
       <Content>
-        <Text as="p">{text}</Text>
-        <StyledTags>{tags}</StyledTags>
+        <Text as="p">{description}</Text>
+        {/* <StyledTags>{tags}</StyledTags> */}
       </Content>
     </Wrapper>
   )

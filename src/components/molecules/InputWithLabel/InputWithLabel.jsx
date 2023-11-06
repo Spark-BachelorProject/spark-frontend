@@ -12,9 +12,9 @@ export const Wrapper = styled.div`
 `
 
 const InputWithLabel = (props) => {
-  const { id, labelText, type, placeholder, value, onChange, error, ...rest } = props
+  const { id, labelText, type, placeholder, value, onChange, error, style, ...rest } = props
   return (
-    <Wrapper>
+    <Wrapper style={style}>
       <Label htmlFor={id}>{labelText}</Label>
       <Input
         type={type || 'text'}

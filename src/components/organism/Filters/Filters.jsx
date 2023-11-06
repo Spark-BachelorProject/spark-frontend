@@ -31,8 +31,8 @@ const Filters = () => {
         placeholder="3"
         isBiggerThanZero
       />
-      <CheckboxField labelText={'Tylko posty znajomych'} id={'onlyFriends'} />
-      <CheckboxField labelText={'Tylko darmowe'} id={'onlyFree'} />
+      {/* <CheckboxField labelText={'Tylko posty znajomych'} id={'onlyFriends'} /> */}
+      {/* <CheckboxField labelText={'Tylko darmowe'} id={'onlyFree'} /> */}
     </Wrapper>
   )
 }

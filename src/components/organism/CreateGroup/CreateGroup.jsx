@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
@@ -6,6 +6,9 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import InputWithLabel from '@/components/molecules/InputWithLabel/InputWithLabel'
 import SelectWithLabel from '@/components/molecules/SelectWithLabel/SelectWithLabel'
+import { useGetActivitiesQuery } from '@/store/api/activities'
+import { useGetCitiesQuery } from '@/store/api/cities'
+import { useAddGroupMutation } from '@/store/api/groups'
 
 import {
   FooterWrapper,
@@ -18,49 +21,95 @@ import {
   StyledText,
 } from './CreateGroup.styles'
 
-const visibility = [
+const PRIVACYSETTINGS = [
   {
-    value: 'public',
-    text: 'Publiczna',
+    value: 'PUBLIC',
+    text: 'Publiczny',
   },
   {
-    value: 'onlyFriends',
-    text: 'Tylko znajomi',
+    value: 'PRIVATE_TEAM',
+    text: 'Drużyna',
   },
   {
-    value: 'group',
+    value: 'PRIVATE_GROUP',
     text: 'Grupa',
   },
 ]
 
-const cities = [
-  { text: 'Warszawa', value: 'Warszawa' },
-  { text: 'Kraków', value: 'Kraków' },
-  { text: 'Łódź', value: 'Łódź' },
-  { text: 'Wrocław', value: 'Wrocław' },
-  { text: 'Poznań', value: 'Poznań' },
-  { text: 'Gdańsk', value: 'Gdańsk' },
-  { text: 'Lublin', value: 'Lublin' },
-  { text: 'Głusk', value: 'Głusk' },
-]
-
-const activity = [
-  {
-    value: 'Piłka Nożna',
-    text: 'Piłka Nożna',
-  },
-  {
-    value: 'Siatkówka',
-    text: 'Siatkówka',
-  },
-  {
-    value: 'Squash',
-    text: 'Squash',
-  },
-]
+const initialState = {
+  name: '',
+  city: '',
+  description: '',
+  activity: '',
+  privacy: PRIVACYSETTINGS[0].value,
+}
 
 const CreateGroup = ({ handleClose }) => {
+  const [addGroup] = useAddGroupMutation()
+  const { data: citiesApi, isLoading: isLoadingCities } = useGetCitiesQuery()
+  const { data: activitiesApi, isLoading: isLoadingActivities } = useGetActivitiesQuery()
+  const [cities, setCities] = useState([])
+  const [activities, setActivities] = useState([])
+
+  useEffect(() => {
+    if (!isLoadingCities) {
+      const citiesWithValue = citiesApi.map((city) => ({
+        ...city,
+        value: city.name,
+      }))
+
+      setCities(citiesWithValue)
+      initialState.city = citiesWithValue[0].value
+    }
+  }, [citiesApi, isLoadingCities])
+  useEffect(() => {
+    if (!isLoadingActivities) {
+      const activitiesWithValue = activitiesApi.map((activity) => ({
+        ...activity,
+        value: activity.name,
+      }))
+      setActivities(activitiesWithValue)
+      initialState.activity = activitiesWithValue[0].value
+    }
+  }, [activitiesApi, isLoadingActivities])
+
+  const [state, setState] = useState(initialState)
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }))
+  }
+
+  //FIXME: when you click enter on empty input data is sent
   const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if (
+      !state.name.trim() ||
+      !state.city.trim() ||
+      !state.description.trim() ||
+      !state.activity.trim() ||
+      !state.privacy.trim()
+    ) {
+      console.log('nie wypełniono wszystkich pól')
+      return
+    }
+
+    const selectedCityId = citiesApi.find((city) => city.name === state.city).id
+    const selectedActivityId = activitiesApi.find((activity) => activity.name === state.activity).id
+
+    const data = {
+      name: state.name, // git
+      description: state.description, // git
+      privacySetting: state.privacy,
+      cityId: selectedCityId,
+      activityId: selectedActivityId,
+    }
+
+    addGroup(data)
     handleClose()
   }
 
@@ -78,6 +127,9 @@ const CreateGroup = ({ handleClose }) => {
       <InputsWrapper>
         <InputWithLabel
           style={{ gridArea: 'input1' }}
+          name="name"
+          value={state.name}
+          onChange={handleChange}
           id="name"
           labelText="Nazwa"
           placeholder="Nazwa"
@@ -85,35 +137,50 @@ const CreateGroup = ({ handleClose }) => {
         />
         <SelectWithLabel
           style={{ gridArea: 'select1' }}
+          value={state.city}
+          onChange={handleChange}
           labelText="Miasto"
-          name="citySelect"
-          id="citySelect"
+          name="city"
+          id="city"
           selected="Miasto"
           required
         >
           {cities}
         </SelectWithLabel>
-        <div style={{ gridArea: 'input2' }}>
-          <InputWithLabel id="description" labelText="Opis" placeholder="Opis" required />
-        </div>
+        {/* <div style={{ gridArea: 'input2' }}> */}
+        <InputWithLabel
+          style={{ gridArea: 'input2' }}
+          value={state.description}
+          onChange={handleChange}
+          name="description"
+          id="description"
+          labelText="Opis"
+          placeholder="Opis"
+          required
+        />
+        {/* </div> */}
 
         <SelectWithLabel
           style={{ gridArea: 'select2' }}
+          value={state.activity}
+          onChange={handleChange}
           labelText="Aktywność"
-          name="activitySelect"
-          id="activitySelect"
+          name="activity"
+          id="activity"
           required
         >
-          {activity}
+          {activities}
         </SelectWithLabel>
         <SelectWithLabel
           style={{ gridArea: 'select3' }}
+          value={state.privacy}
+          onChange={handleChange}
           labelText="Widoczność"
-          name="visibilitySelect"
-          id="visibilitySelect"
+          name="privacy"
+          id="privacy"
           required
         >
-          {visibility}
+          {PRIVACYSETTINGS}
         </SelectWithLabel>
 
         {/* <Input
@@ -147,7 +214,7 @@ const CreateGroup = ({ handleClose }) => {
 
         <ButtonsWrapper>
           <CancelButton onClick={handleClose}>Anuluj</CancelButton>
-          <Button>Dodaj</Button>
+          <Button type="submit">Dodaj</Button>
         </ButtonsWrapper>
       </FooterWrapper>
     </Wrapper>

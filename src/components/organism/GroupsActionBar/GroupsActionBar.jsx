@@ -7,6 +7,7 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import CreateGroup from '@/components/organism/CreateGroup/CreateGroup'
 import useModal from '@/hooks/useModal'
+import { useGetGroupsQuery } from '@/store/api/groups'
 
 import {
   GroupsActionSection,
@@ -23,6 +24,7 @@ const GroupsActionBar = ({
   numOfPosts = 0,
   buttonText = 'Stwórz grupę',
 }) => {
+  const { data: groups, isLoading } = useGetGroupsQuery()
   const {
     Modal,
     isOpen,
@@ -44,6 +46,7 @@ const GroupsActionBar = ({
     }
   }
 
+  //FIXME: proper way of display grupy, grupa, grup
   return (
     <Wrapper>
       <IconAndLabel>
@@ -52,7 +55,11 @@ const GroupsActionBar = ({
         </IconBackground>
         <div>
           <Title isBig>{groupName}</Title>
-          <Text>{numOfPosts ? `${numOfPosts} aktualnych postów` : `124 grupy`}</Text>
+          <Text>
+            {numOfPosts
+              ? `${numOfPosts} aktualnych postów`
+              : `${!isLoading ? groups.length : 0} grupy`}
+          </Text>
         </div>
       </IconAndLabel>
       <GroupsActionSection>

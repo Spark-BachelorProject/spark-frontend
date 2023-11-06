@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -34,9 +34,15 @@ const Register = () => {
       const { data: responseData } = await signUp(data)
 
       console.log(responseData)
-      localStorage.setItem('token', responseData.token)
+
+      if (!!responseData) {
+        localStorage.setItem('token', responseData.token)
+        navigate(0)
+      } else {
+        console.log('Error in onSubmit')
+      }
     } catch (error) {
-      console.log('dupa', error)
+      console.log('Error:', error)
     }
   }
 

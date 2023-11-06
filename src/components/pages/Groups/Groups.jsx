@@ -12,7 +12,6 @@ import { GroupCardsSection, StyledTitleBar } from './Groups.styles'
 const Groups = () => {
   const { data: groups, isLoading } = useGetGroupsQuery()
 
-  console.log(groups)
   return (
     <PageContent hasNavigation hasRightBar>
       <GroupsActionBar />

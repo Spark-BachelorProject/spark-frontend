@@ -14,7 +14,15 @@ export const groupsApi = createApi({
       query: () => 'groups',
       providesTags: ['Groups'],
     }),
+    addGroup: builder.mutation({
+      query: (body) => ({
+        url: 'groups',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['Groups'],
+    }),
   }),
 })
 
-export const { useGetGroupsQuery } = groupsApi
+export const { useGetGroupsQuery, useAddGroupMutation } = groupsApi

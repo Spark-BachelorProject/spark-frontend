@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { ReactComponent as FilterIcon } from '@/assets/icons/filter.svg'
 import Select from '@/components/atoms/Select/Select'
 import Filters from '@/components/organism/Filters/Filters'
 import useModal from '@/hooks/useModal'
+import { useGetActivitiesQuery } from '@/store/api/activities'
 
 import { Wrapper, ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder } from './Dropdown.styles'
 
@@ -43,18 +44,51 @@ const sort = [
   },
 ]
 
+const initialState = {
+  activity: '',
+  sort: '',
+}
+
 // TODO: On Esc close modal
-
+//TODO: !!! Add all to filters
 export const Dropdown = () => {
-  const [activitySelect, setActivitySelect] = useState(activity[0].value)
-  const [sortSelect, setSortSelect] = useState(sort[0].value)
+  const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
+  const [state, setState] = useState(initialState)
+  const [activities, setActivities] = useState([])
 
-  const activityHandle = (e) => {
-    setActivitySelect(e.target.value)
-  }
+  // const firstData = {
+  //   value: 'Wszystkie',
+  //   text: 'Wszystkie',
+  //   name: 'Wszystkie',
+  //   id: 0,
+  // }
 
-  const sortHandle = (e) => {
-    setSortSelect(e.target.value)
+  useEffect(() => {
+    if (!isLoading) {
+      const activitiesWithValue = activitiesApi.map((activity) => ({
+        ...activity,
+        value: activity.name,
+      }))
+      setActivities([...activitiesWithValue])
+
+      initialState.activity = activitiesWithValue[0].value
+    }
+  }, [activitiesApi, isLoading])
+
+  useEffect(() => {
+    if (!isLoading) {
+      const selectedActivityId = activities.find((activity) => activity.name === state.activity)?.id
+      // setFilteredString(`activity=${selectedActivityId}`)
+      // console.log('ciucie')
+    }
+  }, [state])
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }))
   }
 
   const {
@@ -82,17 +116,17 @@ export const Dropdown = () => {
     <Wrapper>
       <ButtonsWrapper>
         <SelectButtonsWrapper>
-          <Select
-            name="activitySelect"
-            id="activitySelect"
-            value={activitySelect}
-            onChange={activityHandle}
-          >
-            {activity}
-          </Select>
-          <Select name="sortSelect" id="sortSelect" value={sortSelect} onChange={sortHandle}>
-            {sort}
-          </Select>
+          {!isLoading && (
+            <>
+              <Select name="activity" id="activity" value={state.activity} onChange={handleChange}>
+                {activities}
+              </Select>
+              {/* <Select name="sort" id="sort" value={sortSelect} onChange={handleChange}>
+                {state.sort}
+              </Select> */}
+            </>
+          )}
+          {/* {!!filteredString ? <button>delete filters</button> : null} */}
         </SelectButtonsWrapper>
         <StyledIconBorder
           tabIndex="0"

@@ -22,6 +22,10 @@ export const postsApi = createApi({
       }),
       invalidatesTags: ['Posts'],
     }),
+    getOnePost: builder.query({
+      query: (postId) => `posts/${postId}`,
+      providesTags: ['Posts'],
+    }),
     getFilteredPosts: builder.query({
       query: (filteredString) => ({
         url: `posts/filter?${filteredString}`,
@@ -32,4 +36,4 @@ export const postsApi = createApi({
   }),
 })
 
-export const { useGetPostsQuery, useAddPostMutation, useLazyGetFilteredPostsQuery } = postsApi
+export const { useGetPostsQuery, useAddPostMutation, useGetOnePostQuery, useLazyGetFilteredPostsQuery } = postsApi

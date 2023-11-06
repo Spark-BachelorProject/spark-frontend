@@ -20,7 +20,7 @@ const SearchInput = forwardRef(({ placeholder, Icon, isAlwaysVisibleIcon, ...pro
         ref={ref}
         type="text"
         onChange={inputHandle}
-        value={inputValue}
+        value={inputValue || ''}
         placeholder={placeholder}
         onFocus={() => setIconIsVisible(false)}
         onBlur={() => setIconIsVisible(true)}

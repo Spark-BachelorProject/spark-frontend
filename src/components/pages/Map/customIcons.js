@@ -19,3 +19,14 @@ export const getIcon = (activity) => {
     iconAnchor: [22, 40],
   })
 }
+
+export const getIconUrl = (activity) => {
+  const iconUrl = iconFiles[`/src/assets/markers/${activity}.svg`]
+
+  if (!iconUrl) {
+    console.warn(`Icon not found for activity: ${activity}`)
+    return null
+  }
+
+  return iconUrl
+}

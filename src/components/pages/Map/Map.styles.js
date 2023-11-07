@@ -37,7 +37,7 @@ export const MapLegend = styled.div`
   position: absolute;
   bottom: calc(70px + 20px);
   right: 60px;
-  z-index: 1;
+  z-index: 100;
   background-color: ${({ theme }) => theme.colors.primaryBg};
   padding: 10px 15px;
   border-radius: 10px;

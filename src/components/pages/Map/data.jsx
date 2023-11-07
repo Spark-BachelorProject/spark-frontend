@@ -1,4 +1,4 @@
-export const activity = [
+export const activities = [
   {
     value: 'all',
     text: 'Wszystkie',
@@ -12,12 +12,12 @@ export const activity = [
     text: 'Piłka Nożna',
   },
   {
-    value: 'squash',
-    text: 'Squash',
+    value: 'yoga',
+    text: 'Joga',
   },
   {
-    value: 'fishing',
-    text: 'fishing',
+    value: 'cycling',
+    text: 'Kolarstwo',
   },
 ]
 

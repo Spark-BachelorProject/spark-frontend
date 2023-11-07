@@ -6,7 +6,7 @@ import Post from '@/components/organism/Post/Post'
 import { PageContent } from '@/components/templates/PageContent/PageContent'
 import { useGetOnePostQuery } from '@/store/api/posts'
 
-import { StyledTitle } from './SunglePost.styles'
+import { StyledTitle } from './SinglePost.styles'
 
 const SinglePost = () => {
   const { id } = useParams()

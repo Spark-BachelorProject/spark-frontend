@@ -14,6 +14,10 @@ export const groupsApi = createApi({
       query: () => 'groups',
       providesTags: ['Groups'],
     }),
+    getOneGroup: builder.query({
+      query: (groupId) => `groups/${groupId}`,
+      providesTags: ['Groups'],
+    }),
     addGroup: builder.mutation({
       query: (body) => ({
         url: 'groups',
@@ -25,4 +29,4 @@ export const groupsApi = createApi({
   }),
 })
 
-export const { useGetGroupsQuery, useAddGroupMutation } = groupsApi
+export const { useGetGroupsQuery, useAddGroupMutation, useGetOneGroupQuery } = groupsApi

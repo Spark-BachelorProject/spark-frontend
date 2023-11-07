@@ -29,6 +29,7 @@ export const Map = () => {
   const [showOverlay, setShowOverlay] = useState(false)
   const [activitySelect, setActivitySelect] = useState(activities[0].value)
   const [activitiesAddedToLegend, setActivitiesAddedToLegend] = useState([])
+  const [allowedGeoLocation, setAllowedGeoLocation] = useState(false)
 
   const activityHandle = (e) => {
     setActivitySelect(e.target.value)
@@ -48,6 +49,7 @@ export const Map = () => {
     navigator.geolocation.getCurrentPosition(
       function (position) {
         setCenter([position.coords.latitude, position.coords.longitude])
+        setAllowedGeoLocation(true)
       },
       function (error) {
         console.error('Error Code = ' + error.code + ' - ' + error.message)
@@ -89,10 +91,10 @@ export const Map = () => {
                 position={[marker.cordinates.lat, marker.cordinates.lng]}
                 icon={getIcon(marker.activity)}
                 eventHandlers={{ click: () => onMarkerClick(marker) }}
-                style
               ></Marker>
             ))}
         </MarkerClusterGroup>
+        {allowedGeoLocation && <Marker position={center} icon={getIcon('user')}></Marker>}
         <UpdateCenter center={center} />
       </MapContainer>
 
@@ -125,6 +127,12 @@ export const Map = () => {
             })}
           </MapLegendItem>
         ))}
+        {allowedGeoLocation && (
+          <MapLegendItem>
+            <img src={getIconUrl('user')} height={30} alt="User Marker" />
+            <Text isBold>Ty</Text>
+          </MapLegendItem>
+        )}
       </MapLegend>
 
       {selectedMarker && showOverlay && (

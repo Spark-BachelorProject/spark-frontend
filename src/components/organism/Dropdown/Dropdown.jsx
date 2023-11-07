@@ -5,64 +5,46 @@ import Select from '@/components/atoms/Select/Select'
 import Filters from '@/components/organism/Filters/Filters'
 import useModal from '@/hooks/useModal'
 import { useGetActivitiesQuery } from '@/store/api/activities'
+import { useLazyGetFilteredPostsQuery } from '@/store/api/posts'
 
 import { Wrapper, ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder } from './Dropdown.styles'
 
 // TODO: Seperate to redux
 // TODO: After adding filter seperate this to molecule
-const activity = [
-  {
-    value: 'favourite',
-    text: 'Ulubione',
-  },
-  {
-    value: 'football',
-    text: 'Piłka Nożna',
-  },
-  {
-    value: 'volleyball',
-    text: 'Siatkówka',
-  },
-  {
-    value: 'squash',
-    text: 'Squash',
-  },
-]
-
-const sort = [
-  {
-    value: 'new',
-    text: 'Najnowsze',
-  },
-  {
-    value: 'hot',
-    text: 'Gorące',
-  },
-  {
-    value: 'nearest',
-    text: 'Najbliżej',
-  },
-]
 
 const initialState = {
   activity: '',
   sort: '',
 }
 
-// TODO: On Esc close modal
-//TODO: !!! Add all to filters
-export const Dropdown = ({ filteredString, setFilteredString, onHandleFilters }) => {
+const firstData = {
+  value: 'Wszystkie',
+  text: 'Wszystkie',
+  name: 'Wszystkie',
+  id: 0,
+}
+// DO NOT CHANGE ID FIRST DATA TO ANYTHING ELSE THAN 0
+export const Dropdown = ({ data, setPosts, filteredString, setFilteredString }) => {
   const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
   const [state, setState] = useState(initialState)
   const [activities, setActivities] = useState([])
+  const [trigger, result] = useLazyGetFilteredPostsQuery()
 
-  const firstData = {
-    value: 'Wszystkie',
-    text: 'Wszystkie',
-    name: 'Wszystkie',
-    id: 0,
-  }
+  useEffect(() => {
+    // its return everything
+    if (filteredString === 'activity=0') {
+      setPosts(data)
+      return
+    }
 
+    // filter data
+    trigger(filteredString)
+    if (result.isSuccess) {
+      setPosts(result.data)
+    }
+  }, [filteredString, result, setPosts, data, trigger])
+
+  // add activity to filter
   useEffect(() => {
     if (!isLoading) {
       const activitiesWithValue = [firstData, ...activitiesApi].map((activity) => ({
@@ -75,15 +57,6 @@ export const Dropdown = ({ filteredString, setFilteredString, onHandleFilters })
     }
   }, [activitiesApi, isLoading])
 
-  // useEffect(() => {
-  //   if (!isLoading) {
-  //     const selectedActivityId = activities.find((activity) => activity.name === state.activity)?.id
-
-  //     setFilteredString(`activity=${selectedActivityId}`)
-  //     // console.log('ciucie')
-  //   }
-  // }, [state])
-
   const handleChange = (e) => {
     const { name, value } = e.target
     setState((prevState) => ({
@@ -91,11 +64,10 @@ export const Dropdown = ({ filteredString, setFilteredString, onHandleFilters })
       [name]: value,
     }))
 
+    // using this to filter
     if (name === 'activity') {
       const selectedActivityId = activities.find((activity) => activity.value === value).id
       setFilteredString(`activity=${selectedActivityId}`)
-
-      // onHandleFilters()
     }
   }
 
@@ -134,7 +106,6 @@ export const Dropdown = ({ filteredString, setFilteredString, onHandleFilters })
               </Select> */}
             </>
           )}
-          {/* {!!filteredString ? <button onClick={onHandleFilters}>Zastosuj</button> : null} */}
         </SelectButtonsWrapper>
         <StyledIconBorder
           tabIndex="0"

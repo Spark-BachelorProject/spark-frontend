@@ -1,42 +1,32 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect } from 'react'
+import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet'
 
-import styled from 'styled-components'
+import 'leaflet/dist/leaflet.css'
 
-export const Wrapper = styled.div`
-  border: 3px solid ${({ theme }) => theme.colors.accent};
-`
+import './CreatePostMap.styles.css'
 
-const CreatePostMap = ({ lat, lng, selectedPlace }) => {
-  const mapRef = useRef(null)
-  const [zoom, setZoom] = useState(11)
+function MapUpdater({ center, isPlaceSelected }) {
+  const map = useMap()
 
   useEffect(() => {
-    if (selectedPlace) {
-      setZoom(15)
-    }
+    map.invalidateSize()
+  }, [map])
 
-    const google = window.google
-    if (lat === null || lng === null) return
-    const map = new google.maps.Map(mapRef.current, {
-      center: { lat, lng },
-      zoom: zoom,
-      options: {
-        mapId: 'f8fb0c825bce9444',
-        mapTypeControl: false,
-        streetViewControl: false,
-      },
-    })
+  useEffect(() => {
+    map.flyTo(center, isPlaceSelected ? 15.5 : 13)
+  }, [center, isPlaceSelected, map])
 
-    if (selectedPlace) {
-      new google.maps.Marker({
-        position: { lat, lng },
-        map,
-      })
-      return
-    }
-  }, [lat, lng, zoom, selectedPlace])
+  return null
+}
 
-  return <Wrapper ref={mapRef} style={{ borderRadius: '10px', width: '100%', height: '100%' }} />
+export const CreatePostMap = ({ center, isPlaceSelected }) => {
+  return (
+    <MapContainer center={center} style={{ height: '100%' }} zoom={15} zoomControl={false}>
+      <MapUpdater center={center} isPlaceSelected={isPlaceSelected} />
+      <TileLayer url="https://{s}.tile.jawg.io/jawg-sunny/{z}/{x}/{y}{r}.png?access-token=aSetRCOQl0G3zH75uVIo4ZLmnMUgiP4uy5ss8IrkciB6DUwX8HUzf3he3SBU7Ppi" />
+      {isPlaceSelected && <Marker position={center}></Marker>}
+    </MapContainer>
+  )
 }
 
 export default CreatePostMap

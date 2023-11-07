@@ -11,7 +11,6 @@ import { useGetPostsQuery } from '@/store/api/posts'
 const Home = () => {
   const { data, isLoading, isSuccess } = useGetPostsQuery()
   const [posts, setPosts] = useState([])
-  const [filteredString, setFilteredString] = useState('')
 
   useEffect(() => {
     if (!isLoading) {
@@ -25,12 +24,7 @@ const Home = () => {
       <TitleBar>
         To się dzieje w <strong>Lublinie</strong>!
       </TitleBar>
-      <Dropdown
-        data={data}
-        setPosts={setPosts}
-        filteredString={filteredString}
-        setFilteredString={setFilteredString}
-      />
+      <Dropdown data={data} setPosts={setPosts} />
       {isLoading && <Loader isCentered />}
       {!isLoading && isSuccess && posts.map((post) => <Post {...post} key={post.id} />)}
     </PageContent>

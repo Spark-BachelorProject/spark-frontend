@@ -24,11 +24,12 @@ const firstData = {
   id: 0,
 }
 // DO NOT CHANGE ID FIRST DATA TO ANYTHING ELSE THAN 0
-export const Dropdown = ({ data, setPosts, filteredString, setFilteredString }) => {
+export const Dropdown = ({ data, setPosts }) => {
   const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
   const [state, setState] = useState(initialState)
   const [activities, setActivities] = useState([])
   const [trigger, result] = useLazyGetFilteredPostsQuery()
+  const [filteredString, setFilteredString] = useState('')
 
   useEffect(() => {
     // its return everything

@@ -31,7 +31,7 @@ export const Wrapper = styled.div`
   position: absolute;
   top: calc(70px + 20px);
   left: 60px;
-  z-index: 1;
+  z-index: 100;
   background-color: ${({ theme }) => theme.colors.primaryBg};
   border-radius: 10px;
   padding: 15px 20px;

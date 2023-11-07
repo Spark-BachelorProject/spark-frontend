@@ -36,6 +36,9 @@ const SearchBar = () => {
     itemToString: (item) => (item ? item.description : ''),
     initialHighlightedIndex: null,
     onSelectedItemChange({ selectedItem }) {
+      if (!selectedItem) {
+        return
+      }
       navigate(`/posts/${selectedItem.id}`)
     },
   })

@@ -12,19 +12,63 @@ import { useGetPostsQuery, useLazyGetFilteredPostsQuery } from '@/store/api/post
 const Home = () => {
   // const posts = useSelector((state) => state.posts)
 
-  const { data, isLoading } = useGetPostsQuery()
+  const { data, isLoading, isSuccess } = useGetPostsQuery()
   const [posts, setPosts] = useState([])
   const [filteredString, setFilteredString] = useState('')
-  // const [trigger, result] = useLazyGetFilteredPostsQuery()
+  const [trigger, result] = useLazyGetFilteredPostsQuery()
   useEffect(() => {
     if (!isLoading) {
       setPosts(data)
     }
-    // if (filteredString) {
-    //   const data = trigger(filteredString)
-    //   console.log(result.data)
-    // }
   }, [data, isLoading, filteredString])
+
+  console.log(filteredString, 'filteredString')
+
+  const onHandleFilters = () => {
+    console.log(filteredString)
+    // its return everything
+    if (filteredString === 'activity=0') {
+      setPosts(data)
+      return
+    }
+
+    trigger(filteredString)
+    console.log(result.data)
+    if (result.isSuccess) {
+      console.log('result.data', result, filteredString)
+      setPosts(result.data)
+    }
+  }
+
+  useEffect(() => {
+    console.log(filteredString)
+    // its return everything
+    if (filteredString === 'activity=0') {
+      setPosts(data)
+      return
+    }
+
+    trigger(filteredString)
+    console.log(result.data)
+    if (result.isSuccess) {
+      console.log('result.data', result, filteredString)
+      setPosts(result.data)
+    }
+  }, [filteredString])
+
+  useEffect(() => {
+    if (result.isSuccess && filteredString !== 'activity=0') {
+      setPosts(result?.data)
+    }
+  }, [result, onHandleFilters, data])
+
+  // useEffect(() => {
+  //   console.log('result.data', result.data)
+  //   if (result.isSuccess) {
+  //     console.log('result.data', result.data)
+  //   }
+  //   setPosts(result.data)
+  // }, [result])
 
   return (
     <PageContent hasNavigation hasRightBar>
@@ -33,10 +77,12 @@ const Home = () => {
         To się dzieje w <strong>Lublinie</strong>!
       </TitleBar>
       <Dropdown
-      // filteredString={filteredString} setFilteredString={setFilteredString}
+        filteredString={filteredString}
+        setFilteredString={setFilteredString}
+        onHandleFilters={onHandleFilters}
       />
       {isLoading && <Loader isCentered />}
-      {!isLoading && posts.map((post) => <Post {...post} key={post.id} />)}
+      {!isLoading && isSuccess && posts.map((post) => <Post {...post} key={post.id} />)}
     </PageContent>
   )
 }

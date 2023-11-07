@@ -51,37 +51,38 @@ const initialState = {
 
 // TODO: On Esc close modal
 //TODO: !!! Add all to filters
-export const Dropdown = () => {
+export const Dropdown = ({ filteredString, setFilteredString, onHandleFilters }) => {
   const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
   const [state, setState] = useState(initialState)
   const [activities, setActivities] = useState([])
 
-  // const firstData = {
-  //   value: 'Wszystkie',
-  //   text: 'Wszystkie',
-  //   name: 'Wszystkie',
-  //   id: 0,
-  // }
+  const firstData = {
+    value: 'Wszystkie',
+    text: 'Wszystkie',
+    name: 'Wszystkie',
+    id: 0,
+  }
 
   useEffect(() => {
     if (!isLoading) {
-      const activitiesWithValue = activitiesApi.map((activity) => ({
+      const activitiesWithValue = [firstData, ...activitiesApi].map((activity) => ({
         ...activity,
         value: activity.name,
       }))
-      setActivities([...activitiesWithValue])
+      setActivities(activitiesWithValue)
 
       initialState.activity = activitiesWithValue[0].value
     }
   }, [activitiesApi, isLoading])
 
-  useEffect(() => {
-    if (!isLoading) {
-      const selectedActivityId = activities.find((activity) => activity.name === state.activity)?.id
-      // setFilteredString(`activity=${selectedActivityId}`)
-      // console.log('ciucie')
-    }
-  }, [state])
+  // useEffect(() => {
+  //   if (!isLoading) {
+  //     const selectedActivityId = activities.find((activity) => activity.name === state.activity)?.id
+
+  //     setFilteredString(`activity=${selectedActivityId}`)
+  //     // console.log('ciucie')
+  //   }
+  // }, [state])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -89,6 +90,13 @@ export const Dropdown = () => {
       ...prevState,
       [name]: value,
     }))
+
+    if (name === 'activity') {
+      const selectedActivityId = activities.find((activity) => activity.value === value).id
+      setFilteredString(`activity=${selectedActivityId}`)
+
+      // onHandleFilters()
+    }
   }
 
   const {
@@ -126,7 +134,7 @@ export const Dropdown = () => {
               </Select> */}
             </>
           )}
-          {/* {!!filteredString ? <button>delete filters</button> : null} */}
+          {/* {!!filteredString ? <button onClick={onHandleFilters}>Zastosuj</button> : null} */}
         </SelectButtonsWrapper>
         <StyledIconBorder
           tabIndex="0"

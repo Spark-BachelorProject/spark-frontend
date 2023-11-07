@@ -5,7 +5,6 @@ import Select from '@/components/atoms/Select/Select'
 import Filters from '@/components/organism/Filters/Filters'
 import useModal from '@/hooks/useModal'
 import { useGetActivitiesQuery } from '@/store/api/activities'
-import { useLazyGetFilteredPostsQuery } from '@/store/api/posts'
 
 import { Wrapper, ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder } from './Dropdown.styles'
 
@@ -24,26 +23,10 @@ const firstData = {
   id: 0,
 }
 // DO NOT CHANGE ID FIRST DATA TO ANYTHING ELSE THAN 0
-export const Dropdown = ({ data, setPosts }) => {
+export const Dropdown = ({ setFilteredString }) => {
   const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
   const [state, setState] = useState(initialState)
   const [activities, setActivities] = useState([])
-  const [trigger, result] = useLazyGetFilteredPostsQuery()
-  const [filteredString, setFilteredString] = useState('')
-
-  useEffect(() => {
-    // its return everything
-    if (filteredString === 'activity=0') {
-      setPosts(data)
-      return
-    }
-
-    // filter data
-    trigger(filteredString)
-    if (result.isSuccess) {
-      setPosts(result.data)
-    }
-  }, [filteredString, result, setPosts, data, trigger])
 
   // add activity to filter
   useEffect(() => {

@@ -5,12 +5,13 @@ import MarkerClusterGroup from 'react-leaflet-cluster'
 import 'leaflet/dist/leaflet.css'
 
 import Select from '@/components/atoms/Select/Select'
+import { Text } from '@/components/atoms/Text/Text.styles'
 import { MapPopup } from '@/components/organism/MapPopup/MapPopup'
 
-import { Filters, OverlayRight, Wrapper } from './Map.styles'
+import { Filters, MapLegend, MapLegendItem, OverlayRight, Wrapper } from './Map.styles'
 import './Map.styles.css'
-import { getIcon } from './customIcons'
-import { activities, cities, markers } from './data'
+import { getIcon, getIconUrl } from './customIcons'
+import { activities, cities, markers, translations } from './data'
 
 const UpdateCenter = ({ center }) => {
   const map = useMap()
@@ -27,6 +28,7 @@ export const Map = () => {
   const [selectedMarker, setSelectedMarker] = useState(null)
   const [showOverlay, setShowOverlay] = useState(false)
   const [activitySelect, setActivitySelect] = useState(activities[0].value)
+  const [activitiesAddedToLegend, setActivitiesAddedToLegend] = useState([])
 
   const activityHandle = (e) => {
     setActivitySelect(e.target.value)
@@ -54,6 +56,8 @@ export const Map = () => {
         enableHighAccuracy: true,
       }
     )
+    const uniqueActivities = [...new Set(markers.map((marker) => marker.activity))]
+    setActivitiesAddedToLegend(uniqueActivities)
   }, [])
 
   return (
@@ -66,13 +70,15 @@ export const Map = () => {
       >
         <TileLayer
           url="https://{s}.tile.jawg.io/jawg-sunny/{z}/{x}/{y}{r}.png?access-token=aSetRCOQl0G3zH75uVIo4ZLmnMUgiP4uy5ss8IrkciB6DUwX8HUzf3he3SBU7Ppi"
-          attribution="JAWG Maps"
+          attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         />
 
         <MarkerClusterGroup
           chunkedLoading
+          showCoverageOnHover={false}
           removeOutsideVisibleBounds
           disableClusteringAtZoom={14}
+          maxClusterRadius={35}
           spiderfyOnMaxZoom={false}
         >
           {markers
@@ -83,6 +89,7 @@ export const Map = () => {
                 position={[marker.cordinates.lat, marker.cordinates.lng]}
                 icon={getIcon(marker.activity)}
                 eventHandlers={{ click: () => onMarkerClick(marker) }}
+                style
               ></Marker>
             ))}
         </MarkerClusterGroup>
@@ -101,6 +108,24 @@ export const Map = () => {
           </Select>
         </Filters>
       </OverlayRight>
+
+      <MapLegend>
+        {activitiesAddedToLegend.map((activity, index) => (
+          <MapLegendItem key={index}>
+            <img src={getIconUrl(activity)} height={30} alt="Activity Marker" />
+            {translations.map((translation) => {
+              if (translation.original === activity) {
+                return (
+                  <Text isBold key={index}>
+                    {translation.polish}
+                  </Text>
+                )
+              }
+              return null
+            })}
+          </MapLegendItem>
+        ))}
+      </MapLegend>
 
       {selectedMarker && showOverlay && (
         <MapPopup

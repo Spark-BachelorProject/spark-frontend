@@ -43,6 +43,17 @@ export const isToday = (timestamp) => {
   )
 }
 
+export const formatTimeHHMMFromISOString = (dateString) => {
+  const time = dateString.split('T')[1].slice(0, 5)
+  const hours = +time.split(':')[0]
+  const minutes = +time.split(':')[1]
+
+  // Pad the minutes with a 0 if it's less than 10
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes
+
+  return `${hours}:${formattedMinutes}`
+}
+
 export const formatTimeHHMM = (timestamp) => {
   // timestmp is unix time
   const date = new Date(timestamp)
@@ -56,11 +67,11 @@ export const formatTimeHHMM = (timestamp) => {
 }
 
 export const formatDate = (dateString) => {
-  if (isToday(dateString)) {
+  const date = new Date(dateString)
+  if (isToday(date)) {
     return 'Dzisiaj'
   }
 
-  const date = new Date(dateString)
   const now = new Date()
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
   const tomorrow = new Date(today)

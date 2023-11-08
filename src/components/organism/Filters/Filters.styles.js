@@ -1,15 +1,22 @@
 import styled from 'styled-components'
 
+import { Error } from '@/components/atoms/Error/Error.styles'
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { Label } from '@/components/atoms/Label/Label.styles'
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.form`
   padding: 0 20px 10px 20px;
+  width: 320px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  text-align: center;
   align-items: center;
   gap: 5px;
+
+  ${Error} {
+    margin-top: 10px;
+  }
 `
 
 export const InputWrapper = styled.div`

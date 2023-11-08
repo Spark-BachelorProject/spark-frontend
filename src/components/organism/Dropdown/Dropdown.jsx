@@ -1,16 +1,19 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { ReactComponent as FilterIcon } from '@/assets/icons/filter.svg'
+import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import Select from '@/components/atoms/Select/Select'
 import Filters from '@/components/organism/Filters/Filters'
 import useModal from '@/hooks/useModal'
 import { useGetActivitiesQuery } from '@/store/api/activities'
-import { useLazyGetFilteredPostsQuery } from '@/store/api/posts'
 
-import { Wrapper, ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder } from './Dropdown.styles'
-
-// TODO: Seperate to redux
-// TODO: After adding filter seperate this to molecule
+import {
+  Wrapper,
+  ButtonsWrapper,
+  SelectButtonsWrapper,
+  StyledIconBorder,
+  SecondaryButton,
+} from './Dropdown.styles'
 
 const initialState = {
   activity: '',
@@ -23,35 +26,13 @@ const firstData = {
   name: 'Wszystkie',
   id: 0,
 }
+// TODO: search about useMemo and useCallback and spearate this to Dropdown
 // DO NOT CHANGE ID FIRST DATA TO ANYTHING ELSE THAN 0
-export const Dropdown = ({ data, setPosts }) => {
+export const Dropdown = ({ setFilterOptions, filterOptions }) => {
   const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
   const [state, setState] = useState(initialState)
   const [activities, setActivities] = useState([])
 
-  // TODO: search about useMemo and useCallback and spearate this to Dropdown
-  const [filteredString, setFilteredString] = useState('')
-  const [trigger, result] = useLazyGetFilteredPostsQuery()
-
-  const memoizedResult = useMemo(() => result, [result.data, result.isSuccess])
-
-  useEffect(() => {
-    // its return everything
-    if (filteredString === 'activity=0') {
-      setPosts(data)
-      return
-    } else {
-      // filter data
-      trigger(filteredString)
-    }
-    if (memoizedResult.isSuccess) {
-      setPosts(memoizedResult.data)
-    } else if (filteredString !== 'activity=0') {
-      setPosts(data)
-    }
-  }, [filteredString, memoizedResult, data, trigger, setPosts])
-
-  // add activity to filter
   useEffect(() => {
     if (!isLoading) {
       const activitiesWithValue = [firstData, ...activitiesApi].map((activity) => ({
@@ -74,7 +55,7 @@ export const Dropdown = ({ data, setPosts }) => {
     // using this to filter
     if (name === 'activity') {
       const selectedActivityId = activities.find((activity) => activity.value === value).id
-      setFilteredString(`activity=${selectedActivityId}`)
+      setFilterOptions((prev) => ({ ...prev, activity: selectedActivityId }))
     }
   }
 
@@ -99,6 +80,10 @@ export const Dropdown = ({ data, setPosts }) => {
     }
   }
 
+  const handleResetFilters = () => {
+    setFilterOptions((prev) => ({ ...prev, start: '', end: '' }))
+  }
+
   return (
     <Wrapper>
       <ButtonsWrapper>
@@ -108,10 +93,13 @@ export const Dropdown = ({ data, setPosts }) => {
               <Select name="activity" id="activity" value={state.activity} onChange={handleChange}>
                 {activities}
               </Select>
-              {/* <Select name="sort" id="sort" value={sortSelect} onChange={handleChange}>
-                {state.sort}
-              </Select> */}
             </>
+          )}
+
+          {filterOptions.start && (
+            <SecondaryButton onClick={handleResetFilters}>
+              Resetuj daty <XIcon />
+            </SecondaryButton>
           )}
         </SelectButtonsWrapper>
         <StyledIconBorder
@@ -124,14 +112,8 @@ export const Dropdown = ({ data, setPosts }) => {
         </StyledIconBorder>
       </ButtonsWrapper>
       {isOpen ? (
-        <Modal
-          handleClose={handleCloseModal}
-          position={position}
-          textOnClose="Zapisz"
-          hasCloseButton
-          width="medium"
-        >
-          <Filters />
+        <Modal handleClose={handleCloseModal} position={position}>
+          <Filters handleClose={handleCloseModal} setFilterOptions={setFilterOptions} />
         </Modal>
       ) : null}
     </Wrapper>

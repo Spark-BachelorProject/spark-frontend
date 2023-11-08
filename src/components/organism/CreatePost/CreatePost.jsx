@@ -169,7 +169,7 @@ const CreatePost = ({ handleClose }) => {
       },
       dateCreated: Date.now(), // git
       dateStart: dateStart, // git
-      dateEnd: Date.now() + 800000, // TODO: ask ??????????
+      dateEnd: dateStart + 7200000, // TODO: ask ??????????, now is 2h
       description: state.content, // git
       privacySetting: state.privacy, // git
       tags: getTagsIds(), // git

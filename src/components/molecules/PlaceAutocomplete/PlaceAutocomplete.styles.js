@@ -10,14 +10,16 @@ export const SuggestionWrapper = styled.ul`
 
 export const Suggestion = styled.li`
   cursor: pointer;
-  z-index: 1;
+  position: relative;
+  z-index: 100;
   list-style: none;
   padding: 15px 10px;
-  width: 45%;
+  margin: 0 -105% 0 0;
   min-width: 240px;
   background-color: ${({ theme }) => theme.colors.inputBg};
   color: ${({ theme }) => theme.colors.inputFont};
   border: 1px solid ${({ theme }) => theme.colors.navbarBorder};
+  font-size: ${({ theme }) => theme.fontSize.sPlus};
 
   &:first-child {
     border-top-left-radius: 8px;

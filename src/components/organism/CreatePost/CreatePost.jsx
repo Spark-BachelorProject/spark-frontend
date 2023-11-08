@@ -60,7 +60,6 @@ const CreatePost = ({ handleClose }) => {
   const [activities, setActivities] = useState([])
   const [tags, setTags] = useState([])
   const { data: user, isLoadingUser } = useGetUserQuery()
-  const [isPlaceSelected, setIsPlaceSelected] = useState(false)
 
   useEffect(() => {
     if (!isLoading) {
@@ -75,6 +74,8 @@ const CreatePost = ({ handleClose }) => {
 
   const [state, setState] = useState(initialState)
 
+  const [isPlaceSelected, setIsPlaceSelected] = useState(false)
+  const [selectedAddress, setSelectedAddress] = useState(null)
   const [selectedCoordinates, setSelectedCoordinates] = useState([
     cities[0].cordinates.lat,
     cities[0].cordinates.lng,
@@ -84,8 +85,12 @@ const CreatePost = ({ handleClose }) => {
     setSelectedCoordinates(coordinates)
   }
 
-  const handleSelectPlace = (place) => {
+  const handleSelectedPlace = () => {
     setIsPlaceSelected(true)
+  }
+
+  const handleSelectAddress = (address) => {
+    setSelectedAddress(address)
   }
 
   const handleChange = (e) => {
@@ -217,7 +222,9 @@ const CreatePost = ({ handleClose }) => {
         <div style={{ gridArea: 'input2' }}>
           <PlaceAutocomplete
             onSelectCoordinates={handleSelectCoordinates}
-            onSelectPlace={handleSelectPlace}
+            onSelectPlace={handleSelectedPlace}
+            onSelectAdress={handleSelectAddress}
+            coordinates={selectedCoordinates}
           />
         </div>
         <Input
@@ -244,7 +251,11 @@ const CreatePost = ({ handleClose }) => {
             backgroundColor: '#233045',
           }}
         >
-          <CreatePostMap center={selectedCoordinates} isPlaceSelected={isPlaceSelected} />
+          <CreatePostMap
+            center={selectedCoordinates}
+            isPlaceSelected={isPlaceSelected}
+            onMarkerDragEnd={handleSelectCoordinates}
+          />
         </div>
       </InputsWrapper>
 

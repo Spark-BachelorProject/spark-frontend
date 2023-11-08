@@ -48,7 +48,6 @@ const Post = (props) => {
   const handleAddComment = (e) => {
     e.preventDefault()
     if (inputValue === '') return
-    console.log('addCOOMENT', postId)
 
     const newComment = {
       postId,

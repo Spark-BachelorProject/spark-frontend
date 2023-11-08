@@ -4,6 +4,7 @@ import { ReactComponent as FilterIcon } from '@/assets/icons/filter.svg'
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import Select from '@/components/atoms/Select/Select'
 import Filters from '@/components/organism/Filters/Filters'
+import { formatDate } from '@/helpers/dateAndTime'
 import useModal from '@/hooks/useModal'
 import { useGetActivitiesQuery } from '@/store/api/activities'
 
@@ -98,7 +99,10 @@ export const Dropdown = ({ setFilterOptions, filterOptions }) => {
 
           {filterOptions.start && (
             <SecondaryButton onClick={handleResetFilters}>
-              Resetuj daty <XIcon />
+              {formatDate(filterOptions.start.split('T')[0])}
+              {', '}
+              {`${filterOptions.start.split('T')[1]} - ${filterOptions.end.split('T')[1]}`}{' '}
+              <XIcon />
             </SecondaryButton>
           )}
         </SelectButtonsWrapper>

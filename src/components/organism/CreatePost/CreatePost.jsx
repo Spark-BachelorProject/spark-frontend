@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useEffect, useState } from 'react'
 
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import Input from '@/components/atoms/Input/Input'
 import Select from '@/components/atoms/Select/Select'
 import { Title } from '@/components/atoms/Title/Title.styles'
+import CreatePostMap from '@/components/molecules/CreatePostMap/CreatePostMap.jsx'
 import PlaceAutocomplete from '@/components/molecules/PlaceAutocomplete/PlaceAutocomplete.jsx'
 import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
 import { cities } from '@/components/pages/Map/data.jsx'
@@ -60,6 +60,7 @@ const CreatePost = ({ handleClose }) => {
   const [activities, setActivities] = useState([])
   const [tags, setTags] = useState([])
   const { data: user, isLoadingUser } = useGetUserQuery()
+  const [isPlaceSelected, setIsPlaceSelected] = useState(false)
 
   useEffect(() => {
     if (!isLoading) {
@@ -74,19 +75,17 @@ const CreatePost = ({ handleClose }) => {
 
   const [state, setState] = useState(initialState)
 
-  const [selectedCoordinates, setSelectedCoordinates] = useState({
-    lat: cities[0].cordinates.lat,
-    lng: cities[0].cordinates.lng,
-  })
-
-  const [selectedPlace, setSelectedPlace] = useState(null)
+  const [selectedCoordinates, setSelectedCoordinates] = useState([
+    cities[0].cordinates.lat,
+    cities[0].cordinates.lng,
+  ])
 
   const handleSelectCoordinates = (coordinates) => {
     setSelectedCoordinates(coordinates)
   }
 
   const handleSelectPlace = (place) => {
-    setSelectedPlace(place)
+    setIsPlaceSelected(true)
   }
 
   const handleChange = (e) => {
@@ -179,6 +178,8 @@ const CreatePost = ({ handleClose }) => {
     handleClose()
   }
 
+  console.log(selectedCoordinates)
+
   return (
     <Wrapper onSubmit={handleSubmit}>
       <HeaderWrapper>
@@ -245,11 +246,7 @@ const CreatePost = ({ handleClose }) => {
             backgroundColor: '#233045',
           }}
         >
-          {/* <CreatePostMap
-            lat={selectedCoordinates.lat}
-            lng={selectedCoordinates.lng}
-            selectedPlace={selectedPlace}
-          /> */}
+          <CreatePostMap center={selectedCoordinates} isPlaceSelected={isPlaceSelected} />
         </div>
       </InputsWrapper>
 

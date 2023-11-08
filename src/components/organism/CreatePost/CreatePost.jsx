@@ -178,8 +178,6 @@ const CreatePost = ({ handleClose }) => {
     handleClose()
   }
 
-  console.log(selectedCoordinates)
-
   return (
     <Wrapper onSubmit={handleSubmit}>
       <HeaderWrapper>

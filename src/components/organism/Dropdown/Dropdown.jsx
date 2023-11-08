@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 
 import { ReactComponent as FilterIcon } from '@/assets/icons/filter.svg'
 import Select from '@/components/atoms/Select/Select'
 import Filters from '@/components/organism/Filters/Filters'
 import useModal from '@/hooks/useModal'
 import { useGetActivitiesQuery } from '@/store/api/activities'
+import { useLazyGetFilteredPostsQuery } from '@/store/api/posts'
 
 import { Wrapper, ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder } from './Dropdown.styles'
 
@@ -23,10 +24,32 @@ const firstData = {
   id: 0,
 }
 // DO NOT CHANGE ID FIRST DATA TO ANYTHING ELSE THAN 0
-export const Dropdown = ({ setFilteredString }) => {
+export const Dropdown = ({ data, setPosts }) => {
   const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
   const [state, setState] = useState(initialState)
   const [activities, setActivities] = useState([])
+
+  // TODO: search about useMemo and useCallback and spearate this to Dropdown
+  const [filteredString, setFilteredString] = useState('')
+  const [trigger, result] = useLazyGetFilteredPostsQuery()
+
+  const memoizedResult = useMemo(() => result, [result.data, result.isSuccess])
+
+  useEffect(() => {
+    // its return everything
+    if (filteredString === 'activity=0') {
+      setPosts(data)
+      return
+    } else {
+      // filter data
+      trigger(filteredString)
+    }
+    if (memoizedResult.isSuccess) {
+      setPosts(memoizedResult.data)
+    } else if (filteredString !== 'activity=0') {
+      setPosts(data)
+    }
+  }, [filteredString, memoizedResult, data, trigger, setPosts])
 
   // add activity to filter
   useEffect(() => {

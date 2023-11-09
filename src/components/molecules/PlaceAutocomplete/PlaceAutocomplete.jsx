@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
+import axios from 'axios'
 import { OpenStreetMapProvider } from 'leaflet-geosearch'
 import styled from 'styled-components'
 
@@ -19,18 +20,23 @@ const provider = new OpenStreetMapProvider({
   },
 })
 
-export const PlaceAutocomplete = ({ onSelectCoordinates, onSelectPlace, onSelectAdress }) => {
+export const PlaceAutocomplete = ({
+  onSelectCoordinates,
+  onSelectPlace,
+  onSelectAdress,
+  coordinates,
+}) => {
   const [searchResults, setSearchResults] = useState([])
-  const [searchTerm, setSearchTerm] = useState('')
+  const [SeletedPlace, setSeletedPlace] = useState('')
   const [showSuggestions, setShowSuggestions] = useState(false)
   const searchTimeout = useRef(null)
 
   const search = useCallback(async () => {
-    if (searchTerm) {
-      const results = await provider.search({ query: searchTerm.toLocaleLowerCase() })
+    if (SeletedPlace) {
+      const results = await provider.search({ query: SeletedPlace.toLocaleLowerCase() })
       setSearchResults(results.slice(0, 3))
     }
-  }, [searchTerm])
+  }, [SeletedPlace])
 
   useEffect(() => {
     if (searchTimeout.current) clearTimeout(searchTimeout.current)
@@ -40,6 +46,28 @@ export const PlaceAutocomplete = ({ onSelectCoordinates, onSelectPlace, onSelect
       if (searchTimeout.current) clearTimeout(searchTimeout.current)
     }
   }, [search])
+
+  useEffect(() => {
+    if (coordinates) {
+      axios
+        .get(
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${coordinates[0]}&lon=${coordinates[1]}`
+        )
+        .then((response) => {
+          const { address, display_name } = response.data
+          const houseNumberOrPostcode = address.house_number
+            ? address.house_number
+            : address.postcode
+          const formattedAddress = `${address.road}, ${houseNumberOrPostcode} ${
+            address.city || address.town || address.village
+          }`
+          setSeletedPlace(formattedAddress)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    }
+  }, [coordinates])
 
   const handleResultClick = useCallback(
     (result) => {
@@ -70,22 +98,22 @@ export const PlaceAutocomplete = ({ onSelectCoordinates, onSelectPlace, onSelect
       onSelectAdress(place)
       onSelectPlace(true)
 
-      setSearchTerm(place)
+      setSeletedPlace(place)
       setShowSuggestions(false)
     },
     [onSelectCoordinates, onSelectPlace]
   )
 
   const handleChange = useCallback((e) => {
-    setSearchTerm(e.target.value)
+    setSeletedPlace(e.target.value)
     setShowSuggestions(true)
     if (searchTimeout.current) clearTimeout(searchTimeout.current)
-    searchTimeout.current = setTimeout(() => setSearchTerm(e.target.value), 500)
+    searchTimeout.current = setTimeout(() => setSeletedPlace(e.target.value), 500)
   }, [])
 
   return (
     <Wrapper>
-      <Input type="text" value={searchTerm} onChange={handleChange} placeholder="Podaj adres" />
+      <Input type="text" value={SeletedPlace} onChange={handleChange} placeholder="Podaj adres" />
       {showSuggestions && (
         <SuggestionWrapper>
           {searchResults.map((result, index) => (

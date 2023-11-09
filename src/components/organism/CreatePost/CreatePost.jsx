@@ -254,7 +254,7 @@ const CreatePost = ({ handleClose }) => {
           <CreatePostMap
             center={selectedCoordinates}
             isPlaceSelected={isPlaceSelected}
-            onMarkerDragEnd={handleSelectCoordinates}
+            onMarkerMoved={handleSelectCoordinates}
           />
         </div>
       </InputsWrapper>

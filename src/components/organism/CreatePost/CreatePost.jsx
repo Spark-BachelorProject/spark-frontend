@@ -11,7 +11,9 @@ import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocompl
 import { cities } from '@/components/pages/Map/data.jsx'
 import {
   dateNowYYYYMMDD,
-  formatTimeAndDateToUnix,
+  formatTimeAndDate,
+  getCurrentTimeISOString,
+  getShiftedTime,
   isToday,
   timeNow,
 } from '@/helpers/dateAndTime.js'
@@ -34,10 +36,6 @@ const PRIVACYSETTINGS = [
   {
     value: 'PUBLIC',
     text: 'Publiczny',
-  },
-  {
-    value: 'PRIVATE_TEAM',
-    text: 'Drużyna',
   },
   {
     value: 'PRIVATE_GROUP',
@@ -71,7 +69,7 @@ const CreatePost = ({ handleClose }) => {
       setActivities(activitiesApiWithValue)
       initialState.activity = activitiesApiWithValue[0].value
     }
-  }, [activitiesApi])
+  }, [activitiesApi, isLoading])
 
   const [state, setState] = useState(initialState)
 
@@ -101,7 +99,8 @@ const CreatePost = ({ handleClose }) => {
 
     // console.log('tags', tags)
 
-    const dateStart = formatTimeAndDateToUnix(state.dateStart, state.hourStart)
+    const dateStart = formatTimeAndDate(state.dateStart, state.hourStart)
+    console.log(dateStart, 'dateStart')
 
     const selectedActivityId = activitiesApi.find((activity) => activity.name === state.activity).id
 
@@ -127,24 +126,6 @@ const CreatePost = ({ handleClose }) => {
     "tags": [2]
 }
 */
-    const data = {
-      activityId: 1,
-      userId: 1,
-      location: {
-        googleId: '',
-        name: '',
-        city: 'Lublin',
-        lng: 54,
-        lat: 45,
-        isPlace: false,
-      },
-      dateCreated: 1682019863000,
-      dateStart: 1682012863000,
-      dateEnd: 1692019863000,
-      description: 'blagam3',
-      privacySetting: 'PUBLIC',
-      tags: [2],
-    }
 
     const newPost = {
       activityId: selectedActivityId, // git
@@ -166,9 +147,9 @@ const CreatePost = ({ handleClose }) => {
         lat: 45,
         isPlace: false,
       },
-      dateCreated: Date.now(), // git
+      dateCreated: getCurrentTimeISOString(), // git
       dateStart: dateStart, // git
-      dateEnd: dateStart + 7200000, // TODO: ask ??????????, now is 2h
+      dateEnd: getShiftedTime(dateStart, 2), // now is 2h
       description: state.content, // git
       privacySetting: state.privacy, // git
       tags: getTagsIds(), // git

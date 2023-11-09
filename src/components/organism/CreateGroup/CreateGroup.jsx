@@ -24,15 +24,11 @@ import {
 const PRIVACYSETTINGS = [
   {
     value: 'PUBLIC',
-    text: 'Publiczny',
+    text: 'Publiczna',
   },
   {
-    value: 'PRIVATE_TEAM',
-    text: 'Drużyna',
-  },
-  {
-    value: 'PRIVATE_GROUP',
-    text: 'Grupa',
+    value: 'PRIVATE',
+    text: 'Prywatna',
   },
 ]
 

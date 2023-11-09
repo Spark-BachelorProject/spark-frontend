@@ -3,9 +3,9 @@ import dayjs from 'dayjs'
 export const timeNow = dayjs().format('HH:mm')
 export const dateNowYYYYMMDD = dayjs().format('YYYY-MM-DD')
 
-export const formatTimeAgo = (timestamp) => {
-  // Convert timestamp to a JavaScript Date object
-  const dataTime = new Date(timestamp)
+export const formatTimeAgo = (dateString) => {
+  // Convert dateString to a JavaScript Date object
+  const dataTime = new Date(dateString)
   const now = new Date()
 
   // Calculate the difference in milliseconds
@@ -31,8 +31,8 @@ export const formatTimeAgo = (timestamp) => {
   }
 }
 
-export const isToday = (timestamp) => {
-  const date = new Date(timestamp)
+export const isToday = (dateString) => {
+  const date = new Date(dateString)
   const today = new Date()
 
   // console.log(date.getDate(), today.getDate(), 'ciyucie')
@@ -43,20 +43,8 @@ export const isToday = (timestamp) => {
   )
 }
 
-export const formatTimeHHMMFromISOString = (dateString) => {
-  const time = dateString.split('T')[1].slice(0, 5)
-  const hours = +time.split(':')[0]
-  const minutes = +time.split(':')[1]
-
-  // Pad the minutes with a 0 if it's less than 10
-  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes
-
-  return `${hours}:${formattedMinutes}`
-}
-
-export const formatTimeHHMM = (timestamp) => {
-  // timestmp is unix time
-  const date = new Date(timestamp)
+export const formatTimeHHMM = (dateString) => {
+  const date = new Date(dateString)
   const hours = date.getHours()
   const minutes = date.getMinutes()
 
@@ -90,8 +78,30 @@ export const formatDate = (dateString) => {
   }
 }
 
-export const formatTimeAndDateToUnix = (date, time) => {
-  const dateAndTime = `${date} ${time}`
-  const unix = dayjs(dateAndTime).unix()
-  return unix * 1000
+export const formatTimeAndDate = (date, time) => {
+  const dateAndTime = `${date}T${time}:00`
+  return dateAndTime
+}
+
+export const getCurrentTimeISOString = () => {
+  // be careful about timezones
+  const date = new Date() // Or the date you'd like converted.
+  const isoDateTime = new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString()
+
+  // remove miliseconds and T
+  return isoDateTime.slice(0, -5)
+}
+
+export const getShiftedTime = (dateString, offsetHours) => {
+  const date = new Date(dateString)
+  date.setHours(date.getHours() + offsetHours)
+
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  const hours = String(date.getHours()).padStart(2, '0')
+  const minutes = String(date.getMinutes()).padStart(2, '0')
+  const seconds = String(date.getSeconds()).padStart(2, '0')
+
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`
 }

@@ -10,12 +10,7 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
-import {
-  formatDate,
-  formatTimeHHMM,
-  formatTimeAgo,
-  formatTimeHHMMFromISOString,
-} from '@/helpers/dateAndTime'
+import { formatDate, formatTimeHHMM, formatTimeAgo } from '@/helpers/dateAndTime'
 import useModal from '@/hooks/useModal'
 import { useAddCommentMutation, useGetCommentsQuery } from '@/store/api/comments'
 import { useGetUserQuery } from '@/store/api/user'
@@ -45,8 +40,6 @@ const Post = (props) => {
     tags,
     id: postId,
   } = props
-  // console.log(dateStart, dateCreated)
-  console.log(props)
   const [inputValue, setInputValue] = useState('')
   const [addComment] = useAddCommentMutation()
   const { data: comments, isLoading: isLoadingComments } = useGetCommentsQuery(postId)
@@ -142,7 +135,7 @@ const Post = (props) => {
       <DetailsWrapper>
         <ClockIcon />
         <Text>
-          {formatDate(dateStart)} o {formatTimeHHMMFromISOString(dateStart)}
+          {formatDate(dateStart)} o {formatTimeHHMM(dateStart)}
         </Text>
       </DetailsWrapper>
       <Tags>{tags}</Tags>

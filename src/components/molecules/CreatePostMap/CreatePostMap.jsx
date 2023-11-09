@@ -19,13 +19,14 @@ function MapUpdater({ center, isPlaceSelected }) {
   return null
 }
 
-export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved }) => {
+export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved, isMarkedMoved }) => {
   const [markerPosition, setMarkerPosition] = useState(center)
 
   const updatePosition = useCallback((event) => {
     const newPosition = event.target.getLatLng()
     setMarkerPosition([newPosition.lat, newPosition.lng])
     onMarkerMoved([newPosition.lat, newPosition.lng])
+    isMarkedMoved(true)
   }, [])
 
   useEffect(() => {

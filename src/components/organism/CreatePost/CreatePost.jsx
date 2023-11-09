@@ -80,6 +80,11 @@ const CreatePost = ({ handleClose }) => {
     cities[0].cordinates.lat,
     cities[0].cordinates.lng,
   ])
+  const [isMarkerMoved, setIsMarkerMoved] = useState(false)
+
+  const handleMarkerMoved = (moved) => {
+    setIsMarkerMoved(moved)
+  }
 
   const handleSelectCoordinates = (coordinates) => {
     setSelectedCoordinates(coordinates)
@@ -225,6 +230,8 @@ const CreatePost = ({ handleClose }) => {
             onSelectPlace={handleSelectedPlace}
             onSelectAdress={handleSelectAddress}
             coordinates={selectedCoordinates}
+            isMarkerMoved={isMarkerMoved}
+            setMarkerMoved={handleMarkerMoved}
           />
         </div>
         <Input
@@ -255,6 +262,7 @@ const CreatePost = ({ handleClose }) => {
             center={selectedCoordinates}
             isPlaceSelected={isPlaceSelected}
             onMarkerMoved={handleSelectCoordinates}
+            isMarkedMoved={handleMarkerMoved}
           />
         </div>
       </InputsWrapper>

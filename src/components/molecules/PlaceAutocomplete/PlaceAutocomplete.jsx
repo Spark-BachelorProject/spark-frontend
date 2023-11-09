@@ -25,6 +25,8 @@ export const PlaceAutocomplete = ({
   onSelectPlace,
   onSelectAdress,
   coordinates,
+  isMarkerMoved,
+  setMarkerMoved,
 }) => {
   const [searchResults, setSearchResults] = useState([])
   const [SeletedPlace, setSeletedPlace] = useState('')
@@ -48,17 +50,16 @@ export const PlaceAutocomplete = ({
   }, [search])
 
   useEffect(() => {
-    if (coordinates) {
+    if (coordinates && isMarkerMoved) {
       axios
         .get(
           `https://nominatim.openstreetmap.org/reverse?format=json&lat=${coordinates[0]}&lon=${coordinates[1]}`
         )
         .then((response) => {
-          const { address, display_name } = response.data
-          const houseNumberOrPostcode = address.house_number
-            ? address.house_number
-            : address.postcode
-          const formattedAddress = `${address.road}, ${houseNumberOrPostcode} ${
+          console.log(response.data.display_name)
+          const { address } = response.data
+          const number = address.house_number ? address.house_number : address.postcode
+          const formattedAddress = `${address.road}, ${number} ${
             address.city || address.town || address.village
           }`
           setSeletedPlace(formattedAddress)
@@ -100,6 +101,7 @@ export const PlaceAutocomplete = ({
 
       setSeletedPlace(place)
       setShowSuggestions(false)
+      setMarkerMoved(false)
     },
     [onSelectCoordinates, onSelectPlace]
   )

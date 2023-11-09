@@ -51,6 +51,7 @@ const initialState = {
   // activity: activities[0].value,
 }
 
+// TODO: add memoization
 const CreatePost = ({ handleClose }) => {
   const [addPost] = useAddPostMutation()
   const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
@@ -97,8 +98,6 @@ const CreatePost = ({ handleClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // console.log('tags', tags)
-
     const dateStart = formatTimeAndDate(state.dateStart, state.hourStart)
     console.log(dateStart, 'dateStart')
 
@@ -106,45 +105,16 @@ const CreatePost = ({ handleClose }) => {
 
     const getTagsIds = () => tags.map((tag) => tag.id)
 
-    /*
-{
-    "activityId": 1,
-    "userId": 1,
-    "location": {
-    "googleId": "",
-    "name": "",
-    "city": "Lublin",
-    "lng": 54,
-    "lat": 45,
-    "isPlace": false
-    },
-    "dateCreated": 1682019863000,
-    "dateStart": 1682012863000,
-    "dateEnd": 1692019863000,
-    "description": "blagam",
-    "privacySetting": "PUBLIC",
-    "tags": [2]
-}
-*/
-
     const newPost = {
       activityId: selectedActivityId, // git
       userId: user.id, // git
-      // location: {
-      //   // nie git
-      //   googleId: selectedPlace ? selectedPlace.googleId : '',
-      //   name: selectedPlace ? selectedPlace.name : '',
-      //   city: selectedPlace ? selectedPlace.city : 'Lublin',
-      //   lng: selectedCoordinates.lng,
-      //   lat: selectedCoordinates.lat,
-      //   isPlace: false,
-      // },
       location: {
+        // nie git
         googleId: '',
         name: '',
         city: 'Lublin',
-        lng: 54,
-        lat: 45,
+        lng: selectedCoordinates.lng,
+        lat: selectedCoordinates.lat,
         isPlace: false,
       },
       dateCreated: getCurrentTimeISOString(), // git
@@ -158,8 +128,6 @@ const CreatePost = ({ handleClose }) => {
     addPost(newPost)
     handleClose()
   }
-
-  console.log(selectedCoordinates)
 
   return (
     <Wrapper onSubmit={handleSubmit}>

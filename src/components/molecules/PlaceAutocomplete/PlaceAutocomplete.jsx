@@ -68,7 +68,7 @@ export const PlaceAutocomplete = ({
             address.place ||
             ''
           const number = address.house_number ? address.house_number : address.postcode
-          const formattedAddress = `${name ? name + ',' : ''}${address.road} ${number}, ${
+          const formattedAddress = `${name ? name + ', ' : ''}${address.road} ${number}, ${
             address.city || address.town || address.village
           }`
           setSeletedPlace(formattedAddress)

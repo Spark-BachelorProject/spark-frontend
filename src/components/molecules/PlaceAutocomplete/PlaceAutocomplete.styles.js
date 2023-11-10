@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+export const Wrapper = styled.div`
+  position: relative;
+`
+
 export const SuggestionWrapper = styled.ul`
   position: absolute;
   margin-top: 0.5em;

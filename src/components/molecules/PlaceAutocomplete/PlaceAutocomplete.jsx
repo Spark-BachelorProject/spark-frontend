@@ -2,15 +2,10 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 
 import axios from 'axios'
 import { OpenStreetMapProvider } from 'leaflet-geosearch'
-import styled from 'styled-components'
 
 import { Input } from '@/components/atoms/Input/Input.styles'
 
-import { Suggestion, SuggestionWrapper } from './PlaceAutocomplete.styles'
-
-const Wrapper = styled.div`
-  position: relative;
-`
+import { Wrapper, Suggestion, SuggestionWrapper } from './PlaceAutocomplete.styles'
 
 const provider = new OpenStreetMapProvider({
   params: {

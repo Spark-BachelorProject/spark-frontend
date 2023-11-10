@@ -110,58 +110,32 @@ const CreatePost = ({ handleClose }) => {
     }))
   }
 
-  //data for post
-  console.log(selectedCoordinates)
-  console.log(selectedAddress)
-  console.log(selectedCity)
-
   const handleSubmit = (e) => {
     e.preventDefault()
 
     const dateStart = formatTimeAndDate(state.dateStart, state.hourStart)
-    console.log(dateStart, 'dateStart')
 
     const selectedActivityId = activitiesApi.find((activity) => activity.name === state.activity).id
 
     const getTagsIds = () => tags.map((tag) => tag.id)
 
-    const data = {
-      activityId: 1,
-      userId: 1,
-      location: {
-        googleId: '',
-        name: '',
-        city: 'Lublin',
-        lng: 54,
-        lat: 45,
-        isPlace: false,
-      },
-      dateCreated: 1682019863000,
-      dateStart: 1682012863000,
-      dateEnd: 1692019863000,
-      description: 'blagam3',
-      privacySetting: 'PUBLIC',
-      tags: [2],
-    }
-
     const newPost = {
-      activityId: selectedActivityId, // git
-      userId: user.id, // git
+      activityId: selectedActivityId,
+      userId: user.id,
       location: {
-        // nie git
-        googleId: '',
-        name: '',
-        city: 'Lublin',
-        lng: selectedCoordinates.lng,
-        lat: selectedCoordinates.lat,
+        googleId: '', // TODO: remove this, it's not needed, without this it's not working
+        name: selectedAddress,
+        city: selectedCity,
+        lng: selectedCoordinates[0],
+        lat: selectedCoordinates[1],
         isPlace: false,
       },
-      dateCreated: getCurrentTimeISOString(), // git
-      dateStart: dateStart, // git
+      dateCreated: getCurrentTimeISOString(),
+      dateStart: dateStart,
       dateEnd: getShiftedTime(dateStart, 2), // now is 2h
-      description: state.content, // git
-      privacySetting: state.privacy, // git
-      tags: getTagsIds(), // git
+      description: state.content,
+      privacySetting: state.privacy,
+      tags: getTagsIds(),
     }
     console.log(newPost, 'newPost')
     addPost(newPost)

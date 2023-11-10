@@ -48,7 +48,6 @@ export const PlaceAutocomplete = ({
       if (searchTimeout.current) clearTimeout(searchTimeout.current)
     }
   }, [search])
-
   useEffect(() => {
     if (coordinates && isMarkerMoved) {
       axios
@@ -57,8 +56,19 @@ export const PlaceAutocomplete = ({
         )
         .then((response) => {
           const { address } = response.data
+          const name =
+            address.leisure ||
+            address.building ||
+            address.shop ||
+            address.amenity ||
+            address.historic ||
+            address.natural ||
+            address.landuse ||
+            address.square ||
+            address.place ||
+            ''
           const number = address.house_number ? address.house_number : address.postcode
-          const formattedAddress = `${address.road}, ${number} ${
+          const formattedAddress = `${name ? name + ',' : ''}${address.road} ${number}, ${
             address.city || address.town || address.village
           }`
           setSeletedPlace(formattedAddress)

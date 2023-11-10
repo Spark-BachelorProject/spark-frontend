@@ -59,7 +59,6 @@ const CreatePost = ({ handleClose }) => {
   const [activities, setActivities] = useState([])
   const [tags, setTags] = useState([])
   const { data: user, isLoadingUser } = useGetUserQuery()
-  const [isPlaceSelected, setIsPlaceSelected] = useState(false)
 
   useEffect(() => {
     if (!isLoading) {
@@ -74,17 +73,33 @@ const CreatePost = ({ handleClose }) => {
 
   const [state, setState] = useState(initialState)
 
+  const [isPlaceSelected, setIsPlaceSelected] = useState(false)
+  const [selectedCity, setSelectedCity] = useState(null)
+  const [selectedAddress, setSelectedAddress] = useState(null)
   const [selectedCoordinates, setSelectedCoordinates] = useState([
     cities[0].cordinates.lat,
     cities[0].cordinates.lng,
   ])
+  const [isMarkerMoved, setIsMarkerMoved] = useState(false)
+
+  const handleMarkerMoved = (moved) => {
+    setIsMarkerMoved(moved)
+  }
 
   const handleSelectCoordinates = (coordinates) => {
     setSelectedCoordinates(coordinates)
   }
 
-  const handleSelectPlace = (place) => {
+  const handleSelectedCity = (city) => {
+    setSelectedCity(city)
+  }
+
+  const handleSelectedPlace = () => {
     setIsPlaceSelected(true)
+  }
+
+  const handleSelectAddress = (address) => {
+    setSelectedAddress(address)
   }
 
   const handleChange = (e) => {
@@ -95,6 +110,11 @@ const CreatePost = ({ handleClose }) => {
     }))
   }
 
+  //data for post
+  console.log(selectedCoordinates)
+  console.log(selectedAddress)
+  console.log(selectedCity)
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -104,6 +124,25 @@ const CreatePost = ({ handleClose }) => {
     const selectedActivityId = activitiesApi.find((activity) => activity.name === state.activity).id
 
     const getTagsIds = () => tags.map((tag) => tag.id)
+
+    const data = {
+      activityId: 1,
+      userId: 1,
+      location: {
+        googleId: '',
+        name: '',
+        city: 'Lublin',
+        lng: 54,
+        lat: 45,
+        isPlace: false,
+      },
+      dateCreated: 1682019863000,
+      dateStart: 1682012863000,
+      dateEnd: 1692019863000,
+      description: 'blagam3',
+      privacySetting: 'PUBLIC',
+      tags: [2],
+    }
 
     const newPost = {
       activityId: selectedActivityId, // git
@@ -168,7 +207,12 @@ const CreatePost = ({ handleClose }) => {
         <div style={{ gridArea: 'input2' }}>
           <PlaceAutocomplete
             onSelectCoordinates={handleSelectCoordinates}
-            onSelectPlace={handleSelectPlace}
+            onSelectPlace={handleSelectedPlace}
+            onSelectAdress={handleSelectAddress}
+            coordinates={selectedCoordinates}
+            isMarkerMoved={isMarkerMoved}
+            setMarkerMoved={handleMarkerMoved}
+            onSelectCity={handleSelectedCity}
           />
         </div>
         <Input
@@ -195,7 +239,12 @@ const CreatePost = ({ handleClose }) => {
             backgroundColor: '#233045',
           }}
         >
-          <CreatePostMap center={selectedCoordinates} isPlaceSelected={isPlaceSelected} />
+          <CreatePostMap
+            center={selectedCoordinates}
+            isPlaceSelected={isPlaceSelected}
+            onMarkerMoved={handleSelectCoordinates}
+            isMarkedMoved={handleMarkerMoved}
+          />
         </div>
       </InputsWrapper>
 

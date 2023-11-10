@@ -1,4 +1,4 @@
-import { useEffect, useState, memo } from 'react'
+import { useState } from 'react'
 
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
@@ -48,7 +48,6 @@ const Post = (props) => {
   const handleAddComment = (e) => {
     e.preventDefault()
     if (inputValue === '') return
-    console.log('addCOOMENT', postId)
 
     const newComment = {
       postId,

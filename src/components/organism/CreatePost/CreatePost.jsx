@@ -11,7 +11,9 @@ import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocompl
 import { cities } from '@/components/pages/Map/data.jsx'
 import {
   dateNowYYYYMMDD,
-  formatTimeAndDateToUnix,
+  formatTimeAndDate,
+  getCurrentTimeISOString,
+  getShiftedTime,
   isToday,
   timeNow,
 } from '@/helpers/dateAndTime.js'
@@ -36,10 +38,6 @@ const PRIVACYSETTINGS = [
     text: 'Publiczny',
   },
   {
-    value: 'PRIVATE_TEAM',
-    text: 'Drużyna',
-  },
-  {
     value: 'PRIVATE_GROUP',
     text: 'Grupa',
   },
@@ -53,6 +51,7 @@ const initialState = {
   // activity: activities[0].value,
 }
 
+// TODO: add memoization
 const CreatePost = ({ handleClose }) => {
   const [addPost] = useAddPostMutation()
   const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
@@ -70,7 +69,7 @@ const CreatePost = ({ handleClose }) => {
       setActivities(activitiesApiWithValue)
       initialState.activity = activitiesApiWithValue[0].value
     }
-  }, [activitiesApi])
+  }, [activitiesApi, isLoading])
 
   const [state, setState] = useState(initialState)
 
@@ -119,34 +118,13 @@ const CreatePost = ({ handleClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // console.log('tags', tags)
-
-    const dateStart = formatTimeAndDateToUnix(state.dateStart, state.hourStart)
+    const dateStart = formatTimeAndDate(state.dateStart, state.hourStart)
+    console.log(dateStart, 'dateStart')
 
     const selectedActivityId = activitiesApi.find((activity) => activity.name === state.activity).id
 
     const getTagsIds = () => tags.map((tag) => tag.id)
 
-    /*
-{
-    "activityId": 1,
-    "userId": 1,
-    "location": {
-    "googleId": "", 
-    "name": "",
-    "city": "Lublin",
-    "lng": 54,
-    "lat": 45,
-    "isPlace": false 
-    },
-    "dateCreated": 1682019863000,
-    "dateStart": 1682012863000,
-    "dateEnd": 1692019863000,
-    "description": "blagam",
-    "privacySetting": "PUBLIC",
-    "tags": [2]
-}
-*/
     const data = {
       activityId: 1,
       userId: 1,
@@ -169,26 +147,18 @@ const CreatePost = ({ handleClose }) => {
     const newPost = {
       activityId: selectedActivityId, // git
       userId: user.id, // git
-      // location: {
-      //   // nie git
-      //   googleId: selectedPlace ? selectedPlace.googleId : '',
-      //   name: selectedPlace ? selectedPlace.name : '',
-      //   city: selectedPlace ? selectedPlace.city : 'Lublin',
-      //   lng: selectedCoordinates.lng,
-      //   lat: selectedCoordinates.lat,
-      //   isPlace: false,
-      // },
       location: {
+        // nie git
         googleId: '',
         name: '',
         city: 'Lublin',
-        lng: 54,
-        lat: 45,
+        lng: selectedCoordinates.lng,
+        lat: selectedCoordinates.lat,
         isPlace: false,
       },
-      dateCreated: Date.now(), // git
+      dateCreated: getCurrentTimeISOString(), // git
       dateStart: dateStart, // git
-      dateEnd: Date.now() + 800000, // TODO: ask ??????????
+      dateEnd: getShiftedTime(dateStart, 2), // now is 2h
       description: state.content, // git
       privacySetting: state.privacy, // git
       tags: getTagsIds(), // git

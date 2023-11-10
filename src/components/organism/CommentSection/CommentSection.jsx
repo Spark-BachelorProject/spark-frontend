@@ -53,7 +53,7 @@ CommentSection.propTypes = {
   comments: PropTypes.arrayOf(
     PropTypes.shape({
       commentText: PropTypes.string.isRequired,
-      dateAdded: PropTypes.number.isRequired,
+      dateAdded: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
     })
   ),

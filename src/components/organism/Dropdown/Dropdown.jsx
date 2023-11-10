@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react'
 
 import { ReactComponent as FilterIcon } from '@/assets/icons/filter.svg'
+import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import Select from '@/components/atoms/Select/Select'
 import Filters from '@/components/organism/Filters/Filters'
+import { formatDate } from '@/helpers/dateAndTime'
 import useModal from '@/hooks/useModal'
 import { useGetActivitiesQuery } from '@/store/api/activities'
 
-import { Wrapper, ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder } from './Dropdown.styles'
-
-// TODO: Seperate to redux
-// TODO: After adding filter seperate this to molecule
+import {
+  Wrapper,
+  ButtonsWrapper,
+  SelectButtonsWrapper,
+  StyledIconBorder,
+  SecondaryButton,
+} from './Dropdown.styles'
 
 const initialState = {
   activity: '',
@@ -22,13 +27,13 @@ const firstData = {
   name: 'Wszystkie',
   id: 0,
 }
+// TODO: search about useMemo and useCallback and spearate this to Dropdown
 // DO NOT CHANGE ID FIRST DATA TO ANYTHING ELSE THAN 0
-export const Dropdown = ({ setFilteredString }) => {
+export const Dropdown = ({ setFilterOptions, filterOptions }) => {
   const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
   const [state, setState] = useState(initialState)
   const [activities, setActivities] = useState([])
 
-  // add activity to filter
   useEffect(() => {
     if (!isLoading) {
       const activitiesWithValue = [firstData, ...activitiesApi].map((activity) => ({
@@ -51,7 +56,7 @@ export const Dropdown = ({ setFilteredString }) => {
     // using this to filter
     if (name === 'activity') {
       const selectedActivityId = activities.find((activity) => activity.value === value).id
-      setFilteredString(`activity=${selectedActivityId}`)
+      setFilterOptions((prev) => ({ ...prev, activity: selectedActivityId }))
     }
   }
 
@@ -76,6 +81,10 @@ export const Dropdown = ({ setFilteredString }) => {
     }
   }
 
+  const handleResetFilters = () => {
+    setFilterOptions((prev) => ({ ...prev, start: '', end: '' }))
+  }
+
   return (
     <Wrapper>
       <ButtonsWrapper>
@@ -85,10 +94,16 @@ export const Dropdown = ({ setFilteredString }) => {
               <Select name="activity" id="activity" value={state.activity} onChange={handleChange}>
                 {activities}
               </Select>
-              {/* <Select name="sort" id="sort" value={sortSelect} onChange={handleChange}>
-                {state.sort}
-              </Select> */}
             </>
+          )}
+
+          {filterOptions.start && (
+            <SecondaryButton onClick={handleResetFilters}>
+              {formatDate(filterOptions.start.split('T')[0])}
+              {', '}
+              {`${filterOptions.start.split('T')[1]} - ${filterOptions.end.split('T')[1]}`}{' '}
+              <XIcon />
+            </SecondaryButton>
           )}
         </SelectButtonsWrapper>
         <StyledIconBorder
@@ -101,14 +116,8 @@ export const Dropdown = ({ setFilteredString }) => {
         </StyledIconBorder>
       </ButtonsWrapper>
       {isOpen ? (
-        <Modal
-          handleClose={handleCloseModal}
-          position={position}
-          textOnClose="Zapisz"
-          hasCloseButton
-          width="medium"
-        >
-          <Filters />
+        <Modal handleClose={handleCloseModal} position={position}>
+          <Filters handleClose={handleCloseModal} setFilterOptions={setFilterOptions} />
         </Modal>
       ) : null}
     </Wrapper>

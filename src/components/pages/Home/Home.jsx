@@ -8,36 +8,48 @@ import Post from '@/components/organism/Post/Post'
 import { PageContent } from '@/components/templates/PageContent/PageContent'
 import { useGetPostsQuery, useLazyGetFilteredPostsQuery } from '@/store/api/posts'
 
-// TODO: search about useMemo and useCallback and spearate this to Dropdown
 const Home = () => {
   const { data, isLoading, isSuccess } = useGetPostsQuery()
   const [posts, setPosts] = useState([])
-  const [filteredString, setFilteredString] = useState('')
-  const [trigger, result] = useLazyGetFilteredPostsQuery()
+  const [filterOptions, setFilterOptions] = useState({
+    activity: 0, // 0 means all activities
+    start: '',
+    end: '',
+  })
+  const [trigger, result] = useLazyGetFilteredPostsQuery(filterOptions)
 
   const memoizedResult = useMemo(() => result, [result.data, result.isSuccess])
 
   useEffect(() => {
-    if (!isLoading) {
-      setPosts(data)
-    }
-  }, [data, isLoading])
-
-  useEffect(() => {
-    // its return everything
-    if (filteredString === 'activity=0') {
-      setPosts(data)
+    if (filterOptions.activity === 0 && filterOptions.start === '' && filterOptions.end === '') {
+      // return everything
+      trigger(0)
+      if (memoizedResult.isSuccess) {
+        setPosts(memoizedResult.data)
+      }
       return
-    } else {
-      // filter data
-      trigger(filteredString)
+    } else if (
+      filterOptions.activity === 0 &&
+      filterOptions.start !== '' &&
+      filterOptions.end !== ''
+    ) {
+      // return everything between start and end
+      trigger({
+        start: filterOptions.start,
+        end: filterOptions.end,
+      })
+      if (memoizedResult.isSuccess) {
+        setPosts(memoizedResult.data)
+      }
+      return
     }
+
+    trigger(filterOptions)
+
     if (memoizedResult.isSuccess) {
       setPosts(memoizedResult.data)
-    } else if (filteredString !== 'activity=0') {
-      setPosts(data)
     }
-  }, [filteredString, memoizedResult, data, trigger, setPosts])
+  }, [filterOptions, memoizedResult, trigger])
 
   return (
     <PageContent hasNavigation hasRightBar>
@@ -45,9 +57,9 @@ const Home = () => {
       <TitleBar>
         To się dzieje w <strong>Lublinie</strong>!
       </TitleBar>
-      <Dropdown setFilteredString={setFilteredString} />
+      <Dropdown setFilterOptions={setFilterOptions} filterOptions={filterOptions} />
       {isLoading && <Loader isCentered />}
-      {!isLoading && isSuccess && posts.map((post) => <Post {...post} key={post.id} />)}
+      {!isLoading && isSuccess && posts && posts.map((post) => <Post {...post} key={post.id} />)}
     </PageContent>
   )
 }

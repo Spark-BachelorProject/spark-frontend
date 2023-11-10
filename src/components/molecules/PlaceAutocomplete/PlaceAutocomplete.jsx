@@ -27,6 +27,7 @@ export const PlaceAutocomplete = ({
   coordinates,
   isMarkerMoved,
   setMarkerMoved,
+  onSelectCity,
 }) => {
   const [searchResults, setSearchResults] = useState([])
   const [SeletedPlace, setSeletedPlace] = useState('')
@@ -48,6 +49,8 @@ export const PlaceAutocomplete = ({
       if (searchTimeout.current) clearTimeout(searchTimeout.current)
     }
   }, [search])
+
+  //address from coordinates
   useEffect(() => {
     if (coordinates && isMarkerMoved) {
       axios
@@ -72,6 +75,8 @@ export const PlaceAutocomplete = ({
             address.city || address.town || address.village
           }`
           setSeletedPlace(formattedAddress)
+          onSelectAdress(formattedAddress)
+          onSelectCity(address.city || address.town || address.village)
         })
         .catch((error) => {
           console.error(error)
@@ -79,6 +84,7 @@ export const PlaceAutocomplete = ({
     }
   }, [coordinates, isMarkerMoved])
 
+  //address from search
   const handleResultClick = useCallback(
     (result) => {
       const {
@@ -100,7 +106,7 @@ export const PlaceAutocomplete = ({
         suburb = '',
       } = result.raw.address
 
-      const cityPart = city || town || village
+      const cityName = city || town || village
       const street = road || pedestrian
       const number = house_number || postcode || ''
 
@@ -110,12 +116,13 @@ export const PlaceAutocomplete = ({
         place || leisure || building || amenity || natural || landuse || shop || square || ''
 
       const formattedPlace = name
-        ? `${name}, ${street} ${area}, ${cityPart}`
-        : `${street} ${number}, ${cityPart}`
+        ? `${name}, ${street} ${area}, ${cityName}`
+        : `${street} ${number}, ${cityName}`
 
       onSelectCoordinates([result.y, result.x])
       onSelectAdress(formattedPlace)
       onSelectPlace(true)
+      onSelectCity(cityName)
 
       setSeletedPlace(formattedPlace)
       setShowSuggestions(false)

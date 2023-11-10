@@ -75,6 +75,7 @@ const CreatePost = ({ handleClose }) => {
   const [state, setState] = useState(initialState)
 
   const [isPlaceSelected, setIsPlaceSelected] = useState(false)
+  const [selectedCity, setSelectedCity] = useState(null)
   const [selectedAddress, setSelectedAddress] = useState(null)
   const [selectedCoordinates, setSelectedCoordinates] = useState([
     cities[0].cordinates.lat,
@@ -88,6 +89,10 @@ const CreatePost = ({ handleClose }) => {
 
   const handleSelectCoordinates = (coordinates) => {
     setSelectedCoordinates(coordinates)
+  }
+
+  const handleSelectedCity = (city) => {
+    setSelectedCity(city)
   }
 
   const handleSelectedPlace = () => {
@@ -106,6 +111,11 @@ const CreatePost = ({ handleClose }) => {
     }))
   }
 
+  //data for post
+  console.log(selectedCoordinates)
+  console.log(selectedAddress)
+  console.log(selectedCity)
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -122,12 +132,12 @@ const CreatePost = ({ handleClose }) => {
     "activityId": 1,
     "userId": 1,
     "location": {
-    "googleId": "",
+    "googleId": "", 
     "name": "",
     "city": "Lublin",
     "lng": 54,
     "lat": 45,
-    "isPlace": false
+    "isPlace": false 
     },
     "dateCreated": 1682019863000,
     "dateStart": 1682012863000,
@@ -232,6 +242,7 @@ const CreatePost = ({ handleClose }) => {
             coordinates={selectedCoordinates}
             isMarkerMoved={isMarkerMoved}
             setMarkerMoved={handleMarkerMoved}
+            onSelectCity={handleSelectedCity}
           />
         </div>
         <Input

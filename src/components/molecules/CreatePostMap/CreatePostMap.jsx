@@ -13,7 +13,7 @@ function MapUpdater({ center, isPlaceSelected }) {
   }, [map])
 
   useEffect(() => {
-    map.flyTo(center, isPlaceSelected ? 17 : 13)
+    map.flyTo(center, isPlaceSelected ? 17 : 12.5)
   }, [center, isPlaceSelected, map])
 
   return null

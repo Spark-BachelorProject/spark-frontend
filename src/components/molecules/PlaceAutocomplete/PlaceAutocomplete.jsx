@@ -56,7 +56,6 @@ export const PlaceAutocomplete = ({
           `https://nominatim.openstreetmap.org/reverse?format=json&lat=${coordinates[0]}&lon=${coordinates[1]}`
         )
         .then((response) => {
-          console.log(response.data.display_name)
           const { address } = response.data
           const number = address.house_number ? address.house_number : address.postcode
           const formattedAddress = `${address.road}, ${number} ${
@@ -68,7 +67,7 @@ export const PlaceAutocomplete = ({
           console.error(error)
         })
     }
-  }, [coordinates])
+  }, [coordinates, isMarkerMoved])
 
   const handleResultClick = useCallback(
     (result) => {
@@ -80,26 +79,35 @@ export const PlaceAutocomplete = ({
         pedestrian = '',
         house_number = '',
         postcode = '',
+        place = '',
         leisure = '',
         building = '',
+        shop = '',
         amenity = '',
         natural = '',
+        landuse = '',
+        square = '',
+        suburb = '',
       } = result.raw.address
 
       const cityPart = city || town || village
       const street = road || pedestrian
       const number = house_number || postcode || ''
-      const name = leisure || building || amenity || natural || ''
 
-      const place = name
-        ? `${name}, ${street} ${number}, ${cityPart}`
+      //reated so that the places without a number or postcodes show suburb instead
+      const area = number ? number : suburb
+      const name =
+        place || leisure || building || amenity || natural || landuse || shop || square || ''
+
+      const formattedPlace = name
+        ? `${name}, ${street} ${area}, ${cityPart}`
         : `${street} ${number}, ${cityPart}`
 
       onSelectCoordinates([result.y, result.x])
-      onSelectAdress(place)
+      onSelectAdress(formattedPlace)
       onSelectPlace(true)
 
-      setSeletedPlace(place)
+      setSeletedPlace(formattedPlace)
       setShowSuggestions(false)
       setMarkerMoved(false)
     },

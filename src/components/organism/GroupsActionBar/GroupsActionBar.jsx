@@ -5,6 +5,9 @@ import { ReactComponent as UsersIcon } from '@/assets/icons/users.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
+import CreateGroup from '@/components/organism/CreateGroup/CreateGroup'
+import useModal from '@/hooks/useModal'
+import { useGetGroupsQuery } from '@/store/api/groups'
 
 import {
   GroupsActionSection,
@@ -21,6 +24,29 @@ const GroupsActionBar = ({
   numOfPosts = 0,
   buttonText = 'Stwórz grupę',
 }) => {
+  const { data: groups, isLoading } = useGetGroupsQuery()
+  const {
+    Modal,
+    isOpen,
+    position,
+    handleCloseModal,
+    handleOpenAndPositionModal,
+    modalOpenElementRef,
+  } = useModal()
+
+  const positioning = 'center'
+
+  const handleOpenAddGroup = () => {
+    handleOpenAndPositionModal(modalOpenElementRef, positioning)
+  }
+
+  const handleCloseAddGroup = (e) => {
+    if (e.key !== 'Tab') {
+      handleOpenAndPositionModal(modalOpenElementRef, positioning)
+    }
+  }
+
+  //FIXME: proper way of display grupy, grupa, grup
   return (
     <Wrapper>
       <IconAndLabel>
@@ -29,7 +55,11 @@ const GroupsActionBar = ({
         </IconBackground>
         <div>
           <Title isBig>{groupName}</Title>
-          <Text>{numOfPosts ? `${numOfPosts} aktualnych postów` : `124 grupy`}</Text>
+          <Text>
+            {numOfPosts
+              ? `${numOfPosts} aktualnych postów`
+              : `${!isLoading ? groups.length : 0} grupy`}
+          </Text>
         </div>
       </IconAndLabel>
       <GroupsActionSection>
@@ -42,8 +72,25 @@ const GroupsActionBar = ({
           <StyledSearchIcon />
         </StyledIconBorder>
 
-        <Button>{buttonText}</Button>
+        <Button
+          onClick={(e) => handleOpenAddGroup(e)}
+          onKeyDown={handleCloseAddGroup}
+          ref={modalOpenElementRef}
+        >
+          {buttonText}
+        </Button>
       </GroupsActionSection>
+      {isOpen ? (
+        <Modal
+          handleClose={handleCloseModal}
+          position={position}
+          isFixed
+          isModal
+          hasBackgroundColor
+        >
+          <CreateGroup handleClose={handleCloseModal} />
+        </Modal>
+      ) : null}
     </Wrapper>
   )
 }

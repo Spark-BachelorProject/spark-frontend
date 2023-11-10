@@ -3,11 +3,10 @@ import { act } from 'react-dom/test-utils'
 import { useForm } from 'react-hook-form'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import { fireEvent, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from 'test-utils'
 
 import { loginSchema } from '@/assets/schemas/loginSchema'
 import LoginInput from '@/components/molecules/LoginInput/LoginInput'
-import { renderWithProviders } from '@/helpers/renderWithThemeProvider'
 
 const TestComponent = () => {
   const {
@@ -36,13 +35,13 @@ const TestComponent = () => {
 
 describe('Login', () => {
   it('Renders', () => {
-    renderWithProviders(<TestComponent />)
+    render(<TestComponent />)
 
     screen.getByPlaceholderText('Email')
   })
 
   it('Submit without errors', async () => {
-    renderWithProviders(<TestComponent />)
+    render(<TestComponent />)
 
     const emailInput = screen.getByPlaceholderText('Email')
     const passwordInput = screen.getByPlaceholderText('Hasło')
@@ -57,7 +56,7 @@ describe('Login', () => {
   })
 
   it('Try submit but empty input make error', async () => {
-    renderWithProviders(<TestComponent />)
+    render(<TestComponent />)
 
     const emailInput = screen.getByPlaceholderText('Email')
     const passwordInput = screen.getByPlaceholderText('Hasło')

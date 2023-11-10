@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { ReactComponent as BookmarkIcon } from '@/assets/icons/bookmark.svg'
 import { ReactComponent as MoonIcon } from '@/assets/icons/moon.svg'
@@ -11,8 +11,8 @@ import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
 import { NotificationBell } from '@/components/molecules/NotificationBell/NotificationBell'
 import { BookmarkedContent } from '@/components/organism/BookmarkedContent/BookmarkedContent'
 import SearchBar from '@/components/organism/SearchBar/SearchBar'
-import { toggle } from '@/features/themeSlice'
 import useModal from '@/hooks/useModal'
+import { toggle } from '@/store/theme/themeSlice'
 
 import { NotificationsContent } from '../NotificationsContent/NotificationsContent'
 import { ProfileContent } from '../ProfileContent/ProfileContent'
@@ -30,6 +30,7 @@ const everyIsFalse = (...args) => args.every((arg) => !arg)
 const HeaderSearchBar = () => {
   const dispatch = useDispatch()
   const colorsTheme = useSelector((state) => state.theme.theme)
+  const navigate = useNavigate()
 
   const isHeaderSearchBar = true
   const {
@@ -97,6 +98,12 @@ const HeaderSearchBar = () => {
     }
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    navigate(0)
+    handleCloseModal2()
+  }
+
   return (
     <Wrapper modalIsOpen={!everyIsFalse(isOpen, isOpen2, isOpen3)}>
       <InnerWrapper>
@@ -149,7 +156,7 @@ const HeaderSearchBar = () => {
 
           {isOpen2 ? (
             <Modal2 handleClose={handleCloseModal2} position={position2} isFixed>
-              <ProfileContent handleClose={handleCloseModal2} />
+              <ProfileContent handleClose={handleCloseModal2} handleLogout={handleLogout} />
             </Modal2>
           ) : null}
 

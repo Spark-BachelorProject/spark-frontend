@@ -1,29 +1,22 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 
+import Loader from '@/components/atoms/Loader/Loader'
 import Post from '@/components/organism/Post/Post'
 import { PageContent } from '@/components/templates/PageContent/PageContent'
+import { useGetOnePostQuery } from '@/store/api/posts'
 
-import { StyledTitle } from './SunglePost.styles'
+import { StyledTitle } from './SinglePost.styles'
 
 const SinglePost = () => {
   const { id } = useParams()
-
-  const post = useSelector((state) => state.posts.find((post) => post.id === +id))
+  const { data: post, isLoading, isSuccess } = useGetOnePostQuery(id)
 
   return (
     <PageContent hasRightBar hasNavigation>
-      {id !== undefined && post ? (
-        <Post
-          content={post.content}
-          author={post.author}
-          date={post.date}
-          tags={post.tags}
-          time={post.time}
-          place={post.place}
-          activity={post.activity}
-        />
+      {isLoading && <Loader isCentered />}
+      {id !== undefined && isSuccess && post ? (
+        <Post {...post} />
       ) : (
         <StyledTitle>Post not found</StyledTitle>
       )}

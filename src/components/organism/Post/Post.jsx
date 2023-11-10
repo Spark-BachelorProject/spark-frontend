@@ -10,8 +10,10 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
-import { formatDate, formatTimeAgo } from '@/helpers/dateAndTime'
+import { formatDate, formatTimeHHMM, formatTimeAgo } from '@/helpers/dateAndTime'
 import useModal from '@/hooks/useModal'
+import { useAddCommentMutation, useGetCommentsQuery } from '@/store/api/comments'
+import { useGetUserQuery } from '@/store/api/user'
 
 import { AttendingContent } from '../AttendingContent/AttendingContent'
 import CommentSection from '../CommentSection/CommentSection'
@@ -25,42 +27,36 @@ import {
   Wrapper,
 } from './Post.styles'
 
-// its taken from api
-const defaultComments = [
-  {
-    id: 1,
-    userName: 'Kasia Baran',
-    howLongAgo: 18,
-    comment: 'Będę, postaram się nie spóżnić',
-  },
-  {
-    id: 2,
-    userName: 'Mariusz Siembida',
-    howLongAgo: 13,
-    comment: 'Dzisiaj odpadam, ale następnym razem będę ;)',
-  },
-]
-let numberOfComments = 2 // its taken from api
-
-const Post = ({ content, author, place, date, time, tags, activity }) => {
-  const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(!(numberOfComments > 2))
-  const [comments, setComments] = useState(defaultComments)
+const Post = (props) => {
+  const {
+    activity,
+    creator,
+    dateCreated,
+    dateEnd,
+    dateStart,
+    description,
+    location,
+    privacySettings,
+    tags,
+    id: postId,
+  } = props
   const [inputValue, setInputValue] = useState('')
+  const [addComment] = useAddCommentMutation()
+  const { data: comments, isLoading: isLoadingComments } = useGetCommentsQuery(postId)
+  const { data: user } = useGetUserQuery()
 
   const handleAddComment = (e) => {
     e.preventDefault()
     if (inputValue === '') return
-    //FIXME: fix howLongAgo
-    setComments((prev) => [
-      ...prev,
-      {
-        id: numberOfComments,
-        userName: author,
-        howLongAgo: 0,
-        comment: inputValue,
-      },
-    ])
-    numberOfComments += 1
+
+    const newComment = {
+      postId,
+      userId: user.id,
+      comment: inputValue,
+    }
+
+    addComment(newComment)
+
     setInputValue('')
   }
 
@@ -109,11 +105,13 @@ const Post = ({ content, author, place, date, time, tags, activity }) => {
         <Thumbnail isBig />
         <Details>
           <div>
-            <b>{author}</b>
-            <Text>napisał(a) {formatTimeAgo(date, time)}</Text>
+            <b>
+              {creator.firstName} {creator.lastName}
+            </b>
+            <Text>napisał(a) {formatTimeAgo(dateCreated)}</Text>
           </div>
           <div>
-            <Text>{activity}</Text>
+            <Text>{activity.name}</Text>
             <Dot />
             <GlobeIcon />
           </div>
@@ -128,16 +126,16 @@ const Post = ({ content, author, place, date, time, tags, activity }) => {
         </div>
       </Header>
       <Title isBig isBold>
-        {content}
+        {description}
       </Title>
       <DetailsWrapper>
         <PinIcon />
-        <Text>{place}</Text>
+        <Text>{location.name}</Text>
       </DetailsWrapper>
       <DetailsWrapper>
         <ClockIcon />
         <Text>
-          {formatDate(date)} o {time}
+          {formatDate(dateStart)} o {formatTimeHHMM(dateStart)}
         </Text>
       </DetailsWrapper>
       <Tags>{tags}</Tags>
@@ -154,14 +152,14 @@ const Post = ({ content, author, place, date, time, tags, activity }) => {
         <Button borderOnly>Zgłoś obecność</Button>
       </InteractionsSection>
 
-      <CommentSection
-        handleAddComment={handleAddComment}
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-        comments={comments}
-        commentSectionIsOpen={commentSectionIsOpen}
-        setCommentSectionIsOpen={setCommentSectionIsOpen}
-      />
+      {!isLoadingComments && (
+        <CommentSection
+          handleAddComment={handleAddComment}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          comments={comments}
+        />
+      )}
 
       {isOpen ? (
         <Modal handleClose={handleCloseModal} position={position}>

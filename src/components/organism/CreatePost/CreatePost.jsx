@@ -1,16 +1,26 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useEffect, useState } from 'react'
 
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import Input from '@/components/atoms/Input/Input'
 import Select from '@/components/atoms/Select/Select'
 import { Title } from '@/components/atoms/Title/Title.styles'
+import CreatePostMap from '@/components/molecules/CreatePostMap/CreatePostMap.jsx'
 import PlaceAutocomplete from '@/components/molecules/PlaceAutocomplete/PlaceAutocomplete.jsx'
 import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
 import { cities } from '@/components/pages/Map/data.jsx'
-import { addPost } from '@/features/postsSlice.js'
-import { dateNowYYYYMMDD, isToday, timeNow } from '@/helpers/dateAndTime.js'
+import {
+  dateNowYYYYMMDD,
+  formatTimeAndDate,
+  getCurrentTimeISOString,
+  getShiftedTime,
+  isToday,
+  timeNow,
+} from '@/helpers/dateAndTime.js'
+import { useGetActivitiesQuery } from '@/store/api/activities.js'
+import { useAddPostMutation } from '@/store/api/posts'
+import { useGetTagsQuery } from '@/store/api/tags.js'
+import { useGetUserQuery } from '@/store/api/user.js'
 
 import {
   FooterWrapper,
@@ -22,65 +32,74 @@ import {
   Wrapper,
 } from './CreatePost.styles.js'
 
-const visibility = [
+const PRIVACYSETTINGS = [
   {
-    value: 'public',
-    text: 'Public',
+    value: 'PUBLIC',
+    text: 'Publiczny',
   },
   {
-    value: 'onlyFriends',
-    text: 'Tylko znajomi',
-  },
-  {
-    value: 'group',
+    value: 'PRIVATE_GROUP',
     text: 'Grupa',
-  },
-]
-
-const activity = [
-  {
-    value: 'Piłka Nożna',
-    text: 'Piłka Nożna',
-  },
-  {
-    value: 'Siatkówka',
-    text: 'Siatkówka',
-  },
-  {
-    value: 'Squash',
-    text: 'Squash',
   },
 ]
 
 const initialState = {
   content: '',
-  visibility: visibility[0].value,
-  activity: activity[0].value,
-  // place: places[0].value,
+  hourStart: timeNow,
+  dateStart: dateNowYYYYMMDD,
+  privacy: PRIVACYSETTINGS[0].value,
+  // activity: activities[0].value,
 }
 
+// TODO: add memoization
 const CreatePost = ({ handleClose }) => {
-  const dispatch = useDispatch()
+  const [addPost] = useAddPostMutation()
+  const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
+  const { data: tagsApi } = useGetTagsQuery()
+  const [activities, setActivities] = useState([])
+  const [tags, setTags] = useState([])
+  const { data: user, isLoadingUser } = useGetUserQuery()
 
-  const [date, setDate] = useState(dateNowYYYYMMDD)
-  const [time, setTime] = useState(timeNow)
+  useEffect(() => {
+    if (!isLoading) {
+      const activitiesApiWithValue = activitiesApi.map((activity) => ({
+        ...activity,
+        value: activity.name,
+      }))
+      setActivities(activitiesApiWithValue)
+      initialState.activity = activitiesApiWithValue[0].value
+    }
+  }, [activitiesApi, isLoading])
 
   const [state, setState] = useState(initialState)
-  const [tags, setTags] = useState([])
 
-  const [selectedCoordinates, setSelectedCoordinates] = useState({
-    lat: cities[0].cordinates.lat,
-    lng: cities[0].cordinates.lng,
-  })
+  const [isPlaceSelected, setIsPlaceSelected] = useState(false)
+  const [selectedCity, setSelectedCity] = useState(null)
+  const [selectedAddress, setSelectedAddress] = useState(null)
+  const [selectedCoordinates, setSelectedCoordinates] = useState([
+    cities[0].cordinates.lat,
+    cities[0].cordinates.lng,
+  ])
+  const [isMarkerMoved, setIsMarkerMoved] = useState(false)
 
-  const [selectedPlace, setSelectedPlace] = useState(null)
+  const handleMarkerMoved = (moved) => {
+    setIsMarkerMoved(moved)
+  }
 
   const handleSelectCoordinates = (coordinates) => {
     setSelectedCoordinates(coordinates)
   }
 
-  const handleSelectPlace = (place) => {
-    setSelectedPlace(place)
+  const handleSelectedCity = (city) => {
+    setSelectedCity(city)
+  }
+
+  const handleSelectedPlace = () => {
+    setIsPlaceSelected(true)
+  }
+
+  const handleSelectAddress = (address) => {
+    setSelectedAddress(address)
   }
 
   const handleChange = (e) => {
@@ -93,18 +112,33 @@ const CreatePost = ({ handleClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const tagsOnlyLables = tags.map((tag) => tag.value)
 
-    const finalData = {
-      ...state,
-      tags: tagsOnlyLables,
-      date,
-      time,
-      place: selectedPlace,
+    const dateStart = formatTimeAndDate(state.dateStart, state.hourStart)
+
+    const selectedActivityId = activitiesApi.find((activity) => activity.name === state.activity).id
+
+    const getTagsIds = () => tags.map((tag) => tag.id)
+
+    const newPost = {
+      activityId: selectedActivityId,
+      userId: user.id,
+      location: {
+        googleId: '', // TODO: remove this, it's not needed, without this it's not working
+        name: selectedAddress,
+        city: selectedCity,
+        lng: selectedCoordinates[0],
+        lat: selectedCoordinates[1],
+        isPlace: false,
+      },
+      dateCreated: getCurrentTimeISOString(),
+      dateStart: dateStart,
+      dateEnd: getShiftedTime(dateStart, 2), // now is 2h
+      description: state.content,
+      privacySetting: state.privacy,
+      tags: getTagsIds(),
     }
-
-    dispatch(addPost(finalData))
-
+    console.log(newPost, 'newPost')
+    addPost(newPost)
     handleClose()
   }
 
@@ -128,59 +162,67 @@ const CreatePost = ({ handleClose }) => {
         />
         <Select
           style={{ gridArea: 'select1' }}
-          name="visibilitySelect"
-          id="visibilitySelect"
-          value={state.visibilitySelect}
+          name="privacy"
+          id="privacy"
+          value={state.privacy}
           onChange={handleChange}
         >
-          {visibility}
+          {PRIVACYSETTINGS}
         </Select>
         <Select
           style={{ gridArea: 'select2' }}
-          name="activitySelect"
-          id="activitySelect"
-          value={state.activitySelect}
+          name="activity"
+          id="activity"
+          value={state.activity}
           onChange={handleChange}
         >
-          {activity}
+          {activities}
         </Select>
-
         <div style={{ gridArea: 'input2' }}>
           <PlaceAutocomplete
             onSelectCoordinates={handleSelectCoordinates}
-            onSelectPlace={handleSelectPlace}
+            onSelectPlace={handleSelectedPlace}
+            onSelectAdress={handleSelectAddress}
+            coordinates={selectedCoordinates}
+            isMarkerMoved={isMarkerMoved}
+            setMarkerMoved={handleMarkerMoved}
+            onSelectCity={handleSelectedCity}
           />
         </div>
-
         <Input
           style={{ gridArea: 'input3' }}
           type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
+          name="dateStart"
+          id="dateStart"
+          value={state.dateStart}
+          onChange={handleChange}
           min={dateNowYYYYMMDD}
         />
         <Input
           style={{ gridArea: 'input4' }}
           type="time"
-          value={time}
-          min={isToday(date) ? timeNow : '00:00'}
-          onChange={(e) => setTime(e.target.value)}
+          name="hourStart"
+          id="hourStart"
+          value={state.hourStart}
+          min={isToday(state.dateStart) ? timeNow : '00:00'}
+          onChange={handleChange}
         />
-
         <div
           style={{
             gridArea: 'map',
             backgroundColor: '#233045',
           }}
         >
-          {/* <CreatePostMap
-            lat={selectedCoordinates.lat}
-            lng={selectedCoordinates.lng}
-            selectedPlace={selectedPlace}
-          /> */}
+          <CreatePostMap
+            center={selectedCoordinates}
+            isPlaceSelected={isPlaceSelected}
+            onMarkerMoved={handleSelectCoordinates}
+            isMarkedMoved={handleMarkerMoved}
+          />
         </div>
       </InputsWrapper>
-      <TagAutocomplete tags={tags} setTags={setTags} />
+
+      <TagAutocomplete tags={tags} setTags={setTags} data={tagsApi} />
 
       <FooterWrapper>
         <StyledText as={'a'}>Wiecej szczegółów</StyledText>

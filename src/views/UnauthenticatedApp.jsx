@@ -1,21 +1,22 @@
 import React from 'react'
-
-import PropTypes from 'prop-types'
+import { Navigate, Route, Routes } from 'react-router'
 
 import UnauthenticatedFooter from '@/components/molecules/UnauthenticatedFooter/UnauthenticatedFooter'
+import Login from '@/components/pages/Login/Login'
+import Register from '@/components/pages/Register/Register'
 import UnauthenticatedContent from '@/components/templates/UnauthenticatedContent/UnauthenticatedContent'
 
-const UnauthenticatedApp = ({ children }) => {
+const UnauthenticatedApp = () => {
   return (
     <UnauthenticatedContent>
-      {children}
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
       <UnauthenticatedFooter />
     </UnauthenticatedContent>
   )
-}
-
-UnauthenticatedApp.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default UnauthenticatedApp

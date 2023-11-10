@@ -2,18 +2,17 @@ import dayjs from 'dayjs'
 
 export const timeNow = dayjs().format('HH:mm')
 export const dateNowYYYYMMDD = dayjs().format('YYYY-MM-DD')
-export const dateNowDDMMYYYY = dayjs().format('DD-MM-YYYY')
 
-export const formatTimeAgo = (data, time) => {
-  // Convert date and time to a single JavaScript Date object
-  const dataTime = new Date(`${data}T${time}`)
+export const formatTimeAgo = (dateString) => {
+  // Convert dateString to a JavaScript Date object
+  const dataTime = new Date(dateString)
   const now = new Date()
 
   // Calculate the difference in milliseconds
-  const timeDifferance = now - dataTime
+  const timeDifference = now - dataTime
 
   // Calculate how many days, hours and minutes ago the event was
-  const minutes = Math.floor(timeDifferance / (1000 * 60))
+  const minutes = Math.floor(timeDifference / (1000 * 60))
   const hours = Math.floor(minutes / 60)
   const days = Math.floor(hours / 24)
 
@@ -26,21 +25,41 @@ export const formatTimeAgo = (data, time) => {
   } else if (days < 7) {
     return `${days} dni${days === 1 ? 'a' : ''} temu`
   } else {
-    return `${data} ${time}`
+    const date = dataTime.toLocaleDateString()
+    const time = dataTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    return `${date}, ${time}`
   }
 }
 
 export const isToday = (dateString) => {
-  const today = new Date().toISOString().slice(0, 10) // Get today's date in 'YYYY-MM-DD' format
-  return dateString === today
+  const date = new Date(dateString)
+  const today = new Date()
+
+  // console.log(date.getDate(), today.getDate(), 'ciyucie')
+  return (
+    date.getDate() === today.getDate() &&
+    date.getMonth() === today.getMonth() &&
+    date.getFullYear() === today.getFullYear()
+  )
+}
+
+export const formatTimeHHMM = (dateString) => {
+  const date = new Date(dateString)
+  const hours = date.getHours()
+  const minutes = date.getMinutes()
+
+  // Pad the minutes with a 0 if it's less than 10
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes
+
+  return `${hours}:${formattedMinutes}`
 }
 
 export const formatDate = (dateString) => {
-  if (isToday(dateString)) {
+  const date = new Date(dateString)
+  if (isToday(date)) {
     return 'Dzisiaj'
   }
 
-  const date = new Date(dateString)
   const now = new Date()
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
   const tomorrow = new Date(today)
@@ -57,4 +76,32 @@ export const formatDate = (dateString) => {
     const formattedDate = date.toLocaleDateString('pl-PL', options)
     return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
   }
+}
+
+export const formatTimeAndDate = (date, time) => {
+  const dateAndTime = `${date}T${time}:00`
+  return dateAndTime
+}
+
+export const getCurrentTimeISOString = () => {
+  // be careful about timezones
+  const date = new Date() // Or the date you'd like converted.
+  const isoDateTime = new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString()
+
+  // remove miliseconds and T
+  return isoDateTime.slice(0, -5)
+}
+
+export const getShiftedTime = (dateString, offsetHours) => {
+  const date = new Date(dateString)
+  date.setHours(date.getHours() + offsetHours)
+
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  const hours = String(date.getHours()).padStart(2, '0')
+  const minutes = String(date.getMinutes()).padStart(2, '0')
+  const seconds = String(date.getSeconds()).padStart(2, '0')
+
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`
 }

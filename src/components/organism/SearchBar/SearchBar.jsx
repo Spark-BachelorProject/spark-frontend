@@ -1,42 +1,71 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { useCombobox } from 'downshift'
 
 import { ReactComponent as SearchIcon } from '@/assets/icons/search.svg'
 import SearchInput from '@/components/molecules/SearchInput/SearchInput'
+import { useGetGroupsQuery } from '@/store/api/groups'
+import { useGetPostsQuery } from '@/store/api/posts'
 
-import { SearchResults, SearchResultsItem, Wrapper } from './SearchBar.styles'
+import {
+  SearchResults,
+  SearchResultsItem,
+  Wrapper,
+  SearchResultTypeLabel,
+} from './SearchBar.styles'
 
-function getPostsFilter(inputValue) {
+function getPostsAndGroupsFilter(inputValue) {
   const lowerCasedInputValue = inputValue.toLowerCase()
 
-  return function postFilter(post) {
-    return !inputValue || post.content.toLowerCase().includes(lowerCasedInputValue)
+  return function postAndGroupFilter(item) {
+    return (
+      !inputValue ||
+      item?.description.toLowerCase().includes(lowerCasedInputValue) ||
+      item?.name?.toLowerCase()?.includes(lowerCasedInputValue)
+    )
   }
 }
-
+// TODO: display only 3 results per category
 const SearchBar = () => {
-  const posts = useSelector((state) => state.posts)
-  const [items, setItems] = useState(posts)
+  const { data: posts, isLoading: isLoadingPosts } = useGetPostsQuery()
+  const { data: groups, isLoading: isLoadingGroups } = useGetGroupsQuery()
+  const [postsAndGroups, setPostsAndGroups] = useState([])
+  const [items, setItems] = useState([])
   const navigate = useNavigate()
-  // const [selectedItem, setSelectedItem] = useState(null)
 
   useEffect(() => {
-    setItems(posts)
-  }, [posts])
+    if (!isLoadingPosts && !isLoadingGroups) {
+      setItems([...posts, ...groups])
+      setPostsAndGroups([...posts, ...groups])
+    }
+  }, [posts, groups, isLoadingPosts, isLoadingGroups])
 
   const { isOpen, getMenuProps, getInputProps, highlightedIndex, getItemProps } = useCombobox({
     onInputValueChange({ inputValue }) {
-      setItems(posts.filter(getPostsFilter(inputValue)))
+      setItems(postsAndGroups.filter(getPostsAndGroupsFilter(inputValue || '')))
     },
-    items: posts,
-    itemToString: (item) => (item ? item.content : ''),
+    items,
+    itemToString: (item) => {
+      if (item?.dateCreated) {
+        return item?.description
+      } else if (item?.name) {
+        return item?.name
+      }
+      return ''
+    },
     initialHighlightedIndex: null,
     onSelectedItemChange({ selectedItem }) {
-      // setSelectedItem(selectedItem)
-      navigate(`/posts/${selectedItem.id}`)
+      if (!selectedItem) {
+        return
+      }
+      // check if is group or post
+      if (selectedItem?.dateCreated) {
+        navigate(`/posts/${selectedItem.id}`)
+      }
+      if (selectedItem?.name) {
+        navigate(`/groups/${selectedItem.id}`)
+      }
     },
   })
 
@@ -44,18 +73,36 @@ const SearchBar = () => {
     <Wrapper>
       <SearchInput Icon={<SearchIcon />} {...getInputProps()} placeholder="Szukaj" />
       <SearchResults isVisible={isOpen} {...getMenuProps()}>
-        {isOpen &&
-          items.map((item, index) => (
-            <SearchResultsItem
-              key={index}
-              ishighlighted={highlightedIndex === index ? 1 : 0}
-              {...getItemProps({ item, index })}
-            >
-              {item.content} - {item.author}
-            </SearchResultsItem>
-          ))}
+        {items.map((item, index) => (
+          <React.Fragment key={index}>
+            {item.dateCreated === posts[0].dateCreated && (
+              <SearchResultTypeLabel>Posty</SearchResultTypeLabel>
+            )}
+            {item.dateCreated && (
+              <SearchResultsItem
+                key={index}
+                ishighlighted={highlightedIndex === index}
+                {...getItemProps({ item, index })}
+              >
+                {item.description}
+              </SearchResultsItem>
+            )}
+            {item.name === groups[0].name && <SearchResultTypeLabel>Grupy</SearchResultTypeLabel>}
+            {item.name && (
+              <SearchResultsItem
+                key={index}
+                ishighlighted={highlightedIndex === index}
+                {...getItemProps({ item, index })}
+              >
+                {item.name}
+              </SearchResultsItem>
+            )}
+          </React.Fragment>
+        ))}
         {isOpen && !items.length && (
-          <SearchResultsItem hasCursor>There are nothing with this title</SearchResultsItem>
+          <SearchResultsItem hasCursor>
+            There are nothing with this name in posts or groups
+          </SearchResultsItem>
         )}
       </SearchResults>
     </Wrapper>

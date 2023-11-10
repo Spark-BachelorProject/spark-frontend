@@ -42,3 +42,11 @@ export const SearchResultsItem = styled.li`
   transition: background-color 0.2s ease-in-out;
   border-radius: 5px;
 `
+
+export const SearchResultTypeLabel = styled.span`
+  color: ${({ theme }) => theme.colors.accent};
+  font-weight: 700;
+  padding: 0 5px;
+  margin: 5px 0;
+  font-size: ${({ theme }) => theme.fontSize.s};
+`

@@ -1,4 +1,4 @@
-/* this removes the google logo from the bottom of the map */
-.gm-style-cc {
-  display: none;
+.leaflet-container {
+  height: 100vh;
+  z-index: 10;
 }

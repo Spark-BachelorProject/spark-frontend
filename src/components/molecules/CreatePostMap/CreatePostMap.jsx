@@ -3,6 +3,8 @@ import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet'
 
 import 'leaflet/dist/leaflet.css'
 
+import { getIcon } from '@/components/pages/Map/customIcons'
+
 import './CreatePostMap.styles.css'
 
 function MapUpdater({ center, isPlaceSelected }) {
@@ -42,6 +44,7 @@ export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved, isMarked
           position={markerPosition}
           draggable={true}
           eventHandlers={{ dragend: updatePosition }}
+          icon={getIcon('pin')}
         ></Marker>
       )}
     </MapContainer>

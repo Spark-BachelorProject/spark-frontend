@@ -5,7 +5,7 @@ import { OpenStreetMapProvider } from 'leaflet-geosearch'
 
 import { Input } from '@/components/atoms/Input/Input.styles'
 
-import { Wrapper, Suggestion, SuggestionWrapper } from './PlaceAutocomplete.styles'
+import { Suggestion, SuggestionWrapper, Wrapper } from './PlaceAutocomplete.styles'
 
 const provider = new OpenStreetMapProvider({
   params: {
@@ -77,7 +77,7 @@ export const PlaceAutocomplete = ({
           console.error(error)
         })
     }
-  }, [coordinates, isMarkerMoved])
+  }, [onSelectCoordinates, onSelectPlace, isMarkerMoved, coordinates, onSelectAdress, onSelectCity])
 
   //address from search
   const handleResultClick = useCallback(
@@ -123,7 +123,7 @@ export const PlaceAutocomplete = ({
       setShowSuggestions(false)
       setMarkerMoved(false)
     },
-    [onSelectCoordinates, onSelectPlace]
+    [onSelectCoordinates, onSelectPlace, onSelectAdress, onSelectCity, setMarkerMoved]
   )
 
   const handleChange = useCallback((e) => {

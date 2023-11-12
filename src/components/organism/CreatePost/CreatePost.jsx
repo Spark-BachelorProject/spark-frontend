@@ -123,12 +123,10 @@ const CreatePost = ({ handleClose }) => {
       activityId: selectedActivityId,
       userId: user.id,
       location: {
-        googleId: '', // TODO: remove this, it's not needed, without this it's not working
         name: selectedAddress,
         city: selectedCity,
         lng: selectedCoordinates[0],
         lat: selectedCoordinates[1],
-        isPlace: false,
       },
       dateCreated: getCurrentTimeISOString(),
       dateStart: dateStart,

@@ -11,7 +11,7 @@ import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
 import { NotificationBell } from '@/components/molecules/NotificationBell/NotificationBell'
 import { BookmarkedContent } from '@/components/organism/BookmarkedContent/BookmarkedContent'
 import SearchBar from '@/components/organism/SearchBar/SearchBar'
-import useModal from '@/hooks/useModal'
+import usePopup from '@/hooks/usePopup'
 import { toggle } from '@/store/theme/themeSlice'
 
 import { NotificationsContent } from '../NotificationsContent/NotificationsContent'
@@ -34,31 +34,31 @@ const HeaderSearchBar = () => {
 
   const isHeaderSearchBar = true
   const {
-    Modal,
+    Popup,
     isOpen,
     position,
-    handleCloseModal,
-    handleOpenAndPositionModal,
-    modalOpenElementRef,
-  } = useModal(null, isHeaderSearchBar)
+    handleClosePopup,
+    handleOpenAndPositionPopup,
+    popupOpenElementRef,
+  } = usePopup(null, isHeaderSearchBar)
 
   const {
-    Modal: Modal2,
+    Popup: Popup2,
     isOpen: isOpen2,
     position: position2,
-    handleCloseModal: handleCloseModal2,
-    handleOpenAndPositionModal: handleOpenAndPositionModal2,
-    modalOpenElementRef: modalOpenElementRef2,
-  } = useModal(null, isHeaderSearchBar)
+    handleClosePopup: handleClosePopup2,
+    handleOpenAndPositionPopup: handleOpenAndPositionPopup2,
+    popupOpenElementRef: popupOpenElementRef2,
+  } = usePopup(null, isHeaderSearchBar)
 
   const {
-    Modal: Modal3,
+    Popup: Popup3,
     isOpen: isOpen3,
     position: position3,
-    handleCloseModal: handleCloseModal3,
-    handleOpenAndPositionModal: handleOpenAndPositionModal3,
-    modalOpenElementRef: modalOpenElementRef3,
-  } = useModal(null, isHeaderSearchBar)
+    handleClosePopup: handleClosePopup3,
+    handleOpenAndPositionPopup: handleOpenAndPositionPopup3,
+    popupOpenElementRef: popupOpenElementRef3,
+  } = usePopup(null, isHeaderSearchBar)
 
   const positioning = 'right'
 
@@ -69,43 +69,43 @@ const HeaderSearchBar = () => {
   }
 
   const handleOpenBookmarksPopup = () => {
-    handleOpenAndPositionModal(modalOpenElementRef, positioning)
+    handleOpenAndPositionPopup(popupOpenElementRef, positioning)
   }
 
   const handleCloseBookmarksPopup = (e) => {
     if (e.key !== 'Tab') {
-      handleOpenAndPositionModal(modalOpenElementRef, positioning)
+      handleOpenAndPositionPopup(popupOpenElementRef, positioning)
     }
   }
 
   const handleOpenProfilePopup = () => {
-    handleOpenAndPositionModal2(modalOpenElementRef2, positioning)
+    handleOpenAndPositionPopup2(popupOpenElementRef2, positioning)
   }
 
   const handleCloseProfilePopup = (e) => {
     if (e.key !== 'Tab') {
-      handleOpenAndPositionModal2(modalOpenElementRef2, positioning)
+      handleOpenAndPositionPopup2(popupOpenElementRef2, positioning)
     }
   }
 
   const handleOpenNotificationsPopup = () => {
-    handleOpenAndPositionModal3(modalOpenElementRef3, positioning)
+    handleOpenAndPositionPopup3(popupOpenElementRef3, positioning)
   }
 
   const handleCloseNotificationsPopup = (e) => {
     if (e.key !== 'Tab') {
-      handleOpenAndPositionModal3(modalOpenElementRef3, positioning)
+      handleOpenAndPositionPopup3(popupOpenElementRef3, positioning)
     }
   }
 
   const handleLogout = () => {
     localStorage.removeItem('token')
     navigate(0)
-    handleCloseModal2()
+    handleClosePopup2()
   }
 
   return (
-    <Wrapper modalIsOpen={!everyIsFalse(isOpen, isOpen2, isOpen3)}>
+    <Wrapper popupIsOpen={!everyIsFalse(isOpen, isOpen2, isOpen3)}>
       <InnerWrapper>
         <LogoAndInputWrapper>
           <Link to="/">
@@ -118,7 +118,7 @@ const HeaderSearchBar = () => {
             tabIndex="0"
             onClick={(e) => handleOpenNotificationsPopup(e)}
             onKeyDown={handleCloseNotificationsPopup}
-            ref={modalOpenElementRef3}
+            ref={popupOpenElementRef3}
           >
             <NotificationBell count="3" isRed hasCounter />
           </div>
@@ -127,7 +127,7 @@ const HeaderSearchBar = () => {
             tabIndex="0"
             onClick={(e) => handleOpenBookmarksPopup(e)}
             onKeyDown={handleCloseBookmarksPopup}
-            ref={modalOpenElementRef}
+            ref={popupOpenElementRef}
           >
             <BookmarkIcon />
             <Counter count="7" />
@@ -142,28 +142,28 @@ const HeaderSearchBar = () => {
           <StyledIconBorder
             onClick={(e) => handleOpenProfilePopup(e)}
             onKeyDown={handleCloseProfilePopup}
-            ref={modalOpenElementRef2}
+            ref={popupOpenElementRef2}
             tabIndex={0}
           >
             <StyledThumbnail />
           </StyledIconBorder>
 
           {isOpen ? (
-            <Modal handleClose={handleCloseModal} position={position} isFixed>
+            <Popup handleClose={handleClosePopup} position={position} isFixed>
               <BookmarkedContent />
-            </Modal>
+            </Popup>
           ) : null}
 
           {isOpen2 ? (
-            <Modal2 handleClose={handleCloseModal2} position={position2} isFixed>
-              <ProfileContent handleClose={handleCloseModal2} handleLogout={handleLogout} />
-            </Modal2>
+            <Popup2 handleClose={handleClosePopup2} position={position2} isFixed>
+              <ProfileContent handleClose={handleClosePopup2} handleLogout={handleLogout} />
+            </Popup2>
           ) : null}
 
           {isOpen3 ? (
-            <Modal3 handleClose={handleCloseModal3} position={position3} isFixed>
+            <Popup3 handleClose={handleClosePopup3} position={position3} isFixed>
               <NotificationsContent />
-            </Modal3>
+            </Popup3>
           ) : null}
         </InnerIconsWrapperRight>
       </InnerWrapper>

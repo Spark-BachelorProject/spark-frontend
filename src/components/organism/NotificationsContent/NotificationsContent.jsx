@@ -4,6 +4,7 @@ import { Counter } from '@/components/atoms/Counter/Counter'
 import { MoreInfoNotifications } from '@/components/organism/MoreInfoNotifications/MoreInfoNotifications'
 import { Notification } from '@/components/organism/Notification/Notification'
 import useModal from '@/hooks/useModal'
+import usePopup from '@/hooks/usePopup'
 
 import {
   Wrapper,
@@ -17,22 +18,22 @@ import {
 
 export const NotificationsContent = () => {
   const {
-    Modal,
+    Popup,
     isOpen,
     position,
-    handleCloseModal,
-    handleOpenAndPositionModal,
-    modalOpenElementRef,
-  } = useModal()
+    handleClosePopup,
+    handleOpenAndPositionPopup,
+    popupOpenElementRef,
+  } = usePopup()
   const positioning = 'right'
 
   const handleOpenBookmarksPopup = () => {
-    handleOpenAndPositionModal(modalOpenElementRef, positioning)
+    handleOpenAndPositionPopup(popupOpenElementRef, positioning)
   }
 
   const handleCloseBookmarksPopup = (e) => {
     if (e.key !== 'Tab') {
-      handleOpenAndPositionModal(modalOpenElementRef, positioning)
+      handleOpenAndPositionPopup(popupOpenElementRef, positioning)
     }
   }
 
@@ -48,7 +49,7 @@ export const NotificationsContent = () => {
         <div
           onClick={(e) => handleOpenBookmarksPopup(e)}
           onKeyDown={handleCloseBookmarksPopup}
-          ref={modalOpenElementRef}
+          ref={popupOpenElementRef}
         >
           <StyledMoreInfoIcon />
         </div>
@@ -60,9 +61,9 @@ export const NotificationsContent = () => {
         <Notification name="Andrzej Kowal" type="cancel" time={12} isRead />
       </NotificationsWrapper>
       {isOpen ? (
-        <Modal handleClose={handleCloseModal} position={position} width="big" isFixed>
+        <Popup handleClose={handleClosePopup} position={position} width="big" isFixed>
           <MoreInfoNotifications />
-        </Modal>
+        </Popup>
       ) : null}
     </Wrapper>
   )

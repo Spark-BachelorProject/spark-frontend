@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 
-import Modal from '@/components/organism/Modal/Modal'
+import Popup from '@/components/organism/Popup/Popup'
 
-const useModal = (initialValue = false, isHeaderSearchBar = false) => {
+const usePopup = (initialValue = false, isHeaderSearchBar = false) => {
   const [isOpen, setIsOpen] = useState(initialValue)
   const [position, setPosition] = useState({ x: 0, y: 0, positioning: 'center' })
-  const modalOpenElementRef = useRef(null)
+  const popupOpenElementRef = useRef(null)
 
-  const handleOpenAndPositionModal = (ref, positioning) => {
+  const handleOpenAndPositionPopup = (ref, positioning) => {
     // 10 because its space between element and modal, 70 because its height of HeaderSearchBar
     // to element which show and disappear on hover, pass as ref e.target!!!
     let x, height, offsetTop
@@ -26,15 +26,15 @@ const useModal = (initialValue = false, isHeaderSearchBar = false) => {
     setIsOpen(true)
   }
 
-  const handleCloseModal = () => {
+  const handleClosePopup = () => {
     setIsOpen(false)
   }
 
   useEffect(() => {
-    if (!modalOpenElementRef.current) return
+    if (!popupOpenElementRef.current) return
     const handleResize = () => {
-      const { x, height } = modalOpenElementRef.current.getBoundingClientRect()
-      const { offsetTop } = modalOpenElementRef.current
+      const { x, height } = popupOpenElementRef.current.getBoundingClientRect()
+      const { offsetTop } = popupOpenElementRef.current
       // 10 because its space between element and modal, 70 because its height of HeaderSearchBar
       isHeaderSearchBar
         ? setPosition((prev) => ({
@@ -53,15 +53,14 @@ const useModal = (initialValue = false, isHeaderSearchBar = false) => {
 
     return () => window.removeEventListener('resize', handleResize)
   }, [isHeaderSearchBar])
-
   return {
-    Modal,
+    Popup,
     position,
     isOpen,
-    handleCloseModal,
-    handleOpenAndPositionModal,
-    modalOpenElementRef,
+    handleClosePopup,
+    handleOpenAndPositionPopup,
+    popupOpenElementRef,
   }
 }
 
-export default useModal
+export default usePopup

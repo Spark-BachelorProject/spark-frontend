@@ -12,6 +12,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
 import { formatDate, formatTimeHHMM, formatTimeAgo } from '@/helpers/dateAndTime'
 import useModal from '@/hooks/useModal'
+import usePopup from '@/hooks/usePopup'
 import { useAddCommentMutation, useGetCommentsQuery } from '@/store/api/comments'
 import { useGetUserQuery } from '@/store/api/user'
 
@@ -61,14 +62,14 @@ const Post = (props) => {
   }
 
   const {
-    Modal,
+    Popup,
     isOpen,
     position,
-    handleCloseModal,
-    handleOpenAndPositionModal,
-    modalOpenElementRef,
-  } = useModal()
-  const positioning = 'center'
+    handleClosePopup,
+    handleOpenAndPositionPopup,
+    popupOpenElementRef,
+  } = usePopup()
+  const popupPositioning = 'right'
 
   const {
     Modal: Modal2,
@@ -78,6 +79,7 @@ const Post = (props) => {
     handleOpenAndPositionModal: handleOpenAndPositionModal2,
     modalOpenElementRef: modalOpenElementRef2,
   } = useModal()
+  const positioning = 'center'
 
   const handleOpenAttendanceList = () => {
     handleOpenAndPositionModal2(modalOpenElementRef2, positioning)
@@ -90,12 +92,12 @@ const Post = (props) => {
   }
 
   const handleOpenMoreInfoPopup = () => {
-    handleOpenAndPositionModal(modalOpenElementRef, positioning)
+    handleOpenAndPositionPopup(popupOpenElementRef, popupPositioning)
   }
 
   const handleCloseMoreInfoPopup = (e) => {
     if (e.key !== 'Tab') {
-      handleOpenAndPositionModal(modalOpenElementRef, positioning)
+      handleOpenAndPositionPopup(popupOpenElementRef, popupPositioning)
     }
   }
 
@@ -119,7 +121,7 @@ const Post = (props) => {
         <div
           onClick={(e) => handleOpenMoreInfoPopup(e)}
           onKeyDown={handleCloseMoreInfoPopup}
-          ref={modalOpenElementRef}
+          ref={popupOpenElementRef}
           tabIndex={0}
         >
           <StyledMoreInfoIcon />
@@ -162,9 +164,9 @@ const Post = (props) => {
       )}
 
       {isOpen ? (
-        <Modal handleClose={handleCloseModal} position={position}>
+        <Popup handleClose={handleClosePopup} position={position}>
           <MoreInfoPost />
-        </Modal>
+        </Popup>
       ) : null}
 
       {isOpen2 ? (

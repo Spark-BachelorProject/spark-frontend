@@ -1,11 +1,12 @@
+import { useGetUserQuery } from '@/store/api/user'
+
 import AuthenticatedApp from './AuthenticatedApp'
 import UnauthenticatedApp from './UnauthenticatedApp'
 
-//FIXME: On logout display login in proper way
 function App() {
-  const isAuthenticated = localStorage.getItem('token')
+  const { data: user } = useGetUserQuery()
 
-  return <>{isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}</>
+  return <>{user ? <AuthenticatedApp /> : <UnauthenticatedApp />}</>
 }
 
 export default App

@@ -94,8 +94,8 @@ const CreatePost = ({ handleClose }) => {
     setSelectedCity(city)
   }
 
-  const handleSelectedPlace = () => {
-    setIsPlaceSelected(true)
+  const handleSelectedPlace = (selected) => {
+    setIsPlaceSelected(selected)
   }
 
   const handleSelectAddress = (address) => {
@@ -179,7 +179,7 @@ const CreatePost = ({ handleClose }) => {
         <div style={{ gridArea: 'input2' }}>
           <PlaceAutocomplete
             onSelectCoordinates={handleSelectCoordinates}
-            onSelectPlace={handleSelectedPlace}
+            isPlaceSelected={handleSelectedPlace}
             onSelectAdress={handleSelectAddress}
             coordinates={selectedCoordinates}
             isMarkerMoved={isMarkerMoved}

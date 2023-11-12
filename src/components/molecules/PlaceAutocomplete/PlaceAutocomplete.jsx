@@ -17,7 +17,7 @@ const provider = new OpenStreetMapProvider({
 
 export const PlaceAutocomplete = ({
   onSelectCoordinates,
-  onSelectPlace,
+  isPlaceSelected,
   onSelectAdress,
   coordinates,
   isMarkerMoved,
@@ -77,7 +77,14 @@ export const PlaceAutocomplete = ({
           console.error(error)
         })
     }
-  }, [onSelectCoordinates, onSelectPlace, isMarkerMoved, coordinates, onSelectAdress, onSelectCity])
+  }, [
+    onSelectCoordinates,
+    isPlaceSelected,
+    isMarkerMoved,
+    coordinates,
+    onSelectAdress,
+    onSelectCity,
+  ])
 
   //address from search
   const handleResultClick = useCallback(
@@ -105,25 +112,34 @@ export const PlaceAutocomplete = ({
       const street = road || pedestrian
       const number = house_number || postcode || ''
 
-      //reated so that the places without a number or postcodes show suburb instead
+      //created so that the places without a number or postcodes show suburb instead
       const area = number ? number : suburb
       const name =
         place || leisure || building || amenity || natural || landuse || shop || square || ''
 
-      const formattedPlace = name
-        ? `${name}, ${street} ${area}, ${cityName}`
-        : `${street} ${number}, ${cityName}`
+      let formattedPlace = ''
+
+      //check if the selected place isnt city
+      if ((street && number) || area) {
+        if (name) {
+          formattedPlace = `${name}, ${street} ${area}, ${cityName}`
+        } else {
+          formattedPlace = `${street} ${area}, ${cityName}`
+        }
+        isPlaceSelected(true)
+      } else {
+        isPlaceSelected(false)
+      }
 
       onSelectCoordinates([result.y, result.x])
       onSelectAdress(formattedPlace)
-      onSelectPlace(true)
       onSelectCity(cityName)
 
       setSeletedPlace(formattedPlace)
       setShowSuggestions(false)
       setMarkerMoved(false)
     },
-    [onSelectCoordinates, onSelectPlace, onSelectAdress, onSelectCity, setMarkerMoved]
+    [onSelectCoordinates, isPlaceSelected, onSelectAdress, onSelectCity, setMarkerMoved]
   )
 
   const handleChange = useCallback((e) => {

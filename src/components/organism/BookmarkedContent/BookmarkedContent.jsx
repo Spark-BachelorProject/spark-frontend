@@ -2,29 +2,29 @@ import React from 'react'
 
 import { Title } from '@/components/atoms/Title/Title.styles'
 import { SavedPost } from '@/components/molecules/SavedPost/SavedPost'
-import useModal from '@/hooks/useModal'
+import usePopup from '@/hooks/usePopup'
 
 import { MoreInfoBookmark } from '../MoreInfoBookmark/MoreInfoBookmark'
 import { Wrapper, HeadingWrapper, StyledMoreInfoIcon } from './BookmarkedContent.styles'
 
 export const BookmarkedContent = () => {
   const {
-    Modal,
+    Popup,
     isOpen,
     position,
-    handleCloseModal,
-    handleOpenAndPositionModal,
-    modalOpenElementRef,
-  } = useModal()
+    handleClosePopup,
+    handleOpenAndPositionPopup,
+    popupOpenElementRef,
+  } = usePopup()
   const positioning = 'right'
 
   const handleOpenBookmarksPopup = () => {
-    handleOpenAndPositionModal(modalOpenElementRef, positioning)
+    handleOpenAndPositionPopup(popupOpenElementRef, positioning)
   }
 
   const handleCloseBookmarksPopup = (e) => {
     if (e.key !== 'Tab') {
-      handleOpenAndPositionModal(modalOpenElementRef, positioning)
+      handleOpenAndPositionPopup(popupOpenElementRef, positioning)
     }
   }
 
@@ -35,7 +35,7 @@ export const BookmarkedContent = () => {
         <div
           onClick={(e) => handleOpenBookmarksPopup(e)}
           onKeyDown={handleCloseBookmarksPopup}
-          ref={modalOpenElementRef}
+          ref={popupOpenElementRef}
         >
           <StyledMoreInfoIcon />
         </div>
@@ -64,9 +64,9 @@ export const BookmarkedContent = () => {
       <SavedPost name="Krzysztof Raban" activity="Futsal" place="Hala UMCS" adress="Stepowa 12" />
 
       {isOpen ? (
-        <Modal handleClose={handleCloseModal} position={position} width="big" isFixed>
+        <Popup handleClose={handleClosePopup} position={position} width="big" isFixed>
           <MoreInfoBookmark />
-        </Modal>
+        </Popup>
       ) : null}
     </Wrapper>
   )

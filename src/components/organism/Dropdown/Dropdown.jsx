@@ -5,7 +5,7 @@ import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import Select from '@/components/atoms/Select/Select'
 import Filters from '@/components/organism/Filters/Filters'
 import { formatDate } from '@/helpers/dateAndTime'
-import useModal from '@/hooks/useModal'
+import usePopup from '@/hooks/usePopup'
 import { useGetActivitiesQuery } from '@/store/api/activities'
 
 import {
@@ -61,23 +61,23 @@ export const Dropdown = ({ setFilterOptions, filterOptions }) => {
   }
 
   const {
-    Modal,
+    Popup,
     isOpen,
     position,
-    handleCloseModal,
-    handleOpenAndPositionModal,
-    modalOpenElementRef,
-  } = useModal()
+    handleClosePopup,
+    handleOpenAndPositionPopup,
+    popupOpenElementRef,
+  } = usePopup()
 
   const positioning = 'right'
 
   const handleOpenFilterPopup = () => {
-    handleOpenAndPositionModal(modalOpenElementRef, positioning)
+    handleOpenAndPositionPopup(popupOpenElementRef, positioning)
   }
 
   const handleCloseFilterPopup = (e) => {
     if (e.key !== 'Tab') {
-      handleOpenAndPositionModal(modalOpenElementRef, positioning)
+      handleOpenAndPositionPopup(popupOpenElementRef, positioning)
     }
   }
 
@@ -110,15 +110,15 @@ export const Dropdown = ({ setFilterOptions, filterOptions }) => {
           tabIndex="0"
           onClick={handleOpenFilterPopup}
           onKeyDown={handleCloseFilterPopup}
-          ref={modalOpenElementRef}
+          ref={popupOpenElementRef}
         >
           <FilterIcon />
         </StyledIconBorder>
       </ButtonsWrapper>
       {isOpen ? (
-        <Modal handleClose={handleCloseModal} position={position}>
-          <Filters handleClose={handleCloseModal} setFilterOptions={setFilterOptions} />
-        </Modal>
+        <Popup handleClose={handleClosePopup} position={position}>
+          <Filters handleClose={handleClosePopup} setFilterOptions={setFilterOptions} />
+        </Popup>
       ) : null}
     </Wrapper>
   )

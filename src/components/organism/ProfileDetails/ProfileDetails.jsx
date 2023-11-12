@@ -9,6 +9,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import Badge from '@/components/molecules/Badge/Badge'
 import BadgeInfo from '@/components/molecules/BadgeInfo/BadgeInfo'
 import useModal from '@/hooks/useModal'
+import usePopup from '@/hooks/usePopup'
 import { useGetUserQuery } from '@/store/api/user'
 
 import {
@@ -35,12 +36,12 @@ const ProfileDetails = () => {
   const { data: user, isLoading } = useGetUserQuery()
 
   const [currentBadge, setCurrentBadge] = useState(null)
-  const { Modal, isOpen, position, handleCloseModal, handleOpenAndPositionModal } = useModal()
+  const { Popup, isOpen, position, handleClosePopup, handleOpenAndPositionPopup } = usePopup()
   const positioning = 'left'
 
   const handleOpenBadgeInfo = (e, { Icon, text }) => {
     setCurrentBadge({ Icon, text })
-    handleOpenAndPositionModal(e.target, positioning)
+    handleOpenAndPositionPopup(e.target, positioning)
   }
 
   return (
@@ -77,7 +78,7 @@ const ProfileDetails = () => {
           {badges.map(({ Icon, text }, i) => (
             <Badge
               onMouseEnter={(e) => handleOpenBadgeInfo(e, { Icon, text })}
-              onMouseLeave={handleCloseModal}
+              onMouseLeave={handleClosePopup}
               tabIndex={0}
               key={i}
               Icon={Icon}
@@ -86,9 +87,9 @@ const ProfileDetails = () => {
             </Badge>
           ))}
           {isOpen ? (
-            <Modal position={position} hasNoPadding hasNoBackground>
+            <Popup position={position} hasNoPadding hasNoBackground>
               <BadgeInfo badge={currentBadge} />
-            </Modal>
+            </Popup>
           ) : null}
         </BadgesWrapper>
       </BadgesSection>

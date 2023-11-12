@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 
-import { Button } from '@/components/atoms/Button/Button.styles'
-
 import { ModalBackground, ModalWrapper } from './Modal.styles'
 
 const modalContainer = document.getElementById('modal-container')
 
 // TODO: consider replacing isModal to isCenter, and refactor code to popUp instead of Modal
 const Modal = ({
-  textOnClose,
   handleClose,
   children,
   position,
-  hasCloseButton,
-  width,
   isFixed,
   hasNoPadding,
   hasNoBackground,
@@ -44,19 +39,16 @@ const Modal = ({
           hasBackgroundColor={hasBackgroundColor}
           onClick={handleClose}
           modalNum={modalNum}
-          isFixed={isFixed}
         />
       )}
       <ModalWrapper
         position={position || { x: 0, y: 0, positioning: 'center' }}
-        width={width}
         modalNum={modalNum}
         isFixed={isFixed}
         hasNoPadding={hasNoPadding}
         isModal={isModal}
       >
         {children}
-        {hasCloseButton ? <Button onClick={handleClose}>{textOnClose}</Button> : null}
       </ModalWrapper>
     </>,
     modalNode

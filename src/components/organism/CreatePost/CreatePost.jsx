@@ -136,6 +136,11 @@ const CreatePost = ({ handleClose }) => {
       tags: getTagsIds(),
     }
     console.log(newPost, 'newPost')
+
+    if (!isPlaceSelected) {
+      return
+    }
+
     addPost(newPost)
     handleClose()
   }

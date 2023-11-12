@@ -34,30 +34,30 @@ const HeaderSearchBar = () => {
 
   const isHeaderSearchBar = true
   const {
-    Popup,
-    isOpen,
-    position,
-    handleClosePopup,
-    handleOpenAndPositionPopup,
-    popupOpenElementRef,
+    Popup: BookmarkPopup,
+    isOpen: isOpenBookmarkPopup,
+    position: positionBookmarkPopup,
+    handleClosePopup: handleCloseBookmarkPopup,
+    handleOpenAndPositionPopup: handleOpenAndPositionBookmarkPopup,
+    popupOpenElementRef: bookmarkPopupOpenElementRef,
   } = usePopup(null, isHeaderSearchBar)
 
   const {
-    Popup: Popup2,
-    isOpen: isOpen2,
-    position: position2,
-    handleClosePopup: handleClosePopup2,
-    handleOpenAndPositionPopup: handleOpenAndPositionPopup2,
-    popupOpenElementRef: popupOpenElementRef2,
+    Popup: NotificationPopup,
+    isOpen: isOpenNotificationPopup,
+    position: positionNotificationPopup,
+    handleClosePopup: handleCloseNotificationsPopup,
+    handleOpenAndPositionPopup: handleOpenAndPositionNotificationPopup,
+    popupOpenElementRef: notificationPopupOpenElementRef,
   } = usePopup(null, isHeaderSearchBar)
 
   const {
-    Popup: Popup3,
-    isOpen: isOpen3,
-    position: position3,
-    handleClosePopup: handleClosePopup3,
-    handleOpenAndPositionPopup: handleOpenAndPositionPopup3,
-    popupOpenElementRef: popupOpenElementRef3,
+    Popup: ProfilePopup,
+    isOpen: isOpenProfilePopup,
+    position: positionProfilePopup,
+    handleClosePopup: handleCloseProfilePopup,
+    handleOpenAndPositionPopup: handleOpenAndPositionProfilePopup,
+    popupOpenElementRef: profilePopupOpenElementRef,
   } = usePopup(null, isHeaderSearchBar)
 
   const positioning = 'right'
@@ -68,44 +68,47 @@ const HeaderSearchBar = () => {
     }
   }
 
-  const handleOpenBookmarksPopup = () => {
-    handleOpenAndPositionPopup(popupOpenElementRef, positioning)
+  // Bookmarks popup
+  const extendedHandleOpenBookmarksPopup = () => {
+    handleOpenAndPositionBookmarkPopup(bookmarkPopupOpenElementRef, positioning)
   }
 
-  const handleCloseBookmarksPopup = (e) => {
+  const extendedHandleCloseBookmarksPopup = (e) => {
     if (e.key !== 'Tab') {
-      handleOpenAndPositionPopup(popupOpenElementRef, positioning)
+      handleCloseBookmarkPopup(bookmarkPopupOpenElementRef, positioning)
     }
   }
 
-  const handleOpenProfilePopup = () => {
-    handleOpenAndPositionPopup2(popupOpenElementRef2, positioning)
+  // Notifications popup
+  const extendedHandleOpenNotificationsPopup = () => {
+    handleOpenAndPositionNotificationPopup(notificationPopupOpenElementRef, positioning)
   }
-
-  const handleCloseProfilePopup = (e) => {
+  const extendedHandleCloseNotificationsPopup = (e) => {
     if (e.key !== 'Tab') {
-      handleOpenAndPositionPopup2(popupOpenElementRef2, positioning)
+      handleCloseNotificationsPopup(notificationPopupOpenElementRef, positioning)
     }
   }
 
-  const handleOpenNotificationsPopup = () => {
-    handleOpenAndPositionPopup3(popupOpenElementRef3, positioning)
+  // Profile popup
+  const extendedHandleOpenProfilePopup = () => {
+    handleOpenAndPositionProfilePopup(profilePopupOpenElementRef, positioning)
   }
-
-  const handleCloseNotificationsPopup = (e) => {
+  const extendedHandleCloseProfilePopup = (e) => {
     if (e.key !== 'Tab') {
-      handleOpenAndPositionPopup3(popupOpenElementRef3, positioning)
+      handleCloseProfilePopup(profilePopupOpenElementRef, positioning)
     }
   }
 
   const handleLogout = () => {
     localStorage.removeItem('token')
     navigate(0)
-    handleClosePopup2()
+    handleCloseProfilePopup()
   }
 
   return (
-    <Wrapper popupIsOpen={!everyIsFalse(isOpen, isOpen2, isOpen3)}>
+    <Wrapper
+      popupIsOpen={!everyIsFalse(isOpenBookmarkPopup, isOpenProfilePopup, isOpenNotificationPopup)}
+    >
       <InnerWrapper>
         <LogoAndInputWrapper>
           <Link to="/">
@@ -116,18 +119,18 @@ const HeaderSearchBar = () => {
         <InnerIconsWrapperRight>
           <div
             tabIndex="0"
-            onClick={(e) => handleOpenNotificationsPopup(e)}
-            onKeyDown={handleCloseNotificationsPopup}
-            ref={popupOpenElementRef3}
+            onClick={(e) => extendedHandleOpenNotificationsPopup(e)}
+            onKeyDown={extendedHandleCloseNotificationsPopup}
+            ref={notificationPopupOpenElementRef}
           >
             <NotificationBell count="3" isRed hasCounter />
           </div>
 
           <IconBorder
             tabIndex="0"
-            onClick={(e) => handleOpenBookmarksPopup(e)}
-            onKeyDown={handleCloseBookmarksPopup}
-            ref={popupOpenElementRef}
+            onClick={(e) => extendedHandleOpenBookmarksPopup(e)}
+            onKeyDown={extendedHandleCloseBookmarksPopup}
+            ref={bookmarkPopupOpenElementRef}
           >
             <BookmarkIcon />
             <Counter count="7" />
@@ -140,30 +143,42 @@ const HeaderSearchBar = () => {
             {colorsTheme === 'light' ? <MoonIcon /> : <SunIcon />}
           </IconBorder>
           <StyledIconBorder
-            onClick={(e) => handleOpenProfilePopup(e)}
-            onKeyDown={handleCloseProfilePopup}
-            ref={popupOpenElementRef2}
+            onClick={(e) => extendedHandleOpenProfilePopup(e)}
+            onKeyDown={extendedHandleCloseProfilePopup}
+            ref={profilePopupOpenElementRef}
             tabIndex={0}
           >
             <StyledThumbnail />
           </StyledIconBorder>
 
-          {isOpen ? (
-            <Popup handleClose={handleClosePopup} position={position} isFixed>
-              <BookmarkedContent />
-            </Popup>
-          ) : null}
-
-          {isOpen2 ? (
-            <Popup2 handleClose={handleClosePopup2} position={position2} isFixed>
-              <ProfileContent handleClose={handleClosePopup2} handleLogout={handleLogout} />
-            </Popup2>
-          ) : null}
-
-          {isOpen3 ? (
-            <Popup3 handleClose={handleClosePopup3} position={position3} isFixed>
+          {isOpenNotificationPopup ? (
+            <NotificationPopup
+              handleClose={extendedHandleCloseNotificationsPopup}
+              position={positionNotificationPopup}
+              isFixed
+            >
               <NotificationsContent />
-            </Popup3>
+            </NotificationPopup>
+          ) : null}
+
+          {isOpenBookmarkPopup ? (
+            <BookmarkPopup
+              handleClose={handleCloseBookmarkPopup}
+              position={positionBookmarkPopup}
+              isFixed
+            >
+              <BookmarkedContent />
+            </BookmarkPopup>
+          ) : null}
+
+          {isOpenProfilePopup ? (
+            <ProfilePopup
+              handleClose={handleCloseProfilePopup}
+              position={positionProfilePopup}
+              isFixed
+            >
+              <ProfileContent handleClose={handleCloseProfilePopup} handleLogout={handleLogout} />
+            </ProfilePopup>
           ) : null}
         </InnerIconsWrapperRight>
       </InnerWrapper>

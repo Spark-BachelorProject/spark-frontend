@@ -1,12 +1,17 @@
 import React from 'react'
 
+import Loader from '@/components/atoms/Loader/Loader'
+import { Text } from '@/components/atoms/Text/Text.styles'
 import { PersonListItem } from '@/components/molecules/PersonListItem/PersonListItem'
 import { SocialItem } from '@/components/molecules/SocialItem/SocialItem'
+import { useGetUserFriendsQuery } from '@/store/api/user'
 
 import { Wrapper } from './DekstopRightBar.styles'
 import { Container, StyledContainer, StyledTitle, StyledSocialItem } from './DekstopRightBar.styles'
 
 export const DekstopRightBar = () => {
+  const { data: friends, isLoading, isSuccess } = useGetUserFriendsQuery()
+
   return (
     <Wrapper>
       <Container>
@@ -32,12 +37,18 @@ export const DekstopRightBar = () => {
         <StyledTitle isBig isBold>
           Znajomi
         </StyledTitle>
-        <PersonListItem name="Andrzej Kowal" />
-        <PersonListItem name="Robert Pazurek" />
-        <PersonListItem name="Justyna Szewc" />
-        <PersonListItem name="Robert Wsad" />
-        <PersonListItem name="Julia Preska" />
-        <span>Wszyscy</span>
+        {isLoading ? <Loader isCentered /> : null}
+        {!isLoading && isSuccess && !friends.length && <Text>Nie masz znajomych</Text>}
+        {!isLoading &&
+          isSuccess &&
+          friends.map(({ id, firstName, lastName, profilePictureURL }) => (
+            <PersonListItem
+              key={id}
+              firstName={firstName}
+              lastName={lastName}
+              profilePictureURL={profilePictureURL}
+            />
+          ))}
       </StyledContainer>
     </Wrapper>
   )

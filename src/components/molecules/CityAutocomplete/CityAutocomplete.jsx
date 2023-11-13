@@ -80,11 +80,16 @@ export const CityAutocomplete = ({ onSelectCity }) => {
   return (
     <Wrapper>
       <Label>Miasto</Label>
-      <Input type="text" value={selectedPlace} onChange={handleChange} placeholder="Podaj adres" />
+      <Input
+        type="text"
+        value={selectedPlace}
+        onChange={handleChange}
+        placeholder="Szukaj miasta"
+      />
       <StyledSuggestionWrapper>
         {showSuggestions &&
           searchResults.map((result, index) => (
-            <StyledSuggestion onClick={() => handleResultClick(result)}>
+            <StyledSuggestion key={index} onClick={() => handleResultClick(result)}>
               {result.label}
             </StyledSuggestion>
           ))}

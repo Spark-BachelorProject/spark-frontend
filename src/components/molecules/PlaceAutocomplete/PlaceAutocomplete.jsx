@@ -32,6 +32,7 @@ export const PlaceAutocomplete = ({
   const search = useCallback(async () => {
     if (SeletedPlace) {
       const results = await provider.search({ query: SeletedPlace.toLocaleLowerCase() })
+
       setSearchResults(results.slice(0, 3))
     }
   }, [SeletedPlace])

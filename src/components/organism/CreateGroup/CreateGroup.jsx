@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
+import { CityAutocomplete } from '@/components/molecules/CityAutocomplete/CityAutocomplete'
 import InputWithLabel from '@/components/molecules/InputWithLabel/InputWithLabel'
 import SelectWithLabel from '@/components/molecules/SelectWithLabel/SelectWithLabel'
 import { useGetActivitiesQuery } from '@/store/api/activities'
@@ -11,14 +12,14 @@ import { useGetCitiesQuery } from '@/store/api/cities'
 import { useAddGroupMutation } from '@/store/api/groups'
 
 import {
+  ButtonsWrapper,
+  CancelButton,
   FooterWrapper,
   HeaderWrapper,
   InputsWrapper,
-  Wrapper,
-  TitleWrapper,
-  ButtonsWrapper,
-  CancelButton,
   StyledText,
+  TitleWrapper,
+  Wrapper,
 } from './CreateGroup.styles'
 
 const PRIVACYSETTINGS = [
@@ -43,9 +44,14 @@ const initialState = {
 const CreateGroup = ({ handleClose }) => {
   const [addGroup] = useAddGroupMutation()
   const { data: citiesApi, isLoading: isLoadingCities } = useGetCitiesQuery()
+  const [selectedCity, setSelectedCity] = useState('')
   const { data: activitiesApi, isLoading: isLoadingActivities } = useGetActivitiesQuery()
   const [cities, setCities] = useState([])
   const [activities, setActivities] = useState([])
+
+  const handleCityChange = (city) => {
+    setSelectedCity(city)
+  }
 
   useEffect(() => {
     if (!isLoadingCities) {
@@ -79,6 +85,8 @@ const CreateGroup = ({ handleClose }) => {
     }))
   }
 
+  console.log(selectedCity)
+
   //FIXME: when you click enter on empty input data is sent
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -101,13 +109,15 @@ const CreateGroup = ({ handleClose }) => {
       name: state.name, // git
       description: state.description, // git
       privacySetting: state.privacy,
-      cityId: selectedCityId,
+      cityId: selectedCity,
       activityId: selectedActivityId,
     }
 
     addGroup(data)
     handleClose()
   }
+
+  console.log(selectedCity)
 
   return (
     <Wrapper onSubmit={handleSubmit}>
@@ -131,7 +141,7 @@ const CreateGroup = ({ handleClose }) => {
           placeholder="Nazwa"
           required
         />
-        <SelectWithLabel
+        {/* <SelectWithLabel
           style={{ gridArea: 'select1' }}
           value={state.city}
           onChange={handleChange}
@@ -142,7 +152,8 @@ const CreateGroup = ({ handleClose }) => {
           required
         >
           {cities}
-        </SelectWithLabel>
+        </SelectWithLabel> */}
+        <CityAutocomplete style={{ gridArea: 'select1' }} onSelectCity={handleCityChange} />
         {/* <div style={{ gridArea: 'input2' }}> */}
         <InputWithLabel
           style={{ gridArea: 'input2' }}

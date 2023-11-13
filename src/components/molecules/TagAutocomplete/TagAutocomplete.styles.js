@@ -127,7 +127,7 @@ export const StyledReactTags = styled.div`
     overflow-y: auto;
     background: ${({ theme }) => theme.colors.inputBg};
     color: ${({ theme }) => theme.colors.inputFont};
-    border: 2cap solid ${({ theme }) => theme.colors.buttonBorder};
+    border: 2px solid ${({ theme }) => theme.colors.buttonBorder};
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -4px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
   }

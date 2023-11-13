@@ -26,7 +26,21 @@ export const groupsApi = createApi({
       }),
       invalidatesTags: ['Groups'],
     }),
+    getGroupsRecommended: builder.query({
+      query: () => 'groups/recommended',
+      providesTags: ['Groups'],
+    }),
+    getOwnedGroups: builder.query({
+      query: () => 'groups/owned',
+      providesTags: ['Groups'],
+    }),
   }),
 })
 
-export const { useGetGroupsQuery, useAddGroupMutation, useGetOneGroupQuery } = groupsApi
+export const {
+  useGetGroupsQuery,
+  useAddGroupMutation,
+  useGetOneGroupQuery,
+  useGetGroupsRecommendedQuery,
+  useGetOwnedGroupsQuery,
+} = groupsApi

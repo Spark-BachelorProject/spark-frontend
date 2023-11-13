@@ -6,19 +6,22 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 
 import { Wrapper } from './SocialItem.styles'
 
-export const SocialItem = ({ TitleText, ActivityName, Members, Comment, WeeklyPostCount }) => {
+export const SocialItem = (props) => {
+  const { name, activity, members, description } = props
+
+  const WeeklyPostCount = 5
   return (
     <Wrapper>
-      <Title isBold>{TitleText}</Title>
+      <Title isBold>{name}</Title>
       <div>
         <Text isBig isBold>
-          {ActivityName}
+          {activity?.name}
         </Text>
         <Dot />
-        {Comment ? (
-          <Text>{Comment}</Text>
-        ) : Members ? (
-          <Text>{Members} członków</Text>
+        {description ? (
+          <Text>{description}</Text>
+        ) : members ? (
+          <Text>{members.length} członków</Text>
         ) : (
           <Text>{WeeklyPostCount} postów tygodniowo</Text>
         )}

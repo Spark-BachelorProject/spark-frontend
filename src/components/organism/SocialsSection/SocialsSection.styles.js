@@ -25,7 +25,7 @@ export const Wrapper = styled.section`
     background-color: ${({ theme }) => theme.colors.darkDivider};
   }
 
-  & > span {
+  /* & > span {
     cursor: pointer;
     margin-top: 15px;
     font-weight: 600;
@@ -36,5 +36,5 @@ export const Wrapper = styled.section`
   & > span:hover {
     color: ${({ theme }) => theme.colors.textHeader};
     transition: 100ms ease-in-out;
-  }
+  } */
 `

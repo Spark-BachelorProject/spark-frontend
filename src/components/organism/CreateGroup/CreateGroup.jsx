@@ -7,6 +7,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import { CityAutocomplete } from '@/components/molecules/CityAutocomplete/CityAutocomplete'
 import InputWithLabel from '@/components/molecules/InputWithLabel/InputWithLabel'
 import SelectWithLabel from '@/components/molecules/SelectWithLabel/SelectWithLabel'
+import { getUserCity } from '@/helpers/getUserCity'
 import { useGetActivitiesQuery } from '@/store/api/activities'
 import { useGetCitiesQuery } from '@/store/api/cities'
 import { useAddGroupMutation } from '@/store/api/groups'
@@ -47,11 +48,16 @@ const CreateGroup = ({ handleClose }) => {
   const [selectedCity, setSelectedCity] = useState('')
   const { data: activitiesApi, isLoading: isLoadingActivities } = useGetActivitiesQuery()
   const [cities, setCities] = useState([])
+  const [geolocatedCity, setGeolocatedCity] = useState('')
   const [activities, setActivities] = useState([])
 
   const handleCityChange = (city) => {
     setSelectedCity(city)
   }
+
+  useEffect(() => {
+    getUserCity().then((city) => setGeolocatedCity(city))
+  }, [])
 
   useEffect(() => {
     if (!isLoadingCities) {
@@ -64,6 +70,7 @@ const CreateGroup = ({ handleClose }) => {
       initialState.city = citiesWithValue[0].value
     }
   }, [citiesApi, isLoadingCities])
+
   useEffect(() => {
     if (!isLoadingActivities) {
       const activitiesWithValue = activitiesApi.map((activity) => ({
@@ -116,8 +123,6 @@ const CreateGroup = ({ handleClose }) => {
     addGroup(data)
     handleClose()
   }
-
-  console.log(selectedCity)
 
   return (
     <Wrapper onSubmit={handleSubmit}>

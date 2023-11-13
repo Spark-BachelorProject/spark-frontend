@@ -18,7 +18,7 @@ export const CityAutocomplete = ({ onSelectCity }) => {
       new OpenStreetMapProvider({
         params: {
           countrycodes: 'pl',
-          acceptLanguage: 'pl',
+          'accept-language': 'pl',
           addressdetails: 10,
         },
       }),
@@ -49,12 +49,6 @@ export const CityAutocomplete = ({ onSelectCity }) => {
         result.raw.address.village ||
         result.raw.address.administrative
 
-      //OpenStreetMapProvider returns Warszawa as Warsaw for some reason
-      if (city === 'Warsaw') {
-        city = 'Warszawa'
-      } else if (city === 'Gdansk') {
-        city = 'Gdańsk'
-      }
       onSelectCity(city)
       setSelectedPlace(city)
       setShowSuggestions(false)

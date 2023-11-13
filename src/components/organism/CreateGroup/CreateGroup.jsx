@@ -101,7 +101,7 @@ const CreateGroup = ({ handleClose }) => {
       name: state.name,
       description: state.description,
       privacySetting: state.privacy,
-      cityId: selectedCity,
+      city: selectedCity,
       activityId: selectedActivityId,
     }
 

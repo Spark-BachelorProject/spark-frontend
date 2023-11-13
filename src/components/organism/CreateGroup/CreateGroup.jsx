@@ -7,9 +7,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import { CityAutocomplete } from '@/components/molecules/CityAutocomplete/CityAutocomplete'
 import InputWithLabel from '@/components/molecules/InputWithLabel/InputWithLabel'
 import SelectWithLabel from '@/components/molecules/SelectWithLabel/SelectWithLabel'
-import { getUserCity } from '@/helpers/getUserCity'
 import { useGetActivitiesQuery } from '@/store/api/activities'
-import { useGetCitiesQuery } from '@/store/api/cities'
 import { useAddGroupMutation } from '@/store/api/groups'
 
 import {
@@ -32,6 +30,10 @@ const PRIVACYSETTINGS = [
     value: 'PRIVATE',
     text: 'Prywatna',
   },
+  {
+    value: 'SECRET',
+    text: 'Tajna',
+  },
 ]
 
 const initialState = {
@@ -44,10 +46,8 @@ const initialState = {
 
 const CreateGroup = ({ handleClose }) => {
   const [addGroup] = useAddGroupMutation()
-  const { data: citiesApi, isLoading: isLoadingCities } = useGetCitiesQuery()
   const [selectedCity, setSelectedCity] = useState('')
   const { data: activitiesApi, isLoading: isLoadingActivities } = useGetActivitiesQuery()
-  const [cities, setCities] = useState([])
   const [geolocatedCity, setGeolocatedCity] = useState('')
   const [activities, setActivities] = useState([])
 
@@ -55,21 +55,9 @@ const CreateGroup = ({ handleClose }) => {
     setSelectedCity(city)
   }
 
-  useEffect(() => {
-    getUserCity().then((city) => setGeolocatedCity(city))
-  }, [])
-
-  useEffect(() => {
-    if (!isLoadingCities) {
-      const citiesWithValue = citiesApi.map((city) => ({
-        ...city,
-        value: city.name,
-      }))
-
-      setCities(citiesWithValue)
-      initialState.city = citiesWithValue[0].value
-    }
-  }, [citiesApi, isLoadingCities])
+  // useEffect(() => {
+  //   getUserCity().then((city) => setGeolocatedCity(city))
+  // }, [])
 
   useEffect(() => {
     if (!isLoadingActivities) {
@@ -92,15 +80,13 @@ const CreateGroup = ({ handleClose }) => {
     }))
   }
 
-  console.log(selectedCity)
-
   //FIXME: when you click enter on empty input data is sent
   const handleSubmit = (e) => {
     e.preventDefault()
 
     if (
       !state.name.trim() ||
-      !state.city.trim() ||
+      !selectedCity ||
       !state.description.trim() ||
       !state.activity.trim() ||
       !state.privacy.trim()
@@ -109,12 +95,11 @@ const CreateGroup = ({ handleClose }) => {
       return
     }
 
-    const selectedCityId = citiesApi.find((city) => city.name === state.city).id
     const selectedActivityId = activitiesApi.find((activity) => activity.name === state.activity).id
 
     const data = {
-      name: state.name, // git
-      description: state.description, // git
+      name: state.name,
+      description: state.description,
       privacySetting: state.privacy,
       cityId: selectedCity,
       activityId: selectedActivityId,
@@ -146,20 +131,8 @@ const CreateGroup = ({ handleClose }) => {
           placeholder="Nazwa"
           required
         />
-        {/* <SelectWithLabel
-          style={{ gridArea: 'select1' }}
-          value={state.city}
-          onChange={handleChange}
-          labelText="Miasto"
-          name="city"
-          id="city"
-          selected="Miasto"
-          required
-        >
-          {cities}
-        </SelectWithLabel> */}
+
         <CityAutocomplete style={{ gridArea: 'select1' }} onSelectCity={handleCityChange} />
-        {/* <div style={{ gridArea: 'input2' }}> */}
         <InputWithLabel
           style={{ gridArea: 'input2' }}
           value={state.description}
@@ -170,7 +143,6 @@ const CreateGroup = ({ handleClose }) => {
           placeholder="Opis"
           required
         />
-        {/* </div> */}
 
         <SelectWithLabel
           style={{ gridArea: 'select2' }}
@@ -194,31 +166,6 @@ const CreateGroup = ({ handleClose }) => {
         >
           {PRIVACYSETTINGS}
         </SelectWithLabel>
-
-        {/* <Input
-          style={{ gridArea: 'input1' }}
-          placeholder="Nazwa"
-          maxLength="100"
-          name="name"
-          required
-        />
-        <Select style={{ gridArea: 'select1' }} name="citySelect" id="citySelect">
-          {cities}
-        </Select> */}
-
-        {/* <Input
-          style={{ gridArea: 'input2' }}
-          placeholder="Opis"
-          maxLength="150"
-          name="description"
-          required
-        /> */}
-        {/* <Select style={{ gridArea: 'select2' }} name="activitySelect" id="activitySelect">
-          {activity}
-        </Select>
-        <Select style={{ gridArea: 'select3' }} name="visibilitySelect" id="visibilitySelect">
-          {visibility}
-        </Select> */}
       </InputsWrapper>
       <FooterWrapper>
         {/* TODO: handle invite friends */}

@@ -36,7 +36,7 @@ export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved, isMarked
   }, [center])
 
   return (
-    <MapContainer center={center} style={{ height: '100%' }} zoom={15} zoomControl={false}>
+    <MapContainer center={center} style={{ height: '100%' }} zoom={15} zoomControl={true}>
       <MapUpdater center={markerPosition} isPlaceSelected={isPlaceSelected} />
       <TileLayer url="https://{s}.tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=aSetRCOQl0G3zH75uVIo4ZLmnMUgiP4uy5ss8IrkciB6DUwX8HUzf3he3SBU7Ppi" />
       {isPlaceSelected && (

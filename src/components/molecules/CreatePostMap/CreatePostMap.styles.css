@@ -2,3 +2,8 @@
   z-index: 10;
   border-radius: 6px;
 }
+
+.leaflet-control-zoom {
+  scale: 0.7;
+  display: flex;
+}

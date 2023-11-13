@@ -10,7 +10,7 @@ import { Suggestion, SuggestionWrapper, Wrapper } from './PlaceAutocomplete.styl
 const provider = new OpenStreetMapProvider({
   params: {
     countrycodes: 'pl',
-    acceptLanguage: 'pl',
+    'accept-language': 'pl',
     addressdetails: 10,
   },
 })

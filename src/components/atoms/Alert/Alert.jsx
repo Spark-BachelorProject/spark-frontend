@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { ReactComponent as UsersIcon } from '@/assets/icons/user-check.svg'
 
 import { Wrapper } from './Alert.styles'

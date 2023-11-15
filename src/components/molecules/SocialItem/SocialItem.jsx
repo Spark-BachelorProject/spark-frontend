@@ -1,15 +1,11 @@
-import React from 'react'
-
-import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 
 import { Wrapper } from './SocialItem.styles'
 
 export const SocialItem = (props) => {
-  const { name, activity, members, description, isWithoutTitle, average } = props
+  const { name, activity, isWithoutTitle, average } = props
 
-  const WeeklyPostCount = 5
   return (
     <Wrapper>
       {isWithoutTitle ? null : <Title isBold>{name}</Title>}
@@ -19,15 +15,6 @@ export const SocialItem = (props) => {
         </Text>
 
         <Text>{average}</Text>
-
-        {/* <Dot />
-        {description ? (
-          <Text>{description}</Text>
-        ) : members ? (
-          <Text>{members.length} członków</Text>
-        ) : (
-          <Text>{WeeklyPostCount} postów tygodniowo</Text>
-        )} */}
       </div>
     </Wrapper>
   )

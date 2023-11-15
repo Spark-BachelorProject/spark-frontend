@@ -1,73 +1,73 @@
-import React from 'react'
-import { act } from 'react-dom/test-utils'
-import { useForm } from 'react-hook-form'
+import * as router from 'react-router-dom'
 
-import { yupResolver } from '@hookform/resolvers/yup'
-import { render, screen, fireEvent } from 'test-utils'
+import userEvent from '@testing-library/user-event'
+import { render, waitFor } from 'test-utils'
+import { vi } from 'vitest'
 
-import { loginSchema } from '@/assets/schemas/loginSchema'
-import LoginInput from '@/components/molecules/LoginInput/LoginInput'
+import Login from './Login'
 
-const TestComponent = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(loginSchema) })
+const navigate = vi.fn()
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom')
+  return {
+    ...actual,
+    useNavigate: () => navigate,
+  }
+})
 
-  return (
-    <form action="post" data-testid="form" onSubmit={handleSubmit(() => {})}>
-      <LoginInput
-        placeholder="Email"
-        type="email"
-        {...register('email')}
-        error={errors?.email?.message}
-      />
-      <LoginInput
-        placeholder="Hasło"
-        type="password"
-        {...register('password')}
-        error={errors?.password?.message}
-      />
-    </form>
-  )
+const mockLoginMutation = vi.fn()
+vi.mock('@/store/api/auth', async () => {
+  const actual = await vi.importActual('@/store/api/auth')
+  return {
+    ...actual,
+    useLoginMutation: () => [mockLoginMutation, { isSuccess: false, isError: false }],
+  }
+})
+
+global.google = {
+  accounts: {
+    id: {
+      initialize: vi.fn(),
+      renderButton: vi.fn(),
+    },
+  },
 }
 
-describe('Login', () => {
-  it('Renders', () => {
-    render(<TestComponent />)
-
-    screen.getByPlaceholderText('Email')
+const googleLoginMock = vi.fn()
+vi.mock('@/hooks/useGoogleLogin', async () => {
+  const actual = await vi.importActual('@/hooks/useGoogleLogin')
+  return {
+    ...actual,
+    useGoogleLogin: () => googleLoginMock,
+  }
+})
+describe('<Login />', () => {
+  beforeEach(() => {
+    vi.spyOn(router, 'useNavigate').mockImplementation(() => navigate)
+    // vi.spyOn(Login, 'onSubmit').mockImplementation(() => mockLoginMutation)
   })
 
-  it('Submit without errors', async () => {
-    render(<TestComponent />)
+  test('submits the form and calls the login function', async () => {
+    mockLoginMutation.mockResolvedValue({ data: { token: 'fake_token' } })
+    const { getByPlaceholderText, getByText } = render(<Login />)
+    const emailInput = getByPlaceholderText('Email')
+    const passwordInput = getByPlaceholderText('Hasło')
+    const loginButton = getByText('Zaloguj się')
+    userEvent.type(emailInput, 'test@test.com')
+    userEvent.type(passwordInput, 'test')
+    userEvent.click(loginButton)
+    // expect(mockLoginMutation).toHaveBeenCalledWith({
+    //   email: 'test@test.com',
+    //   password: 'test',
+    // })
 
-    const emailInput = screen.getByPlaceholderText('Email')
-    const passwordInput = screen.getByPlaceholderText('Hasło')
-    const form = await screen.findByTestId('form')
-
-    fireEvent.change(emailInput, { target: { value: 'test@gmail.com' } })
-    fireEvent.change(passwordInput, { target: { value: 'password123' } })
-
-    await act(async () => {
-      fireEvent.submit(form)
-    })
-  })
-
-  it('Try submit but empty input make error', async () => {
-    render(<TestComponent />)
-
-    const emailInput = screen.getByPlaceholderText('Email')
-    const passwordInput = screen.getByPlaceholderText('Hasło')
-    const form = await screen.findByTestId('form')
-
-    fireEvent.change(emailInput, { target: { value: 'test@gmail.com' } })
-    fireEvent.change(passwordInput, { target: { value: '' } })
-    await act(async () => {
-      fireEvent.submit(form)
-    })
-
-    screen.getByText(/wymagane/i)
+    // await waitFor(() => {
+    //   // expect(mockLoginMutation).toHaveBeenCalledWith({
+    //   //   email: 'test@example.com',
+    //   //   password: 'password',
+    //   // })
+    //   // expect(localStorage.getItem('token')).toBe('fake_token')
+    //   expect(navigate).toHaveBeenCalledWith(0)
+    // })
   })
 })

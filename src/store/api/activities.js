@@ -12,7 +12,10 @@ export const activitiesApi = createApi({
     getActivities: builder.query({
       query: () => 'activities',
     }),
+    getRecommendedActivities: builder.query({
+      query: () => 'activities/recommended',
+    }),
   }),
 })
 
-export const { useGetActivitiesQuery } = activitiesApi
+export const { useGetActivitiesQuery, useGetRecommendedActivitiesQuery } = activitiesApi

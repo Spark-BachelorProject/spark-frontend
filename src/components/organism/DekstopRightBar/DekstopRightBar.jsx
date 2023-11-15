@@ -4,6 +4,7 @@ import Loader from '@/components/atoms/Loader/Loader'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { PersonListItem } from '@/components/molecules/PersonListItem/PersonListItem'
 import { SocialItem } from '@/components/molecules/SocialItem/SocialItem'
+import { useGetRecommendedActivitiesQuery } from '@/store/api/activities'
 import { useGetGroupsRecommendedQuery } from '@/store/api/groups'
 import { useGetUserFriendsQuery } from '@/store/api/user'
 
@@ -23,6 +24,14 @@ export const DekstopRightBar = () => {
     isSuccess: isSuccessGroupsRecommended,
   } = useGetGroupsRecommendedQuery()
 
+  const {
+    data: recommendedActivities,
+    isLoading: isLoadingRecommendedActivities,
+    isSuccess: isSuccessRecommendedActivities,
+  } = useGetRecommendedActivitiesQuery()
+
+  console.log(recommendedActivities)
+
   return (
     <Wrapper>
       <Container>
@@ -41,8 +50,18 @@ export const DekstopRightBar = () => {
         <StyledTitle isBig isBold>
           Sporty dla Ciebie
         </StyledTitle>
-        <StyledSocialItem ActivityName="Tenis" WeeklyPostCount={7} />
-        <SocialItem ActivityName="Squash" WeeklyPostCount={6} />
+        {isLoadingRecommendedActivities ? <Loader isCentered /> : null}
+        {!isLoadingRecommendedActivities &&
+          isSuccessRecommendedActivities &&
+          !recommendedActivities.length && <Text>Nie ma aktywności do wyświetlenia</Text>}
+        {!isLoadingRecommendedActivities &&
+          isSuccessRecommendedActivities &&
+          recommendedActivities.map((activity) => (
+            <StyledSocialItem key={activity.id} {...activity} />
+          ))}
+
+        {/* <StyledSocialItem ActivityName="Tenis" WeeklyPostCount={7} /> */}
+        {/* <SocialItem ActivityName="Squash" WeeklyPostCount={6} /> */}
       </Container>
       <StyledContainer>
         <StyledTitle isBig isBold>

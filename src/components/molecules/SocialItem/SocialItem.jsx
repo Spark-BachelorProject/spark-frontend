@@ -7,7 +7,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import { Wrapper } from './SocialItem.styles'
 
 export const SocialItem = (props) => {
-  const { name, activity, members, description, isWithoutTitle } = props
+  const { name, activity, members, description, isWithoutTitle, average } = props
 
   const WeeklyPostCount = 5
   return (
@@ -17,14 +17,17 @@ export const SocialItem = (props) => {
         <Text isBig isBold>
           {activity?.name}
         </Text>
-        <Dot />
+
+        <Text>{average}</Text>
+
+        {/* <Dot />
         {description ? (
           <Text>{description}</Text>
         ) : members ? (
           <Text>{members.length} członków</Text>
         ) : (
           <Text>{WeeklyPostCount} postów tygodniowo</Text>
-        )}
+        )} */}
       </div>
     </Wrapper>
   )

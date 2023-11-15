@@ -1,19 +1,13 @@
 import dayjs from 'dayjs'
 
-import {
-  isToday,
-  formatDate,
-  formatTimeHHMM,
-  formatTimeAndDateToUnix,
-  formatTimeAgo,
-} from './dateAndTime'
+import { isToday, formatDate, formatTimeHHMM, formatTimeAgo } from './dateAndTime'
 
 describe('formatTimeAgo', () => {
   test.each([
     [dayjs().subtract(5, 'minute').valueOf(), '5 min temu'],
     [dayjs().subtract(2, 'hour').valueOf(), '2 godziny temu'],
     [dayjs().subtract(3, 'day').valueOf(), '3 dni temu'],
-    [dayjs().subtract(7, 'day').valueOf(), dayjs().subtract(7, 'day').format('DD.MM.YYYY, HH:mm')],
+    [dayjs().subtract(7, 'day').valueOf(), dayjs().subtract(7, 'day').format('D.MM.YYYY, HH:mm')],
   ])('returns "%s" when the timestamp is %s', (timestamp, expected) => {
     const result = formatTimeAgo(timestamp)
     expect(result).toBe(expected)
@@ -54,18 +48,6 @@ describe('formatDate', () => {
     ['2029-10-17', 'Środa, 17 października 2029'],
   ])('returns "%s" when the date string is %s', (dateString, expected) => {
     const result = formatDate(dateString)
-    expect(result).toBe(expected)
-  })
-})
-
-describe('formatTimeAndDateToUnix', () => {
-  test.each([
-    ['2023-10-10', '10:00', dayjs('2023-10-10 10:00').unix() * 1000],
-    ['2023-10-10', '15:30', dayjs('2023-10-10 15:30').unix() * 1000],
-    ['2023-10-10', '05:05', dayjs('2023-10-10 05:05').unix() * 1000],
-    ['2023-10-10', '00:00', dayjs('2023-10-10 00:00').unix() * 1000],
-  ])('returns %s when the date is %s and the time is %s', (date, time, expected) => {
-    const result = formatTimeAndDateToUnix(date, time)
     expect(result).toBe(expected)
   })
 })

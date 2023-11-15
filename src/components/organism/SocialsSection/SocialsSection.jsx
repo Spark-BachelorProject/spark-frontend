@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Loader from '@/components/atoms/Loader/Loader'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
@@ -17,11 +15,7 @@ const SocialsSection = () => {
         Twoje Grupy
       </Title>
       {isLoading ? <Loader isCentered /> : null}
-      {!isLoading && isSuccess && !ownedGroups.length && (
-        <Text isBig isBold>
-          Nie masz żadnych grup
-        </Text>
-      )}
+      {!isLoading && isSuccess && !ownedGroups.length && <Text>Nie należysz do żadnej grupy</Text>}
       {!isLoading &&
         isSuccess &&
         ownedGroups.map((group) => <SocialItem key={group.id} {...group} />)}

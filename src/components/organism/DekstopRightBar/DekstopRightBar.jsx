@@ -1,15 +1,13 @@
-import React from 'react'
-
 import Loader from '@/components/atoms/Loader/Loader'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { PersonListItem } from '@/components/molecules/PersonListItem/PersonListItem'
+import { RecomendedActivity } from '@/components/molecules/RecomendedActivity/RecomendedActivity'
 import { SocialItem } from '@/components/molecules/SocialItem/SocialItem'
 import { useGetRecommendedActivitiesQuery } from '@/store/api/activities'
 import { useGetGroupsRecommendedQuery } from '@/store/api/groups'
 import { useGetUserFriendsQuery } from '@/store/api/user'
 
-import { Wrapper } from './DekstopRightBar.styles'
-import { Container, StyledContainer, StyledTitle, StyledSocialItem } from './DekstopRightBar.styles'
+import { Container, StyledContainer, StyledTitle, Wrapper } from './DekstopRightBar.styles'
 
 // TODO: wait for API to Sporty dla Ciebie and check styles
 export const DekstopRightBar = () => {
@@ -30,8 +28,6 @@ export const DekstopRightBar = () => {
     isSuccess: isSuccessRecommendedActivities,
   } = useGetRecommendedActivitiesQuery()
 
-  console.log(recommendedActivities)
-
   return (
     <Wrapper>
       <Container>
@@ -51,13 +47,15 @@ export const DekstopRightBar = () => {
           Sporty dla Ciebie
         </StyledTitle>
         {isLoadingRecommendedActivities ? <Loader isCentered /> : null}
+
         {!isLoadingRecommendedActivities &&
           isSuccessRecommendedActivities &&
           !recommendedActivities.length && <Text>Nie ma aktywności do wyświetlenia</Text>}
+
         {!isLoadingRecommendedActivities &&
           isSuccessRecommendedActivities &&
           recommendedActivities.map((activity) => (
-            <StyledSocialItem key={activity.id} {...activity} />
+            <RecomendedActivity key={activity.id} {...activity} />
           ))}
 
         {/* <StyledSocialItem ActivityName="Tenis" WeeklyPostCount={7} /> */}

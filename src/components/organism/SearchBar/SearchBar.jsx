@@ -19,10 +19,12 @@ function getPostsAndGroupsFilter(inputValue) {
   const lowerCasedInputValue = inputValue.toLowerCase()
 
   return function postAndGroupFilter(item) {
+    const itemDescription = item.description?.toLowerCase() || ''
+    const itemName = item.name?.toLowerCase() || ''
     return (
       !inputValue ||
-      item?.description.toLowerCase().includes(lowerCasedInputValue) ||
-      item?.name?.toLowerCase()?.includes(lowerCasedInputValue)
+      itemDescription.includes(lowerCasedInputValue) ||
+      itemName.includes(lowerCasedInputValue)
     )
   }
 }
@@ -100,9 +102,7 @@ const SearchBar = () => {
           </React.Fragment>
         ))}
         {isOpen && !items.length && (
-          <SearchResultsItem hasCursor>
-            There are nothing with this name in posts or groups
-          </SearchResultsItem>
+          <SearchResultsItem hasCursor>Nie ma postów ani grup o takiej nazwie</SearchResultsItem>
         )}
       </SearchResults>
     </Wrapper>

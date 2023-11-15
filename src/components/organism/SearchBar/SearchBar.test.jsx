@@ -1,107 +1,177 @@
-import React from 'react'
-import { Provider } from 'react-redux'
+import * as router from 'react-router-dom'
 
 import userEvent from '@testing-library/user-event'
-import configureStore from 'redux-mock-store'
-import { render, screen, waitFor } from 'test-utils'
+import { render, screen } from 'test-utils'
+import { vi } from 'vitest'
+
+import { useGetGroupsQuery } from '@/store/api/groups'
+import { useGetPostsQuery } from '@/store/api/posts'
 
 import SearchBar from './SearchBar'
 
-const mockStore = configureStore([])
+vi.mock('@/store/api/posts', async () => {
+  const actual = await vi.importActual('@/store/api/posts')
+  return {
+    ...actual,
+    useGetPostsQuery: vi.fn(),
+  }
+})
 
-const posts = [
+vi.mock('@/store/api/groups', async () => {
+  const actual = await vi.importActual('@/store/api/groups')
+  return {
+    ...actual,
+    useGetGroupsQuery: vi.fn(),
+  }
+})
+
+const navigate = vi.fn()
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom')
+  return {
+    ...actual,
+    useNavigate: () => navigate,
+  }
+})
+
+const examplePosts = [
   {
     id: 1,
-    content: 'I am a post',
-    visibilitySelect: 'Public',
-    activitySelect: 'Activity',
-    placesSelect: 'Place',
-    date: '2021-01-01',
-    time: '12:00',
-    tags: ['tag1', 'tag2'],
-    author: 'user1',
-    place: 'place1',
+    description: 'I am a post',
+    dateCreated: '2021-01-01',
   },
   {
     id: 2,
-    content: 'I am another post',
-    visibilitySelect: 'Public',
-    activitySelect: 'Activity',
-    placesSelect: 'Place',
-    date: '2021-01-02',
-    time: '13:00',
-    tags: ['tag1', 'tag3'],
-    author: 'user2',
-    place: 'place2',
+    description: 'I am another post',
+    dateCreated: '2021-01-01',
+  },
+]
+
+const exampleGroups = [
+  {
+    id: 1,
+    name: 'I am a group',
   },
   {
-    id: 3,
-    content: 'I am a third post',
-    visibilitySelect: 'Public',
-    activitySelect: 'Activity',
-    placesSelect: 'Place',
-    date: '2021-01-03',
-    time: '14:00',
-    tags: ['tag2', 'tag4'],
-    author: 'user3',
-    place: 'place3',
-  },
-  {
-    id: 4,
-    content: 'I am a fourth post',
-    visibilitySelect: 'Public',
-    activitySelect: 'Activity',
-    placesSelect: 'Place',
-    date: '2021-01-04',
-    time: '15:00',
-    tags: ['tag3', 'tag4'],
-    author: 'user1',
-    place: 'place4',
+    id: 2,
+    name: 'I am another group',
   },
 ]
 
 describe('<SearchBar />', () => {
   beforeEach(() => {
-    const initialState = {
-      posts: posts,
-    }
-
-    const store = mockStore(initialState)
-
-    render(
-      <Provider store={store}>
-        <SearchBar />
-      </Provider>
-    )
-
-    const searchInput = screen.getByPlaceholderText(/Szukaj/i)
-    userEvent.clear(searchInput)
+    useGetPostsQuery.mockReturnValue({ data: [], isLoading: false })
+    useGetGroupsQuery.mockReturnValue({ data: [], isLoading: false })
+    vi.spyOn(router, 'useNavigate').mockImplementation(() => navigate)
   })
 
-  it('Renders the search input', () => {
-    const searchInput = screen.getByPlaceholderText(/Szukaj/i)
-
-    expect(searchInput).toBeInTheDocument()
+  it('renders the search input', () => {
+    const { getByPlaceholderText } = render(<SearchBar />)
+    expect(getByPlaceholderText('Szukaj')).toBeInTheDocument()
   })
 
-  it('Displays message when there are no search results', async () => {
-    const searchInput = screen.getByPlaceholderText(/Szukaj/i)
-    userEvent.type(searchInput, 'i am not a post')
+  it('on focus shows posts and groups name', () => {
+    useGetPostsQuery.mockReturnValue({
+      data: examplePosts,
+      isLoading: false,
+    })
+    useGetGroupsQuery.mockReturnValue({
+      data: exampleGroups,
+      isLoading: false,
+    })
+    render(<SearchBar />)
 
-    await screen.findByText(/There are nothing with this title/i)
+    const searchInput = screen.getByPlaceholderText(/Szukaj/i)
+    userEvent.click(searchInput)
+
+    const postName1 = screen.getByText(/I am a post/i)
+    const postName2 = screen.getByText(/I am another post/i)
+    const groupName1 = screen.getByText(/I am a group/i)
+    const groupName2 = screen.getByText(/I am another group/i)
+
+    expect(postName1).toBeInTheDocument()
+    expect(postName2).toBeInTheDocument()
+    expect(groupName1).toBeInTheDocument()
+    expect(groupName2).toBeInTheDocument()
   })
 
-  it('Displays items when you start typing', async () => {
+  it('on typing shows less results', async () => {
+    useGetPostsQuery.mockReturnValue({
+      data: examplePosts,
+      isLoading: false,
+    })
+    useGetGroupsQuery.mockReturnValue({
+      data: exampleGroups,
+      isLoading: false,
+    })
+    render(<SearchBar />)
+
     const searchInput = screen.getByPlaceholderText(/Szukaj/i)
+    userEvent.type(searchInput, 'i am an')
 
-    userEvent.type(searchInput, 'i am')
+    expect(await screen.findByText(/I am another post/i)).toBeInTheDocument()
+    expect(await screen.findByText(/I am another group/i)).toBeInTheDocument()
+  })
 
-    await screen.findByText(/I am a post/i)
-    await screen.findByText(/I am another/i)
+  it('after click on post name navigates to post page', async () => {
+    useGetPostsQuery.mockReturnValue({
+      data: examplePosts,
+      isLoading: false,
+    })
+    useGetGroupsQuery.mockReturnValue({
+      data: exampleGroups,
+      isLoading: false,
+    })
 
-    userEvent.clear(searchInput)
+    render(<SearchBar />)
 
-    userEvent.type(searchInput, 'i am another')
-    await screen.findByText(/I am another/i)
+    const searchInput = screen.getByPlaceholderText(/Szukaj/i)
+    userEvent.click(searchInput)
+
+    const post1 = screen.getByText(/I am a post/i)
+
+    await userEvent.click(post1)
+
+    expect(navigate).toHaveBeenCalledWith('/posts/1')
+  })
+
+  it('after click on group name navigates to group page', async () => {
+    useGetPostsQuery.mockReturnValue({
+      data: examplePosts,
+      isLoading: false,
+    })
+    useGetGroupsQuery.mockReturnValue({
+      data: exampleGroups,
+      isLoading: false,
+    })
+
+    render(<SearchBar />)
+
+    const searchInput = screen.getByPlaceholderText(/Szukaj/i)
+    userEvent.click(searchInput)
+
+    const group1 = screen.getByText(/I am a group/i)
+
+    await userEvent.click(group1)
+
+    expect(navigate).toHaveBeenCalledWith('/groups/1')
+  })
+
+  it('when there is no results shows no results message', async () => {
+    useGetPostsQuery.mockReturnValue({
+      data: [],
+      isLoading: false,
+    })
+    useGetGroupsQuery.mockReturnValue({
+      data: [],
+      isLoading: false,
+    })
+
+    render(<SearchBar />)
+
+    const searchInput = screen.getByPlaceholderText(/Szukaj/i)
+    userEvent.click(searchInput)
+
+    expect(await screen.findByText(/Nie ma postów ani grup o takiej nazwie/i)).toBeInTheDocument()
   })
 })

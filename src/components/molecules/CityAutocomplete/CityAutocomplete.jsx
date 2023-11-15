@@ -49,8 +49,13 @@ export const CityAutocomplete = ({ onSelectCity }) => {
         result.raw.address.village ||
         result.raw.address.administrative
 
-      onSelectCity(city)
-      setSelectedPlace(city)
+      if (!city) {
+        setSelectedPlace('')
+      } else {
+        onSelectCity(city)
+        setSelectedPlace(city)
+      }
+
       setShowSuggestions(false)
     },
     [onSelectCity]

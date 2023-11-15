@@ -7,12 +7,12 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import { Wrapper } from './SocialItem.styles'
 
 export const SocialItem = (props) => {
-  const { name, activity, members, description } = props
+  const { name, activity, members, description, isWithoutTitle } = props
 
   const WeeklyPostCount = 5
   return (
     <Wrapper>
-      <Title isBold>{name}</Title>
+      {isWithoutTitle ? null : <Title isBold>{name}</Title>}
       <div>
         <Text isBig isBold>
           {activity?.name}

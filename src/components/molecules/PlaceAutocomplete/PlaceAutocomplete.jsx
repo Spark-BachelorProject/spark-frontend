@@ -37,6 +37,19 @@ export const PlaceAutocomplete = ({
     }
   }, [SeletedPlace])
 
+  function formatPlace(name, street, number, area, cityName) {
+    let formattedPlace = ''
+
+    if (name) {
+      formattedPlace =
+        street && number ? `${name}, ${street} ${area}, ${cityName}` : `${name}, ${cityName}`
+    } else {
+      formattedPlace = `${street} ${area}, ${cityName}`
+    }
+
+    return formattedPlace
+  }
+
   useEffect(() => {
     if (searchTimeout.current) clearTimeout(searchTimeout.current)
     searchTimeout.current = setTimeout(search, 500)
@@ -70,6 +83,7 @@ export const PlaceAutocomplete = ({
           const formattedAddress = `${name ? name + ', ' : ''}${
             address.road ? address.road : ''
           } ${number}, ${address.city || address.town || address.village}`
+
           setSeletedPlace(formattedAddress)
           onSelectAdress(formattedAddress)
           onSelectCity(address.city || address.town || address.village)
@@ -109,6 +123,8 @@ export const PlaceAutocomplete = ({
         suburb = '',
       } = result.raw.address
 
+      console.log(result)
+
       const cityName = city || town || village
       const street = road || pedestrian
       const number = house_number || postcode || ''
@@ -116,17 +132,23 @@ export const PlaceAutocomplete = ({
       //created so that the places without a number or postcodes show suburb instead
       const area = number ? number : suburb
       const name =
-        place || leisure || building || amenity || natural || landuse || shop || square || ''
+        place ||
+        leisure ||
+        building ||
+        amenity ||
+        natural ||
+        landuse ||
+        shop ||
+        square ||
+        landuse ||
+        ''
 
+      console.log(name)
       let formattedPlace = ''
 
       //check if the selected place isnt city
-      if ((street && number) || area) {
-        if (name) {
-          formattedPlace = `${name}, ${street} ${area}, ${cityName}`
-        } else {
-          formattedPlace = `${street} ${area}, ${cityName}`
-        }
+      if ((street && number) || area || name) {
+        formattedPlace = formatPlace(name, street, number, area, cityName)
         isPlaceSelected(true)
       } else {
         isPlaceSelected(false)

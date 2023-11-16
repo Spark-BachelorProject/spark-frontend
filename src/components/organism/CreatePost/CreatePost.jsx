@@ -156,7 +156,7 @@ const CreatePost = ({ handleClose }) => {
       <InputsWrapper>
         <StyledInput1
           style={{ gridArea: 'input1' }}
-          placeholder="Tytuł spotkania"
+          placeholder="Dodaj opis spotkania"
           maxLength="120"
           name="content"
           value={state.content}

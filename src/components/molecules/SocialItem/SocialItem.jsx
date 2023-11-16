@@ -10,9 +10,7 @@ export const SocialItem = (props) => {
     <Wrapper>
       {isWithoutTitle ? null : <Title isBold>{name}</Title>}
       <div>
-        <Text isBig isBold>
-          {activity?.name}
-        </Text>
+        <Text isBig>{activity?.name}</Text>
 
         <Text>{average}</Text>
       </div>

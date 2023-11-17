@@ -62,6 +62,7 @@ const CreatePost = ({ handleClose }) => {
 
   useEffect(() => {
     if (!isLoading) {
+      if (activitiesApi.length === 0) return
       const activitiesApiWithValue = activitiesApi.map((activity) => ({
         ...activity,
         value: activity.name,

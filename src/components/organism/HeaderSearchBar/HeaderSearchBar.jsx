@@ -112,7 +112,7 @@ const HeaderSearchBar = () => {
       <InnerWrapper>
         <LogoAndInputWrapper>
           <Link to="/">
-            <StyledLogoIcon />
+            <StyledLogoIcon data-testid="logo" />
           </Link>
           <SearchBar />
         </LogoAndInputWrapper>
@@ -122,6 +122,7 @@ const HeaderSearchBar = () => {
             onClick={(e) => extendedHandleOpenNotificationsPopup(e)}
             onKeyDown={extendedHandleCloseNotificationsPopup}
             ref={notificationPopupOpenElementRef}
+            data-testid="notification-bell-wrapper"
           >
             <NotificationBell count="3" isRed hasCounter />
           </div>
@@ -131,6 +132,7 @@ const HeaderSearchBar = () => {
             onClick={(e) => extendedHandleOpenBookmarksPopup(e)}
             onKeyDown={extendedHandleCloseBookmarksPopup}
             ref={bookmarkPopupOpenElementRef}
+            data-testid="bookmarks-wrapper"
           >
             <BookmarkIcon />
             <Counter count="7" />
@@ -138,6 +140,7 @@ const HeaderSearchBar = () => {
           <IconBorder
             tabIndex="0"
             onClick={() => dispatch(toggle())}
+            data-testid="theme-wrapper"
             onKeyDown={handleKeyDownOnChangeTheme}
           >
             {colorsTheme === 'light' ? <MoonIcon /> : <SunIcon />}
@@ -147,6 +150,7 @@ const HeaderSearchBar = () => {
             onKeyDown={extendedHandleCloseProfilePopup}
             ref={profilePopupOpenElementRef}
             tabIndex={0}
+            data-testid="profile-wrapper"
           >
             <StyledThumbnail />
           </StyledIconBorder>

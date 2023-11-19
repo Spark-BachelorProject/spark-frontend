@@ -98,7 +98,7 @@ export const Dropdown = ({ setFilterOptions, filterOptions }) => {
           )}
 
           {filterOptions.start && (
-            <SecondaryButton onClick={handleResetFilters}>
+            <SecondaryButton onClick={handleResetFilters} data-testid="filter-button">
               {formatDate(filterOptions.start.split('T')[0])}
               {', '}
               {`${filterOptions.start.split('T')[1]} - ${filterOptions.end.split('T')[1]}`}{' '}

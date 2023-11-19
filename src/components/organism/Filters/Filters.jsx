@@ -64,6 +64,7 @@ const Filters = ({ handleClose, setFilterOptions }) => {
           <Input
             type="time"
             name="hourStart"
+            aria-label="hour-start"
             id="hourStart"
             value={state.hourStart}
             onChange={handleChange}
@@ -72,6 +73,7 @@ const Filters = ({ handleClose, setFilterOptions }) => {
           <Input
             type="time"
             name="hourEnd"
+            aria-label="hour-end"
             id="hourEnd"
             value={state.hourEnd}
             onChange={handleChange}

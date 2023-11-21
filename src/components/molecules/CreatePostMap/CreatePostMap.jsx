@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css'
 
 import { getIcon } from '@/components/pages/Map/customIcons'
 
+import { MarkerInstructionPopup } from '../MarkerInstructionPopup/MarkerInstructionPopup'
 import './CreatePostMap.styles.css'
 
 function MapUpdater({ center, isPlaceSelected }) {
@@ -23,11 +24,14 @@ function MapUpdater({ center, isPlaceSelected }) {
 
 export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved, isMarkedMoved }) => {
   const [markerPosition, setMarkerPosition] = useState(center)
+  const [hasMarkerMoved, setHasMarkerMoved] = useState(false)
 
   const updatePosition = useCallback((event) => {
     const newPosition = event.target.getLatLng()
     setMarkerPosition([newPosition.lat, newPosition.lng])
+    setHasMarkerMoved(true)
     onMarkerMoved([newPosition.lat, newPosition.lng])
+
     isMarkedMoved(true)
   }, [])
 
@@ -36,7 +40,14 @@ export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved, isMarked
   }, [center])
 
   return (
-    <MapContainer center={center} style={{ height: '100%' }} zoom={15} zoomControl={true}>
+    <MapContainer
+      center={center}
+      style={{
+        height: '100%',
+      }}
+      zoom={15}
+      zoomControl={true}
+    >
       <MapUpdater center={markerPosition} isPlaceSelected={isPlaceSelected} />
       <TileLayer url="https://{s}.tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=aSetRCOQl0G3zH75uVIo4ZLmnMUgiP4uy5ss8IrkciB6DUwX8HUzf3he3SBU7Ppi" />
       {isPlaceSelected && (
@@ -47,6 +58,7 @@ export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved, isMarked
           icon={getIcon('pin')}
         ></Marker>
       )}
+      {isPlaceSelected && !hasMarkerMoved && <MarkerInstructionPopup />}
     </MapContainer>
   )
 }

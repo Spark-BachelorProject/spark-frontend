@@ -28,11 +28,6 @@ export const Container = styled.div`
     padding-top: 0;
   }
 
-  //TODO: Decide what styling are we going here with
-
-  /* background-color: ${({ theme }) => theme.colors.secondaryBg}; */
-  /* border: 1px solid ${({ theme }) => theme.colors.postBorder}; */
-
   & > span {
     cursor: pointer;
     font-weight: 600;

@@ -8,11 +8,17 @@ export const userApi = createApi({
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   }),
+  tagTypes: ['User'],
   endpoints: (builder) => ({
     getUser: builder.query({
       query: () => 'user',
+      providesTags: ['User'],
+    }),
+    getUserFriends: builder.query({
+      query: () => 'user/friends',
+      providesTags: ['User'],
     }),
   }),
 })
 
-export const { useGetUserQuery } = userApi
+export const { useGetUserQuery, useGetUserFriendsQuery } = userApi

@@ -10,12 +10,12 @@ import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
 import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
 import { NotificationBell } from '@/components/molecules/NotificationBell/NotificationBell'
 import { BookmarkedContent } from '@/components/organism/BookmarkedContent/BookmarkedContent'
+import { NotificationsContent } from '@/components/organism/NotificationsContent/NotificationsContent'
+import { ProfileContent } from '@/components/organism/ProfileContent/ProfileContent'
 import SearchBar from '@/components/organism/SearchBar/SearchBar'
 import usePopup from '@/hooks/usePopup'
 import { toggle } from '@/store/theme/themeSlice'
 
-import { NotificationsContent } from '../NotificationsContent/NotificationsContent'
-import { ProfileContent } from '../ProfileContent/ProfileContent'
 import {
   Wrapper,
   InnerWrapper,

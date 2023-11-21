@@ -47,7 +47,7 @@ export const InputsWrapper = styled.div`
   display: grid;
   margin: 16px 0;
 
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 0.6fr 1fr 1fr;
   grid-template-rows: repeat(5, 1fr);
   gap: 16px;
   grid-template-areas:
@@ -64,15 +64,16 @@ export const InputsWrapper = styled.div`
     color: ${({ theme }) => theme.colors.inputFont};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakPoints.l}) {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(9, 1fr);
     grid-template-areas:
       'input1 input1'
       'select1 select1'
       'select2 select2'
       'input2 input2'
       'input3 input4'
+      'map map'
       'map map'
       'map map'
       'map map';

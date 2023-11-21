@@ -152,7 +152,13 @@ export const PlaceAutocomplete = ({
 
   return (
     <Wrapper>
-      <Input type="text" value={SeletedPlace} onChange={handleChange} placeholder="Podaj adres" />
+      <Input
+        type="text"
+        data-testid="input-map"
+        value={SeletedPlace}
+        onChange={handleChange}
+        placeholder="Podaj adres"
+      />
       {showSuggestions && (
         <SuggestionWrapper>
           {searchResults.map((result, index) => (

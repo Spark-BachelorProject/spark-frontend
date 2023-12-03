@@ -77,10 +77,11 @@ const CreatePost = ({ handleClose }) => {
   const [isPlaceSelected, setIsPlaceSelected] = useState(false)
   const [selectedCity, setSelectedCity] = useState(null)
   const [selectedAddress, setSelectedAddress] = useState(null)
-  const [selectedCoordinates, setSelectedCoordinates] = useState([
-    cities[0].cordinates.lat,
-    cities[0].cordinates.lng,
-  ])
+  const [selectedCoordinates, setSelectedCoordinates] = useState({
+    lat: cities[0].cordinates.lat,
+    lng: cities[0].cordinates.lng,
+  })
+
   const [isMarkerMoved, setIsMarkerMoved] = useState(false)
 
   const handleMarkerMoved = (moved) => {
@@ -126,8 +127,8 @@ const CreatePost = ({ handleClose }) => {
       location: {
         name: selectedAddress,
         city: selectedCity,
-        lng: selectedCoordinates[0],
-        lat: selectedCoordinates[1],
+        lng: selectedCoordinates.lng,
+        lat: selectedCoordinates.lat,
       },
       dateCreated: getCurrentTimeISOString(),
       dateStart: dateStart,

@@ -64,7 +64,7 @@ export const PlaceAutocomplete = ({
     if (coordinates && isMarkerMoved) {
       axios
         .get(
-          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${coordinates[0]}&lon=${coordinates[1]}`
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${coordinates.lat}&lon=${coordinates.lng}`
         )
         .then((response) => {
           const { address } = response.data
@@ -154,7 +154,10 @@ export const PlaceAutocomplete = ({
         isPlaceSelected(false)
       }
 
-      onSelectCoordinates([result.y, result.x])
+      onSelectCoordinates({
+        lat: result.y,
+        lng: result.x,
+      })
       onSelectAdress(formattedPlace)
       onSelectCity(cityName)
 

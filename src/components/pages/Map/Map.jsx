@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css'
 import Select from '@/components/atoms/Select/Select'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { MapPopup } from '@/components/organism/MapPopup/MapPopup'
+import { useGetPostsQuery } from '@/store/api/posts'
 
 import { Filters, MapLegend, MapLegendItem, OverlayRight, Wrapper } from './Map.styles'
 import './Map.styles.css'
@@ -22,6 +23,10 @@ const UpdateCenter = ({ center }) => {
 }
 
 export const Map = () => {
+  const { data: posts, isLoading } = useGetPostsQuery()
+
+  console.log(posts)
+
   const chosenCity = 'Lublin'
   const chosenCityCoordinates = cities.find((city) => city.name === chosenCity).cordinates
   const [center, setCenter] = useState([chosenCityCoordinates.lat, chosenCityCoordinates.lng])
@@ -61,6 +66,7 @@ export const Map = () => {
     const uniqueActivities = [...new Set(markers.map((marker) => marker.activity))]
     setActivitiesAddedToLegend(uniqueActivities)
   }, [])
+  console.log(selectedMarker, 'selectedMarker')
 
   return (
     <Wrapper>
@@ -83,18 +89,21 @@ export const Map = () => {
           maxClusterRadius={35}
           spiderfyOnMaxZoom={false}
         >
-          {markers
-            .filter((marker) => activitySelect === 'all' || marker.activity === activitySelect)
-            .map((marker, key) => (
-              <Marker
-                key={key}
-                position={[marker.cordinates.lat, marker.cordinates.lng]}
-                icon={getIcon(marker.activity)}
-                eventHandlers={{ click: () => onMarkerClick(marker) }}
-              ></Marker>
-            ))}
+          {!isLoading &&
+            posts
+              // .filter(
+              //   (marker) => activitySelect === 'all' || marker.activity.name === activitySelect
+              // )
+              .map((marker, key) => (
+                <Marker
+                  key={key}
+                  position={[marker.location?.latitude, marker.location?.longitude]}
+                  // icon={getIcon(marker?.activity?.name)}
+                  eventHandlers={{ click: () => onMarkerClick(marker) }}
+                />
+              ))}
         </MarkerClusterGroup>
-        {allowedGeoLocation && <Marker position={center} icon={getIcon('user')}></Marker>}
+        {allowedGeoLocation && <Marker position={center} icon={getIcon('user')} />}
         <UpdateCenter center={center} />
       </MapContainer>
 
@@ -138,13 +147,7 @@ export const Map = () => {
       {selectedMarker && showOverlay && (
         <MapPopup
           onCloseClick={onMapClick}
-          author={selectedMarker.author}
-          createdAt={selectedMarker.createdAt}
-          activity={selectedMarker.activity}
-          date={selectedMarker.date}
-          time={selectedMarker.time}
-          tags={selectedMarker.tags}
-          title={selectedMarker.title}
+          selectedMarker={selectedMarker}
         />
       )}
     </Wrapper>

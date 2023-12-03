@@ -57,3 +57,9 @@ export const Wrapper = styled.div`
 export const StyledHeader = styled(Header)`
   margin: 0;
 `
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -50px;
+`

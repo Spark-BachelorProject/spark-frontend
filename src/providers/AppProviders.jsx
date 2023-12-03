@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import StoreProvider from './StoreProvider'
 import ThemeProviderAndStyles from './ThemeProviderAndStyles'
 
+// git merge --edit
 const AppProviders = ({ children }) => {
   return (
     <StoreProvider>

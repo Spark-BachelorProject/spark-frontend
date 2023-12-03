@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router'
+
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
@@ -5,30 +7,38 @@ import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { Details } from '@/components/organism/Post/Post.styles'
+import { formatDate, formatTimeAgo, formatTimeHHMM } from '@/helpers/dateAndTime'
 
-import { CloseButton, StyledHeader, StyledTags, Time, Wrapper } from './MapPopup.styles'
+import {
+  ButtonWrapper,
+  CloseButton,
+  StyledHeader,
+  StyledTags,
+  Time,
+  Wrapper,
+} from './MapPopup.styles'
 
 export const MapPopup = ({
   onCloseClick,
-  author,
-  createdAt,
-  activity,
-  date,
-  time,
-  tags,
-  title,
+  selectedMarker: { id, creator, dateCreated, activity, dateStart, description, tags },
 }) => {
+  const navigate = useNavigate()
+
+  const handleOpenSinglePageClick = () => {
+    navigate(`/posts/${id}`)
+  }
+
   return (
     <Wrapper>
       <StyledHeader>
         <Thumbnail isBig />
         <Details>
           <div>
-            <b>{author} </b>
-            <Text>napisał(a) {createdAt} min temu</Text>
+            <b>{`${creator.firstName} ${creator.lastName}`} </b>
+            <Text>napisał(a) {formatTimeAgo(dateCreated)}</Text>
           </div>
           <div>
-            <Text>{activity}</Text>
+            <Text>{activity.name}</Text>
             <Dot />
             <GlobeIcon />
           </div>
@@ -37,14 +47,15 @@ export const MapPopup = ({
       <Time>
         <ClockIcon />
         <Text>
-          {date} o {time}
+          {formatDate(dateStart)} o {formatTimeHHMM(dateStart)}
         </Text>
       </Time>
-      <Text>{title}</Text>
+      <Text>{description}</Text>
       <StyledTags>{tags}</StyledTags>
-      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '-50px' }}>
-        <Button>Zobacz post</Button>
-      </div>
+
+      <ButtonWrapper>
+        <Button onClick={handleOpenSinglePageClick}>Zobacz post</Button>
+      </ButtonWrapper>
       <CloseButton onClick={onCloseClick}>×</CloseButton>
     </Wrapper>
   )

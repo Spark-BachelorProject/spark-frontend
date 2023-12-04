@@ -7,12 +7,12 @@ import 'leaflet/dist/leaflet.css'
 import Select from '@/components/atoms/Select/Select'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { MapPopup } from '@/components/organism/MapPopup/MapPopup'
+import { useGetActivitiesQuery } from '@/store/api/activities'
 import { useGetPostsQuery } from '@/store/api/posts'
 
 import { Filters, MapLegend, MapLegendItem, OverlayRight, Wrapper } from './Map.styles'
 import './Map.styles.css'
 import { getIcon, getIconUrl } from './customIcons'
-import { activities, cities, markers, translations } from './data'
 
 const UpdateCenter = ({ center }) => {
   const map = useMap()
@@ -22,33 +22,60 @@ const UpdateCenter = ({ center }) => {
   return null
 }
 
+const LublinCoordinates = {
+  lat: 51.246452,
+  lng: 22.568445,
+}
+
+const initialState = {
+  activity: '',
+  sort: '',
+}
+
+const firstData = {
+  value: 'Wszystkie',
+  text: 'Wszystkie',
+  name: 'Wszystkie',
+  id: 0,
+}
+//TODO: select one marker when there are no results
 export const Map = () => {
-  const { data: posts, isLoading } = useGetPostsQuery()
-
-  console.log(posts)
-
-  const chosenCity = 'Lublin'
-  const chosenCityCoordinates = cities.find((city) => city.name === chosenCity).cordinates
-  const [center, setCenter] = useState([chosenCityCoordinates.lat, chosenCityCoordinates.lng])
+  const { data: posts, isLoading: isLoadingPosts, isSuccess: isSuccessPosts } = useGetPostsQuery()
+  const {
+    data: activitiesApi,
+    isLoading: isLoadingActivities,
+    isSuccess: isSuccessActivities,
+  } = useGetActivitiesQuery()
+  const [activities, setActivities] = useState([])
+  const [center, setCenter] = useState([LublinCoordinates.lat, LublinCoordinates.lng])
   const [selectedMarker, setSelectedMarker] = useState(null)
-  const [showOverlay, setShowOverlay] = useState(false)
-  const [activitySelect, setActivitySelect] = useState(activities[0].value)
-  const [activitiesAddedToLegend, setActivitiesAddedToLegend] = useState([])
+  const [activitySelect, setActivitySelect] = useState(null)
   const [allowedGeoLocation, setAllowedGeoLocation] = useState(false)
 
-  const activityHandle = (e) => {
+  const onActivityChange = (e) => {
     setActivitySelect(e.target.value)
   }
 
   const onMarkerClick = (marker) => {
     setSelectedMarker(marker)
-    setShowOverlay(true)
   }
 
   const onMapClick = () => {
     setSelectedMarker(null)
-    setShowOverlay(false)
   }
+
+  useEffect(() => {
+    if (!isLoadingActivities) {
+      const activitiesWithValue = [firstData, ...activitiesApi].map((activity) => ({
+        ...activity,
+        value: activity.name,
+      }))
+      setActivities(activitiesWithValue)
+
+      initialState.activity = activitiesWithValue[0].value
+      setActivitySelect(initialState.activity)
+    }
+  }, [activitiesApi, isLoadingActivities])
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -63,10 +90,7 @@ export const Map = () => {
         enableHighAccuracy: true,
       }
     )
-    const uniqueActivities = [...new Set(markers.map((marker) => marker.activity))]
-    setActivitiesAddedToLegend(uniqueActivities)
   }, [])
-  console.log(selectedMarker, 'selectedMarker')
 
   return (
     <Wrapper>
@@ -89,16 +113,18 @@ export const Map = () => {
           maxClusterRadius={35}
           spiderfyOnMaxZoom={false}
         >
-          {!isLoading &&
+          {!isLoadingPosts &&
+            isSuccessPosts &&
             posts
-              // .filter(
-              //   (marker) => activitySelect === 'all' || marker.activity.name === activitySelect
-              // )
+              .filter(
+                (marker) =>
+                  activitySelect === 'Wszystkie' || marker.activity.name === activitySelect
+              )
               .map((marker, key) => (
                 <Marker
                   key={key}
-                  position={[marker.location?.latitude, marker.location?.longitude]}
-                  // icon={getIcon(marker?.activity?.name)}
+                  position={[marker.location.latitude, marker.location.longitude]}
+                  icon={getIcon(marker.activity.id)}
                   eventHandlers={{ click: () => onMarkerClick(marker) }}
                 />
               ))}
@@ -109,33 +135,30 @@ export const Map = () => {
 
       <OverlayRight>
         <Filters>
-          <Select
-            name="activitySelect"
-            id="activitySelect"
-            value={activitySelect}
-            onChange={activityHandle}
-          >
-            {activities}
-          </Select>
+          {!isLoadingActivities && isSuccessActivities && (
+            <Select
+              name="activitySelect"
+              id="activitySelect"
+              value={activitySelect}
+              onChange={onActivityChange}
+            >
+              {activities}
+            </Select>
+          )}
         </Filters>
       </OverlayRight>
 
       <MapLegend>
-        {activitiesAddedToLegend.map((activity, index) => (
-          <MapLegendItem key={index}>
-            <img src={getIconUrl(activity)} height={30} alt="Activity Marker" />
-            {translations.map((translation) => {
-              if (translation.original === activity) {
-                return (
-                  <Text isBold key={index}>
-                    {translation.polish}
-                  </Text>
-                )
-              }
-              return null
-            })}
-          </MapLegendItem>
-        ))}
+        {!isLoadingActivities &&
+          isSuccessActivities &&
+          activities.map((activity, index) => (
+            <MapLegendItem key={index}>
+              <img src={getIconUrl(activity.id)} height={30} alt={`${activity.name} Marker`} />
+              <Text isBold key={index}>
+                {activity.name}
+              </Text>
+            </MapLegendItem>
+          ))}
         {allowedGeoLocation && (
           <MapLegendItem>
             <img src={getIconUrl('user')} height={30} alt="User Marker" />
@@ -144,12 +167,7 @@ export const Map = () => {
         )}
       </MapLegend>
 
-      {selectedMarker && showOverlay && (
-        <MapPopup
-          onCloseClick={onMapClick}
-          selectedMarker={selectedMarker}
-        />
-      )}
+      {selectedMarker && <MapPopup onCloseClick={onMapClick} selectedMarker={selectedMarker} />}
     </Wrapper>
   )
 }

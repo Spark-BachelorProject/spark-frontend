@@ -24,4 +24,10 @@ export const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  // it define style color for alt attribute in img 
+  img {
+    color: ${({ theme }) => theme.colors.text};
+  }
+
 `

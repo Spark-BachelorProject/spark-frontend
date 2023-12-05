@@ -15,6 +15,19 @@ const provider = new OpenStreetMapProvider({
   },
 })
 
+function formatPlace(name, street, number, area, cityName) {
+  let formattedPlace = ''
+
+  if (name) {
+    formattedPlace =
+      street && number ? `${name}, ${street} ${area}, ${cityName}` : `${name}, ${cityName}`
+  } else {
+    formattedPlace = `${street} ${area}, ${cityName}`
+  }
+
+  return formattedPlace
+}
+
 export const PlaceAutocomplete = ({
   onSelectCoordinates,
   isPlaceSelected,
@@ -25,30 +38,17 @@ export const PlaceAutocomplete = ({
   onSelectCity,
 }) => {
   const [searchResults, setSearchResults] = useState([])
-  const [SeletedPlace, setSeletedPlace] = useState('')
+  const [seletedPlace, setSeletedPlace] = useState('')
   const [showSuggestions, setShowSuggestions] = useState(false)
   const searchTimeout = useRef(null)
 
   const search = useCallback(async () => {
-    if (SeletedPlace) {
-      const results = await provider.search({ query: SeletedPlace.toLocaleLowerCase() })
+    if (seletedPlace) {
+      const results = await provider.search({ query: seletedPlace.toLocaleLowerCase() })
 
       setSearchResults(results.slice(0, 3))
     }
-  }, [SeletedPlace])
-
-  function formatPlace(name, street, number, area, cityName) {
-    let formattedPlace = ''
-
-    if (name) {
-      formattedPlace =
-        street && number ? `${name}, ${street} ${area}, ${cityName}` : `${name}, ${cityName}`
-    } else {
-      formattedPlace = `${street} ${area}, ${cityName}`
-    }
-
-    return formattedPlace
-  }
+  }, [seletedPlace])
 
   useEffect(() => {
     if (searchTimeout.current) clearTimeout(searchTimeout.current)
@@ -180,7 +180,7 @@ export const PlaceAutocomplete = ({
       <Input
         type="text"
         data-testid="input-map"
-        value={SeletedPlace}
+        value={seletedPlace}
         onChange={handleChange}
         placeholder="Podaj adres"
       />

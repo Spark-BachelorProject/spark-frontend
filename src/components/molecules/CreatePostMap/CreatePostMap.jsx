@@ -28,9 +28,9 @@ export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved, isMarked
 
   const updatePosition = useCallback((event) => {
     const newPosition = event.target.getLatLng()
-    setMarkerPosition([newPosition.lat, newPosition.lng])
+    setMarkerPosition({ lat: newPosition.lat, lng: newPosition.lng })
     setHasMarkerMoved(true)
-    onMarkerMoved([newPosition.lat, newPosition.lng])
+    onMarkerMoved({ lat: newPosition.lat, lng: newPosition.lng })
 
     isMarkedMoved(true)
   }, [])

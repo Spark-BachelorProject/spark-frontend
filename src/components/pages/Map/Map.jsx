@@ -4,6 +4,7 @@ import MarkerClusterGroup from 'react-leaflet-cluster'
 
 import 'leaflet/dist/leaflet.css'
 
+import { LublinCoordinates } from '@/assets/constants/coordinates'
 import Select from '@/components/atoms/Select/Select'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { MapPopup } from '@/components/organism/MapPopup/MapPopup'
@@ -20,11 +21,6 @@ const UpdateCenter = ({ center }) => {
     map.flyTo(center)
   }, [center, map])
   return null
-}
-
-const LublinCoordinates = {
-  lat: 51.246452,
-  lng: 22.568445,
 }
 
 const initialState = {

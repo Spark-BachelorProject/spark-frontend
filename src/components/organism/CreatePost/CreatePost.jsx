@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import { LublinCoordinates } from '@/assets/constants/coordinates.js'
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import Input from '@/components/atoms/Input/Input'
@@ -8,7 +9,6 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import CreatePostMap from '@/components/molecules/CreatePostMap/CreatePostMap.jsx'
 import PlaceAutocomplete from '@/components/molecules/PlaceAutocomplete/PlaceAutocomplete.jsx'
 import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
-import { cities } from '@/components/pages/Map/data.jsx'
 import {
   dateNowYYYYMMDD,
   formatTimeAndDate,
@@ -78,8 +78,8 @@ const CreatePost = ({ handleClose }) => {
   const [selectedCity, setSelectedCity] = useState(null)
   const [selectedAddress, setSelectedAddress] = useState(null)
   const [selectedCoordinates, setSelectedCoordinates] = useState({
-    lat: cities[0].cordinates.lat,
-    lng: cities[0].cordinates.lng,
+    lat: LublinCoordinates.lat,
+    lng: LublinCoordinates.lng,
   })
 
   const [isMarkerMoved, setIsMarkerMoved] = useState(false)
@@ -87,9 +87,12 @@ const CreatePost = ({ handleClose }) => {
   const handleMarkerMoved = (moved) => {
     setIsMarkerMoved(moved)
   }
+  // console.log(selectedCoordinates, 'selectedCoordinates')
 
   const handleSelectCoordinates = (coordinates) => {
+    console.log('handleSelectCoordinates', coordinates)
     setSelectedCoordinates(coordinates)
+    console.log('handleSelectCoordinatesAFTER', coordinates)
   }
 
   const handleSelectedCity = (city) => {

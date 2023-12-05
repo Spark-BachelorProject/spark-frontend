@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Dot from '@/components/atoms/Dot/Dot'
+import { capitalize } from '@/helpers/stringOperations'
 
 import {
   Wrapper,
@@ -12,21 +13,26 @@ import {
   StyledCanceledIcon,
 } from './SavedPost.styles'
 
-export const SavedPost = ({ isCancelled, name, activity, place, adress }) => {
+export const SavedPost = ({
+  creator: { firstName, lastName, profilePicture },
+  activity,
+  location,
+  description,
+  isCancelled = false,
+}) => {
   return (
     <Wrapper>
-      <StyledThumbnail />
+      <StyledThumbnail url={profilePicture} />
       <TextWrapper>
         {isCancelled ? <StyledCanceledIcon /> : null}
-        {/* {isCancelled ? <CancelledText>Spotkanie odwołane</CancelledText> : null} */}
 
-        <NameActivityWrapper isCancelled={isCancelled}>
-          <FirstRowText isCancelled={isCancelled}>{name}</FirstRowText>
+        <NameActivityWrapper isCancelled>
+          <FirstRowText isCancelled>{`${firstName} ${lastName}`}</FirstRowText>
           <Dot />
-          <FirstRowText isCancelled={isCancelled}>{activity}</FirstRowText>
+          <FirstRowText isCancelled>{activity.name}</FirstRowText>
         </NameActivityWrapper>
-        <SecondRowText isCancelled={isCancelled}>
-          {place} - {adress}
+        <SecondRowText isCancelled>
+          {location.name ? `${location.name} - ` : ''} {capitalize(description)}
         </SecondRowText>
       </TextWrapper>
     </Wrapper>

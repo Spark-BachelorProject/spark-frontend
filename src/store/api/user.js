@@ -18,7 +18,21 @@ export const userApi = createApi({
       query: () => 'user/friends',
       providesTags: ['User'],
     }),
+    getBookmarkedPosts: builder.query({
+      query: () => `user/posts/bookmarked`,
+      providesTags: ['User', 'Posts'],
+    }),
+    //TODO: CLAIM PUT OR POST
+    getOneBookmarkedPost: builder.query({
+      query: (postId) => `user/posts/bookmark/${postId}`,
+      providesTags: ['User', 'Posts'],
+    }),
   }),
 })
 
-export const { useGetUserQuery, useGetUserFriendsQuery } = userApi
+export const {
+  useGetUserQuery,
+  useGetUserFriendsQuery,
+  useGetBookmarkedPostsQuery,
+  useLazyGetOneBookmarkedPostQuery,
+} = userApi

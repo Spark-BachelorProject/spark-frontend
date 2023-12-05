@@ -123,8 +123,6 @@ export const PlaceAutocomplete = ({
         suburb = '',
       } = result.raw.address
 
-      console.log(result)
-
       const cityName = city || town || village
       const street = road || pedestrian
       const number = house_number || postcode || ''
@@ -143,7 +141,6 @@ export const PlaceAutocomplete = ({
         landuse ||
         ''
 
-      console.log(name)
       let formattedPlace = ''
 
       //check if the selected place isnt city

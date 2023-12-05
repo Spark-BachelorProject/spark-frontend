@@ -87,12 +87,9 @@ const CreatePost = ({ handleClose }) => {
   const handleMarkerMoved = (moved) => {
     setIsMarkerMoved(moved)
   }
-  // console.log(selectedCoordinates, 'selectedCoordinates')
 
   const handleSelectCoordinates = (coordinates) => {
-    console.log('handleSelectCoordinates', coordinates)
     setSelectedCoordinates(coordinates)
-    console.log('handleSelectCoordinatesAFTER', coordinates)
   }
 
   const handleSelectedCity = (city) => {

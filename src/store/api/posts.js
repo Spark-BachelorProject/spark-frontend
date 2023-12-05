@@ -1,5 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
+// TODO: check if can i use postsAdapter
+const sortDescByDate = (a, b) => new Date(b.dateCreated) - new Date(a.dateCreated)
+
 export const postsApi = createApi({
   reducerPath: 'postsApi',
   baseQuery: fetchBaseQuery({
@@ -32,6 +35,8 @@ export const postsApi = createApi({
         method: 'GET',
         params,
       }),
+      transformResponse: (response) => response.sort(sortDescByDate),
+
       providesTags: ['Posts'],
     }),
   }),

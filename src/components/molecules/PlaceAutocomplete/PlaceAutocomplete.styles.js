@@ -18,8 +18,6 @@ export const Suggestion = styled.li`
   z-index: 100;
   list-style: none;
   padding: 15px 10px;
-  margin: 0 -105% 0 0;
-  min-width: 240px;
   background-color: ${({ theme }) => theme.colors.inputBg};
   color: ${({ theme }) => theme.colors.inputFont};
   border: 1px solid ${({ theme }) => theme.colors.navbarBorder};

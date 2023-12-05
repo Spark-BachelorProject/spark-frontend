@@ -20,7 +20,7 @@ function formatPlace(name, street, number, area, cityName) {
 
   if (name) {
     formattedPlace =
-      street && number ? `${name}, ${street} ${area}, ${cityName}` : `${name}, ${cityName}`
+      street && number ? `${name}, ${street} ${area}, ${cityName}` : `${name}, ${area}, ${cityName}`
   } else {
     formattedPlace = `${street} ${area}, ${cityName}`
   }
@@ -78,6 +78,7 @@ export const PlaceAutocomplete = ({
             address.landuse ||
             address.square ||
             address.place ||
+            address.industrial ||
             ''
           const number = address.house_number ? address.house_number : address.postcode
           const formattedAddress = `${name ? name + ', ' : ''}${
@@ -121,7 +122,10 @@ export const PlaceAutocomplete = ({
         landuse = '',
         square = '',
         suburb = '',
+        industrial = '',
       } = result.raw.address
+
+      console.log(result)
 
       const cityName = city || town || village
       const street = road || pedestrian
@@ -139,6 +143,7 @@ export const PlaceAutocomplete = ({
         shop ||
         square ||
         landuse ||
+        industrial ||
         ''
 
       let formattedPlace = ''

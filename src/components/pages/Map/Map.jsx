@@ -6,14 +6,13 @@ import 'leaflet/dist/leaflet.css'
 
 import { LublinCoordinates } from '@/assets/constants/coordinates'
 import Select from '@/components/atoms/Select/Select'
-import { Text } from '@/components/atoms/Text/Text.styles'
 import { MapPopup } from '@/components/organism/MapPopup/MapPopup'
 import { useGetActivitiesQuery } from '@/store/api/activities'
 import { useGetPostsQuery } from '@/store/api/posts'
 
-import { Filters, MapLegend, MapLegendItem, OverlayRight, Wrapper } from './Map.styles'
+import { Filters, OverlayRight, Wrapper } from './Map.styles'
 import './Map.styles.css'
-import { getIcon, getIconUrl } from './customIcons'
+import { getIcon } from './customIcons'
 
 const UpdateCenter = ({ center }) => {
   const map = useMap()
@@ -144,7 +143,7 @@ export const Map = () => {
         </Filters>
       </OverlayRight>
 
-      <MapLegend>
+      {/* <MapLegend>
         {!isLoadingActivities &&
           isSuccessActivities &&
           activities.map((activity, index) =>
@@ -163,7 +162,7 @@ export const Map = () => {
             <Text isBold>Ty</Text>
           </MapLegendItem>
         )}
-      </MapLegend>
+      </MapLegend> */}
 
       {selectedMarker && <MapPopup onCloseClick={onMapClick} selectedMarker={selectedMarker} />}
     </Wrapper>

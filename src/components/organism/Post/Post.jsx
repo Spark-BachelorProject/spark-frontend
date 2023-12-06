@@ -12,6 +12,7 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
 import { formatDate, formatTimeAgo, formatTimeHHMM } from '@/helpers/dateAndTime'
+import { getInitials } from '@/helpers/stringOperations'
 import useModal from '@/hooks/useModal'
 import usePopup from '@/hooks/usePopup'
 import { useAddCommentMutation, useGetCommentsQuery } from '@/store/api/comments'
@@ -32,7 +33,7 @@ import {
 const Post = (props) => {
   const {
     activity,
-    creator,
+    creator: { firstName, lastName },
     dateCreated,
     dateEnd,
     dateStart,
@@ -105,11 +106,11 @@ const Post = (props) => {
   return (
     <Wrapper>
       <Header>
-        <Avvvatars value={`${creator.firstName} ${creator.lastName}`} />
+        <Avvvatars value={getInitials(firstName, lastName)} />
         <Details>
           <div>
             <b>
-              {creator.firstName} {creator.lastName}
+              {firstName} {lastName}
             </b>
             <Text>napisał(a) {formatTimeAgo(dateCreated)}</Text>
           </div>

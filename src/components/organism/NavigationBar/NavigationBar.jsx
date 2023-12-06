@@ -1,16 +1,23 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
+import Avvvatars from 'avvvatars-react'
+
 import { ReactComponent as HomeIcon } from '@/assets/icons/home.svg'
 import { ReactComponent as MapIcon } from '@/assets/icons/map.svg'
 import { ReactComponent as UsersIcon } from '@/assets/icons/users.svg'
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import CreatePost from '@/components/organism/CreatePost/CreatePost'
+import { getInitials } from '@/helpers/stringOperations'
 import useModal from '@/hooks/useModal'
+import { useGetUserQuery } from '@/store/api/user'
 
 import { Wrapper, IconsWrapper, StyledPlusSquareIcon } from './NavigationBar.styles'
 
 const NavigationBar = () => {
+  const {
+    data: { firstName, lastName },
+  } = useGetUserQuery()
+
   const {
     Modal,
     isOpen,
@@ -53,8 +60,7 @@ const NavigationBar = () => {
           <MapIcon />
         </NavLink>
         <NavLink to="/profile">
-          <Thumbnail />
-          {/* <UserIcon /> */}
+          <Avvvatars value={getInitials(firstName, lastName)} size={32} />
         </NavLink>
       </IconsWrapper>
       {isOpen ? (

@@ -19,6 +19,7 @@ export const Details = styled.div`
   display: flex;
   justify-content: start;
   flex-direction: row;
+  gap: 10px;
 
   & > div {
     display: flex;

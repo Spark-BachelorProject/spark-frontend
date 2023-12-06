@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
+  gap: 8px;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.modalBg};

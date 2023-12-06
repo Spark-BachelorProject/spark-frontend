@@ -3,5 +3,5 @@ export const capitalize = (string) => {
 }
 
 export const getInitials = (str1 = 'Twój', str2 = 'profil') => {
-  return `${str1?.charAt(0) || 'T'}${str2.charAt(0) || 'P'}`
+  return `${str1?.charAt(0) || 'T'}${capitalize(str2?.charAt(0)) || 'P'}`
 }

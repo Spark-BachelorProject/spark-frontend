@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+
+import Avvvatars from 'avvvatars-react'
 
 import { ReactComponent as BellIcon } from '@/assets/icons/bell.svg'
 import { ReactComponent as UsersIcon } from '@/assets/icons/users.svg'
 import Loader from '@/components/atoms/Loader/Loader'
 import Tags from '@/components/atoms/Tags/Tags'
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import Badge from '@/components/molecules/Badge/Badge'
 import BadgeInfo from '@/components/molecules/BadgeInfo/BadgeInfo'
-import useModal from '@/hooks/useModal'
 import usePopup from '@/hooks/usePopup'
 import { useGetUserQuery } from '@/store/api/user'
 
@@ -47,7 +47,8 @@ const ProfileDetails = () => {
   return (
     <Wrapper>
       <ImgAndNameSection>
-        <Thumbnail />
+        <Avvvatars value={`${user.firstName} ${user.lastName}`} size={90} />
+
         <Title>{isLoading ? <Loader isCentered /> : `${user.firstName} ${user.lastName}`}</Title>
       </ImgAndNameSection>
       {/* //TODO: check preffered activity */}

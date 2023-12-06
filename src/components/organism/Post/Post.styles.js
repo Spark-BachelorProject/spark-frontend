@@ -36,6 +36,8 @@ export const Header = styled.div`
 `
 
 export const Details = styled.div`
+  margin-left: 0.5em;
+
   & > div:first-child {
     display: flex;
     align-items: flex-end;

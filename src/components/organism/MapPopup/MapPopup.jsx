@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router'
 
+import Avvvatars from 'avvvatars-react'
+
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
 import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { Details } from '@/components/organism/Post/Post.styles'
 import { formatDate, formatTimeAgo, formatTimeHHMM } from '@/helpers/dateAndTime'
 
@@ -31,7 +32,8 @@ export const MapPopup = ({
   return (
     <Wrapper>
       <StyledHeader>
-        <Thumbnail isBig />
+        <Avvvatars value={`${creator.firstName} ${creator.lastName}`} size={35} />
+
         <Details>
           <div>
             <b>{`${creator.firstName} ${creator.lastName}`} </b>

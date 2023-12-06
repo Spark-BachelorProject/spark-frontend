@@ -1,4 +1,3 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -17,12 +16,12 @@ import usePopup from '@/hooks/usePopup'
 import { toggle } from '@/store/theme/themeSlice'
 
 import {
-  Wrapper,
+  InnerIconsWrapperRight,
   InnerWrapper,
   LogoAndInputWrapper,
-  InnerIconsWrapperRight,
-  StyledThumbnail,
   StyledIconBorder,
+  StyledThumbnail,
+  Wrapper,
 } from './HeaderSearchBar.styles'
 
 const everyIsFalse = (...args) => args.every((arg) => !arg)

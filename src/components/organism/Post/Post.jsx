@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import Avvvatars from 'avvvatars-react'
+
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
 import { ReactComponent as PinIcon } from '@/assets/icons/map-pin.svg'
@@ -7,10 +9,9 @@ import { Button } from '@/components/atoms/Button/Button.styles'
 import Dot from '@/components/atoms/Dot/Dot'
 import Tags from '@/components/atoms/Tags/Tags'
 import { Text } from '@/components/atoms/Text/Text.styles'
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
-import { formatDate, formatTimeHHMM, formatTimeAgo } from '@/helpers/dateAndTime'
+import { formatDate, formatTimeAgo, formatTimeHHMM } from '@/helpers/dateAndTime'
 import useModal from '@/hooks/useModal'
 import usePopup from '@/hooks/usePopup'
 import { useAddCommentMutation, useGetCommentsQuery } from '@/store/api/comments'
@@ -104,7 +105,7 @@ const Post = (props) => {
   return (
     <Wrapper>
       <Header>
-        <Thumbnail isBig />
+        <Avvvatars value={`${creator.firstName} ${creator.lastName}`} />
         <Details>
           <div>
             <b>

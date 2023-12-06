@@ -1,9 +1,7 @@
-import React from 'react'
-
+import Avvvatars from 'avvvatars-react'
 import PropTypes from 'prop-types'
 
 import { Text } from '@/components/atoms/Text/Text.styles'
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 
 import { Wrapper } from './MemberItem.styles'
 
@@ -11,7 +9,7 @@ import { Wrapper } from './MemberItem.styles'
 const MemberItem = ({ firstName, lastName }) => {
   return (
     <Wrapper>
-      <Thumbnail />
+      <Avvvatars value={`${firstName} ${lastName}`} size={23} />
       <Text>{`${firstName} ${lastName}`}</Text>
     </Wrapper>
   )

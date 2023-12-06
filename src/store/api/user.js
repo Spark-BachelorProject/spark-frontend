@@ -26,10 +26,12 @@ export const userApi = createApi({
       providesTags: ['User', 'Posts'],
       transformResponse: (response) => response.sort(sortDescByDate),
     }),
-    //TODO: CLAIM PUT OR POST
-    getOneBookmarkedPost: builder.query({
-      query: (postId) => `user/posts/bookmark/${postId}`,
-      providesTags: ['User', 'Posts'],
+    putOneBookmarkedPost: builder.mutation({
+      query: ({ postId }) => ({
+        url: `user/posts/bookmark/${postId}`,
+        method: 'PUT',
+      }),
+      invalidatesTags: ['User', 'Posts'],
     }),
   }),
 })
@@ -38,5 +40,5 @@ export const {
   useGetUserQuery,
   useGetUserFriendsQuery,
   useGetBookmarkedPostsQuery,
-  useLazyGetOneBookmarkedPostQuery,
+  usePutOneBookmarkedPostMutation,
 } = userApi

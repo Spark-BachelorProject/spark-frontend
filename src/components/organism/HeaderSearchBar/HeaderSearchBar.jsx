@@ -152,7 +152,7 @@ const HeaderSearchBar = () => {
             <BookmarkIcon />
             {!isLoadingBookmarkedPosts &&
               isSuccessBookmarkedPosts &&
-              bookmarkedPosts.length > 0 && <Counter count={7} />}
+              bookmarkedPosts.length > 0 && <Counter />}
           </IconBorder>
           <IconBorder
             tabIndex="0"

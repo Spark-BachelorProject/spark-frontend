@@ -3,14 +3,15 @@ import Avvvatars from 'avvvatars-react'
 import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { formatTimeAgo } from '@/helpers/dateAndTime'
+import { getInitials } from '@/helpers/stringOperations'
 
 import { Details, Wrapper } from './Comment.styles'
 
-const Comment = ({ children, user: { firstName, lastName, profilePictureUrl }, dateAdded }) => {
+const Comment = ({ children, user: { firstName, lastName }, dateAdded }) => {
   return (
     <Wrapper>
       <Details>
-        <Avvvatars value={`${firstName} ${lastName}`} size={23} />
+        <Avvvatars value={getInitials(firstName, lastName)} size={23} />
         <div>
           <Text isBold>
             {firstName} {lastName}

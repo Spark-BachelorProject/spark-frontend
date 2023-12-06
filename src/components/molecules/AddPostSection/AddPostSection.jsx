@@ -1,13 +1,19 @@
 import React from 'react'
 
+import Avvvatars from 'avvvatars-react'
+
 import { Button } from '@/components/atoms/Button/Button.styles'
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import CreatePost from '@/components/organism/CreatePost/CreatePost'
+import { getInitials } from '@/helpers/stringOperations'
 import useModal from '@/hooks/useModal'
+import { useGetUserQuery } from '@/store/api/user'
 
 import { Wrapper, StyledInput } from './AddPostSection.styles'
 
 export const AddPostSection = () => {
+  const {
+    data: { firstName, lastName },
+  } = useGetUserQuery()
   const {
     Modal,
     isOpen,
@@ -35,7 +41,7 @@ export const AddPostSection = () => {
         onKeyDown={handleCloseAddPostPopup}
         ref={modalOpenElementRef}
       >
-        <Thumbnail />
+        <Avvvatars value={getInitials(firstName, lastName)} size={30} />
         <StyledInput>Zaproś znajomych do gry!</StyledInput>
         <Button>Dodaj</Button>
       </Wrapper>

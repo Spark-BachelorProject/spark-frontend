@@ -9,6 +9,7 @@ import Tags from '@/components/atoms/Tags/Tags'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import Badge from '@/components/molecules/Badge/Badge'
 import BadgeInfo from '@/components/molecules/BadgeInfo/BadgeInfo'
+import { getInitials } from '@/helpers/stringOperations'
 import usePopup from '@/hooks/usePopup'
 import { useGetUserQuery } from '@/store/api/user'
 
@@ -47,7 +48,7 @@ const ProfileDetails = () => {
   return (
     <Wrapper>
       <ImgAndNameSection>
-        <Avvvatars value={`${user.firstName} ${user.lastName}`} size={90} />
+        <Avvvatars value={getInitials(user.firstName, user.lastName)} size={90} />
 
         <Title>{isLoading ? <Loader isCentered /> : `${user.firstName} ${user.lastName}`}</Title>
       </ImgAndNameSection>

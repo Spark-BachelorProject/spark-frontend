@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
+import Avvvatars from 'avvvatars-react'
+
 import { ReactComponent as BookmarkIcon } from '@/assets/icons/bookmark.svg'
 import { ReactComponent as MoonIcon } from '@/assets/icons/moon.svg'
 import { ReactComponent as SunIcon } from '@/assets/icons/sun.svg'
@@ -12,8 +14,9 @@ import { BookmarkedContent } from '@/components/organism/BookmarkedContent/Bookm
 import { NotificationsContent } from '@/components/organism/NotificationsContent/NotificationsContent'
 import { ProfileContent } from '@/components/organism/ProfileContent/ProfileContent'
 import SearchBar from '@/components/organism/SearchBar/SearchBar'
+import { getInitials } from '@/helpers/stringOperations'
 import usePopup from '@/hooks/usePopup'
-import { useGetBookmarkedPostsQuery } from '@/store/api/user'
+import { useGetBookmarkedPostsQuery, useGetUserQuery } from '@/store/api/user'
 import { toggle } from '@/store/theme/themeSlice'
 
 import {
@@ -21,7 +24,6 @@ import {
   InnerWrapper,
   LogoAndInputWrapper,
   StyledIconBorder,
-  StyledThumbnail,
   Wrapper,
 } from './HeaderSearchBar.styles'
 
@@ -33,6 +35,13 @@ const HeaderSearchBar = () => {
     isLoading: isLoadingBookmarkedPosts,
     isSuccess: isSuccessBookmarkedPosts,
   } = useGetBookmarkedPostsQuery()
+  const {
+    data: { firstName, lastName },
+    isLoading: isLoadingUser,
+    isSuccess: isSuccessUser,
+  } = useGetUserQuery()
+
+  const initials = getInitials(firstName, lastName)
 
   const dispatch = useDispatch()
   const colorsTheme = useSelector((state) => state.theme.theme)
@@ -160,7 +169,7 @@ const HeaderSearchBar = () => {
             tabIndex={0}
             data-testid="profile-wrapper"
           >
-            <StyledThumbnail />
+            <Avvvatars value={initials} size={32} />
           </StyledIconBorder>
 
           {isOpenNotificationPopup ? (
@@ -193,7 +202,15 @@ const HeaderSearchBar = () => {
               position={positionProfilePopup}
               isFixed
             >
-              <ProfileContent handleClose={handleCloseProfilePopup} handleLogout={handleLogout} />
+              <ProfileContent
+                handleClose={handleCloseProfilePopup}
+                handleLogout={handleLogout}
+                initials={initials}
+                firstName={firstName}
+                lastName={lastName}
+                isLoadingUser={isLoadingUser}
+                isSuccessUser={isSuccessUser}
+              />
             </ProfilePopup>
           ) : null}
         </InnerIconsWrapperRight>

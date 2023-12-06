@@ -36,7 +36,7 @@ export const Header = styled.div`
 `
 
 export const Details = styled.div`
-  margin-left: 0.5em;
+  margin-left: 10px;
 
   & > div:first-child {
     display: flex;

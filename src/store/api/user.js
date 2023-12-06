@@ -1,5 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
+// TODO: check if can i use postsAdapter
+const sortDescByDate = (a, b) => new Date(b.dateCreated) - new Date(a.dateCreated)
+
 export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: fetchBaseQuery({
@@ -21,6 +24,7 @@ export const userApi = createApi({
     getBookmarkedPosts: builder.query({
       query: () => `user/posts/bookmarked`,
       providesTags: ['User', 'Posts'],
+      transformResponse: (response) => response.sort(sortDescByDate),
     }),
     //TODO: CLAIM PUT OR POST
     getOneBookmarkedPost: builder.query({

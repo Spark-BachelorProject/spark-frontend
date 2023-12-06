@@ -14,6 +14,7 @@ import { NotificationsContent } from '@/components/organism/NotificationsContent
 import { ProfileContent } from '@/components/organism/ProfileContent/ProfileContent'
 import SearchBar from '@/components/organism/SearchBar/SearchBar'
 import usePopup from '@/hooks/usePopup'
+import { useGetBookmarkedPostsQuery } from '@/store/api/user'
 import { toggle } from '@/store/theme/themeSlice'
 
 import {
@@ -28,6 +29,12 @@ import {
 const everyIsFalse = (...args) => args.every((arg) => !arg)
 
 const HeaderSearchBar = () => {
+  const {
+    data: bookmarkedPosts,
+    isLoading: isLoadingBookmarkedPosts,
+    isSuccess: isSuccessBookmarkedPosts,
+  } = useGetBookmarkedPostsQuery()
+
   const dispatch = useDispatch()
   const colorsTheme = useSelector((state) => state.theme.theme)
   const navigate = useNavigate()
@@ -135,7 +142,9 @@ const HeaderSearchBar = () => {
             data-testid="bookmarks-wrapper"
           >
             <BookmarkIcon />
-            <Counter count="7" />
+            {!isLoadingBookmarkedPosts &&
+              isSuccessBookmarkedPosts &&
+              bookmarkedPosts.length > 0 && <Counter count={7} />}
           </IconBorder>
           <IconBorder
             tabIndex="0"
@@ -171,7 +180,11 @@ const HeaderSearchBar = () => {
               position={positionBookmarkPopup}
               isFixed
             >
-              <BookmarkedContent />
+              <BookmarkedContent
+                bookmarkedPosts={bookmarkedPosts}
+                isLoadingBookmarkedPosts={isLoadingBookmarkedPosts}
+                isSuccessBookmarkedPosts={isSuccessBookmarkedPosts}
+              />
             </BookmarkPopup>
           ) : null}
 

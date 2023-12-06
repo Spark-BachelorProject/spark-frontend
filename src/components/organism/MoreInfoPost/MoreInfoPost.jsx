@@ -11,11 +11,12 @@ import { useLazyGetOneBookmarkedPostQuery } from '@/store/api/user'
 
 import { Wrapper, StyledText } from './MoreInfoPost.styles'
 
-export const MoreInfoPost = ({ postId }) => {
+export const MoreInfoPost = ({ postId, handleClosePopup }) => {
   const [trigger] = useLazyGetOneBookmarkedPostQuery()
 
   const handleSavePost = () => {
     trigger(postId)
+    handleClosePopup()
   }
 
   return (

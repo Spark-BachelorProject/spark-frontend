@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   width: 100%;
+
   height: 100%;
 `
 
@@ -34,6 +35,8 @@ export const containerStyle = {
 }
 
 export const MapLegend = styled.div`
+  max-height: 200px;
+  overflow-y: scroll;
   position: absolute;
   bottom: calc(70px + 20px);
   right: 60px;

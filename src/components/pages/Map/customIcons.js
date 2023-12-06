@@ -5,11 +5,11 @@ const iconFiles = import.meta.glob('@assets/markers/*.{svg,jpg,jpeg,SVG,JPEG}', 
   as: 'url',
 })
 
-export const getIcon = (activityId) => {
-  const iconUrl = iconFiles[`/src/assets/markers/${activityId}.svg`]
+export const getIcon = (name) => {
+  const iconUrl = iconFiles[`/src/assets/markers/${name}.svg`]
 
   if (!iconUrl) {
-    console.warn(`Icon not found for activity: ${activityId}`)
+    console.warn(`Icon not found for activity: ${name}`)
     return null
   }
 
@@ -20,11 +20,11 @@ export const getIcon = (activityId) => {
   })
 }
 
-export const getIconUrl = (activityId) => {
-  const iconUrl = iconFiles[`/src/assets/markers/${activityId}.svg`]
+export const getIconUrl = (name) => {
+  const iconUrl = iconFiles[`/src/assets/markers/${name}.svg`]
 
   if (!iconUrl) {
-    console.warn(`Icon not found for activity: ${activityId}`)
+    console.warn(`Icon not found for activity: ${name}`)
     return null
   }
 

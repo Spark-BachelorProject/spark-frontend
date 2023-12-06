@@ -120,7 +120,7 @@ export const Map = () => {
                 <Marker
                   key={key}
                   position={[marker.location.latitude, marker.location.longitude]}
-                  icon={getIcon(marker.activity.id)}
+                  icon={getIcon(marker.activity.name)}
                   eventHandlers={{ click: () => onMarkerClick(marker) }}
                 />
               ))}
@@ -147,14 +147,16 @@ export const Map = () => {
       <MapLegend>
         {!isLoadingActivities &&
           isSuccessActivities &&
-          activities.map((activity, index) => (
-            <MapLegendItem key={index}>
-              <img src={getIconUrl(activity.id)} height={30} alt={`${activity.name} Marker`} />
-              <Text isBold key={index}>
-                {activity.name}
-              </Text>
-            </MapLegendItem>
-          ))}
+          activities.map((activity, index) =>
+            activity.name !== 'Wszystkie' ? (
+              <MapLegendItem key={index}>
+                <img src={getIconUrl(activity.name)} height={30} alt={`${activity.name} Marker`} />
+                <Text isBold key={index}>
+                  {activity.name}
+                </Text>
+              </MapLegendItem>
+            ) : null
+          )}
         {allowedGeoLocation && (
           <MapLegendItem>
             <img src={getIconUrl('user')} height={30} alt="User Marker" />

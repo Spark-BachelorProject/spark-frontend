@@ -18,10 +18,12 @@ export const SavedPost = ({
   activity,
   location,
   description,
+  id,
   isCancelled = false,
+  handleOpenSinglePost,
 }) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={() => handleOpenSinglePost(id)}>
       <StyledThumbnail url={profilePicture} />
       <TextWrapper>
         {isCancelled ? <StyledCanceledIcon /> : null}

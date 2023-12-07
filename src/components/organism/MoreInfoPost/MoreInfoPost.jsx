@@ -14,7 +14,7 @@ export const MoreInfoPost = ({ postId, handleClosePopup }) => {
 
   const handleSavePost = async () => {
     try {
-      await putOneBookmarkedPost({ postId })
+      await putOneBookmarkedPost(postId)
       handleClosePopup()
     } catch (error) {
       console.error('Error saving post:', error)

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Navigate, Route, Routes } from 'react-router'
 
 import HeaderSearchBar from '@/components/organism/HeaderSearchBar/HeaderSearchBar'

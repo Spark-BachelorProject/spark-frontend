@@ -7,22 +7,25 @@ import { getInitials } from '@/helpers/stringOperations'
 
 import { AttendingCounter, StyledAvatar, Wrapper } from './AttendanceList.styles'
 
-const AttendanceList = ({ participants }) => {
-  console.log('participants', participants.length)
+const FOUR = 4
 
+const AttendanceList = ({ participants }) => {
   if (participants.length === 0) {
     return <Title>Brak uczestników</Title>
   }
+
+  const firstFourParticipants = participants.slice(0, FOUR)
+
   return (
     <Wrapper numOfParticipants={participants.length}>
-      {participants.map(({ firstName, lastName, id }, index) => (
+      {firstFourParticipants.map(({ firstName, lastName, id }, index) => (
         <StyledAvatar key={id} index={index} numOfParticipants={participants.length}>
           <Avvvatars value={getInitials(firstName, lastName)} />
         </StyledAvatar>
       ))}
-      {participants.length > 3 && (
-        <AttendingCounter numOfAttender={participants.length}>
-          +{participants.length}
+      {participants.length > FOUR && (
+        <AttendingCounter maxNumOfParticipants={FOUR}>
+          +{participants.length - FOUR}
         </AttendingCounter>
       )}
     </Wrapper>

@@ -1,18 +1,30 @@
 import React from 'react'
 
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
-import { consecutiveNumbers } from '@/helpers/consecutiveNumbers'
+import Avvvatars from 'avvvatars-react'
 
-import { AttendingCounter, Wrapper } from './AttendanceList.styles'
+import { Title } from '@/components/atoms/Title/Title.styles'
+import { getInitials } from '@/helpers/stringOperations'
 
-// in the future we will pass array people
-const AttendanceList = ({ numOfAttender }) => {
+import { AttendingCounter, StyledAvatar, Wrapper } from './AttendanceList.styles'
+
+const AttendanceList = ({ participants }) => {
+  console.log('participants', participants.length)
+
+  if (participants.length === 0) {
+    return <Title>Brak uczestników</Title>
+  }
   return (
-    <Wrapper numOfAttender={numOfAttender}>
-      {consecutiveNumbers(numOfAttender).map((num, idx) => (
-        <Thumbnail num={num} idx={idx} key={idx} />
+    <Wrapper numOfParticipants={participants.length}>
+      {participants.map(({ firstName, lastName, id }, index) => (
+        <StyledAvatar key={id} index={index} numOfParticipants={participants.length}>
+          <Avvvatars value={getInitials(firstName, lastName)} />
+        </StyledAvatar>
       ))}
-      <AttendingCounter numOfAttender={numOfAttender}>+3</AttendingCounter>
+      {participants.length > 3 && (
+        <AttendingCounter numOfAttender={participants.length}>
+          +{participants.length}
+        </AttendingCounter>
+      )}
     </Wrapper>
   )
 }

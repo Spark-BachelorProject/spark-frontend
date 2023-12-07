@@ -1,26 +1,17 @@
 import styled from 'styled-components'
 
-import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
-import { consecutiveNumbers } from '@/helpers/consecutiveNumbers'
-
-// TODO: let Thumbnail be more elastic
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: start;
+  cursor: pointer;
+`
 
-  ${Thumbnail} {
-    border: 3px solid ${({ theme }) => theme.colors.secondaryBg};
-    width: 32px;
-    height: 32px;
-  }
-
-  ${consecutiveNumbers(6).map(
-    (num, i) => `${Thumbnail}:nth-child(${num}){
-      z-index: ${6 - i};
-      transform: translateX(${i * -21}px)
-    }`
-  )}
+export const StyledAvatar = styled.div`
+  z-index: ${({ index, numOfParticipants }) => numOfParticipants - index};
+  transform: translateX(${({ index }) => index * -15}px);
+  border: 3px solid ${({ theme }) => theme.colors.secondaryBg};
+  border-radius: 50%;
 `
 
 export const AttendingCounter = styled.span`

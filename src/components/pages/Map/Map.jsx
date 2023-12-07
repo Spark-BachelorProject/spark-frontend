@@ -15,11 +15,11 @@ import { Filters, MapLegend, MapLegendItem, OverlayRight, Wrapper } from './Map.
 import './Map.styles.css'
 import { getIcon, getIconUrl } from './customIcons'
 
-const UpdateCenter = ({ center }) => {
+const UpdateCenter = ({ center, zoom }) => {
   const map = useMap()
   useEffect(() => {
-    map.flyTo(center)
-  }, [center, map])
+    map.flyTo(center, zoom)
+  }, [center, zoom, map])
   return null
 }
 
@@ -47,6 +47,7 @@ export const Map = () => {
   const [selectedMarker, setSelectedMarker] = useState(null)
   const [activitySelect, setActivitySelect] = useState(null)
   const [allowedGeoLocation, setAllowedGeoLocation] = useState(false)
+  const [zoom, setZoom] = useState(13)
 
   const onActivityChange = (e) => {
     setActivitySelect(e.target.value)
@@ -54,10 +55,13 @@ export const Map = () => {
 
   const onMarkerClick = (marker) => {
     setSelectedMarker(marker)
+    setCenter([marker.location.latitude, marker.location.longitude])
+    setZoom(16.5)
   }
 
   const onMapClick = () => {
     setSelectedMarker(null)
+    setZoom(13)
   }
 
   useEffect(() => {
@@ -92,7 +96,7 @@ export const Map = () => {
     <Wrapper>
       <MapContainer
         center={center}
-        zoom={13}
+        zoom={zoom}
         zoomControl={false}
         eventHandlers={{ click: onMapClick }}
       >
@@ -126,7 +130,7 @@ export const Map = () => {
               ))}
         </MarkerClusterGroup>
         {allowedGeoLocation && <Marker position={center} icon={getIcon('user')} />}
-        <UpdateCenter center={center} />
+        <UpdateCenter center={center} zoom={zoom} />
       </MapContainer>
 
       <OverlayRight>

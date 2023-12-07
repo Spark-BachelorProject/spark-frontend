@@ -27,7 +27,7 @@ export const userApi = createApi({
       transformResponse: (response) => response.sort(sortDescByDate),
     }),
     putOneBookmarkedPost: builder.mutation({
-      query: ({ postId }) => ({
+      query: (postId) => ({
         url: `user/posts/bookmark/${postId}`,
         method: 'PUT',
       }),

@@ -39,6 +39,13 @@ export const postsApi = createApi({
 
       providesTags: ['Posts'],
     }),
+    putParticipate: builder.mutation({
+      query: (postId) => ({
+        url: `posts/post/${postId}/participate`,
+        method: 'PUT',
+      }),
+      invalidatesTags: ['Posts'],
+    }),
   }),
 })
 
@@ -47,4 +54,5 @@ export const {
   useAddPostMutation,
   useGetOnePostQuery,
   useLazyGetFilteredPostsQuery,
+  usePutParticipateMutation,
 } = postsApi

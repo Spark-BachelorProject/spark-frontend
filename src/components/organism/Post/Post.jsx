@@ -16,6 +16,7 @@ import { getInitials } from '@/helpers/stringOperations'
 import useModal from '@/hooks/useModal'
 import usePopup from '@/hooks/usePopup'
 import { useAddCommentMutation, useGetCommentsQuery } from '@/store/api/comments'
+import { usePutParticipateMutation } from '@/store/api/posts'
 import { useGetUserQuery } from '@/store/api/user'
 
 import { AttendingContent } from '../AttendingContent/AttendingContent'
@@ -42,7 +43,9 @@ const Post = (props) => {
     privacySettings,
     tags,
     id: postId,
+    participants,
   } = props
+  const [putParticipate] = usePutParticipateMutation()
   const [inputValue, setInputValue] = useState('')
   const [addComment] = useAddCommentMutation()
   const { data: comments, isLoading: isLoadingComments } = useGetCommentsQuery(postId)
@@ -103,6 +106,14 @@ const Post = (props) => {
     }
   }
 
+  const handleTakeParticipate = async () => {
+    try {
+      await putParticipate(postId)
+    } catch (error) {
+      console.error('Error taking part in post:', error)
+    }
+  }
+
   return (
     <Wrapper>
       <Header>
@@ -150,10 +161,12 @@ const Post = (props) => {
           ref={modalOpenElementRef2}
           tabIndex={0}
         >
-          <AttendanceList numOfAttender={4} />
+          <AttendanceList participants={participants} />
         </div>
 
-        <Button borderOnly>Zgłoś obecność</Button>
+        <Button borderOnly onClick={handleTakeParticipate}>
+          Zgłoś obecność
+        </Button>
       </InteractionsSection>
 
       {!isLoadingComments && (
@@ -179,7 +192,7 @@ const Post = (props) => {
           hasBackgroundColor
           isFixed
         >
-          <AttendingContent />
+          <AttendingContent participants={participants} />
         </Modal2>
       ) : null}
     </Wrapper>

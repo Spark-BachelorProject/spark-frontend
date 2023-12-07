@@ -1,19 +1,28 @@
 import React from 'react'
 
 import { PersonListItem } from '@/components/molecules/PersonListItem/PersonListItem'
+import { getInitials } from '@/helpers/stringOperations'
 
 import { Wrapper, StyledTitle } from './AttendingCounter.styles'
 
-export const AttendingContent = () => {
+export const AttendingContent = ({ participants }) => {
   return (
     <Wrapper>
-      <StyledTitle isBold>Wezmą udział</StyledTitle>
-      <PersonListItem name="Daniel Lawson" />
-      <PersonListItem name="Austin Williams" />
-      <PersonListItem name="Brandon Hughes" />
-      <PersonListItem name="Marvin Newman" />
-      <PersonListItem name="Shawn Ortiz" />
-      <PersonListItem name="Louise Weaver" />
+      {participants.length ? (
+        <>
+          <StyledTitle isBold>Wezmą udział</StyledTitle>
+          {participants.map(({ firstName, lastName, id }) => (
+            <PersonListItem
+              key={id}
+              firstName={firstName}
+              lastName={lastName}
+              initials={getInitials(firstName, lastName)}
+            />
+          ))}
+        </>
+      ) : (
+        <StyledTitle isBold>Bądź pierwszym uczestnikiem!</StyledTitle>
+      )}
     </Wrapper>
   )
 }

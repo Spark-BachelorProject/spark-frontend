@@ -1,0 +1,13 @@
+.leaflet-container {
+  height: 60vh;
+  width: 80vh;
+  z-index: 10;
+}
+
+/* Phones in portrait mode */
+@media only screen and (max-width: 950px) {
+  .leaflet-container {
+    height: 50vh;
+    width: 50vh;
+  }
+}

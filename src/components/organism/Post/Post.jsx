@@ -11,6 +11,7 @@ import Tags from '@/components/atoms/Tags/Tags'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
+import { ModalMap } from '@/components/molecules/ModalMap/ModalMap'
 import { formatDate, formatTimeAgo, formatTimeHHMM } from '@/helpers/dateAndTime'
 import { getInitials } from '@/helpers/stringOperations'
 import useModal from '@/hooks/useModal'
@@ -23,6 +24,7 @@ import { AttendingContent } from '../AttendingContent/AttendingContent'
 import CommentSection from '../CommentSection/CommentSection'
 import { MoreInfoPost } from '../MoreInfoPost/MoreInfoPost'
 import {
+  ButtonsWrapper,
   Details,
   DetailsWrapper,
   Header,
@@ -86,6 +88,25 @@ const Post = (props) => {
   } = useModal()
   const positioning = 'center'
 
+  const {
+    Modal: Modal3,
+    isOpen: isOpen3,
+    position: position3,
+    handleCloseModal: handleCloseModal3,
+    handleOpenAndPositionModal: handleOpenAndPositionModal3,
+    modalOpenElementRef: modalOpenElementRef3,
+  } = useModal()
+
+  const handleOpenMoreInfoPopup = () => {
+    handleOpenAndPositionPopup(popupOpenElementRef, popupPositioning)
+  }
+
+  const handleCloseMoreInfoPopup = (e) => {
+    if (e.key !== 'Tab') {
+      handleOpenAndPositionPopup(popupOpenElementRef, popupPositioning)
+    }
+  }
+
   const handleOpenAttendanceList = () => {
     handleOpenAndPositionModal2(modalOpenElementRef2, positioning)
   }
@@ -96,13 +117,13 @@ const Post = (props) => {
     }
   }
 
-  const handleOpenMoreInfoPopup = () => {
-    handleOpenAndPositionPopup(popupOpenElementRef, popupPositioning)
+  const handleOpenMapModal = () => {
+    handleOpenAndPositionModal3(modalOpenElementRef3, positioning)
   }
 
-  const handleCloseMoreInfoPopup = (e) => {
+  const handleCloseMapModal = (e) => {
     if (e.key !== 'Tab') {
-      handleOpenAndPositionPopup(popupOpenElementRef, popupPositioning)
+      handleOpenAndPositionModal3(modalOpenElementRef3, positioning)
     }
   }
 
@@ -163,10 +184,19 @@ const Post = (props) => {
         >
           <AttendanceList participants={participants} />
         </div>
-
-        <Button borderOnly onClick={handleTakeParticipate}>
-          Zgłoś obecność
-        </Button>
+        <ButtonsWrapper>
+          <Button
+            borderOnly
+            onClick={(e) => handleOpenMapModal(e)}
+            ref={modalOpenElementRef3}
+            tabIndex={0}
+          >
+            Pokaż na mapie
+          </Button>{' '}
+          <Button borderOnly onClick={handleTakeParticipate}>
+            Zgłoś obecność
+          </Button>
+        </ButtonsWrapper>
       </InteractionsSection>
 
       {!isLoadingComments && (
@@ -182,6 +212,19 @@ const Post = (props) => {
         <Popup handleClose={handleClosePopup} position={position}>
           <MoreInfoPost postId={postId} handleClosePopup={handleClosePopup} location={location} />
         </Popup>
+      ) : null}
+
+      {isOpen3 ? (
+        <Modal3
+          position={position3}
+          isModal
+          hasBackgroundColor
+          isFixed
+          hasNoPadding
+          handleClose={handleCloseModal2}
+        >
+          <ModalMap location={location} handleClose={handleCloseModal2} />
+        </Modal3>
       ) : null}
 
       {isOpen2 ? (

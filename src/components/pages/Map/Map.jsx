@@ -98,6 +98,7 @@ export const Map = () => {
         zoom={zoom}
         zoomControl={false}
         eventHandlers={{ click: onMapClick }}
+        style={{ width: '100%' }}
       >
         <TileLayer
           url="https://{s}.tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=aSetRCOQl0G3zH75uVIo4ZLmnMUgiP4uy5ss8IrkciB6DUwX8HUzf3he3SBU7Ppi"

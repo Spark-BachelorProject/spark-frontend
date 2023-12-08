@@ -44,6 +44,7 @@ export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved, isMarked
       center={center}
       style={{
         height: '100%',
+        width: '100%',
       }}
       zoom={15}
       zoomControl={true}

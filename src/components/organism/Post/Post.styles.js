@@ -137,3 +137,7 @@ export const DetailsWrapper = styled.div`
     stroke: ${({ theme }) => theme.colors.text};
   }
 `
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+`

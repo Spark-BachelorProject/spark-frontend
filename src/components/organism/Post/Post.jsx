@@ -210,7 +210,12 @@ const Post = (props) => {
 
       {isOpen ? (
         <Popup handleClose={handleClosePopup} position={position}>
-          <MoreInfoPost postId={postId} handleClosePopup={handleClosePopup} location={location} />
+          <MoreInfoPost
+            postId={postId}
+            handleClosePopup={handleClosePopup}
+            location={location}
+            dateStart={dateStart}
+          />
         </Popup>
       ) : null}
 

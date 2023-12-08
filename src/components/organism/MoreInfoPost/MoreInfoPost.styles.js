@@ -32,6 +32,14 @@ export const StyledText = styled(Text)`
   }
 
   & > svg > path {
-    stroke: ${({ theme }) => theme.colors.checkboxTick};
+    stroke: ${({ theme }) => theme.colors.text};
+  }
+
+  & > svg > path {
+    fill: ${({ theme }) => theme.colors.text};
+  }
+
+  & > svg > g > path {
+    fill: ${({ theme }) => theme.colors.text};
   }
 `

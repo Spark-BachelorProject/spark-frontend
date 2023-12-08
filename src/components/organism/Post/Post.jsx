@@ -180,7 +180,7 @@ const Post = (props) => {
 
       {isOpen ? (
         <Popup handleClose={handleClosePopup} position={position}>
-          <MoreInfoPost postId={postId} handleClosePopup={handleClosePopup} />
+          <MoreInfoPost postId={postId} handleClosePopup={handleClosePopup} location={location} />
         </Popup>
       ) : null}
 

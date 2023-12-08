@@ -226,9 +226,9 @@ const Post = (props) => {
           hasBackgroundColor
           isFixed
           hasNoPadding
-          handleClose={handleCloseModal2}
+          handleClose={handleCloseModal3}
         >
-          <ModalMap location={location} handleClose={handleCloseModal2} />
+          <ModalMap location={location} handleClose={handleCloseModal3} />
         </Modal3>
       ) : null}
 

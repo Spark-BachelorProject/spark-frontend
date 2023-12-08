@@ -16,31 +16,28 @@ export const MoreInfoPost = ({ postId, handleClosePopup, location }) => {
     }
   }
 
-  const handleOpenGoogleMaps = () => {
-    window.open(
-      `https://www.google.com/maps/search/?api=1&mapaction=pano&query=${location.latitude},${location.longitude}`
-    )
+  const handleOpenGoogleMapsRoute = async () => {
+    try {
+      const permission = await navigator.permissions.query({ name: 'geolocation' })
+      if (permission.state === 'denied') {
+        return
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const userCoordinates = [position.coords.latitude, position.coords.longitude]
+          window.open(
+            `https://www.google.com/maps/dir/?api=1&origin=${userCoordinates[0]},${userCoordinates[1]}&destination=${location.latitude},${location.longitude}`
+          )
+        },
+        (error) => {
+          console.error('Error getting location:', error)
+        }
+      )
+    } catch (error) {
+      console.error('Error opening Google Maps:', error)
+    }
   }
-
-  // const {
-  //   Modal,
-  //   isOpen,
-  //   position,
-  //   handleCloseModal,
-  //   handleOpenAndPositionModal,
-  //   modalOpenElementRef,
-  // } = useModal()
-  // const positioning = 'center'
-
-  // const handleOpenMapModal = () => {
-  //   handleOpenAndPositionModal(modalOpenElementRef, positioning)
-  // }
-
-  // const handleCloseMapModal = (e) => {
-  //   if (e.key !== 'Tab') {
-  //     handleOpenAndPositionModal(modalOpenElementRef, positioning)
-  //   }
-  // }
 
   return (
     <Wrapper>
@@ -52,13 +49,9 @@ export const MoreInfoPost = ({ postId, handleClosePopup, location }) => {
         <BookmarkIcon />
         Zapisz post
       </StyledText>
-      {/* <StyledText onClick={(e) => handleOpenMapModal(e)} ref={modalOpenElementRef} tabIndex={0}>
-        <MapIcon style={{ width: '17px' }} />
-        Pokaż na mapie
-      </StyledText> */}
-      <StyledText onClick={handleOpenGoogleMaps}>
+      <StyledText onClick={handleOpenGoogleMapsRoute}>
         <Link style={{ width: '17px' }} />
-        Przejdź do Google Maps
+        Pokaż trasę do spotkania
       </StyledText>
       {/* <StyledText>
         <BellIcon />
@@ -72,18 +65,6 @@ export const MoreInfoPost = ({ postId, handleClosePopup, location }) => {
         <ReportIcon />
         Zgłoś administratorom
       </StyledText> */}
-      {/* {isOpen ? (
-        <Modal
-          handleClose={handleCloseModal}
-          position={position}
-          isModal
-          hasBackgroundColor
-          isFixed
-          hasNoPadding
-        >
-          <ModalMap location={location} />
-        </Modal>
-      ) : null} */}
     </Wrapper>
   )
 }

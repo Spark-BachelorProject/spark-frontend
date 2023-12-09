@@ -18,6 +18,7 @@ import {
   timeNow,
 } from '@/helpers/dateAndTime.js'
 import { useGetActivitiesQuery } from '@/store/api/activities.js'
+import { useGetGroupsQuery } from '@/store/api/groups.js'
 import { useAddPostMutation } from '@/store/api/posts'
 import { useGetTagsQuery } from '@/store/api/tags.js'
 import { useGetUserQuery } from '@/store/api/user.js'
@@ -48,20 +49,26 @@ const initialState = {
   hourStart: timeNow,
   dateStart: dateNowYYYYMMDD,
   privacy: PRIVACYSETTINGS[0].value,
-  // activity: activities[0].value,
 }
 
 // TODO: add memoization
 const CreatePost = ({ handleClose }) => {
   const [addPost] = useAddPostMutation()
-  const { data: activitiesApi, isLoading } = useGetActivitiesQuery()
+  const { data: activitiesApi, isLoading: isLoadingActivitiesApi } = useGetActivitiesQuery()
   const { data: tagsApi } = useGetTagsQuery()
   const [activities, setActivities] = useState([])
+  const [groups, setGroups] = useState([])
   const [tags, setTags] = useState([])
-  const { data: user } = useGetUserQuery()
+  const [state, setState] = useState(initialState)
+  const { data: user, isLoadingUser } = useGetUserQuery()
+  const {
+    data: groupsApi,
+    isLoading: isLoadingGroupsApi,
+    isSuccess: isSuccessGroupsApi,
+  } = useGetGroupsQuery()
 
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoadingActivitiesApi) {
       if (activitiesApi.length === 0) return
       const activitiesApiWithValue = activitiesApi.map((activity) => ({
         ...activity,
@@ -70,9 +77,19 @@ const CreatePost = ({ handleClose }) => {
       setActivities(activitiesApiWithValue)
       initialState.activity = activitiesApiWithValue[0].value
     }
-  }, [activitiesApi, isLoading])
+  }, [activitiesApi, isLoadingActivitiesApi])
 
-  const [state, setState] = useState(initialState)
+  useEffect(() => {
+    if (!isLoadingGroupsApi) {
+      if (groupsApi.length === 0) return
+      const groupsApiWithValue = groupsApi.map((group) => ({
+        ...group,
+        value: group.name,
+      }))
+      setGroups(groupsApiWithValue)
+      initialState.groups = groupsApiWithValue[0].value
+    }
+  }, [groupsApi, isLoadingGroupsApi])
 
   const [isPlaceSelected, setIsPlaceSelected] = useState(false)
   const [selectedCity, setSelectedCity] = useState(null)
@@ -176,6 +193,16 @@ const CreatePost = ({ handleClose }) => {
         </Select>
         <Select
           style={{ gridArea: 'select2' }}
+          name="groups"
+          id="groups"
+          value={state.groups}
+          onChange={handleChange}
+          isDisabled={state.privacy !== 'PRIVATE_GROUP'}
+        >
+          {groups}
+        </Select>
+        <Select
+          style={{ gridArea: 'select3' }}
           name="activity"
           id="activity"
           value={state.activity}
@@ -183,7 +210,25 @@ const CreatePost = ({ handleClose }) => {
         >
           {activities}
         </Select>
-        <div style={{ gridArea: 'input2' }}>
+        <Input
+          style={{ gridArea: 'input2' }}
+          type="date"
+          name="dateStart"
+          id="dateStart"
+          value={state.dateStart}
+          onChange={handleChange}
+          min={dateNowYYYYMMDD}
+        />
+        <Input
+          style={{ gridArea: 'input3' }}
+          type="time"
+          name="hourStart"
+          id="hourStart"
+          value={state.hourStart}
+          min={isToday(state.dateStart) ? timeNow : '00:00'}
+          onChange={handleChange}
+        />
+        <div style={{ gridArea: 'input4' }}>
           <PlaceAutocomplete
             onSelectCoordinates={handleSelectCoordinates}
             isPlaceSelected={handleSelectedPlace}
@@ -194,24 +239,7 @@ const CreatePost = ({ handleClose }) => {
             onSelectCity={handleSelectedCity}
           />
         </div>
-        <Input
-          style={{ gridArea: 'input3' }}
-          type="date"
-          name="dateStart"
-          id="dateStart"
-          value={state.dateStart}
-          onChange={handleChange}
-          min={dateNowYYYYMMDD}
-        />
-        <Input
-          style={{ gridArea: 'input4' }}
-          type="time"
-          name="hourStart"
-          id="hourStart"
-          value={state.hourStart}
-          min={isToday(state.dateStart) ? timeNow : '00:00'}
-          onChange={handleChange}
-        />
+
         <div
           style={{
             gridArea: 'map',

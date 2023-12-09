@@ -48,17 +48,17 @@ export const InputsWrapper = styled.div`
   margin: 16px 0;
   gap: 16px;
 
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(8, 1fr);
   grid-template-areas:
-    'input1 input1'
-    'select1 select2'
-    'input3 input4'
-    'input2 input2'
-    'map map'
-    'map map'
-    'map map'
-    'map map';
+    'input1 input1 input1 input1'
+    'select1 select1 select2 select2'
+    'select3 select3 input2 input3'
+    'input4 input4 input4 input4'
+    'map map map map'
+    'map map map map'
+    'map map map map'
+    'map map map map';
 
   & > select {
     background-color: ${({ theme }) => theme.colors.inputBg};
@@ -68,13 +68,14 @@ export const InputsWrapper = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakPoints.l}) {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(9, 1fr);
     grid-template-areas:
       'input1 input1'
       'select1 select2'
-      'input3 input4'
-      'input2 input2'
+      'select3 select3'
+      'input2 input3'
+      'input4 input4'
       'map map'
       'map map'
       'map map'

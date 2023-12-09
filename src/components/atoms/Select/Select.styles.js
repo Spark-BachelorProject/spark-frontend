@@ -5,7 +5,7 @@ export const StyledSelect = styled.select`
   box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.02);
   height: 35px;
   width: auto;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'disable' : 'pointer')};
   background: ${({ theme }) => theme.colors.secondaryBg};
   border-radius: 4px;
   color: ${({ theme }) => theme.colors.selectFont};

@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-import { ReactComponent as ExpandVectorIcon } from '@/assets/icons/expand-vector.svg'
 import { Button } from '@/components/atoms/Button/Button.styles'
-import Input from '@/components/atoms/Input/Input'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.form`

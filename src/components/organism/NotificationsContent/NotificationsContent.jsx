@@ -1,17 +1,14 @@
-import React from 'react'
-
 import { Counter } from '@/components/atoms/Counter/Counter'
 import { MoreInfoNotifications } from '@/components/organism/MoreInfoNotifications/MoreInfoNotifications'
 import { Notification } from '@/components/organism/Notification/Notification'
-import useModal from '@/hooks/useModal'
 import usePopup from '@/hooks/usePopup'
 
 import {
-  Wrapper,
-  NotificationsWrapper,
   HeadingWrapper,
-  StyledTitle,
+  NotificationsWrapper,
   StyledMoreInfoIcon,
+  StyledTitle,
+  Wrapper,
 } from './NotificationsContent.styles'
 
 //TODO: count unread notification and save in localstorage

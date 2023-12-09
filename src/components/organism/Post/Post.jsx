@@ -38,11 +38,11 @@ const Post = (props) => {
     activity,
     creator: { firstName, lastName },
     dateCreated,
-    dateEnd,
+    // dateEnd,
     dateStart,
     description,
     location,
-    privacySettings,
+    // privacySettings,
     tags,
     id: postId,
     participants,
@@ -121,11 +121,11 @@ const Post = (props) => {
     handleOpenAndPositionModal3(modalOpenElementRef3, positioning)
   }
 
-  const handleCloseMapModal = (e) => {
-    if (e.key !== 'Tab') {
-      handleOpenAndPositionModal3(modalOpenElementRef3, positioning)
-    }
-  }
+  // const handleCloseMapModal = (e) => {
+  //   if (e.key !== 'Tab') {
+  //     handleOpenAndPositionModal3(modalOpenElementRef3, positioning)
+  //   }
+  // }
 
   const handleTakeParticipate = async () => {
     try {

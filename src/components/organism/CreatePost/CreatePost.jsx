@@ -58,7 +58,7 @@ const CreatePost = ({ handleClose }) => {
   const { data: tagsApi } = useGetTagsQuery()
   const [activities, setActivities] = useState([])
   const [tags, setTags] = useState([])
-  const { data: user, isLoadingUser } = useGetUserQuery()
+  const { data: user } = useGetUserQuery()
 
   useEffect(() => {
     if (!isLoading) {

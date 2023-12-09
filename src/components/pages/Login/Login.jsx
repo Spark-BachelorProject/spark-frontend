@@ -1,4 +1,3 @@
-import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -22,7 +21,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(loginSchema) })
-  const [login, { isSuccess, isError }] = useLoginMutation()
+  const [login, { isError }] = useLoginMutation()
   const navigate = useNavigate()
 
   // redirect to home page after successful login

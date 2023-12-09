@@ -1,12 +1,10 @@
-import React from 'react'
-
 import PropTypes from 'prop-types'
 
 import { ReactComponent as UsersIcon } from '@/assets/icons/users.svg'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 
-import { Content, Header, IconBackground, StyledTags, Wrapper } from './GroupCard.styles'
+import { Content, Header, IconBackground, Wrapper } from './GroupCard.styles'
 
 // TODO: add tags
 const GroupCard = (props) => {

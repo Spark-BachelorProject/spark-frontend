@@ -32,12 +32,6 @@ export const FeedbackSection = () => {
     handleOpenAndPositionModal(modalOpenElementRef, positioning)
   }
 
-  const handleCloseFeedbackPopup = (e) => {
-    if (e.key !== 'Tab') {
-      handleOpenAndPositionModal(modalOpenElementRef, positioning)
-    }
-  }
-
   return (
     <Wrapper>
       <Title isBold>Twoja opinia się dla nas liczy</Title>

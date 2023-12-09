@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import axios from 'axios'
 
 import { registerSchema } from '@/assets/schemas/registerSchema'
 import { Alert } from '@/components/atoms/Alert/Alert'
@@ -18,7 +17,7 @@ import { Form, StyledError } from './Register.styles'
 
 const Register = () => {
   const { GoogleLogin } = useGoogleLogin()
-  const [validData, setValidData] = useState(false)
+  const [validData] = useState(false)
   const navigate = useNavigate()
 
   const {
@@ -26,7 +25,7 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(registerSchema) })
-  const [signUp, { isSuccess, isError }] = useRegisterMutation()
+  const [signUp, { isError }] = useRegisterMutation()
 
   //TODO: Handle error when you created user with the same email
   const onSubmit = async (data) => {

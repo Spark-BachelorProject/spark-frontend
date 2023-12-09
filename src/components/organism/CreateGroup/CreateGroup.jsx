@@ -48,7 +48,6 @@ const CreateGroup = ({ handleClose }) => {
   const [addGroup] = useAddGroupMutation()
   const [selectedCity, setSelectedCity] = useState('')
   const { data: activitiesApi, isLoading: isLoadingActivities } = useGetActivitiesQuery()
-  const [geolocatedCity, setGeolocatedCity] = useState('')
   const [activities, setActivities] = useState([])
 
   const handleCityChange = (city) => {

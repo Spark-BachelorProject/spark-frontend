@@ -26,14 +26,17 @@ export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved, isMarked
   const [markerPosition, setMarkerPosition] = useState(center)
   const [hasMarkerMoved, setHasMarkerMoved] = useState(false)
 
-  const updatePosition = useCallback((event) => {
-    const newPosition = event.target.getLatLng()
-    setMarkerPosition({ lat: newPosition.lat, lng: newPosition.lng })
-    setHasMarkerMoved(true)
-    onMarkerMoved({ lat: newPosition.lat, lng: newPosition.lng })
+  const updatePosition = useCallback(
+    (event) => {
+      const newPosition = event.target.getLatLng()
+      setMarkerPosition({ lat: newPosition.lat, lng: newPosition.lng })
+      setHasMarkerMoved(true)
+      onMarkerMoved({ lat: newPosition.lat, lng: newPosition.lng })
 
-    isMarkedMoved(true)
-  }, [])
+      isMarkedMoved(true)
+    },
+    [isMarkedMoved, onMarkerMoved]
+  )
 
   useEffect(() => {
     setMarkerPosition(center)

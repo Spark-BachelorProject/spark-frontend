@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import Loader from '@/components/atoms/Loader/Loader'
 import { AddPostSection } from '@/components/molecules/AddPostSection/AddPostSection'
@@ -9,7 +9,7 @@ import { PageContent } from '@/components/templates/PageContent/PageContent'
 import { useGetPostsQuery, useLazyGetFilteredPostsQuery } from '@/store/api/posts'
 
 const Home = () => {
-  const { data, isLoading, isSuccess } = useGetPostsQuery()
+  const { isLoading, isSuccess } = useGetPostsQuery()
   const [posts, setPosts] = useState([])
   const [filterOptions, setFilterOptions] = useState({
     activity: 0, // 0 means all activities
@@ -18,7 +18,7 @@ const Home = () => {
   })
   const [trigger, result] = useLazyGetFilteredPostsQuery(filterOptions)
 
-  const memoizedResult = useMemo(() => result, [result.data, result.isSuccess])
+  const memoizedResult = useMemo(() => result, [result])
 
   useEffect(() => {
     if (filterOptions.activity === 0 && filterOptions.start === '' && filterOptions.end === '') {

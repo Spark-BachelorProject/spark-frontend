@@ -14,12 +14,13 @@ import { Filters, OverlayRight, Wrapper } from './Map.styles'
 import './Map.styles.css'
 import { getIcon } from './customIcons'
 
-const UpdateCenter = ({ center, zoom, setPrevCenter }) => {
+const UpdateCenter = ({ center, zoom, setPrevCenter, setPrevZoom }) => {
   const map = useMap()
   useEffect(() => {
     map.flyTo(center, zoom)
     setPrevCenter(map.getCenter())
-  }, [center, zoom, map, setPrevCenter])
+    setPrevZoom(map.getZoom())
+  }, [center, zoom, map, setPrevCenter, setPrevZoom])
   return null
 }
 
@@ -50,6 +51,7 @@ export const Map = () => {
   const [allowedGeoLocation, setAllowedGeoLocation] = useState(false)
   const [zoom, setZoom] = useState(13)
   const [prevCenter, setPrevCenter] = useState([null, null])
+  const [prevZoom, setPrevZoom] = useState(null)
 
   const onActivityChange = (e) => {
     setActivitySelect(e.target.value)
@@ -57,6 +59,7 @@ export const Map = () => {
 
   const onMarkerClick = (marker) => {
     setPrevCenter(center)
+    setPrevZoom(zoom)
     setSelectedMarker(marker)
     setCenter([marker.location.latitude, marker.location.longitude])
     setZoom(16.5)
@@ -65,7 +68,7 @@ export const Map = () => {
   const onMapClick = () => {
     setSelectedMarker(null)
     setCenter(prevCenter)
-    setZoom(13)
+    setZoom(prevZoom)
   }
 
   useEffect(() => {
@@ -136,7 +139,12 @@ export const Map = () => {
         {allowedGeoLocation && userLocation && (
           <Marker position={userLocation} icon={getIcon('user')} />
         )}{' '}
-        <UpdateCenter center={center} zoom={zoom} setPrevCenter={setPrevCenter} />
+        <UpdateCenter
+          center={center}
+          zoom={zoom}
+          setPrevCenter={setPrevCenter}
+          setPrevZoom={setPrevZoom}
+        />
       </MapContainer>
 
       <OverlayRight>

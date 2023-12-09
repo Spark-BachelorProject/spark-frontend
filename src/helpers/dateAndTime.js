@@ -22,8 +22,10 @@ export const formatTimeAgo = (dateString) => {
     return `${minutes} min temu`
   } else if (hours < 24) {
     return `${hours} godzin${hours === 1 ? 'ę' : hours < 5 ? 'y' : ''} temu`
+  } else if (days == 1) {
+    return 'wczoraj'
   } else if (days < 7) {
-    return `${days} dni${days === 1 ? 'a' : ''} temu`
+    return `${days} dni temu`
   } else {
     const date = dataTime.toLocaleDateString()
     const time = dataTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })

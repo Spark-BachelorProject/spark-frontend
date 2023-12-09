@@ -21,7 +21,9 @@ export const Input = styled.input`
     display: none;
   } */
 
-  &[type='time'] {
-    padding: 11px 19px;
+  &[type='time'],
+  &[type='date'] {
+    /* padding: 11px 19px; */
+    max-height: 35px;
   }
 `

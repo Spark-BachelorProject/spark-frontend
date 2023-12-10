@@ -22,7 +22,7 @@ export const formatTimeAgo = (dateString) => {
     return `${minutes} min temu`
   } else if (hours < 24) {
     return `${hours} godzin${hours === 1 ? 'ę' : hours < 5 ? 'y' : ''} temu`
-  } else if (days == 1) {
+  } else if (days === 1) {
     return 'wczoraj'
   } else if (days < 7) {
     return `${days} dni temu`

@@ -7,6 +7,7 @@ describe('formatTimeAgo', () => {
     [dayjs().subtract(5, 'minute').valueOf(), '5 min temu'],
     [dayjs().subtract(2, 'hour').valueOf(), '2 godziny temu'],
     [dayjs().subtract(3, 'day').valueOf(), '3 dni temu'],
+    [dayjs().subtract(1, 'day').valueOf(), 'wczoraj'],
     [dayjs().subtract(7, 'day').valueOf(), dayjs().subtract(7, 'day').format('D.MM.YYYY, HH:mm')],
   ])('returns "%s" when the timestamp is %s', (timestamp, expected) => {
     const result = formatTimeAgo(timestamp)

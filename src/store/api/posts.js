@@ -46,6 +46,13 @@ export const postsApi = createApi({
       }),
       invalidatesTags: ['Posts'],
     }),
+    deleteParticipation: builder.mutation({
+      query: (postId) => ({
+        url: `posts/post/${postId}/unparticipate`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Posts'],
+    }),
   }),
 })
 
@@ -55,4 +62,5 @@ export const {
   useGetOnePostQuery,
   useLazyGetFilteredPostsQuery,
   usePutParticipateMutation,
+  useDeleteParticipationMutation,
 } = postsApi

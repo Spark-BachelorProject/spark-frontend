@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { ReactComponent as MoreInfoIcon } from '@/assets/icons/three-dots.svg'
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 
@@ -94,26 +94,6 @@ export const InteractionsSection = styled.section`
   display: flex;
   margin: 25px 0 10px 0;
   justify-content: space-between;
-
-  ${Button} {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    color: ${({ theme }) => theme.colors.accent};
-    font-weight: 500;
-    padding: 8px 14px;
-    background-color: ${({ theme }) => theme.colors.tagBg};
-    border: 2px solid ${({ theme }) => theme.colors.tagBorder};
-
-    & > svg > path {
-      stroke: ${({ theme }) => theme.colors.accent};
-    }
-  }
-
-  ${Button}:hover {
-    color: ${({ theme }) => theme.colors.white};
-    background-color: ${({ theme }) => theme.colors.accent};
-  }
 `
 
 export const DetailsWrapper = styled.div`

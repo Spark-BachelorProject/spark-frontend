@@ -77,7 +77,7 @@ const SearchBar = () => {
       <SearchResults isVisible={isOpen} {...getMenuProps()}>
         {items.map((item, index) => (
           <React.Fragment key={index}>
-            {item.dateCreated === posts[0].dateCreated && (
+            {item.dateCreated && item.dateCreated === posts[0]?.dateCreated && (
               <SearchResultTypeLabel>Posty</SearchResultTypeLabel>
             )}
             {item.dateCreated && (

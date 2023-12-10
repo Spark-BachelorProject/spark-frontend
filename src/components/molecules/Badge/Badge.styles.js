@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
 
 export const StyledButton = styled(Button)`
   padding: 10px 20px;

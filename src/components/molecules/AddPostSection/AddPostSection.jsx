@@ -2,7 +2,7 @@ import React from 'react'
 
 import Avvvatars from 'avvvatars-react'
 
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
 import CreatePost from '@/components/organism/CreatePost/CreatePost'
 import { getInitials } from '@/helpers/stringOperations'
 import useModal from '@/hooks/useModal'

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { Error } from '@/components/atoms/Error/Error.styles'
 import { TextArea } from '@/components/atoms/TextArea/TextArea.styles'
 

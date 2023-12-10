@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import { registerSchema } from '@/assets/schemas/registerSchema'
 import { Alert } from '@/components/atoms/Alert/Alert'
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import LoginInput from '@/components/molecules/LoginInput/LoginInput'

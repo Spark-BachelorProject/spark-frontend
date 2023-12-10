@@ -2,7 +2,7 @@ import React from 'react'
 
 import PropTypes from 'prop-types'
 
-import { Button } from '../Button/Button.styles'
+import { Button } from '../Buttons/Button.styles'
 import { StyledTags } from './Tags.styles'
 
 const Tags = ({ children, className }) => {

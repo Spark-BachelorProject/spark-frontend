@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Button } from '../Button/Button.styles'
+import { Button } from '../Buttons/Button.styles'
 
 export const StyledTags = styled.div`
   margin: 15px 0 0 0;

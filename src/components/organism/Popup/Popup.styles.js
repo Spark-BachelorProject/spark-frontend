@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
 
 export const PopupWrapper = styled.div`
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.07);

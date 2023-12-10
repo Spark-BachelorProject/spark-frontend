@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
 import Tags from '@/components/atoms/Tags/Tags'
 import { Text } from '@/components/atoms/Text/Text.styles'
 

@@ -4,7 +4,7 @@ import Avvvatars from 'avvvatars-react'
 
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
 import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Details } from '@/components/organism/Post/Post.styles'

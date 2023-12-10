@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'

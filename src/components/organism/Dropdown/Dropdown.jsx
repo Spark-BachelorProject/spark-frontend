@@ -2,19 +2,14 @@ import React, { useEffect, useState } from 'react'
 
 import { ReactComponent as FilterIcon } from '@/assets/icons/filter.svg'
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
+import { SecondaryButton } from '@/components/atoms/Buttons/SecondaryButton.styles'
 import Select from '@/components/atoms/Select/Select'
 import Filters from '@/components/organism/Filters/Filters'
 import { formatDate } from '@/helpers/dateAndTime'
 import usePopup from '@/hooks/usePopup'
 import { useGetActivitiesQuery } from '@/store/api/activities'
 
-import {
-  Wrapper,
-  ButtonsWrapper,
-  SelectButtonsWrapper,
-  StyledIconBorder,
-  SecondaryButton,
-} from './Dropdown.styles'
+import { Wrapper, ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder } from './Dropdown.styles'
 
 const initialState = {
   activity: '',

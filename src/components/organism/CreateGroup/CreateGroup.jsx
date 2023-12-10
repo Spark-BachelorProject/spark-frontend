@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import { CityAutocomplete } from '@/components/molecules/CityAutocomplete/CityAutocomplete'

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 
 export const Wrapper = styled.section`

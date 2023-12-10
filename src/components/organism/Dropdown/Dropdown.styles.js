@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import { Button } from '@/components/atoms/Button/Button.styles'
 import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
 
 export const Wrapper = styled.div`
@@ -41,23 +40,3 @@ export const StyledIconBorder = styled(IconBorder)`
   }
 `
 
-export const SecondaryButton = styled(Button)`
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  color: ${({ theme }) => theme.colors.accent};
-  font-weight: 500;
-  max-height: 35px;
-  background-color: ${({ theme }) => theme.colors.tagBg};
-  border: 2px solid ${({ theme }) => theme.colors.tagBorder};
-
-  & > svg > path {
-    stroke: ${({ theme }) => theme.colors.accent};
-  }
-
-  &:hover {
-    & > svg > path {
-      stroke: ${({ theme }) => theme.colors.white};
-    }
-  }
-`

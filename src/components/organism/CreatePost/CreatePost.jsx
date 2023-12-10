@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { LublinCoordinates } from '@/assets/constants/coordinates.js'
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles.js'
 import Input from '@/components/atoms/Input/Input'
 import Select from '@/components/atoms/Select/Select'
 import { Title } from '@/components/atoms/Title/Title.styles'

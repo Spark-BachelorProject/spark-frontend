@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { ReactComponent as ExpandVectorIcon } from '@/assets/icons/expand-vector.svg'
 import { ReactComponent as SendVectorIcon } from '@/assets/icons/send-vector.svg'
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
 import Input from '@/components/atoms/Input/Input'
 import Comment from '@/components/molecules/Comment/Comment'
 

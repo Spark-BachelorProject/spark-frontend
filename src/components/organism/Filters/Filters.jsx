@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { Error } from '@/components/atoms/Error/Error.styles'
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { Label } from '@/components/atoms/Label/Label.styles'

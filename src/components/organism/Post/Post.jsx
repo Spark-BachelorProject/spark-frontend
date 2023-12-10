@@ -5,7 +5,8 @@ import Avvvatars from 'avvvatars-react'
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
 import { ReactComponent as PinIcon } from '@/assets/icons/map-pin.svg'
-import { Button } from '@/components/atoms/Button/Button.styles'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
+import { SecondaryButton } from '@/components/atoms/Buttons/SecondaryButton.styles'
 import Dot from '@/components/atoms/Dot/Dot'
 import Tags from '@/components/atoms/Tags/Tags'
 import { Text } from '@/components/atoms/Text/Text.styles'
@@ -17,7 +18,7 @@ import { getInitials } from '@/helpers/stringOperations'
 import useModal from '@/hooks/useModal'
 import usePopup from '@/hooks/usePopup'
 import { useAddCommentMutation, useGetCommentsQuery } from '@/store/api/comments'
-import { usePutParticipateMutation } from '@/store/api/posts'
+import { useDeleteParticipationMutation, usePutParticipateMutation } from '@/store/api/posts'
 import { useGetUserQuery } from '@/store/api/user'
 
 import { AttendingContent } from '../AttendingContent/AttendingContent'
@@ -48,6 +49,7 @@ const Post = (props) => {
     participants,
   } = props
   const [putParticipate] = usePutParticipateMutation()
+  const [deleteParticipation] = useDeleteParticipationMutation()
   const [inputValue, setInputValue] = useState('')
   const [addComment] = useAddCommentMutation()
   const { data: comments, isLoading: isLoadingComments } = useGetCommentsQuery(postId)
@@ -127,13 +129,15 @@ const Post = (props) => {
   //   }
   // }
 
-  const handleTakeParticipate = async () => {
+  const handleParticipation = async () => {
     try {
-      await putParticipate(postId)
+      ifUserIsParticipant() ? await deleteParticipation(postId) : await putParticipate(postId)
     } catch (error) {
       console.error('Error taking part in post:', error)
     }
   }
+
+  const ifUserIsParticipant = () => participants.some((participant) => participant.id === user.id)
 
   return (
     <Wrapper>
@@ -185,17 +189,16 @@ const Post = (props) => {
           <AttendanceList participants={participants} />
         </div>
         <ButtonsWrapper>
-          <Button
-            borderOnly
+          <SecondaryButton
             onClick={(e) => handleOpenMapModal(e)}
             ref={modalOpenElementRef3}
             tabIndex={0}
           >
             Pokaż na mapie
-          </Button>{' '}
-          <Button borderOnly onClick={handleTakeParticipate}>
-            Zgłoś obecność
-          </Button>
+          </SecondaryButton>
+          <SecondaryButton isFilled={ifUserIsParticipant()} isGray onClick={handleParticipation}>
+            {ifUserIsParticipant() ? 'Odwołaj obecność' : 'Zgłoś obecność'}
+          </SecondaryButton>
         </ButtonsWrapper>
       </InteractionsSection>
 

@@ -20,7 +20,7 @@ import {
 import { useGetActivitiesQuery } from '@/store/api/activities.js'
 import { useGetGroupsQuery } from '@/store/api/groups.js'
 import { useAddPostMutation } from '@/store/api/posts'
-import { useGetTagsQuery } from '@/store/api/tags.js'
+import { useGetTagsByActivityIdQuery } from '@/store/api/tags.js'
 import { useGetUserQuery } from '@/store/api/user.js'
 
 import {
@@ -55,10 +55,17 @@ const initialState = {
 const CreatePost = ({ handleClose }) => {
   const [addPost] = useAddPostMutation()
   const { data: activitiesApi, isLoading: isLoadingActivitiesApi } = useGetActivitiesQuery()
-  const { data: tagsApi } = useGetTagsQuery()
   const [activities, setActivities] = useState([])
   const [groups, setGroups] = useState([])
   const [tags, setTags] = useState([])
+
+  const [selectedActivityId, setSelectedActivityId] = useState(1)
+  const {
+    data: tagsApi,
+    error,
+    isLoading: isLoadingTagsApi,
+  } = useGetTagsByActivityIdQuery(selectedActivityId)
+
   const [state, setState] = useState(initialState)
   const { data: user, isLoadingUser } = useGetUserQuery()
   const {
@@ -90,6 +97,17 @@ const CreatePost = ({ handleClose }) => {
       initialState.groups = groupsApiWithValue[0].value
     }
   }, [groupsApi, isLoadingGroupsApi])
+
+  useEffect(() => {
+    if (!isLoadingTagsApi) {
+      if (tags.length === 0) return
+      const tagsApiWithValue = tags.map((tag) => ({
+        ...tag,
+        value: tag.name,
+      }))
+      setTags(tagsApiWithValue)
+    }
+  }, [tags, isLoadingTagsApi])
 
   const [isPlaceSelected, setIsPlaceSelected] = useState(false)
   const [selectedCity, setSelectedCity] = useState(null)
@@ -127,6 +145,14 @@ const CreatePost = ({ handleClose }) => {
       ...prevState,
       [name]: value,
     }))
+
+    if (name === 'activity') {
+      const { value } = e.target
+      const selectedActivity = activitiesApi.find((activity) => activity.name === value)
+      if (selectedActivity) {
+        setSelectedActivityId(selectedActivity.id)
+      }
+    }
   }
 
   const handleSubmit = (e) => {

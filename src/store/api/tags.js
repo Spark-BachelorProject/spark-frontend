@@ -12,7 +12,10 @@ export const tagsApi = createApi({
     getTags: builder.query({
       query: () => 'tags',
     }),
+    getTagsByActivityId: builder.query({
+      query: (id) => `activities/${id}/tags`,
+    }),
   }),
 })
 
-export const { useGetTagsQuery } = tagsApi
+export const { useGetTagsQuery, useGetTagsByActivityIdQuery } = tagsApi

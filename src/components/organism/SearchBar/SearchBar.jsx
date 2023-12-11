@@ -9,10 +9,10 @@ import { useGetGroupsQuery } from '@/store/api/groups'
 import { useGetPostsQuery } from '@/store/api/posts'
 
 import {
-  SearchResultTypeLabel,
   SearchResults,
   SearchResultsItem,
   Wrapper,
+  SearchResultTypeLabel,
 } from './SearchBar.styles'
 
 function getPostsAndGroupsFilter(inputValue) {
@@ -77,10 +77,10 @@ const SearchBar = () => {
       <SearchResults isVisible={isOpen} {...getMenuProps()}>
         {items.map((item, index) => (
           <React.Fragment key={index}>
-            {item.dateCreated && item.dateCreated === posts[0]?.dateCreated && (
+            {item?.dateCreated && item.dateCreated === posts[0].dateCreated && (
               <SearchResultTypeLabel>Posty</SearchResultTypeLabel>
             )}
-            {item.dateCreated && (
+            {item?.dateCreated && (
               <SearchResultsItem
                 key={index}
                 ishighlighted={highlightedIndex === index}
@@ -89,10 +89,10 @@ const SearchBar = () => {
                 {item.description}
               </SearchResultsItem>
             )}
-            {item.name && item.name === groups[0].name && (
+            {item?.name && item.name === groups[0].name && (
               <SearchResultTypeLabel>Grupy</SearchResultTypeLabel>
             )}
-            {item.name && (
+            {item?.name && (
               <SearchResultsItem
                 key={index}
                 ishighlighted={highlightedIndex === index}

@@ -9,10 +9,10 @@ import { useGetGroupsQuery } from '@/store/api/groups'
 import { useGetPostsQuery } from '@/store/api/posts'
 
 import {
+  SearchResultTypeLabel,
   SearchResults,
   SearchResultsItem,
   Wrapper,
-  SearchResultTypeLabel,
 } from './SearchBar.styles'
 
 function getPostsAndGroupsFilter(inputValue) {
@@ -89,7 +89,9 @@ const SearchBar = () => {
                 {item.description}
               </SearchResultsItem>
             )}
-            {item.name === groups[0].name && <SearchResultTypeLabel>Grupy</SearchResultTypeLabel>}
+            {item.name && item.name === groups[0].name && (
+              <SearchResultTypeLabel>Grupy</SearchResultTypeLabel>
+            )}
             {item.name && (
               <SearchResultsItem
                 key={index}

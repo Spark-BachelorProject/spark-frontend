@@ -53,7 +53,7 @@ export const BookmarkedContent = ({
       </HeadingWrapper>
       {isLoadingBookmarkedPosts && <Loader isCentered />}
       {!isLoadingBookmarkedPosts && isSuccessBookmarkedPosts && bookmarkedPosts.length === 0 && (
-        <Text isBold>Nie masz zapisanych aktywności</Text>
+        <Text>Nie masz zapisanych aktywności</Text>
       )}
       {!isLoadingBookmarkedPosts &&
         isSuccessBookmarkedPosts &&

@@ -198,7 +198,9 @@ const CreatePost = ({ handleClose }) => {
     <Wrapper onSubmit={handleSubmit}>
       <HeaderWrapper>
         <div>
-          <Title isBig>Dodawanie postu</Title>
+          <Title isBig isBold>
+            Dodawanie postu
+          </Title>
         </div>
         <XIcon onClick={handleClose} />
       </HeaderWrapper>

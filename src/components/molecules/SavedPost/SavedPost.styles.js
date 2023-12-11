@@ -6,12 +6,13 @@ import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 
 export const Wrapper = styled.div`
   position: relative;
-  padding: 15px 5px;
+  padding: 15px 15px;
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 110%;
   height: auto;
-  margin: 5px 0 0 0;
+
+  margin-left: -15px;
   border-radius: 7px;
   gap: 5px;
   cursor: pointer;

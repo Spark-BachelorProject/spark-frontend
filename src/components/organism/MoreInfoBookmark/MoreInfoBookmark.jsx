@@ -1,10 +1,7 @@
-import React from 'react'
-
-import { ReactComponent as CheckmarkIcon } from '@/assets/icons/check.svg'
-import { ReactComponent as ScissorsIcon } from '@/assets/icons/scissors.svg'
+import { ReactComponent as ScissorsIcon } from '@/assets/icons/bin.svg'
 import { useDeleteBookmarkedPostsMutation } from '@/store/api/user'
 
-import { Wrapper, StyledText } from './MoreInfoBookmark.styles'
+import { StyledText, Wrapper } from './MoreInfoBookmark.styles'
 
 export const MoreInfoBookmark = () => {
   const [deleteBookmarkedPosts] = useDeleteBookmarkedPostsMutation()
@@ -19,10 +16,10 @@ export const MoreInfoBookmark = () => {
 
   return (
     <Wrapper>
-      <StyledText>
-        <CheckmarkIcon />
+      {/* <StyledText>
+        <BinIcon />
         Oznacz wszystkie jako przeczytane
-      </StyledText>
+      </StyledText> */}
       <StyledText onClick={handleDeleteBookmarkedPosts}>
         <ScissorsIcon />
         Wyczyść zapisane posty

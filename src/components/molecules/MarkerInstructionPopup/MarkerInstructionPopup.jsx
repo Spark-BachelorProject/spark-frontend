@@ -5,17 +5,24 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.div`
   position: absolute;
-  width: 90%;
-  bottom: 10px;
+  width: 50%;
+  bottom: -5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  left: 20px;
   z-index: 1000;
 
   background-color: ${({ theme }) => theme.colors.accent};
-  padding: 5px 7px;
+  padding: 8px 7px;
   border-radius: 5px;
+
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+    width: 100%;
+    padding: 8px 2px;
+  }
 `
 
 export const StyledText = styled(Text)`

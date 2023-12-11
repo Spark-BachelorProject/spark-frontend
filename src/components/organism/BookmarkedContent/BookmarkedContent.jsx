@@ -1,4 +1,3 @@
-import React from 'react'
 import { useNavigate } from 'react-router'
 
 import Loader from '@/components/atoms/Loader/Loader'
@@ -8,7 +7,7 @@ import { SavedPost } from '@/components/molecules/SavedPost/SavedPost'
 import usePopup from '@/hooks/usePopup'
 
 import { MoreInfoBookmark } from '../MoreInfoBookmark/MoreInfoBookmark'
-import { Wrapper, HeadingWrapper, StyledMoreInfoIcon } from './BookmarkedContent.styles'
+import { HeadingWrapper, StyledMoreInfoIcon, Wrapper } from './BookmarkedContent.styles'
 
 export const BookmarkedContent = ({
   bookmarkedPosts,

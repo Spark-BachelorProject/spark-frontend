@@ -9,7 +9,6 @@ import { ReactComponent as SunIcon } from '@/assets/icons/sun.svg'
 import { Counter } from '@/components/atoms/Counter/Counter'
 import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
 import { StyledLogoIcon } from '@/components/atoms/Logo/Logo.styles'
-import { NotificationBell } from '@/components/molecules/NotificationBell/NotificationBell'
 import { BookmarkedContent } from '@/components/organism/BookmarkedContent/BookmarkedContent'
 import { NotificationsContent } from '@/components/organism/NotificationsContent/NotificationsContent'
 import { ProfileContent } from '@/components/organism/ProfileContent/ProfileContent'
@@ -132,7 +131,7 @@ const HeaderSearchBar = () => {
           <SearchBar />
         </LogoAndInputWrapper>
         <InnerIconsWrapperRight>
-          <div
+          {/* <div
             tabIndex="0"
             onClick={(e) => extendedHandleOpenNotificationsPopup(e)}
             onKeyDown={extendedHandleCloseNotificationsPopup}
@@ -140,7 +139,7 @@ const HeaderSearchBar = () => {
             data-testid="notification-bell-wrapper"
           >
             <NotificationBell count="3" isRed hasCounter />
-          </div>
+          </div> */}
 
           <IconBorder
             tabIndex="0"
@@ -152,7 +151,9 @@ const HeaderSearchBar = () => {
             <BookmarkIcon />
             {!isLoadingBookmarkedPosts &&
               isSuccessBookmarkedPosts &&
-              bookmarkedPosts.length > 0 && <Counter />}
+              bookmarkedPosts.length > 0 && (
+                <Counter count={bookmarkedPosts.length} hasCounter={true} />
+              )}
           </IconBorder>
           <IconBorder
             tabIndex="0"

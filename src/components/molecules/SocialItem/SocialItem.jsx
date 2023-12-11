@@ -1,3 +1,4 @@
+import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 
@@ -11,8 +12,9 @@ export const SocialItem = (props) => {
       {isWithoutTitle ? null : <Title isBold>{name}</Title>}
       <div>
         <Text isBig>{activity?.name}</Text>
-
         <Text>{average}</Text>
+        <Dot />
+        <Text>Popularna</Text>
       </div>
     </Wrapper>
   )

@@ -1,16 +1,16 @@
-import React from 'react'
+import Avvvatars from 'avvvatars-react'
 
 import Dot from '@/components/atoms/Dot/Dot'
-import { capitalize } from '@/helpers/stringOperations'
+import { capitalize, getInitials } from '@/helpers/stringOperations'
+import { truncateString } from '@/helpers/truncateString'
 
 import {
-  Wrapper,
-  TextWrapper,
-  NameActivityWrapper,
   FirstRowText,
+  NameActivityWrapper,
   SecondRowText,
-  StyledThumbnail,
   StyledCanceledIcon,
+  TextWrapper,
+  Wrapper,
 } from './SavedPost.styles'
 
 export const SavedPost = ({
@@ -24,7 +24,8 @@ export const SavedPost = ({
 }) => {
   return (
     <Wrapper onClick={() => handleOpenSinglePost(id)}>
-      <StyledThumbnail url={profilePicture} />
+      <Avvvatars value={getInitials(firstName, lastName)} size={37} />
+
       <TextWrapper>
         {isCancelled ? <StyledCanceledIcon /> : null}
 
@@ -34,7 +35,7 @@ export const SavedPost = ({
           <FirstRowText isCancelled>{activity.name}</FirstRowText>
         </NameActivityWrapper>
         <SecondRowText isCancelled>
-          {location.name ? `${location.name} - ` : ''} {capitalize(description)}
+          {location.name ? `${location.name} - ` : ''} {capitalize(truncateString(description, 10))}
         </SecondRowText>
       </TextWrapper>
     </Wrapper>

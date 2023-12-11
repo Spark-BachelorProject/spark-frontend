@@ -107,7 +107,6 @@ const CreatePost = ({ handleClose }) => {
         ...tag,
         value: tag.name,
       }))
-      console.log(tagsApi)
       setTags(sortTagsByType(tagsApiWithValue))
     }
   }, [tagsApi, isLoadingTagsApi])

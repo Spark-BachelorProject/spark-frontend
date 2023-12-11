@@ -9,7 +9,6 @@ export const StyledReactTags = styled.div`
     background: ${({ theme }) => theme.colors.inputBg};
     font-size: 0.9rem;
     line-height: 1.3;
-
     cursor: text;
   }
 
@@ -109,6 +108,7 @@ export const StyledReactTags = styled.div`
     background: none;
     font-size: inherit;
     line-height: inherit;
+    color: ${({ theme }) => theme.colors.text};
   }
 
   .react-tags__combobox-input::placeholder {
@@ -122,7 +122,7 @@ export const StyledReactTags = styled.div`
     top: calc(100% + 5px);
     left: -2px;
     right: -2px;
-    max-height: 12.5rem;
+    max-height: 6rem;
     width: max-content;
     overflow-y: auto;
     background: ${({ theme }) => theme.colors.inputBg};
@@ -133,7 +133,8 @@ export const StyledReactTags = styled.div`
   }
 
   .react-tags__listbox-option {
-    padding: 1em 0.8em;
+    padding: 0.8em 0.8em;
+    border-radius: 5px;
   }
 
   .react-tags__listbox-option:hover {
@@ -148,7 +149,7 @@ export const StyledReactTags = styled.div`
   }
 
   .react-tags__listbox-option[aria-disabled='true'] {
-    color: #3b82f6;
+    color: #ffff;
     cursor: not-allowed;
     pointer-events: none;
   }

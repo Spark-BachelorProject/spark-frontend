@@ -18,6 +18,7 @@ import {
   timeNow,
 } from '@/helpers/dateAndTime.js'
 import { debounce } from '@/helpers/debounce.js'
+import { sortTagsByType } from '@/helpers/sortTagsByType.js'
 import { useGetActivitiesQuery } from '@/store/api/activities.js'
 import { useGetGroupsQuery } from '@/store/api/groups.js'
 import { useAddPostMutation } from '@/store/api/posts'
@@ -101,14 +102,15 @@ const CreatePost = ({ handleClose }) => {
 
   useEffect(() => {
     if (!isLoadingTagsApi) {
-      if (tags.length === 0) return
+      if (tagsApi.length === 0) return
       const tagsApiWithValue = tags.map((tag) => ({
         ...tag,
         value: tag.name,
       }))
-      setTags(tagsApiWithValue)
+      console.log(tagsApi)
+      setTags(sortTagsByType(tagsApiWithValue))
     }
-  }, [tags, isLoadingTagsApi])
+  }, [tagsApi, isLoadingTagsApi])
 
   const [isPlaceSelected, setIsPlaceSelected] = useState(false)
   const [selectedCity, setSelectedCity] = useState(null)

@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
+import { sortTagsByType } from '@/helpers/sortTagsByType'
+
 export const tagsApi = createApi({
   reducerPath: 'tagsApi',
   baseQuery: fetchBaseQuery({
@@ -14,6 +16,7 @@ export const tagsApi = createApi({
     }),
     getTagsByActivityId: builder.query({
       query: (id) => `activities/${id}/tags`,
+      transformResponse: (response) => sortTagsByType(response),
     }),
   }),
 })

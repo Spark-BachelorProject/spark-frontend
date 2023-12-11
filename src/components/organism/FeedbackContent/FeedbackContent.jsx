@@ -1,17 +1,24 @@
 import { useState } from 'react'
-import { Rating } from 'react-simple-star-rating'
 
-import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { Error } from '@/components/atoms/Error/Error.styles'
+import { Text } from '@/components/atoms/Text/Text.styles'
 import { TextArea } from '@/components/atoms/TextArea/TextArea.styles'
+import { RatingBox } from '@/components/molecules/RatingBox/RatingBox'
 
-import { StyledTitle, Wrapper, HeaderWrapper } from './FeedbackContent.styles'
+import {
+  ButtonWrapper,
+  HeaderWrapper,
+  RatingWrapper,
+  StyledCloseIcon,
+  StyledTitle,
+  Wrapper,
+} from './FeedbackContent.styles'
 
-const errorMessage = 'Ocena i/lub opinia nie została wystawiona'
+const errorMessage = 'Podaj ocenę lub opis'
 
 export const FeedbackContent = ({ handleClose, handleFeedbackSubmitted }) => {
-  const [rating, setRating] = useState(0)
+  const [rating, setRating] = useState(null)
   const [feedback, setFeedback] = useState('')
   const [error, setError] = useState('')
 
@@ -19,13 +26,14 @@ export const FeedbackContent = ({ handleClose, handleFeedbackSubmitted }) => {
     setFeedback(e.target.value)
   }
 
-  const handleRating = (rate) => {
-    setRating(rate)
+  const handleRating = (rating) => {
+    console.log(rating)
+    setRating(rating)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (rating < 0.5 || feedback === '') {
+    if (feedback === '' && rating === null) {
       setError(errorMessage)
       return
     }
@@ -37,13 +45,52 @@ export const FeedbackContent = ({ handleClose, handleFeedbackSubmitted }) => {
   return (
     <Wrapper>
       <HeaderWrapper>
-        <StyledTitle>Feedback</StyledTitle>
-        <XIcon onClick={handleClose} />
+        <StyledTitle>Jak oceniasz naszą aplikację?</StyledTitle>
+        <Text>Opisz swoje doświadczenia, co Ci się podoba, i co możemy poprawić</Text>
       </HeaderWrapper>
-      <Rating onClick={handleRating} allowFraction={true} />
-      <TextArea placeholder="Napisz opinie" onChange={handleFeedback} />
+      <StyledCloseIcon onClick={handleClose} />
+
+      <RatingWrapper>
+        <RatingBox
+          icon="worst"
+          rating="Tragicznie"
+          onClick={() => handleRating(1)}
+          isSelected={rating === 1}
+        />
+        <RatingBox
+          icon="bad"
+          rating="Słabo"
+          onClick={() => handleRating(2)}
+          isSelected={rating === 2}
+        />
+        <RatingBox
+          icon="average"
+          rating="Średnio"
+          onClick={() => handleRating(3)}
+          isSelected={rating === 3}
+        />
+        <RatingBox
+          icon="good"
+          rating="Dobrze"
+          onClick={() => handleRating(4)}
+          isSelected={rating === 4}
+        />
+        <RatingBox
+          icon="best"
+          rating="Super"
+          onClick={() => handleRating(5)}
+          isSelected={rating === 5}
+        />
+      </RatingWrapper>
+
+      <TextArea placeholder="Opisz dokładniej powód oceny" onChange={handleFeedback} />
       {error && <Error>{error}</Error>}
-      <Button onClick={handleSubmit}>Wyślij</Button>
+      <ButtonWrapper>
+        <Button onClick={handleSubmit}>Wyślij</Button>
+        <Button onClick={handleClose} isGray>
+          Anuluj
+        </Button>
+      </ButtonWrapper>
     </Wrapper>
   )
 }

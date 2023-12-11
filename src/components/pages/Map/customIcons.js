@@ -5,6 +5,11 @@ const iconFiles = import.meta.glob('@assets/markers/*.{svg,jpg,jpeg,SVG,JPEG}', 
   as: 'url',
 })
 
+const iconFilesInIcons = import.meta.glob('@assets/icons/*.{svg,jpg,jpeg,SVG,JPEG}', {
+  eager: true,
+  as: 'url',
+})
+
 export const getIcon = (name) => {
   const iconUrl = iconFiles[`/src/assets/markers/${name}.svg`]
 
@@ -25,6 +30,17 @@ export const getIconUrl = (name) => {
 
   if (!iconUrl) {
     console.warn(`Icon not found for activity: ${name}`)
+    return null
+  }
+
+  return iconUrl
+}
+
+export const getIconUrlInIconsFolder = (name) => {
+  const iconUrl = iconFilesInIcons[`/src/assets/icons/${name}.svg`]
+
+  if (!iconUrl) {
+    console.warn(`Icon not found for: ${name}`)
     return null
   }
 

@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
     transition: background-color 0.2s linear;
   }
 
-  a, button {
+  a, button, input, textarea {
     font-family: inherit;
   }
 

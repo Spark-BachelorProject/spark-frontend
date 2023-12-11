@@ -15,17 +15,32 @@ const provider = new OpenStreetMapProvider({
   },
 })
 
+const NOMINATIM_API = 'https://nominatim.openstreetmap.org/reverse?format=json&lat='
+
 function formatPlace(name, street, number, area, cityName) {
   let formattedPlace = ''
 
   if (name) {
     formattedPlace =
-      street && number ? `${name}, ${street} ${area}, ${cityName}` : `${name}, ${area}, ${cityName}`
+      street && number
+        ? `${name}, ${street}, ${area}, ${cityName}`
+        : `${name}, ${area}, ${cityName}`
   } else {
-    formattedPlace = `${street} ${area}, ${cityName}`
+    formattedPlace = street
+      ? `${street} ${number}, ${area}, ${cityName}`
+      : area
+      ? `${area} ${number}, ${cityName}`
+      : `${number}, ${cityName}`
   }
 
   return formattedPlace
+}
+
+async function fetchAddressFromCoordinates(coordinates) {
+  const response = await axios.get(
+    `${NOMINATIM_API}${coordinates.lat}&lon=${coordinates.lng}&accept-language=pl`
+  )
+  return response.data
 }
 
 export const PlaceAutocomplete = ({
@@ -38,17 +53,16 @@ export const PlaceAutocomplete = ({
   onSelectCity,
 }) => {
   const [searchResults, setSearchResults] = useState([])
-  const [seletedPlace, setSeletedPlace] = useState('')
+  const [selectedPlace, setSelectedPlace] = useState('')
   const [showSuggestions, setShowSuggestions] = useState(false)
   const searchTimeout = useRef(null)
 
   const search = useCallback(async () => {
-    if (seletedPlace) {
-      const results = await provider.search({ query: seletedPlace.toLocaleLowerCase() })
-
+    if (selectedPlace) {
+      const results = await provider.search({ query: selectedPlace.toLocaleLowerCase() })
       setSearchResults(results.slice(0, 3))
     }
-  }, [seletedPlace])
+  }, [selectedPlace])
 
   useEffect(() => {
     if (searchTimeout.current) clearTimeout(searchTimeout.current)
@@ -59,15 +73,11 @@ export const PlaceAutocomplete = ({
     }
   }, [search])
 
-  //address from coordinates
   useEffect(() => {
     if (coordinates && isMarkerMoved) {
-      axios
-        .get(
-          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${coordinates.lat}&lon=${coordinates.lng}`
-        )
-        .then((response) => {
-          const { address } = response.data
+      fetchAddressFromCoordinates(coordinates)
+        .then((data) => {
+          const { address } = data
           const name =
             address.leisure ||
             address.building ||
@@ -76,17 +86,19 @@ export const PlaceAutocomplete = ({
             address.historic ||
             address.natural ||
             address.landuse ||
-            address.square ||
             address.place ||
             address.industrial ||
             ''
-          const number = address.house_number ? address.house_number : address.postcode
-          const formattedAddress = `${name ? name + ', ' : ''}${
-            address.road ? address.road : ''
-          } ${number}, ${address.city || address.town || address.village}`
 
-          setSeletedPlace(formattedAddress)
-          onSelectAdress(formattedAddress)
+          const cityName = address.city || address.town || address.village
+          const street = address.road || address.pedestrian
+          const number = address.house_number || address.postcode
+          const area = address.suburb
+
+          const formattedPlace = formatPlace(name, street, number, area, cityName)
+
+          setSelectedPlace(formattedPlace)
+          onSelectAdress(formattedPlace)
           onSelectCity(address.city || address.town || address.village)
         })
         .catch((error) => {
@@ -102,7 +114,6 @@ export const PlaceAutocomplete = ({
     onSelectCity,
   ])
 
-  //address from search
   const handleResultClick = useCallback(
     (result) => {
       const {
@@ -125,14 +136,11 @@ export const PlaceAutocomplete = ({
         industrial = '',
       } = result.raw.address
 
-      console.log(result)
-
       const cityName = city || town || village
       const street = road || pedestrian
       const number = house_number || postcode || ''
 
-      //created so that the places without a number or postcodes show suburb instead
-      const area = number ? number : suburb
+      const area = suburb
       const name =
         place ||
         leisure ||
@@ -148,7 +156,6 @@ export const PlaceAutocomplete = ({
 
       let formattedPlace = ''
 
-      //check if the selected place isnt city
       if ((street && number) || area || name) {
         formattedPlace = formatPlace(name, street, number, area, cityName)
         isPlaceSelected(true)
@@ -163,7 +170,7 @@ export const PlaceAutocomplete = ({
       onSelectAdress(formattedPlace)
       onSelectCity(cityName)
 
-      setSeletedPlace(formattedPlace)
+      setSelectedPlace(formattedPlace)
       setShowSuggestions(false)
       setMarkerMoved(false)
     },
@@ -171,10 +178,10 @@ export const PlaceAutocomplete = ({
   )
 
   const handleChange = useCallback((e) => {
-    setSeletedPlace(e.target.value)
+    setSelectedPlace(e.target.value)
     setShowSuggestions(true)
     if (searchTimeout.current) clearTimeout(searchTimeout.current)
-    searchTimeout.current = setTimeout(() => setSeletedPlace(e.target.value), 500)
+    searchTimeout.current = setTimeout(() => setSelectedPlace(e.target.value), 500)
   }, [])
 
   return (
@@ -182,7 +189,7 @@ export const PlaceAutocomplete = ({
       <Input
         type="text"
         data-testid="input-map"
-        value={seletedPlace}
+        value={selectedPlace}
         onChange={handleChange}
         placeholder="Podaj adres"
       />

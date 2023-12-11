@@ -17,6 +17,7 @@ import {
   isToday,
   timeNow,
 } from '@/helpers/dateAndTime.js'
+import { debounce } from '@/helpers/debounce.js'
 import { useGetActivitiesQuery } from '@/store/api/activities.js'
 import { useGetGroupsQuery } from '@/store/api/groups.js'
 import { useAddPostMutation } from '@/store/api/posts'
@@ -122,6 +123,8 @@ const CreatePost = ({ handleClose }) => {
   const handleMarkerMoved = (moved) => {
     setIsMarkerMoved(moved)
   }
+
+  const handleMarkerMovedDebounced = debounce(handleMarkerMoved, 200)
 
   const handleSelectCoordinates = (coordinates) => {
     setSelectedCoordinates(coordinates)
@@ -276,7 +279,7 @@ const CreatePost = ({ handleClose }) => {
             center={selectedCoordinates}
             isPlaceSelected={isPlaceSelected}
             onMarkerMoved={handleSelectCoordinates}
-            isMarkedMoved={handleMarkerMoved}
+            isMarkedMoved={handleMarkerMovedDebounced}
           />
         </div>
       </InputsWrapper>

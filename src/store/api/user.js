@@ -33,6 +33,13 @@ export const userApi = createApi({
       }),
       invalidatesTags: ['User', 'Posts'],
     }),
+    deleteBookmarkedPosts: builder.mutation({
+      query: () => ({
+        url: `user/posts/bookmarked`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['User', 'Posts'],
+    }),
   }),
 })
 
@@ -41,4 +48,5 @@ export const {
   useGetUserFriendsQuery,
   useGetBookmarkedPostsQuery,
   usePutOneBookmarkedPostMutation,
+  useDeleteBookmarkedPostsMutation
 } = userApi

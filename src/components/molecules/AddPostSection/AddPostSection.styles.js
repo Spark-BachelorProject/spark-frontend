@@ -7,12 +7,12 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 80px;
   background-color: ${({ theme }) => theme.colors.secondaryBg};
-  border: 2px solid ${({ theme }) => theme.colors.postBorder};
+  border: 1px solid ${({ theme }) => theme.colors.postBorder};
 
   padding: 5px 20px;
   display: flex;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 8px;
 
   @media (max-width: 997px) {
     display: none;
@@ -20,14 +20,14 @@ export const Wrapper = styled.div`
 
   &:hover {
     box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.07);
-    border: 2px solid ${({ theme }) => theme.colors.accent};
+    border: 1px solid ${({ theme }) => theme.colors.accent};
     transition: 200ms ease-in-out;
   }
 `
 
 export const StyledInput = styled.div`
   background-color: ${({ theme }) => theme.colors.addPostBg};
-  padding: 7px 15px;
+  padding: 8px 15px;
   width: 80%;
   margin-right: 10px;
   border-radius: 5px;

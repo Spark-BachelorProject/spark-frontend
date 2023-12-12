@@ -39,4 +39,3 @@ export const StyledIconBorder = styled(IconBorder)`
     padding: 0 3px;
   }
 `
-

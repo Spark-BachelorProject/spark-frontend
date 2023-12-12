@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Avvvatars from 'avvvatars-react'
 
 import { Button } from '@/components/atoms/Buttons/Button.styles'
@@ -8,7 +6,7 @@ import { getInitials } from '@/helpers/stringOperations'
 import useModal from '@/hooks/useModal'
 import { useGetUserQuery } from '@/store/api/user'
 
-import { Wrapper, StyledInput } from './AddPostSection.styles'
+import { StyledInput, Wrapper } from './AddPostSection.styles'
 
 export const AddPostSection = () => {
   const {
@@ -43,7 +41,7 @@ export const AddPostSection = () => {
       >
         <Avvvatars value={getInitials(firstName, lastName)} size={30} />
         <StyledInput>Zaproś znajomych do gry!</StyledInput>
-        <Button>Dodaj</Button>
+        <Button isGray>Dodaj</Button>
       </Wrapper>
       {isOpen ? (
         <Modal

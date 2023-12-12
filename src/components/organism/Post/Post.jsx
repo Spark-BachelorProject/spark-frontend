@@ -5,7 +5,6 @@ import Avvvatars from 'avvvatars-react'
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
 import { ReactComponent as PinIcon } from '@/assets/icons/map-pin.svg'
-import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { SecondaryButton } from '@/components/atoms/Buttons/SecondaryButton.styles'
 import Dot from '@/components/atoms/Dot/Dot'
 import Tags from '@/components/atoms/Tags/Tags'
@@ -165,9 +164,7 @@ const Post = (props) => {
           <StyledMoreInfoIcon />
         </div>
       </Header>
-      <Title isBig isBold>
-        {description}
-      </Title>
+      <Title isBig>{description}</Title>
       <DetailsWrapper>
         <PinIcon />
         <Text>{location.name}</Text>

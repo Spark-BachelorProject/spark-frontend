@@ -4,13 +4,14 @@ import { ReactComponent as MoreInfoIcon } from '@/assets/icons/three-dots.svg'
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 0 10px;
+  min-width: 300px;
+  padding: 0 20px;
 `
 export const HeadingWrapper = styled.div`
-  padding: 0 5px;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 15px;
 `
 
 export const StyledMoreInfoIcon = styled(MoreInfoIcon)`

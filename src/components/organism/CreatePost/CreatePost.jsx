@@ -62,19 +62,12 @@ const CreatePost = ({ handleClose }) => {
   const [tags, setTags] = useState([])
 
   const [selectedActivityId, setSelectedActivityId] = useState(1)
-  const {
-    data: tagsApi,
-    error,
-    isLoading: isLoadingTagsApi,
-  } = useGetTagsByActivityIdQuery(selectedActivityId)
+  const { data: tagsApi, isLoading: isLoadingTagsApi } =
+    useGetTagsByActivityIdQuery(selectedActivityId)
 
   const [state, setState] = useState(initialState)
-  const { data: user, isLoadingUser } = useGetUserQuery()
-  const {
-    data: groupsApi,
-    isLoading: isLoadingGroupsApi,
-    isSuccess: isSuccessGroupsApi,
-  } = useGetGroupsQuery()
+  const { data: user } = useGetUserQuery()
+  const { data: groupsApi, isLoading: isLoadingGroupsApi } = useGetGroupsQuery()
 
   useEffect(() => {
     if (!isLoadingActivitiesApi) {
@@ -198,7 +191,9 @@ const CreatePost = ({ handleClose }) => {
     <Wrapper onSubmit={handleSubmit}>
       <HeaderWrapper>
         <div>
-          <Title isBig>Dodawanie postu</Title>
+          <Title isBig isBold>
+            Dodawanie postu
+          </Title>
         </div>
         <XIcon onClick={handleClose} />
       </HeaderWrapper>

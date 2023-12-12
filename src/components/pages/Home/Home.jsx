@@ -55,9 +55,7 @@ const Home = () => {
   return (
     <PageContent hasNavigation hasRightBar>
       <AddPostSection />
-      <TitleBar>
-        To się dzieje w <strong>Lublinie</strong>!
-      </TitleBar>
+      <TitleBar isBold>Odkrywaj aktualne spotkania w Lublinie</TitleBar>
       <Dropdown setFilterOptions={setFilterOptions} filterOptions={filterOptions} />
       {isLoading && <Loader isCentered />}
       {!isLoading && isSuccess && posts && posts.map((post) => <Post {...post} key={post.id} />)}

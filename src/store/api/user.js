@@ -48,5 +48,5 @@ export const {
   useGetUserFriendsQuery,
   useGetBookmarkedPostsQuery,
   usePutOneBookmarkedPostMutation,
-  useDeleteBookmarkedPostsMutation
+  useDeleteBookmarkedPostsMutation,
 } = userApi

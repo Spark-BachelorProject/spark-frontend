@@ -37,6 +37,7 @@ export const FeedbackSection = () => {
       <Title isBold>Twoja opinia się dla nas liczy</Title>
       <Text isBig>Daj nam znać co możemy poprawić!</Text>
       <StyledButton
+        isGray
         borderOnly
         onClick={(e) => handleOpenFeedbackPopup(e)}
         ref={modalOpenElementRef}

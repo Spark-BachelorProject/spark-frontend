@@ -96,7 +96,7 @@ const CreatePost = ({ handleClose }) => {
   useEffect(() => {
     if (!isLoadingTagsApi) {
       if (tagsApi.length === 0) return
-      const tagsApiWithValue = tagsApi.map((tag) => ({
+      const tagsApiWithValue = tags.map((tag) => ({
         ...tag,
         value: tag.name,
       }))

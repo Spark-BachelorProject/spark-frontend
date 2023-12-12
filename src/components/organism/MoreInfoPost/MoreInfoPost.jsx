@@ -1,15 +1,8 @@
-import styled from 'styled-components'
-
 import { ReactComponent as BookmarkIcon } from '@/assets/icons/bookmark.svg'
 import { ReactComponent as BusIcon } from '@/assets/icons/bus.svg'
-import { ReactComponent as GoogleIcon } from '@/assets/icons/google.svg'
 import { usePutOneBookmarkedPostMutation } from '@/store/api/user'
 
-import { StyledText, Wrapper } from './MoreInfoPost.styles'
-
-export const StyledGoogleIcon = styled(GoogleIcon)`
-  color: red;
-`
+import { StyledText, Wrapper, StyledGoogleIcon } from './MoreInfoPost.styles'
 
 const getUserCoordinates = () => {
   return new Promise((resolve, reject) => {

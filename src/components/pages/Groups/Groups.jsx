@@ -16,24 +16,6 @@ const Groups = () => {
     <PageContent hasNavigation hasRightBar>
       <GroupsActionBar />
       <GroupsHeader />
-      <StyledTitleBar>Mogą Cię zainteresować</StyledTitleBar>
-
-      {/* //TODO: mogą cię zainteresować api call */}
-      <GroupCardsSection>
-        {/* <GroupCard
-          name="UMCS"
-          numOfPeople={3}
-          text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque."
-          tags={['Hala', 'Piłka Nożna']}
-        />
-        <GroupCard
-          name="UMCS"
-          numOfPeople={3}
-          text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque."
-          tags={['Hala', 'Piłka Nożna']}
-        /> */}
-      </GroupCardsSection>
-
       <StyledTitleBar>Wszystkie</StyledTitleBar>
       {isLoading && <Loader isCentered />}
       <GroupCardsSection>

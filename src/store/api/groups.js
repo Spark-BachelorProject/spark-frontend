@@ -30,10 +30,6 @@ export const groupsApi = createApi({
       query: () => 'groups/recommended',
       providesTags: ['Groups'],
     }),
-    getOwnedGroups: builder.query({
-      query: () => 'groups/owned',
-      providesTags: ['Groups'],
-    }),
   }),
 })
 
@@ -42,5 +38,4 @@ export const {
   useAddGroupMutation,
   useGetOneGroupQuery,
   useGetGroupsRecommendedQuery,
-  useGetOwnedGroupsQuery,
 } = groupsApi

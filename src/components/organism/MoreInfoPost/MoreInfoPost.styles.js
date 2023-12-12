@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import { ReactComponent as GoogleIcon } from '@/assets/icons/google.svg'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.div`
@@ -42,4 +43,8 @@ export const StyledText = styled(Text)`
   & > svg > g > path {
     fill: ${({ theme }) => theme.colors.text};
   }
+`
+
+export const StyledGoogleIcon = styled(GoogleIcon)`
+  color: red;
 `

@@ -94,9 +94,10 @@ const HeaderSearchBar = () => {
   }
 
   // Notifications popup
-  const extendedHandleOpenNotificationsPopup = () => {
-    handleOpenAndPositionNotificationPopup(notificationPopupOpenElementRef, positioning)
-  }
+  // const extendedHandleOpenNotificationsPopup = () => {
+  //   handleOpenAndPositionNotificationPopup(notificationPopupOpenElementRef, positioning)
+  // }
+
   const extendedHandleCloseNotificationsPopup = (e) => {
     if (e.key !== 'Tab') {
       handleCloseNotificationsPopup(notificationPopupOpenElementRef, positioning)

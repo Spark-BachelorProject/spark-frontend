@@ -62,19 +62,12 @@ const CreatePost = ({ handleClose }) => {
   const [tags, setTags] = useState([])
 
   const [selectedActivityId, setSelectedActivityId] = useState(1)
-  const {
-    data: tagsApi,
-    error,
-    isLoading: isLoadingTagsApi,
-  } = useGetTagsByActivityIdQuery(selectedActivityId)
+  const { data: tagsApi, isLoading: isLoadingTagsApi } =
+    useGetTagsByActivityIdQuery(selectedActivityId)
 
   const [state, setState] = useState(initialState)
-  const { data: user, isLoadingUser } = useGetUserQuery()
-  const {
-    data: groupsApi,
-    isLoading: isLoadingGroupsApi,
-    isSuccess: isSuccessGroupsApi,
-  } = useGetGroupsQuery()
+  const { data: user } = useGetUserQuery()
+  const { data: groupsApi, isLoading: isLoadingGroupsApi } = useGetGroupsQuery()
 
   useEffect(() => {
     if (!isLoadingActivitiesApi) {
@@ -103,7 +96,7 @@ const CreatePost = ({ handleClose }) => {
   useEffect(() => {
     if (!isLoadingTagsApi) {
       if (tagsApi.length === 0) return
-      const tagsApiWithValue = tags.map((tag) => ({
+      const tagsApiWithValue = tagsApi.map((tag) => ({
         ...tag,
         value: tag.name,
       }))

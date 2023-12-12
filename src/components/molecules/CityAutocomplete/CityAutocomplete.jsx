@@ -29,7 +29,13 @@ export const CityAutocomplete = ({ onSelectCity }) => {
     debounce((place) => {
       if (place) {
         provider.search({ query: place.toLowerCase() }).then((results) => {
-          setSearchResults(results.slice(0, 3))
+          const uniqueResults = results.reduce((unique, o) => {
+            if (!unique.some((obj) => obj.label === o.label)) {
+              unique.push(o)
+            }
+            return unique
+          }, [])
+          setSearchResults(uniqueResults.slice(0, 3))
         })
       }
     }, 500),

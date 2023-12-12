@@ -19,7 +19,7 @@ export const PopupWrapper = styled.div`
   height: auto;
   background-color: ${({ theme }) => theme.colors.modalBg};
   border: 1px solid ${({ theme }) => theme.colors.modalBorder};
-  border-radius: 7px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

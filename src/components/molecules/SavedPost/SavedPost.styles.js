@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   width: 110%;
   height: auto;
 
-  margin-left: -15px;
+  margin-left: -18px;
   border-radius: 7px;
   gap: 5px;
   cursor: pointer;

@@ -13,7 +13,7 @@ export const StyledReactTags = styled.div`
   }
 
   .react-tags.is-active {
-    border-color: #3b82f6;
+    /* border-color: #3b82f6; */
   }
 
   .react-tags.is-disabled {
@@ -52,15 +52,16 @@ export const StyledReactTags = styled.div`
     padding: 0.45rem 0.5rem;
     border: 0;
     border-radius: 5px;
-    background: ${({ theme }) => theme.colors.buttonBg};
-    color: white;
+    background-color: rgba(59, 130, 246, 0.21);
+    border: 1px solid ${({ theme }) => theme.colors.tagBorder};
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors.accent};
     font-size: inherit;
     line-height: inherit;
   }
 
   .react-tags__tag:hover {
-    color: #eaeaea;
-    background-color: #32476b;
+    background-color: rgba(59, 130, 246, 0.3);
     cursor: pointer;
   }
 
@@ -84,12 +85,12 @@ export const StyledReactTags = styled.div`
       50% 40%
     );
     margin-left: 0.5rem;
+    margin-bottom: 0.1em;
     font-size: 0.875rem;
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.accent};
   }
 
   .react-tags__tag:hover::after {
-    background-color: white;
   }
 
   .react-tags__combobox {
@@ -122,7 +123,7 @@ export const StyledReactTags = styled.div`
     top: calc(100% + 5px);
     left: -2px;
     right: -2px;
-    max-height: 6rem;
+    max-height: 10rem;
     width: max-content;
     overflow-y: auto;
     background: ${({ theme }) => theme.colors.inputBg};

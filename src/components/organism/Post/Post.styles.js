@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 import { ReactComponent as MoreInfoIcon } from '@/assets/icons/three-dots.svg'
-import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 
@@ -15,7 +14,7 @@ export const Wrapper = styled.article`
   justify-content: center;
   flex-direction: column;
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
-  border-radius: 6px;
+  border-radius: 8px;
 
   ${Title} {
     line-height: 1.4;
@@ -51,7 +50,7 @@ export const Details = styled.div`
 
     & > b {
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 500;
       font-size: ${({ theme }) => theme.fontSize.m};
       color: ${({ theme }) => theme.colors.boldText};
     }
@@ -67,7 +66,7 @@ export const Details = styled.div`
     ${Text} {
       color: ${({ theme }) => theme.colors.text};
       font-size: ${({ theme }) => theme.fontSize.sPlus};
-      font-weight: 500;
+      font-weight: 600;
     }
 
     & > svg {
@@ -102,7 +101,7 @@ export const DetailsWrapper = styled.div`
   align-items: center;
 
   ${Text} {
-    font-weight: 500;
+    font-weight: 600;
     font-size: ${({ theme }) => theme.fontSize.m};
     color: ${({ theme }) => theme.colors.text};
   }
@@ -114,7 +113,7 @@ export const DetailsWrapper = styled.div`
   }
 
   & > svg > path {
-    stroke: ${({ theme }) => theme.colors.text};
+    stroke: ${({ theme }) => theme.colors.accent};
   }
 `
 export const ButtonsWrapper = styled.div`

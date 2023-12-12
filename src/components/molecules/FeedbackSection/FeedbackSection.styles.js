@@ -10,9 +10,5 @@ export const Wrapper = styled.div`
 `
 
 export const StyledButton = styled(Button)`
-  margin-top: 20px;
-  font-size: ${({ theme }) => theme.fontSize.sPlus};
-  opacity: 0.8;
-  background-color: ${({ theme }) => theme.fontSize.accent};
-  color: ${({ theme }) => theme.colors.white};
+  margin-top: 15px;
 `

@@ -4,6 +4,7 @@ import axios from 'axios'
 import { OpenStreetMapProvider } from 'leaflet-geosearch'
 
 import { Input } from '@/components/atoms/Input/Input.styles'
+import { formatPlace } from '@/helpers/formatPlace'
 
 import { Suggestion, SuggestionWrapper, Wrapper } from './PlaceAutocomplete.styles'
 
@@ -16,25 +17,6 @@ const provider = new OpenStreetMapProvider({
 })
 
 const NOMINATIM_API = 'https://nominatim.openstreetmap.org/reverse?format=json&lat='
-
-function formatPlace(name, street, number, area, cityName) {
-  let formattedPlace = ''
-
-  if (name) {
-    formattedPlace =
-      street && number
-        ? `${name}, ${street}, ${area ? area + ',' : ''} ${cityName}`
-        : `${name}, ${area ? area + ',' : ''} ${cityName}`
-  } else {
-    formattedPlace = street
-      ? `${street} ${number}, ${area ? area + ',' : ''} ${cityName}`
-      : number
-      ? `${number}, ${cityName}`
-      : cityName
-  }
-
-  return formattedPlace
-}
 
 async function fetchAddressFromCoordinates(coordinates) {
   const response = await axios.get(

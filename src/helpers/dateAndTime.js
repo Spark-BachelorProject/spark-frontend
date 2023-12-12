@@ -107,3 +107,17 @@ export const getShiftedTime = (dateString, offsetHours) => {
 
   return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`
 }
+
+export const formatDateAndTimeJakdojadeFormat = (dateStart) => {
+  const date = new Date(dateStart)
+  const day = ('0' + date.getDate()).slice(-2)
+  const month = ('0' + (date.getMonth() + 1)).slice(-2)
+  const year = date.getFullYear().toString().slice(-2)
+  const formattedDate = `${day}.${month}.${year}`
+
+  const hour = ('0' + date.getHours()).slice(-2)
+  const minute = ('0' + date.getMinutes()).slice(-2)
+  const formattedTime = `${hour}:${minute}`
+
+  return { formattedDate, formattedTime }
+}

@@ -227,9 +227,17 @@ const CreatePost = ({ handleClose }) => {
           id="groups"
           value={state.groups}
           onChange={handleChange}
-          isDisabled={state.privacy !== 'PRIVATE_GROUP'}
+          isDisabled={state.privacy !== 'PRIVATE_GROUP' || !groups.length}
         >
-          {groups}
+          {groups.length
+            ? groups
+            : [
+                {
+                  value: 'Nie ma żadnych grup',
+                  text: 'Nie ma żadnych grup',
+                  name: 'Nie ma żadnych grup',
+                },
+              ]}
         </Select>
         <Select
           style={{ gridArea: 'select3' }}

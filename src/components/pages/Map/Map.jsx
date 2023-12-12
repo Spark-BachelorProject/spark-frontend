@@ -120,7 +120,7 @@ export const Map = () => {
           removeOutsideVisibleBounds
           disableClusteringAtZoom={14}
           maxClusterRadius={35}
-          spiderfyOnMaxZoom={false}
+          spiderfyOnMaxZoom={true}
         >
           {!isLoadingPosts &&
             isSuccessPosts &&

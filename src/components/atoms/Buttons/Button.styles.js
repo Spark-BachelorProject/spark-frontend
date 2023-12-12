@@ -6,7 +6,7 @@ export const Button = styled.button`
   text-align: center;
   background-color: ${({ theme, isGray }) =>
     isGray ? `${theme.colors.navbarBg}` : theme.colors.accent};
-  color: ${({ theme, isGray }) => (isGray ? `${theme.colors.white}` : `${theme.colors.white}`)};
+  color: ${({ theme, isGray }) => (isGray ? `${theme.colors.text}` : `${theme.colors.white}`)};
   padding: ${({ isBig }) => (isBig ? '11px 22px' : '7px 18px')};
   border: ${({ theme, isGray }) =>
     isGray ? `1px solid ${theme.colors.navbarBorder}` : `1px solid ${theme.colors.navbarBorder}`};

@@ -45,7 +45,7 @@ export const Map = () => {
   } = useGetActivitiesQuery()
   const [activities, setActivities] = useState([])
   const [center, setCenter] = useState([LublinCoordinates.lat, LublinCoordinates.lng])
-  const [userLocation, setUserLocation] = useState(null) // New state for user's location
+  const [userLocation, setUserLocation] = useState(null)
   const [selectedMarker, setSelectedMarker] = useState(null)
   const [activitySelect, setActivitySelect] = useState(null)
   const [allowedGeoLocation, setAllowedGeoLocation] = useState(false)
@@ -89,7 +89,7 @@ export const Map = () => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       function (position) {
-        setUserLocation([position.coords.latitude, position.coords.longitude]) // Set user's location
+        setUserLocation([position.coords.latitude, position.coords.longitude])
         setAllowedGeoLocation(true)
       },
       function (error) {
@@ -118,9 +118,8 @@ export const Map = () => {
           chunkedLoading
           showCoverageOnHover={false}
           removeOutsideVisibleBounds
-          disableClusteringAtZoom={14}
-          maxClusterRadius={35}
-          spiderfyOnMaxZoom={true}
+          maxClusterRadius={15}
+          spiderfyOnEveryZoom={true}
         >
           {!isLoadingPosts &&
             isSuccessPosts &&

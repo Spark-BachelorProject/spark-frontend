@@ -1,40 +1,11 @@
 import { ReactComponent as BookmarkIcon } from '@/assets/icons/bookmark.svg'
 import { ReactComponent as BusIcon } from '@/assets/icons/bus.svg'
+import { checkGeolocationPermission } from '@/helpers/checkGeolocationPermission'
+import { formatDateAndTimeJakdojadeFormat } from '@/helpers/dateAndTime'
+import { getUserCoordinates } from '@/helpers/getUserCoordinates'
 import { usePutOneBookmarkedPostMutation } from '@/store/api/user'
 
-import { StyledText, Wrapper, StyledGoogleIcon } from './MoreInfoPost.styles'
-
-const getUserCoordinates = () => {
-  return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        resolve([position.coords.latitude, position.coords.longitude])
-      },
-      (error) => {
-        reject(error)
-      }
-    )
-  })
-}
-
-const checkGeolocationPermission = async () => {
-  const permission = await navigator.permissions.query({ name: 'geolocation' })
-  return permission.state !== 'denied'
-}
-
-const formatDateAndTime = (dateStart) => {
-  const date = new Date(dateStart)
-  const day = ('0' + date.getDate()).slice(-2)
-  const month = ('0' + (date.getMonth() + 1)).slice(-2)
-  const year = date.getFullYear().toString().slice(-2)
-  const formattedDate = `${day}.${month}.${year}`
-
-  const hour = ('0' + date.getHours()).slice(-2)
-  const minute = ('0' + date.getMinutes()).slice(-2)
-  const formattedTime = `${hour}:${minute}`
-
-  return { formattedDate, formattedTime }
-}
+import { StyledGoogleIcon, StyledText, Wrapper } from './MoreInfoPost.styles'
 
 export const MoreInfoPost = ({ postId, handleClosePopup, location, dateStart }) => {
   const [putOneBookmarkedPost] = usePutOneBookmarkedPostMutation()
@@ -66,7 +37,7 @@ export const MoreInfoPost = ({ postId, handleClosePopup, location, dateStart }) 
 
     try {
       const userCoordinates = await getUserCoordinates()
-      const { formattedDate, formattedTime } = formatDateAndTime(dateStart)
+      const { formattedDate, formattedTime } = formatDateAndTimeJakdojadeFormat(dateStart)
 
       const url = new URL('https://jakdojade.pl/lublin')
       url.searchParams.append('fc', `${userCoordinates[0]}:${userCoordinates[1]}`)

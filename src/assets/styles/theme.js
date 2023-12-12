@@ -41,7 +41,7 @@ export const lightTheme = {
 
   textHeader:          '#334155',   //         slate700 -> slate200
 
-
+  detailsFont:         '#233045',   //         slate750 -> slate200
   
   boldText:            '#1e293b',   //         slate800 -> slate300
   labelFont:           '#1e293b',   //         slate800 -> slate300
@@ -79,6 +79,7 @@ export const darkTheme = {
   inputFont:           '#e2e8f0',   //         slate200 -> slate600
   commentDetails:      '#e2e8f0',   //         slate200 -> slate600
   textHeader:          '#E2E8F0',   //         slate200 -> slate700
+  detailsFont:         '#E2E8F0',   //         slate200 -> slate750
 
   checkboxTick:        '#CBD5E1',   //         slate300 -> slate500
   text:                '#CBD5E1',   //         slate300 -> slate600

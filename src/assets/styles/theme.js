@@ -132,7 +132,7 @@ export const theme = {
     mobile: '476px',
   },
   colors: lightTheme,
-  fontsize: {
+  fontSize: {
     xs: '11px',
     s: '13px',
     sPlus: '14px',

@@ -26,17 +26,16 @@ export const CityAutocomplete = ({ onSelectCity }) => {
   )
 
   const debouncedSearch = useCallback(
-    (place) => {
-      const debounced = debounce(async () => {
-        if (place) {
-          const results = await provider.search({ query: place.toLowerCase() })
+    debounce((place) => {
+      if (place) {
+        provider.search({ query: place.toLowerCase() }).then((results) => {
           setSearchResults(results.slice(0, 3))
-        }
-      }, 500)
-      debounced()
-    },
+        })
+      }
+    }, 500),
     [provider]
   )
+
   useEffect(() => {
     debouncedSearch(selectedPlace)
   }, [selectedPlace, debouncedSearch])

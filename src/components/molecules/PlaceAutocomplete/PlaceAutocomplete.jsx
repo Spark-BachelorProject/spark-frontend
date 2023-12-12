@@ -23,14 +23,14 @@ function formatPlace(name, street, number, area, cityName) {
   if (name) {
     formattedPlace =
       street && number
-        ? `${name}, ${street}, ${area}, ${cityName}`
-        : `${name}, ${area}, ${cityName}`
+        ? `${name}, ${street}, ${area ? area + ',' : ''} ${cityName}`
+        : `${name}, ${area ? area + ',' : ''} ${cityName}`
   } else {
     formattedPlace = street
-      ? `${street} ${number}, ${area}, ${cityName}`
-      : area
-      ? `${area} ${number}, ${cityName}`
-      : `${number}, ${cityName}`
+      ? `${street} ${number}, ${area ? area + ',' : ''} ${cityName}`
+      : number
+      ? `${number}, ${cityName}`
+      : cityName
   }
 
   return formattedPlace
@@ -73,6 +73,7 @@ export const PlaceAutocomplete = ({
     }
   }, [search])
 
+  // address from coordinates
   useEffect(() => {
     if (coordinates && isMarkerMoved) {
       fetchAddressFromCoordinates(coordinates)
@@ -89,6 +90,8 @@ export const PlaceAutocomplete = ({
             address.place ||
             address.industrial ||
             ''
+
+          console.log(address)
 
           const cityName = address.city || address.town || address.village
           const street = address.road || address.pedestrian
@@ -114,6 +117,7 @@ export const PlaceAutocomplete = ({
     onSelectCity,
   ])
 
+  // address from search results
   const handleResultClick = useCallback(
     (result) => {
       const {

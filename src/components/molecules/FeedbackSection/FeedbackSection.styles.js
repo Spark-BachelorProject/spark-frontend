@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 
 export const Wrapper = styled.div`
-  margin-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;

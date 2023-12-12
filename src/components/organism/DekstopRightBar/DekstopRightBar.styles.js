@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import { SocialItem } from '@/components/molecules/SocialItem/SocialItem'
 
@@ -8,6 +9,9 @@ export const Wrapper = styled.div`
   max-width: 330px;
   height: calc(100vh - 70px);
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 
   /* position: sticky; */
   top: 35px;
@@ -15,14 +19,18 @@ export const Wrapper = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.breakPoints.l}) {
     display: none;
   }
+
+  ${DividerLabel} {
+    width: calc(100% - 40px);
+    margin: 0 auto;
+  }
 `
 
 export const Container = styled.div`
-  padding: 10px 25px 15px 25px;
+  padding: 0 25px;
   border-radius: 5px;
   width: 100%;
   height: auto;
-  margin-bottom: 20px;
 
   &:first-child {
     padding-top: 0;
@@ -31,7 +39,6 @@ export const Container = styled.div`
   & > span {
     cursor: pointer;
     font-weight: 600;
-    position: relative;
     top: 10px;
     font-size: ${({ theme }) => theme.fontSize.s};
     color: ${({ theme }) => theme.colors.text};
@@ -41,10 +48,6 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.colors.textHeader};
     transition: 100ms ease-in-out;
   }
-`
-
-export const StyledContainer = styled(Container)`
-  padding: 10px 25px 30px 25px;
 `
 
 export const StyledTitle = styled(Title)`

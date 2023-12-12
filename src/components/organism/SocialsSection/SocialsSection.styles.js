@@ -14,27 +14,4 @@ export const Wrapper = styled.section`
     font-size: ${({ theme }) => theme.fontSize.mPlus};
     font-weight: 600;
   }
-
-  &::before {
-    position: absolute;
-    content: '';
-    bottom: -30px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: ${({ theme }) => theme.colors.darkDivider};
-  }
-
-  /* & > span {
-    cursor: pointer;
-    margin-top: 15px;
-    font-weight: 600;
-    font-size: ${({ theme }) => theme.fontSize.s};
-    color: ${({ theme }) => theme.colors.text};
-  }
-
-  & > span:hover {
-    color: ${({ theme }) => theme.colors.textHeader};
-    transition: 100ms ease-in-out;
-  } */
 `

@@ -14,16 +14,16 @@ export const DividerLabel = styled.span`
   &::after,
   &::before {
     content: '';
-    height: 2px;
+    height: 3px;
     background-color: ${({ theme }) => theme.colors.darkDivider};
     flex: 1;
   }
 
   &::before {
-    margin-right: 15px;
+    margin-right: ${({ isSolid }) => (isSolid ? '0' : '15px')};
   }
 
   &::after {
-    margin-left: 15px;
+    margin-left: ${({ isSolid }) => (isSolid ? '0' : '15px')};
   }
 `

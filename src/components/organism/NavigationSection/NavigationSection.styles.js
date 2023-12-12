@@ -6,7 +6,6 @@ export const Wrapper = styled.nav`
   flex-direction: column;
   gap: 5px;
   position: relative;
-  margin-bottom: 60px;
 
   & > a {
     font-size: ${({ theme }) => theme.fontSize.mPlus};
@@ -36,15 +35,5 @@ export const Wrapper = styled.nav`
 
   & > a.${'active'} > svg > path {
     stroke: ${({ theme }) => theme.colors.iconPrimaryActive};
-  }
-
-  &::before {
-    position: absolute;
-    content: '';
-    bottom: -30px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: ${({ theme }) => theme.colors.darkDivider};
   }
 `

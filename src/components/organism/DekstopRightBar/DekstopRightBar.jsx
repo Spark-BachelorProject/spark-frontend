@@ -1,3 +1,4 @@
+import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
 import Loader from '@/components/atoms/Loader/Loader'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { PersonListItem } from '@/components/molecules/PersonListItem/PersonListItem'
@@ -7,7 +8,7 @@ import { useGetRecommendedActivitiesQuery } from '@/store/api/activities'
 import { useGetGroupsRecommendedQuery } from '@/store/api/groups'
 import { useGetUserFriendsQuery } from '@/store/api/user'
 
-import { Container, StyledContainer, StyledTitle, Wrapper } from './DekstopRightBar.styles'
+import { Container, StyledTitle, Wrapper } from './DekstopRightBar.styles'
 
 // TODO: wait for API to Sporty dla Ciebie and check styles
 export const DekstopRightBar = () => {
@@ -42,12 +43,12 @@ export const DekstopRightBar = () => {
           isSuccessGroupsRecommended &&
           groupsRecommended.map((group) => <SocialItem key={group.id} {...group} />)}
       </Container>
+      <DividerLabel isSolid />
       <Container>
         <StyledTitle isBig isBold>
           Sporty dla Ciebie
         </StyledTitle>
         {isLoadingRecommendedActivities ? <Loader isCentered /> : null}
-
         {!isLoadingRecommendedActivities &&
           isSuccessRecommendedActivities &&
           !recommendedActivities.length && <Text>Nie ma aktywności do wyświetlenia</Text>}
@@ -57,11 +58,9 @@ export const DekstopRightBar = () => {
           recommendedActivities.map((activity) => (
             <RecomendedActivity key={activity.id} {...activity} />
           ))}
-
-        {/* <StyledSocialItem ActivityName="Tenis" WeeklyPostCount={7} /> */}
-        {/* <SocialItem ActivityName="Squash" WeeklyPostCount={6} /> */}
       </Container>
-      <StyledContainer>
+      <DividerLabel isSolid />
+      <Container>
         <StyledTitle isBig isBold>
           Znajomi
         </StyledTitle>
@@ -79,7 +78,7 @@ export const DekstopRightBar = () => {
               profilePictureURL={profilePictureURL}
             />
           ))}
-      </StyledContainer>
+      </Container>
     </Wrapper>
   )
 }

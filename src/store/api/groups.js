@@ -1,13 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
+import { baseQueryConfig } from '@/store/config'
+
 export const groupsApi = createApi({
   reducerPath: 'groupsApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8080/api/v1',
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-    },
-  }),
+  baseQuery: fetchBaseQuery(baseQueryConfig),
   tagTypes: ['Groups'],
   endpoints: (builder) => ({
     getGroups: builder.query({

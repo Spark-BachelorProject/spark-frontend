@@ -1,13 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
+import { baseQueryConfig } from '@/store/config'
+
 export const citiesApi = createApi({
   reducerPath: 'citiesApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8080/api/v1',
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-    },
-  }),
+  baseQuery: fetchBaseQuery(baseQueryConfig),
   tagTypes: ['Cities'],
   endpoints: (builder) => ({
     getCities: builder.query({

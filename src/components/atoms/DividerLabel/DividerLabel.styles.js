@@ -14,7 +14,7 @@ export const DividerLabel = styled.span`
   &::after,
   &::before {
     content: '';
-    height: 3px;
+    height: 2px;
     background-color: ${({ theme }) => theme.colors.darkDivider};
     flex: 1;
   }

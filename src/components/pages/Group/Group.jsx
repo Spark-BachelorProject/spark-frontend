@@ -32,6 +32,7 @@ const Group = () => {
           groupName={group?.name || 'Nieznana nazwa grupy'}
           hasFilters={false}
           buttonText={'Dodaj post'}
+          groupId={id}
         />
       )}
       {isLoadingPosts && <Loader isCentered />}

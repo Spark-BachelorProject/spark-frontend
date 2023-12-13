@@ -5,6 +5,7 @@ import Avvvatars from 'avvvatars-react'
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
 import { ReactComponent as PinIcon } from '@/assets/icons/map-pin.svg'
+import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { SecondaryButton } from '@/components/atoms/Buttons/SecondaryButton.styles'
 import Dot from '@/components/atoms/Dot/Dot'
 import Tags from '@/components/atoms/Tags/Tags'
@@ -180,13 +181,14 @@ const Post = (props) => {
           <AttendanceList participants={participants} />
         </div>
         <ButtonsWrapper>
-          <SecondaryButton
+          <Button
             onClick={(e) => handleOpenMapModal(e)}
             ref={modalOpenElementRef3}
             tabIndex={0}
+            isGray
           >
             Pokaż na mapie
-          </SecondaryButton>
+          </Button>
           <SecondaryButton isFilled={ifUserIsParticipant()} isGray onClick={handleParticipation}>
             {ifUserIsParticipant() ? 'Odwołaj obecność' : 'Zgłoś obecność'}
           </SecondaryButton>

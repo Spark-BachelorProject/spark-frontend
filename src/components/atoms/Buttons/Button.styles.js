@@ -10,8 +10,8 @@ export const Button = styled.button`
   padding: ${({ isBig }) => (isBig ? '11px 22px' : '9px 18px')};
   border: ${({ theme, isGray }) =>
     isGray ? `1px solid ${theme.colors.navbarBorder}` : `1px solid ${theme.colors.navbarBorder}`};
-  border-radius: 6px;
-  font-weight: 600;
+  border-radius: 8px;
+  font-weight: 500;
   cursor: pointer;
 
   &:hover {

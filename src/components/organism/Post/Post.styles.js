@@ -91,6 +91,8 @@ export const StyledMoreInfoIcon = styled(MoreInfoIcon)`
 
 export const InteractionsSection = styled.section`
   display: flex;
+  align-items: center;
+  height: auto;
   margin: 25px 0 10px 0;
   justify-content: space-between;
 `
@@ -118,5 +120,5 @@ export const DetailsWrapper = styled.div`
 `
 export const ButtonsWrapper = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 15px;
 `

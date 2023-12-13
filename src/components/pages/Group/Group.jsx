@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams } from 'react-router'
 
 import GroupsActionBar from '@/components/organism/GroupsActionBar/GroupsActionBar'

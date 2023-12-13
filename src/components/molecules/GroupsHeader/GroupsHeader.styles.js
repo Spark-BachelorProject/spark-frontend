@@ -19,9 +19,13 @@ export const Wrapper = styled.div`
 
   ${Title} {
     font-size: 20px;
+    color: ${({ theme }) => theme.colors.white};
+    text-shadow: 0px 0px 10px rgba(59, 130, 246, 1);
   }
 
   ${Text} {
     font-size: 14px;
+    color: ${({ theme }) => theme.colors.white};
+    text-shadow: 0px 0px 10px rgba(59, 130, 246, 1);
   }
 `

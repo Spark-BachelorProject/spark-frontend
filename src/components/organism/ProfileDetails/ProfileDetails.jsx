@@ -66,12 +66,12 @@ const ProfileDetails = () => {
               type: 'Sport',
             },
             {
-              id: 1,
+              id: 2,
               name: 'Wspinaczka',
               type: 'Poziom',
             },
             {
-              id: 1,
+              id: 3,
               name: 'Wędkarstwo',
               type: 'Poziom',
             },

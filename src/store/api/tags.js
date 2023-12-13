@@ -5,7 +5,7 @@ import { baseQueryConfig } from '@/store/config'
 
 export const tagsApi = createApi({
   reducerPath: 'tagsApi',
-  baseQuery: fetchBaseQuery(baseQueryConfig),
+  baseQuery: fetchBaseQuery(baseQueryConfig()),
   endpoints: (builder) => ({
     getTags: builder.query({
       query: () => 'tags',

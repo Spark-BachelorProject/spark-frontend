@@ -4,7 +4,7 @@ import { baseQueryConfig } from '@/store/config'
 
 export const activitiesApi = createApi({
   reducerPath: 'activitiesApi',
-  baseQuery: fetchBaseQuery(baseQueryConfig),
+  baseQuery: fetchBaseQuery(baseQueryConfig()),
   endpoints: (builder) => ({
     getActivities: builder.query({
       query: () => 'activities',

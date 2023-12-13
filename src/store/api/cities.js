@@ -4,7 +4,7 @@ import { baseQueryConfig } from '@/store/config'
 
 export const citiesApi = createApi({
   reducerPath: 'citiesApi',
-  baseQuery: fetchBaseQuery(baseQueryConfig),
+  baseQuery: fetchBaseQuery(baseQueryConfig()),
   tagTypes: ['Cities'],
   endpoints: (builder) => ({
     getCities: builder.query({

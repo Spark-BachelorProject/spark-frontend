@@ -7,7 +7,7 @@ const sortDescByDate = (a, b) => new Date(b.dateCreated) - new Date(a.dateCreate
 
 export const userApi = createApi({
   reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery(baseQueryConfig),
+  baseQuery: fetchBaseQuery(baseQueryConfig()),
   tagTypes: ['User'],
   endpoints: (builder) => ({
     getUser: builder.query({

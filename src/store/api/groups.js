@@ -4,7 +4,7 @@ import { baseQueryConfig } from '@/store/config'
 
 export const groupsApi = createApi({
   reducerPath: 'groupsApi',
-  baseQuery: fetchBaseQuery(baseQueryConfig),
+  baseQuery: fetchBaseQuery(baseQueryConfig()),
   tagTypes: ['Groups'],
   endpoints: (builder) => ({
     getGroups: builder.query({

@@ -4,7 +4,7 @@ import { baseQueryConfig } from '@/store/config'
 
 export const commentsApi = createApi({
   reducerPath: 'commentsApi',
-  baseQuery: fetchBaseQuery(baseQueryConfig),
+  baseQuery: fetchBaseQuery(baseQueryConfig()),
   tagTypes: ['Comments'],
   endpoints: (builder) => ({
     getComments: builder.query({

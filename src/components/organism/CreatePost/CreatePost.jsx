@@ -20,7 +20,7 @@ import {
 import { debounce } from '@/helpers/debounce.js'
 import { sortTagsByType } from '@/helpers/sortTagsByType.js'
 import { useGetActivitiesQuery } from '@/store/api/activities.js'
-import { useGetGroupsQuery } from '@/store/api/groups.js'
+import { useGetGroupsQuery, useGetOneGroupQuery } from '@/store/api/groups.js'
 import { useAddPostMutation } from '@/store/api/posts'
 import { useGetTagsByActivityIdQuery } from '@/store/api/tags.js'
 import { useGetUserQuery } from '@/store/api/user.js'
@@ -53,13 +53,17 @@ const initialState = {
   privacy: PRIVACYSETTINGS[0].value,
 }
 
-// TODO: add memoization
-const CreatePost = ({ handleClose }) => {
+const CreatePost = ({ handleClose, groupId = 0 }) => {
   const [addPost] = useAddPostMutation()
   const { data: activitiesApi, isLoading: isLoadingActivitiesApi } = useGetActivitiesQuery()
   const [activities, setActivities] = useState([])
   const [groups, setGroups] = useState([])
   const [tags, setTags] = useState([])
+  const {
+    data: groupOneApi,
+    isLoading: isLoadingGroupOneApi,
+    isSuccess: isSuccessGroupOneApi,
+  } = useGetOneGroupQuery(groupId)
 
   const [selectedActivityId, setSelectedActivityId] = useState(1)
   const { data: tagsApi, isLoading: isLoadingTagsApi } =
@@ -103,6 +107,18 @@ const CreatePost = ({ handleClose }) => {
       setTags(sortTagsByType(tagsApiWithValue))
     }
   }, [tagsApi, isLoadingTagsApi])
+
+  useEffect(() => {
+    if (groupId && !isLoadingGroupOneApi && isSuccessGroupOneApi) {
+      const selectedActivity = groupOneApi.activity.name
+      setState((prevState) => ({
+        ...prevState,
+        privacy: PRIVACYSETTINGS[1].value,
+        groups: groupsApi[0].name,
+        activity: selectedActivity,
+      }))
+    }
+  }, [groupId, groupsApi, isLoadingGroupOneApi, isSuccessGroupOneApi, activitiesApi])
 
   const [isPlaceSelected, setIsPlaceSelected] = useState(false)
   const [selectedCity, setSelectedCity] = useState(null)
@@ -156,10 +172,14 @@ const CreatePost = ({ handleClose }) => {
     e.preventDefault()
 
     const dateStart = formatTimeAndDate(state.dateStart, state.hourStart)
-
     const selectedActivityId = activitiesApi.find((activity) => activity.name === state.activity).id
+    const selectedGroupId = groupsApi.find((group) => group.name === state.groups).id
 
     const getTagsIds = () => tags.map((tag) => tag.id)
+
+    if (!isPlaceSelected) {
+      return
+    }
 
     const newPost = {
       activityId: selectedActivityId,
@@ -176,13 +196,9 @@ const CreatePost = ({ handleClose }) => {
       description: state.content,
       privacySetting: state.privacy,
       tags: getTagsIds(),
-      groupId: groupsApi.find((group) => group.name === state.groups)?.id,
+      groupId: selectedGroupId,
     }
     console.log(newPost, 'newPost')
-
-    if (!isPlaceSelected) {
-      return
-    }
 
     addPost(newPost)
     handleClose()
@@ -214,6 +230,7 @@ const CreatePost = ({ handleClose }) => {
           id="privacy"
           value={state.privacy}
           onChange={handleChange}
+          isDisabled={!!groupId}
         >
           {PRIVACYSETTINGS}
         </Select>
@@ -223,7 +240,7 @@ const CreatePost = ({ handleClose }) => {
           id="groups"
           value={state.groups}
           onChange={handleChange}
-          isDisabled={state.privacy !== 'PRIVATE_GROUP' || !groups.length}
+          isDisabled={state.privacy !== 'PRIVATE_GROUP' || !groups.length || !!groupId}
         >
           {groups.length
             ? groups
@@ -241,6 +258,7 @@ const CreatePost = ({ handleClose }) => {
           id="activity"
           value={state.activity}
           onChange={handleChange}
+          isDisabled={!!groupId}
         >
           {activities}
         </Select>

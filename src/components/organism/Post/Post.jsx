@@ -122,12 +122,6 @@ const Post = (props) => {
     handleOpenAndPositionModal3(modalOpenElementRef3, positioning)
   }
 
-  // const handleCloseMapModal = (e) => {
-  //   if (e.key !== 'Tab') {
-  //     handleOpenAndPositionModal3(modalOpenElementRef3, positioning)
-  //   }
-  // }
-
   const handleParticipation = async () => {
     try {
       ifUserIsParticipant() ? await deleteParticipation(postId) : await putParticipate(postId)

@@ -6,6 +6,7 @@ import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import CreateGroup from '@/components/organism/CreateGroup/CreateGroup'
+import CreatePost from '@/components/organism/CreatePost/CreatePost'
 import useModal from '@/hooks/useModal'
 
 import {
@@ -21,6 +22,7 @@ const GroupsActionBar = ({
   groupName = 'Grupy',
   numOfPosts = 0,
   buttonText = 'Stwórz grupę',
+  groupId = 0,
 }) => {
   const {
     Modal,
@@ -33,11 +35,11 @@ const GroupsActionBar = ({
 
   const positioning = 'center'
 
-  const handleOpenAddGroup = () => {
+  const _handleOpenModal = () => {
     handleOpenAndPositionModal(modalOpenElementRef, positioning)
   }
 
-  const handleCloseAddGroup = (e) => {
+  const _handleCloseModal = (e) => {
     if (e.key !== 'Tab') {
       handleOpenAndPositionModal(modalOpenElementRef, positioning)
     }
@@ -61,9 +63,10 @@ const GroupsActionBar = ({
             <FilterIcon />
           </StyledIconBorder>
         ) : null}
+
         <Button
-          onClick={(e) => handleOpenAddGroup(e)}
-          onKeyDown={handleCloseAddGroup}
+          onClick={(e) => _handleOpenModal(e)}
+          onKeyDown={_handleCloseModal}
           ref={modalOpenElementRef}
         >
           {buttonText}
@@ -77,7 +80,11 @@ const GroupsActionBar = ({
           isModal
           hasBackgroundColor
         >
-          <CreateGroup handleClose={handleCloseModal} />
+          {groupId ? (
+            <CreatePost handleClose={handleCloseModal} groupId={groupId} />
+          ) : (
+            <CreateGroup handleClose={handleCloseModal} />
+          )}
         </Modal>
       ) : null}
     </Wrapper>

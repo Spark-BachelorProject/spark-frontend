@@ -21,11 +21,13 @@ export const Time = styled.div`
 `
 
 export const Wrapper = styled.div`
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.1);
+
   position: absolute;
   top: calc(70px + 20px);
   left: 60px;
   z-index: 100;
-  background-color: ${({ theme }) => theme.colors.primaryBg};
+  background-color: ${({ theme }) => theme.colors.secondaryBg};
   border-radius: 15px;
   padding: 25px 25px;
   height: auto;

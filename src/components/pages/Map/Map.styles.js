@@ -6,11 +6,13 @@ export const Wrapper = styled.div`
 `
 
 export const OverlayRight = styled.div`
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.1);
+
   position: absolute;
   top: calc(70px + 20px);
   right: 60px;
   z-index: 100;
-  background-color: ${({ theme }) => theme.colors.primaryBg};
+  background-color: ${({ theme }) => theme.colors.secondaryBg};
   border-radius: 10px;
   padding: 20px 20px;
   display: flex;

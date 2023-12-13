@@ -176,6 +176,7 @@ const CreatePost = ({ handleClose }) => {
       description: state.content,
       privacySetting: state.privacy,
       tags: getTagsIds(),
+      groupId: groupsApi.find((group) => group.name === state.groups)?.id,
     }
     console.log(newPost, 'newPost')
 

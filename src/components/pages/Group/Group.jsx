@@ -1,25 +1,45 @@
 import { useParams } from 'react-router'
 
+import Loader from '@/components/atoms/Loader/Loader'
 import GroupsActionBar from '@/components/organism/GroupsActionBar/GroupsActionBar'
 import Post from '@/components/organism/Post/Post'
-import GroupTemplate from '@/components/templates/GroupTemplate/GroupTemplate'
+import { PageContent } from '@/components/templates/PageContent/PageContent'
+import { useGetOneGroupQuery } from '@/store/api/groups'
+import { useGetPostsByGroupQuery } from '@/store/api/posts'
+
+import { StyledTitle } from './Group.styles'
 
 const Group = () => {
   const { id } = useParams()
-  const numOfPosts = 12
+  const {
+    data: group,
+    isLoading: isLoadingGroup,
+    isSuccess: isSuccessGroup,
+  } = useGetOneGroupQuery(id)
+  const {
+    data: posts,
+    isLoading: isLoadingPosts,
+    isSuccess: isSuccessPosts,
+  } = useGetPostsByGroupQuery(id)
 
   return (
-    <GroupTemplate>
-      <GroupsActionBar
-        numOfPosts={numOfPosts}
-        groupName={id}
-        hasFilters={false}
-        buttonText={'Dodaj post'}
-      />
-      <Post />
-      <Post />
-      <Post />
-    </GroupTemplate>
+    <PageContent hasNavigation hasRightBar>
+      {isLoadingGroup && <Loader isCentered />}
+      {!isLoadingGroup && isSuccessGroup && !isLoadingPosts && isSuccessPosts && posts && group && (
+        <GroupsActionBar
+          numOfPosts={posts.length || 0}
+          groupName={group?.name || 'Nieznana nazwa grupy'}
+          hasFilters={false}
+          buttonText={'Dodaj post'}
+        />
+      )}
+      {isLoadingPosts && <Loader isCentered />}
+      {!isLoadingPosts && isSuccessPosts && posts ? (
+        posts.map((post) => <Post {...post} key={post.id} />)
+      ) : (
+        <StyledTitle>Grupa nie została znaleziona</StyledTitle>
+      )}
+    </PageContent>
   )
 }
 

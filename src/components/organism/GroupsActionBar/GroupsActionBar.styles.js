@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import { ReactComponent as SearchIcon } from '@/assets/icons/search.svg'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { IconBorder } from '@/components/atoms/IconBorder/IconBorder.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
@@ -71,11 +70,5 @@ export const StyledIconBorder = styled(IconBorder)`
 
   & > svg > path {
     padding: 0 3px;
-  }
-`
-
-export const StyledSearchIcon = styled(SearchIcon)`
-  & > path {
-    fill: ${({ theme }) => theme.colors.iconSecondary};
   }
 `

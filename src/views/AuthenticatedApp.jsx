@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router'
 import HeaderSearchBar from '@/components/organism/HeaderSearchBar/HeaderSearchBar'
 import NavigationBar from '@/components/organism/NavigationBar/NavigationBar'
 import SingleGroup from '@/components/organism/SingleGroup/SingleGroup'
+import Group from '@/components/pages/Group/Group'
 import Groups from '@/components/pages/Groups/Groups'
 import Home from '@/components/pages/Home/Home'
 import Map from '@/components/pages/Map/Map'
@@ -18,7 +19,7 @@ const AuthenticatedApp = () => {
         <Route path="/users" element={<Users />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/groups" element={<Groups />} />
-        <Route path="/groups/:id" element={<SingleGroup />} />
+        <Route path="/groups/:id" element={<Group />} />
         <Route path="/map" element={<Map />} />
         <Route path="/posts/:id" element={<SinglePost />} />
         <Route path="/" element={<Home />} exact />

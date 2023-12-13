@@ -7,14 +7,12 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import CreateGroup from '@/components/organism/CreateGroup/CreateGroup'
 import useModal from '@/hooks/useModal'
-import { useGetGroupsQuery } from '@/store/api/groups'
 
 import {
   GroupsActionSection,
   IconAndLabel,
   IconBackground,
   StyledIconBorder,
-  StyledSearchIcon,
   Wrapper,
 } from './GroupsActionBar.styles'
 
@@ -24,7 +22,6 @@ const GroupsActionBar = ({
   numOfPosts = 0,
   buttonText = 'Stwórz grupę',
 }) => {
-  const { data: groups, isLoading } = useGetGroupsQuery()
   const {
     Modal,
     isOpen,
@@ -55,11 +52,7 @@ const GroupsActionBar = ({
         </IconBackground>
         <div>
           <Title isBig>{groupName}</Title>
-          <Text>
-            {numOfPosts
-              ? `${numOfPosts} aktualnych postów`
-              : `${!isLoading ? groups.length : 0} grupy`}
-          </Text>
+          <Text>{numOfPosts || 0} aktualnych postów</Text>
         </div>
       </IconAndLabel>
       <GroupsActionSection>
@@ -68,10 +61,6 @@ const GroupsActionBar = ({
             <FilterIcon />
           </StyledIconBorder>
         ) : null}
-        <StyledIconBorder tabIndex="0">
-          <StyledSearchIcon />
-        </StyledIconBorder>
-
         <Button
           onClick={(e) => handleOpenAddGroup(e)}
           onKeyDown={handleCloseAddGroup}

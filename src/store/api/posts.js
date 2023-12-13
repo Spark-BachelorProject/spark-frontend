@@ -53,6 +53,11 @@ export const postsApi = createApi({
       }),
       invalidatesTags: ['Posts'],
     }),
+    // this query should be with Posts tags
+    getPostsByGroup: builder.query({
+      query: (groupId) => `groups/${groupId}/posts`,
+      providesTags: ['Posts'],
+    }),
   }),
 })
 
@@ -63,4 +68,5 @@ export const {
   useLazyGetFilteredPostsQuery,
   usePutParticipateMutation,
   useDeleteParticipationMutation,
+  useGetPostsByGroupQuery,
 } = postsApi

@@ -7,7 +7,7 @@ export const StyledTags = styled.div`
 
   ${Button} {
     padding: 7px 14px;
-    background-color: rgba(59, 130, 246, 0.21);
+    background-color: ${({ theme }) => theme.colors.tagBg};
 
     border: 1px solid ${({ theme }) => theme.colors.tagBorder};
     font-size: ${({ theme }) => theme.fontSize.sPlus};

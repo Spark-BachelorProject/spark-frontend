@@ -8,6 +8,7 @@ export const lightTheme = {
 
   modalBg:             '#fff',      //         white -> slate800
   secondaryBg:         '#fff',      //         white -> slate800
+
   
   mainDivider:         '#f8fafc',   //         slate50 -> slate750
   addPostBg:           '#f8fafc',   //         slate50 -> slate750
@@ -60,6 +61,8 @@ export const lightTheme = {
 
   bookmarkBg:          '#FAFBFF',   //         custom -> slate750
   iconPrimaryActive:   '#0f172a',   //         custom -> slate50
+  tagBg:'rgba(59, 130, 246, 0.05)', //         custom blue -> custom blue
+
 
   black:               '#000',      //         black -> black
   
@@ -69,7 +72,8 @@ export const lightTheme = {
 
 //                                             DARK : LIGHT
 export const darkTheme = {
-  white:               '#fff',      //         white -> white 
+  white:               '#fff',      //         white -> white
+ 
 
   iconPrimaryActive:   '#f8fafc',   //         slate50 -> custom 
 
@@ -124,9 +128,10 @@ export const darkTheme = {
   iconPlusBg:          '#3b82f6',   //         blue500 -> blue500
   buttonBg:            '#3B76F5',   //         blue550 -> blue500
   
-  tagBg:               '#3b82f610', //         custom blue -> blue500
+  tagBg:'rgba(59, 130, 246, 0.05)', //         custom blue -> custom blue
   tagBgActive:         '#3b82f620', //         custom blue -> blue500
   tagBorder:           '#3b82f650', //         custom blue -> blue500
+
   
   redFont:             '#D71E3B',   //         custom red -> red500
 

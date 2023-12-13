@@ -1,11 +1,12 @@
 import { ReactComponent as BookmarkIcon } from '@/assets/icons/bookmark.svg'
 import { ReactComponent as BusIcon } from '@/assets/icons/bus.svg'
+import { ReactComponent as GoogleIcon } from '@/assets/icons/google.svg'
 import { checkGeolocationPermission } from '@/helpers/checkGeolocationPermission'
 import { formatDateAndTimeJakdojadeFormat } from '@/helpers/dateAndTime'
 import { getUserCoordinates } from '@/helpers/getUserCoordinates'
 import { usePutOneBookmarkedPostMutation } from '@/store/api/user'
 
-import { StyledGoogleIcon, StyledText, Wrapper } from './MoreInfoPost.styles'
+import { StyledText, Wrapper } from './MoreInfoPost.styles'
 
 export const MoreInfoPost = ({ postId, handleClosePopup, location, dateStart }) => {
   const [putOneBookmarkedPost] = usePutOneBookmarkedPostMutation()
@@ -63,7 +64,7 @@ export const MoreInfoPost = ({ postId, handleClosePopup, location, dateStart }) 
         Pokaż trasę w Jakdojadę
       </StyledText>
       <StyledText onClick={handleOpenGoogleMapsRoute}>
-        <StyledGoogleIcon style={{ width: '17px' }} />
+        <GoogleIcon style={{ width: '17px' }} />
         Pokaż trasę w Google
       </StyledText>
     </Wrapper>

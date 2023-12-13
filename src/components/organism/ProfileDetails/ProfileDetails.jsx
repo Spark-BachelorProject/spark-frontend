@@ -52,13 +52,34 @@ const ProfileDetails = () => {
 
         <Title>{isLoading ? <Loader isCentered /> : `${user.firstName} ${user.lastName}`}</Title>
       </ImgAndNameSection>
+
       {/* //TODO: check preffered activity */}
-      {!isLoading && user.preferredActivity ? (
-        <ActivitySection>
-          <StyledTitle>Ulubione aktywności</StyledTitle>
-          <Tags>{['Siatkówka', 'Squash']}</Tags>
-        </ActivitySection>
-      ) : null}
+
+      {/* {isLoading && user.preferredActivity ? ( */}
+      <ActivitySection>
+        <StyledTitle>Ulubione aktywności</StyledTitle>
+        <Tags>
+          {[
+            {
+              id: 1,
+              name: 'Kajaki',
+              type: 'Sport',
+            },
+            {
+              id: 1,
+              name: 'Wspinaczka',
+              type: 'Poziom',
+            },
+            {
+              id: 1,
+              name: 'Wędkarstwo',
+              type: 'Poziom',
+            },
+          ]}
+        </Tags>
+      </ActivitySection>
+      {/* ) : null} */}
+
       <BadgesSection>
         {/* //TODO: check badges */}
         <StyledTitle>Odznaki</StyledTitle>

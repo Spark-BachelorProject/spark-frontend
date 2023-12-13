@@ -113,7 +113,8 @@ export const StyledReactTags = styled.div`
   }
 
   .react-tags__combobox-input::placeholder {
-    color: #7c7d86;
+    color: ${({ theme }) => theme.colors.placeholder};
+
     opacity: 1;
   }
 
@@ -134,14 +135,16 @@ export const StyledReactTags = styled.div`
   }
 
   .react-tags__listbox-option {
-    padding: 0.8em 0.8em;
+    margin: -4px 0 -4px 0;
+    padding: 1em 0.8em;
     border-radius: 5px;
   }
 
   .react-tags__listbox-option:hover {
     cursor: pointer;
     background: ${({ theme }) => theme.colors.navbarBorder};
-    transition: 200ms;
+    color: ${({ theme }) => theme.colors.textHeader};
+    transition: 300ms ease-out;
   }
 
   .react-tags__listbox-option:not([aria-disabled='true']).is-active {

@@ -15,12 +15,13 @@ export const Wrapper = styled.nav`
     gap: 15px;
     color: ${({ theme }) => theme.colors.text};
     font-weight: 600;
-    padding: 14px 15px;
+    padding: 15px 15px;
+    margin: -2px 0 -2px 0;
     border-radius: 7px;
   }
 
   & > a.${'active'} {
-    color: ${({ theme }) => theme.colors.textHeader};
+    color: ${({ theme }) => theme.colors.accent};
     font-weight: 700;
   }
 
@@ -34,6 +35,6 @@ export const Wrapper = styled.nav`
   }
 
   & > a.${'active'} > svg > path {
-    stroke: ${({ theme }) => theme.colors.iconPrimaryActive};
+    stroke: ${({ theme }) => theme.colors.accent};
   }
 `

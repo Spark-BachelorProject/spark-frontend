@@ -1,30 +1,32 @@
 import styled from 'styled-components'
 
-import { ReactComponent as GoogleIcon } from '@/assets/icons/google.svg'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   height: auto;
-
-  margin: -18px 0 -10px 15px;
+  margin: -15px 0 -20px 15px;
 `
 
 export const StyledText = styled(Text)`
+  width: 100%;
   font-size: ${({ theme }) => theme.fontSize.m};
-  padding: 0 5px;
-  margin: 20px 0 15px 0;
+  padding: 15px 10px;
+  margin-top: -3px;
+  margin-left: -7px;
+  border-radius: 8px;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.text};
 
   &:hover {
     color: ${({ theme }) => theme.colors.textHeader};
-    transition: 100ms linear;
+    background-color: ${({ theme }) => theme.colors.addPostBg};
+    transition: 200ms linear;
 
     & > svg > path {
       stroke: ${({ theme }) => theme.colors.textHeader};
-      transition: 100ms linear;
+      transition: 200ms linear;
     }
   }
 
@@ -43,8 +45,4 @@ export const StyledText = styled(Text)`
   & > svg > g > path {
     fill: ${({ theme }) => theme.colors.text};
   }
-`
-
-export const StyledGoogleIcon = styled(GoogleIcon)`
-  color: red;
 `

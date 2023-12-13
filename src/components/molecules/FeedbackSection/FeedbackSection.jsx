@@ -35,7 +35,7 @@ export const FeedbackSection = () => {
   return (
     <Wrapper>
       <Title isBold>Twoja opinia się dla nas liczy</Title>
-      <Text isBig>Daj nam znać co możemy poprawić!</Text>
+      <Text>Daj nam znać co możemy poprawić!</Text>
       <StyledButton
         isGray
         borderOnly

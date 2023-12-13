@@ -26,12 +26,16 @@ export const Wrapper = styled.div`
 `
 
 export const StyledInput = styled.div`
-  background-color: ${({ theme }) => theme.colors.addPostBg};
+  background-color: ${({ theme }) => theme.colors.inputBg};
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.02);
+
+  border: 1px solid
+    ${({ error, theme }) => (error ? theme.colors.redFont : theme.colors.buttonBorder)};
   padding: 8px 15px;
   width: 80%;
   margin-right: 10px;
   border-radius: 5px;
-  color: ${({ theme }) => theme.colors.labelFont};
+  color: ${({ theme }) => theme.colors.text};
   font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: 500;
 `

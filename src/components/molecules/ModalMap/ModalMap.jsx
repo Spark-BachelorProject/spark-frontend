@@ -4,7 +4,7 @@ import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import styled from 'styled-components'
 
-import { CloseButton } from '@/components/organism/MapPopup/MapPopup.styles'
+import { CloseButton } from '@/components/atoms/CloseButton/CloseButton'
 import { getIcon } from '@/components/pages/Map/customIcons'
 
 import './ModalMap.styles.css'
@@ -74,7 +74,7 @@ export const ModalMap = ({ location, handleClose }) => {
         <UpdateCenter center={coordinates} />
         <MapUpdater center={coordinates} />
       </MapContainer>
-      <StyledCloseButton onClick={handleClose}>X</StyledCloseButton>
+      <CloseButton onClick={handleClose} />
     </Wrapper>
   )
 }

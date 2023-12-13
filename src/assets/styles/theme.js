@@ -13,6 +13,7 @@ export const lightTheme = {
   addPostBg:           '#f8fafc',   //         slate50 -> slate750
   attendingCounterBg:  '#f8fafc',   //         slate50 -> slate750
   modalBorder:         '#f8fafc',   //         slate50 -> slate750
+  iconBgHover:         '#f8fafc',   //         slate50 -> slate800
   primaryBg:           '#f8fafc',   //         slate50 -> slate900
 
   buttonOffFont:       '#f1f5f9',   //         slate100 -> slate100
@@ -100,7 +101,7 @@ export const darkTheme = {
   checkboxBg:          '#233045',   //         slate750 -> white
   inputBg:             '#233045',   //         slate750 -> white
   navbarBg:            '#233045',   //         slate750 -> white
-  iconBg:              '#233045',      //         white -> slate750
+  iconBg:              '#233045',   //         white    -> slate750
 
   mainDivider:         '#233045',   //         slate750 -> slate50
   modalBorder:         '#233045',   //         slate750 -> slate50
@@ -113,7 +114,9 @@ export const darkTheme = {
   
   modalBg:             '#1e293b',   //         slate800 -> white
   secondaryBg:         '#1e293b',   //         slate800 -> white
+  iconBgHover:         '#1e293b',   //         slate800 -> slate50
   primaryBg:           '#0f172a',   //         slate900 -> slate50
+
   
   buttonFont:          '#EFF6FF',   //         blue50 -> blue50
   buttonOffColor:      '#3b82f6',   //         blue500 -> blue400

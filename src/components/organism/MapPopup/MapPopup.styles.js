@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import Tags from '@/components/atoms/Tags/Tags'
+import { Text } from '@/components/atoms/Text/Text.styles'
 import { Header } from '@/components/organism/Post/Post.styles'
 
 export const StyledTags = styled(Tags)`
@@ -13,18 +14,10 @@ export const Time = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
-`
 
-export const CloseButton = styled.button`
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.selectFont};
+  & > svg > path {
+    stroke: ${({ theme }) => theme.colors.accent};
+  }
 `
 
 export const Wrapper = styled.div`
@@ -33,8 +26,8 @@ export const Wrapper = styled.div`
   left: 60px;
   z-index: 100;
   background-color: ${({ theme }) => theme.colors.primaryBg};
-  border-radius: 10px;
-  padding: 15px 20px;
+  border-radius: 15px;
+  padding: 25px 25px;
   height: auto;
   width: auto;
   display: flex;
@@ -62,4 +55,8 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-top: -50px;
+`
+
+export const StyledText = styled(Text)`
+  margin: 10px 0 10px 0;
 `

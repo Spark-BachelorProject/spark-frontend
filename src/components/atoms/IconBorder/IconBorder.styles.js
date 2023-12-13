@@ -13,6 +13,11 @@ export const IconBorder = styled.div`
   margin-left: 10px;
   cursor: pointer;
 
+  :hover {
+    background-color: ${({ theme }) => theme.colors.iconBgHover};
+    transition: 200ms ease-in-out;
+  }
+
   &:focus-visible {
     outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};
   }

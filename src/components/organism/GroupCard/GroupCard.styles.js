@@ -10,6 +10,7 @@ export const Wrapper = styled.article`
   display: flex;
   padding: 15px 10px;
   flex-direction: column;
+  cursor: pointer;
 `
 
 export const Header = styled.div`

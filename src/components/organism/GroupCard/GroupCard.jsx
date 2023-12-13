@@ -9,8 +9,9 @@ import { Content, Header, IconBackground, Wrapper } from './GroupCard.styles'
 // TODO: add tags
 const GroupCard = (props) => {
   const { name, members, description } = props
+
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <Header>
         <IconBackground>
           <UsersIcon />
@@ -22,7 +23,6 @@ const GroupCard = (props) => {
       </Header>
       <Content>
         <Text as="p">{description}</Text>
-        {/* <StyledTags>{tags}</StyledTags> */}
       </Content>
     </Wrapper>
   )
@@ -30,9 +30,13 @@ const GroupCard = (props) => {
 
 GroupCard.propTypes = {
   name: PropTypes.string.isRequired,
-  numOfPeople: PropTypes.number,
-  text: PropTypes.string,
-  tags: PropTypes.arrayOf(PropTypes.string),
+  members: PropTypes.arrayOf(
+    PropTypes.shape({
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  description: PropTypes.string.isRequired,
 }
 
 export default GroupCard

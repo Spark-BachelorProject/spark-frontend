@@ -49,10 +49,10 @@ export const StyledReactTags = styled.div`
 
   .react-tags__tag {
     margin: 0 0.5rem 0.3rem 0;
-    padding: 0.45rem 0.5rem;
+    padding: 0.45rem 0.6rem 0.45rem 0.8rem;
     border: 0;
-    border-radius: 5px;
-    background-color: rgba(59, 130, 246, 0.21);
+    border-radius: 20px;
+    background-color: ${({ theme }) => theme.colors.tagBg};
     border: 1px solid ${({ theme }) => theme.colors.tagBorder};
     font-weight: 600;
     color: ${({ theme }) => theme.colors.accent};
@@ -130,7 +130,7 @@ export const StyledReactTags = styled.div`
     background: ${({ theme }) => theme.colors.inputBg};
     color: ${({ theme }) => theme.colors.inputFont};
     border: 2px solid ${({ theme }) => theme.colors.buttonBorder};
-    border-radius: 6px;
+    border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -4px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
   }
 

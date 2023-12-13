@@ -55,7 +55,6 @@ export const lightTheme = {
   accent:              '#3b82f6',   //         blue500 -> blue500
   iconPlusBg:          '#3b82f6',   //         blue500 -> blue500
   buttonBg:            '#3B82F6',   //         blue500 -> blue550
-  tagBg:               '#3b82f609', //         blue500 -> custom blue
   tagBgActive:         '#3b82f615', //         blue500 -> custom blue
   tagBorder:           '#3b82f6',   //         blue500 -> custom blue
 
@@ -128,7 +127,7 @@ export const darkTheme = {
   iconPlusBg:          '#3b82f6',   //         blue500 -> blue500
   buttonBg:            '#3B76F5',   //         blue550 -> blue500
   
-  tagBg:'rgba(59, 130, 246, 0.05)', //         custom blue -> custom blue
+  tagBg:'rgba(59, 130, 246, 0.1)', //         custom blue -> custom blue
   tagBgActive:         '#3b82f620', //         custom blue -> blue500
   tagBorder:           '#3b82f650', //         custom blue -> blue500
 

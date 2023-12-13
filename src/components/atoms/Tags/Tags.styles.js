@@ -9,7 +9,8 @@ export const StyledTags = styled.div`
     padding: 9px 14px;
     background-color: ${({ theme }) => theme.colors.tagBg};
 
-    border: 1px solid ${({ theme }) => theme.colors.tagBorder};
+    /* border: 1px solid ${({ theme }) => theme.colors.tagBorder}; */
+    border-radius: 20px;
     font-size: ${({ theme }) => theme.fontSize.sPlus};
 
     color: ${({ theme }) => theme.colors.accent};

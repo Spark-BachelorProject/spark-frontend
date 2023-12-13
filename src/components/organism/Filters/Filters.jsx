@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { Error } from '@/components/atoms/Error/Error.styles'
@@ -7,7 +7,7 @@ import { Label } from '@/components/atoms/Label/Label.styles'
 import FormField from '@/components/molecules/FormField/FormField'
 import { dateNowYYYYMMDD, timeNow } from '@/helpers/dateAndTime'
 
-import { InputWrapper, TimeFromToWrapper, Wrapper } from './Filters.styles'
+import { ButtonsWrapper, InputWrapper, TimeFromToWrapper, Wrapper } from './Filters.styles'
 
 const Filters = ({ handleClose, setFilterOptions }) => {
   const [state, setState] = useState({
@@ -107,7 +107,12 @@ const Filters = ({ handleClose, setFilterOptions }) => {
       {/* <CheckboxField labelText={'Tylko posty znajomych'} id={'onlyFriends'} /> */}
       {/* <CheckboxField labelText={'Tylko darmowe'} id={'onlyFree'} /> */}
       {error && <Error>{error}</Error>}
-      <Button type="submit">Zapisz</Button>
+      <ButtonsWrapper>
+        <Button type="submit">Zapisz</Button>
+        <Button isGray onClick={handleClose}>
+          Anuluj
+        </Button>
+      </ButtonsWrapper>
     </Wrapper>
   )
 }

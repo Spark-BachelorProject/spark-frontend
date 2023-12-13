@@ -89,3 +89,20 @@ export const BadgesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 `
+
+export const FavoriteSection = styled.section`
+  text-align: start;
+  width: 100%;
+  padding-top: 50px;
+
+  &::before {
+    position: absolute;
+    content: '';
+    bottom: -30px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    transform: translateX(-50%);
+    background-color: ${({ theme }) => theme.colors.mainDivider};
+  }
+`

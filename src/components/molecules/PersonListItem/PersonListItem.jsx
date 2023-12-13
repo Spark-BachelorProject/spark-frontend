@@ -1,8 +1,6 @@
-import React from 'react'
-
 import Avvvatars from 'avvvatars-react'
 
-import { Title } from '@/components/atoms/Title/Title.styles'
+import { Text } from '@/components/atoms/Text/Text.styles'
 
 import { Wrapper } from './PersonListItem.styles'
 
@@ -10,9 +8,9 @@ export const PersonListItem = ({ firstName, lastName, initials }) => {
   return (
     <Wrapper>
       <Avvvatars value={initials} />
-      <Title isBold>
+      <Text isBold>
         {firstName} {lastName}
-      </Title>
+      </Text>
     </Wrapper>
   )
 }

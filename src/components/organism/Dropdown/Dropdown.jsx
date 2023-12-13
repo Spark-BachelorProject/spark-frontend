@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { ReactComponent as FilterIcon } from '@/assets/icons/filter.svg'
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
@@ -9,7 +9,7 @@ import { formatDate } from '@/helpers/dateAndTime'
 import usePopup from '@/hooks/usePopup'
 import { useGetActivitiesQuery } from '@/store/api/activities'
 
-import { Wrapper, ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder } from './Dropdown.styles'
+import { ButtonsWrapper, SelectButtonsWrapper, StyledIconBorder, Wrapper } from './Dropdown.styles'
 
 const initialState = {
   activity: '',

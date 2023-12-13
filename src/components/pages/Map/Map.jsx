@@ -154,7 +154,7 @@ export const Map = () => {
             <Select
               name="activitySelect"
               id="activitySelect"
-              value={activitySelect}
+              value={activitySelect || ''}
               onChange={onActivityChange}
             >
               {activities}

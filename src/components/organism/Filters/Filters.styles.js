@@ -44,3 +44,8 @@ export const TimeFromToWrapper = styled.div`
     display: flex;
   }
 `
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+`

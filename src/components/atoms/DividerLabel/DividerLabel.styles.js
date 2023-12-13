@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const DividerLabel = styled.span`
   position: relative;
-  color: ${({ theme }) => theme.colors.divider};
+  color: ${({ theme }) => theme.colors.iconPrimary};
   font-size: ${({ theme }) => theme.fontSize.sPlus};
   font-weight: 600;
   display: flex;

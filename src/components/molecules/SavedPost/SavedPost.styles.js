@@ -6,15 +6,18 @@ import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 
 export const Wrapper = styled.div`
   position: relative;
-  padding: 15px 15px;
+  padding: 20px 5px;
   display: flex;
   align-items: center;
   width: 110%;
   height: auto;
 
+  margin-bottom: -2px;
+  margin-top: -2px;
+
   margin-left: -18px;
-  border-radius: 7px;
-  gap: 5px;
+  border-radius: 9px;
+  gap: 10px;
   cursor: pointer;
 
   &:hover {

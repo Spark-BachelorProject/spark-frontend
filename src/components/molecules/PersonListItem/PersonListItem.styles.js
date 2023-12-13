@@ -4,18 +4,18 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 
 export const Wrapper = styled.div`
   cursor: pointer;
-  margin-left: -20px;
-  padding: 8px 20px;
+  padding: 15px 29px 15px 15px;
   border-radius: 5px;
-
   display: flex;
+  width: 100%;
   justify-content: start;
   align-items: center;
   gap: 8px;
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.modalBg};
-    transition: 200ms ease-in-out;
+  :hover {
+    color: ${({ theme }) => theme.colors.textHeader};
+    background-color: ${({ theme }) => theme.colors.addPostBg};
+    transition: 200ms linear;
   }
 
   ${Title} {

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
 import Loader from '@/components/atoms/Loader/Loader'
 import { Title } from '@/components/atoms/Title/Title.styles'

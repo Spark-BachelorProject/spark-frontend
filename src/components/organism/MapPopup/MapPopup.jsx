@@ -4,7 +4,9 @@ import Avvvatars from 'avvvatars-react'
 
 import { ReactComponent as ClockIcon } from '@/assets/icons/clock.svg'
 import { ReactComponent as GlobeIcon } from '@/assets/icons/globe.svg'
+import { ReactComponent as PinIcon } from '@/assets/icons/map-pin.svg'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
+import { CloseButton } from '@/components/atoms/CloseButton/CloseButton'
 import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Details } from '@/components/organism/Post/Post.styles'
@@ -12,16 +14,16 @@ import { formatDate, formatTimeAgo, formatTimeHHMM } from '@/helpers/dateAndTime
 
 import {
   ButtonWrapper,
-  CloseButton,
   StyledHeader,
   StyledTags,
+  StyledText,
   Time,
   Wrapper,
 } from './MapPopup.styles'
 
 export const MapPopup = ({
   onCloseClick,
-  selectedMarker: { id, creator, dateCreated, activity, dateStart, description, tags },
+  selectedMarker: { id, creator, dateCreated, location, activity, dateStart, description, tags },
 }) => {
   const navigate = useNavigate()
 
@@ -52,13 +54,19 @@ export const MapPopup = ({
           {formatDate(dateStart)} o {formatTimeHHMM(dateStart)}
         </Text>
       </Time>
-      <Text>{description}</Text>
+      <Time>
+        <PinIcon />
+        <Text>{location.name}</Text>
+      </Time>
+      <StyledText isBold isBig>
+        {description}
+      </StyledText>
       <StyledTags>{tags}</StyledTags>
 
       <ButtonWrapper>
         <Button onClick={handleOpenSinglePageClick}>Zobacz post</Button>
       </ButtonWrapper>
-      <CloseButton onClick={onCloseClick}>×</CloseButton>
+      <CloseButton onClick={onCloseClick} />
     </Wrapper>
   )
 }

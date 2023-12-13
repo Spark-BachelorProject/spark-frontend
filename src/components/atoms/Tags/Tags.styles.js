@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import { Button } from '../Buttons/Button.styles'
 
 export const StyledTags = styled.div`
-  margin: 15px 0 0 0;
+  margin: 15px 0 10px 0;
 
   ${Button} {
-    padding: 7px 14px;
+    padding: 9px 14px;
     background-color: ${({ theme }) => theme.colors.tagBg};
 
     border: 1px solid ${({ theme }) => theme.colors.tagBorder};

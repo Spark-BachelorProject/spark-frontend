@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -32,7 +32,7 @@ const CommentSection = ({ handleAddComment, inputValue, setInputValue, comments 
         isComments={!!comments.length}
       >
         {!comments.length
-          ? 'Brak komentarzy'
+          ? 'Skomentuj jako pierwszy'
           : (commentSectionIsOpen ? 'Schowaj' : 'Pokaż') + ` komentarze (${comments.length})`}
         {comments.length ? <ExpandVectorIcon /> : null}
       </StyledText>

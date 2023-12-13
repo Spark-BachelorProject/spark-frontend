@@ -1,17 +1,14 @@
-import React from 'react'
-
 import Avvvatars from 'avvvatars-react'
 
-import { Title } from '@/components/atoms/Title/Title.styles'
 import { getInitials } from '@/helpers/stringOperations'
 
-import { AttendingCounter, StyledAvatar, Wrapper } from './AttendanceList.styles'
+import { AttendingCounter, StyledAvatar, StyledTitle, Wrapper } from './AttendanceList.styles'
 
 const FOUR = 4
 
 const AttendanceList = ({ participants }) => {
   if (participants.length === 0) {
-    return <Title>Brak uczestników</Title>
+    return <StyledTitle>Weź udział jako pierwszy!</StyledTitle>
   }
 
   const firstFourParticipants = participants.slice(0, FOUR)

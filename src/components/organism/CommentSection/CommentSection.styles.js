@@ -16,9 +16,9 @@ export const CommentForm = styled.form`
 
 export const StyledText = styled(Text)`
   cursor: ${({ isComments }) => (isComments ? 'pointer' : 'default')};
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.placeholder};
   font-size: ${({ theme }) => theme.fontSize.s};
-  font-weight: 500;
+  font-weight: 400;
 
   & > svg {
     transition: transform 0.2s ease-in-out;
@@ -27,7 +27,7 @@ export const StyledText = styled(Text)`
   }
 
   & > svg > path {
-    color: ${({ theme }) => theme.colors.white};
+    stroke: ${({ theme }) => theme.colors.placeholder};
   }
 `
 

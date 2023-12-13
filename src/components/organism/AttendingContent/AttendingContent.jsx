@@ -1,9 +1,7 @@
-import React from 'react'
-
 import { PersonListItem } from '@/components/molecules/PersonListItem/PersonListItem'
 import { getInitials } from '@/helpers/stringOperations'
 
-import { Wrapper, StyledTitle } from './AttendingCounter.styles'
+import { StyledTitle, Wrapper } from './AttendingCounter.styles'
 
 export const AttendingContent = ({ participants }) => {
   return (
@@ -21,7 +19,7 @@ export const AttendingContent = ({ participants }) => {
           ))}
         </>
       ) : (
-        <StyledTitle isBold>Bądź pierwszym uczestnikiem!</StyledTitle>
+        <StyledTitle isBold>Weź udział jako pierwszy, przygoda czeka!</StyledTitle>
       )}
     </Wrapper>
   )

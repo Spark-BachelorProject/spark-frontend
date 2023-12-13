@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { Title } from '@/components/atoms/Title/Title.styles'
+
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
@@ -12,6 +14,10 @@ export const StyledAvatar = styled.div`
   transform: translateX(${({ index }) => index * -15}px);
   border: 3px solid ${({ theme }) => theme.colors.secondaryBg};
   border-radius: 50%;
+`
+
+export const StyledTitle = styled(Title)`
+  cursor: pointer;
 `
 
 export const AttendingCounter = styled.span`

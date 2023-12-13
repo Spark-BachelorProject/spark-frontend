@@ -1,16 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
+import { baseQueryConfig } from '@/store/config'
+
 // TODO: check if can i use postsAdapter
 const sortDescByDate = (a, b) => new Date(b.dateCreated) - new Date(a.dateCreated)
 
 export const userApi = createApi({
   reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8080/api/v1',
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-    },
-  }),
+  baseQuery: fetchBaseQuery(baseQueryConfig),
   tagTypes: ['User'],
   endpoints: (builder) => ({
     getUser: builder.query({

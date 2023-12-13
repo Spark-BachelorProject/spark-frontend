@@ -20,8 +20,8 @@ export const getIcon = (name) => {
 
   return new Icon({
     iconUrl: iconUrl,
-    iconSize: [40, 40],
-    iconAnchor: [22, 40],
+    iconSize: [55, 55],
+    iconAnchor: [26, 44], //controls the position of the icon while zoooming out [height, width]
   })
 }
 

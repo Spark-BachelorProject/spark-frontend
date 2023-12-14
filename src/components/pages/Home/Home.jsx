@@ -24,8 +24,10 @@ const Home = () => {
   }
 
   useEffect(() => {
-    hasCityChanged && handleCityChanged()
-  }, [hasCityChanged])
+    if (hasCityChanged || city !== localStorage.getItem('city')) {
+      handleCityChanged()
+    }
+  }, [hasCityChanged, city])
 
   const [posts, setPosts] = useState([])
   const [filterOptions, setFilterOptions] = useState({

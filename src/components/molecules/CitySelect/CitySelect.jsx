@@ -20,6 +20,8 @@ export const CitySelect = ({ handleClose, handleSubmit }) => {
       getCityFromCoordinates(latitude, longitude).then((city) => {
         setSelectedCity(city)
         localStorage.setItem('city', city)
+        handleSubmit()
+        handleClose()
       })
     })
   }, [])

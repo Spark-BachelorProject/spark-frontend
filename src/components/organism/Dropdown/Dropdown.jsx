@@ -107,6 +107,7 @@ export const Dropdown = ({ setFilterOptions, filterOptions }) => {
           onKeyDown={handleCloseFilterPopup}
           ref={popupOpenElementRef}
         >
+          Filtruj
           <FilterIcon />
         </StyledIconBorder>
       </ButtonsWrapper>

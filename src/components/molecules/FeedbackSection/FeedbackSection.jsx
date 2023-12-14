@@ -9,6 +9,8 @@ import useModal from '@/hooks/useModal'
 import { StyledButton, Wrapper } from './FeedbackSection.styles'
 
 export const FeedbackSection = () => {
+  const [showAlert, setShowAlert] = useState(false)
+
   const {
     Modal,
     isOpen,
@@ -19,13 +21,11 @@ export const FeedbackSection = () => {
   } = useModal()
   const positioning = 'center'
 
-  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false)
-
   const handleFeedbackSubmitted = () => {
-    setFeedbackSubmitted(true)
+    setShowAlert(true)
     setTimeout(() => {
-      setFeedbackSubmitted(false)
-    }, 5000)
+      setShowAlert(false)
+    }, 3000)
   }
 
   const handleOpenFeedbackPopup = () => {
@@ -59,9 +59,7 @@ export const FeedbackSection = () => {
           />
         </Modal>
       ) : null}
-      {feedbackSubmitted ? (
-        <Alert message="Twoja opinia została przesłana pomyślnie. Dziękujemy!" />
-      ) : null}
+      <Alert message="Dziękujemy za oddanie opinii!" show={showAlert} />
     </Wrapper>
   )
 }

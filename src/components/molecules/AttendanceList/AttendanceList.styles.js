@@ -18,6 +18,8 @@ export const StyledAvatar = styled.div`
 
 export const StyledTitle = styled(Title)`
   cursor: pointer;
+  font-size: ${({ theme }) => theme.fontSize.sPlus};
+  color: ${({ theme }) => theme.colors.text};
 `
 
 export const AttendingCounter = styled.span`

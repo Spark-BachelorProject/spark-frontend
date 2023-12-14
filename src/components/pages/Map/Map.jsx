@@ -115,9 +115,8 @@ export const Map = () => {
           attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         />
         <MarkerClusterGroup
-          chunkedLoading
+          chunkedLoading={true}
           showCoverageOnHover={false}
-          removeOutsideVisibleBounds
           maxClusterRadius={15}
           spiderfyOnEveryZoom={true}
         >

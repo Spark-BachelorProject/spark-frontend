@@ -24,6 +24,8 @@ export const StyledIconBorder = styled(IconBorder)`
   padding: 9px 10px;
   height: 35px;
   border: 2px solid ${({ theme }) => theme.colors.selectBorder};
+  color: ${({ theme }) => theme.colors.text};
+  font-size: ${({ theme }) => theme.fontSize.sPlus};
 
   &:focus-visible {
     outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};
@@ -31,10 +33,7 @@ export const StyledIconBorder = styled(IconBorder)`
 
   & > svg,
   & > svg > path {
+    margin-left: 10px;
     pointer-events: none;
-  }
-
-  & > svg > path {
-    padding: 0 3px;
   }
 `

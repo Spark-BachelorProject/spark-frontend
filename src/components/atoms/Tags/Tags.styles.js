@@ -6,10 +6,10 @@ export const StyledTags = styled.div`
   margin: 15px 0 10px 0;
 
   ${Button} {
-    padding: 9px 14px;
+    padding: 8px 14px;
     background-color: ${({ theme }) => theme.colors.tagBg};
+    /* border: 1px solid ${({ theme }) => theme.colors.divider}; */
 
-    /* border: 1px solid ${({ theme }) => theme.colors.tagBorder}; */
     border-radius: 20px;
     font-size: ${({ theme }) => theme.fontSize.sPlus};
 

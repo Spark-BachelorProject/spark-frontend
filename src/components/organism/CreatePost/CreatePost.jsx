@@ -53,7 +53,7 @@ const initialState = {
   privacy: PRIVACYSETTINGS[0].value,
 }
 
-const CreatePost = ({ handleClose, groupId = 0 }) => {
+const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
   const [addPost] = useAddPostMutation()
   const { data: activitiesApi, isLoading: isLoadingActivitiesApi } = useGetActivitiesQuery()
   const [activities, setActivities] = useState([])
@@ -200,6 +200,7 @@ const CreatePost = ({ handleClose, groupId = 0 }) => {
     }
     console.log(newPost, 'newPost')
 
+    handlePostAdded()
     addPost(newPost)
     handleClose()
   }

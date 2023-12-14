@@ -14,6 +14,10 @@ export const postsApi = createApi({
       query: () => 'posts',
       providesTags: ['Posts'],
     }),
+    getPostsByCity: builder.query({
+      query: (cityName) => `posts/city/${cityName}`,
+      providesTags: ['Posts'],
+    }),
     addPost: builder.mutation({
       query: (body) => ({
         url: 'posts',
@@ -66,4 +70,5 @@ export const {
   usePutParticipateMutation,
   useDeleteParticipationMutation,
   useGetPostsByGroupQuery,
+  useGetPostsByCityQuery,
 } = postsApi

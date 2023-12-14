@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { Button } from '@/components/atoms/Buttons/Button.styles'
+import { CloseButton } from '@/components/atoms/CloseButton/CloseButton'
 import { Error } from '@/components/atoms/Error/Error.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { TextArea } from '@/components/atoms/TextArea/TextArea.styles'
@@ -11,7 +12,6 @@ import {
   ButtonWrapper,
   HeaderWrapper,
   RatingWrapper,
-  StyledCloseIcon,
   StyledTitle,
   Wrapper,
 } from './FeedbackContent.styles'
@@ -56,7 +56,7 @@ export const FeedbackContent = ({ handleClose, handleFeedbackSubmitted }) => {
         <StyledTitle>Jak oceniasz naszą aplikację?</StyledTitle>
         <Text>Opisz swoje doświadczenia, co Ci się podoba, i co możemy poprawić</Text>
       </HeaderWrapper>
-      <StyledCloseIcon onClick={handleClose} />
+      <CloseButton onClick={handleClose} />
 
       <RatingWrapper>
         <RatingBox

@@ -29,7 +29,6 @@ const useGoogleLogin = () => {
       callback: handleCallbackResponse,
     })
 
-    /* global google */
     google.accounts.id.renderButton(document.getElementById('signInDiv'), {
       theme: 'white',
       text: 'signin',

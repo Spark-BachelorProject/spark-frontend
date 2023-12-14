@@ -2,7 +2,6 @@ import { Navigate, Route, Routes } from 'react-router'
 
 import HeaderSearchBar from '@/components/organism/HeaderSearchBar/HeaderSearchBar'
 import NavigationBar from '@/components/organism/NavigationBar/NavigationBar'
-import SingleGroup from '@/components/organism/SingleGroup/SingleGroup'
 import Group from '@/components/pages/Group/Group'
 import Groups from '@/components/pages/Groups/Groups'
 import Home from '@/components/pages/Home/Home'

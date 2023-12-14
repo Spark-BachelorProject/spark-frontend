@@ -6,14 +6,14 @@ import { TitleBar } from '@/components/molecules/TitleBar/TitleBar'
 import { Dropdown } from '@/components/organism/Dropdown/Dropdown'
 import Post from '@/components/organism/Post/Post'
 import { PageContent } from '@/components/templates/PageContent/PageContent'
+import { getCityFromStorage } from '@/store/api/getCityFromStorage'
 import { useGetPostsQuery, useLazyGetFilteredPostsQuery } from '@/store/api/posts'
 
 const Home = () => {
   const { isLoading, isSuccess } = useGetPostsQuery()
 
   const [city, setCity] = useState(() => {
-    const storedCity = localStorage.getItem('city')
-    return storedCity ? storedCity : null
+    getCityFromStorage()
   })
 
   const [hasCityChanged, setHasCityChanged] = useState(false)

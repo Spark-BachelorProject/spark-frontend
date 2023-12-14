@@ -40,7 +40,7 @@ export const FeedbackContent = ({ handleClose, handleFeedbackSubmitted }) => {
     }
 
     const newFeedback = {
-      message: feedback,
+      message: feedback ? feedback : '',
       rating: rating,
     }
 

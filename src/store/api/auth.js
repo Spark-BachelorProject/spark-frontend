@@ -2,7 +2,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
 import { baseQueryConfig } from '../config'
 
-const isAuth = true
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery(baseQueryConfig(true)),

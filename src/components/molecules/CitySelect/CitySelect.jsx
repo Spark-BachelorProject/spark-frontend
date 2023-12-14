@@ -18,13 +18,18 @@ export const CitySelect = ({ handleClose, handleSubmit }) => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords
       getCityFromCoordinates(latitude, longitude).then((city) => {
+        if (selectedCity === localStorage.getItem('city')) {
+          handleClose()
+          return
+        }
+
         setSelectedCity(city)
         localStorage.setItem('city', city)
         handleSubmit()
         handleClose()
       })
     })
-  }, [])
+  }, [handleClose, handleSubmit, selectedCity])
 
   const handleConfirm = useCallback(() => {
     if (selectedCity === localStorage.getItem('city')) {
@@ -35,7 +40,7 @@ export const CitySelect = ({ handleClose, handleSubmit }) => {
     localStorage.setItem('city', selectedCity)
     handleSubmit()
     handleClose()
-  }, [selectedCity, handleClose])
+  }, [selectedCity, handleClose, handleSubmit])
 
   return (
     <Wrapper>

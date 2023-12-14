@@ -61,7 +61,7 @@ const HeaderSearchBar = () => {
     isOpen: isOpenNotificationPopup,
     position: positionNotificationPopup,
     handleClosePopup: handleCloseNotificationsPopup,
-    handleOpenAndPositionPopup: handleOpenAndPositionNotificationPopup,
+    // handleOpenAndPositionPopup: handleOpenAndPositionNotificationPopup,
     popupOpenElementRef: notificationPopupOpenElementRef,
   } = usePopup(null, isHeaderSearchBar)
 

@@ -57,7 +57,7 @@ export const AddPostSection = () => {
         <Avvvatars value={getInitials(firstName, lastName)} size={30} />
         <StyledInput>Zaproś znajomych do gry!</StyledInput>
         <Button isGray>Dodaj</Button>
-        <Alert message="Twój post został dodany!" show={showAlert} />
+        <Alert message="Twój post został pomyślnie dodany!" show={showAlert} />
       </Wrapper>
       {isOpen ? (
         <Modal

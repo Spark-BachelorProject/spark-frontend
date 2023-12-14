@@ -1,11 +1,11 @@
-import { ReactComponent as UsersIcon } from '@/assets/icons/user-check.svg'
+import { ReactComponent as LikeIcon } from '@/assets/icons/like.svg'
 
 import { Wrapper } from './Alert.styles'
 
-export const Alert = ({ message }) => {
+export const Alert = ({ message, show }) => {
   return (
-    <Wrapper>
-      <UsersIcon />
+    <Wrapper show={show}>
+      <LikeIcon />
       {message}
     </Wrapper>
   )

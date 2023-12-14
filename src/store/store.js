@@ -8,6 +8,7 @@ import { activitiesApi } from './api/activities'
 import { authApi } from './api/auth'
 import { citiesApi } from './api/cities'
 import { commentsApi } from './api/comments'
+import { feedbackApi } from './api/feedback'
 import { groupsApi } from './api/groups'
 import { tagsApi } from './api/tags'
 import { userApi } from './api/user'
@@ -24,6 +25,7 @@ export const store = configureStore({
     [userApi.reducerPath]: userApi.reducer,
     [groupsApi.reducerPath]: groupsApi.reducer,
     [citiesApi.reducerPath]: citiesApi.reducer,
+    [feedbackApi.reducerPath]: feedbackApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -34,6 +36,7 @@ export const store = configureStore({
       tagsApi.middleware,
       userApi.middleware,
       groupsApi.middleware,
-      citiesApi.middleware
+      citiesApi.middleware,
+      feedbackApi.middleware
     ),
 })

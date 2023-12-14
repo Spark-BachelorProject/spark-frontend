@@ -10,6 +10,7 @@ import { useGetPostsQuery, useLazyGetFilteredPostsQuery } from '@/store/api/post
 
 const Home = () => {
   const { isLoading, isSuccess } = useGetPostsQuery()
+
   const [posts, setPosts] = useState([])
   const [filterOptions, setFilterOptions] = useState({
     activity: 0, // 0 means all activities

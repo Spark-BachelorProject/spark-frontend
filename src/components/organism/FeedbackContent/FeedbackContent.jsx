@@ -5,6 +5,7 @@ import { Error } from '@/components/atoms/Error/Error.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { TextArea } from '@/components/atoms/TextArea/TextArea.styles'
 import { RatingBox } from '@/components/molecules/RatingBox/RatingBox'
+import { usePostFeedbackMutation } from '@/store/api/feedback'
 
 import {
   ButtonWrapper,
@@ -21,13 +22,13 @@ export const FeedbackContent = ({ handleClose, handleFeedbackSubmitted }) => {
   const [rating, setRating] = useState(null)
   const [feedback, setFeedback] = useState('')
   const [error, setError] = useState('')
+  const [sendFeedback] = usePostFeedbackMutation()
 
   const handleFeedback = (e) => {
     setFeedback(e.target.value)
   }
 
   const handleRating = (rating) => {
-    console.log(rating)
     setRating(rating)
   }
 
@@ -37,9 +38,16 @@ export const FeedbackContent = ({ handleClose, handleFeedbackSubmitted }) => {
       setError(errorMessage)
       return
     }
+
+    const newFeedback = {
+      message: feedback,
+      rating: rating,
+    }
+
+    sendFeedback(newFeedback)
     handleFeedbackSubmitted()
-    console.log(rating, feedback)
     handleClose()
+    console.log(newFeedback)
   }
 
   return (

@@ -1,4 +1,4 @@
-import { StyledCloseIcon } from '@/components/organism/FeedbackContent/FeedbackContent.styles'
+import { StyledCloseIcon } from './CloseButton.styles'
 
 export const CloseButton = ({ onClick }) => {
   return <StyledCloseIcon onClick={onClick} />

@@ -1,21 +1,7 @@
 import styled from 'styled-components'
 
-import { ReactComponent as CloseIcon } from '@/assets/icons/x.svg'
 import { Error } from '@/components/atoms/Error/Error.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
-
-export const StyledCloseIcon = styled(CloseIcon)`
-  position: absolute;
-  top: 30px;
-  right: 20px;
-  cursor: pointer;
-  background-color: ${({ theme }) => theme.colors.inputBg};
-  border-radius: 2px;
-  transition: background-color 0.2s ease-out;
-  :hover {
-    background-color: ${({ theme }) => theme.colors.buttonBg};
-  }
-`
 
 export const RatingWrapper = styled.div`
   padding: 20px 0;
@@ -36,10 +22,8 @@ export const Wrapper = styled.div`
   gap: 10px;
 
   ${Error} {
-    font-weight: 700;
+    font-weight: 600;
     padding: 0;
-    display: flex;
-    text-align: center;
   }
 
   @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {

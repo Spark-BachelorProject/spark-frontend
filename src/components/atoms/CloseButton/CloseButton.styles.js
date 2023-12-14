@@ -6,7 +6,7 @@ export const StyledCloseIcon = styled(CloseIcon)`
   position: absolute;
   top: 30px;
   right: 20px;
-  height: 40px;
+  height: 20px;
   cursor: pointer;
   background-color: ${({ theme }) => theme.colors.inputBg};
   border-radius: 2px;

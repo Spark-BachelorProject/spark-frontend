@@ -8,7 +8,7 @@ import { debounce } from '@/helpers/debounce'
 
 import { StyledSuggestion, StyledSuggestionWrapper, Wrapper } from './CityAutocomplete.styles'
 
-export const CityAutocomplete = ({ onSelectCity }) => {
+export const CityAutocomplete = ({ onSelectCity, selectedCity }) => {
   const [searchResults, setSearchResults] = useState([])
   const [selectedPlace, setSelectedPlace] = useState('')
   const [showSuggestions, setShowSuggestions] = useState(false)
@@ -45,6 +45,10 @@ export const CityAutocomplete = ({ onSelectCity }) => {
   useEffect(() => {
     debouncedSearch(selectedPlace)
   }, [selectedPlace, debouncedSearch])
+
+  useEffect(() => {
+    setSelectedPlace(selectedCity)
+  }, [selectedCity])
 
   const handleResultClick = useCallback(
     (result) => {

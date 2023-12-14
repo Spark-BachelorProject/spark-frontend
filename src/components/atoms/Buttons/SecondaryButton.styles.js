@@ -8,6 +8,7 @@ export const SecondaryButton = styled(Button).attrs((props) => ({
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: center;
   color: ${({ theme, isFilled }) => (isFilled ? theme.colors.white : theme.colors.accent)};
   font-weight: 500;
   padding: 18px 20px;

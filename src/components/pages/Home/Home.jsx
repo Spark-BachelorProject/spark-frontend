@@ -11,6 +11,22 @@ import { useGetPostsQuery, useLazyGetFilteredPostsQuery } from '@/store/api/post
 const Home = () => {
   const { isLoading, isSuccess } = useGetPostsQuery()
 
+  const [city, setCity] = useState(() => {
+    const storedCity = localStorage.getItem('city')
+    return storedCity ? storedCity : null
+  })
+
+  const [hasCityChanged, setHasCityChanged] = useState(false)
+
+  const handleCityChanged = () => {
+    const storedCity = localStorage.getItem('city')
+    setCity(storedCity)
+  }
+
+  useEffect(() => {
+    hasCityChanged && handleCityChanged()
+  }, [hasCityChanged])
+
   const [posts, setPosts] = useState([])
   const [filterOptions, setFilterOptions] = useState({
     activity: 0, // 0 means all activities
@@ -56,7 +72,9 @@ const Home = () => {
   return (
     <PageContent hasNavigation hasRightBar>
       <AddPostSection />
-      <TitleBar isBold>Odkrywaj aktualne spotkania w Lublinie</TitleBar>
+      <TitleBar isBold hasCityChanged={setHasCityChanged}>
+        Odkrywaj aktualne spotkania w <span>{city}</span>
+      </TitleBar>
       <Dropdown setFilterOptions={setFilterOptions} filterOptions={filterOptions} />
       {isLoading && <Loader isCentered />}
       {!isLoading && isSuccess && posts && posts.map((post) => <Post {...post} key={post.id} />)}

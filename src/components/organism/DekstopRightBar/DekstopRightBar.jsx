@@ -10,7 +10,6 @@ import { useGetUserFriendsQuery } from '@/store/api/user'
 
 import { Container, StyledTitle, Wrapper } from './DekstopRightBar.styles'
 
-// TODO: wait for API to Sporty dla Ciebie and check styles
 export const DekstopRightBar = () => {
   const {
     data: friends,

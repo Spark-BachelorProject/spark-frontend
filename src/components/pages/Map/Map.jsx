@@ -68,7 +68,6 @@ export const Map = () => {
   const onMapClick = () => {
     setSelectedMarker(null)
 
-    //TODO: discuss whether we want to reset center and zoom on map click
     setCenter(prevCenter)
     setZoom(prevZoom)
   }

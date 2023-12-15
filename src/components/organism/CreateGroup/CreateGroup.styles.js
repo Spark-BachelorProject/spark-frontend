@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.form`
@@ -88,11 +87,6 @@ export const ButtonsWrapper = styled.div`
   & > button {
     padding: 8px 28px;
   }
-`
-
-export const CancelButton = styled(Button)`
-  //TODO: change color (especially in light mode)
-  background-color: ${({ theme }) => theme.colors.checkboxBorder};
 `
 
 export const StyledText = styled(Text)`

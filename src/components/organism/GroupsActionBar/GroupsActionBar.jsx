@@ -51,7 +51,7 @@ const GroupsActionBar = ({
 
   //TODO: check if user is member of group (need get members enpoint)
   const ifUserIsMember = () => {
-    return true
+    return false
   }
 
   const handleJoinLeave = async () => {

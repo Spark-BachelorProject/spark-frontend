@@ -5,8 +5,8 @@ import { Wrapper } from './Alert.styles'
 export const Alert = ({ message, show, hasIcon }) => {
   return (
     <Wrapper show={show}>
-      {hasIcon && <LikeIcon />}
       {message}
+      {hasIcon && <LikeIcon />}
     </Wrapper>
   )
 }

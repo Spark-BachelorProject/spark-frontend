@@ -57,7 +57,7 @@ export const TitleBar = ({ children, className, isBold, hasCityChanged }) => {
           <CitySelect handleClose={handleCloseModal} handleSubmit={handleCitySelected} />
         </Modal>
       ) : null}
-      <Alert message="Twoje miasto zostało zmienione" show={showAlert} />
+      <Alert message="Twoje miasto zostało zaktualizowane" show={showAlert} />
     </Wrapper>
   )
 }

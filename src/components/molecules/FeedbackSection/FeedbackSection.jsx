@@ -59,7 +59,7 @@ export const FeedbackSection = () => {
           />
         </Modal>
       ) : null}
-      <Alert message="Dziękujemy za oddanie opinii!" show={showAlert} />
+      <Alert message="Dziękujemy za oddanie opinii!" show={showAlert} hasIcon />
     </Wrapper>
   )
 }

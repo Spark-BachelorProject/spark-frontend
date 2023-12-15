@@ -42,6 +42,9 @@ const Register = () => {
       }
     } catch (error) {
       console.log('Error:', error)
+      if (error.response && error.response.status === 401) {
+        console.log('Unauthorized: Invalid credentials')
+      }
     }
   }
 

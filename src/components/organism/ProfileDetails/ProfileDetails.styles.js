@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import { ReactComponent as SettingsIcon } from '@/assets/icons/settings.svg'
 import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 
@@ -104,5 +105,20 @@ export const FavoriteSection = styled.section`
     height: 2px;
     transform: translateX(-50%);
     background-color: ${({ theme }) => theme.colors.mainDivider};
+  }
+`
+
+export const EditWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`
+
+export const StyledSettingsIcon = styled(SettingsIcon)`
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+  & > path {
+    stroke: ${({ theme }) => theme.colors.white};
   }
 `

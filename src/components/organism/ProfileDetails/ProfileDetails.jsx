@@ -9,7 +9,9 @@ import Tags from '@/components/atoms/Tags/Tags'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import Badge from '@/components/molecules/Badge/Badge'
 import BadgeInfo from '@/components/molecules/BadgeInfo/BadgeInfo'
+import { FavouriteActivitiesSelect } from '@/components/molecules/FavouriteActivitiesSelect/FavouriteActivitiesSelect'
 import { getInitials } from '@/helpers/stringOperations'
+import useModal from '@/hooks/useModal'
 import usePopup from '@/hooks/usePopup'
 import { useGetUserQuery } from '@/store/api/user'
 
@@ -17,7 +19,9 @@ import {
   ActivitySection,
   BadgesSection,
   BadgesWrapper,
+  EditWrapper,
   ImgAndNameSection,
+  StyledSettingsIcon,
   StyledTitle,
   Wrapper,
 } from './ProfileDetails.styles'
@@ -45,6 +49,27 @@ const ProfileDetails = () => {
     handleOpenAndPositionPopup(e.target, positioning)
   }
 
+  const {
+    Modal,
+    isOpen: isModalOpen,
+    position: position2,
+    handleCloseModal,
+    handleOpenAndPositionModal,
+    modalOpenElementRef,
+  } = useModal()
+
+  const positioning2 = 'center'
+
+  const handleOpenFavouritesModal = () => {
+    handleOpenAndPositionModal(modalOpenElementRef, positioning2)
+  }
+
+  const handleCloseFavouritesModal = (e) => {
+    if (e.key !== 'Tab') {
+      handleOpenAndPositionModal(modalOpenElementRef, positioning2)
+    }
+  }
+
   return (
     <Wrapper>
       <ImgAndNameSection>
@@ -57,7 +82,16 @@ const ProfileDetails = () => {
 
       {/* {isLoading && user.preferredActivity ? ( */}
       <ActivitySection>
-        <StyledTitle>Ulubione aktywności</StyledTitle>
+        <EditWrapper>
+          <StyledTitle>Ulubione aktywności</StyledTitle>
+          <div
+            onClick={(e) => handleOpenFavouritesModal(e)}
+            onKeyDown={handleCloseFavouritesModal}
+            ref={modalOpenElementRef}
+          >
+            <StyledSettingsIcon />
+          </div>
+        </EditWrapper>
         <Tags>
           {[
             {
@@ -116,6 +150,17 @@ const ProfileDetails = () => {
           ) : null}
         </BadgesWrapper>
       </BadgesSection>
+      {isModalOpen && (
+        <Modal
+          handleClose={handleCloseModal}
+          position={position2}
+          isFixed
+          isModal
+          hasBackgroundColor
+        >
+          <FavouriteActivitiesSelect handleClose={handleCloseModal} />
+        </Modal>
+      )}
     </Wrapper>
   )
 }

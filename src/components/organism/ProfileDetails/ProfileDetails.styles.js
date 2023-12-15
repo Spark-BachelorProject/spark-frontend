@@ -121,4 +121,9 @@ export const StyledSettingsIcon = styled(SettingsIcon)`
   & > path {
     stroke: ${({ theme }) => theme.colors.white};
   }
+
+  &:hover > path {
+    stroke: ${({ theme }) => theme.colors.accent};
+    transition: 0.2s ease-out;
+  }
 `

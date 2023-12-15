@@ -9,6 +9,10 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  @media (max-width: ${({ theme }) => theme.breakPoints.m}) {
+    width: 100vw;
+  }
 `
 
 export const StyledBlueText = styled(Text)`

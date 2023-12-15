@@ -8,7 +8,7 @@ import { CityAutocomplete } from '../CityAutocomplete/CityAutocomplete'
 import { StyledBlueText, StyledButton, Wrapper } from './CitySelect.styles'
 
 export const CitySelect = ({ handleClose, handleSubmit }) => {
-  const [selectedCity, setSelectedCity] = useState(null)
+  const [selectedCity, setSelectedCity] = useState('')
 
   const handleSelectCity = useCallback((city) => {
     setSelectedCity(city)

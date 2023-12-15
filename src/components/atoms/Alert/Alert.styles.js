@@ -30,4 +30,8 @@ export const Wrapper = styled.div`
       fill: ${({ theme }) => theme.colors.white};
     }
   }
+
+  @media (max-width: ${({ theme }) => theme.breakPoints.m}) {
+    bottom: 6rem;
+  }
 `

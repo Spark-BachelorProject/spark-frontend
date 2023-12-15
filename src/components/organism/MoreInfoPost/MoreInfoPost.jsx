@@ -1,12 +1,12 @@
 import { ReactComponent as BookmarkIcon } from '@/assets/icons/bookmark.svg'
 import { ReactComponent as BusIcon } from '@/assets/icons/bus.svg'
 import { ReactComponent as GoogleIcon } from '@/assets/icons/google.svg'
+import { MoreInfoText } from '@/components/atoms/MoreInfoText/MoreInfoText.styles'
+import { MoreInfoWrapper } from '@/components/atoms/MoreInfoWrapper/MoreInfoWrapper.styles'
 import { checkGeolocationPermission } from '@/helpers/checkGeolocationPermission'
 import { formatDateAndTimeJakdojadeFormat } from '@/helpers/dateAndTime'
 import { getUserCoordinates } from '@/helpers/getUserCoordinates'
 import { usePutOneBookmarkedPostMutation } from '@/store/api/user'
-
-import { StyledText, Wrapper } from './MoreInfoPost.styles'
 
 export const MoreInfoPost = ({ postId, handleClosePopup, location, dateStart }) => {
   const [putOneBookmarkedPost] = usePutOneBookmarkedPostMutation()
@@ -54,19 +54,19 @@ export const MoreInfoPost = ({ postId, handleClosePopup, location, dateStart }) 
   }
 
   return (
-    <Wrapper>
-      <StyledText onClick={handleSavePost}>
+    <MoreInfoWrapper>
+      <MoreInfoText onClick={handleSavePost}>
         <BookmarkIcon style={{ width: '17px' }} />
         Zapisz post
-      </StyledText>
-      <StyledText onClick={handleOpenJakdojadeRoute}>
+      </MoreInfoText>
+      <MoreInfoText onClick={handleOpenJakdojadeRoute}>
         <BusIcon style={{ width: '15px', height: '15px' }} />
         Pokaż trasę w Jakdojadę
-      </StyledText>
-      <StyledText onClick={handleOpenGoogleMapsRoute}>
+      </MoreInfoText>
+      <MoreInfoText onClick={handleOpenGoogleMapsRoute}>
         <GoogleIcon style={{ width: '17px' }} />
         Pokaż trasę w Google
-      </StyledText>
-    </Wrapper>
+      </MoreInfoText>
+    </MoreInfoWrapper>
   )
 }

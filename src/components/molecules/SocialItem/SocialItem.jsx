@@ -4,7 +4,7 @@ import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 
-import { Wrapper } from './SocialItem.styles'
+import { StyledText, Wrapper } from './SocialItem.styles'
 
 export const SocialItem = (props) => {
   const { name, activity, isWithoutTitle, average } = props
@@ -19,9 +19,9 @@ export const SocialItem = (props) => {
       {isWithoutTitle ? null : <Title isBold>{name}</Title>}
       <div>
         <Text isBig>{activity?.name}</Text>
-        <Text>{average}</Text>
+        <StyledText>{average}</StyledText>
         <Dot />
-        <Text>Popularna</Text>
+        <StyledText>Popularna</StyledText>
       </div>
     </Wrapper>
   )

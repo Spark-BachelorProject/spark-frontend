@@ -89,7 +89,9 @@ export const Map = () => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       function (position) {
-        setUserLocation([position.coords.latitude, position.coords.longitude])
+        const userCoords = [position.coords.latitude, position.coords.longitude]
+        setUserLocation(userCoords)
+        setCenter(userCoords) // Set center to user's location
         setAllowedGeoLocation(true)
       },
       function (error) {

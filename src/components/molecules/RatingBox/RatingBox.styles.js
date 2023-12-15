@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { Text } from '@/components/atoms/Text/Text.styles'
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,8 +10,13 @@ export const Wrapper = styled.div`
   gap: 5px;
   margin: 0 -7px;
   cursor: pointer;
-  background-color: ${({ isSelected, theme }) => (isSelected ? theme.colors.accent : null)};
+  background-color: ${({ isSelected, theme }) =>
+    isSelected ? theme.colors.accent : 'transparent'};
   border-radius: 8px;
+
+  ${Text} {
+    color: ${({ isSelected, theme }) => (isSelected ? theme.colors.white : theme.colors.text)};
+  }
 
   :hover {
     background-color: ${({ theme }) => theme.colors.inputBg};

@@ -23,4 +23,6 @@ export const Wrapper = styled.div`
   }
 `
 
-export const StyledText = styled(Text)``
+export const StyledText = styled(Text)`
+  color: ${({ theme }) => theme.colors.grayDetails};
+`

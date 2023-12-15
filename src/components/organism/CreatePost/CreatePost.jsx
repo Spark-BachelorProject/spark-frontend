@@ -25,6 +25,7 @@ import { useAddPostMutation } from '@/store/api/posts'
 import { useGetTagsByActivityIdQuery } from '@/store/api/tags.js'
 import { useGetUserQuery } from '@/store/api/user.js'
 
+import { ButtonsWrapper } from '../CreateGroup/CreateGroup.styles.js'
 import {
   FooterWrapper,
   HeaderWrapper,
@@ -32,6 +33,7 @@ import {
   NextArrowIcon,
   StyledInput1,
   StyledText,
+  StyledTextInfo,
   Wrapper,
 } from './CreatePost.styles.js'
 
@@ -308,13 +310,22 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
         </div>
       </InputsWrapper>
 
+      <StyledTextInfo>
+        Wybranie tagów pozwoli Ci na sprecyzowanie szczegółów spotkania
+      </StyledTextInfo>
+
       <TagAutocomplete tags={tags} setTags={setTags} data={tagsApi} />
 
       <FooterWrapper>
         <StyledText as={'a'}>Wiecej szczegółów</StyledText>
-        <Button>
-          Dalej <NextArrowIcon />
-        </Button>
+        <ButtonsWrapper>
+          <Button isGray onClick={handleClose}>
+            Anuluj
+          </Button>
+          <Button>
+            Dalej <NextArrowIcon />
+          </Button>
+        </ButtonsWrapper>
       </FooterWrapper>
     </Wrapper>
   )

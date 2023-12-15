@@ -1,19 +1,17 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { ReactComponent as CanceledIcon } from '@/assets/icons/cancel-circle.svg'
 import { ReactComponent as AttendIcon } from '@/assets/icons/check-circle.svg'
 import { ReactComponent as CommentIcon } from '@/assets/icons/comment-circle.svg'
 
 import {
-  Wrapper,
   StyledSmallText,
   StyledText,
-  ThumbnailIconWrapper,
   StyledThumbnail,
   TextWrapper,
+  ThumbnailIconWrapper,
+  Wrapper,
 } from './Notification.styles'
-
-//TODO: Add: 1. counter, 2. unread notifications (also using counter)
 
 const determineTypeOfNotification = (type) => {
   switch (type) {

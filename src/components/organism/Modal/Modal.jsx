@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 
 import { ModalBackground, ModalWrapper } from './Modal.styles'
 
 const modalContainer = document.getElementById('modal-container')
 
-// TODO: consider replacing isModal to isCenter, and refactor code to popUp instead of Modal
 const Modal = ({
   handleClose,
   children,

@@ -12,7 +12,6 @@ import { useAddGroupMutation } from '@/store/api/groups'
 
 import {
   ButtonsWrapper,
-  CancelButton,
   FooterWrapper,
   HeaderWrapper,
   InputsWrapper,
@@ -167,11 +166,12 @@ const CreateGroup = ({ handleClose }) => {
         </SelectWithLabel>
       </InputsWrapper>
       <FooterWrapper>
-        {/* TODO: handle invite friends */}
         <StyledText as={'a'}>Zaproś znajomych</StyledText>
 
         <ButtonsWrapper>
-          <CancelButton onClick={handleClose}>Anuluj</CancelButton>
+          <Button isGray onClick={handleClose}>
+            Anuluj
+          </Button>
           <Button type="submit">Dodaj</Button>
         </ButtonsWrapper>
       </FooterWrapper>

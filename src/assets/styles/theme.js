@@ -34,6 +34,8 @@ export const lightTheme = {
 
   checkboxTick:        '#64748B',   //         slate500 -> slate300
 
+  grayDetails:         '#536174',   //         slate550 -> slate400
+
   commentDetails:      '#475569',   //         slate600 -> slate200`
   iconSecondary:       '#475569',   //         slate600 -> slate200
   inputFont:           '#475569',   //         slate600 -> slate200
@@ -93,7 +95,10 @@ export const darkTheme = {
   labelFont:           '#CBD5E1',   //         slate300 -> slate800
 
   placeholder:         '#94a3b8',   //         slate400 -> slate400
-
+  
+  grayDetails:         '#aabbd3',   //         slate450 -> slate550
+  
+  
   textsecondary:       '#64748B',   //         slate500 -> slate400
   iconPrimary:         '#64748B',   //         slate500 -> slate400
 
@@ -152,6 +157,7 @@ export const theme = {
     sPlus: '14px',
     m: '15px',
     mPlus: '16px',
+    lMinus: '17px',
     l: '18px',
     xl: '24px',
     xxl: '34px',

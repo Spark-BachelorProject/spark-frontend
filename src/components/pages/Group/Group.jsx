@@ -23,7 +23,7 @@ const Group = () => {
   } = useGetPostsByGroupQuery(id)
 
   return (
-    <PageContent hasNavigation hasRightBar>
+    <PageContent hasNavigation hasRightBar isGroup>
       {isLoadingGroup && <Loader isCentered />}
       {!isLoadingGroup && isSuccessGroup && !isLoadingPosts && isSuccessPosts && posts && group && (
         <GroupsActionBar
@@ -32,6 +32,7 @@ const Group = () => {
           hasFilters={false}
           buttonText={'Dodaj post'}
           groupId={id}
+          isGroup={group}
         />
       )}
       {isLoadingPosts && <Loader isCentered />}

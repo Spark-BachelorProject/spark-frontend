@@ -31,6 +31,20 @@ export const groupsApi = createApi({
       query: () => 'groups/recommended',
       providesTags: ['Groups'],
     }),
+    joinGroup: builder.mutation({
+      query: (groupId) => ({
+        url: `groups/join/${groupId}`,
+        method: 'PUT',
+      }),
+      invalidatesTags: ['Groups'],
+    }),
+    leaveGroup: builder.mutation({
+      query: (groupId) => ({
+        url: `groups/leave/${groupId}`,
+        method: 'PUT',
+      }),
+      invalidatesTags: ['Groups'],
+    }),
   }),
 })
 
@@ -40,4 +54,6 @@ export const {
   useGetOneGroupQuery,
   useGetGroupsRecommendedQuery,
   useGetOwnedGroupsQuery,
+  useJoinGroupMutation,
+  useLeaveGroupMutation,
 } = groupsApi

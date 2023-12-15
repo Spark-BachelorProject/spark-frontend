@@ -1,7 +1,7 @@
 import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
-import { Wrapper } from './RecomendedActivity.styles'
+import { StyledText, Wrapper } from './RecomendedActivity.styles'
 
 export const RecomendedActivity = (props) => {
   let { name, average } = props
@@ -20,9 +20,9 @@ export const RecomendedActivity = (props) => {
         {name}
       </Text>
       <Dot />
-      <Text>
+      <StyledText>
         {average} {postWord}
-      </Text>
+      </StyledText>
     </Wrapper>
   )
 }

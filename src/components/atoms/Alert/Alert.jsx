@@ -2,10 +2,10 @@ import { ReactComponent as LikeIcon } from '@/assets/icons/like.svg'
 
 import { Wrapper } from './Alert.styles'
 
-export const Alert = ({ message, show }) => {
+export const Alert = ({ message, show, hasIcon }) => {
   return (
     <Wrapper show={show}>
-      <LikeIcon />
+      {hasIcon && <LikeIcon />}
       {message}
     </Wrapper>
   )

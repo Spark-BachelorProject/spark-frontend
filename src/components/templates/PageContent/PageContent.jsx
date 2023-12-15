@@ -1,16 +1,27 @@
-import React from 'react'
-
+import { SidebarWrapper } from '@/components/atoms/SidebarWrapper/SidebadWrapper.styles'
+import { GroupInfo } from '@/components/molecules/GroupInfo/GroupInfo'
+import SimilarGroups from '@/components/molecules/SimilarGroups/SimilarGroups'
 import { DekstopNavigationBar } from '@/components/organism/DekstopNavigationBar/DekstopNavigationBar'
 import { DekstopRightBar } from '@/components/organism/DekstopRightBar/DekstopRightBar'
 
-import { Wrapper, InnerWrapper } from './PageContent.styles'
+import { InnerWrapper, Wrapper } from './PageContent.styles'
 
-export const PageContent = ({ children, hasNavigation, hasRightBar, className }) => {
+export const PageContent = ({ children, hasNavigation, hasRightBar, className, isGroup }) => {
   return (
     <Wrapper className={className}>
-      {hasNavigation ? <DekstopNavigationBar /> : null}
+      {hasNavigation && !isGroup ? <DekstopNavigationBar /> : null}
+      {isGroup ? (
+        <SidebarWrapper>
+          <SimilarGroups />
+        </SidebarWrapper>
+      ) : null}
       <InnerWrapper>{children}</InnerWrapper>
-      {hasRightBar ? <DekstopRightBar /> : null}
+      {isGroup ? (
+        <SidebarWrapper>
+          <GroupInfo />
+        </SidebarWrapper>
+      ) : null}
+      {hasRightBar && !isGroup ? <DekstopRightBar /> : null}
     </Wrapper>
   )
 }

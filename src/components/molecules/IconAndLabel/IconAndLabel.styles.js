@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 `
 
 export const IconBackground = styled.div`
-  background-color: ${({ theme }) => theme.colors.navbarBorder};
+  background-color: ${({ theme }) => theme.colors.tagBg};
   width: 35px;
   height: 35px;
   display: flex;

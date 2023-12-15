@@ -113,3 +113,13 @@ export const NextArrowIcon = styled(ExpandVectorIcon)`
     top: -10px;
   }
 `
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  gap: 20px;
+`
+
+export const StyledTextInfo = styled(Text)`
+  margin: 5px 0 10px 0;
+  color: ${({ theme }) => theme.colors.placeholder};
+`

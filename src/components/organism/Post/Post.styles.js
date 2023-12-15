@@ -7,7 +7,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 export const Wrapper = styled.article`
   box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.03);
   background-color: ${({ theme }) => theme.colors.secondaryBg};
-  margin: 15px auto;
+  margin: 20px auto;
   padding: 20px;
   width: 100%;
   display: flex;
@@ -19,6 +19,7 @@ export const Wrapper = styled.article`
   ${Title} {
     line-height: 1.4;
     margin: 10px 0 15px 0;
+    font-size: ${({ theme }) => theme.fontSize.lMinus};
   }
 `
 
@@ -44,29 +45,30 @@ export const Details = styled.div`
     gap: 5px;
 
     ${Text} {
-      font-weight: 500;
+      font-weight: 400;
       font-size: ${({ theme }) => theme.fontSize.sPlus};
+      color: ${({ theme }) => theme.colors.grayDetails};
     }
 
     & > b {
       cursor: pointer;
-      font-weight: 500;
-      font-size: ${({ theme }) => theme.fontSize.m};
-      color: ${({ theme }) => theme.colors.boldText};
+      font-weight: 400;
+      font-size: ${({ theme }) => theme.fontSize.sPlus};
+      color: ${({ theme }) => theme.colors.grayDetails};
     }
   }
 
   & > div:nth-child(2) {
     width: fit-content;
     display: flex;
-    gap: 5px;
+    gap: 10px;
     justify-content: space-between;
     align-items: center;
 
     ${Text} {
       color: ${({ theme }) => theme.colors.text};
       font-size: ${({ theme }) => theme.fontSize.sPlus};
-      font-weight: 600;
+      font-weight: 500;
     }
 
     & > svg {
@@ -75,7 +77,7 @@ export const Details = styled.div`
     }
 
     & > svg > path {
-      stroke: ${({ theme }) => theme.colors.text};
+      stroke: ${({ theme }) => theme.colors.grayDetails};
     }
   }
 `
@@ -95,6 +97,11 @@ export const InteractionsSection = styled.section`
   height: auto;
   margin: 25px 0 10px 0;
   justify-content: space-between;
+
+  ${Title} {
+    font-size: ${({ theme }) => theme.fontSize.s};
+    color: ${({ theme }) => theme.colors.placeholder};
+  }
 `
 
 export const DetailsWrapper = styled.div`
@@ -103,7 +110,7 @@ export const DetailsWrapper = styled.div`
   align-items: center;
 
   ${Text} {
-    font-weight: 600;
+    font-weight: 400;
     font-size: ${({ theme }) => theme.fontSize.m};
     color: ${({ theme }) => theme.colors.text};
   }

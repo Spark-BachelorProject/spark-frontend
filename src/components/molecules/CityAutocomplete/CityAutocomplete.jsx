@@ -19,7 +19,7 @@ export const CityAutocomplete = ({ onSelectCity, selectedCity }) => {
         params: {
           countrycodes: 'pl',
           'accept-language': 'pl',
-          addressdetails: 10,
+          addressdetails: 2,
         },
       }),
     []

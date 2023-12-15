@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  transition: all 0.1s ease-in-out;
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
   transform: translate(-50%, ${(props) => (props.show ? '0' : '100%')});
   opacity: ${(props) => (props.show ? '1' : '0')};
   position: fixed;

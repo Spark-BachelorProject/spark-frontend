@@ -47,7 +47,7 @@ export const FavouriteActivitiesSelect = ({ handleClose }) => {
       <Title isBig isBold>
         Wybierz swoje ulubione aktywności
       </Title>
-      <StyledText>Zaznacz 3 lub więcej</StyledText>
+      <StyledText isBig>Zaznacz dowolną ilość aktywności</StyledText>
       <ActivitiesWrapper>
         {displayedActivities.map((activity, index) => (
           <Button

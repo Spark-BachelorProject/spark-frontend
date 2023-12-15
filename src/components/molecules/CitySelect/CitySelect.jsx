@@ -32,7 +32,7 @@ export const CitySelect = ({ handleClose, handleSubmit }) => {
   }, [handleClose, handleSubmit, selectedCity])
 
   const handleConfirm = useCallback(() => {
-    if (selectedCity === localStorage.getItem('city')) {
+    if (selectedCity === localStorage.getItem('city') || !selectedCity) {
       handleClose()
       return
     }

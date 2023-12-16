@@ -1,31 +1,41 @@
 import styled from 'styled-components'
 
+import { ReactComponent as InfoIcon } from '@/assets/icons/info.svg'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.div`
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
   position: absolute;
-  width: 50%;
+  width: auto;
   bottom: -5%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  max-width: 95%;
   z-index: 1000;
 
-  background-color: ${({ theme }) => theme.colors.accent};
-  padding: 6px 2px;
+  background-color: ${({ theme }) => theme.colors.secondaryBg};
+  padding: 6px 15px;
   border-radius: 5px;
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
-    width: 100%;
-    padding: 8px 2px;
+  @media (max-width: calc(${({ theme }) => theme.breakPoints.mobile} + 100px)) {
+    bottom: -8%;
   }
 `
 
 export const StyledText = styled(Text)`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.text};
   font-size: ${({ theme }) => theme.fontSize.s};
+`
+
+export const StyledInfoIcon = styled(InfoIcon)`
+  width: 1.5rem;
+  height: 1.5rem;
+
+  path {
+    stroke: ${({ theme }) => theme.colors.text};
+  }
 `

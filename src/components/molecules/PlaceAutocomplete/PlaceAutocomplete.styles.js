@@ -33,7 +33,7 @@ export const Suggestion = styled.li`
   }
 
   &:hover {
-    transition: 200ms;
-    background-color: ${({ theme }) => theme.colors.navbarBorder};
+    /* transition: 200ms; */
+    background-color: ${({ theme }) => theme.colors.iconBgHover};
   }
 `

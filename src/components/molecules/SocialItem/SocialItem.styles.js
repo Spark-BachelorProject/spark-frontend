@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.modalBg};
-    transition: 200ms ease-in-out;
+    /* transition: 200ms ease-in-out; */
   }
 `
 

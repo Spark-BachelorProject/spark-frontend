@@ -38,7 +38,7 @@ export const IconsWrapper = styled.div`
   }
 
   & > a.${'active'} > svg {
-    transition: scale 0.1s ease-in-out;
+    /* transition: scale 0.1s ease-in-out; */
     scale: 1.2;
   }
 `

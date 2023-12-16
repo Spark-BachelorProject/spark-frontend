@@ -175,7 +175,7 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
 
     const dateStart = formatTimeAndDate(state.dateStart, state.hourStart)
     const selectedActivityId = activitiesApi.find((activity) => activity.name === state.activity).id
-    const selectedGroupId = groupsApi.find((group) => group.name === state.groups).id
+    const selectedGroupId = groupsApi.find((group) => group.name === state.groups)?.id
 
     const getTagsIds = () => tags.map((tag) => tag.id)
 
@@ -198,7 +198,7 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
       description: state.content,
       privacySetting: state.privacy,
       tags: getTagsIds(),
-      groupId: selectedGroupId,
+      groupId: selectedGroupId || null,
     }
     console.log(newPost, 'newPost')
 

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 
 export const ModalWrapper = styled.div`
-  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
   position: ${({ isFixed }) => (isFixed ? 'fixed' : 'absolute')};
   z-index: ${({ modalNum }) => 2000 + modalNum * 1 + 1};
   ${({ isModal }) =>

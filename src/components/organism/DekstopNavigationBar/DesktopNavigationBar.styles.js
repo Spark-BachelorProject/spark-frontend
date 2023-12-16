@@ -4,9 +4,10 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1 0 270px; //inital width
+  margin-top: -105px;
   max-width: 330px;
   height: calc(100vh - 70px);
-  padding: 0 20px 20px 20px;
+  padding: 100px 20px 20px 20px;
   position: sticky;
   top: 0;
   gap: 10px;

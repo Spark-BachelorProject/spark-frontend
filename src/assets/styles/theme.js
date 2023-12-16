@@ -63,6 +63,8 @@ export const lightTheme = {
   bookmarkBg:          '#FAFBFF',   //         custom -> slate750
   iconPrimaryActive:   '#0f172a',   //         custom -> slate50
   tagBg:'rgba(59, 130, 246, 0.05)', //         custom blue -> custom blue
+  buttonDisabled:'rgba(59, 130, 246, 0.02)', //         custom blue -> custom blue
+
 
 
   black:               '#000',      //         black -> black
@@ -133,6 +135,8 @@ export const darkTheme = {
   buttonBg:            '#3B76F5',   //         blue550 -> blue500
   
   tagBg:'rgba(59, 130, 246, 0.1)', //         custom blue -> custom blue
+  buttonDisabled:'rgba(59, 130, 246, 0.02)', //         custom blue -> custom blue
+
   tagBgActive:         '#3b82f620', //         custom blue -> blue500
   tagBorder:           '#3b82f650', //         custom blue -> blue500
 

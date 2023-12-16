@@ -54,7 +54,9 @@ export const CitySelect = ({ handleClose, handleSubmit }) => {
       <StyledButton isGray onClick={handleClose}>
         Anuluj
       </StyledButton>
-      <SecondaryButton onClick={handleConfirm}>Potwierdź</SecondaryButton>
+      <SecondaryButton onClick={handleConfirm} disabled={!selectedCity}>
+        Potwierdź
+      </SecondaryButton>
     </Wrapper>
   )
 }

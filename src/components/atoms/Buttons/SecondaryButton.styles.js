@@ -27,4 +27,13 @@ export const SecondaryButton = styled(Button).attrs((props) => ({
       stroke: ${({ theme }) => theme.colors.white};
     }
   }
+
+  :disabled {
+    background-color: ${({ theme }) => theme.colors.buttonDisabled};
+    color: ${({ theme }) => theme.colors.placeholder};
+
+    & > svg > path {
+      stroke: ${({ theme }) => theme.colors.accent};
+    }
+  }
 `

@@ -40,6 +40,8 @@ export const FavouriteActivitiesSelect = ({ handleClose }) => {
     }
   }
 
+  console.log(selectedActivities)
+
   const displayedActivities = showAll ? activities : activities.slice(0, 15)
 
   return (
@@ -65,7 +67,7 @@ export const FavouriteActivitiesSelect = ({ handleClose }) => {
       <StyledButton isGray onClick={handleClose}>
         Anuluj
       </StyledButton>
-      <SecondaryButton>Potwierdź</SecondaryButton>
+      <SecondaryButton disabled={selectedActivities.length === 0}>Potwierdź</SecondaryButton>
     </Wrapper>
   )
 }

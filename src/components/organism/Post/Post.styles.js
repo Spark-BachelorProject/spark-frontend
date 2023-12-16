@@ -46,14 +46,14 @@ export const Details = styled.div`
 
     ${Text} {
       font-weight: 400;
-      font-size: ${({ theme }) => theme.fontSize.sPlus};
+      font-size: ${({ theme }) => theme.fontSize.s};
       color: ${({ theme }) => theme.colors.grayDetails};
     }
 
     & > b {
       cursor: pointer;
       font-weight: 400;
-      font-size: ${({ theme }) => theme.fontSize.sPlus};
+      font-size: ${({ theme }) => theme.fontSize.s};
       color: ${({ theme }) => theme.colors.grayDetails};
     }
   }

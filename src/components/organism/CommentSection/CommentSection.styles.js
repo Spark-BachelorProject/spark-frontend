@@ -20,14 +20,24 @@ export const StyledText = styled(Text)`
   font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: 400;
 
+  :hover {
+    color: ${({ theme }) => theme.colors.text};
+    transition: 100ms ease-in-out;
+
+    & > svg > path {
+      stroke: ${({ theme }) => theme.colors.text};
+      transition: 100ms ease-in-out;
+    }
+  }
+
   & > svg {
     transition: transform 0.2s ease-in-out;
     transform: translate(2px, 1px)
       ${({ commentSectionIsOpen }) => (commentSectionIsOpen ? 'rotate(180deg)' : '')};
-  }
 
-  & > svg > path {
-    stroke: ${({ theme }) => theme.colors.placeholder};
+    & > path {
+      stroke: ${({ theme }) => theme.colors.placeholder};
+    }
   }
 `
 

@@ -119,7 +119,7 @@ export const StyledSettingsIcon = styled(SettingsIcon)`
   height: 13px;
   cursor: pointer;
   & > path {
-    stroke: ${({ theme }) => theme.colors.white};
+    stroke: ${({ theme }) => theme.colors.placeholder};
   }
 
   &:hover > path {

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.div`
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
   position: absolute;
   width: 50%;
   bottom: -5%;

@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   &:hover {
     cursor: pointer;
     background-color: ${({ theme }) => theme.colors.modalBg};
-    transition: 200ms ease-in-out;
+    /* transition: 200ms ease-in-out; */
   }
 `
 

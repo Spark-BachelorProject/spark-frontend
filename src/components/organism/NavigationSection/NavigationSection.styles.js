@@ -27,7 +27,7 @@ export const Wrapper = styled.nav`
 
   & > a:hover {
     background-color: ${({ theme }) => theme.colors.modalBg};
-    transition: 200ms ease-in-out;
+    /* transition: 200ms ease-in-out; */
   }
 
   & > a > svg > path {

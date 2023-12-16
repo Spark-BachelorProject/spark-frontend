@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -11,7 +11,21 @@ import Comment from '@/components/molecules/Comment/Comment'
 import { CommentForm, Comments, StyledText } from './CommentSection.styles'
 
 const CommentSection = ({ handleAddComment, inputValue, setInputValue, comments }) => {
-  const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(!(comments.length > 2))
+  const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(false)
+  const [initialLoad, setInitialLoad] = useState(true)
+
+  useEffect(() => {
+    if (commentSectionIsOpen) {
+      setInitialLoad(false)
+    }
+  }, [commentSectionIsOpen])
+
+  const displayedComments = initialLoad
+    ? comments.slice(0, 3)
+    : commentSectionIsOpen
+    ? comments
+    : []
+
   return (
     <>
       <CommentForm onSubmit={handleAddComment}>
@@ -33,12 +47,13 @@ const CommentSection = ({ handleAddComment, inputValue, setInputValue, comments 
       >
         {!comments.length
           ? 'Skomentuj jako pierwszy'
-          : (commentSectionIsOpen ? 'Schowaj' : 'Pokaż') + ` komentarze (${comments.length})`}
+          : (commentSectionIsOpen || comments.length <= 3 ? 'Schowaj' : 'Pokaż wszystkie') +
+            ` komentarze (${comments.length})`}
         {comments.length ? <ExpandVectorIcon /> : null}
       </StyledText>
-      {commentSectionIsOpen && comments.length ? (
+      {displayedComments.length ? (
         <Comments>
-          {comments.map((comment) => (
+          {displayedComments.map((comment) => (
             <Comment key={comment.id} user={comment.user} dateAdded={comment.dateAdded}>
               {comment.commentText}
             </Comment>

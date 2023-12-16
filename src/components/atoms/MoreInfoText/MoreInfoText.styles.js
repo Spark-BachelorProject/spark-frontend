@@ -15,11 +15,9 @@ export const MoreInfoText = styled(Text)`
   &:hover {
     color: ${({ theme }) => theme.colors.textHeader};
     background-color: ${({ theme }) => theme.colors.addPostBg};
-    transition: 200ms linear;
 
     & > svg > path {
       stroke: ${({ theme }) => theme.colors.textHeader};
-      transition: 200ms linear;
     }
   }
 

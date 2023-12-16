@@ -137,14 +137,14 @@ export const StyledReactTags = styled.div`
   }
 
   .react-tags__listbox-option {
-    margin: -0 0 -0px 0;
+    margin: -0 0 -0 0;
     padding: 0.5em 0.8em;
     border-radius: 5px;
   }
 
   .react-tags__listbox-option:hover {
     cursor: pointer;
-    background: ${({ theme }) => theme.colors.addPostBg};
+    background: ${({ theme }) => theme.colors.iconBgHover};
     color: ${({ theme }) => theme.colors.textHeader};
     transition: 150ms ease-out;
   }
@@ -162,11 +162,12 @@ export const StyledReactTags = styled.div`
 
   .react-tags__listbox-option[aria-selected='true']::after {
     content: '•';
+    color: ${({ theme }) => theme.colors.white};
     margin-left: 0.5rem;
   }
 
   .react-tags__listbox-option[aria-selected='true']:not(.is-active)::after {
-    color: white;
+    color: ${({ theme }) => theme.colors.accent};
   }
 
   .react-tags__listbox-option-highlight {

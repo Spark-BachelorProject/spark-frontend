@@ -12,9 +12,7 @@ import { useGetPostsQuery, useLazyGetFilteredPostsQuery } from '@/store/api/post
 const Home = () => {
   const { isLoading, isSuccess } = useGetPostsQuery()
 
-  const [city, setCity] = useState(() => {
-    getCityFromStorage()
-  })
+  const [city, setCity] = useState(() => getCityFromStorage())
 
   const [hasCityChanged, setHasCityChanged] = useState(false)
 
@@ -22,6 +20,10 @@ const Home = () => {
     const storedCity = localStorage.getItem('city')
     setCity(storedCity)
   }
+
+  // useEffect(() => {
+  //   handleCityChanged()
+  // }, [])
 
   useEffect(() => {
     if (hasCityChanged || city !== localStorage.getItem('city')) {

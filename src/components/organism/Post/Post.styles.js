@@ -42,18 +42,18 @@ export const Details = styled.div`
     display: flex;
     align-items: flex-end;
     width: 350px;
-    gap: 3px;
+    gap: 5px;
 
     ${Text} {
       font-weight: 400;
-      font-size: ${({ theme }) => theme.fontSize.s};
+      font-size: ${({ theme }) => theme.fontSize.sPlus};
       color: ${({ theme }) => theme.colors.grayDetails};
     }
 
     & > b {
       cursor: pointer;
       font-weight: 400;
-      font-size: ${({ theme }) => theme.fontSize.s};
+      font-size: ${({ theme }) => theme.fontSize.sPlus};
       color: ${({ theme }) => theme.colors.grayDetails};
     }
   }
@@ -67,7 +67,7 @@ export const Details = styled.div`
 
     ${Text} {
       color: ${({ theme }) => theme.colors.text};
-      font-size: ${({ theme }) => theme.fontSize.s};
+      font-size: ${({ theme }) => theme.fontSize.sPlus};
       font-weight: 500;
     }
 

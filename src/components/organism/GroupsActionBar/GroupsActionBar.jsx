@@ -7,7 +7,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import CreateGroup from '@/components/organism/CreateGroup/CreateGroup'
 import CreatePost from '@/components/organism/CreatePost/CreatePost'
 import useModal from '@/hooks/useModal'
-import { useJoinGroupMutation, useLeaveGroupMutation } from '@/store/api/groups'
+import { useIsMemberQuery, useJoinGroupMutation, useLeaveGroupMutation } from '@/store/api/groups'
 
 import {
   GroupsActionSection,
@@ -49,13 +49,10 @@ const GroupsActionBar = ({
   const [joinGroup] = useJoinGroupMutation()
   const [leaveGroup] = useLeaveGroupMutation()
 
-  //TODO: check if user is member of group (need get members enpoint)
-  const ifUserIsMember = () => {
-    return false
-  }
+  const { data: isMember } = useIsMemberQuery(groupId)
 
   const handleJoinLeave = async () => {
-    if (!ifUserIsMember()) {
+    if (!isMember) {
       await joinGroup(groupId)
     } else {
       await leaveGroup(groupId)
@@ -83,8 +80,8 @@ const GroupsActionBar = ({
           </StyledIconBorder>
         ) : null}
         {isGroup && (
-          <SecondaryButton onClick={handleJoinLeave} isFilled={ifUserIsMember()}>
-            {ifUserIsMember() ? 'Opuść grupę' : 'Dołącz do grupy'}
+          <SecondaryButton onClick={handleJoinLeave} isFilled={!isMember}>
+            {isMember ? 'Opuść grupę' : 'Dołącz do grupy'}
           </SecondaryButton>
         )}
         <Button

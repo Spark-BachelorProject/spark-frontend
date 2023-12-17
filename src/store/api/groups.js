@@ -45,6 +45,10 @@ export const groupsApi = createApi({
       }),
       invalidatesTags: ['Groups'],
     }),
+    isMember: builder.query({
+      query: (groupId) => `groups/${groupId}/isMember`,
+      providesTags: ['Groups'],
+    }),
   }),
 })
 
@@ -56,4 +60,5 @@ export const {
   useGetOwnedGroupsQuery,
   useJoinGroupMutation,
   useLeaveGroupMutation,
+  useIsMemberQuery,
 } = groupsApi

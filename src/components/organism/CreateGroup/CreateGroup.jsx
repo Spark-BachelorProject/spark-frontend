@@ -1,4 +1,8 @@
 import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
@@ -35,27 +39,36 @@ const PRIVACYSETTINGS = [
   },
 ]
 
-const initialState = {
-  name: '',
-  city: '',
-  description: '',
-  activity: '',
-  privacy: PRIVACYSETTINGS[0].value,
-}
+const validationSchema = yup.object().shape({
+  name: yup.string().trim().required('Nazwa grupy jest wymagana'),
+  description: yup.string().trim().required('Opis jest wymagany'),
+  city: yup.string().trim().required('Miasto jest wymagane'),
+  activity: yup.string().trim(),
+  privacy: yup.string().trim(),
+})
 
 const CreateGroup = ({ handleClose }) => {
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(validationSchema) })
+
   const [addGroup] = useAddGroupMutation()
-  const [selectedCity, setSelectedCity] = useState('')
   const { data: activitiesApi, isLoading: isLoadingActivities } = useGetActivitiesQuery()
   const [activities, setActivities] = useState([])
+  const [selectedCity, setSelectedCity] = useState('')
 
+  //TODO: check how to enable showing error in this last stage:
+  // after submit empty -> type something -> delete
   const handleCityChange = (city) => {
+    setValue('city', city)
     setSelectedCity(city)
+    if (city) {
+      errors.city = null
+    }
   }
-
-  // useEffect(() => {
-  //   getUserCity().then((city) => setGeolocatedCity(city))
-  // }, [])
 
   useEffect(() => {
     if (!isLoadingActivities) {
@@ -64,51 +77,31 @@ const CreateGroup = ({ handleClose }) => {
         value: activity.name,
       }))
       setActivities(activitiesWithValue)
-      initialState.activity = activitiesWithValue[0].value
+
+      // Set the default activity value if it's not already set
+      if (!register('activity').value) {
+        setValue('activity', activitiesWithValue[0].value)
+      }
     }
-  }, [activitiesApi, isLoadingActivities])
+  }, [activitiesApi, isLoadingActivities, setValue, register])
 
-  const [state, setState] = useState(initialState)
+  const onSubmit = (data) => {
+    const selectedActivityId = activitiesApi.find((activity) => activity.name === data.activity).id
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setState((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }))
-  }
-
-  //FIXME: when you click enter on empty input data is sent
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    if (
-      !state.name.trim() ||
-      !selectedCity ||
-      !state.description.trim() ||
-      !state.activity.trim() ||
-      !state.privacy.trim()
-    ) {
-      console.log('nie wypełniono wszystkich pól')
-      return
-    }
-
-    const selectedActivityId = activitiesApi.find((activity) => activity.name === state.activity).id
-
-    const data = {
-      name: state.name,
-      description: state.description,
-      privacySetting: state.privacy,
-      city: selectedCity,
+    const groupData = {
+      name: data.name,
+      description: data.description,
+      privacySetting: data.privacy,
+      city: data.city,
       activityId: selectedActivityId,
     }
 
-    addGroup(data)
+    addGroup(groupData)
     handleClose()
   }
 
   return (
-    <Wrapper onSubmit={handleSubmit}>
+    <Wrapper onSubmit={handleSubmit(onSubmit)}>
       <HeaderWrapper>
         <TitleWrapper>
           <Title isBig isBold>
@@ -122,45 +115,49 @@ const CreateGroup = ({ handleClose }) => {
         <InputWithLabel
           style={{ gridArea: 'input1' }}
           name="name"
-          value={state.name}
-          onChange={handleChange}
           id="name"
           labelText="Nazwa"
           placeholder="Nazwa"
-          required
+          {...register('name')}
+          error={errors?.name?.message}
         />
 
-        <CityAutocomplete style={{ gridArea: 'select1' }} onSelectCity={handleCityChange} />
+        <CityAutocomplete
+          style={{ gridArea: 'select1' }}
+          onSelectCity={handleCityChange}
+          selectedCity={selectedCity}
+          {...register('city')}
+          id="city"
+          error={errors?.city?.message}
+        />
         <InputWithLabel
           style={{ gridArea: 'input2' }}
-          value={state.description}
-          onChange={handleChange}
           name="description"
           id="description"
           labelText="Opis"
           placeholder="Opis"
-          required
+          {...register('description')}
+          error={errors?.description?.message}
         />
 
         <SelectWithLabel
           style={{ gridArea: 'select2' }}
-          value={state.activity}
-          onChange={handleChange}
           labelText="Aktywność"
           name="activity"
           id="activity"
           required
+          {...register('activity')}
+          error={errors?.activity?.message}
         >
           {activities}
         </SelectWithLabel>
         <SelectWithLabel
           style={{ gridArea: 'select3' }}
-          value={state.privacy}
-          onChange={handleChange}
           labelText="Widoczność"
           name="privacy"
           id="privacy"
           required
+          {...register('privacy')}
         >
           {PRIVACYSETTINGS}
         </SelectWithLabel>

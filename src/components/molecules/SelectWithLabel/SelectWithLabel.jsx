@@ -1,24 +1,18 @@
-import React from 'react'
-
-import styled from 'styled-components'
+import React, { forwardRef } from 'react'
 
 import { Label } from '@/components/atoms/Label/Label.styles'
 import Select from '@/components/atoms/Select/Select'
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`
+import { Wrapper } from './SelectWithLabel.styles'
 
-const SelectWithLabel = (props) => {
+const SelectWithLabel = forwardRef((props, ref) => {
   const { id, labelText, value, onChange, ...rest } = props
   return (
-    <Wrapper>
+    <Wrapper ref={ref}>
       <Label htmlFor={id}>{labelText}</Label>
       <Select id={id} value={value} onChange={onChange} {...rest} />
     </Wrapper>
   )
-}
+})
 
 export default SelectWithLabel

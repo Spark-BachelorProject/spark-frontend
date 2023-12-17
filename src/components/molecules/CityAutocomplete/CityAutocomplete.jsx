@@ -1,14 +1,21 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { forwardRef, useCallback, useEffect, useMemo, useState } from 'react'
 
 import { OpenStreetMapProvider } from 'leaflet-geosearch'
 
+import { ReactComponent as AlertCircle } from '@/assets/icons/alert-circle.svg'
+import { Error } from '@/components/atoms/Error/Error.styles'
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { Label } from '@/components/atoms/Label/Label.styles'
 import { debounce } from '@/helpers/debounce'
 
-import { StyledSuggestion, StyledSuggestionWrapper, Wrapper } from './CityAutocomplete.styles'
+import {
+  InputWrapper,
+  StyledSuggestion,
+  StyledSuggestionWrapper,
+  Wrapper,
+} from './CityAutocomplete.styles'
 
-export const CityAutocomplete = ({ onSelectCity, selectedCity }) => {
+export const CityAutocomplete = forwardRef(({ onSelectCity, selectedCity, error, id }, ref) => {
   const [searchResults, setSearchResults] = useState([])
   const [selectedPlace, setSelectedPlace] = useState('')
   const [showSuggestions, setShowSuggestions] = useState(false)
@@ -88,14 +95,21 @@ export const CityAutocomplete = ({ onSelectCity, selectedCity }) => {
   )
 
   return (
-    <Wrapper>
-      <Label>Miasto</Label>
-      <Input
-        type="text"
-        value={selectedPlace}
-        onChange={handleChange}
-        placeholder="Szukaj miasta"
-      />
+    <Wrapper ref={ref}>
+      <Label htmlFor={id}>Miasto</Label>
+      <InputWrapper>
+        <Input
+          id={id}
+          type="text"
+          value={selectedPlace}
+          onChange={handleChange}
+          placeholder="Szukaj miasta"
+          error={error}
+        />
+        {!!error && <AlertCircle />}
+      </InputWrapper>
+      {error && <Error>{error}</Error>}
+
       <StyledSuggestionWrapper>
         {showSuggestions &&
           searchResults.map((result, index) => (
@@ -106,4 +120,4 @@ export const CityAutocomplete = ({ onSelectCity, selectedCity }) => {
       </StyledSuggestionWrapper>
     </Wrapper>
   )
-}
+})

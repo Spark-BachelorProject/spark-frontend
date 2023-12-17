@@ -1,31 +1,25 @@
-import React from 'react'
+import { forwardRef } from 'react'
 
-import styled from 'styled-components'
-
+import { ReactComponent as AlertCircle } from '@/assets/icons/alert-circle.svg'
+import { Error } from '@/components/atoms/Error/Error.styles'
 import { Input } from '@/components/atoms/Input/Input.styles'
 import { Label } from '@/components/atoms/Label/Label.styles'
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`
+import { InputWrapper, Wrapper } from './InputWithLabel.styles'
 
-const InputWithLabel = (props) => {
-  const { id, labelText, type, placeholder, value, onChange, error, style, ...rest } = props
+// This component works properly only with react-hook-form
+const InputWithLabel = forwardRef((props, ref) => {
+  const { id, labelText, type, placeholder, error, style, ...rest } = props
   return (
-    <Wrapper style={style}>
+    <Wrapper style={style} ref={ref}>
       <Label htmlFor={id}>{labelText}</Label>
-      <Input
-        type={type || 'text'}
-        id={id}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        {...rest}
-      />
+      <InputWrapper>
+        <Input type={type || 'text'} id={id} placeholder={placeholder} error={!!error} {...rest} />
+        {!!error && <AlertCircle />}
+      </InputWrapper>
+      {error && <Error>{error}</Error>}
     </Wrapper>
   )
-}
+})
 
 export default InputWithLabel

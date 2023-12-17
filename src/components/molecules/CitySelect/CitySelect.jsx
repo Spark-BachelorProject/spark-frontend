@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { SecondaryButton } from '@/components/atoms/Buttons/SecondaryButton.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import { getCityFromCoordinates } from '@/helpers/getCityFromCoordinates'
-import { setCity, selectCity } from '@/store/city/citySlice'
+import { selectCity, setCity } from '@/store/city/citySlice'
 
 import { CityAutocomplete } from '../CityAutocomplete/CityAutocomplete'
 import { StyledBlueText, StyledButton, Wrapper } from './CitySelect.styles'
@@ -51,7 +51,7 @@ export const CitySelect = ({ handleClose, handleSubmit, shouldBeSelected = false
       <Title isBig isBold>
         Wybierz miasto
       </Title>
-      <CityAutocomplete onSelectCity={handleSelectCity} selectedCity={localCity} />
+      <CityAutocomplete onSelectCity={handleSelectCity} />
       <StyledBlueText onClick={handleGeolocateCity}>
         Znajdź moje miasto automatycznie
       </StyledBlueText>

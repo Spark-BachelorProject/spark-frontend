@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import { postsApi } from '@/store/api/posts'
+import cityReducer from '@/store/city/citySlice'
 import postsReducer from '@/store/posts/postsSlice'
 import themeReducer from '@/store/theme/themeSlice'
 
@@ -17,6 +18,7 @@ export const store = configureStore({
   reducer: {
     theme: themeReducer,
     posts: postsReducer,
+    city: cityReducer,
     [postsApi.reducerPath]: postsApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
     [activitiesApi.reducerPath]: activitiesApi.reducer,

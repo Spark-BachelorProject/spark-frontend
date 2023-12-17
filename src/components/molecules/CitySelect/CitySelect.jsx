@@ -1,60 +1,66 @@
 import { useCallback, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { SecondaryButton } from '@/components/atoms/Buttons/SecondaryButton.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import { getCityFromCoordinates } from '@/helpers/getCityFromCoordinates'
+import { setCity, selectCity } from '@/store/city/citySlice'
 
 import { CityAutocomplete } from '../CityAutocomplete/CityAutocomplete'
 import { StyledBlueText, StyledButton, Wrapper } from './CitySelect.styles'
 
-export const CitySelect = ({ handleClose, handleSubmit }) => {
-  const [selectedCity, setSelectedCity] = useState('')
+export const CitySelect = ({ handleClose, handleSubmit, shouldBeSelected = false }) => {
+  const dispatch = useDispatch()
+  const selectedCity = useSelector(selectCity)
+
+  const [localCity, setLocalCity] = useState(selectedCity || '')
 
   const handleSelectCity = useCallback((city) => {
-    setSelectedCity(city)
+    setLocalCity(city)
   }, [])
 
   const handleGeolocateCity = useCallback(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords
       getCityFromCoordinates(latitude, longitude).then((city) => {
-        if (selectedCity === localStorage.getItem('city')) {
+        if (city === localCity) {
           handleClose()
           return
         }
 
-        setSelectedCity(city)
-        localStorage.setItem('city', city)
-        handleSubmit()
+        setLocalCity(city)
+        dispatch(setCity(city))
         handleClose()
       })
     })
-  }, [handleClose, handleSubmit, selectedCity])
+  }, [dispatch, handleClose, localCity])
 
   const handleConfirm = useCallback(() => {
-    if (selectedCity === localStorage.getItem('city') || !selectedCity) {
+    if (localCity === selectedCity || !localCity) {
       handleClose()
       return
     }
 
-    localStorage.setItem('city', selectedCity)
+    dispatch(setCity(localCity))
     handleSubmit()
     handleClose()
-  }, [selectedCity, handleClose, handleSubmit])
+  }, [dispatch, handleClose, localCity, selectedCity, handleSubmit])
 
   return (
     <Wrapper>
       <Title isBig isBold>
         Wybierz miasto
       </Title>
-      <CityAutocomplete onSelectCity={handleSelectCity} selectedCity={selectedCity} />
+      <CityAutocomplete onSelectCity={handleSelectCity} selectedCity={localCity} />
       <StyledBlueText onClick={handleGeolocateCity}>
         Znajdź moje miasto automatycznie
       </StyledBlueText>
-      <StyledButton isGray onClick={handleClose}>
-        Anuluj
-      </StyledButton>
-      <SecondaryButton onClick={handleConfirm} disabled={!selectedCity}>
+      {!shouldBeSelected && (
+        <StyledButton isGray onClick={handleClose}>
+          Anuluj
+        </StyledButton>
+      )}
+      <SecondaryButton onClick={handleConfirm} disabled={!localCity}>
         Potwierdź
       </SecondaryButton>
     </Wrapper>

@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -28,7 +29,7 @@ import {
 
 const everyIsFalse = (...args) => args.every((arg) => !arg)
 
-const HeaderSearchBar = () => {
+const HeaderSearchBar = forwardRef((props, ref) => {
   const {
     data: bookmarkedPosts,
     isLoading: isLoadingBookmarkedPosts,
@@ -122,6 +123,7 @@ const HeaderSearchBar = () => {
 
   return (
     <Wrapper
+      ref={ref}
       popupIsOpen={!everyIsFalse(isOpenBookmarkPopup, isOpenProfilePopup, isOpenNotificationPopup)}
     >
       <InnerWrapper>
@@ -219,6 +221,6 @@ const HeaderSearchBar = () => {
       </InnerWrapper>
     </Wrapper>
   )
-}
+})
 
 export default HeaderSearchBar

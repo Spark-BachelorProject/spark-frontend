@@ -42,14 +42,14 @@ export const postsApi = createApi({
     }),
     putParticipate: builder.mutation({
       query: (postId) => ({
-        url: `posts/post/${postId}/participate`,
+        url: `posts/${postId}/participate`,
         method: 'PUT',
       }),
       invalidatesTags: ['Posts'],
     }),
     deleteParticipation: builder.mutation({
       query: (postId) => ({
-        url: `posts/post/${postId}/unparticipate`,
+        url: `posts/${postId}/unparticipate`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Posts'],

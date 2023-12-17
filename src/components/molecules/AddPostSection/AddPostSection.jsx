@@ -61,6 +61,7 @@ export const AddPostSection = () => {
       </Wrapper>
       {isOpen ? (
         <Modal
+          isOpen={isOpen}
           handleClose={handleCloseModal}
           position={position}
           isFixed

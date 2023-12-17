@@ -1,4 +1,3 @@
-import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 import Avvvatars from 'avvvatars-react'
@@ -11,7 +10,7 @@ import { getInitials } from '@/helpers/stringOperations'
 import useModal from '@/hooks/useModal'
 import { useGetUserQuery } from '@/store/api/user'
 
-import { Wrapper, IconsWrapper, StyledPlusSquareIcon } from './NavigationBar.styles'
+import { IconsWrapper, StyledPlusSquareIcon, Wrapper } from './NavigationBar.styles'
 
 const NavigationBar = () => {
   const {
@@ -65,6 +64,7 @@ const NavigationBar = () => {
       </IconsWrapper>
       {isOpen ? (
         <Modal
+          isOpen={isOpen}
           handleClose={handleCloseModal}
           position={position}
           isFixed

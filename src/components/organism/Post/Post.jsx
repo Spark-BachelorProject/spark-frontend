@@ -217,6 +217,7 @@ const Post = (props) => {
 
       {isOpen3 ? (
         <Modal3
+          isOpen={isOpen3}
           position={position3}
           isModal
           hasBackgroundColor
@@ -230,6 +231,7 @@ const Post = (props) => {
 
       {isOpen2 ? (
         <Modal2
+          isOpen={isOpen2}
           handleClose={handleCloseModal2}
           position={position2}
           isModal

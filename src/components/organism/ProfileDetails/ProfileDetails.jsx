@@ -152,6 +152,7 @@ const ProfileDetails = () => {
       </BadgesSection>
       {isModalOpen && (
         <Modal
+          isOpen={isModalOpen}
           handleClose={handleCloseModal}
           position={position2}
           isFixed

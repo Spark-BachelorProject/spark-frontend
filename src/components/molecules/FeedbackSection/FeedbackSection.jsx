@@ -47,6 +47,7 @@ export const FeedbackSection = () => {
       </StyledButton>
       {isOpen ? (
         <Modal
+          isOpen={isOpen}
           handleClose={handleCloseModal}
           position={position}
           isModal

@@ -46,6 +46,7 @@ export const TitleBar = ({ children, className }) => {
       </Title>
       {isOpen ? (
         <Modal
+          isOpen={isOpen}
           handleClose={handleCloseModal}
           position={position}
           isModal

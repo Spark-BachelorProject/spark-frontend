@@ -63,7 +63,14 @@ const AuthenticatedApp = () => {
       <NavigationBar />
       {isOpen ? (
         // handleCloseModal is null because we don't want to close modal on click on background
-        <Modal handleClose={null} position={position} isModal hasBackgroundColor isFixed>
+        <Modal
+          isOpen={isOpen}
+          handleClose={null}
+          position={position}
+          isModal
+          hasBackgroundColor
+          isFixed
+        >
           <CitySelect
             handleClose={handleCloseModal}
             handleSubmit={handleCitySelected}

@@ -94,6 +94,7 @@ const GroupsActionBar = ({
       </GroupsActionSection>
       {isOpen ? (
         <Modal
+          isOpen={isOpen}
           handleClose={handleCloseModal}
           position={position}
           isFixed

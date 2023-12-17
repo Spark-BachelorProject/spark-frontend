@@ -309,11 +309,9 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
           />
         </div>
       </InputsWrapper>
-
       <StyledTextInfo>
         Wybranie tagów pozwoli Ci na sprecyzowanie szczegółów spotkania
       </StyledTextInfo>
-
       <TagAutocomplete tags={tags} setTags={setTags} data={tagsApi} />
 
       <FooterWrapper>

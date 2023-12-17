@@ -4,6 +4,10 @@ import { Button } from '@/components/atoms/Buttons/Button.styles'
 
 export const ModalWrapper = styled.div`
   box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+
+  overflow-y: auto;
+  max-height: 95vh;
+
   position: ${({ isFixed }) => (isFixed ? 'fixed' : 'absolute')};
   z-index: ${({ modalNum }) => 2000 + modalNum * 1 + 1};
   ${({ isModal }) =>
@@ -36,6 +40,16 @@ export const ModalWrapper = styled.div`
 
   ${Button} {
     margin-top: 20px;
+  }
+
+  @media (max-width: 1000px) {
+    max-height: 85vh;
+
+    ${({ isModal }) =>
+      isModal &&
+      `
+      top: 45% !important;
+  `}
   }
 
   /* //top triangle

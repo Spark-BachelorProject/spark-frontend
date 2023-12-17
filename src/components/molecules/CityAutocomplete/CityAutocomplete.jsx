@@ -47,7 +47,7 @@ export const CityAutocomplete = ({ onSelectCity, selectedCity }) => {
   }, [selectedPlace, debouncedSearch])
 
   useEffect(() => {
-    setSelectedPlace(selectedCity)
+    setSelectedPlace(selectedCity || '')
   }, [selectedCity])
 
   const handleResultClick = useCallback(

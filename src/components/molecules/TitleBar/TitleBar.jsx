@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -9,7 +9,7 @@ import useModal from '@/hooks/useModal'
 import { CitySelect } from '../CitySelect/CitySelect'
 import { Wrapper } from './TitleBar.styles'
 
-export const TitleBar = ({ children, className, hasCityChanged }) => {
+export const TitleBar = ({ children, className }) => {
   const {
     Modal,
     isOpen,
@@ -20,26 +20,18 @@ export const TitleBar = ({ children, className, hasCityChanged }) => {
   } = useModal()
   const positioning = 'center'
 
+  const [showAlert, setShowAlert] = useState(false)
+
   const handleOpenSelectCityModal = () => {
     handleOpenAndPositionModal(modalOpenElementRef, positioning)
   }
 
-  const [showAlert, setShowAlert] = useState(false)
-
   const handleCitySelected = () => {
-    hasCityChanged(true)
     setShowAlert(true)
     setTimeout(() => {
       setShowAlert(false)
-      hasCityChanged(false)
     }, 3000)
   }
-
-  useEffect(() => {
-    if (!localStorage.getItem('city')) {
-      handleOpenSelectCityModal()
-    }
-  }, [])
 
   return (
     <Wrapper className={className}>
@@ -53,8 +45,13 @@ export const TitleBar = ({ children, className, hasCityChanged }) => {
         {children}
       </Title>
       {isOpen ? (
-        // habdleCloseModal is null because we don't want to close modal on click on background
-        <Modal handleClose={null} position={position} isModal hasBackgroundColor isFixed>
+        <Modal
+          handleClose={handleCloseModal}
+          position={position}
+          isModal
+          hasBackgroundColor
+          isFixed
+        >
           <CitySelect handleClose={handleCloseModal} handleSubmit={handleCitySelected} />
         </Modal>
       ) : null}

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import Loader from '@/components/atoms/Loader/Loader'
 import { AddPostSection } from '@/components/molecules/AddPostSection/AddPostSection'
@@ -6,30 +7,13 @@ import { TitleBar } from '@/components/molecules/TitleBar/TitleBar'
 import { Dropdown } from '@/components/organism/Dropdown/Dropdown'
 import Post from '@/components/organism/Post/Post'
 import { PageContent } from '@/components/templates/PageContent/PageContent'
-import { getCityFromStorage } from '@/store/api/getCityFromStorage'
 import { useGetPostsQuery, useLazyGetFilteredPostsQuery } from '@/store/api/posts'
+import { selectCity } from '@/store/city/citySlice'
 
 const Home = () => {
+  const selectedCity = useSelector(selectCity)
+
   const { isLoading, isSuccess } = useGetPostsQuery()
-
-  const [city, setCity] = useState(() => getCityFromStorage())
-
-  const [hasCityChanged, setHasCityChanged] = useState(false)
-
-  const handleCityChanged = () => {
-    const storedCity = localStorage.getItem('city')
-    setCity(storedCity)
-  }
-
-  // useEffect(() => {
-  //   handleCityChanged()
-  // }, [])
-
-  useEffect(() => {
-    if (hasCityChanged || city !== localStorage.getItem('city')) {
-      handleCityChanged()
-    }
-  }, [hasCityChanged, city])
 
   const [posts, setPosts] = useState([])
   const [filterOptions, setFilterOptions] = useState({
@@ -76,8 +60,8 @@ const Home = () => {
   return (
     <PageContent hasNavigation hasRightBar>
       <AddPostSection />
-      <TitleBar isBold hasCityChanged={setHasCityChanged}>
-        Odkrywaj aktualne spotkania w <span>{city}</span>
+      <TitleBar isBold>
+        Odkrywaj aktualne spotkania w <span>{selectedCity}</span>
       </TitleBar>
       <Dropdown setFilterOptions={setFilterOptions} filterOptions={filterOptions} />
       {isLoading && <Loader isCentered />}

@@ -1,13 +1,18 @@
 import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { Controller } from 'react-hook-form'
+
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
 import { LublinCoordinates } from '@/assets/constants/coordinates.js'
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import { Button } from '@/components/atoms/Buttons/Button.styles.js'
-import Input from '@/components/atoms/Input/Input'
-import Select from '@/components/atoms/Select/Select'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import CreatePostMap from '@/components/molecules/CreatePostMap/CreatePostMap.jsx'
+import InputWithLabel from '@/components/molecules/InputWithLabel/InputWithLabel.jsx'
 import PlaceAutocomplete from '@/components/molecules/PlaceAutocomplete/PlaceAutocomplete.jsx'
+import SelectWithLabel from '@/components/molecules/SelectWithLabel/SelectWithLabel.jsx'
 import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
 import {
   dateNowYYYYMMDD,
@@ -31,11 +36,20 @@ import {
   HeaderWrapper,
   InputsWrapper,
   NextArrowIcon,
-  StyledInput1,
   StyledText,
   StyledTextInfo,
   Wrapper,
 } from './CreatePost.styles.js'
+
+const validationSchema = yup.object().shape({
+  description: yup.string().trim().required('Opis jest wymagany'),
+  privacy: yup.string().trim(),
+  groups: yup.string().trim(),
+  activity: yup.string().trim(),
+  dateStart: yup.string().trim().required('Data rozpoczęcia jest wymagana'),
+  hourStart: yup.string().trim().required('Godzina rozpoczęcia jest wymagana'),
+  address: yup.string().trim().required('Adres jest wymagany'),
+})
 
 const PRIVACYSETTINGS = [
   {
@@ -49,7 +63,7 @@ const PRIVACYSETTINGS = [
 ]
 
 const initialState = {
-  content: '',
+  description: '',
   hourStart: timeNow,
   dateStart: dateNowYYYYMMDD,
   privacy: PRIVACYSETTINGS[0].value,
@@ -66,6 +80,17 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
     isLoading: isLoadingGroupOneApi,
     isSuccess: isSuccessGroupOneApi,
   } = useGetOneGroupQuery(groupId)
+
+  const {
+    control,
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    defaultValues: initialState,
+    resolver: yupResolver(validationSchema),
+  })
 
   const [selectedActivityId, setSelectedActivityId] = useState(1)
   const { data: tagsApi, isLoading: isLoadingTagsApi } =
@@ -151,28 +176,41 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
   }
 
   const handleSelectAddress = (address) => {
+    setValue('address', address)
     setSelectedAddress(address)
-  }
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setState((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }))
-
-    if (name === 'activity') {
-      const { value } = e.target
-      const selectedActivity = activitiesApi.find((activity) => activity.name === value)
-      if (selectedActivity) {
-        setSelectedActivityId(selectedActivity.id)
-      }
+    if (address) {
+      errors.address = null
     }
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  // const handleChange = (name, value) => {
+  //   setValue(name, value)
+  //   if (name === 'activity') {
+  //     const { value } = value
+  //     const selectedActivity = activitiesApi.find((activity) => activity.name === value)
+  //     if (selectedActivity) {
+  //       setSelectedActivityId(selectedActivity.id)
+  //     }
+  //   }
+  // }
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target
+  //   setState((prevState) => ({
+  //     ...prevState,
+  //     [name]: value,
+  //   }))
 
+  //   if (name === 'activity') {
+  //     const { value } = e.target
+  //     const selectedActivity = activitiesApi.find((activity) => activity.name === value)
+  //     if (selectedActivity) {
+  //       setSelectedActivityId(selectedActivity.id)
+  //     }
+  //   }
+  // }
+
+  const onSubmit = (data) => {
+    console.log(data, 'data')
     const dateStart = formatTimeAndDate(state.dateStart, state.hourStart)
     const selectedActivityId = activitiesApi.find((activity) => activity.name === state.activity).id
     const selectedGroupId = groupsApi.find((group) => group.name === state.groups)?.id
@@ -195,20 +233,21 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
       dateCreated: getCurrentTimeISOString(),
       dateStart: dateStart,
       dateEnd: getShiftedTime(dateStart, 2), // now is 2h
-      description: state.content,
-      privacySetting: state.privacy,
+      description: data.description,
+      privacySetting: data.privacy,
       tags: getTagsIds(),
       groupId: selectedGroupId || null,
     }
     console.log(newPost, 'newPost')
 
-    handlePostAdded()
-    addPost(newPost)
-    handleClose()
+    // handlePostAdded()
+    // addPost(newPost)
+    // handleClose()
   }
+  console.log('errors', errors)
 
   return (
-    <Wrapper onSubmit={handleSubmit}>
+    <Wrapper onSubmit={handleSubmit(onSubmit)}>
       <HeaderWrapper>
         <div>
           <Title isBig isBold>
@@ -218,32 +257,34 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
         <XIcon onClick={handleClose} />
       </HeaderWrapper>
       <InputsWrapper>
-        <StyledInput1
+        <InputWithLabel
           style={{ gridArea: 'input1' }}
           placeholder="Dodaj opis spotkania"
-          maxLength="120"
-          name="content"
-          value={state.content}
-          onChange={handleChange}
-          required
+          labelText="Opis"
+          id="description"
+          name="description"
+          {...register('description')}
+          error={errors?.description?.message}
         />
-        <Select
+        <SelectWithLabel
           style={{ gridArea: 'select1' }}
+          labelText="Widoczność"
           name="privacy"
           id="privacy"
-          value={state.privacy}
-          onChange={handleChange}
           isDisabled={!!groupId}
+          {...register('privacy')}
+          error={errors?.privacy?.message}
         >
           {PRIVACYSETTINGS}
-        </Select>
-        <Select
+        </SelectWithLabel>
+        <SelectWithLabel
           style={{ gridArea: 'select2' }}
+          labelText="Grupy"
           name="groups"
           id="groups"
-          value={state.groups}
-          onChange={handleChange}
           isDisabled={state.privacy !== 'PRIVATE_GROUP' || !groups.length || !!groupId}
+          {...register('groups')}
+          error={errors?.groups?.message}
         >
           {groups.length
             ? groups
@@ -254,65 +295,72 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
                   name: 'Nie ma żadnych grup',
                 },
               ]}
-        </Select>
-        <Select
+        </SelectWithLabel>
+        <SelectWithLabel
           style={{ gridArea: 'select3' }}
+          labelText="Aktywność"
           name="activity"
           id="activity"
-          value={state.activity}
-          onChange={handleChange}
           isDisabled={!!groupId}
+          {...register('activity')}
+          error={errors?.activity?.message}
         >
           {activities}
-        </Select>
-        <Input
+        </SelectWithLabel>
+        <InputWithLabel
           style={{ gridArea: 'input2' }}
+          labelText="Data rozpoczęcia"
           type="date"
           name="dateStart"
           id="dateStart"
-          value={state.dateStart}
-          onChange={handleChange}
           min={dateNowYYYYMMDD}
+          {...register('dateStart')}
+          error={errors?.dateStart?.message}
         />
-        <Input
+        <InputWithLabel
           style={{ gridArea: 'input3' }}
+          labelText="Godzina rozpoczęcia"
           type="time"
           name="hourStart"
           id="hourStart"
-          value={state.hourStart}
           min={isToday(state.dateStart) ? timeNow : '00:00'}
-          onChange={handleChange}
+          {...register('hourStart')}
+          error={errors?.hourStart?.message}
         />
-        <div style={{ gridArea: 'input4' }}>
-          <PlaceAutocomplete
-            onSelectCoordinates={handleSelectCoordinates}
-            isPlaceSelected={handleSelectedPlace}
-            onSelectAdress={handleSelectAddress}
-            coordinates={selectedCoordinates}
-            isMarkerMoved={isMarkerMoved}
-            setMarkerMoved={handleMarkerMoved}
-            onSelectCity={handleSelectedCity}
-          />
-        </div>
+        <PlaceAutocomplete
+          onSelectCoordinates={handleSelectCoordinates}
+          isPlaceSelected={handleSelectedPlace}
+          onSelectAdress={handleSelectAddress}
+          coordinates={selectedCoordinates}
+          isMarkerMoved={isMarkerMoved}
+          setMarkerMoved={handleMarkerMoved}
+          onSelectCity={handleSelectedCity}
+          style={{ gridArea: 'input4' }}
+          {...register('address')}
+          error={errors?.address?.message}
+        />
 
-        <div
-          style={{
-            gridArea: 'map',
-            backgroundColor: '#233045',
-          }}
-        >
-          <CreatePostMap
-            center={selectedCoordinates}
-            isPlaceSelected={isPlaceSelected}
-            onMarkerMoved={handleSelectCoordinates}
-            isMarkedMoved={handleMarkerMovedDebounced}
-          />
-        </div>
+        <CreatePostMap
+          center={selectedCoordinates}
+          isPlaceSelected={isPlaceSelected}
+          onMarkerMoved={handleSelectCoordinates}
+          isMarkedMoved={handleMarkerMovedDebounced}
+          style={{ gridArea: 'map' }}
+        />
       </InputsWrapper>
       <StyledTextInfo>
         Wybranie tagów pozwoli Ci na sprecyzowanie szczegółów spotkania
       </StyledTextInfo>
-      <TagAutocomplete tags={tags} setTags={setTags} data={tagsApi} />
+
+      <Controller
+        name="tags" // Specify the field name
+        control={control} // Pass the control prop
+        defaultValue={[]} // Set the initial value
+        render={({ field }) => (
+          <TagAutocomplete tags={field.value} setTags={field.onChange} data={tagsApi} />
+        )}
+      />
+      {/* <TagAutocomplete tags={tags} setTags={setTags} data={tagsApi} /> */}
 
       <FooterWrapper>
         <StyledText as={'a'}>Wiecej szczegółów</StyledText>

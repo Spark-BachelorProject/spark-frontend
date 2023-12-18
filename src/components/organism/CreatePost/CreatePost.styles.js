@@ -60,13 +60,6 @@ export const InputsWrapper = styled.div`
     'map map map map'
     'map map map map';
 
-  & > select {
-    background-color: ${({ theme }) => theme.colors.inputBg};
-    margin: 0;
-    border-radius: 7px;
-    color: ${({ theme }) => theme.colors.inputFont};
-  }
-
   @media (max-width: ${({ theme }) => theme.breakPoints.l}) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(9, 1fr);
@@ -80,22 +73,6 @@ export const InputsWrapper = styled.div`
       'map map'
       'map map'
       'map map';
-  }
-`
-
-export const StyledInput1 = styled(Input)`
-  grid-area: input1;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    right: 30px;
-    width: 100%;
-    height: 100%;
-    background-color: ${({ theme }) => theme.colors.redFont};
-    top: 10px;
-    z-index: 2;
   }
 `
 

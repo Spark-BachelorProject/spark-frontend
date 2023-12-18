@@ -59,13 +59,6 @@ export const InputsWrapper = styled.div`
     'input2 input2'
     'select2 select3';
 
-  select {
-    background-color: ${({ theme }) => theme.colors.inputBg};
-    margin: 0;
-    border-radius: 7px;
-    color: ${({ theme }) => theme.colors.inputFont};
-  }
-
   @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, 1fr);

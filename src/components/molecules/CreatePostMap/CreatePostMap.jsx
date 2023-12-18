@@ -22,7 +22,7 @@ function MapUpdater({ center, isPlaceSelected }) {
   return null
 }
 
-export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved, isMarkedMoved }) => {
+export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved, isMarkedMoved, style }) => {
   const [markerPosition, setMarkerPosition] = useState(center)
   const [hasMarkerMoved, setHasMarkerMoved] = useState(false)
 
@@ -48,6 +48,7 @@ export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved, isMarked
       style={{
         height: '100%',
         width: '100%',
+        ...style,
       }}
       zoom={15}
       zoomControl={true}

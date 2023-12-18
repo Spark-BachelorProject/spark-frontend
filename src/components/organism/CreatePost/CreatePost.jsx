@@ -179,7 +179,7 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
 
     const getTagsIds = () => tags.map((tag) => tag.id)
 
-    if (!isPlaceSelected) {
+    if (!isPlaceSelected && !isMarkerMoved) {
       return
     }
 

@@ -80,8 +80,6 @@ export const PlaceAutocomplete = forwardRef(
               address.industrial ||
               ''
 
-            console.log(address)
-
             const cityName = address.city || address.town || address.village
             const street = address.road || address.pedestrian
             const number = address.house_number || address.postcode

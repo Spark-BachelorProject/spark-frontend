@@ -4,10 +4,10 @@ import { ReactComponent as InfoIcon } from '@/assets/icons/info.svg'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.div`
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
   position: absolute;
   width: auto;
-  bottom: -5%;
+  bottom: -9%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
   max-width: 95%;
   z-index: 1000;
 
-  background-color: ${({ theme }) => theme.colors.secondaryBg};
+  background-color: ${({ theme }) => theme.colors.iconBg};
   padding: 6px 15px;
   border-radius: 5px;
 
@@ -32,8 +32,8 @@ export const StyledText = styled(Text)`
 `
 
 export const StyledInfoIcon = styled(InfoIcon)`
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.1rem;
+  height: 1.1rem;
 
   path {
     stroke: ${({ theme }) => theme.colors.text};

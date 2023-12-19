@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 import { ReactComponent as ExpandVectorIcon } from '@/assets/icons/expand-vector.svg'
-import Input from '@/components/atoms/Input/Input'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.form`
@@ -49,14 +48,12 @@ export const InputsWrapper = styled.div`
   gap: 16px;
 
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(8, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   grid-template-areas:
     'input1 input1 input1 input1'
     'select1 select1 select2 select2'
     'select3 select3 input2 input3'
     'input4 input4 input4 input4'
-    'map map map map'
-    'map map map map'
     'map map map map'
     'map map map map';
 
@@ -94,9 +91,4 @@ export const NextArrowIcon = styled(ExpandVectorIcon)`
 export const ButtonsWrapper = styled.div`
   display: flex;
   gap: 20px;
-`
-
-export const StyledTextInfo = styled(Text)`
-  margin: 5px 0 10px 0;
-  color: ${({ theme }) => theme.colors.placeholder};
 `

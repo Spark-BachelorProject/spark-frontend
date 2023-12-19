@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { Controller } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -37,7 +36,6 @@ import {
   InputsWrapper,
   NextArrowIcon,
   StyledText,
-  StyledTextInfo,
   Wrapper,
 } from './CreatePost.styles.js'
 
@@ -348,9 +346,6 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
           style={{ gridArea: 'map' }}
         />
       </InputsWrapper>
-      <StyledTextInfo>
-        Wybranie tagów pozwoli Ci na sprecyzowanie szczegółów spotkania
-      </StyledTextInfo>
 
       <Controller
         name="tags" // Specify the field name

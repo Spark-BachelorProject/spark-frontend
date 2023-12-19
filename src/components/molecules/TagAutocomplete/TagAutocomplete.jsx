@@ -1,7 +1,9 @@
 import { useCallback } from 'react'
 import { ReactTags } from 'react-tag-autocomplete'
 
-import { StyledReactTags } from './TagAutocomplete.styles'
+import { Label } from '@/components/atoms/Label/Label.styles'
+
+import { InfoWrapper, StyledReactTags, StyledTextInfo } from './TagAutocomplete.styles'
 
 const TagAutocomplete = ({ data, tags, setTags }) => {
   const suggestions = data
@@ -30,6 +32,10 @@ const TagAutocomplete = ({ data, tags, setTags }) => {
 
   return (
     <StyledReactTags>
+      <InfoWrapper>
+        <Label> Tagi</Label>
+        <StyledTextInfo>Tagi pozwolą Ci na sprecyzowanie szczegółów spotkania</StyledTextInfo>
+      </InfoWrapper>
       <ReactTags
         labelText=""
         selected={tags}

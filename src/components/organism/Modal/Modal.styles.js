@@ -6,7 +6,7 @@ export const ModalWrapper = styled.div`
   box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
 
   overflow-y: auto;
-  max-height: 95vh;
+  max-height: 85vh;
 
   position: ${({ isFixed }) => (isFixed ? 'fixed' : 'absolute')};
   z-index: ${({ modalNum }) => 2000 + modalNum * 1 + 1};

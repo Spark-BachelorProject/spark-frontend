@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 
+import { Text } from '@/components/atoms/Text/Text.styles'
+
 export const StyledReactTags = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
   .react-tags {
     position: relative;
     padding: 0.25rem 0 0 0.25rem;
@@ -173,4 +179,15 @@ export const StyledReactTags = styled.div`
   .react-tags__listbox-option-highlight {
     background-color: #ffdd00;
   }
+`
+
+export const InfoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+`
+
+export const StyledTextInfo = styled(Text)`
+  color: ${({ theme }) => theme.colors.placeholder};
 `

@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
 
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
+import { createGroupSchema } from '@/assets/schemas/createGroupSchema'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
@@ -39,21 +39,13 @@ const PRIVACYSETTINGS = [
   },
 ]
 
-const validationSchema = yup.object().shape({
-  name: yup.string().trim().required('Nazwa grupy jest wymagana'),
-  description: yup.string().trim().required('Opis jest wymagany'),
-  city: yup.string().trim().required('Miasto jest wymagane'),
-  activity: yup.string().trim(),
-  privacy: yup.string().trim(),
-})
-
 const CreateGroup = ({ handleClose }) => {
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(validationSchema) })
+  } = useForm({ resolver: yupResolver(createGroupSchema) })
 
   const [addGroup] = useAddGroupMutation()
   const { data: activitiesApi, isLoading: isLoadingActivities } = useGetActivitiesQuery()

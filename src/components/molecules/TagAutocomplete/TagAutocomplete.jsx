@@ -1,11 +1,18 @@
 import { useCallback } from 'react'
 import { ReactTags } from 'react-tag-autocomplete'
 
+import { ReactComponent as AlertCircle } from '@/assets/icons/alert-circle.svg'
+import { Error } from '@/components/atoms/Error/Error.styles'
 import { Label } from '@/components/atoms/Label/Label.styles'
 
-import { InfoWrapper, StyledReactTags, StyledTextInfo } from './TagAutocomplete.styles'
+import {
+  InfoWrapper,
+  StyledReactTags,
+  StyledTextInfo,
+  InputWrapper,
+} from './TagAutocomplete.styles'
 
-const TagAutocomplete = ({ data, tags, setTags }) => {
+const TagAutocomplete = ({ data, tags, setTags, id, error = null }) => {
   const suggestions = data
     ? data.map((tag) => ({
         id: tag.id,
@@ -29,21 +36,25 @@ const TagAutocomplete = ({ data, tags, setTags }) => {
     },
     [tags, setTags]
   )
-
+  console.log('dupa', error)
   return (
-    <StyledReactTags>
+    <StyledReactTags error={!!error}>
       <InfoWrapper>
-        <Label> Tagi</Label>
+        <Label htmlFor={id}>Tagi</Label>
         <StyledTextInfo>Tagi pozwolą Ci na sprecyzowanie szczegółów spotkania</StyledTextInfo>
       </InfoWrapper>
-      <ReactTags
-        labelText=""
-        selected={tags}
-        suggestions={suggestions}
-        onAdd={onAdd}
-        onDelete={onDelete}
-        placeholderText="Dodaj tagi"
-      />
+      <InputWrapper>
+        <ReactTags
+          id={id}
+          selected={tags}
+          suggestions={suggestions}
+          onAdd={onAdd}
+          onDelete={onDelete}
+          placeholderText="Dodaj tagi"
+        />
+        {!!error && <AlertCircle />}
+      </InputWrapper>
+      {error && <Error>{error}</Error>}
     </StyledReactTags>
   )
 }

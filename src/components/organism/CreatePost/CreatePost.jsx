@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Controller, useForm } from 'react-hook-form'
+import { Controller, useForm, useWatch } from 'react-hook-form'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -13,6 +13,7 @@ import InputWithLabel from '@/components/molecules/InputWithLabel/InputWithLabel
 import PlaceAutocomplete from '@/components/molecules/PlaceAutocomplete/PlaceAutocomplete.jsx'
 import SelectWithLabel from '@/components/molecules/SelectWithLabel/SelectWithLabel.jsx'
 import TagAutocomplete from '@/components/molecules/TagAutocomplete/TagAutocomplete.jsx'
+import { ButtonsWrapper } from '@/components/organism/CreateGroup/CreateGroup.styles.js'
 import {
   dateNowYYYYMMDD,
   formatTimeAndDate,
@@ -29,7 +30,6 @@ import { useAddPostMutation } from '@/store/api/posts'
 import { useGetTagsByActivityIdQuery } from '@/store/api/tags.js'
 import { useGetUserQuery } from '@/store/api/user.js'
 
-import { ButtonsWrapper } from '../CreateGroup/CreateGroup.styles.js'
 import {
   FooterWrapper,
   HeaderWrapper,
@@ -47,6 +47,11 @@ const validationSchema = yup.object().shape({
   dateStart: yup.string().trim().required('Data rozpoczęcia jest wymagana'),
   hourStart: yup.string().trim().required('Godzina rozpoczęcia jest wymagana'),
   address: yup.string().trim().required('Adres jest wymagany'),
+  tags: yup.array().test({
+    name: 'minimumTags',
+    message: 'Podaj co najmniej dwa tagi',
+    test: (tags) => tags && tags.length >= 2,
+  }),
 })
 
 const PRIVACYSETTINGS = [
@@ -98,6 +103,7 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
   const { data: user } = useGetUserQuery()
   const { data: groupsApi, isLoading: isLoadingGroupsApi } = useGetGroupsQuery()
 
+  // TODO: create for this some hook/abstraction
   useEffect(() => {
     if (!isLoadingActivitiesApi) {
       if (activitiesApi.length === 0) return
@@ -181,43 +187,24 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
     }
   }
 
-  // const handleChange = (name, value) => {
-  //   setValue(name, value)
-  //   if (name === 'activity') {
-  //     const { value } = value
-  //     const selectedActivity = activitiesApi.find((activity) => activity.name === value)
-  //     if (selectedActivity) {
-  //       setSelectedActivityId(selectedActivity.id)
-  //     }
-  //   }
-  // }
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target
-  //   setState((prevState) => ({
-  //     ...prevState,
-  //     [name]: value,
-  //   }))
-
-  //   if (name === 'activity') {
-  //     const { value } = e.target
-  //     const selectedActivity = activitiesApi.find((activity) => activity.name === value)
-  //     if (selectedActivity) {
-  //       setSelectedActivityId(selectedActivity.id)
-  //     }
-  //   }
-  // }
+  const privacyValue = useWatch({
+    control,
+    name: 'privacy',
+  })
 
   const onSubmit = (data) => {
     console.log(data, 'data')
-    const dateStart = formatTimeAndDate(state.dateStart, state.hourStart)
-    const selectedActivityId = activitiesApi.find((activity) => activity.name === state.activity).id
-    const selectedGroupId = groupsApi.find((group) => group.name === state.groups)?.id
 
-    const getTagsIds = () => tags.map((tag) => tag.id)
+    const dateStart = formatTimeAndDate(data.dateStart, data.hourStart)
+    const selectedActivityId = activitiesApi.find((activity) => activity.name === data.activity).id
+    const selectedGroupId =
+      privacyValue === 'PUBLIC' ? null : groupsApi.find((group) => group.name === data.groups)?.id
 
-    if (!isPlaceSelected) {
-      return
-    }
+    const getTagsIds = () => data.tags.map((tag) => tag.id)
+
+    // if (!isPlaceSelected) {
+    //   return
+    // }
 
     const newPost = {
       activityId: selectedActivityId,
@@ -234,7 +221,7 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
       description: data.description,
       privacySetting: data.privacy,
       tags: getTagsIds(),
-      groupId: selectedGroupId || null,
+      groupId: selectedGroupId,
     }
     console.log(newPost, 'newPost')
 
@@ -280,7 +267,7 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
           labelText="Grupy"
           name="groups"
           id="groups"
-          isDisabled={state.privacy !== 'PRIVATE_GROUP' || !groups.length || !!groupId}
+          isDisabled={privacyValue === 'PUBLIC' || !groups.length || !!groupId}
           {...register('groups')}
           error={errors?.groups?.message}
         >
@@ -348,14 +335,19 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
       </InputsWrapper>
 
       <Controller
-        name="tags" // Specify the field name
-        control={control} // Pass the control prop
-        defaultValue={[]} // Set the initial value
+        name="tags"
+        control={control}
+        defaultValue={[]}
         render={({ field }) => (
-          <TagAutocomplete tags={field.value} setTags={field.onChange} data={tagsApi} />
+          <TagAutocomplete
+            tags={field.value}
+            setTags={field.onChange}
+            data={tagsApi}
+            id="tags"
+            error={errors?.tags?.message}
+          />
         )}
       />
-      {/* <TagAutocomplete tags={tags} setTags={setTags} data={tagsApi} /> */}
 
       <FooterWrapper>
         <StyledText as={'a'}>Wiecej szczegółów</StyledText>

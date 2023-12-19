@@ -10,7 +10,8 @@ export const StyledReactTags = styled.div`
   .react-tags {
     position: relative;
     padding: 0.25rem 0 0 0.25rem;
-    border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
+    border: 1px solid
+      ${({ error, theme }) => (error ? theme.colors.redFont : theme.colors.buttonBorder)};
     box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.02);
     border-radius: 6px;
     background: ${({ theme }) => theme.colors.inputBg};
@@ -190,4 +191,24 @@ export const InfoWrapper = styled.div`
 
 export const StyledTextInfo = styled(Text)`
   color: ${({ theme }) => theme.colors.placeholder};
+`
+
+export const InputWrapper = styled.div`
+  position: relative;
+  width: 100%;
+
+  & > svg {
+    position: absolute;
+    right: 15px;
+    pointer-events: none;
+    top: 50%;
+    transform: translateY(-50%);
+    scale: 0.9;
+  }
+
+  & > svg > path {
+    scale: 0.9;
+    stroke: ${({ theme }) => theme.colors.fontRed};
+    fill: ${({ theme }) => theme.colors.fontRed};
+  }
 `

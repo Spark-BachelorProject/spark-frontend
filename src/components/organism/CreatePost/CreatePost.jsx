@@ -72,7 +72,7 @@ const initialState = {
   privacy: PRIVACYSETTINGS[0].value,
 }
 
-const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
+const CreatePost = ({ handleClose, handlePostAdded, groupId = 0 }) => {
   const [addPost] = useAddPostMutation()
   const { data: activitiesApi, isLoading: isLoadingActivitiesApi } = useGetActivitiesQuery()
   const [activities, setActivities] = useState([])
@@ -95,6 +95,7 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
     resolver: yupResolver(validationSchema),
   })
 
+  //TODO: refactor this
   const [selectedActivityId, setSelectedActivityId] = useState(1)
   const { data: tagsApi, isLoading: isLoadingTagsApi } =
     useGetTagsByActivityIdQuery(selectedActivityId)
@@ -187,6 +188,7 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
     }
   }
 
+  // Watch the value of the "privacy" field to dynamically enable/disable other fields
   const privacyValue = useWatch({
     control,
     name: 'privacy',
@@ -201,10 +203,6 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
       privacyValue === 'PUBLIC' ? null : groupsApi.find((group) => group.name === data.groups)?.id
 
     const getTagsIds = () => data.tags.map((tag) => tag.id)
-
-    // if (!isPlaceSelected) {
-    //   return
-    // }
 
     const newPost = {
       activityId: selectedActivityId,
@@ -223,13 +221,12 @@ const CreatePost = ({ handleClose, groupId = 0, handlePostAdded }) => {
       tags: getTagsIds(),
       groupId: selectedGroupId,
     }
-    console.log(newPost, 'newPost')
 
+    // FIXME: this is not working properly - throw error idk why
     // handlePostAdded()
-    // addPost(newPost)
-    // handleClose()
+    addPost(newPost)
+    handleClose()
   }
-  console.log('errors', errors)
 
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>

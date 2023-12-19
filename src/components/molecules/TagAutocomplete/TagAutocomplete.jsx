@@ -36,7 +36,7 @@ const TagAutocomplete = ({ data, tags, setTags, id, error = null }) => {
     },
     [tags, setTags]
   )
-  console.log('dupa', error)
+
   return (
     <StyledReactTags error={!!error}>
       <InfoWrapper>

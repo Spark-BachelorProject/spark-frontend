@@ -180,8 +180,6 @@ const CreatePost = ({ handleClose, handlePostAdded, groupId = 0 }) => {
   })
 
   const onSubmit = (data) => {
-    console.log(data, 'data')
-
     const dateStart = formatTimeAndDate(data.dateStart, data.hourStart)
     const selectedActivityId = activitiesApi.find((activity) => activity.name === data.activity).id
     const selectedGroupId =
@@ -207,8 +205,7 @@ const CreatePost = ({ handleClose, handlePostAdded, groupId = 0 }) => {
       groupId: selectedGroupId,
     }
 
-    // FIXME: this is not working properly - throw error idk why
-    // handlePostAdded()
+    handlePostAdded()
     addPost(newPost)
     handleClose()
   }

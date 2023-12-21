@@ -7,7 +7,7 @@ import { loginSchema } from '@/assets/schemas/loginSchema'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
-import LoginInput from '@/components/molecules/LoginInput/LoginInput'
+import UnauthenticatedInputWithLabel from '@/components/molecules/UnauthenticatedInputWithLabel/UnauthenticatedInputWithLabel'
 import useGoogleLogin from '@/hooks/useGoogleLogin'
 import { useLoginMutation } from '@/store/api/auth'
 
@@ -37,39 +37,40 @@ const Login = () => {
     }
   }
 
-  // TODO: Handle error
-
   return (
-    <>
-      {/* {validData && <Alert message="Użytkownik zalogowany!" />} */}
-      <Form action="post" onSubmit={handleSubmit(onSubmit)} data-testid="form">
-        <LoginInput
-          placeholder="Email"
-          type="email"
-          {...register('email')}
-          error={errors?.email?.message}
-        />
-        <LoginInput
-          placeholder="Hasło"
-          type="password"
-          {...register('password')}
-          error={errors?.password?.message}
-        />
-        {isError && <StyledError>Błędny login lub hasło</StyledError>}
+    <Form action="post" onSubmit={handleSubmit(onSubmit)} data-testid="form">
+      <UnauthenticatedInputWithLabel
+        placeholder="Email"
+        id="email"
+        name="email"
+        labelText="Email"
+        type="email"
+        {...register('email')}
+        error={errors?.email?.message}
+      />
+      <UnauthenticatedInputWithLabel
+        placeholder="Hasło"
+        id="password"
+        name="password"
+        labelText="Hasło"
+        type="password"
+        {...register('password')}
+        error={errors?.password?.message}
+      />
+      {isError && <StyledError>Błędny login lub hasło</StyledError>}
 
-        <Text as={Link} className="problems">
-          Problemy z logowaniem?
-        </Text>
-        <Button isBig type="sumbit">
-          Zaloguj się
-        </Button>
-        <DividerLabel>Zaloguj się przy użyciu</DividerLabel>
-        <GoogleLogin />
-        <Text as={Link} to={'/register'} className="registertext">
-          Nie masz konta? <b>Zarejestruj się</b>
-        </Text>
-      </Form>
-    </>
+      <Text as={Link} className="problems">
+        Problemy z logowaniem?
+      </Text>
+      <Button isBig type="sumbit">
+        Zaloguj się
+      </Button>
+      <DividerLabel>Zaloguj się przy użyciu</DividerLabel>
+      <GoogleLogin />
+      <Text as={Link} to={'/register'} className="registertext">
+        Nie masz konta? <b>Zarejestruj się</b>
+      </Text>
+    </Form>
   )
 }
 

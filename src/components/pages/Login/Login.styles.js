@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
 import { Error } from '@/components/atoms/Error/Error.styles'
-import { Input } from '@/components/atoms/Input/Input.styles'
+import { Label } from '@/components/atoms/Label/Label.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Form = styled.form`
@@ -18,10 +18,6 @@ export const Form = styled.form`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
-  ${Input} {
-    margin-bottom: 15px;
-  }
 
   ${Text}.problems {
     margin: 10px auto 0 0;
@@ -56,7 +52,7 @@ export const Form = styled.form`
 `
 
 export const StyledError = styled(Error)`
-  margin: 0 auto;
+  margin: 0.5rem 0 0 0;
   font-weight: 700;
   font-size: ${({ theme }) => theme.fontSize.m};
 `

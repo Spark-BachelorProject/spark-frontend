@@ -9,9 +9,9 @@ import { InputWrapper, Wrapper } from './InputWithLabel.styles'
 
 // This component works properly only with react-hook-form
 const InputWithLabel = forwardRef((props, ref) => {
-  const { id, labelText, type, placeholder, error, style, ...rest } = props
+  const { id, labelText, type, placeholder, error, style, className, ...rest } = props
   return (
-    <Wrapper style={style} ref={ref}>
+    <Wrapper style={style} ref={ref} className={className}>
       <Label htmlFor={id}>{labelText}</Label>
       <InputWrapper>
         <Input type={type || 'text'} id={id} placeholder={placeholder} error={!!error} {...rest} />

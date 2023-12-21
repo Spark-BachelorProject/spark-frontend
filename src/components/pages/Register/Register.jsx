@@ -9,7 +9,7 @@ import { Alert } from '@/components/atoms/Alert/Alert'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
-import LoginInput from '@/components/molecules/LoginInput/LoginInput'
+import UnauthenticatedInputWithLabel from '@/components/molecules/UnauthenticatedInputWithLabel/UnauthenticatedInputWithLabel'
 import useGoogleLogin from '@/hooks/useGoogleLogin'
 import { useRegisterMutation } from '@/store/api/auth'
 
@@ -49,38 +49,52 @@ const Register = () => {
   }
 
   // #TODO: Add alert when user is created with Google
-  // #TODO: Add redirect to login page after successful registration
-
+  // FIXME: styles are too high
   return (
     <>
       {validData && <Alert message="Użytkownik dodany!" />}
       <Form action="post" onSubmit={handleSubmit(onSubmit)}>
-        <LoginInput
+        <UnauthenticatedInputWithLabel
           placeholder="Email"
+          id="email"
+          name="email"
+          labelText="Email"
           type="email"
           {...register('email')}
           error={errors?.email?.message}
         />
-        <LoginInput
+        <UnauthenticatedInputWithLabel
           placeholder="Imię"
+          id="firstName"
+          name="firstName"
+          labelText="Imię"
           type="text"
           {...register('firstName')}
           error={errors?.firstName?.message}
         />
-        <LoginInput
+        <UnauthenticatedInputWithLabel
           placeholder="Nazwisko"
+          id="lastName"
+          name="lastName"
+          labelText="Nazwisko"
           type="text"
           {...register('lastName')}
           error={errors?.lastName?.message}
         />
-        <LoginInput
+        <UnauthenticatedInputWithLabel
           placeholder="Hasło"
+          id="password"
+          name="password"
+          labelText="Hasło"
           type="password"
           {...register('password')}
           error={errors?.password?.message}
         />
-        <LoginInput
+        <UnauthenticatedInputWithLabel
           placeholder="Powtórz hasło"
+          id="repeatedPassword"
+          name="repeatedPassword"
+          labelText="Powtórz hasło"
           type="password"
           {...register('repeatedPassword')}
           error={errors?.repeatedPassword?.message}

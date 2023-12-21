@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
-import { Input } from '@/components/atoms/Input/Input.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Form = styled.form`
@@ -16,10 +15,6 @@ export const Form = styled.form`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
-  ${Input} {
-    margin-bottom: 15px;
-  }
 
   ${Button} {
     margin-top: 30px;

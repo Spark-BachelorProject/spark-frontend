@@ -10,6 +10,10 @@ export const Wrapper = styled.div`
   align-items: start;
   margin-bottom: -10px;
   margin-top: -10px;
+
+  & > a {
+    width: 100%;
+  }
 `
 
 export const StyledText = styled(Text)`

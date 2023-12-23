@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet'
+
 import MarkerClusterGroup from 'react-leaflet-cluster'
 
-import 'leaflet/dist/leaflet.css'
-
 import { LublinCoordinates } from '@/assets/constants/coordinates'
-import Select from '@/components/atoms/Select/Select'
-import { MapPopup } from '@/components/organism/MapPopup/MapPopup'
 import { useGetActivitiesQuery } from '@/store/api/activities'
 import { useGetPostsQuery } from '@/store/api/posts'
+import 'leaflet/dist/leaflet.css'
+
+import Select from '@/components/atoms/Select/Select'
+import { MapPopup } from '@/components/organism/MapPopup/MapPopup'
+import { useEffect } from 'react'
 
 import { Filters, OverlayRight, Wrapper } from './Map.styles'
 import './Map.styles.css'
@@ -116,10 +118,13 @@ export const Map = () => {
           attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         />
         <MarkerClusterGroup
-          chunkedLoading={true}
-          showCoverageOnHover={false}
-          maxClusterRadius={15}
-          spiderfyOnEveryZoom={true}
+          // chunkedLoading
+          // removeOutsideVisibleBounds
+          // showCoverageOnHover
+          // maxClusterRadius={30}
+
+          chunkedLoading
+          removeOutsideVisibleBounds
         >
           {!isLoadingPosts &&
             isSuccessPosts &&

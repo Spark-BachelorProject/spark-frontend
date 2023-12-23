@@ -9,7 +9,7 @@ export const Wrapper = styled.footer`
   background-color: ${({ theme }) => theme.colors.secondaryBg};
 
   @media (min-width: 998px) {
-    position: absolute;
+    position: fixed;
     z-index: 2;
     bottom: 0;
   }

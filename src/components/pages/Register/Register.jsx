@@ -49,7 +49,6 @@ const Register = () => {
   }
 
   // #TODO: Add alert when user is created with Google
-  // FIXME: styles are too high
   return (
     <>
       {validData && <Alert message="Użytkownik dodany!" />}

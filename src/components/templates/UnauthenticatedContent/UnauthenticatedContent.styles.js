@@ -8,6 +8,11 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 30px;
+
+  @media (max-width: 998px) {
+    justify-content: space-between;
+    flex-direction: column;
+  }
 `
 
 export const ContentWrapper = styled.div`

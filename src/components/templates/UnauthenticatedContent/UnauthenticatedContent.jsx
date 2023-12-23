@@ -2,6 +2,8 @@ import React from 'react'
 
 import PropTypes from 'prop-types'
 
+import UnauthenticatedFooter from '@/components/molecules/UnauthenticatedFooter/UnauthenticatedFooter'
+
 import {
   ContentWrapper,
   LogoSubtitle,
@@ -20,6 +22,7 @@ const UnauthenticatedContent = ({ children }) => {
         </LogoTitlesWrapper>
         {children}
       </ContentWrapper>
+      <UnauthenticatedFooter />
     </Wrapper>
   )
 }

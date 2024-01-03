@@ -67,7 +67,7 @@ const CreatePost = ({ handleClose, handlePostAdded, groupId = 0 }) => {
     data: groupOneApi,
     isLoading: isLoadingGroupOneApi,
     isSuccess: isSuccessGroupOneApi,
-  } = useGetOneGroupQuery(groupId)
+  } = useGetOneGroupQuery(groupId, { skip: !groupId })
 
   const {
     control,

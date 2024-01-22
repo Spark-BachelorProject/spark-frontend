@@ -14,8 +14,8 @@ export const DividerLabel = styled.span`
   &::after,
   &::before {
     content: '';
-    height: 2px;
-    background-color: ${({ theme }) => theme.colors.darkDivider};
+    height: 1px;
+    background-color: ${({ theme }) => theme.colors.postBorder};
     flex: 1;
   }
 

@@ -6,7 +6,7 @@ import { Thumbnail } from '@/components/atoms/Thumbnail/Thumbnail.styles'
 export const Wrapper = styled.div`
   width: 100vw;
   z-index: ${({ popupIsOpen }) => (popupIsOpen ? 999 : 1099)};
-
+  border-bottom: 1px solid ${({ theme }) => theme.colors.postBorder};
   height: 70px;
   position: sticky;
   top: 0;

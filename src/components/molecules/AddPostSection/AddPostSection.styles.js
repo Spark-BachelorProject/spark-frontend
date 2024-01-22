@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.03);
+  /* box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.03); */
   gap: 10px;
   cursor: pointer;
   width: 100%;
@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
   }
 
   &:hover {
-    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.07);
+    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.04);
     border: 1px solid ${({ theme }) => theme.colors.accent};
     transition: 200ms ease-in-out;
   }
@@ -27,7 +27,7 @@ export const Wrapper = styled.div`
 
 export const StyledInput = styled.div`
   background-color: ${({ theme }) => theme.colors.inputBg};
-  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.02);
+  /* box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.02); */
 
   border: 1px solid
     ${({ error, theme }) => (error ? theme.colors.redFont : theme.colors.buttonBorder)};

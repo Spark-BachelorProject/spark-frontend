@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.primaryBg};
     font-family: 'Open Sans', sans-serif;
     transition: background-color 0.2s linear;
+    
   }
 
   a, button, input, textarea {

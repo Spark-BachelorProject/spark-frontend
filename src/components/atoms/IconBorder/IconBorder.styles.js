@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const IconBorder = styled.div`
   border: solid 1px ${({ theme }) => theme.colors.selectBorder};
-  background-color: ${({ theme }) => theme.colors.iconBg};
+  background-color: ${({ theme }) => theme.colors.secondaryBg};
   height: 39px;
   width: auto;
   display: flex;

@@ -8,18 +8,18 @@ export const lightTheme = {
 
   modalBg:             '#fff',      //         white -> slate800
   secondaryBg:         '#fff',      //         white -> slate800
+  primaryBg:           '#fff',      //         white -> slate900
 
   
   mainDivider:         '#f8fafc',   //         slate50 -> slate750
   addPostBg:           '#f8fafc',   //         slate50 -> slate750
   attendingCounterBg:  '#f8fafc',   //         slate50 -> slate750
-  modalBorder:         '#f8fafc',   //         slate50 -> slate750
   iconBgHover:         '#f8fafc',   //         slate50 -> slate800
-  primaryBg:           '#f8fafc',   //         slate50 -> slate900
-
+  
   buttonOffFont:       '#f1f5f9',   //         slate100 -> slate100
-  postBorder:          '#f1f5f9',   //         slate100 -> slate750
+  postBorder:          '#ecf1f6',   //         slate100 -> slate750
   selectBorder:        '#f1f5f9',   //         slate100 -> slate750
+  modalBorder:         '#ecf1f6',   //         slate100 -> custom
 
   navbarBorder:        '#E2E8F0',   //         slate200 -> slate700
   checkboxBorder:      '#e2e8f0',   //         slate200 -> slate700
@@ -114,7 +114,6 @@ export const darkTheme = {
   iconBg:              '#233045',   //         white    -> slate750
 
   mainDivider:         '#233045',   //         slate750 -> slate50
-  modalBorder:         '#233045',   //         slate750 -> slate50
   addPostBg:           '#233045',   //         slate750 -> slate50
   attendingCounterBg:  '#233045',   //         slate750 -> slate50
   postBorder:          '#233045',   //         slate750 -> slate100
@@ -125,7 +124,7 @@ export const darkTheme = {
   modalBg:             '#1e293b',   //         slate800 -> white
   secondaryBg:         '#1e293b',   //         slate800 -> white
   iconBgHover:         '#1e293b',   //         slate800 -> slate50
-  primaryBg:           '#0f172a',   //         slate900 -> slate50
+  primaryBg:           '#0f172a',   //         slate900 -> white
 
   
   buttonFont:          '#EFF6FF',   //         blue50 -> blue50
@@ -139,6 +138,9 @@ export const darkTheme = {
 
   tagBgActive:         '#3b82f620', //         custom blue -> blue500
   tagBorder:           '#3b82f650', //         custom blue -> blue500
+
+  modalBorder:         '#2c3a4c',   //         custom -> slate100
+
 
   
   redFont:             '#D71E3B',   //         custom red -> red500

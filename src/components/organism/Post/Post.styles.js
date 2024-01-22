@@ -5,7 +5,6 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 
 export const Wrapper = styled.article`
-  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.03);
   background-color: ${({ theme }) => theme.colors.secondaryBg};
   margin: 20px auto;
   padding: 20px;
@@ -13,8 +12,8 @@ export const Wrapper = styled.article`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border: 1px solid ${({ theme }) => theme.colors.postBorder};
-  border-radius: 8px;
+  border: 1.5px solid ${({ theme }) => theme.colors.postBorder};
+  border-radius: 12px;
 
   ${Title} {
     line-height: 1.4;

@@ -4,10 +4,10 @@ import { ReactComponent as InfoIcon } from '@/assets/icons/info.svg'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.div`
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
   position: absolute;
   width: auto;
-  bottom: -9%;
+  bottom: -8%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;

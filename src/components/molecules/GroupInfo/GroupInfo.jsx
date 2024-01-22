@@ -9,12 +9,12 @@ export const GroupInfo = () => {
       <Title isBig isBold>
         O grupie
       </Title>
-      <Text>Spotykamy się głównie w piątki i soboty na wieczorne granie</Text>
+      <Text>Spotykamy się głównie w piątki i soboty na wieczorne jeżdżenie</Text>
       <StyledTags>
         {[
           {
             id: 1,
-            name: 'Kajaki',
+            name: 'Narciarstwo',
             type: 'Sport',
           },
         ]}

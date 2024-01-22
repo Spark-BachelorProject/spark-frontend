@@ -6,7 +6,7 @@ import ProfileDetails from '@/components/organism/ProfileDetails/ProfileDetails'
 import { getCurrentTimeISOString } from '@/helpers/dateAndTime'
 import { useGetPostsQuery } from '@/store/api/posts'
 
-import { StyledPageContent } from './Profile.styles'
+import { RightWrapper, StyledPageContent } from './Profile.styles'
 
 //TODO: ask about some endpoint for active posts
 const Profile = () => {
@@ -22,13 +22,13 @@ const Profile = () => {
   return (
     <StyledPageContent>
       <ProfileDetails />
-      <div>
+      <RightWrapper>
         <DividerLabel>Aktualne posty</DividerLabel>
         {!isLoading && activePosts.map((post) => <Post {...post} key={post.id} />)}
         {!isLoading && activePosts.length === 0 && <Title>Brak aktywnych postów</Title>}
         <DividerLabel>Archiwalne posty</DividerLabel>
         {!isLoading && archivedPosts.map((post) => <Post {...post} key={post.id} />)}
-      </div>
+      </RightWrapper>
     </StyledPageContent>
   )
 }

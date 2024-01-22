@@ -15,3 +15,9 @@ export const StyledPageContent = styled(PageContent)`
     }
   }
 `
+
+export const RightWrapper = styled.div`
+  @media (min-width: ${({ theme }) => theme.breakPoints.m}) {
+    min-width: 684px;
+  }
+`

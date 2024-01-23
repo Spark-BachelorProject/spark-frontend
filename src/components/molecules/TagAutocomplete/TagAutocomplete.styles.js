@@ -8,11 +8,11 @@ export const StyledReactTags = styled.div`
   gap: 0.5rem;
 
   .react-tags {
+    /* box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.02); */
     position: relative;
-    padding: 0.25rem 0 0 0.25rem;
+    padding: 0.3rem 0 0 0.3rem;
     border: 1px solid
-      ${({ error, theme }) => (error ? theme.colors.redFont : theme.colors.buttonBorder)};
-    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.02);
+      ${({ error, theme }) => (error ? theme.colors.redFont : theme.colors.postBorder)};
     border-radius: 6px;
     background: ${({ theme }) => theme.colors.inputBg};
     font-size: 0.9rem;
@@ -190,7 +190,8 @@ export const InfoWrapper = styled.div`
 `
 
 export const StyledTextInfo = styled(Text)`
-  color: ${({ theme }) => theme.colors.placeholder};
+  color: ${({ theme }) => theme.colors.text};
+  
 `
 
 export const InputWrapper = styled.div`

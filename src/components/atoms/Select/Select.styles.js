@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const StyledSelect = styled.select`
   /* -webkit-appearance: none; */
-  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.02);
-  height: 35px;
+  /* box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.02); */
+  height: 38px;
   width: auto;
   cursor: ${({ disabled }) => (disabled ? 'disable' : 'pointer')};
   background: ${({ theme }) => theme.colors.secondaryBg};
@@ -12,7 +12,7 @@ export const StyledSelect = styled.select`
   padding: 5px 15px;
   font-size: ${({ theme }) => theme.fontSize.sPlus};
   font-weight: 400;
-  border: 1px solid ${({ theme }) => theme.colors.buttonBorder};
+  border: 1px solid ${({ theme }) => theme.colors.postBorder};
   
 
   &:focus {

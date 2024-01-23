@@ -4,7 +4,7 @@ import { ReactComponent as InfoIcon } from '@/assets/icons/info.svg'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.div`
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
   position: absolute;
   width: auto;
   bottom: -8%;
@@ -16,6 +16,8 @@ export const Wrapper = styled.div`
   gap: 0.5rem;
   max-width: 95%;
   z-index: 1000;
+  border: 1px solid ${({ theme }) => theme.colors.postBorder};
+
 
   background-color: ${({ theme }) => theme.colors.iconBg};
   padding: 6px 15px;

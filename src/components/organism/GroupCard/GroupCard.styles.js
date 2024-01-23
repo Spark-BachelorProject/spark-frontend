@@ -6,6 +6,8 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.article`
   background-color: ${({ theme }) => theme.colors.secondaryBg};
+  border: 1px solid ${({ theme }) => theme.colors.modalBorder};
+
   border-radius: 7px;
   display: flex;
   padding: 15px 10px;
@@ -36,9 +38,9 @@ export const Header = styled.div`
   &::before {
     position: absolute;
     content: '';
-    width: 100%;
+    width: 95%;
     height: 1px;
-    background-color: ${({ theme }) => theme.colors.divider};
+    background-color: ${({ theme }) => theme.colors.postBorder};
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
@@ -62,7 +64,7 @@ export const IconBackground = styled.div`
 export const Content = styled.div`
   ${Text} {
     display: block;
-    width: 100%;
+    width: 90%;
     line-height: 1.8;
   }
 `

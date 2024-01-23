@@ -6,7 +6,7 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 export const Wrapper = styled.form`
   width: 100%;
   min-width: 65vw;
-  padding: 16px 28px;
+  padding: 8px 28px;
 
   @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
     width: 100vw;
@@ -45,7 +45,7 @@ export const FooterWrapper = styled.div`
 export const InputsWrapper = styled.div`
   display: grid;
   margin: 16px 0;
-  gap: 16px;
+  gap: 23px;
 
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(6, 1fr);

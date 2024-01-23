@@ -14,6 +14,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 import AttendanceList from '@/components/molecules/AttendanceList/AttendanceList'
 import { ModalMap } from '@/components/molecules/ModalMap/ModalMap'
 import { formatDate, formatTimeAgo, formatTimeHHMM } from '@/helpers/dateAndTime'
+import { getActivityIcon } from '@/helpers/getActivityIcon'
 import { getInitials } from '@/helpers/stringOperations'
 import useModal from '@/hooks/useModal'
 import usePopup from '@/hooks/usePopup'
@@ -136,7 +137,8 @@ const Post = (props) => {
   return (
     <Wrapper>
       <Header>
-        <Avvvatars value={getInitials(firstName, lastName)} />
+        <Avvvatars value={getInitials(firstName, lastName)} size={33} />
+
         <Details>
           <div>
             <b>
@@ -145,6 +147,7 @@ const Post = (props) => {
             <Text>napisał(a) {formatTimeAgo(dateCreated)}</Text>
           </div>
           <div>
+            <img src={getActivityIcon(activity.name)} alt={activity.name} />
             <Text>{activity.name}</Text>
             <Dot />
             <GlobeIcon />

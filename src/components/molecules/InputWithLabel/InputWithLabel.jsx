@@ -15,7 +15,7 @@ const InputWithLabel = forwardRef((props, ref) => {
       <Label htmlFor={id}>{labelText}</Label>
       <InputWrapper>
         <Input type={type || 'text'} id={id} placeholder={placeholder} error={!!error} {...rest} />
-        {!!error && <AlertCircle />}
+        {error && <AlertCircle />}
       </InputWrapper>
       {error && <Error>{error}</Error>}
     </Wrapper>

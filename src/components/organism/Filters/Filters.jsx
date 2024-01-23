@@ -10,9 +10,15 @@ import { dateNowYYYYMMDD, timeNow } from '@/helpers/dateAndTime'
 import { ButtonsWrapper, InputWrapper, TimeFromToWrapper, Wrapper } from './Filters.styles'
 
 const Filters = ({ handleClose, setFilterOptions }) => {
+  const hourEnd = new Date();
+  hourEnd.setHours(hourEnd.getHours() + 2);
+  const formattedHourEnd = hourEnd.toISOString().substr(11, 5);
+
+
+
   const [state, setState] = useState({
     hourStart: timeNow,
-    hourEnd: timeNow,
+    hourEnd: formattedHourEnd,
     date: dateNowYYYYMMDD,
   })
   const [error, setError] = useState('')

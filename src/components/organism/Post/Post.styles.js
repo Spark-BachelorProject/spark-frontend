@@ -32,6 +32,11 @@ export const Header = styled.div`
   @media (min-width: ${({ theme }) => theme.breakPoints.mobile}) {
     grid-template-columns: 0.5fr 90% 0.1fr;
   }
+
+  & > img {
+    height: 30px;
+    width: 30px;
+  }
 `
 
 export const Details = styled.div`
@@ -41,7 +46,8 @@ export const Details = styled.div`
     display: flex;
     align-items: flex-end;
     width: 350px;
-    gap: 5px;
+    gap: 3px;
+    margin-bottom: 3px;
 
     ${Text} {
       font-weight: 400;
@@ -66,8 +72,14 @@ export const Details = styled.div`
 
     ${Text} {
       color: ${({ theme }) => theme.colors.text};
-      font-size: ${({ theme }) => theme.fontSize.sPlus};
-      font-weight: 500;
+      font-size: ${({ theme }) => theme.fontSize.s};
+      font-weight: 400;
+    }
+
+    & > img {
+      height: 20px;
+      width: 20px;
+      margin-right: -3px;
     }
 
     & > svg {

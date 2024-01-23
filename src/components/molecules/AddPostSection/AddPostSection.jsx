@@ -3,7 +3,6 @@ import { useState } from 'react'
 import Avvvatars from 'avvvatars-react'
 
 import { Alert } from '@/components/atoms/Alert/Alert'
-import { Button } from '@/components/atoms/Buttons/Button.styles'
 import CreatePost from '@/components/organism/CreatePost/CreatePost'
 import { getInitials } from '@/helpers/stringOperations'
 import useModal from '@/hooks/useModal'
@@ -56,7 +55,6 @@ export const AddPostSection = () => {
       >
         <Avvvatars value={getInitials(firstName, lastName)} size={30} />
         <StyledInput>Zaproś znajomych do gry!</StyledInput>
-        <Button isGray>Dodaj</Button>
         <Alert message="Twój post został pomyślnie dodany!" show={showAlert} />
       </Wrapper>
       {isOpen ? (

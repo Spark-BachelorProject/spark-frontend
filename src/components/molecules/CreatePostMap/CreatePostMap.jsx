@@ -8,7 +8,7 @@ import { getIcon } from '@/components/pages/Map/customIcons'
 import { MarkerInstructionPopup } from '../MarkerInstructionPopup/MarkerInstructionPopup'
 import './CreatePostMap.styles.css'
 
-function MapUpdater({ center, isPlaceSelected }) {
+function MapUpdater({ center, isPlaceSelected, hasMarkerMoved }) {
   const map = useMap()
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function MapUpdater({ center, isPlaceSelected }) {
   }, [map])
 
   useEffect(() => {
-    map.flyTo(center, isPlaceSelected ? 17 : 12.5)
+    map.flyTo(center, isPlaceSelected || hasMarkerMoved ? 17 : 12.5)
   }, [center, isPlaceSelected, map])
 
   return null
@@ -53,7 +53,7 @@ export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved, isMarked
       zoom={15}
       zoomControl={true}
     >
-      <MapUpdater center={markerPosition} isPlaceSelected={isPlaceSelected} />
+      <MapUpdater center={markerPosition} isPlaceSelected={isPlaceSelected} hasMarkerMoved={hasMarkerMoved}/>
       <TileLayer url="https://{s}.tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=aSetRCOQl0G3zH75uVIo4ZLmnMUgiP4uy5ss8IrkciB6DUwX8HUzf3he3SBU7Ppi" />
       <Marker
         position={markerPosition}

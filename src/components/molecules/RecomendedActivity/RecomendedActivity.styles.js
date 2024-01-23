@@ -8,8 +8,9 @@ export const Wrapper = styled.div`
   border-radius: 5px;
 
   gap: 0.5rem;
-  padding: 12px 20px;
-  margin: -5px 0 -5px -20px;
+  width: 115%;
+  margin-left: -20px;
+  padding: 10px 20px;
 
   &:hover {
     cursor: pointer;

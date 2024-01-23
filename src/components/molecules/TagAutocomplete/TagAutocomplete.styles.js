@@ -191,7 +191,7 @@ export const InfoWrapper = styled.div`
 
 export const StyledTextInfo = styled(Text)`
   color: ${({ theme }) => theme.colors.text};
-  
+  font-size: ${({ theme }) => theme.fontSize.s};
 `
 
 export const InputWrapper = styled.div`

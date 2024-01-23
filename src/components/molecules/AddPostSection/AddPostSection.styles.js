@@ -5,14 +5,14 @@ export const Wrapper = styled.div`
   gap: 10px;
   cursor: pointer;
   width: 100%;
-  height: 80px;
+  height: 75px;
   background-color: ${({ theme }) => theme.colors.secondaryBg};
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
 
-  padding: 5px 20px;
+  padding: 0px 20px;
   display: flex;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 12px;
 
   @media (max-width: 997px) {
     display: none;
@@ -31,11 +31,10 @@ export const StyledInput = styled.div`
 
   border: 1px solid
     ${({ error, theme }) => (error ? theme.colors.redFont : theme.colors.buttonBorder)};
-  padding: 8px 15px;
-  width: 80%;
-  margin-right: 10px;
-  border-radius: 5px;
+  padding: 8px 20px;
+  width: 97%;
+  border-radius: 25px;
   color: ${({ theme }) => theme.colors.text};
-  font-size: ${({ theme }) => theme.fontSize.m};
+  font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: 500;
 `

@@ -4,22 +4,46 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-  padding: 8px 0;
+  align-items: center;
+  gap: 20px;
+  border-radius: 7px;
+  width: 115%;
   margin-left: -20px;
+  padding: 5px 20px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.iconBgHover};
+  }
+`
+
+export const GroupIconDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.iconBg};
+  padding: 8px;
+  border-radius: 30px;
+  height: 40px;
+  width: 40px;
+  border: 1px solid ${({ theme }) => theme.colors.postBorder};
+
+  & > img {
+    height: 20px;
+    width: 20px;
+  }
+`
+
+export const RightWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: -30px;
   padding: 8px 20px;
   cursor: pointer;
 
   & > div {
     display: flex;
-    gap: 8px;
+    gap: 4px;
     flex-direction: row;
-  }
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.modalBg};
-    /* transition: 200ms ease-in-out; */
   }
 `
 

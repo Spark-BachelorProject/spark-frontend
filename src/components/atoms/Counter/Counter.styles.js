@@ -6,13 +6,14 @@ export const CounterWrapper = styled.div`
 
 export const CounterNumber = styled.span`
   position: absolute;
-  top: ${({ hasCounter }) => (hasCounter ? '-24px' : '-13px')};
+  top: ${({ hasCounter }) => (hasCounter ? '-26px' : '-13px')};
   right: ${({ hasCounter }) => (hasCounter ? '-15px' : '-4px')};
 
   display: flex;
   justify-content: center;
   width: ${({ hasCounter }) => (hasCounter ? '17px' : '13px')};
   height: ${({ hasCounter }) => (hasCounter ? '17px' : '13px')};
+  padding: 1px 0 0 0;
 
   font-size: 11px;
   font-weight: 600;

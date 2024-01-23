@@ -60,10 +60,10 @@ export const lightTheme = {
   tagBgActive:         '#3b82f615', //         blue500 -> custom blue
   tagBorder:           '#3b82f6',   //         blue500 -> custom blue
 
-  bookmarkBg:          '#FAFBFF',   //         custom -> slate750
-  iconPrimaryActive:   '#0f172a',   //         custom -> slate50
-  tagBg:'rgba(59, 130, 246, 0.05)', //         custom blue -> custom blue
-  buttonDisabled:'rgba(59, 130, 246, 0.02)', //         custom blue -> custom blue
+  bookmarkBg:          '#FAFBFF',                         //         custom -> slate750
+  iconPrimaryActive:   '#0f172a',                         //         custom -> slate50
+  tagBg:               'rgba(59, 130, 246, 0.05)',        //         custom blue -> custom blue
+  buttonDisabled:      'rgba(59, 130, 246, 0.02)',        //         custom blue -> custom blue
 
 
 

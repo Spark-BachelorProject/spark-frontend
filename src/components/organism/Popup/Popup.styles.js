@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 
 export const PopupWrapper = styled.div`
-  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.02);
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.03);
   position: ${({ isFixed }) => (isFixed ? 'fixed' : 'absolute')};
   z-index: ${({ popupNum }) => 1000 + popupNum * 1 + 1};
   top: ${({ position: { y } }) => `${y}px`};

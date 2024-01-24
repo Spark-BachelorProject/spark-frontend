@@ -36,5 +36,5 @@ export const StyledInput = styled.div`
   border-radius: 25px;
   color: ${({ theme }) => theme.colors.text};
   font-size: ${({ theme }) => theme.fontSize.s};
-  font-weight: 500;
+  font-weight: 400;
 `

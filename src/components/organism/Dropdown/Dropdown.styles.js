@@ -21,8 +21,8 @@ export const SelectButtonsWrapper = styled.div`
 
 export const StyledIconBorder = styled(IconBorder)`
   /* box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.03); */
-  padding: 9px 10px;
-  height: 35px;
+  padding: 9px 15px;
+  height: 39px;
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
   color: ${({ theme }) => theme.colors.text};
   font-size: ${({ theme }) => theme.fontSize.sPlus};

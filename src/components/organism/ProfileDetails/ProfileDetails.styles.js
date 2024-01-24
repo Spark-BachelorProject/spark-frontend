@@ -6,6 +6,7 @@ import { Title } from '@/components/atoms/Title/Title.styles'
 
 export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.secondaryBg};
+  border: 1px solid ${({ theme }) => theme.colors.postBorder};
   width: 100%;
   max-height: content;
   padding: 20px;

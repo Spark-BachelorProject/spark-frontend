@@ -7,6 +7,7 @@ import { LublinCoordinates } from '@/assets/constants/coordinates.js'
 import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import { createPostSchema } from '@/assets/schemas/createPostSchema.js'
 import { Button } from '@/components/atoms/Buttons/Button.styles.js'
+import { Text } from '@/components/atoms/Text/Text.styles.js'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import CreatePostMap from '@/components/molecules/CreatePostMap/CreatePostMap.jsx'
 import InputWithLabel from '@/components/molecules/InputWithLabel/InputWithLabel.jsx'
@@ -36,6 +37,7 @@ import {
   InputsWrapper,
   NextArrowIcon,
   StyledText,
+  TitleWrapper,
   Wrapper,
 } from './CreatePost.styles.js'
 
@@ -213,11 +215,12 @@ const CreatePost = ({ handleClose, handlePostAdded, groupId = 0 }) => {
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>
       <HeaderWrapper>
-        <div>
+        <TitleWrapper>
           <Title isBig isBold>
             Dodawanie postu
           </Title>
-        </div>
+          <Text isBig>Post pozwoli Ci znaleźć partnerów do gry</Text>
+        </TitleWrapper>
         <XIcon onClick={handleClose} />
       </HeaderWrapper>
       <InputsWrapper>

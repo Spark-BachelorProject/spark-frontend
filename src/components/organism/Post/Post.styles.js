@@ -75,7 +75,7 @@ export const Details = styled.div`
     align-items: center;
 
     ${Text} {
-      color: ${({ theme }) => theme.colors.text};
+      color: ${({ theme }) => theme.colors.titleFont};
       font-size: ${({ theme }) => theme.fontSize.s};
       font-weight: 400;
     }
@@ -112,11 +112,6 @@ export const InteractionsSection = styled.section`
   height: auto;
   margin: 25px 0 10px 0;
   justify-content: space-between;
-
-  ${Title} {
-    font-size: ${({ theme }) => theme.fontSize.s};
-    color: ${({ theme }) => theme.colors.placeholder};
-  }
 `
 
 export const DetailsWrapper = styled.div`
@@ -127,7 +122,7 @@ export const DetailsWrapper = styled.div`
   ${Text} {
     font-weight: 400;
     font-size: ${({ theme }) => theme.fontSize.m};
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.titleFont};
   }
 
   & > svg {

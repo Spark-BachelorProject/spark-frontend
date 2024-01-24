@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 
   &:hover {
     cursor: pointer;
-    background-color: ${({ theme }) => theme.colors.modalBg};
+    background-color: ${({ theme }) => theme.colors.iconBgHover};
     /* transition: 200ms ease-in-out; */
   }
 `

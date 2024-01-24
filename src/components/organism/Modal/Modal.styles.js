@@ -6,7 +6,7 @@ export const ModalWrapper = styled.div`
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
 
   overflow-y: auto;
-  max-height: 85vh;
+  max-height: 95vh;
 
   position: ${({ isFixed }) => (isFixed ? 'fixed' : 'absolute')};
   z-index: ${({ modalNum }) => 2000 + modalNum * 1 + 1};
@@ -31,7 +31,7 @@ export const ModalWrapper = styled.div`
   /* max-height: 500px; */
   background-color: ${({ theme }) => theme.colors.modalBg};
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
-  border-radius: 12px;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

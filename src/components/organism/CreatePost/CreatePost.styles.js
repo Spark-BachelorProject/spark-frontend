@@ -16,18 +16,19 @@ export const Wrapper = styled.form`
   }
 `
 
+export const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 5px;
+`
+
 export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 16px;
   border-bottom: 2px solid ${({ theme }) => theme.colors.postBorder};
-
-  & > div {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
 
   & > svg {
     cursor: pointer;

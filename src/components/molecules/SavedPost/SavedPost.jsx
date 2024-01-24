@@ -1,6 +1,7 @@
 import Avvvatars from 'avvvatars-react'
 
 import Dot from '@/components/atoms/Dot/Dot'
+import { getActivityIcon } from '@/helpers/getActivityIcon'
 import { capitalize, getInitials } from '@/helpers/stringOperations'
 import { truncateString } from '@/helpers/truncateString'
 
@@ -32,6 +33,7 @@ export const SavedPost = ({
         <NameActivityWrapper isCancelled>
           <FirstRowText isCancelled>{`${firstName} ${lastName}`}</FirstRowText>
           <Dot />
+          <img src={getActivityIcon(activity.name)} alt={activity.name} />
           <FirstRowText isCancelled>{activity.name}</FirstRowText>
         </NameActivityWrapper>
         <SecondRowText isCancelled>

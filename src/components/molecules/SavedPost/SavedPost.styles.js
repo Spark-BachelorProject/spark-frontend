@@ -37,9 +37,14 @@ export const NameActivityWrapper = styled.div`
   margin: ${({ isCancelled }) => (isCancelled ? `-4px 0 0 0` : '0')};
   display: flex;
   justify-content: start;
-  align-content: center;
+  align-items: center;
   gap: 5px;
   width: 100%;
+
+  & > img {
+    width: 15px;
+    height: 15px;
+  }
 `
 
 export const StyledThumbnail = styled(Thumbnail)`

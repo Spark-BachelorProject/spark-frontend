@@ -15,8 +15,9 @@ export const Wrapper = styled.nav`
     gap: 15px;
     color: ${({ theme }) => theme.colors.text};
     font-weight: 600;
-    padding: 15px 15px;
-    margin: -2px 0 -2px 0;
+    padding: 17px 15px;
+    width: 110%;
+    margin: -2px 0 -2px -10px;
     border-radius: 7px;
   }
 

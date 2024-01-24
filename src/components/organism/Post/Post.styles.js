@@ -15,6 +15,10 @@ export const Wrapper = styled.article`
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
   border-radius: 12px;
 
+  @media (min-width: ${({ theme }) => theme.breakPoints.m}) {
+    min-width: 684px;
+  }
+
   ${Title} {
     line-height: 1.4;
     margin: 10px 0 15px 0;

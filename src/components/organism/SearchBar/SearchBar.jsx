@@ -9,10 +9,10 @@ import { useGetGroupsQuery } from '@/store/api/groups'
 import { useGetPostsQuery } from '@/store/api/posts'
 
 import {
+  SearchResultTypeLabel,
   SearchResults,
   SearchResultsItem,
   Wrapper,
-  SearchResultTypeLabel,
 } from './SearchBar.styles'
 
 function getPostsAndGroupsFilter(inputValue) {
@@ -73,7 +73,7 @@ const SearchBar = () => {
 
   return (
     <Wrapper>
-      <SearchInput Icon={<SearchIcon />} {...getInputProps()} placeholder="Szukaj" />
+      <SearchInput Icon={<SearchIcon />} {...getInputProps()} placeholder="Szukaj..." />
       <SearchResults isVisible={isOpen} {...getMenuProps()}>
         {items.map((item, index) => (
           <React.Fragment key={index}>

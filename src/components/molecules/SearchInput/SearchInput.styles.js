@@ -22,5 +22,7 @@ export const InputWrapper = styled.div`
 
   & > ${Input} {
     background-color: ${({ theme }) => theme.colors.iconBg};
+    border-radius: 25px;
+    padding-left: 25px;
   }
 `

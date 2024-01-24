@@ -29,6 +29,7 @@ export const CitySelect = ({ handleClose, handleSubmit, shouldBeSelected = false
         }
 
         setLocalCity(city)
+        handleSubmit()
         dispatch(setCity(city))
         handleClose()
       })

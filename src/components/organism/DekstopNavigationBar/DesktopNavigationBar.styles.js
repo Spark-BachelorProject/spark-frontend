@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   margin-top: -105px;
   max-width: 330px;
   height: calc(100vh - 70px);
-  padding: 100px 20px 20px 20px;
+  padding: 100px 45px 20px 20px;
   position: sticky;
   top: 0;
   gap: 10px;

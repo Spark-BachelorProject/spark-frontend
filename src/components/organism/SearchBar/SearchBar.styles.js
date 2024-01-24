@@ -6,6 +6,8 @@ export const Wrapper = styled.div`
 
 export const SearchResults = styled.ul`
   visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.03);
+
   z-index: 1000;
   padding: 10px;
   border-radius: 15px;
@@ -14,11 +16,12 @@ export const SearchResults = styled.ul`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 45px;
+  top: 50px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   background-color: ${({ theme }) => theme.colors.inputBg};
+  border: 1px solid ${({ theme }) => theme.colors.postBorder};
 
   @media (max-width: ${({ theme }) => theme.breakPoints.m}) {
     position: fixed;

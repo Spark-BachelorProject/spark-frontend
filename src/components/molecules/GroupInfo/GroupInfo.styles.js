@@ -5,6 +5,7 @@ import Tags from '@/components/atoms/Tags/Tags'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.section`
+  border: 1px solid ${({ theme }) => theme.colors.postBorder};
   background-color: ${({ theme }) => theme.colors.secondaryBg};
   width: 250px;
   height: fit-content;

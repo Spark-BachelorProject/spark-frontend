@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const IconBorder = styled.div`
-  border: solid 1px ${({ theme }) => theme.colors.selectBorder};
-  background-color: ${({ theme }) => theme.colors.secondaryBg};
+  border: solid 1px ${({ theme }) => theme.colors.postBorder};
+  background-color: ${({ theme }) => theme.colors.navbarBg};
   height: 39px;
   width: auto;
   display: flex;

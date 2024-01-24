@@ -26,10 +26,11 @@ export const GroupIconDiv = styled.div`
   height: 40px;
   width: 40px;
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
+  opacity: 0.9;
 
   & > img {
-    height: 20px;
-    width: 20px;
+    height: 22px;
+    width: 22px;
   }
 `
 

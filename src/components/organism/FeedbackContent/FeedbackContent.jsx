@@ -90,7 +90,6 @@ export const FeedbackContent = ({ handleClose, handleFeedbackSubmitted }) => {
           isSelected={rating === 5}
         />
       </RatingWrapper>
-
       <TextArea placeholder="Opisz dokładniej powód oceny" onChange={handleFeedback} />
       {error && <Error>{error}</Error>}
       <ButtonWrapper>

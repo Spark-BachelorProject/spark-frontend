@@ -45,7 +45,7 @@ export const DekstopRightBar = () => {
       <DividerLabel isSolid />
       <Container>
         <StyledTitle isBig isBold>
-          Sporty dla Ciebie
+          Aktywności dla Ciebie
         </StyledTitle>
         {isLoadingRecommendedActivities ? <Loader isCentered /> : null}
         {!isLoadingRecommendedActivities &&

@@ -38,6 +38,7 @@ export const FeedbackSection = () => {
       <Text>Daj nam znać co możemy poprawić!</Text>
       <StyledButton
         isGray
+        isBig
         borderOnly
         onClick={(e) => handleOpenFeedbackPopup(e)}
         ref={modalOpenElementRef}

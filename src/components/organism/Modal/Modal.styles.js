@@ -69,6 +69,7 @@ export const ModalWrapper = styled.div`
 
 export const ModalBackground = styled.div`
   position: fixed;
+  cursor: pointer;
   z-index: ${({ modalNum }) => 2000 + modalNum};
   backdrop-filter: blur(3px);
   top: 0;

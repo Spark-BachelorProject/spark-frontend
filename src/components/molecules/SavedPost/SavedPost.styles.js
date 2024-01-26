@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
   cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.iconBgHover};
+    background-color: ${({ theme }) => theme.colors.attendingCounterBg};
     transition: background-color 200ms ease-in;
   }
 `

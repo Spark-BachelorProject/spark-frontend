@@ -11,8 +11,7 @@ export const SecondaryButton = styled(Button).attrs((props) => ({
   justify-content: center;
   color: ${({ theme, isFilled }) => (isFilled ? theme.colors.white : theme.colors.accent)};
   font-weight: 500;
-  padding: 18px 20px;
-  max-height: 35px;
+  padding: 11px 22px;
   background-color: ${({ theme, isFilled }) =>
     isFilled ? theme.colors.accent : theme.colors.tagBg};
   border: 1px solid ${({ theme }) => theme.colors.tagBg};

@@ -24,6 +24,6 @@ export const Input = styled.input`
 
   &[type='time'],
   &[type='date'] {
-    max-height: 40px;
+    max-height: 39px;
   }
 `

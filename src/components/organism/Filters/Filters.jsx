@@ -114,10 +114,10 @@ const Filters = ({ handleClose, setFilterOptions }) => {
       {/* <CheckboxField labelText={'Tylko darmowe'} id={'onlyFree'} /> */}
       {error && <Error>{error}</Error>}
       <ButtonsWrapper>
-        <Button isGray onClick={handleClose}>
+        <Button isGray isBig onClick={handleClose}>
           Anuluj
         </Button>
-        <Button type="submit">Zapisz</Button>
+        <Button isBig type="submit">Zapisz</Button>
       </ButtonsWrapper>
     </Wrapper>
   )

@@ -13,22 +13,28 @@ export const Wrapper = styled.nav`
     flex-direction: row;
     align-items: center;
     gap: 15px;
-    color: ${({ theme }) => theme.colors.text};
-    font-weight: 600;
+    color: ${({ theme }) => theme.colors.titleFont};
+    font-weight: 500;
     padding: 17px 15px;
     width: 110%;
     margin: -2px 0 -2px -10px;
     border-radius: 7px;
+    letter-spacing: -0.01em;
+
+    :hover {
+      background-color: ${({ theme }) => theme.colors.iconBgHover};
+    /* transition: 200ms ease-in-out; */
+
+    & > svg  {
+      scale: 1.07;
+      transition: 100mss ease-in-out;
+    }
+    }
   }
 
   & > a.${'active'} {
-    color: ${({ theme }) => theme.colors.accent};
+    color: ${({ theme }) => theme.colors.titleFont};
     font-weight: 700;
-  }
-
-  & > a:hover {
-    background-color: ${({ theme }) => theme.colors.modalBg};
-    /* transition: 200ms ease-in-out; */
   }
 
   & > a > svg > path {
@@ -36,6 +42,6 @@ export const Wrapper = styled.nav`
   }
 
   & > a.${'active'} > svg > path {
-    stroke: ${({ theme }) => theme.colors.accent};
+    stroke: ${({ theme }) => theme.colors.titleFont};
   }
 `

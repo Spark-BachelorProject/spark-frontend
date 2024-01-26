@@ -4,14 +4,19 @@ import { ReactComponent as CloseIcon } from '@/assets/icons/x.svg'
 
 export const StyledCloseIcon = styled(CloseIcon)`
   position: absolute;
-  top: 30px;
+  top: 20px;
   right: 20px;
-  height: 20px;
-  cursor: pointer;
-  background-color: ${({ theme }) => theme.colors.inputBg};
+  width: 15px;
+  height: 15px;
+  cursor: pointer;  
   border-radius: 2px;
-  transition: background-color 0.2s ease-out;
-  :hover {
-    background-color: ${({ theme }) => theme.colors.buttonBg};
+
+  & > path {
+    stroke: ${({ theme }) => theme.colors.placeholder};
   }
+
+  :hover > path {
+      stroke: ${({ theme }) => theme.colors.text};
+      transition: 0.05s ease-in-out;
+    }
 `

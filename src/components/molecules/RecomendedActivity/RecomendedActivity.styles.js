@@ -33,7 +33,7 @@ export const GroupIconDiv = styled.div`
   height: 40px;
   width: 40px;
   margin-right: -6px;
-  opacity: 0.9;
+  opacity: 0.7;
 
   /* border: 1px solid ${({ theme }) => theme.colors.postBorder}; */
 

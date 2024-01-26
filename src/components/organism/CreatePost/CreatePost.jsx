@@ -4,7 +4,6 @@ import { Controller, useForm, useWatch } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { LublinCoordinates } from '@/assets/constants/coordinates.js'
-import { ReactComponent as XIcon } from '@/assets/icons/x.svg'
 import { createPostSchema } from '@/assets/schemas/createPostSchema.js'
 import { Button } from '@/components/atoms/Buttons/Button.styles.js'
 import { Text } from '@/components/atoms/Text/Text.styles.js'
@@ -31,6 +30,7 @@ import { useAddPostMutation } from '@/store/api/posts'
 import { useGetTagsByActivityIdQuery } from '@/store/api/tags.js'
 import { useGetUserQuery } from '@/store/api/user.js'
 
+import { CloseButton } from '@/components/atoms/CloseButton/CloseButton.jsx'
 import {
   FooterWrapper,
   HeaderWrapper,
@@ -219,9 +219,9 @@ const CreatePost = ({ handleClose, handlePostAdded, groupId = 0 }) => {
           <Title isBig isBold>
             Dodawanie postu
           </Title>
-          <Text isBig>Post pozwoli Ci znaleźć partnerów do gry</Text>
+          <Text >Dzieli Cię jeden krok od znalezienia partnerów do gry!</Text>
         </TitleWrapper>
-        <XIcon onClick={handleClose} />
+        <CloseButton onClick={handleClose} />
       </HeaderWrapper>
       <InputsWrapper>
         <InputWithLabel
@@ -302,7 +302,7 @@ const CreatePost = ({ handleClose, handlePostAdded, groupId = 0 }) => {
           isMarkerMoved={isMarkerMoved}
           setMarkerMoved={handleMarkerMoved}
           onSelectCity={handleSelectedCity}
-          style={{ gridArea: 'input4' }}
+          style={{ gridArea: 'input4', }}
           {...register('address')}
           error={errors?.address?.message}
         />

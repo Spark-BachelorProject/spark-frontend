@@ -158,7 +158,7 @@ export const theme = {
   },
   colors: lightTheme,
   fontSize: {
-    xs: '11px',
+    xs: '12px',
     s: '13px',
     sPlus: '14px',
     m: '15px',

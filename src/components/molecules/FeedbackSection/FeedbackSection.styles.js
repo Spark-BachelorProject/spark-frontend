@@ -11,4 +11,5 @@ export const Wrapper = styled.div`
 
 export const StyledButton = styled(Button)`
   margin-top: 15px;
+  background-color: ${({ theme }) => theme.colors.primaryBg};
 `

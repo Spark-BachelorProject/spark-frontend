@@ -47,5 +47,6 @@ export const TimeFromToWrapper = styled.div`
 
 export const ButtonsWrapper = styled.div`
   display: flex;
+  margin-top: 20px;
   gap: 10px;
 `

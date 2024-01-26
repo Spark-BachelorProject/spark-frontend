@@ -190,8 +190,8 @@ export const InfoWrapper = styled.div`
 `
 
 export const StyledTextInfo = styled(Text)`
-  color: ${({ theme }) => theme.colors.text};
-  font-size: ${({ theme }) => theme.fontSize.s};
+  color: ${({ theme }) => theme.colors.placeholder};
+  font-size: ${({ theme }) => theme.fontSize.xs};
 `
 
 export const InputWrapper = styled.div`

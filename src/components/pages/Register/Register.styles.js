@@ -6,6 +6,7 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Form = styled.form`
   background-color: ${({ theme }) => theme.colors.secondaryBg};
+  border: 1px solid ${({ theme }) => theme.colors.postBorder};
   padding: 25px 20px;
   margin: 30px 0 80px;
   max-width: 440px;

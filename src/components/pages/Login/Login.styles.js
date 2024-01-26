@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
 import { Error } from '@/components/atoms/Error/Error.styles'
-import { Label } from '@/components/atoms/Label/Label.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Form = styled.form`
   background-color: ${({ theme }) => theme.colors.secondaryBg};
+  border: 1px solid ${({ theme }) => theme.colors.postBorder};  
   padding: 25px 20px;
   margin-top: 15px;
   margin-bottom: 60px;

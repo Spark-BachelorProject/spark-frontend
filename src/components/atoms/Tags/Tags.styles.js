@@ -6,6 +6,7 @@ export const StyledTags = styled.div`
   margin: 15px 0 10px 0;
 
   ${Button} {
+    cursor: inherit;
     padding: 7px 14px;
     background-color: ${({ theme }) => theme.colors.tagBg};
     border: 1.5px solid ${({ theme }) => theme.colors.tagBg};

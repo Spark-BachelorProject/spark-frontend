@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.div`
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -26,7 +27,8 @@ export const GroupIconDiv = styled.div`
   height: 40px;
   width: 40px;
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
-  opacity: 0.9;
+  opacity: 0.8;
+
 
   & > img {
     height: 22px;

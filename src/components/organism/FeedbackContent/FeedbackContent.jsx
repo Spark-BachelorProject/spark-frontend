@@ -93,10 +93,10 @@ export const FeedbackContent = ({ handleClose, handleFeedbackSubmitted }) => {
       <TextArea placeholder="Opisz dokładniej powód oceny" onChange={handleFeedback} />
       {error && <Error>{error}</Error>}
       <ButtonWrapper>
-        <Button onClick={handleClose} isGray>
+        <Button isBig onClick={handleClose} isGray>
           Anuluj
         </Button>
-        <Button onClick={handleSubmit}>Wyślij</Button>
+        <Button isBig onClick={handleSubmit}>Wyślij</Button>
       </ButtonWrapper>
     </Wrapper>
   )

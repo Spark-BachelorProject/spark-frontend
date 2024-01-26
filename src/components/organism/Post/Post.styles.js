@@ -55,14 +55,14 @@ export const Details = styled.div`
 
     ${Text} {
       font-weight: 400;
-      font-size: ${({ theme }) => theme.fontSize.s};
+      font-size: ${({ theme }) => theme.fontSize.xs};
       color: ${({ theme }) => theme.colors.grayDetails};
     }
 
     & > b {
       cursor: pointer;
       font-weight: 400;
-      font-size: ${({ theme }) => theme.fontSize.s};
+      font-size: ${({ theme }) => theme.fontSize.xs};
       color: ${({ theme }) => theme.colors.grayDetails};
     }
   }
@@ -75,7 +75,7 @@ export const Details = styled.div`
     align-items: center;
 
     ${Text} {
-      color: ${({ theme }) => theme.colors.titleFont};
+      color: ${({ theme }) => theme.colors.s};
       font-size: ${({ theme }) => theme.fontSize.s};
       font-weight: 400;
     }
@@ -126,9 +126,9 @@ export const DetailsWrapper = styled.div`
   }
 
   & > svg {
-    height: 18px;
-    width: 18px;
-    margin-right: 10px;
+    height: 14px;
+    width: 14px;
+    margin-right: 8px;
   }
 
   & > svg > path {

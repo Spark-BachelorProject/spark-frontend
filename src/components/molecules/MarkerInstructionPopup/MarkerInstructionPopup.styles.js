@@ -4,7 +4,7 @@ import { ReactComponent as InfoIcon } from '@/assets/icons/info.svg'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Wrapper = styled.div`
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.08);
   position: absolute;
   width: auto;
   bottom: -8%;
@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 
   background-color: ${({ theme }) => theme.colors.iconBg};
   padding: 6px 15px;
-  border-radius: 5px;
+  border-radius: 8px;
 
   @media (max-width: calc(${({ theme }) => theme.breakPoints.mobile} + 100px)) {
     bottom: -8%;

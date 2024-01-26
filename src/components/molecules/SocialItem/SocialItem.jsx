@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router'
 
 import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
-import { Title } from '@/components/atoms/Title/Title.styles'
 import { getActivityIcon } from '@/helpers/getActivityIcon'
 
 import { GroupIconDiv, RightWrapper, StyledText, Wrapper } from './SocialItem.styles'
@@ -21,9 +20,9 @@ export const SocialItem = (props) => {
         <img src={getActivityIcon(activity?.name)} alt="activity" />
       </GroupIconDiv>
       <RightWrapper onClick={navigateToGroupPage}>
-        {isWithoutTitle ? null : <Title isBold>{name}</Title>}
+        {isWithoutTitle ? null : <Text isBold>{name}</Text>}
         <div>
-          <Text isBig>{activity?.name}</Text>
+          <Text>{activity?.name}</Text>
           <Dot />
           <StyledText>Popularna</StyledText>
         </div>

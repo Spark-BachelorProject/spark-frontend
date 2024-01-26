@@ -173,7 +173,7 @@ const HeaderSearchBar = forwardRef((props, ref) => {
             tabIndex={0}
             data-testid="profile-wrapper"
           >
-            <Avvvatars value={initials} size={32} />
+            <Avvvatars value={initials} size={28} />
           </StyledIconBorder>
 
           {isOpenNotificationPopup ? (

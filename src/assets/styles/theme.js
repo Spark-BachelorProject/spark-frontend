@@ -40,7 +40,6 @@ export const lightTheme = {
   iconSecondary:       '#475569',   //         slate600 -> slate200
   inputFont:           '#475569',   //         slate600 -> slate200
   selectFont:          '#475569',   //         slate600 -> slate300
-  tagFont:             '#475569',   //         slate600 -> slate300
   text:                '#475569',   //         slate600 -> slate300
 
   textHeader:          '#334155',   //         slate700 -> slate200
@@ -58,7 +57,6 @@ export const lightTheme = {
   iconPlusBg:          '#3b82f6',   //         blue500 -> blue500
   buttonBg:            '#3B82F6',   //         blue500 -> blue550
   tagBgActive:         '#3b82f615', //         blue500 -> custom blue
-  tagBorder:           '#3b82f6',   //         blue500 -> custom blue
 
   bookmarkBg:          '#FAFBFF',                         //         custom -> slate750
   iconPrimaryActive:   '#0f172a',                         //         custom -> slate50
@@ -92,7 +90,6 @@ export const darkTheme = {
   checkboxTick:        '#CBD5E1',   //         slate300 -> slate500
   text:                '#CBD5E1',   //         slate300 -> slate600
   selectFont:          '#CBD5E1',   //         slate300 -> slate600
-  tagFont:             '#CBD5E1',   //         slate300 -> slate600
   boldText:            '#CBD5E1',   //         slate300 -> slate800
   labelFont:           '#CBD5E1',   //         slate300 -> slate800
 
@@ -137,7 +134,6 @@ export const darkTheme = {
   buttonDisabled:'rgba(59, 130, 246, 0.02)', //         custom blue -> custom blue
 
   tagBgActive:         '#3b82f620', //         custom blue -> blue500
-  tagBorder:           '#3b82f650', //         custom blue -> blue500
 
   modalBorder:         '#2c3a4c',   //         custom -> slate100
 

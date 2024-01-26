@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { forwardRef } from 'react'
+import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
 
 import axios from 'axios'
 import { OpenStreetMapProvider } from 'leaflet-geosearch'
@@ -85,7 +84,7 @@ export const PlaceAutocomplete = forwardRef(
             const number = address.house_number || address.postcode
             const area = address.suburb
 
-            const formattedPlace = formatPlace(name, street, number, area, cityName)
+            const formattedPlace = formatPlace(area, name, street, number, cityName)
 
             setSelectedPlace(formattedPlace)
             onSelectAdress(formattedPlace)
@@ -148,7 +147,7 @@ export const PlaceAutocomplete = forwardRef(
         let formattedPlace = ''
 
         if ((street && number) || area || name) {
-          formattedPlace = formatPlace(name, street, number, area, cityName)
+          formattedPlace = formatPlace(area, name, street, number, cityName)
           isPlaceSelected(true)
         } else {
           isPlaceSelected(false)

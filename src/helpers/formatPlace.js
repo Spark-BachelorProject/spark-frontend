@@ -1,14 +1,14 @@
-export function formatPlace(name, street, number, area, cityName) {
+export function formatPlace(area, name, street, number, cityName) {
   let formattedPlace = ''
 
   if (name) {
     formattedPlace =
       street && number
-        ? `${name}, ${street}, ${area ? area + ',' : ''} ${cityName}`
-        : `${name}, ${area ? area + ',' : ''} ${cityName}`
+        ? `${area ? area + ',' : ''} ${name}, ${street},  ${cityName}`
+        : ` ${area ? area + ',' : ''} ${name}, ${cityName}`
   } else {
     formattedPlace = street
-      ? `${street} ${number}, ${area ? area + ',' : ''} ${cityName}`
+      ? `${area ? area + ',' : ''} ${street} ${number},  ${cityName}`
       : number
       ? `${number}, ${cityName}`
       : cityName

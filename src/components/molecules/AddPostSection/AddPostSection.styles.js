@@ -19,9 +19,9 @@ export const Wrapper = styled.div`
   }
 
   &:hover {
-    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.04);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.02);
     border: 1px solid ${({ theme }) => theme.colors.accent};
-    transition: 200ms ease-in-out;
+    transition: 150ms ease-in-out;
   }
 `
 

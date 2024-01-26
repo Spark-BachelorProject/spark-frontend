@@ -7,16 +7,15 @@ export const StyledTags = styled.div`
 
   ${Button} {
     cursor: inherit;
-    padding: 7px 14px;
-    background-color: ${({ theme }) => theme.colors.tagBg};
-    border: 1.5px solid ${({ theme }) => theme.colors.tagBg};
+    padding: 5px 12px;
+    background-color: transparent;
+    border: 1px solid ${({ theme }) => theme.colors.navbarBorder};
 
     border-radius: 20px;
-    font-size: ${({ theme }) => theme.fontSize.sPlus};
+    font-size: ${({ theme }) => theme.fontSize.s};
 
-    color: ${({ theme }) => theme.colors.accent};
+    color: ${({ theme }) => theme.colors.text};
     margin: 12px 12px 0px 0;
-    font-weight: 500;
   }
 
   /* ${Button}:hover {

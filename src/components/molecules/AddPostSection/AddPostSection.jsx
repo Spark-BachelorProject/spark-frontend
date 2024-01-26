@@ -54,7 +54,7 @@ export const AddPostSection = () => {
         ref={modalOpenElementRef}
       >
         <Avvvatars value={getInitials(firstName, lastName)} size={30} />
-        <StyledInput>Zaproś znajomych do gry!</StyledInput>
+        <StyledInput>Znajdź partnerów na spotkanie...</StyledInput>
         <Alert message="Twój post został pomyślnie dodany!" show={showAlert} />
       </Wrapper>
       {isOpen ? (

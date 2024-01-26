@@ -17,7 +17,7 @@ export const lightTheme = {
   iconBgHover:         '#f8fafc',   //         slate50 -> slate800
   
   buttonOffFont:       '#f1f5f9',   //         slate100 -> slate100
-  postBorder:          '#ecf1f6',   //         slate100 -> slate750
+  postBorder:          '#e6eef3',   //         slate100 -> slate750
   selectBorder:        '#f1f5f9',   //         slate100 -> slate750
   modalBorder:         '#ecf1f6',   //         slate100 -> custom
 

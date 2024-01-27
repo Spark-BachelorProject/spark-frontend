@@ -18,5 +18,20 @@ export const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.buttonBg};
     color: ${({ theme }) => theme.colors.white};
     transition:  200ms ease-in-out;
+
+    & > svg > path {    
+      stroke: ${({ theme }) => theme.colors.white};
+    }
+  }
+
+  :disabled {
+    color: ${({ theme }) => theme.colors.white};
+    opacity: background-color 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.navbarBg};
+      color: ${({ theme }) => theme.colors.text};
+    }
   }
 `

@@ -197,7 +197,7 @@ const Post = (props) => {
           </SecondaryButton>
         </ButtonsWrapper>
       </InteractionsSection>
-
+      {/* <DividerLabel isSolid /> */}
       {!isLoadingComments && (
         <CommentSection
           handleAddComment={handleAddComment}

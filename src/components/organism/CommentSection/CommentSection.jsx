@@ -1,18 +1,16 @@
-import { useEffect, useState } from 'react'
-
-import PropTypes from 'prop-types'
-
 import { ReactComponent as ExpandVectorIcon } from '@/assets/icons/expand-vector.svg'
 import { ReactComponent as SendVectorIcon } from '@/assets/icons/send-vector.svg'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 import Input from '@/components/atoms/Input/Input'
 import Comment from '@/components/molecules/Comment/Comment'
-
+import PropTypes from 'prop-types'
+import { useEffect, useState } from 'react'
 import { CommentForm, Comments, StyledText } from './CommentSection.styles'
 
 const CommentSection = ({ handleAddComment, inputValue, setInputValue, comments }) => {
   const [commentSectionIsOpen, setCommentSectionIsOpen] = useState(false)
   const [initialLoad, setInitialLoad] = useState(true)
+  const [disabled, setDisabled] = useState(true)
 
   useEffect(() => {
     if (commentSectionIsOpen) {
@@ -20,11 +18,16 @@ const CommentSection = ({ handleAddComment, inputValue, setInputValue, comments 
     }
   }, [commentSectionIsOpen])
 
+  useEffect(() => {
+    setDisabled(inputValue === '');
+  }, [inputValue])
+
+  const sortedComments = [...comments].sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded));
   const displayedComments = initialLoad
-    ? comments.slice(0, 3)
-    : commentSectionIsOpen
-    ? comments
-    : []
+  ? sortedComments.slice(0, 3)
+  : commentSectionIsOpen
+  ? sortedComments
+  : []
 
   return (
     <>
@@ -36,7 +39,7 @@ const CommentSection = ({ handleAddComment, inputValue, setInputValue, comments 
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <Button isGray>
+        <Button isGray disabled={disabled}>
           <SendVectorIcon />
         </Button>
       </CommentForm>

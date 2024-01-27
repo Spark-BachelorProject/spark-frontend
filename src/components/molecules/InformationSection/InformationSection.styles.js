@@ -11,6 +11,5 @@ export const Wrapper = styled.section`
 
   ${Text} {
     width: 100%;
-    margin-top: 15px;
   }
 `

@@ -75,7 +75,7 @@ export const Details = styled.div`
     align-items: center;
 
     ${Text} {
-      color: ${({ theme }) => theme.colors.s};
+      color: ${({ theme }) => theme.colors.titleFont};
       font-size: ${({ theme }) => theme.fontSize.s};
       font-weight: 400;
     }
@@ -110,7 +110,7 @@ export const InteractionsSection = styled.section`
   display: flex;
   align-items: center;
   height: auto;
-  margin: 25px 0 10px 0;
+  margin: 30px 0 10px 0;
   justify-content: space-between;
 `
 
@@ -121,7 +121,7 @@ export const DetailsWrapper = styled.div`
 
   ${Text} {
     font-weight: 400;
-    font-size: ${({ theme }) => theme.fontSize.m};
+    font-size: ${({ theme }) => theme.fontSize.sPlus};
     color: ${({ theme }) => theme.colors.titleFont};
   }
 

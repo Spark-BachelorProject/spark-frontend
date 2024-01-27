@@ -3,19 +3,18 @@ import styled from 'styled-components'
 import { Button } from '../Buttons/Button.styles'
 
 export const StyledTags = styled.div`
-  margin: 15px 0 10px 0;
+  margin: 20px 0 10px 0;
 
   ${Button} {
     cursor: inherit;
-    padding: 5px 12px;
+    padding: 5px 8px;
     background-color: transparent;
     border: 1px solid ${({ theme }) => theme.colors.navbarBorder};
-
-    border-radius: 20px;
+    border-radius: 8px;
     font-size: ${({ theme }) => theme.fontSize.s};
-
     color: ${({ theme }) => theme.colors.text};
-    margin: 12px 12px 0px 0;
+    margin: 10px 10px 0px 0;
+    font-weight: 500;
   }
 
   /* ${Button}:hover {

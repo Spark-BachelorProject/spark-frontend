@@ -26,8 +26,8 @@ export const Wrapper = styled.nav`
     /* transition: 200ms ease-in-out; */
 
     & > svg  {
-      scale: 1.07;
-      transition: 100mss ease-in-out;
+      scale: 1.1;
+      transition: 100ms ease-in-out;
     }
     }
   }

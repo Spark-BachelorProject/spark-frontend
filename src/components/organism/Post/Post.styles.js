@@ -121,7 +121,7 @@ export const DetailsWrapper = styled.div`
 
   ${Text} {
     font-weight: 400;
-    font-size: ${({ theme }) => theme.fontSize.m};
+    font-size: ${({ theme }) => theme.fontSize.sPlus};
     color: ${({ theme }) => theme.colors.titleFont};
   }
 

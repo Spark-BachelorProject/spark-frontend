@@ -37,8 +37,8 @@ export const GroupIconDiv = styled.div`
   /* border: 1px solid ${({ theme }) => theme.colors.postBorder}; */
 
   & > img {
-    height: 20px;
-    width: 20px;
+    height: 21px;
+    width: 21px;
     opacity: 0.8;
   }
 `

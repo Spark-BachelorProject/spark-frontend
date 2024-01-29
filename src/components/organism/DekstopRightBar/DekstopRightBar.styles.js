@@ -53,7 +53,7 @@ export const Container = styled.div`
 export const StyledTitle = styled(Title)`
   margin: 8px 0;
   margin-bottom: 12px;
-  font-size: ${({ theme }) => theme.fontSize.sPlus};
+  font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: 500;
 `
 

@@ -1,11 +1,10 @@
 import { useState } from 'react'
 
 import { Alert } from '@/components/atoms/Alert/Alert'
-import { Text } from '@/components/atoms/Text/Text.styles'
 import { FeedbackContent } from '@/components/organism/FeedbackContent/FeedbackContent'
 import useModal from '@/hooks/useModal'
 
-import { StyledButton, Wrapper } from './FeedbackSection.styles'
+import { StyledButton, StyledText, Wrapper } from './FeedbackSection.styles'
 
 export const FeedbackSection = () => {
   const [showAlert, setShowAlert] = useState(false)
@@ -33,8 +32,8 @@ export const FeedbackSection = () => {
 
   return (
     <Wrapper>
-      <Text>Twoja opinia się dla nas liczy</Text>
-      <Text>Daj nam znać co możemy poprawić!</Text>
+      <StyledText>Twoja opinia się dla nas liczy</StyledText>
+      <StyledText>Daj nam znać co możemy poprawić!</StyledText>
       <StyledButton
         isGray
         isBig

@@ -11,7 +11,7 @@ export const Wrapper = styled.section`
 
   & > ${Title} {
     margin-bottom: 13px;
-    font-size: ${({ theme }) => theme.fontSize.sPlus};
-    font-weight: 600;
+    font-size: ${({ theme }) => theme.fontSize.m};
+    font-weight: 500;
   }
 `

@@ -36,7 +36,6 @@ export const TitleBar = ({ children, className }) => {
   return (
     <Wrapper className={className}>
       <Title
-        isBig
         isBold
         onClick={(e) => handleOpenSelectCityModal(e)}
         ref={modalOpenElementRef}

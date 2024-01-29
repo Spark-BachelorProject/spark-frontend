@@ -24,14 +24,14 @@ export const GroupIconDiv = styled.div`
   background-color: ${({ theme }) => theme.colors.iconBg};
   padding: 8px;
   border-radius: 30px;
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
 
 
   & > img {
-    height: 22px;
-    width: 22px;
+    height: 20px;
+    width: 20px;
     opacity: 0.8;
 
   }
@@ -46,12 +46,12 @@ export const RightWrapper = styled.div`
 
   & > div {
     display: flex;
-    gap: 4px;
+    gap: 5px;
     flex-direction: row;
   }
 `
 
 export const StyledText = styled(Text)`
   color: ${({ theme }) => theme.colors.grayDetails};
-  font-size: ${({ theme }) => theme.fontSize.x};
+  font-size: ${({ theme }) => theme.fontSize.s};
 `

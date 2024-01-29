@@ -7,7 +7,7 @@ import { getActivityIcon } from '@/helpers/getActivityIcon'
 import { GroupIconDiv, RightWrapper, StyledText, Wrapper } from './SocialItem.styles'
 
 export const SocialItem = (props) => {
-  const { name, activity, isWithoutTitle, average } = props
+  const { name, activity, isWithoutTitle } = props
   const navigate = useNavigate()
 
   const navigateToGroupPage = () => {

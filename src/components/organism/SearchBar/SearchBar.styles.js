@@ -6,8 +6,7 @@ export const Wrapper = styled.div`
 
 export const SearchResults = styled.ul`
   visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
-  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.03);
-
+  box-shadow: ${({ theme }) => theme.popupShadow};
   z-index: 1000;
   padding: 10px;
   border-radius: 15px;

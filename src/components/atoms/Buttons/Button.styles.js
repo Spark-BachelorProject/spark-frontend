@@ -17,9 +17,9 @@ export const Button = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.colors.buttonBg};
     color: ${({ theme }) => theme.colors.white};
-    transition:  200ms ease-in-out;
+    transition: 200ms ease-in-out;
 
-    & > svg > path {    
+    & > svg > path {
       stroke: ${({ theme }) => theme.colors.white};
     }
   }

@@ -46,7 +46,7 @@ export const FooterWrapper = styled.div`
 export const InputsWrapper = styled.div`
   display: grid;
   margin: 16px 0;
-  gap: 23px;
+  gap: 15px;
 
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(7, 1fr);

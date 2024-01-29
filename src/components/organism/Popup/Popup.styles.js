@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 
 export const PopupWrapper = styled.div`
-  box-shadow: 0px 30px 80px rgba(0, 0, 0, 0.03);
+  box-shadow: ${({ theme }) => theme.colors.popupShadow};
   position: ${({ isFixed }) => (isFixed ? 'fixed' : 'absolute')};
   z-index: ${({ popupNum }) => 1000 + popupNum * 1 + 1};
   top: ${({ position: { y } }) => `${y}px`};
@@ -16,6 +16,7 @@ export const PopupWrapper = styled.div`
       ? 'translateX(-15%)'
       : 'translateX(-50%)'};
 
+  transform: ${({ isShifted }) => (isShifted ? 'translateX(-71%)' : '')};
   height: auto;
   background-color: ${({ theme }) => theme.colors.modalBg};
   border: 1px solid ${({ theme }) => theme.colors.modalBorder};

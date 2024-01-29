@@ -16,5 +16,5 @@ export const StyledButton = styled(Button)`
 `
 
 export const StyledText = styled(Text)`
-      font-size: ${({ theme }) => theme.fontSize.s};
+  font-size: ${({ theme }) => theme.fontSize.s};
 `

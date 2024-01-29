@@ -11,9 +11,7 @@ const SocialsSection = () => {
 
   return (
     <Wrapper>
-      <Title isBold>
-        Twoje Grupy
-      </Title>
+      <Title isBold>Twoje Grupy</Title>
       {isLoading ? <Loader isCentered /> : null}
       {!isLoading && isSuccess && !ownedGroups.length && <Text>Nie należysz do żadnej grupy</Text>}
       {!isLoading &&

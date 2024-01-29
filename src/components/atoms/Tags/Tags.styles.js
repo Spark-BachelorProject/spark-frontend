@@ -9,7 +9,6 @@ export const StyledTags = styled.div`
     cursor: inherit;
     padding: 5px 8px;
     background-color: transparent;
-  
     border: 1px solid ${({ theme }) => theme.colors.checkboxTick};
     border-radius: 6px;
     font-size: ${({ theme }) => theme.fontSize.xs};

@@ -1,14 +1,14 @@
 //                                             LIGHT : DARK
 export const lightTheme = {         
-  white:               '#fff',      //         white -> white
-  checkboxBg:          '#fff',      //         white -> slate750
-  inputBg:             '#fff',      //         white -> slate750
-  navbarBg:            '#fff',      //         white -> slate750
-  iconBg:              '#fff',      //         white -> slate750
+  white:               '#fff',                           //         white -> white
+  checkboxBg:          '#fff',                           //         white -> slate750
+  inputBg:             '#fff',                           //         white -> slate750
+  navbarBg:            '#fff',                           //         white -> slate750
+  iconBg:              '#fff',                           //         white -> slate750
 
-  modalBg:             '#fff',      //         white -> slate800
-  secondaryBg:         '#fff',      //         white -> slate800
-  primaryBg:           '#fff',      //         white -> slate900
+  modalBg:             '#fff',                           //         white -> slate800
+  secondaryBg:         '#fff',                           //         white -> slate800
+  primaryBg:           '#fff',                           //         white -> slate900
   modalBehind:         'rgba(255, 255, 255, 0.35)',      //         white -> black
 
   
@@ -63,7 +63,8 @@ export const lightTheme = {
   iconPrimaryActive:   '#0f172a',                         //         custom -> slate50
   tagBg:               'rgba(59, 130, 246, 0.05)',        //         custom blue -> custom blue
   buttonDisabled:      'rgba(59, 130, 246, 0.02)',        //         custom blue -> custom blue
-
+  popupShadow:         '0px 10px 20px rgba(0, 0, 0, 0.03)',//         custom -> custom
+  modalShadow:         '0px 10px 40px rgba(0, 0, 0, 0.15)',//         custom -> custom
 
 
   black:               '#000',      //         black -> black
@@ -131,19 +132,20 @@ export const darkTheme = {
   iconPlusBg:          '#3b82f6',   //         blue500 -> blue500
   buttonBg:            '#3B76F5',   //         blue550 -> blue500
   
-  tagBg:'rgba(59, 130, 246, 0.1)', //         custom blue -> custom blue
+  tagBg:'rgba(59, 130, 246, 0.1)',           //         custom blue -> custom blue
   buttonDisabled:'rgba(59, 130, 246, 0.02)', //         custom blue -> custom blue
-
+  popupShadow:         '0px 10px 40px rgba(0, 0, 0, 0.2)',//         custom -> custom
+  modalShadow:         '0px 10px 30px rgba(0, 0, 0, 0.45)',//         custom -> custom
   tagBgActive:         '#3b82f620', //         custom blue -> blue500
 
   modalBorder:         '#2c3a4c',   //         custom -> slate100
 
 
   
-  redFont:             '#D71E3B',   //         custom red -> red500
+  redFont:             '#D71E3B',                  //         custom red -> red500
 
-  darkDivider:         '#172233',   //         custom  -> slate200
-  black:               '#000',      //         black -> black
+  darkDivider:         '#172233',                  //         custom  -> slate200
+  black:               '#000',                     //         black -> black
   modalBehind:         'rgba(0, 0, 0, 0.45)',      //         black -> white
 };
 

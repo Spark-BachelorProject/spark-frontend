@@ -1,10 +1,13 @@
+import { useEffect, useState } from 'react'
+
+import PropTypes from 'prop-types'
+
 import { ReactComponent as ExpandVectorIcon } from '@/assets/icons/expand-vector.svg'
 import { ReactComponent as SendVectorIcon } from '@/assets/icons/send-vector.svg'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 import Input from '@/components/atoms/Input/Input'
 import Comment from '@/components/molecules/Comment/Comment'
-import PropTypes from 'prop-types'
-import { useEffect, useState } from 'react'
+
 import { CommentForm, Comments, StyledText } from './CommentSection.styles'
 
 const CommentSection = ({ handleAddComment, inputValue, setInputValue, comments }) => {
@@ -19,15 +22,15 @@ const CommentSection = ({ handleAddComment, inputValue, setInputValue, comments 
   }, [commentSectionIsOpen])
 
   useEffect(() => {
-    setDisabled(inputValue === '');
+    setDisabled(inputValue === '')
   }, [inputValue])
 
-  const sortedComments = [...comments].sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded));
+  const sortedComments = [...comments].sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded))
   const displayedComments = initialLoad
-  ? sortedComments.slice(0, 3)
-  : commentSectionIsOpen
-  ? sortedComments
-  : []
+    ? sortedComments.slice(0, 3)
+    : commentSectionIsOpen
+    ? sortedComments
+    : []
 
   return (
     <>

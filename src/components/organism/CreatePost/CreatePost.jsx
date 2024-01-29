@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { LublinCoordinates } from '@/assets/constants/coordinates.js'
 import { createPostSchema } from '@/assets/schemas/createPostSchema.js'
 import { Button } from '@/components/atoms/Buttons/Button.styles.js'
+import { CloseButton } from '@/components/atoms/CloseButton/CloseButton.jsx'
 import { Text } from '@/components/atoms/Text/Text.styles.js'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import CreatePostMap from '@/components/molecules/CreatePostMap/CreatePostMap.jsx'
@@ -30,7 +31,6 @@ import { useAddPostMutation } from '@/store/api/posts'
 import { useGetTagsByActivityIdQuery } from '@/store/api/tags.js'
 import { useGetUserQuery } from '@/store/api/user.js'
 
-import { CloseButton } from '@/components/atoms/CloseButton/CloseButton.jsx'
 import {
   FooterWrapper,
   HeaderWrapper,
@@ -175,6 +175,15 @@ const CreatePost = ({ handleClose, handlePostAdded, groupId = 0 }) => {
     }
   }
 
+  const handleActivityChange = (e) => {
+    const { name, value } = e.target
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }))
+    setSelectedActivityId(activities.find((activity) => activity.value === value).id)
+  }
+
   // Watch the value of the "privacy" field to dynamically enable/disable other fields
   const privacyValue = useWatch({
     control,
@@ -219,7 +228,7 @@ const CreatePost = ({ handleClose, handlePostAdded, groupId = 0 }) => {
           <Title isBig isBold>
             Dodawanie postu
           </Title>
-          <Text >Dzieli Cię jeden krok od znalezienia partnerów do gry!</Text>
+          <Text>Dzieli Cię jeden krok od znalezienia partnerów do gry!</Text>
         </TitleWrapper>
         <CloseButton onClick={handleClose} />
       </HeaderWrapper>
@@ -271,6 +280,7 @@ const CreatePost = ({ handleClose, handlePostAdded, groupId = 0 }) => {
           isDisabled={!!groupId}
           {...register('activity')}
           error={errors?.activity?.message}
+          onChange={handleActivityChange}
         >
           {activities}
         </SelectWithLabel>
@@ -302,7 +312,7 @@ const CreatePost = ({ handleClose, handlePostAdded, groupId = 0 }) => {
           isMarkerMoved={isMarkerMoved}
           setMarkerMoved={handleMarkerMoved}
           onSelectCity={handleSelectedCity}
-          style={{ gridArea: 'input4', }}
+          style={{ gridArea: 'input4' }}
           {...register('address')}
           error={errors?.address?.message}
         />

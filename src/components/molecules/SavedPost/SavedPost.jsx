@@ -37,7 +37,8 @@ export const SavedPost = ({
           <FirstRowText isCancelled>{activity.name}</FirstRowText>
         </NameActivityWrapper>
         <SecondRowText isCancelled>
-          {location.name ? `${truncateString(location.name,40)} - ` : ''} {capitalize(truncateString(description, 20))}
+          {location.name ? `${truncateString(location.name, 40)} - ` : ''}{' '}
+          {capitalize(truncateString(description, 20))}
         </SecondRowText>
       </TextWrapper>
     </Wrapper>

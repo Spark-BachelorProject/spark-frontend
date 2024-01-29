@@ -13,7 +13,6 @@ export const StyledSelect = styled.select`
   font-size: ${({ theme }) => theme.fontSize.sPlus};
   font-weight: 400;
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
-  
 
   &:focus {
     outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};

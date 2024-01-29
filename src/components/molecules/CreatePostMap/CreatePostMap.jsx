@@ -53,7 +53,11 @@ export const CreatePostMap = ({ center, isPlaceSelected, onMarkerMoved, isMarked
       zoom={15}
       zoomControl={true}
     >
-      <MapUpdater center={markerPosition} isPlaceSelected={isPlaceSelected} hasMarkerMoved={hasMarkerMoved}/>
+      <MapUpdater
+        center={markerPosition}
+        isPlaceSelected={isPlaceSelected}
+        hasMarkerMoved={hasMarkerMoved}
+      />
       <TileLayer url="https://{s}.tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=aSetRCOQl0G3zH75uVIo4ZLmnMUgiP4uy5ss8IrkciB6DUwX8HUzf3he3SBU7Ppi" />
       <Marker
         position={markerPosition}

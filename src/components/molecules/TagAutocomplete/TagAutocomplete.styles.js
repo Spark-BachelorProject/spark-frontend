@@ -57,19 +57,21 @@ export const StyledReactTags = styled.div`
 
   .react-tags__tag {
     margin: 0 0.5rem 0.3rem 0;
-    padding: 0.45rem 0.6rem 0.45rem 0.8rem;
-    border: 0;
-    border-radius: 20px;
-    background-color: ${({ theme }) => theme.colors.tagBg};
-    border: 1px solid ${({ theme }) => theme.colors.tagBorder};
-    font-weight: 600;
-    color: ${({ theme }) => theme.colors.accent};
-    font-size: inherit;
-    line-height: inherit;
+    padding: 5px 8px;
+    border-radius: 6px;
+    background-color: transparent;
+    border: 1px solid ${({ theme }) => theme.colors.checkboxTick};
+    font-size: ${({ theme }) => theme.fontSize.s};
+    font-weight: 400;
+    color: ${({ theme }) => theme.colors.text};
   }
 
   .react-tags__tag:hover {
-    background-color: rgba(59, 130, 246, 0.3);
+    color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.titleFont};
+    color: ${({ theme }) => theme.colors.modalBg};
+    border: 1px solid ${({ theme }) => theme.colors.titleFont};
+    transition: all 0.1s ease-in-out;
     cursor: pointer;
   }
 
@@ -93,12 +95,12 @@ export const StyledReactTags = styled.div`
       50% 40%
     );
     margin-left: 0.5rem;
-    margin-bottom: 0.1em;
     font-size: 0.875rem;
-    background-color: ${({ theme }) => theme.colors.accent};
+    background-color: ${({ theme }) => theme.colors.text};
   }
 
   .react-tags__tag:hover::after {
+    background-color: ${({ theme }) => theme.colors.modalBg};
   }
 
   .react-tags__combobox {
@@ -129,7 +131,7 @@ export const StyledReactTags = styled.div`
   .react-tags__listbox {
     position: absolute;
     z-index: 1;
-    top: calc(100% + 5px);
+    top: calc(100% + 10px);
     left: -2px;
     right: -2px;
     max-height: 10rem;
@@ -140,7 +142,7 @@ export const StyledReactTags = styled.div`
     color: ${({ theme }) => theme.colors.inputFont};
     border: 2px solid ${({ theme }) => theme.colors.buttonBorder};
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -4px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    box-shadow: ${({ theme }) => theme.popupShadow};
   }
 
   .react-tags__listbox-option {
@@ -157,8 +159,8 @@ export const StyledReactTags = styled.div`
   }
 
   .react-tags__listbox-option:not([aria-disabled='true']).is-active {
-    background: ${({ theme }) => theme.colors.buttonBg};
-    color: white;
+    background: ${({ theme }) => theme.colors.inputBg};
+    color: titleFont;
   }
 
   .react-tags__listbox-option[aria-disabled='true'] {
@@ -169,7 +171,7 @@ export const StyledReactTags = styled.div`
 
   .react-tags__listbox-option[aria-selected='true']::after {
     content: '•';
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.accent};
     margin-left: 0.5rem;
   }
 

@@ -8,7 +8,7 @@ export const StyledCloseIcon = styled(CloseIcon)`
   right: 20px;
   width: 15px;
   height: 15px;
-  cursor: pointer;  
+  cursor: pointer;
   border-radius: 2px;
 
   & > path {
@@ -16,7 +16,7 @@ export const StyledCloseIcon = styled(CloseIcon)`
   }
 
   :hover > path {
-      stroke: ${({ theme }) => theme.colors.text};
-      transition: 0.05s ease-in-out;
-    }
+    stroke: ${({ theme }) => theme.colors.text};
+    transition: 0.05s ease-in-out;
+  }
 `

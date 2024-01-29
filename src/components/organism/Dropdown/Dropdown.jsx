@@ -112,7 +112,7 @@ export const Dropdown = ({ setFilterOptions, filterOptions }) => {
         </StyledIconBorder>
       </ButtonsWrapper>
       {isOpen ? (
-        <Popup handleClose={handleClosePopup} position={position}>
+        <Popup handleClose={handleClosePopup} position={position} isShifted>
           <Filters handleClose={handleClosePopup} setFilterOptions={setFilterOptions} />
         </Popup>
       ) : null}

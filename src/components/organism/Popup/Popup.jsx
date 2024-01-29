@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 
 import { PopupBackground, PopupWrapper } from './Popup.styles'
 
 const popupContainer = document.getElementById('popup-container')
 
-const Popup = ({ handleClose, children, position, isFixed, hasNoPadding, hasNoBackground }) => {
+const Popup = ({
+  handleClose,
+  children,
+  position,
+  isFixed,
+  hasNoPadding,
+  hasNoBackground,
+  isShifted,
+}) => {
   const popupNode = document.createElement('div')
   const [popupNum, setPopupNum] = useState(
     document.querySelectorAll('#popup-container > div').length
@@ -29,6 +37,7 @@ const Popup = ({ handleClose, children, position, isFixed, hasNoPadding, hasNoBa
         popupNum={popupNum}
         isFixed={isFixed}
         hasNoPadding={hasNoPadding}
+        isShifted={isShifted}
       >
         {children}
       </PopupWrapper>

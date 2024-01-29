@@ -4,6 +4,7 @@ import { Input } from '@/components/atoms/Input/Input.styles'
 
 export const InputWrapper = styled.div`
   position: relative;
+  width: 100%;
 
   & > svg {
     position: absolute;

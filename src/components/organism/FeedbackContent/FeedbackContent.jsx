@@ -96,7 +96,9 @@ export const FeedbackContent = ({ handleClose, handleFeedbackSubmitted }) => {
         <Button isBig onClick={handleClose} isGray>
           Anuluj
         </Button>
-        <Button isBig onClick={handleSubmit}>Wyślij</Button>
+        <Button isBig onClick={handleSubmit}>
+          Wyślij
+        </Button>
       </ButtonWrapper>
     </Wrapper>
   )

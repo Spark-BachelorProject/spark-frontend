@@ -1,16 +1,15 @@
 import { useState } from 'react'
+import { useEffect } from 'react'
 import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet'
-
 import MarkerClusterGroup from 'react-leaflet-cluster'
 
-import { LublinCoordinates } from '@/assets/constants/coordinates'
-import { useGetActivitiesQuery } from '@/store/api/activities'
-import { useGetPostsQuery } from '@/store/api/posts'
 import 'leaflet/dist/leaflet.css'
 
+import { LublinCoordinates } from '@/assets/constants/coordinates'
 import Select from '@/components/atoms/Select/Select'
 import { MapPopup } from '@/components/organism/MapPopup/MapPopup'
-import { useEffect } from 'react'
+import { useGetActivitiesQuery } from '@/store/api/activities'
+import { useGetPostsQuery } from '@/store/api/posts'
 
 import { Filters, OverlayRight, Wrapper } from './Map.styles'
 import './Map.styles.css'

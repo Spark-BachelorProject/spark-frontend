@@ -1,7 +1,7 @@
 import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
-
 import { getActivityIcon } from '@/helpers/getActivityIcon'
+
 import { GroupIconDiv, StyledText, Wrapper } from './RecomendedActivity.styles'
 
 export const RecomendedActivity = (props) => {
@@ -20,9 +20,7 @@ export const RecomendedActivity = (props) => {
       <GroupIconDiv>
         <img src={getActivityIcon(name)} alt="activity" />
       </GroupIconDiv>
-      <Text  isBold>
-        {name}
-      </Text>
+      <Text isBold>{name}</Text>
       <Dot />
       <StyledText>
         {average} {postWord}

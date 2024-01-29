@@ -37,6 +37,5 @@ export const Details = styled.div`
   ${Text} {
     color: ${({ theme }) => theme.colors.grayDetails};
     font-size: ${({ theme }) => theme.fontSize.xs};
-
   }
 `

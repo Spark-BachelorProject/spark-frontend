@@ -31,9 +31,7 @@ export const DekstopRightBar = () => {
   return (
     <Wrapper>
       <Container>
-        <StyledTitle  >
-          Polecane Grupy
-        </StyledTitle>
+        <StyledTitle>Polecane Grupy</StyledTitle>
         {isLoadingGroupsRecommended ? <Loader isCentered /> : null}
         {!isLoadingGroupsRecommended && isSuccessGroupsRecommended && !groupsRecommended.length && (
           <Text>Nie ma grup do wyświetlenia</Text>
@@ -44,9 +42,7 @@ export const DekstopRightBar = () => {
       </Container>
       <DividerLabel isSolid />
       <Container>
-        <StyledTitle  >
-          Aktywności dla Ciebie
-        </StyledTitle>
+        <StyledTitle>Aktywności dla Ciebie</StyledTitle>
         {isLoadingRecommendedActivities ? <Loader isCentered /> : null}
         {!isLoadingRecommendedActivities &&
           isSuccessRecommendedActivities &&

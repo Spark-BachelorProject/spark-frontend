@@ -3,11 +3,9 @@ import styled from 'styled-components'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 
 export const ModalWrapper = styled.div`
-  box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.1);
-
+  box-shadow: ${({ theme }) => theme.colors.modalShadow};
   overflow-y: auto;
   max-height: 95vh;
-
   position: ${({ isFixed }) => (isFixed ? 'fixed' : 'absolute')};
   z-index: ${({ modalNum }) => 2000 + modalNum * 1 + 1};
   ${({ isModal }) =>

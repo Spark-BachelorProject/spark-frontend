@@ -11,15 +11,15 @@ import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { Details } from '@/components/organism/Post/Post.styles'
 import { formatDate, formatTimeAgo, formatTimeHHMM } from '@/helpers/dateAndTime'
-
 import { getActivityIcon } from '@/helpers/getActivityIcon'
+
 import {
   ButtonWrapper,
   StyledHeader,
   StyledTags,
   StyledTitle,
   Time,
-  Wrapper
+  Wrapper,
 } from './MapPopup.styles'
 
 export const MapPopup = ({
@@ -43,7 +43,7 @@ export const MapPopup = ({
             <Text>napisał(a) {formatTimeAgo(dateCreated)}</Text>
           </div>
           <div>
-          <img src={getActivityIcon(activity.name)} alt={activity.name} />
+            <img src={getActivityIcon(activity.name)} alt={activity.name} />
 
             <Text>{activity.name}</Text>
             <Dot />
@@ -61,9 +61,7 @@ export const MapPopup = ({
         <PinIcon />
         <Text>{location.name}</Text>
       </Time>
-      <StyledTitle isBig>
-        {description}
-      </StyledTitle>
+      <StyledTitle isBig>{description}</StyledTitle>
       <StyledTags>{tags}</StyledTags>
 
       <ButtonWrapper>

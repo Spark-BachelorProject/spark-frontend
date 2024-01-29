@@ -9,4 +9,8 @@ export const StyledLogoIcon = styled(LogoIcon)`
   & > path {
     fill: ${({ theme }) => theme.colors.titleFont};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakPoints.m}) {
+    max-width: 70px;
+  }
 `

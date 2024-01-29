@@ -23,12 +23,12 @@ export const Wrapper = styled.nav`
 
     :hover {
       background-color: ${({ theme }) => theme.colors.iconBgHover};
-    /* transition: 200ms ease-in-out; */
+      /* transition: 200ms ease-in-out; */
 
-    & > svg  {
-      scale: 1.1;
-      transition: 100ms ease-in-out;
-    }
+      & > svg {
+        scale: 1.1;
+        transition: 100ms ease-in-out;
+      }
     }
   }
 

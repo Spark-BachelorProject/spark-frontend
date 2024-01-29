@@ -76,7 +76,7 @@ export const Details = styled.div`
 
     ${Text} {
       color: ${({ theme }) => theme.colors.titleFont};
-      font-size: ${({ theme }) => theme.fontSize.s};
+      font-size: ${({ theme }) => theme.fontSize.sPlus};
       font-weight: 400;
     }
 
@@ -121,7 +121,7 @@ export const DetailsWrapper = styled.div`
 
   ${Text} {
     font-weight: 400;
-    font-size: ${({ theme }) => theme.fontSize.sPlus};
+    font-size: ${({ theme }) => theme.fontSize.m};
     color: ${({ theme }) => theme.colors.titleFont};
   }
 

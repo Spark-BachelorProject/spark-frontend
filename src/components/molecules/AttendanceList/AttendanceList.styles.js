@@ -18,8 +18,8 @@ export const StyledAvatar = styled.div`
 
 export const StyledTitle = styled(Title)`
   cursor: pointer;
-  font-size: ${({ theme }) => theme.fontSize.s} !important;
-  color: ${({ theme }) => theme.colors.checkboxTick} !important;
+  font-size: ${({ theme }) => theme.fontSize.xs} !important;
+  color: ${({ theme }) => theme.colors.greyDetails} !important;
 `
 
 export const AttendingCounter = styled.span`

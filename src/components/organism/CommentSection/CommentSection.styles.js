@@ -16,7 +16,7 @@ export const CommentForm = styled.form`
 
 export const StyledText = styled(Text)`
   cursor: ${({ isComments }) => (isComments ? 'pointer' : 'default')};
-  color: ${({ theme }) => theme.colors.placeholder};
+  color: ${({ theme }) => theme.colors.grayDetails};
   font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: 400;
 

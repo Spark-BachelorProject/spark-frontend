@@ -14,4 +14,6 @@ export const Wrapper = styled.div`
 
 export const StyledTitle = styled(Title)`
   /* margin-bottom: 10px; */
+  font-size: ${({ theme }) => theme.fontSize.s};
+
 `

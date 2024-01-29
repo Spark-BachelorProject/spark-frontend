@@ -19,12 +19,12 @@ export const Details = styled.div`
   display: flex;
   justify-content: start;
   flex-direction: row;
-  gap: 10px;
+  gap: 5px;
 
   & > div {
     display: flex;
     flex-direction: row;
-    gap: 7px;
+    gap: 5px;
     margin-bottom: 5px;
   }
 
@@ -35,7 +35,8 @@ export const Details = styled.div`
   }
 
   ${Text} {
-    color: ${({ theme }) => theme.colors.commentDetails};
-    font-size: ${({ theme }) => theme.fontSize.sPlus};
+    color: ${({ theme }) => theme.colors.grayDetails};
+    font-size: ${({ theme }) => theme.fontSize.xs};
+
   }
 `

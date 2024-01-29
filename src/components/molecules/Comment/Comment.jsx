@@ -1,6 +1,5 @@
 import Avvvatars from 'avvvatars-react'
 
-import Dot from '@/components/atoms/Dot/Dot'
 import { Text } from '@/components/atoms/Text/Text.styles'
 import { formatTimeAgo } from '@/helpers/dateAndTime'
 import { getInitials } from '@/helpers/stringOperations'
@@ -16,8 +15,7 @@ const Comment = ({ children, user: { firstName, lastName }, dateAdded }) => {
           <Text isBold>
             {firstName} {lastName}
           </Text>
-          <Dot />
-          <Text>{formatTimeAgo(dateAdded)}</Text>
+          <Text>napisał(a) {formatTimeAgo(dateAdded)}</Text>
         </div>
       </Details>
       <Text>{children}</Text>

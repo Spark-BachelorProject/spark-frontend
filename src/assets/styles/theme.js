@@ -35,14 +35,14 @@ export const lightTheme = {
 
   checkboxTick:        '#64748B',   //         slate500 -> slate300
 
-  grayDetails:         '#536174',   //         slate550 -> slate400
+  grayDetails:         '#0f0f0f',   //         custom -> slate200
 
   commentDetails:      '#475569',   //         slate600 -> slate200`
   iconSecondary:       '#475569',   //         slate600 -> slate200
   inputFont:           '#475569',   //         slate600 -> slate200
   selectFont:          '#475569',   //         slate600 -> slate300
   
-  text:                '#334155',   //         slate700 -> slate200
+  text:                '#494d4e',   //         slate700 -> slate200
   textHeader:          '#334155',   //         slate700 -> slate200
 
   detailsFont:         '#233045',   //         slate750 -> slate200
@@ -88,6 +88,7 @@ export const darkTheme = {
   text:                '#e2e8f0',   //         slate200 -> slate600
   textHeader:          '#E2E8F0',   //         slate200 -> slate700
   detailsFont:         '#E2E8F0',   //         slate200 -> slate750
+  grayDetails:         '#E2E8F0',   //         slate200 -> custom
 
   checkboxTick:        '#CBD5E1',   //         slate300 -> slate500
   selectFont:          '#CBD5E1',   //         slate300 -> slate600
@@ -96,7 +97,6 @@ export const darkTheme = {
 
   placeholder:         '#94a3b8',   //         slate400 -> slate400
   
-  grayDetails:         '#aabbd3',   //         slate450 -> slate550
   
   
   textsecondary:       '#64748B',   //         slate500 -> slate400

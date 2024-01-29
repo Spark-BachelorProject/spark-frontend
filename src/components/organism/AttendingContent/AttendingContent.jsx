@@ -19,7 +19,7 @@ export const AttendingContent = ({ participants }) => {
           ))}
         </>
       ) : (
-        <StyledTitle isBold>Weź udział jako pierwszy, przygoda czeka!</StyledTitle>
+        <StyledTitle>Weź udział jako pierwszy!</StyledTitle>
       )}
     </Wrapper>
   )

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 
 export const ModalWrapper = styled.div`
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.1);
 
   overflow-y: auto;
   max-height: 95vh;
@@ -76,6 +76,6 @@ export const ModalBackground = styled.div`
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-color: ${({ hasBackgroundColor }) =>
-    hasBackgroundColor ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0)'};
+  background-color: ${({ hasBackgroundColor, theme }) =>
+    hasBackgroundColor ? theme.colors.modalBehind : 'rgba(0, 0, 0, 0)'};
 `

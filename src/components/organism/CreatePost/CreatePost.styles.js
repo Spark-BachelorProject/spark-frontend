@@ -49,12 +49,13 @@ export const InputsWrapper = styled.div`
   gap: 23px;
 
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(7, 1fr);
   grid-template-areas:
     'input1 input1 input1 input1'
     'select1 select1 select2 select2'
     'select3 select3 input2 input3'
     'input4 input4 input4 input4'
+    'map map map map'
     'map map map map'
     'map map map map';
 

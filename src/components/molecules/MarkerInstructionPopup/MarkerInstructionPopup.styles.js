@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.08);
   position: absolute;
   width: auto;
-  bottom: -8%;
+  bottom: 0%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;

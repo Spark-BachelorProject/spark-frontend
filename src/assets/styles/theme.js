@@ -9,6 +9,7 @@ export const lightTheme = {
   modalBg:             '#fff',      //         white -> slate800
   secondaryBg:         '#fff',      //         white -> slate800
   primaryBg:           '#fff',      //         white -> slate900
+  modalBehind:         'rgba(255, 255, 255, 0.35)',      //         white -> black
 
   
   mainDivider:         '#f8fafc',   //         slate50 -> slate750
@@ -143,6 +144,7 @@ export const darkTheme = {
 
   darkDivider:         '#172233',   //         custom  -> slate200
   black:               '#000',      //         black -> black
+  modalBehind:         'rgba(0, 0, 0, 0.45)',      //         black -> white
 };
 
 

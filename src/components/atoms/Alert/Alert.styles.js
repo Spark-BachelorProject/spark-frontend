@@ -11,10 +11,10 @@ export const Wrapper = styled.div`
   left: 50%;
   width: auto;
   min-width: 250px;
-  padding: 1.5em 1.5em;
+  padding: 1.7em 1.7em;
   background-color: ${({ theme }) => theme.colors.accent};
   text-align: center;
-  border-radius: 8px;
+  border-radius: 6px;
   height: 45px;
   display: flex;
   align-items: center;
@@ -22,6 +22,7 @@ export const Wrapper = styled.div`
   gap: 1em;
   color: ${({ theme }) => theme.colors.white};
   font-weight: 500;
+  font-size: ${({ theme }) => theme.fontSize.sPlus};
 
   & > svg {
     height: 18px;

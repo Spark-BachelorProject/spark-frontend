@@ -9,7 +9,7 @@ export const Text = styled.span`
 
   display: flex;
   align-items: center;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.titleFont};
   width: max-content;
 
   & > svg {

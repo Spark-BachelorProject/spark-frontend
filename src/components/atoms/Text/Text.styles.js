@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Text = styled.span`
-  font-weight: ${({ isBold }) => (isBold ? 600 : 400)};
+  font-weight: ${({ isBold }) => (isBold ? 500 : 400)};
   font-size: ${({ isBig, theme }) => (isBig ? theme.fontSize.m : theme.fontSize.sPlus)};
 
   /* background-color: ${({ isRed, theme }) =>

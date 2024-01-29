@@ -31,7 +31,7 @@ export const DekstopRightBar = () => {
   return (
     <Wrapper>
       <Container>
-        <StyledTitle isBig isBold>
+        <StyledTitle  >
           Polecane Grupy
         </StyledTitle>
         {isLoadingGroupsRecommended ? <Loader isCentered /> : null}
@@ -44,7 +44,7 @@ export const DekstopRightBar = () => {
       </Container>
       <DividerLabel isSolid />
       <Container>
-        <StyledTitle isBig isBold>
+        <StyledTitle  >
           Aktywności dla Ciebie
         </StyledTitle>
         {isLoadingRecommendedActivities ? <Loader isCentered /> : null}

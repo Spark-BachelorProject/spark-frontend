@@ -6,11 +6,10 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   border-radius: 5px;
-
   gap: 0.5rem;
   width: 115%;
   margin-left: -20px;
-  padding: 3px 20px;
+  padding: 0px 20px;
 
   &:hover {
     cursor: pointer;
@@ -21,6 +20,7 @@ export const Wrapper = styled.div`
 
 export const StyledText = styled(Text)`
   color: ${({ theme }) => theme.colors.grayDetails};
+  font-size: ${({ theme }) => theme.fontSize.s};
 `
 
 export const GroupIconDiv = styled.div`
@@ -33,12 +33,12 @@ export const GroupIconDiv = styled.div`
   height: 40px;
   width: 40px;
   margin-right: -6px;
-  opacity: 0.7;
 
   /* border: 1px solid ${({ theme }) => theme.colors.postBorder}; */
 
   & > img {
     height: 20px;
     width: 20px;
+    opacity: 0.8;
   }
 `

@@ -22,7 +22,7 @@ export const SocialItem = (props) => {
       <RightWrapper onClick={navigateToGroupPage}>
         {isWithoutTitle ? null : <Text isBold>{name}</Text>}
         <div>
-          <Text>{activity?.name}</Text>
+          <StyledText>{activity?.name}</StyledText>
           <Dot />
           <StyledText>Popularna</StyledText>
         </div>

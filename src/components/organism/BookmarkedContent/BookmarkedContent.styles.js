@@ -5,8 +5,10 @@ import { ReactComponent as MoreInfoIcon } from '@/assets/icons/three-dots.svg'
 export const Wrapper = styled.div`
   width: 100%;
   min-width: 300px;
+  max-width: 500px;
   padding: 0 30px;
   margin-bottom: -10px;
+  overflow-x: hidden;
 `
 export const HeadingWrapper = styled.div`
   width: 100%;

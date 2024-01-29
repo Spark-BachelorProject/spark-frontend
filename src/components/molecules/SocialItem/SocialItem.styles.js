@@ -27,12 +27,13 @@ export const GroupIconDiv = styled.div`
   height: 40px;
   width: 40px;
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
-  opacity: 0.8;
 
 
   & > img {
     height: 22px;
     width: 22px;
+    opacity: 0.8;
+
   }
 `
 
@@ -52,4 +53,5 @@ export const RightWrapper = styled.div`
 
 export const StyledText = styled(Text)`
   color: ${({ theme }) => theme.colors.grayDetails};
+  font-size: ${({ theme }) => theme.fontSize.x};
 `

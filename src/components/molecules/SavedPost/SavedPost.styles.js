@@ -28,8 +28,8 @@ export const Wrapper = styled.div`
 
 export const StyledCanceledIcon = styled(CanceledIcon)`
   position: absolute;
-  top: 60%;
-  left: 10%;
+  top: 59%;
+  left: 5%;
   z-index: 100;
 `
 
@@ -53,7 +53,7 @@ export const StyledThumbnail = styled(Thumbnail)`
 `
 
 export const FirstRowText = styled(Text)`
-  font-size: ${({ theme, isCancelled }) => (isCancelled ? theme.fontSize.m : theme.fontSize.m)};
+  font-size: ${({ theme, isCancelled }) => (isCancelled ? theme.fontSize.xs : theme.fontSize.xs)};
   color: ${({ theme }) => theme.colors.textHeader};
   font-weight: 400;
 `

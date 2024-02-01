@@ -144,7 +144,7 @@ const Post = (props) => {
             <b>
               {firstName} {lastName}
             </b>
-            <Text>napisał(a) {formatTimeAgo(dateCreated)}</Text>
+            <Text>napisał {formatTimeAgo(dateCreated)}</Text>
           </div>
           <div>
             <img src={getActivityIcon(activity.name)} alt={activity.name} />

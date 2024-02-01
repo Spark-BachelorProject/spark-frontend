@@ -1,14 +1,14 @@
 import { PersonListItem } from '@/components/molecules/PersonListItem/PersonListItem'
 import { getInitials } from '@/helpers/stringOperations'
 
-import { StyledTitle, Wrapper } from './AttendingCounter.styles'
+import { StyledBigTitle, StyledTitle, Wrapper } from './AttendingCounter.styles'
 
 export const AttendingContent = ({ participants }) => {
   return (
     <Wrapper>
       {participants.length ? (
         <>
-          <StyledTitle isBold>Wezmą udział</StyledTitle>
+          <StyledBigTitle isBold>Wezmą udział</StyledBigTitle>
           {participants.map(({ firstName, lastName, id }) => (
             <PersonListItem
               key={id}

@@ -18,7 +18,6 @@ export const Wrapper = styled.div`
   z-index: 1000;
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
 
-
   background-color: ${({ theme }) => theme.colors.iconBg};
   padding: 6px 15px;
   border-radius: 8px;

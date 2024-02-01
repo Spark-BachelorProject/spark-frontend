@@ -16,6 +16,22 @@ export const formatTimeAgo = (dateString) => {
   const hours = Math.floor(minutes / 60)
   const days = Math.floor(hours / 24)
 
+  // Table for months
+  const months = {
+    '01': 'stycznia',
+    '02': 'lutego',
+    '03': 'marca',
+    '04': 'kwietnia',
+    '05': 'maja',
+    '06': 'czerwca',
+    '07': 'lipca',
+    '08': 'sierpnia',
+    '09': 'września',
+    10: 'października',
+    11: 'listopada',
+    12: 'grudnia',
+  }
+
   if (minutes < 1) {
     return 'przed chwilą'
   } else if (minutes < 60) {
@@ -27,9 +43,12 @@ export const formatTimeAgo = (dateString) => {
   } else if (days < 7) {
     return `${days} dni temu`
   } else {
-    const date = dataTime.toLocaleDateString()
+    const date = dataTime
+      .toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit' })
+      .replace(/\//g, '.')
+    const [day, month] = date.split('.')
     const time = dataTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    return `${date}, ${time}`
+    return `${day} ${months[month]} o ${time}`
   }
 }
 

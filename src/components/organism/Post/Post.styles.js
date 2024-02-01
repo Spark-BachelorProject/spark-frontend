@@ -76,8 +76,8 @@ export const Details = styled.div`
 
     ${Text} {
       color: ${({ theme }) => theme.colors.titleFont};
-      font-size: ${({ theme }) => theme.fontSize.sPlus};
-      font-weight: 400;
+      font-size: ${({ theme }) => theme.fontSize.s};
+      font-weight: 500;
     }
 
     & > img {
@@ -109,7 +109,7 @@ export const StyledMoreInfoIcon = styled(MoreInfoIcon)`
 export const InteractionsSection = styled.section`
   display: flex;
   align-items: center;
-  height: auto;
+  height: 45px;
   margin: 30px 0 10px 0;
   justify-content: space-between;
 `
@@ -126,8 +126,8 @@ export const DetailsWrapper = styled.div`
   }
 
   & > svg {
-    height: 14px;
-    width: 14px;
+    height: 18px;
+    width: 18px;
     margin-right: 8px;
   }
 
@@ -137,5 +137,6 @@ export const DetailsWrapper = styled.div`
 `
 export const ButtonsWrapper = styled.div`
   display: flex;
+  height: 40px;
   gap: 15px;
 `

@@ -60,7 +60,7 @@ const Home = () => {
   return (
     <PageContent hasNavigation hasRightBar>
       <AddPostSection />
-      <TitleBar isBold>
+      <TitleBar>
         Odkrywaj aktualne spotkania w <span>{selectedCity}</span>
       </TitleBar>
       <Dropdown setFilterOptions={setFilterOptions} filterOptions={filterOptions} />

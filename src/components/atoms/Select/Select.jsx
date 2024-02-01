@@ -3,7 +3,7 @@ import { StyledSelect } from './Select.styles'
 const Select = (props) => {
   const { children } = props
   return (
-    <StyledSelect {...props} disabled={props.isDisabled}>
+    <StyledSelect {...props} disabled={props.isDisabled} isEmpty={props.isEmpty}>
       {children.map(({ value, text, name }, i) => (
         <option value={value} key={i}>
           {text || name}

@@ -6,11 +6,18 @@ export const Title = styled.h1`
   font-weight: ${({ isBold }) => (isBold ? 600 : 400)};
 
   & > span {
+    margin-left: 5px;
+    font-size: ${({ theme }) => theme.fontSize.m};
     color: ${({ theme }) => theme.colors.accent};
     cursor: pointer;
+    /* background-color: ${({ theme }) => theme.colors.modalBg}; */
+    border: 1px solid ${({ theme }) => theme.colors.modalBorder};
+    padding: 2px 10px;
+    border-radius: 20px;
 
     :hover {
-      color: ${({ theme }) => theme.colors.buttonBg};
+      background-color: ${({ theme }) => theme.colors.selectBorder};
+      transition: 0.1s ease-in-out;
     }
   }
 `

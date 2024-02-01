@@ -22,7 +22,7 @@ export const Wrapper = styled.article`
   ${Title} {
     line-height: 1.4;
     margin: 10px 0 15px 0;
-    font-size: ${({ theme }) => theme.fontSize.lMinus};
+    font-size: ${({ theme }) => theme.fontSize.l};
   }
 `
 
@@ -76,14 +76,14 @@ export const Details = styled.div`
 
     ${Text} {
       color: ${({ theme }) => theme.colors.titleFont};
-      font-size: ${({ theme }) => theme.fontSize.s};
+      font-size: ${({ theme }) => theme.fontSize.xs};
       font-weight: 500;
     }
 
     & > img {
       height: 20px;
       width: 20px;
-      margin-right: -3px;
+      margin-right: -3.5px;
     }
 
     & > svg {

@@ -40,7 +40,6 @@ export const lightTheme = {
   commentDetails:      '#475569',   //         slate600 -> slate200`
   iconSecondary:       '#475569',   //         slate600 -> slate200
   inputFont:           '#475569',   //         slate600 -> slate200
-  selectFont:          '#475569',   //         slate600 -> slate300
   
   text:                '#494d4e',   //         slate700 -> slate200
   textHeader:          '#334155',   //         slate700 -> slate200
@@ -92,7 +91,6 @@ export const darkTheme = {
   grayDetails:         '#E2E8F0',   //         slate200 -> custom
 
   checkboxTick:        '#CBD5E1',   //         slate300 -> slate500
-  selectFont:          '#CBD5E1',   //         slate300 -> slate600
   boldText:            '#CBD5E1',   //         slate300 -> slate800
   labelFont:           '#CBD5E1',   //         slate300 -> slate800
 

@@ -24,8 +24,11 @@ export const StyledIconBorder = styled(IconBorder)`
   padding: 9px 15px;
   height: 39px;
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
+  background: ${({ theme }) => theme.colors.secondaryBg};
   color: ${({ theme }) => theme.colors.text};
-  font-size: ${({ theme }) => theme.fontSize.sPlus};
+  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-weight: 600;
+  border-radius: 9px;
 
   &:focus-visible {
     outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};

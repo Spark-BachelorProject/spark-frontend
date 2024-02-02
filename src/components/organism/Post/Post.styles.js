@@ -100,9 +100,29 @@ export const Details = styled.div`
 export const StyledMoreInfoIcon = styled(MoreInfoIcon)`
   margin-left: auto;
   cursor: pointer;
-  scale: 1.2;
+  scale: 1.1;
   & path {
-    stroke: ${({ theme }) => theme.colors.textHeader};
+    stroke: ${({ theme }) => theme.colors.text};
+  }
+
+  :hover {
+    & path {
+      stroke: ${({ theme }) => theme.colors.titleFont};
+    }
+  }
+`
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 0 0 0;
+
+  & > p {
+    color: ${({ theme }) => theme.colors.titleFont};
+    font-size: ${({ theme }) => theme.fontSize.s};
+    font-weight: 400;
+    }
   }
 `
 

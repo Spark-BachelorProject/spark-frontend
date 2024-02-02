@@ -7,9 +7,9 @@ export const StyledTags = styled.div`
 
   ${Button} {
     cursor: inherit;
-    padding: 5px 8px;
-    background-color: transparent;
-    border: 1px solid ${({ theme }) => theme.colors.checkboxTick};
+    padding: 5px 10px;
+    background-color: ${({ theme }) => theme.colors.iconBg};
+    border: 1px solid ${({ theme }) => theme.colors.divider};
     border-radius: 6px;
     font-size: ${({ theme }) => theme.fontSize.xs};
     color: ${({ theme }) => theme.colors.text};
@@ -18,9 +18,9 @@ export const StyledTags = styled.div`
 
     &:hover {
       color: ${({ theme }) => theme.colors.white};
-      background-color: ${({ theme }) => theme.colors.titleFont};
-      color: ${({ theme }) => theme.colors.modalBg};
-      border: 1px solid ${({ theme }) => theme.colors.titleFont};
+      background-color: ${({ theme }) => theme.colors.accent};
+      color: ${({ theme }) => theme.colors.white};
+      border: 1px solid ${({ theme }) => theme.colors.accent};
       transition: all 0.1s ease-in-out;
       cursor: pointer;
     }

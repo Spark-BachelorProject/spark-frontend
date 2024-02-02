@@ -5,7 +5,7 @@ export const Button = styled.button`
   background-color: ${({ theme, isGray }) =>
     isGray ? `${theme.colors.navbarBg}` : theme.colors.accent};
   color: ${({ theme, isGray }) => (isGray ? `${theme.colors.text}` : `${theme.colors.white}`)};
-  padding: ${({ isBig }) => (isBig ? '10px 20px' : '10px 16px')};
+  padding: ${({ isBig }) => (isBig ? '10px 20px' : '6px 16px')};
   border: ${({ theme, isGray }) =>
     isGray ? `1px solid ${theme.colors.navbarBorder}` : `1px solid ${theme.colors.postBorder}`};
   border-radius: 8px;

@@ -2,8 +2,9 @@ import { useState } from 'react'
 
 import Avvvatars from 'avvvatars-react'
 
-import { ReactComponent as BellIcon } from '@/assets/icons/bell.svg'
-import { ReactComponent as UsersIcon } from '@/assets/icons/users.svg'
+import { ReactComponent as FeedbackBadge } from '@/assets/icons/feedback.svg'
+import { ReactComponent as FirstBadge } from '@/assets/icons/first.svg'
+import { ReactComponent as VeteranBadge } from '@/assets/icons/veteran.svg'
 import Loader from '@/components/atoms/Loader/Loader'
 import Tags from '@/components/atoms/Tags/Tags'
 import { Title } from '@/components/atoms/Title/Title.styles'
@@ -27,15 +28,23 @@ import {
 } from './ProfileDetails.styles'
 
 const badges = [
-  { Icon: BellIcon, text: 'Sportowa dusza' },
-  { Icon: UsersIcon, text: 'Mistrz konsystencji' },
-  { Icon: UsersIcon, text: 'Eksplorator' },
-  { Icon: UsersIcon, text: 'Weteran' },
-  { Icon: UsersIcon, text: 'Sowa' },
-  { Icon: UsersIcon, text: 'Skowronek' },
-  { Icon: UsersIcon, text: 'Mistrz jednej dziedziny ' },
-  { Icon: BellIcon, text: 'Ironman' },
+  {
+    Icon: VeteranBadge,
+    text: 'Weteran',
+    description: 'Oznaka przyznawana za dodanie 100 postów',
+  },
+  {
+    Icon: FeedbackBadge,
+    text: 'Głos społeczności',
+    description: 'Oznaka przyznawana za wysłanie opinii',
+  },
+  {
+    Icon: FirstBadge,
+    text: 'Sportowa dusza',
+    description: 'Oznaka przyznawana za dodanie pierwszego postu',
+  },
 ]
+
 // TODO: badges from backend should have icon or something like that
 const ProfileDetails = () => {
   const { data: user, isLoading } = useGetUserQuery()
@@ -43,9 +52,8 @@ const ProfileDetails = () => {
   const [currentBadge, setCurrentBadge] = useState(null)
   const { Popup, isOpen, position, handleClosePopup, handleOpenAndPositionPopup } = usePopup()
   const positioning = 'left'
-
-  const handleOpenBadgeInfo = (e, { Icon, text }) => {
-    setCurrentBadge({ Icon, text })
+  const handleOpenBadgeInfo = (e, { Icon, text, description }) => {
+    setCurrentBadge({ Icon, text, description })
     handleOpenAndPositionPopup(e.target, positioning)
   }
 
@@ -132,15 +140,15 @@ const ProfileDetails = () => {
               ))
             : null} */}
 
-          {badges.map(({ Icon, text }, i) => (
+          {badges.map(({ Icon, text, description }, i) => (
             <Badge
-              onMouseEnter={(e) => handleOpenBadgeInfo(e, { Icon, text })}
+              onMouseEnter={(e) => handleOpenBadgeInfo(e, { Icon, text, description })}
               onMouseLeave={handleClosePopup}
               tabIndex={0}
               key={i}
               Icon={Icon}
             >
-              {text}
+              dsasdaisodjis
             </Badge>
           ))}
           {isOpen ? (

@@ -4,16 +4,18 @@ import PropTypes from 'prop-types'
 
 import { Content, Header, StyledText1, StyledText2, StyledTitle, Wrapper } from './BadgeInfo.styles'
 
-const BadgeInfo = ({ badge: { Icon, text } }) => {
+const BadgeInfo = ({ badge: { Icon, text, description } }) => {
   return (
     <Wrapper>
       <Header>
         <Icon />
-        <StyledTitle isBold>{text}</StyledTitle>
+        <StyledTitle isBig isBold>
+          {text}
+        </StyledTitle>
       </Header>
       <Content>
-        <StyledText1>Odznaka przyznawana po dołączeniu do 100 aktywności</StyledText1>
-        <StyledText2>3% społeczności posiada tę odznakę</StyledText2>
+        <StyledText1>{description}</StyledText1>
+        <StyledText2>Otrzymana 24 stycznia 2024 </StyledText2>
       </Content>
     </Wrapper>
   )

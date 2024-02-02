@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
 
 export const StyledButton = styled(Button)`
   margin-bottom: -25px;
+  padding: 11px 22px;
 `
 
 export const StyledText = styled(Text)`

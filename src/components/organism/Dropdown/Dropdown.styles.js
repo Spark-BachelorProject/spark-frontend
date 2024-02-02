@@ -31,12 +31,14 @@ export const StyledIconBorder = styled(IconBorder)`
   border-radius: 9px;
 
   &:focus-visible {
-    outline: 2px solid ${({ theme }) => theme.colors.iconPlusBg};
+    fill: 2px solid ${({ theme }) => theme.colors.iconPlusBg};
   }
 
   & > svg,
   & > svg > path {
-    margin-left: 10px;
+    margin-right: 5px;
     pointer-events: none;
+    fill: ${({ theme }) => theme.colors.text};
+    stroke: none;
   }
 `

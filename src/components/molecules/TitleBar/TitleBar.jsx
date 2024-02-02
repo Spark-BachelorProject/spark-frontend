@@ -40,6 +40,7 @@ export const TitleBar = ({ children, className }) => {
         onClick={(e) => handleOpenSelectCityModal(e)}
         ref={modalOpenElementRef}
         tabIndex={0}
+        isClickable
       >
         {children}
       </Title>

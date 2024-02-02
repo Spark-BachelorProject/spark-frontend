@@ -4,7 +4,7 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { Title } from '@/components/atoms/Title/Title.styles'
 
 export const Wrapper = styled.div`
-  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: ${({ theme }) => theme.colors.popupShadow};
   background-color: ${({ theme }) => theme.colors.primaryBg};
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
@@ -12,15 +12,21 @@ export const Wrapper = styled.div`
 `
 
 export const Header = styled.div`
-  background-color: ${({ theme }) => theme.colors.accent};
+  background-color: ${({ theme }) => theme.colors.iconBg};
   display: flex;
+  align-items: center;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
-  padding: 15px 20px;
+  padding: 15px 10px;
   gap: 10px;
 
-  & > svg > path {
-    stroke: ${({ theme }) => theme.colors.white};
+  & > svg {
+    width: 80px;
+    height: 80px;
+
+    & > path {
+      stroke: ${({ theme }) => theme.colors.white};
+    }
   }
 `
 
@@ -35,13 +41,14 @@ export const Content = styled.section`
 `
 
 export const StyledText1 = styled(Text)`
-  padding: 15px 20px 0px 20px;
-  font-size: ${({ theme }) => theme.fontSize.mPlus};
+  padding: 20px 20px 0px 20px;
+  font-size: ${({ theme }) => theme.fontSize.sPlus};
+  color: ${({ theme }) => theme.colors.titleFont};
   width: 100%;
 `
 export const StyledText2 = styled(Text)`
-  padding: 15px 20px;
-  font-size: ${({ theme }) => theme.fontSize.s};
+  padding: 20px 20px;
+  font-size: ${({ theme }) => theme.fontSize.xs};
   color: ${({ theme }) => theme.colors.placeholder};
   width: 100%;
 `

@@ -2,23 +2,23 @@ import styled from 'styled-components'
 
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 
+//TODO: Fix padding issue
 export const StyledButton = styled(Button)`
-  padding: 15px 25px;
-  background-color: ${({ theme }) => theme.colors.tagBg};
-  border: 1px solid #3b82f640;
-  font-size: ${({ theme }) => theme.fontSize.s};
+  background-color: transparent;
+  border: none;
   display: flex;
   flex-direction: column;
+  padding: 0px;
+  border-radius: 100px;
   align-items: center;
+  font-size: 20px;
 
-  color: ${({ theme }) => theme.colors.accent};
-  margin: 12px 12px 0px 0;
+  margin: 5px 5px 0px 0;
   font-weight: 500;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.accent};
-    background-color: ${({ theme }) => theme.colors.tagBgActive};
-    transition: 0.2s linear;
+    background-color: ${({ theme }) => theme.colors.iconBg};
+    transition: 0.15s linear;
   }
 
   & > svg > path {

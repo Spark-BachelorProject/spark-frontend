@@ -33,7 +33,6 @@ export const getActivityIcon = (name) => {
   const asciiName = replacePolishChars(name)
 
   const iconUrl = iconFiles[`/src/assets/activityIcons/${asciiName}.svg`]
-  console.log(asciiName)
 
   if (!iconUrl) {
     console.warn(`Icon not found for: ${asciiName}`)

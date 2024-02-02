@@ -9,13 +9,11 @@ const Badge = (props) => {
   return (
     <StyledButton {...props}>
       <Icon />
-      {children}
     </StyledButton>
   )
 }
 
 Badge.propTypes = {
-  children: PropTypes.string.isRequired,
   Icon: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.instanceOf(React.Component),

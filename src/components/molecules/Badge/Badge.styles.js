@@ -13,7 +13,7 @@ export const StyledButton = styled(Button)`
   align-items: center;
   font-size: 20px;
 
-  margin: 5px 5px 0px 0;
+  margin: 10px 8px 0px 0;
   font-weight: 500;
 
   &:hover {
@@ -21,7 +21,12 @@ export const StyledButton = styled(Button)`
     transition: 0.15s linear;
   }
 
-  & > svg > path {
+  & > svg {
+    height: 80px;
+    width: 80px;
+  }
+
+  & > path {
     stroke: ${({ theme }) => theme.colors.accent};
   }
 `

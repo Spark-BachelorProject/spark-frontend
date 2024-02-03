@@ -57,7 +57,14 @@ const ProfileDetails = () => {
   const { data: user, isLoading } = useGetUserQuery()
 
   const [currentBadge, setCurrentBadge] = useState(null)
-  const { Popup, isOpen, position, handleClosePopup, handleOpenAndPositionPopup } = usePopup()
+  const {
+    Popup,
+    isOpen,
+    position,
+    handleClosePopup,
+    handleOpenAndPositionPopup,
+    popupOpenElementRef,
+  } = usePopup()
   const positioning = 'left'
   const handleOpenBadgeInfo = (e, { Icon, text, description }) => {
     setCurrentBadge({ Icon, text, description })
@@ -139,12 +146,11 @@ const ProfileDetails = () => {
             <Badge
               onMouseEnter={(e) => handleOpenBadgeInfo(e, { Icon, text, description })}
               onMouseLeave={handleClosePopup}
+              ref={popupOpenElementRef}
               tabIndex={0}
               key={i}
               Icon={Icon}
-            >
-              dsasdaisodjis
-            </Badge>
+            />
           ))}
           {isOpen ? (
             <Popup position={position} hasNoPadding hasNoBackground>

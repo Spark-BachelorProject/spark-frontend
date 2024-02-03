@@ -119,10 +119,10 @@ export const Map = () => {
           // chunkedLoading
           // removeOutsideVisibleBounds
           // showCoverageOnHover
-          // maxClusterRadius={30}
-
+          maxClusterRadius={40}
           chunkedLoading
           removeOutsideVisibleBounds
+          showCoverageOnHover={false}
         >
           {!isLoadingPosts &&
             isSuccessPosts &&

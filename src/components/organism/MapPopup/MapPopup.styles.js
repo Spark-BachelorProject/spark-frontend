@@ -6,17 +6,19 @@ import { Header } from '@/components/organism/Post/Post.styles'
 
 export const StyledTags = styled(Tags)`
   flex-wrap: wrap;
-  width: 300px;
+  width: 350px;
 `
 
 export const Time = styled.div`
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
 
   & > svg {
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
+    min-height: 18px;
+    min-width: 18px;
   }
 
   & > svg > path {

@@ -38,12 +38,13 @@ export const NameActivityWrapper = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   width: 100%;
 
   & > img {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
+    margin-right: -4px;
   }
 `
 
@@ -61,7 +62,7 @@ export const FirstRowText = styled(Text)`
 export const SecondRowText = styled(Text)`
   /* margin: ${({ isCancelled }) => (isCancelled ? '-3px 0 0 0' : '5px 0')}; */
   margin-top: 3px;
-  font-size: ${({ theme }) => theme.fontSize.s};
+  font-size: ${({ theme }) => theme.fontSize.sPlus};
   color: ${({ theme }) => theme.colors.text};
 `
 

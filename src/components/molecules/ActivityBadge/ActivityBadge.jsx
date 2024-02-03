@@ -1,12 +1,12 @@
 import { getActivityIcon } from '@/helpers/getActivityIcon'
 
-import { StyledText, Wrapper } from './ActivityBadge.styles'
+import { Wrapper } from './ActivityBadge.styles'
 
 export const ActivityBadge = ({ name }) => {
   return (
     <Wrapper>
       <img src={getActivityIcon(name)} alt={name} />
-      <StyledText>{name}</StyledText>
+      {/* <StyledText>{name}</StyledText> */}
     </Wrapper>
   )
 }

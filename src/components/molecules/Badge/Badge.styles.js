@@ -22,8 +22,8 @@ export const StyledButton = styled(Button)`
   }
 
   & > svg {
-    height: 80px;
-    width: 80px;
+    height: 77px;
+    width: 77px;
   }
 
   & > path {

@@ -49,7 +49,7 @@ const CommentSection = ({ handleAddComment, inputValue, setInputValue, comments 
       <StyledText
         onClick={() => setCommentSectionIsOpen((prev) => !prev)}
         commentSectionIsOpen={commentSectionIsOpen}
-        isComments={!!comments.length}
+        comments={!!comments.length}
       >
         {!comments.length
           ? 'Skomentuj jako pierwszy'

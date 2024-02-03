@@ -10,14 +10,14 @@ export const Wrapper = styled.div`
   gap: 5px;
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
   background-color: ${({ theme }) => theme.colors.navbarBg};
-  padding: 15px 30px;
+  padding: 10px 20px;
   width: auto;
   border-radius: 10px;
-  margin: 8px;
+  margin: 4px;
 
   & > img {
-    width: 27px;
-    height: 27px;
+    width: 31px;
+    height: 31px;
   }
 `
 

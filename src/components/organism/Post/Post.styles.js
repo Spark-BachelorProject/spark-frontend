@@ -100,14 +100,16 @@ export const Details = styled.div`
 export const StyledMoreInfoIcon = styled(MoreInfoIcon)`
   margin-left: auto;
   cursor: pointer;
-  scale: 1.1;
+  scale: 1.15;
   & path {
-    stroke: ${({ theme }) => theme.colors.text};
+    stroke: ${({ theme }) => theme.colors.iconPrimary};
   }
 
   :hover {
+    transition: 0.5ms ease-in-out;
+
     & path {
-      stroke: ${({ theme }) => theme.colors.titleFont};
+      stroke: ${({ theme }) => theme.colors.accent};
     }
   }
 `

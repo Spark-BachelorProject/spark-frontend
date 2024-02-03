@@ -50,7 +50,7 @@ const badges = [
   },
 ]
 
-const favouriteActivities = ['Flanki', 'Kajaki', 'Wspinaczka', 'Kręgle', 'Pływanie', 'Wędrówki']
+const favouriteActivities = ['Kajaki', 'Kręgle', 'Pływanie', 'Wędrówki', 'Flanki']
 
 // TODO: badges from backend should have icon or something like that
 const ProfileDetails = () => {

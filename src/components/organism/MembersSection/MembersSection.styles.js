@@ -19,7 +19,7 @@ export const StyledButton = styled(Button)`
   display: block;
   margin: 0 auto;
   font-size: ${({ theme }) => theme.fontSize.sPlus};
-  opacity: 0.8;
+  /* opacity: 0.8; */
   border: 2px solid ${({ theme }) => theme.colors.checkboxBorder};
   color: ${({ theme }) => theme.colors.text};
 

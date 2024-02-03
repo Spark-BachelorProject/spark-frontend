@@ -9,7 +9,7 @@ export const Title = styled.h1`
   & > span {
     margin-left: 5px;
     font-size: ${({ theme }) => theme.fontSize.m};
-    color: ${({ theme }) => theme.colors.accent};
+    color: ${({ theme }) => theme.colors.text};
     cursor: pointer;
     border: 1px solid ${({ theme }) => theme.colors.postBorder};
     padding: 4px 14px;
@@ -17,6 +17,7 @@ export const Title = styled.h1`
 
     :hover {
       background-color: ${({ theme }) => theme.colors.selectBorder};
+      color: ${({ theme }) => theme.colors.accent};
       transition: 0.1s ease-in-out;
     }
   }

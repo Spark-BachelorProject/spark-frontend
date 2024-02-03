@@ -9,6 +9,5 @@ export const Thumbnail = styled.img`
   margin-right: 10px;
   background-color: ${({ theme }) => theme.colors.postBorder};
   border: none;
-  opacity: 1;
   box-shadow: inset 0px 0px 1px #d2e2fd;
 `

@@ -31,7 +31,7 @@ export const GroupIconDiv = styled.div`
   & > img {
     height: 20px;
     width: 20px;
-    opacity: 0.8;
+    /* opacity: 0.8; */
   }
 `
 

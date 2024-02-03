@@ -83,7 +83,9 @@ const CreatePost = ({ handleClose, handlePostAdded, groupId = 0 }) => {
   })
 
   //TODO: refactor this
-  const [selectedActivityId, setSelectedActivityId] = useState(1)
+
+  //4 seems to be the backend id for "Biegi", the first activity on the list
+  const [selectedActivityId, setSelectedActivityId] = useState(4)
   const { data: tagsApi, isLoading: isLoadingTagsApi } =
     useGetTagsByActivityIdQuery(selectedActivityId)
 

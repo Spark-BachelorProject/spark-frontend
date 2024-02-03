@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 
 import { StyledButton } from './Badge.styles'
 
-const Badge = (props) => {
-  const { Icon, children } = props
+const Badge = React.forwardRef((props, ref) => {
+  const { Icon } = props
   return (
-    <StyledButton {...props}>
+    <StyledButton {...props} ref={ref}>
       <Icon />
     </StyledButton>
   )
-}
+})
 
 Badge.propTypes = {
   Icon: PropTypes.oneOfType([

@@ -15,8 +15,10 @@ const usePopup = (initialValue = false, isHeaderSearchBar = false) => {
       ;({ x, height } = ref.current.getBoundingClientRect())
       offsetTop = ref.current.offsetTop
     } else {
-      ;({ x, height } = ref.getBoundingClientRect())
-      offsetTop = ref.offsetTop
+      ;({ x, height, top: offsetTop } = ref.getBoundingClientRect())
+      // It works for badges in ProfileDetails
+      const defaultOffsetForBadges = 70
+      offsetTop = offsetTop + window.scrollY - defaultOffsetForBadges
     }
 
     isHeaderSearchBar

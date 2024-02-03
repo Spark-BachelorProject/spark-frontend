@@ -15,7 +15,7 @@ const BadgeInfo = ({ badge: { Icon, text, description } }) => {
       </Header>
       <Content>
         <StyledText1>{description}</StyledText1>
-        <StyledText2>Otrzymana 24 stycznia 2024 </StyledText2>
+        <StyledText2>Otrzymana 24 stycznia 2024</StyledText2>
       </Content>
     </Wrapper>
   )

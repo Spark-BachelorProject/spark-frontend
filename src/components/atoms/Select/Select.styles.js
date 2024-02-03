@@ -24,4 +24,9 @@ export const StyledSelect = styled.select`
     min-height: 20px;
     padding: 0px 2px 1px 0px;
   }
+
+  :disabled {
+    color: ${({ theme }) => theme.colors.textsecondary};
+    font-weight: 300;
+  }
 `

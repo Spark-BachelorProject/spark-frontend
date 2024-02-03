@@ -8,7 +8,7 @@ export const StyledButton = styled(Button)`
   border: none;
   display: flex;
   flex-direction: column;
-  padding: 0px;
+  padding: 0;
   border-radius: 100px;
   align-items: center;
   font-size: 20px;
@@ -17,7 +17,7 @@ export const StyledButton = styled(Button)`
   font-weight: 500;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.iconBg};
+    background-color: ${({ theme }) => theme.colors.mainDivider};
     transition: 0.15s linear;
   }
 

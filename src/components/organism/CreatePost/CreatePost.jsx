@@ -182,6 +182,7 @@ const CreatePost = ({ handleClose, handlePostAdded, groupId = 0 }) => {
       [name]: value,
     }))
     setSelectedActivityId(activities.find((activity) => activity.value === value).id)
+    tagsApi && setValue('tags', [])
   }
 
   // Watch the value of the "privacy" field to dynamically enable/disable other fields

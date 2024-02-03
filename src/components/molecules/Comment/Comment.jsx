@@ -10,7 +10,7 @@ const Comment = ({ children, user: { firstName, lastName }, dateAdded }) => {
   return (
     <Wrapper>
       <Details>
-        <Avvvatars value={getInitials(firstName, lastName)} size={23} />
+        <Avvvatars value={getInitials(firstName, lastName)} size={25} />
         <div>
           <Text isBold>
             {firstName} {lastName}
@@ -18,7 +18,7 @@ const Comment = ({ children, user: { firstName, lastName }, dateAdded }) => {
           <StyledText>{formatTimeAgo(dateAdded)}</StyledText>
         </div>
       </Details>
-      <Text>{children}</Text>
+      <Text isBig>{children}</Text>
     </Wrapper>
   )
 }

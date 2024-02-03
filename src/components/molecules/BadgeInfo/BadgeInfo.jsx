@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { Content, Header, StyledText1, StyledText2, StyledTitle, Wrapper } from './BadgeInfo.styles'
 
-const BadgeInfo = ({ badge: { Icon, text, description } }) => {
+const BadgeInfo = ({ badge: { Icon, text, description, date } }) => {
   return (
     <Wrapper>
       <Header>
@@ -15,7 +15,7 @@ const BadgeInfo = ({ badge: { Icon, text, description } }) => {
       </Header>
       <Content>
         <StyledText1>{description}</StyledText1>
-        <StyledText2>Otrzymana 24 stycznia 2024</StyledText2>
+        <StyledText2>Otrzymana {date}</StyledText2>
       </Content>
     </Wrapper>
   )

@@ -33,20 +33,23 @@ const badges = [
   {
     Icon: VeteranBadge,
     text: 'Weteran',
-    description: 'Oznaka przyznawana za dodanie 100 postów',
+    description: 'Nie ma rzeczy niemożliwych! 100 postów na forum.',
     rarity: '5',
+    date: '24 stycznia 2024',
   },
   {
     Icon: FeedbackBadge,
     text: 'Głos społeczności',
-    description: 'Oznaka przyznawana za wysłanie opinii',
+    description: 'Dziękujemy! Poprzez wysłanie opinii pomagasz nam w rozwoju aplikacji.',
     rarity: '3',
+    date: '2 lutego 2023',
   },
   {
     Icon: FirstBadge,
     text: 'Sportowa dusza',
-    description: 'Oznaka przyznawana za dodanie pierwszego postu',
+    description: 'Maszyna ruszyła! Pierwszy post na forum.',
     rarity: '1',
+    date: '24 marca 2024',
   },
 ]
 
@@ -66,8 +69,8 @@ const ProfileDetails = () => {
     popupOpenElementRef,
   } = usePopup()
   const positioning = 'left'
-  const handleOpenBadgeInfo = (e, { Icon, text, description }) => {
-    setCurrentBadge({ Icon, text, description })
+  const handleOpenBadgeInfo = (e, { Icon, text, description, date }) => {
+    setCurrentBadge({ Icon, text, description, date })
     handleOpenAndPositionPopup(e.target, positioning)
   }
 
@@ -142,9 +145,9 @@ const ProfileDetails = () => {
               ))
             : null} */}
 
-          {sortedBadges.map(({ Icon, text, description }, i) => (
+          {sortedBadges.map(({ Icon, text, description, date }, i) => (
             <Badge
-              onMouseEnter={(e) => handleOpenBadgeInfo(e, { Icon, text, description })}
+              onMouseEnter={(e) => handleOpenBadgeInfo(e, { Icon, text, description, date })}
               onMouseLeave={handleClosePopup}
               ref={popupOpenElementRef}
               tabIndex={0}

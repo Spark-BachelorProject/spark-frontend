@@ -6,7 +6,7 @@ export const Input = styled.input`
   cursor: text;
   background-color: ${({ theme }) => theme.colors.inputBg};
   padding: 9px 13px;
-  border-radius: 7px;
+  border-radius: 8px;
   color: ${({ theme }) => theme.colors.inputFont};
   width: 100%;
   font-size: ${({ theme }) => theme.fontSize.m};
@@ -20,6 +20,7 @@ export const Input = styled.input`
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.placeholder};
+    font-size: ${({ theme }) => theme.fontSize.sPlus};
   }
 
   &[type='time'],

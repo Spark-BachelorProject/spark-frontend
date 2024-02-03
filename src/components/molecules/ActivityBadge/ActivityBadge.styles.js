@@ -11,9 +11,18 @@ export const Wrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
   background-color: ${({ theme }) => theme.colors.navbarBg};
   padding: 10px 20px;
-  width: auto;
+  width: 75px;
+  height: 55px;
   border-radius: 10px;
   margin: 4px;
+
+  :hover {
+    & > img {
+      width: 35px;
+      height: 35px;
+      transition: 0.2s ease-in-out;
+    }
+  }
 
   & > img {
     width: 31px;

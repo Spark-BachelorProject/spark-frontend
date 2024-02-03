@@ -42,4 +42,6 @@ export const Details = styled.div`
 
 export const StyledText = styled(Text)`
   color: ${({ theme }) => theme.colors.textsecondary} !important;
+  font-size: ${({ theme }) => theme.fontSize.xs} !important;
+  margin-top: 1.5px;
 `

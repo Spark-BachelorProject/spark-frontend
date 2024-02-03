@@ -6,8 +6,8 @@ import { ReactComponent as FeedbackBadge } from '@/assets/icons/feedback.svg'
 import { ReactComponent as FirstBadge } from '@/assets/icons/first.svg'
 import { ReactComponent as VeteranBadge } from '@/assets/icons/veteran.svg'
 import Loader from '@/components/atoms/Loader/Loader'
-import Tags from '@/components/atoms/Tags/Tags'
 import { Title } from '@/components/atoms/Title/Title.styles'
+import { ActivityBadge } from '@/components/molecules/ActivityBadge/ActivityBadge'
 import Badge from '@/components/molecules/Badge/Badge'
 import BadgeInfo from '@/components/molecules/BadgeInfo/BadgeInfo'
 import { FavouriteActivitiesSelect } from '@/components/molecules/FavouriteActivitiesSelect/FavouriteActivitiesSelect'
@@ -17,11 +17,13 @@ import usePopup from '@/hooks/usePopup'
 import { useGetUserQuery } from '@/store/api/user'
 
 import {
+  ActivitiesWrapper,
   ActivitySection,
   BadgesSection,
   BadgesWrapper,
   EditWrapper,
   ImgAndNameSection,
+  SettingsButton,
   StyledSettingsIcon,
   StyledTitle,
   Wrapper,
@@ -47,6 +49,8 @@ const badges = [
     rarity: '1',
   },
 ]
+
+const favouriteActivities = ['Flanki', 'Kajaki', 'Wspinaczka', 'Kręgle', 'Pływanie', 'Wędrówki']
 
 // TODO: badges from backend should have icon or something like that
 const ProfileDetails = () => {
@@ -86,7 +90,7 @@ const ProfileDetails = () => {
   return (
     <Wrapper>
       <ImgAndNameSection>
-        <Avvvatars value={getInitials(user.firstName, user.lastName)} size={90} />
+        <Avvvatars value={getInitials(user.firstName, user.lastName)} size={110} />
 
         <Title>{isLoading ? <Loader isCentered /> : `${user.firstName} ${user.lastName}`}</Title>
       </ImgAndNameSection>
@@ -97,33 +101,19 @@ const ProfileDetails = () => {
       <ActivitySection>
         <EditWrapper>
           <StyledTitle>Ulubione aktywności</StyledTitle>
-          <div
+          <SettingsButton
             onClick={(e) => handleOpenFavouritesModal(e)}
             onKeyDown={handleCloseFavouritesModal}
             ref={modalOpenElementRef}
           >
             <StyledSettingsIcon />
-          </div>
+          </SettingsButton>
         </EditWrapper>
-        <Tags>
-          {[
-            {
-              id: 1,
-              name: 'Kajaki',
-              type: 'Sport',
-            },
-            {
-              id: 2,
-              name: 'Wspinaczka',
-              type: 'Poziom',
-            },
-            {
-              id: 3,
-              name: 'Wędkarstwo',
-              type: 'Poziom',
-            },
-          ]}
-        </Tags>
+        <ActivitiesWrapper>
+          {favouriteActivities.map((activity, i) => (
+            <ActivityBadge key={i} name={activity} />
+          ))}
+        </ActivitiesWrapper>
       </ActivitySection>
       {/* ) : null} */}
 

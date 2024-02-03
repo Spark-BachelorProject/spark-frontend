@@ -122,7 +122,6 @@ export const Content = styled.div`
     color: ${({ theme }) => theme.colors.titleFont};
     font-size: ${({ theme }) => theme.fontSize.s};
     font-weight: 400;
-    }
   }
 `
 

@@ -17,7 +17,7 @@ const AttendanceList = ({ participants }) => {
     <Wrapper numOfParticipants={participants.length}>
       {firstFourParticipants.map(({ firstName, lastName, id }, index) => (
         <StyledAvatar key={id} index={index} numOfParticipants={participants.length}>
-          <Avvvatars value={getInitials(firstName, lastName)} />
+          <Avvvatars value={getInitials(firstName, lastName)} size={35} />
         </StyledAvatar>
       ))}
       {participants.length > FOUR && (

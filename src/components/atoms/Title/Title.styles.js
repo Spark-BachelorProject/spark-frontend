@@ -11,10 +11,9 @@ export const Title = styled.h1`
     font-size: ${({ theme }) => theme.fontSize.m};
     color: ${({ theme }) => theme.colors.accent};
     cursor: pointer;
-    /* background-color: ${({ theme }) => theme.colors.modalBg}; */
-    border: 1px solid ${({ theme }) => theme.colors.modalBorder};
-    padding: 2px 10px;
-    border-radius: 20px;
+    border: 1px solid ${({ theme }) => theme.colors.postBorder};
+    padding: 4px 14px;
+    border-radius: 5px;
 
     :hover {
       background-color: ${({ theme }) => theme.colors.selectBorder};

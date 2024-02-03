@@ -37,8 +37,8 @@ export const ImgAndNameSection = styled.section`
 
   ${Title} {
     margin: 15px 0;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: ${({ theme }) => theme.fontSize.xl};
+    font-weight: 400;
   }
 
   &::before {
@@ -71,7 +71,7 @@ export const ActivitySection = styled.section`
   &::before {
     position: absolute;
     content: '';
-    bottom: -30px;
+    bottom: -25px;
     left: 50%;
     width: 100%;
     height: 2px;
@@ -83,7 +83,7 @@ export const ActivitySection = styled.section`
 export const BadgesSection = styled.section`
   text-align: start;
   width: 100%;
-  padding-top: 50px;
+  padding-top: 45px;
 `
 
 export const BadgesWrapper = styled.div`
@@ -95,7 +95,6 @@ export const BadgesWrapper = styled.div`
 export const FavoriteSection = styled.section`
   text-align: start;
   width: 100%;
-  padding-top: 50px;
 
   &::before {
     position: absolute;
@@ -116,15 +115,32 @@ export const EditWrapper = styled.div`
 `
 
 export const StyledSettingsIcon = styled(SettingsIcon)`
-  width: 13px;
-  height: 13px;
-  cursor: pointer;
+  margin-top: 6.5px;
+  width: 15px;
+  height: 15px;
   & > path {
-    stroke: ${({ theme }) => theme.colors.placeholder};
+    stroke: ${({ theme }) => theme.colors.commentDetails};
   }
+`
 
-  &:hover > path {
-    stroke: ${({ theme }) => theme.colors.accent};
-    transition: 0.2s ease-out;
+export const ActivitiesWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-top: 15px;
+`
+
+export const SettingsButton = styled.div`
+  cursor: pointer;
+  background-color: ${({ theme }) => theme.colors.iconBg};
+  border: 1px solid ${({ theme }) => theme.colors.divider};
+  padding: 0px 8px;
+  border-radius: 5px;
+  :hover {
+    background-color: ${({ theme }) => theme.colors.accent};
+
+    & > svg > path {
+      stroke: ${({ theme }) => theme.colors.white};
+    }
   }
 `

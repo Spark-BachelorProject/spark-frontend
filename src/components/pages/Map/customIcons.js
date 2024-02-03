@@ -1,5 +1,7 @@
 import { Icon } from 'leaflet'
 
+import { replacePolishChars } from '@/helpers/replacePolishChars'
+
 const iconFiles = import.meta.glob('@assets/markers/*.{svg,jpg,jpeg,SVG,JPEG}', {
   eager: true,
   as: 'url',
@@ -11,10 +13,11 @@ const iconFilesInIcons = import.meta.glob('@assets/icons/*.{svg,jpg,jpeg,SVG,JPE
 })
 
 export const getIcon = (name) => {
-  const iconUrl = iconFiles[`/src/assets/markers/${name}.svg`]
+  const asciiName = replacePolishChars(name)
+  const iconUrl = iconFiles[`/src/assets/markers/${asciiName}.svg`]
 
   if (!iconUrl) {
-    console.warn(`Icon not found for activity: ${name}`)
+    console.warn(`Icon not found for activity: ${asciiName}`)
     return null
   }
 
@@ -26,10 +29,11 @@ export const getIcon = (name) => {
 }
 
 export const getIconUrl = (name) => {
-  const iconUrl = iconFiles[`/src/assets/markers/${name}.svg`]
+  const asciiName = replacePolishChars(name)
+  const iconUrl = iconFiles[`/src/assets/markers/${asciiName}.svg`]
 
   if (!iconUrl) {
-    console.warn(`Icon not found for activity: ${name}`)
+    console.warn(`Icon not found for activity: ${asciiName}`)
     return null
   }
 
@@ -37,10 +41,11 @@ export const getIconUrl = (name) => {
 }
 
 export const getIconUrlInIconsFolder = (name) => {
-  const iconUrl = iconFilesInIcons[`/src/assets/icons/${name}.svg`]
+  const asciiName = replacePolishChars(name)
+  const iconUrl = iconFilesInIcons[`/src/assets/icons/${asciiName}.svg`]
 
   if (!iconUrl) {
-    console.warn(`Icon not found for: ${name}`)
+    console.warn(`Icon not found for: ${asciiName}`)
     return null
   }
 

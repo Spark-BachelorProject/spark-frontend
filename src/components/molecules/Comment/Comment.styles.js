@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   ${Text} {
     width: auto;
     color: ${({ theme }) => theme.colors.titleFont};
-    font-size: ${({ theme }) => theme.fontSize.sPlus};
+    font-size: ${({ theme }) => theme.fontSize.m};
   }
 `
 
@@ -24,7 +24,7 @@ export const Details = styled.div`
   & > div {
     display: flex;
     flex-direction: row;
-    gap: 5px;
+    gap: 10px;
     margin-bottom: 5px;
   }
 
@@ -36,6 +36,10 @@ export const Details = styled.div`
 
   ${Text} {
     color: ${({ theme }) => theme.colors.grayDetails};
-    font-size: ${({ theme }) => theme.fontSize.xs};
+    font-size: ${({ theme }) => theme.fontSize.sPlus};
   }
+`
+
+export const StyledText = styled(Text)`
+  color: ${({ theme }) => theme.colors.textsecondary} !important;
 `

@@ -4,7 +4,7 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 import { formatTimeAgo } from '@/helpers/dateAndTime'
 import { getInitials } from '@/helpers/stringOperations'
 
-import { Details, Wrapper } from './Comment.styles'
+import { Details, StyledText, Wrapper } from './Comment.styles'
 
 const Comment = ({ children, user: { firstName, lastName }, dateAdded }) => {
   return (
@@ -15,7 +15,7 @@ const Comment = ({ children, user: { firstName, lastName }, dateAdded }) => {
           <Text isBold>
             {firstName} {lastName}
           </Text>
-          <Text>napisał(a) {formatTimeAgo(dateAdded)}</Text>
+          <StyledText>{formatTimeAgo(dateAdded)}</StyledText>
         </div>
       </Details>
       <Text>{children}</Text>

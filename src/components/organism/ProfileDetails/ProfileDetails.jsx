@@ -32,16 +32,19 @@ const badges = [
     Icon: VeteranBadge,
     text: 'Weteran',
     description: 'Oznaka przyznawana za dodanie 100 postów',
+    rarity: '5',
   },
   {
     Icon: FeedbackBadge,
     text: 'Głos społeczności',
     description: 'Oznaka przyznawana za wysłanie opinii',
+    rarity: '3',
   },
   {
     Icon: FirstBadge,
     text: 'Sportowa dusza',
     description: 'Oznaka przyznawana za dodanie pierwszego postu',
+    rarity: '1',
   },
 ]
 
@@ -77,6 +80,8 @@ const ProfileDetails = () => {
       handleOpenAndPositionModal(modalOpenElementRef, positioning2)
     }
   }
+
+  const sortedBadges = badges.sort((a, b) => a.rarity - b.rarity)
 
   return (
     <Wrapper>
@@ -140,7 +145,7 @@ const ProfileDetails = () => {
               ))
             : null} */}
 
-          {badges.map(({ Icon, text, description }, i) => (
+          {sortedBadges.map(({ Icon, text, description }, i) => (
             <Badge
               onMouseEnter={(e) => handleOpenBadgeInfo(e, { Icon, text, description })}
               onMouseLeave={handleClosePopup}

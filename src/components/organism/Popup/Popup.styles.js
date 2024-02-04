@@ -16,7 +16,7 @@ export const PopupWrapper = styled.div`
       ? 'translateX(-15%)'
       : 'translateX(-50%)'};
 
-  transform: ${({ isShifted }) => (isShifted ? 'translateX(-71%)' : '')};
+  transform: ${({ isShifted }) => (isShifted ? 'translateX(-81%)' : '')};
   height: auto;
   background-color: ${({ theme }) => theme.colors.modalBg};
   border: 1px solid ${({ theme }) => theme.colors.modalBorder};

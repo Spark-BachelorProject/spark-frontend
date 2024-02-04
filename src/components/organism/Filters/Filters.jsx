@@ -2,12 +2,10 @@ import { useState } from 'react'
 
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { Error } from '@/components/atoms/Error/Error.styles'
-import { Input } from '@/components/atoms/Input/Input.styles'
-import { Label } from '@/components/atoms/Label/Label.styles'
-import FormField from '@/components/molecules/FormField/FormField'
+import { DateSlider } from '@/components/molecules/DateSlider/DateSlider'
 import { dateNowYYYYMMDD, timeNow } from '@/helpers/dateAndTime'
 
-import { ButtonsWrapper, InputWrapper, TimeFromToWrapper, Wrapper } from './Filters.styles'
+import { ButtonsWrapper, Wrapper } from './Filters.styles'
 
 const Filters = ({ handleClose, setFilterOptions }) => {
   const hourEnd = new Date()
@@ -62,7 +60,7 @@ const Filters = ({ handleClose, setFilterOptions }) => {
 
   return (
     <Wrapper onSubmit={handleSubmit}>
-      <TimeFromToWrapper>
+      {/* <TimeFromToWrapper>
         <Label htmlFor="hourStart">W godzinach</Label>
         <InputWrapper>
           <Input
@@ -92,7 +90,10 @@ const Filters = ({ handleClose, setFilterOptions }) => {
         type="date"
         name="date"
         labelText={'Data'}
-      />
+      /> */}
+
+      <DateSlider />
+
       {/* <InputWithLabel
         value={state.date}
         isCustomOnChange

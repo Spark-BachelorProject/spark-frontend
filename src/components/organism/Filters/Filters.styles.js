@@ -6,7 +6,7 @@ import { Label } from '@/components/atoms/Label/Label.styles'
 
 export const Wrapper = styled.form`
   padding: 0 20px 10px 20px;
-  width: 320px;
+  width: 450px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;

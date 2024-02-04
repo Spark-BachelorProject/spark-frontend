@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 30px;
+  background-color: ${({ theme }) => theme.colors.primaryBg};
 
   @media (max-width: 998px) {
     justify-content: space-between;
@@ -30,7 +31,6 @@ export const ContentWrapper = styled.div`
 `
 
 export const LogoTitlesWrapper = styled.div`
-  max-width: 440px;
   margin: 50px 0 70px 0;
 
   @media (min-width: 998px) {
@@ -38,13 +38,13 @@ export const LogoTitlesWrapper = styled.div`
   }
 `
 export const LogoTitle = styled(Title)`
-  font-size: 50px;
+  font-size: 70px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.accent};
 `
 
 export const LogoSubtitle = styled(Title)`
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 400;
   max-width: 550px;
   margin-top: 20px;

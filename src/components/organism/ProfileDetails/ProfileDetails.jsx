@@ -2,9 +2,12 @@ import { useState } from 'react'
 
 import Avvvatars from 'avvvatars-react'
 
-import { ReactComponent as FeedbackBadge } from '@/assets/icons/feedback.svg'
-import { ReactComponent as FirstBadge } from '@/assets/icons/first.svg'
-import { ReactComponent as VeteranBadge } from '@/assets/icons/veteran.svg'
+import { ReactComponent as EarlybirdBadge } from '@/assets/badges/earlybird.svg'
+import { ReactComponent as FeedbackBadge } from '@/assets/badges/feedback.svg'
+import { ReactComponent as FirstBadge } from '@/assets/badges/first_post.svg'
+import { ReactComponent as IronmanBadge } from '@/assets/badges/ironman.svg'
+import { ReactComponent as OwlBadge } from '@/assets/badges/owl.svg'
+import { ReactComponent as VeteranBadge } from '@/assets/badges/veteran.svg'
 import Loader from '@/components/atoms/Loader/Loader'
 import { Title } from '@/components/atoms/Title/Title.styles'
 import { ActivityBadge } from '@/components/molecules/ActivityBadge/ActivityBadge'
@@ -33,22 +36,43 @@ const badges = [
   {
     Icon: VeteranBadge,
     text: 'Weteran',
-    description: 'Nie ma rzeczy niemożliwych! 100 postów na forum.',
-    rarity: '5',
+    description: 'Najlepszy z najlepszych! 100 postów na forum.',
+    rarity: '6',
     date: '24 stycznia 2024',
   },
   {
     Icon: FeedbackBadge,
     text: 'Głos społeczności',
-    description: 'Dziękujemy! Poprzez wysłanie opinii pomagasz nam w rozwoju aplikacji.',
+    description: 'Dziękujemy! Każda wysłana opinia przyczynia się w rozwoju aplikacji.',
     rarity: '3',
     date: '2 lutego 2023',
   },
   {
     Icon: FirstBadge,
     text: 'Sportowa dusza',
-    description: 'Maszyna ruszyła! Pierwszy post na forum.',
+    description: 'Pierwszy post na forum. To początek wielkiej przygody!',
     rarity: '1',
+    date: '24 marca 2024',
+  },
+  {
+    Icon: EarlybirdBadge,
+    text: 'Skowronek',
+    description: 'Kiedy inni śpią, Ty bijesz rekordy! Pierwsze spotkanie przed 7 rano.',
+    rarity: '4',
+    date: '24 marca 2024',
+  },
+  {
+    Icon: IronmanBadge,
+    text: 'Ironman',
+    description: 'Dwa spotkania w jeden dzień. Jesteś niezłomny!',
+    rarity: '5',
+    date: '24 marca 2024',
+  },
+  {
+    Icon: OwlBadge,
+    text: 'Nocny marek',
+    description: 'Sen jest dla słabych! Pierwsze spotkanie po 22:00.',
+    rarity: '4',
     date: '24 marca 2024',
   },
 ]

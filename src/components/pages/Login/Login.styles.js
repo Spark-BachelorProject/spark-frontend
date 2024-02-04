@@ -8,11 +8,11 @@ import { Text } from '@/components/atoms/Text/Text.styles'
 export const Form = styled.form`
   background-color: ${({ theme }) => theme.colors.secondaryBg};
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
-  padding: 25px 20px;
+  padding: 25px 30px;
   margin-top: 15px;
   margin-bottom: 60px;
   max-width: 440px;
-  border-radius: 7px;
+  border-radius: 13px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -25,6 +25,7 @@ export const Form = styled.form`
 
   ${Button} {
     margin-top: 30px;
+    padding: 12px 0;
     width: 100%;
   }
 

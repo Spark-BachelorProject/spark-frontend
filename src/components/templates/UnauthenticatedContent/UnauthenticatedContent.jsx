@@ -1,5 +1,3 @@
-import React from 'react'
-
 import PropTypes from 'prop-types'
 
 import UnauthenticatedFooter from '@/components/molecules/UnauthenticatedFooter/UnauthenticatedFooter'
@@ -17,7 +15,7 @@ const UnauthenticatedContent = ({ children }) => {
     <Wrapper>
       <ContentWrapper>
         <LogoTitlesWrapper>
-          <LogoTitle>Spark</LogoTitle>
+          <LogoTitle>Trybe</LogoTitle>
           <LogoSubtitle>Odkryj aktywne społeczności w Twoim mieście</LogoSubtitle>
         </LogoTitlesWrapper>
         {children}

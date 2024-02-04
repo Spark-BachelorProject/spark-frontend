@@ -29,7 +29,7 @@ export const ModalWrapper = styled.div`
   /* max-height: 500px; */
   background-color: ${({ theme }) => theme.colors.modalBg};
   border: 1px solid ${({ theme }) => theme.colors.postBorder};
-  border-radius: 15px;
+  border-radius: 17px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

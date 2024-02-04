@@ -54,7 +54,7 @@ export const FeedbackContent = ({ handleClose, handleFeedbackSubmitted }) => {
     <Wrapper>
       <HeaderWrapper>
         <StyledTitle>Jak oceniasz naszą aplikację?</StyledTitle>
-        <Text>Opisz swoje doświadczenia - co Ci się podoba, a co możemy poprawić.</Text>
+        <Text>Opisz swoje doświadczenia! Co możemy poprawić?</Text>
       </HeaderWrapper>
       <CloseButton onClick={handleClose} />
 

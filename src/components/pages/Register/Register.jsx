@@ -25,26 +25,20 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(registerSchema) })
-  const [signUp, { isError }] = useRegisterMutation()
+  const [signUp, { error }] = useRegisterMutation()
 
-  //TODO: Handle error when you created user with the same email
   const onSubmit = async (data) => {
     try {
-      const { data: responseData } = await signUp(data)
+      const response = await signUp(data).unwrap()
 
-      console.log(responseData)
-
-      if (!!responseData) {
-        localStorage.setItem('token', responseData.token)
+      if (!!response) {
+        localStorage.setItem('token', response.token)
         navigate(0)
       } else {
         console.log('Error in onSubmit')
       }
     } catch (error) {
-      console.log('Error:', error)
-      if (error.response && error.response.status === 401) {
-        console.log('Unauthorized: Invalid credentials')
-      }
+      // Error is automaticly handled by RTK Query
     }
   }
 
@@ -98,8 +92,11 @@ const Register = () => {
           {...register('repeatedPassword')}
           error={errors?.repeatedPassword?.message}
         />
-        {isError && <StyledError>Coś poszło nie tak</StyledError>}
-
+        {!!error?.data?.error && (
+          <StyledError>
+            Coś poszło nie tak - możliwe, że na ten e-mail jest już założone konto
+          </StyledError>
+        )}
         <Button isBig type="sumbit">
           Zarejestruj się
         </Button>

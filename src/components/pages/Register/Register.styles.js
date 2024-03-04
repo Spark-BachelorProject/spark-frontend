@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import { Button } from '@/components/atoms/Buttons/Button.styles'
 import { DividerLabel } from '@/components/atoms/DividerLabel/DividerLabel.styles'
+import { Error } from '@/components/atoms/Error/Error.styles'
 import { Text } from '@/components/atoms/Text/Text.styles'
 
 export const Form = styled.form`
@@ -52,5 +53,7 @@ export const Form = styled.form`
 export const StyledError = styled(Error)`
   margin: 0 auto;
   font-weight: 700;
+  margin-top: 0.5rem;
+  text-align: center;
   font-size: ${({ theme }) => theme.fontSize.m};
 `

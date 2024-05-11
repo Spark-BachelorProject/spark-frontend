@@ -27,15 +27,6 @@ const Home = () => {
   const memoizedResult = useMemo(() => result, [result.data, result.isSuccess])
 
   useEffect(() => {
-    if (filterOptions.activity === 0 && filterOptions.start === '' && filterOptions.end === '') {
-      // return everything
-      trigger(0)
-      if (memoizedResult.isSuccess) {
-        setPosts(memoizedResult.data)
-      }
-      return
-    } 
-
     let filterString = "";
 
     if (filterOptions.start) {

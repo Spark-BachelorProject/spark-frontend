@@ -51,7 +51,7 @@ const Home = () => {
     }
 
     // todo: add pagination
-    trigger({ filter: filterString });
+    filterString ? trigger({ filter: filterString }) : trigger(0);
 
     if (memoizedResult.isSuccess) {
       setPosts(memoizedResult.data)

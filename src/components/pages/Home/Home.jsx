@@ -57,7 +57,7 @@ const Home = () => {
       </TitleBar>
       <Dropdown setFilterOptions={setFilterOptions} filterOptions={filterOptions} />
       {isLoading && <Loader isCentered />}
-      {!isLoading && isSuccess && posts && posts.map((post) => <Post {...post} key={post.id} />)}
+      {!isLoading && isSuccess && posts.content && posts.content.map((post) => <Post {...post} key={post.id} />)}
     </PageContent>
   )
 }

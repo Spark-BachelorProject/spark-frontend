@@ -36,7 +36,6 @@ export const postsApi = createApi({
         method: 'GET',
         params: params, // params should be a map { filter: 'location.id=0;...', page=0, ... }
       }),
-      transformResponse: (response) => response.content.sort(sortDescByDate),
 
       providesTags: ['Posts'],
     }),

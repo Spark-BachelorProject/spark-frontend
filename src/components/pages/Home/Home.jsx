@@ -27,22 +27,22 @@ const Home = () => {
   const memoizedResult = useMemo(() => result, [result.data, result.isSuccess])
 
   useEffect(() => {
-    let filterString = "";
+    let filterString = ""
 
     if (filterOptions.start) {
-        filterString += "dateStart>'" + filterOptions.start + "';";
+        filterString += "dateStart>'" + filterOptions.start + "';"
     }
     
     if (filterOptions.end) {
-        filterString += "dateEnd<'" + filterOptions.end + "';";
+        filterString += "dateEnd<'" + filterOptions.end + "';"
     }
     
     if (filterOptions.activity) {
-        filterString += "activity.id=" + filterOptions.activity + ";";
+        filterString += "activity.id=" + filterOptions.activity + ";"
     }
 
     // todo: add pagination
-    filterString ? trigger({ filter: filterString }) : trigger(0);
+    filterString ? trigger({ filter: filterString }) : trigger(0)
 
     if (memoizedResult.isSuccess) {
       setPosts(memoizedResult.data)

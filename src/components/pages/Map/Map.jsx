@@ -37,6 +37,8 @@ const firstData = {
 }
 
 export const Map = () => {
+  // todo: map will have to take posts in some radius or city (endpoints are there)
+  // when moving the map to other place, we should display "Find places in this area" button or sth...
   const { data: posts, isLoading: isLoadingPosts, isSuccess: isSuccessPosts } = useGetPostsQuery()
   const {
     data: activitiesApi,
@@ -126,7 +128,7 @@ export const Map = () => {
         >
           {!isLoadingPosts &&
             isSuccessPosts &&
-            posts
+            posts.content
               .filter(
                 (marker) =>
                   activitySelect === 'Wszystkie' || marker.activity.name === activitySelect

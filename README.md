@@ -1,6 +1,6 @@
-# Trybe - Frontend
+# Spark - Frontend
 
-Trybe is an innovative web application designed to help users organize and participate in sports meetings. The platform allows users to create their profiles, browse available sports events on an interactive map, and join groups that share similar interests. With features like notifications and social interactions, Trybe encourages an active lifestyle and makes it easier to connect with like-minded individuals.
+Spark is an innovative web application designed to help users organize and participate in sports meetings. The platform allows users to create their profiles, browse available sports events on an interactive map, and join groups that share similar interests. With features like notifications and social interactions, Spark encourages an active lifestyle and makes it easier to connect with like-minded individuals.
 
 ## Technologies Used in the Project
 

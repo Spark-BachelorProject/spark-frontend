@@ -32,11 +32,10 @@ export const postsApi = createApi({
     }),
     getFilteredPosts: builder.query({
       query: (params) => ({
-        url: `posts/filter?`,
+        url: `posts`,
         method: 'GET',
-        params,
+        params: params, // params should be a map { filter: 'location.id=0;...', page=0, ... }
       }),
-      transformResponse: (response) => response.sort(sortDescByDate),
 
       providesTags: ['Posts'],
     }),

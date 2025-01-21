@@ -27,30 +27,22 @@ const Home = () => {
   const memoizedResult = useMemo(() => result, [result.data, result.isSuccess])
 
   useEffect(() => {
-    if (filterOptions.activity === 0 && filterOptions.start === '' && filterOptions.end === '') {
-      // return everything
-      trigger(0)
-      if (memoizedResult.isSuccess) {
-        setPosts(memoizedResult.data)
-      }
-      return
-    } else if (
-      filterOptions.activity === 0 &&
-      filterOptions.start !== '' &&
-      filterOptions.end !== ''
-    ) {
-      // return everything between start and end
-      trigger({
-        start: filterOptions.start,
-        end: filterOptions.end,
-      })
-      if (memoizedResult.isSuccess) {
-        setPosts(memoizedResult.data)
-      }
-      return
+    let filterString = ""
+
+    if (filterOptions.start) {
+        filterString += "dateStart>'" + filterOptions.start + "';"
+    }
+    
+    if (filterOptions.end) {
+        filterString += "dateEnd<'" + filterOptions.end + "';"
+    }
+    
+    if (filterOptions.activity) {
+        filterString += "activity.id=" + filterOptions.activity + ";"
     }
 
-    trigger(filterOptions)
+    // todo: add pagination
+    filterString ? trigger({ filter: filterString }) : trigger(0)
 
     if (memoizedResult.isSuccess) {
       setPosts(memoizedResult.data)
@@ -65,7 +57,7 @@ const Home = () => {
       </TitleBar>
       <Dropdown setFilterOptions={setFilterOptions} filterOptions={filterOptions} />
       {isLoading && <Loader isCentered />}
-      {!isLoading && isSuccess && posts && posts.map((post) => <Post {...post} key={post.id} />)}
+      {!isLoading && isSuccess && posts.content && posts.content.map((post) => <Post {...post} key={post.id} />)}
     </PageContent>
   )
 }
